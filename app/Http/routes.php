@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::any('/wechat', 'WechatController@serve');
+
+Route::get('/makemenu', 'WechatController@wechatMenu');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
