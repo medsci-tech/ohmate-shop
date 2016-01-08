@@ -160,12 +160,6 @@ return [
          * IDE Helper
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
-        /*
-         * Laravel Shop
-         */
-        Amsgames\LaravelShop\LaravelShopProvider::class,
-
     ],
 
     /*
@@ -211,9 +205,6 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-
-        'Shop'      => Amsgames\LaravelShop\LaravelShopFacade::class,
-
     ],
 
 ];
