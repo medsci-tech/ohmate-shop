@@ -54,7 +54,7 @@ class WechatController extends Controller{
 
             $customer = new Customer();
             $customer->openid   = $openId;
-            $customer->type_id  = 0;
+            $customer->type_id  = 1;
 
 //            $eventKey = $event['EventKey'];
 //            if (0 != count($eventKey)) {
