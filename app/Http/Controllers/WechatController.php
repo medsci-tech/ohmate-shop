@@ -64,7 +64,7 @@ class WechatController extends Controller{
                 \Log::info('weixin-EventKey ' . 'is null');
             } else {
                 \Log::info('weixin-EventKey ' . $eventKey);
-                $referrerId = (int)substr($eventKey, 7);
+                $referrerId = (int)substr($eventKey, strlen('qrscene_')-1);
                 \Log::info('weixin-EventKey referrerId' . $referrerId);
                 $customer->referrer_id = $referrerId;
             }
