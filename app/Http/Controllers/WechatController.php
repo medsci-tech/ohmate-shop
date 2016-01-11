@@ -56,7 +56,7 @@ class WechatController extends Controller{
             $customer->openid = $openId;
 
             $countEvent = count($event);
-            if($countEvent == 7) {
+            if($countEvent == 10) {
                 $eventKey = $event['EventKey'];
                 if (!$eventKey) {
                     $referrerId = (int)substr($eventKey, 7);
