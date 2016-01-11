@@ -86,7 +86,6 @@ class WechatController extends Controller{
             $buttonEdu->buttons(array(
                 new MenuItem('课程专区', 'view', 'http://www.soso.com/'),
                 new MenuItem('视频专区', 'view', 'http://v.qq.com/'),
-                new MenuItem('我的收藏', 'view', 'http://m.hupu.com/'),
             )),
             new MenuItem("易康商城", 'view', url('/shop/index')),
             $buttonInfo->buttons(array(
