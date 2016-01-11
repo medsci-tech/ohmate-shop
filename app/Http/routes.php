@@ -10,13 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::any('/wechat', 'WechatController@serve');
-
 Route::get('/makemenu', 'WechatController@wechatMenu');
 
 Route::any('/personal/advertisement', 'PersonalController@advertisement');
