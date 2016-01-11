@@ -55,12 +55,15 @@ class WechatController extends Controller{
             $customer = new Customer();
             $customer->openid = $openId;
 
-            $eventKey = $event['EventKey'];
-            if (!$eventKey) {
-                $referrerId = (int)substr($eventKey, 7);
-                \Log::info('weixin-event' . $referrerId);
-                $customer->referrer_id = $referrerId;
-            } /*if>*/
+            $countEvent = count($event);
+            if($countEvent == 7) {
+                $eventKey = $event['EventKey'];
+                if (!$eventKey) {
+                    $referrerId = (int)substr($eventKey, 7);
+                    \Log::info('weixin-EventKey' . $referrerId);
+                    $customer->referrer_id = $referrerId;
+                } /*if>*/
+            }
 
             return Message::make('text')->content('感谢您关注！');
         });
