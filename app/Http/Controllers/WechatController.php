@@ -68,8 +68,11 @@ class WechatController extends Controller{
             $customer->save();
 
             $customer = Customer::where('openid', $openId)->first();
+            \Log::info('weixin-qrcode' . '1');
             $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
+            \Log::info('weixin-qrcode' . '2');
             $result = $qrCode->forever($customer->id);
+            \Log::info('weixin-qrcode' . '3');
             $customer->qr_code = $result->url;
             \Log::info('weixin-qrcode' . $result->url);
             $customer->save();
