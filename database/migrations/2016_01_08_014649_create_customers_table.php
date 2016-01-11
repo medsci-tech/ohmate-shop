@@ -26,7 +26,6 @@ class CreateCustomersTable extends Migration
             $table->string('auth_code', 11)->nullable()->comment('sms auth code');
 
             $table->boolean('is_registered')->nullable()->default(false)->comment('if the customer is registered');
-            $table->boolean('is_vip')->nullable()->default(false)->comment('if the customer is vip');
 
             $table->unsignedInteger('beans_total')->default(0)->comment('迈豆总额');
 
