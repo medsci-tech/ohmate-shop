@@ -48,15 +48,6 @@ class WechatController extends Controller{
             error_log('收到关注事件，关注者openid: ' . $event['FromUserName']);
 
             $openId = $event['FromUserName'];
-            $eventKey = $event['EventKey'];
-            if(typeof($eventKey) == "string") {
-                \Log::info('weixin-EventKey ' . $eventKey);
-                return;
-            }
-            else {
-                \Log::info('weixin-EventKey ' . 'is null');
-                return;
-            }
 
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
@@ -67,9 +58,12 @@ class WechatController extends Controller{
             $customer->openid   = $openId;
             $customer->type_id  = 1;
 
-            $countEvent = count($event);
-            if($countEvent == 10) {
-                $eventKey = $event['EventKey'];
+            $eventKey = $event['EventKey'];
+            $countEvent = count($eventKey);
+            if($countEvent == 0) {
+
+            }
+            else{
                 if (!$eventKey) {
                     $referrerId = (int)substr($eventKey, 7);
                     \Log::info('weixin-EventKey' . $referrerId);
