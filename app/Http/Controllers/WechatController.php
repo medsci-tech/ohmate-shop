@@ -16,6 +16,7 @@ use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Message;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
+use Overtrue\Wechat\QRCode;
 
 class WechatController extends Controller{
 
