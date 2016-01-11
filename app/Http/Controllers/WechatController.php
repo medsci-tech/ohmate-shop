@@ -21,10 +21,10 @@ class WechatController extends Controller{
 
     public function serve(Request $request) {
 
-        $appId          = 'wx8344488947a8330b';
-        $secret         = '873e54f0fcec927399b27c251666ff69';
-        $token          = 'med123456';
-        $encodingAESKey = 'QPXUqeuWGWHZY6tC92U5rDNGwGZafuZVLDCnnPw1k5D';
+        $appId          = env('WX_APPID');
+        $secret         = env('WX_SECRET');
+        $token          = env('WX_TOKEN');
+        $encodingAESKey = env('WX_ENCODING_AESKEY');
 
         $server = new Server($appId, $token, $encodingAESKey);
 
@@ -68,12 +68,13 @@ class WechatController extends Controller{
             $customer->save();
 
             $customer = Customer::where('openid', $openId)->first();
-            $qrCode = new QRCode($appId, $secret);
+            $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
             $result = $qrCode->forever($customer->id);
             $customer->qr_code = $result->url;
+            \Log::info('weixin-qrcode' . $result->url);
             $customer->save();
 
-            session(['openid' => 'openId']);
+//            session(['openid' => 'openId']);
 
             return Message::make('text')->content('感谢您关注！');
         });
