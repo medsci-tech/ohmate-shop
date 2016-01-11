@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\Customer;
+
 use Illuminate\Http\Request;
 use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Message;
@@ -44,7 +46,23 @@ class WechatController extends Controller{
             \Log::info('weixin-event' . $event);
             error_log('收到关注事件，关注者openid: ' . $event['FromUserName']);
 
-            return Message::make('text')->content('感谢您关注');
+            $openId = $event['FromUserName'];
+            $user   = Customer::where('openid', $openId)->first();
+            if($user) {
+                return Message::make('text')->content('感谢您回来！');
+            } /*if>*/
+
+            $customer = new Customer();
+            $customer->openid = $openId;
+
+            $eventKey = $event['EventKey'];
+            if (!$eventKey) {
+                $referrerId = (int)substr($eventKey, 7);
+                \Log::info('weixin-event' . $referrerId);
+                $customer->referrer_id = $referrerId;
+            } /*if>*/
+
+            return Message::make('text')->content('感谢您关注！');
         });
 
         $result = $server->serve();
@@ -80,10 +98,10 @@ class WechatController extends Controller{
         );
 
         try {
-            $menuService->set($menus);// 请求微信服务器
+            $menuService->set($menus); // 请求微信服务器
             echo '设置成功！';
         } catch (\Exception $e) {
-            echo '设置失败：' . $e->getMessage();
+            echo '设置失败!';
         }
 
     }
