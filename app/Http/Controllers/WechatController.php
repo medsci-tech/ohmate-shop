@@ -100,7 +100,7 @@ class WechatController extends Controller{
             new MenuItem("易康商城", 'view', url('/shop/index')),
             $buttonInfo->buttons(array(
                 new MenuItem('联系我们', 'view', 'http://www.soso.com/'),
-                new MenuItem('糖友推广', 'view', 'http://v.qq.com/'),
+                new MenuItem('糖友推广', 'view', url('/personal/advertisement')),
                 new MenuItem('迈豆钱包', 'view', 'http://m.hupu.com/'),
                 new MenuItem('会员信息', 'view', 'http://m.163.com/'),
             )),
