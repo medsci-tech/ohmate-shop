@@ -19,6 +19,9 @@ Route::any('/wechat', 'WechatController@serve');
 
 Route::get('/makemenu', 'WechatController@wechatMenu');
 
+Route::any('/personal/advertisement', 'PersonalController@advertisement');
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
