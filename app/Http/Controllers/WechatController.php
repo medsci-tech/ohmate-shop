@@ -91,8 +91,8 @@ class WechatController extends Controller{
         $menus = [
             /* 教育学习 */
             $buttonEdu->buttons([
-                new MenuItem('课程专区', 'view', '/eduction/essay'),
-                new MenuItem('视频专区', 'view', '/eduction/video'),
+                new MenuItem('课程专区', 'view', url('/eduction/essay')),
+                new MenuItem('视频专区', 'view', url('/eduction/video')),
             ]),
             /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),
@@ -109,7 +109,7 @@ class WechatController extends Controller{
             $menuService->set($menus);
             echo '设置成功！';
         } catch (\Exception $e) {
-            echo '设置失败!';
+            echo '设置失败!'.$e->getMessage();
         } /*catch>*/
 
     }
