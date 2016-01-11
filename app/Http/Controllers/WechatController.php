@@ -48,6 +48,16 @@ class WechatController extends Controller{
             error_log('收到关注事件，关注者openid: ' . $event['FromUserName']);
 
             $openId = $event['FromUserName'];
+            $eventKey = $event['EventKey'];
+            if($eventKey == '') {
+                \Log::info('weixin-EventKey ' . 'is null');
+                return;
+            }
+            else {
+                \Log::info('weixin-EventKey ' . $eventKey);
+                return;
+            }
+
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
                 return Message::make('text')->content('感谢您回来！');
