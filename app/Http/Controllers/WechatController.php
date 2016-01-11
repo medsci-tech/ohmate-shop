@@ -55,6 +55,11 @@ class WechatController extends Controller{
             $customer = new Customer();
             $customer->openid = $openId;
 
+//            $eventKey = $event['EventKey'];
+//            if (0 != count($eventKey)) {
+//
+//            } /*if>*/
+
             $countEvent = count($event);
             if($countEvent == 10) {
                 $eventKey = $event['EventKey'];
@@ -64,6 +69,7 @@ class WechatController extends Controller{
                     $customer->referrer_id = $referrerId;
                 } /*if>*/
             }
+            $customer->save();
 
             return Message::make('text')->content('感谢您关注！');
         });
