@@ -14,9 +14,19 @@ class PersonalController extends Controller
 {
     //
 
-    public function advertisement() {
-        
+    public function information()
+    {
+        return 'information';
+    }
+
+    public function beans()
+    {
+        return 'beans';
+    }
+
+    public function advertisement()
+    {
         return 'advertisement';
     }
 
-}
+} /*class*/
