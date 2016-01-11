@@ -36,9 +36,14 @@ class WechatController extends Controller{
             return Message::make('text')->content('您好！');
         });
 
+        /* scan event */
+        $server->on('event', 'SCAN', function($event) {
+            \Log::info('weixin' . $event);
+        });
+
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
-            \Log::info('weixin-event' . $event);
+            \Log::info('weixin' . $event);
             $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
@@ -53,12 +58,11 @@ class WechatController extends Controller{
                 $eventKey = $event['EventKey'];
                 if (!$eventKey) {
                     $referrerId = (int)substr($eventKey, strlen('qrscene_') - 1);
-                    \Log::info('weixin-EventKey' . $referrerId);
+                    \Log::info('weixin' . $referrerId);
                     $customer->referrer_id = $referrerId;
                 } /*if>*/
             }
             $customer->save();
-            session(['openid' => 'openId']);
 
             //TODO move to register route
             $customer = Customer::where('openid', $openId)->first();
@@ -70,14 +74,10 @@ class WechatController extends Controller{
             return Message::make('text')->content('感谢您关注！');
         });
 
-        return $server->serve();;
+        return $server->serve();
     }
 
     public function wechatMenu() {
-
-        $appId  = 'wx8344488947a8330b';
-        $secret = '873e54f0fcec927399b27c251666ff69';
-
         $menuService = new Menu(env('WX_APPID'), env('WX_SECRET'));
 
         $buttonEdu  = new MenuItem("教育学习");
@@ -86,17 +86,17 @@ class WechatController extends Controller{
         $menus = [
             /* 教育学习 */
             $buttonEdu->buttons([
-                new MenuItem('课程专区', 'view', 'http://www.soso.com/'),
-                new MenuItem('视频专区', 'view', 'http://v.qq.com/'),
+                new MenuItem('课程专区', 'view', '/eduction/essay'),
+                new MenuItem('视频专区', 'view', '/eduction/video'),
             ]),
             /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),
             /* 个人中心 */
             $buttonInfo->buttons([
-                new MenuItem('会员信息', 'view', 'http://m.163.com/'),
-                new MenuItem('迈豆钱包', 'view', 'http://m.hupu.com/'),
+                new MenuItem('会员信息', 'view', url('/personal/information')),
+                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
                 new MenuItem('糖友推广', 'view', url('/personal/advertisement')),
-                new MenuItem('联系我们', 'view', 'http://www.soso.com/'),
+                new MenuItem('联系我们', 'view', url('/about')),
             ]),
         ];
 
