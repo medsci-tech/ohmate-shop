@@ -49,12 +49,12 @@ class WechatController extends Controller{
 
             $openId = $event['FromUserName'];
             $eventKey = $event['EventKey'];
-            if(count($eventKey) == 0) {
-                \Log::info('weixin-EventKey ' . 'is null');
+            if(typeof($eventKey) = "string") {
+                \Log::info('weixin-EventKey ' . $eventKey);
                 return;
             }
             else {
-                \Log::info('weixin-EventKey ' . $eventKey);
+                \Log::info('weixin-EventKey ' . 'is null');
                 return;
             }
 
