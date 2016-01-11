@@ -15,6 +15,7 @@ class PersonalController extends Controller
     //
 
     public function advertisement() {
+        
         return 'advertisement';
     }
 

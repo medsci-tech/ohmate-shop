@@ -74,11 +74,11 @@ class WechatController extends Controller{
             \Log::info('weixin-qrcode' . '2');
             $result = $qrCode->forever($customer->id);
             \Log::info('weixin-qrcode' . '3');
-            $customer->qr_code = $result->url;
-            \Log::info('weixin-qrcode' . $result->url);
+            $customer->qr_code = $qrCode->show($result->ticket);
+            \Log::info('weixin-qrcode' . $customer->qr_code);
             $customer->save();
 
-//            session(['openid' => 'openId']);
+            session(['openid' => 'openId']);
 
             return Message::make('text')->content('感谢您关注！');
         });
