@@ -15,18 +15,18 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('phone', 31)->nullable()->comment('personal telephone');
-            $table->string('auth_code', 11)->nullable()->comment('sms auth code');
+            $table->string('openid')->comment('wechat open id');
+            $table->string('nickname')->nullable()->comment('wechat nick name');
+            $table->string('headimgurl')->nullable()->comment('wechat headimgurl');
 
             $table->integer('referrer_id')->unsigned()->nullable()->default(0)->commment('the customer id of referrer');
             $table->string('qr_code')->nullable()->comment('personal qr code');
 
+            $table->string('phone', 31)->nullable()->comment('personal telephone');
+            $table->string('auth_code', 11)->nullable()->comment('sms auth code');
+
             $table->boolean('is_registered')->nullable()->default(false)->comment('if the customer is registered');
             $table->boolean('is_vip')->nullable()->default(false)->comment('if the customer is vip');
-
-            $table->string('openid')->comment('wechat open id');
-            $table->string('nickname')->nullable()->comment('wechat nick name');
-            $table->string('headimgurl')->nullable()->comment('wechat headimgurl');
 
             $table->unsignedInteger('beans_total')->default(0)->comment('迈豆总额');
 
