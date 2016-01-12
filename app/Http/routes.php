@@ -16,7 +16,7 @@ Route::get('/about', 'AboutController@index');
 
 Route::group(['prefix' => 'register'], function () {
     Route::get('/create', ['as' => 'register', 'RegisterController@create']);
-    Route::get('/store', 'RegisterController@store');
+    Route::post('/store', 'RegisterController@store');
 });
 
 Route::group(['prefix' => 'eduction'], function () {
