@@ -42,5 +42,7 @@ class CreateCustomerBeansTable extends Migration
             $table->dropForeign('customer_beans_customer_id_foreign');
             $table->dropForeign('customer_beans_bean_rate_id_foreign');
         });
+
+        Schema::drop('customer_beans');
     }
 }
