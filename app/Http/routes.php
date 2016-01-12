@@ -10,29 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::any('/wechat', 'WechatController@serve');
+Route::get('/makemenu', 'WechatController@wechatMenu');
+Route::get('/about', 'AboutController@index');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/register', ['as' => 'register', 'RegisterController@create']);
+
+Route::group(['prefix' => 'eduction'], function () {
+    Route::get('/essay', 'EductionController@essay');
+    Route::get('/video', 'EductionController@video');
 });
 
-Route::any('/wechat', 'WechatController@serve');
-
-Route::get('/makemenu', 'WechatController@wechatMenu');
-
-Route::any('/personal/advertisement', 'PersonalController@advertisement');
-
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['prefix' => 'personal'], function () {
+    Route::get('/information', 'PersonalController@information');
+    Route::get('/beans', 'PersonalController@beans');
+    Route::get('/advertisement', 'PersonalController@advertisement');
 });

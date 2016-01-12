@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Customer;
+use App\Models\CustomerType;
 
 use Illuminate\Http\Request;
 use Overtrue\Wechat\Server;
@@ -29,97 +30,88 @@ class WechatController extends Controller{
 
         $server = new Server($appId, $token, $encodingAESKey);
 
-        // 监听所有类型
+        /* message event */
         $server->on('message', function($message) {
             \Log::info('weixin' . $message);
             return Message::make('text')->content('您好！');
         });
 
-        // 监听指定类型
-        $server->on('message', 'image', function($message) {
-            \Log::info('weixin' . $message);
-            return Message::make('text')->content('我们已经收到您发送的图片！');
+        /* scan event */
+        $server->on('event', 'SCAN', function($event) {
+            \Log::info('weixin' . $event);
         });
 
-        // 只监听指定类型事件
+        /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
+            \Log::info('weixin' . $event);
+            $openId     = $event['FromUserName'];
 
-            \Log::info('weixin-event' . $event);
-            error_log('收到关注事件，关注者openid: ' . $event['FromUserName']);
-
-            $openId = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
-                return Message::make('text')->content('感谢您回来！');
+                return Message::make('text')->content('欢迎您回来！');
             } /*if>*/
 
             $customer = new Customer();
             $customer->openid   = $openId;
-            $customer->type_id  = 1;
+            $customer->type_id  = CustomerType::where('type_en', 'patient')->first()->id;
 
-            $countEvent = count($event);
-            if($countEvent == 10) {
-                $eventKey = $event['EventKey'];
-                if (!$eventKey) {
-                    $referrerId = (int)substr($eventKey, 7);
-                    \Log::info('weixin-EventKey' . $referrerId);
-                    $customer->referrer_id = $referrerId;
-                } /*if>*/
+
+            $eventKey = $event['EventKey'];
+            $countEvent = count($eventKey);
+            if ($countEvent == 0) {
+                \Log::info('weixin-EventKey ' . 'is null');
+            } else {
+                \Log::info('weixin-EventKey ' . $eventKey);
+                $referrerId = (int)substr($eventKey, strlen('qrscene_'));
+                \Log::info('weixin-EventKey referrerId' . $referrerId);
+                $customer->referrer_id = $referrerId;
             }
+
             $customer->save();
 
+            //TODO move to register route
             $customer = Customer::where('openid', $openId)->first();
-            \Log::info('weixin-qrcode' . '1');
             $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
-            \Log::info('weixin-qrcode' . '2');
             $result = $qrCode->forever($customer->id);
-            \Log::info('weixin-qrcode' . '3');
             $customer->qr_code = $qrCode->show($result->ticket);
-            \Log::info('weixin-qrcode' . $customer->qr_code);
             $customer->save();
-
-            session(['openid' => 'openId']);
 
             return Message::make('text')->content('感谢您关注！');
         });
 
-        $result = $server->serve();
-
-//        echo $result;
-        return $result;
+        return $server->serve();
     }
 
     public function wechatMenu() {
+        $menuService = new Menu(env('WX_APPID'), env('WX_SECRET'));
 
-        $appId  = 'wx8344488947a8330b';
-        $secret = '873e54f0fcec927399b27c251666ff69';
-
-        $menuService = new Menu($appId, $secret);
-
-        $buttonEdu = new MenuItem("教育学习");
+        $buttonEdu  = new MenuItem("教育学习");
         $buttonInfo = new MenuItem("个人中心");
 
-        $menus = array(
-
-            $buttonEdu->buttons(array(
-                new MenuItem('课程专区', 'view', 'http://www.soso.com/'),
-                new MenuItem('视频专区', 'view', 'http://v.qq.com/'),
-            )),
+        $menus = [
+            /* 教育学习 */
+            $buttonEdu->buttons([
+                new MenuItem('课程专区', 'view', url('/eduction/essay')),
+                new MenuItem('视频专区', 'view', url('/eduction/video')),
+            ]),
+            /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),
-            $buttonInfo->buttons(array(
-                new MenuItem('会员信息', 'view', 'http://m.163.com/'),
-                new MenuItem('迈豆钱包', 'view', 'http://m.hupu.com/'),
+            /* 个人中心 */
+            $buttonInfo->buttons([
+                new MenuItem('会员信息', 'view', url('/personal/information')),
+                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
                 new MenuItem('糖友推广', 'view', url('/personal/advertisement')),
-                new MenuItem('联系我们', 'view', 'http://www.soso.com/'),
-            )),
-        );
+                new MenuItem('联系我们', 'view', url('/about')),
+            ]),
+        ];
 
         try {
-            $menuService->set($menus); // 请求微信服务器
+            $menuService->set($menus);
             echo '设置成功！';
         } catch (\Exception $e) {
-            echo '设置失败!';
-        }
+            echo '设置失败!'.$e->getMessage();
+        } /*catch>*/
 
     }
-}
+
+} /*class*/
