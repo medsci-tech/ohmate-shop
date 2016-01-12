@@ -13,6 +13,12 @@ use App\Http\Controllers\Controller;
 class PersonalController extends Controller
 {
     //
+    function __construct()
+    {
+        // TODO: Implement __construct() method.
+        $this->middleware('auth.wechat');
+        $this->middleware('auth.access');
+    }
 
     public function information()
     {
