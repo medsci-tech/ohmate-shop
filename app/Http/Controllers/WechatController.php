@@ -44,8 +44,8 @@ class WechatController extends Controller{
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
             \Log::info('weixin' . $event);
-            $openId     = $event['FromUserName'];
 
+            $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
                 return Message::make('text')->content('欢迎您回来！');
@@ -55,18 +55,15 @@ class WechatController extends Controller{
             $customer->openid   = $openId;
             $customer->type_id  = CustomerType::where('type_en', 'patient')->first()->id;
 
-
-            $eventKey = $event['EventKey'];
+            $eventKey   = $event['EventKey'];
             $countEvent = count($eventKey);
-            if ($countEvent == 0) {
-                \Log::info('weixin-EventKey ' . 'is null');
-            } else {
+            if ($countEvent != 0) {
                 \Log::info('weixin-EventKey ' . $eventKey);
                 $referrerId = (int)substr($eventKey, strlen('qrscene_'));
-                \Log::info('weixin-EventKey referrerId' . $referrerId);
                 $customer->referrer_id = $referrerId;
+            } else {
+                $customer->referrer_id = 0;
             }
-
             $customer->save();
 
             //TODO move to register route
