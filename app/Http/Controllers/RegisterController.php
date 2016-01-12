@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use \App\Models\Customer;
 use App\Http\Controllers\Controller;
+use Overtrue\Wechat\QRCode;
 
 class RegisterController extends Controller
 {
@@ -38,6 +39,11 @@ class RegisterController extends Controller
         $customer->phone        = $request->phone;
         $customer->headimgurl   = $user['headimgurl'];
         $customer->nickname     = $user['nickname'];
+
+        $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
+        $result = $qrCode->forever($customer->id);
+        $customer->qr_code = $qrCode->show($result->ticket);
+
         $customer->save();
 
         return view('register.success');
