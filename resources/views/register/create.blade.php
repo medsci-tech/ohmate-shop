@@ -29,7 +29,7 @@
     </script>
 </head>
 <body>
-<form action="/customer/store" method="post">
+<form action="{{url('/customer/store')}}" method="post">
     <p>
         <span>输入手机号</span>
         <br>
