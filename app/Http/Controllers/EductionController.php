@@ -9,13 +9,11 @@ use App\Http\Controllers\Controller;
 
 class EductionController extends Controller
 {
-    //
-    function __construct()
-    {
-        // TODO: Implement __construct() method.
-        $this->middleware('auth.wechat');
-        $this->middleware('auth.access');
-    }
+//    function __construct()
+//    {
+//        $this->middleware('auth.wechat');
+//        $this->middleware('auth.access');
+//    }
 
     public function essay()
     {
