@@ -26,10 +26,20 @@
             return true;
         }
 
+        function turnTo(){
+            if(validateMobile()) {
+                var mobile = document.getElementById('phone').value;
+                window.location.href = '/smsrequest?phone='+mobile;
+            }
+            //也可以
+//            document.form.action = "/smsrequest";
+//            document.form.submit();
+        }
     </script>
 </head>
 <body>
 <form action="{{url('/customer/store')}}" method="POST">
+    {{csrf_field()}}
     <p>
         <span>输入手机号</span>
         <br>
@@ -38,6 +48,7 @@
         </label>
     </p>
     <p><input type="submit" value="确定"></p>
+    <p><input type="button" value="获取短信验证码" onclick='turnTo();'/></p>
 </form>
 </body>
 </html>

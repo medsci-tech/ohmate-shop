@@ -13,6 +13,7 @@
 Route::any('/wechat', 'WechatController@serve');
 Route::get('/makemenu', 'WechatController@wechatMenu');
 Route::get('/about', 'AboutController@index');
+Route::any('/smsrequest', 'RegisterController@sms');
 
 Route::group(['prefix' => 'register'], function () {
     Route::get('/create', 'RegisterController@focus');
