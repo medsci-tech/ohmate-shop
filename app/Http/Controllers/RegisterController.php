@@ -23,6 +23,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        \Log::info('Register-store' . $request);
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
