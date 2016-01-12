@@ -14,9 +14,9 @@ class AddLocationFieldsToCustomer extends Migration
     {
         Schema::table('customers', function (Blueprint $table) {
             //
-            $table->decimal('latitude', 8)->nullable()->comment('经度');
-            $table->decimal('longitude', 8)->nullable()->comment('维度');
-            $table->decimal('precision', 8)->nullable()->comment('精度');
+            $table->decimal('latitude', 8)->nullable()->default(0)->comment('经度');
+            $table->decimal('longitude', 8)->nullable()->default(0)->comment('维度');
+            $table->decimal('precision', 8)->nullable()->default(0)->comment('精度');
         });
     }
 
