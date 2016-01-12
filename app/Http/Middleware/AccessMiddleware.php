@@ -20,7 +20,11 @@ class AccessMiddleware
         $user = \Session::get('logged_user');
         $customer = Customer::where('openid', $user['openid'])->first();
 
-        if ((!$customer) || (!$customer->phone) || (!$customer->is_registered)) {
+        if (!$customer) {
+            return redirect('/register/focus');
+        } /*if>*/
+
+        if ((!$customer->phone) || (!$customer->is_registered)) {
             return redirect('/register/create');
         } /*if>*/
 

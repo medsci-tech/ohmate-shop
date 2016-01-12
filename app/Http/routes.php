@@ -15,6 +15,7 @@ Route::get('/makemenu', 'WechatController@wechatMenu');
 Route::get('/about', 'AboutController@index');
 
 Route::group(['prefix' => 'register'], function () {
+    Route::get('/create', 'RegisterController@focus');
     Route::get('/create', 'RegisterController@create');
     Route::post('/store', 'RegisterController@store');
 });
