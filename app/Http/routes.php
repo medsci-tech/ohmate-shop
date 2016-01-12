@@ -22,6 +22,7 @@ Route::group(['prefix' => 'register'], function () {
 Route::group(['prefix' => 'eduction'], function () {
     Route::get('/essay', 'EductionController@essay');
     Route::get('/video', 'EductionController@video');
+    Route::get('/game', 'EductionController@game');
 });
 
 Route::group(['prefix' => 'personal'], function () {

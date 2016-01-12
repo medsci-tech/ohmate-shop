@@ -27,4 +27,9 @@ class EductionController extends Controller
         return 'video';
     }
 
+    public function game()
+    {
+        return 'game';
+    }
+
 } /*class*/
