@@ -29,6 +29,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        \Log::info('Register-store' . $request);
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
@@ -59,6 +60,39 @@ class RegisterController extends Controller
         $customer->save();
 
         return view('register.success');
+    }
+
+    public function sms(Request $request) {
+        $phone = $request;
+
+        $len=6;
+        $chars='0123456789';
+        mt_srand((double)microtime()*1000000*getmypid());
+        $password="";
+        while(strlen($password)<$len)
+            $password.=substr($chars,(mt_rand()%strlen($chars)),1);
+
+        $code = $password;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
+
+        curl_setopt($ch, CURLOPT_HTTP_VERSION  , CURL_HTTP_VERSION_1_0 );
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+        curl_setopt($ch, CURLOPT_HTTPAUTH , CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD  , 'api:key-'.env('SMS_KEY'));
+
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('mobile' => $phone['phone'],'message' => '验证码：'.$code.'【易康商城】'));
+
+        $res = curl_exec( $ch );
+        curl_close( $ch );
+//        $res  = curl_error( $ch );
+        var_dump($res);
+
     }
 
 } /*class*/
