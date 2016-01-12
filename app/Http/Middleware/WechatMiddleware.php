@@ -24,6 +24,8 @@ class WechatMiddleware
             $auth = new Auth($appId, $secret);
             $user = $auth->authorize(url($request->fullUrl()));
             \Session::put('logged_user', $user->all());
+
+            dd($request->all());
             return $next($request);
         } /*else>*/
     }
