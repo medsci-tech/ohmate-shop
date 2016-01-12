@@ -21,10 +21,13 @@ class CreateCustomerBeansTable extends Migration
             $table->integer('bean_rate_id')->unsigned()->comment('积分兑换规则');
             $table->foreign('bean_rate_id')->references('id')->on('bean_rates');
 
-            $table->integer('value')->unsigned()->comment('积分值');
+            $table->integer('value')->unsigned()->comment('积分原始值');
+            $table->integer('result')->unsigned()->comment('result = rate * result');
+
             $table->boolean('valid')->default(false)->comment('积分是否有效');
 
             $table->index('customer_id');
+            $table->index('bean_rate_id');
 
             $table->timestamps();
         });
