@@ -30,6 +30,7 @@
 </head>
 <body>
 <form action="{{url('/customer/store')}}" method="post">
+    {{csrf_field()}}
     <p>
         <span>输入手机号</span>
         <br>
