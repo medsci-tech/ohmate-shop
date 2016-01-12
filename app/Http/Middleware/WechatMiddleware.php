@@ -17,6 +17,7 @@ class WechatMiddleware
     public function handle($request, Closure $next)
     {
         if (\Session::has('logged_user')) {
+            \Log::info('weixin' . __LINE__);
             return $next($request);
         } else {
             $appId  = env('WX_APPID');
@@ -25,6 +26,7 @@ class WechatMiddleware
 
             $user = $auth->authorize(url($request->fullUrl()));
             \Session::put('logged_user', $user->all());
+            \Log::info('weixin' . __LINE__);
             return $next($request);
         } /*else>*/
     }

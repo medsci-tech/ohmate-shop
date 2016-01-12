@@ -20,7 +20,9 @@ class AccessMiddleware
         $user = \Session::get('logged_user');
         $customer = Customer::where('openid', $user['openid'])->first();
 
+        \Log::info('weixin' . __LINE__);
         if ((!$customer) || (!$customer->phone) || (!$customer->is_registered)) {
+            \Log::info('weixin' . __LINE__);
             return redirect()->route('register');
         } /*if>*/
 
@@ -29,7 +31,7 @@ class AccessMiddleware
             $customer->nickname     = $user['nickname'];
             $customer->save();
         } /*if>*/
-
+        \Log::info('weixin' . __LINE__);
         return $next($request);
 
     }
