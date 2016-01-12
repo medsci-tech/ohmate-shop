@@ -16,10 +16,11 @@ class WechatMiddleware
      */
     public function handle($request, Closure $next)
     {
+        echo $request->method();
+
         if (\Session::has('logged_user')) {
             return $next($request);
         } else {
-            echo $request->method();
             $appId  = env('WX_APPID');
             $secret = env('WX_SECRET');
             $auth = new Auth($appId, $secret);
