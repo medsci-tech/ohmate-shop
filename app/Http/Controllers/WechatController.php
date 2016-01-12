@@ -45,6 +45,7 @@ class WechatController extends Controller{
         $server->on('event', 'subscribe', function($event) {
             \Log::info('weixin' . $event);
             $openId     = $event['FromUserName'];
+
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
                 return Message::make('text')->content('欢迎您回来！');
@@ -54,14 +55,18 @@ class WechatController extends Controller{
             $customer->openid   = $openId;
             $customer->type_id  = CustomerType::where('type_en', 'patient')->first()->id;
 
-            if(10 == count($event)) {
-                $eventKey = $event['EventKey'];
-                if (!$eventKey) {
-                    $referrerId = (int)substr($eventKey, strlen('qrscene_') - 1);
-                    \Log::info('weixin' . $referrerId);
-                    $customer->referrer_id = $referrerId;
-                } /*if>*/
+
+            $eventKey = $event['EventKey'];
+            $countEvent = count($eventKey);
+            if ($countEvent == 0) {
+                \Log::info('weixin-EventKey ' . 'is null');
+            } else {
+                \Log::info('weixin-EventKey ' . $eventKey);
+                $referrerId = (int)substr($eventKey, strlen('qrscene_'));
+                \Log::info('weixin-EventKey referrerId' . $referrerId);
+                $customer->referrer_id = $referrerId;
             }
+
             $customer->save();
 
             //TODO move to register route
@@ -86,8 +91,8 @@ class WechatController extends Controller{
         $menus = [
             /* 教育学习 */
             $buttonEdu->buttons([
-                new MenuItem('课程专区', 'view', '/eduction/essay'),
-                new MenuItem('视频专区', 'view', '/eduction/video'),
+                new MenuItem('课程专区', 'view', url('/eduction/essay')),
+                new MenuItem('视频专区', 'view', url('/eduction/video')),
             ]),
             /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),
@@ -104,7 +109,7 @@ class WechatController extends Controller{
             $menuService->set($menus);
             echo '设置成功！';
         } catch (\Exception $e) {
-            echo '设置失败!';
+            echo '设置失败!'.$e->getMessage();
         } /*catch>*/
 
     }
