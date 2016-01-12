@@ -52,8 +52,7 @@ class WechatController extends Controller{
             } /*if>*/
 
             $customer = new Customer();
-            $customer->openid   = $openId;
-            $customer->type_id  = CustomerType::where('type_en', 'patient')->first()->id;
+            $customer->openid = $openId;
 
             $eventKey   = $event['EventKey'];
             $countEvent = count($eventKey);
@@ -82,6 +81,7 @@ class WechatController extends Controller{
             $buttonEdu->buttons([
                 new MenuItem('课程专区', 'view', url('/eduction/essay')),
                 new MenuItem('视频专区', 'view', url('/eduction/video')),
+                new MenuItem('视频专区', 'view', url('/eduction/game')),
             ]),
             /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),
