@@ -7,19 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use \App\Models\Customer;
 use App\Http\Controllers\Controller;
+use Overtrue\Wechat\QRCode;
 
 class RegisterController extends Controller
 {
     function __construct()
     {
-        \Log::info('weixin' . __LINE__);
         $this->middleware('auth.wechat');
     }
 
     public function create()
     {
-        \Log::info('weixin' . __LINE__);
-        return 'customer.create';
+        return view('register.create');
     }
 
     public function store(Request $request)
@@ -33,16 +32,21 @@ class RegisterController extends Controller
 
         $user       = \Session::get('logged_user');
         $customer   = Customer::where('openid', $user['openid'])->first();
-        if (!$customer) {
-            return 'customer.error';
+        if ((!$customer) || ($customer->phone) || ($customer->is_registered)) {
+            return view('register.error');
         } /*if>*/
 
         $customer->phone        = $request->phone;
         $customer->headimgurl   = $user['headimgurl'];
         $customer->nickname     = $user['nickname'];
+
+        $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
+        $result = $qrCode->forever($customer->id);
+        $customer->qr_code = $qrCode->show($result->ticket);
+
         $customer->save();
 
-        return 'customer.success';
+        return view('register.success');
     }
 
 } /*class*/

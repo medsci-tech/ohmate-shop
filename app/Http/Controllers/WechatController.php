@@ -63,16 +63,8 @@ class WechatController extends Controller{
                 $customer->referrer_id = $referrerId;
             } else {
                 $customer->referrer_id = 0;
-            }
+            } /*else>*/
             $customer->save();
-
-            //TODO move to register route
-            $customer = Customer::where('openid', $openId)->first();
-            $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
-            $result = $qrCode->forever($customer->id);
-            $customer->qr_code = $qrCode->show($result->ticket);
-            $customer->save();
-
             return Message::make('text')->content('感谢您关注！');
         });
 
