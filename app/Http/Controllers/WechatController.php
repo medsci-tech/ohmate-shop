@@ -17,7 +17,6 @@ use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Message;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
-use Overtrue\Wechat\QRCode;
 
 class WechatController extends Controller{
 
@@ -27,12 +26,10 @@ class WechatController extends Controller{
         $secret         = env('WX_SECRET');
         $token          = env('WX_TOKEN');
         $encodingAESKey = env('WX_ENCODING_AESKEY');
-
         $server = new Server($appId, $token, $encodingAESKey);
 
         /* message event */
         $server->on('message', function($message) {
-            \Log::info('weixin' . $message);
             return Message::make('text')->content('您好！');
         });
 
@@ -43,8 +40,6 @@ class WechatController extends Controller{
 
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
-            \Log::info('weixin' . $event);
-
             $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
@@ -53,16 +48,17 @@ class WechatController extends Controller{
 
             $customer = new Customer();
             $customer->openid = $openId;
+            $customer->is_registered = false;
 
-            $eventKey   = $event['EventKey'];
-            $countEvent = count($eventKey);
-            if ($countEvent != 0) {
+            $eventKey = $event['EventKey'];
+            if (is_array($eventKey) && (0 == count($eventKey))) {
+                $customer->referrer_id = 0;
+            } else {
                 \Log::info('weixin-EventKey ' . $eventKey);
                 $referrerId = (int)substr($eventKey, strlen('qrscene_'));
                 $customer->referrer_id = $referrerId;
-            } else {
-                $customer->referrer_id = 0;
             } /*else>*/
+
             $customer->save();
             return Message::make('text')->content('感谢您关注！');
         });
