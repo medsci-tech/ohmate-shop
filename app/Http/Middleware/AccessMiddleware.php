@@ -23,7 +23,7 @@ class AccessMiddleware
         \Log::info('weixin' . __LINE__);
         if ((!$customer) || (!$customer->phone) || (!$customer->is_registered)) {
             \Log::info('weixin' . __LINE__);
-            return redirect()->route('register');
+            return redirect('/customer/create');
         } /*if>*/
 
         if (Carbon::now()->diffInMinutes($customer->updated_at) > 30) {

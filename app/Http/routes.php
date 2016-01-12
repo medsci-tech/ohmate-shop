@@ -14,8 +14,10 @@ Route::any('/wechat', 'WechatController@serve');
 Route::get('/makemenu', 'WechatController@wechatMenu');
 Route::get('/about', 'AboutController@index');
 
-Route::get('/create', ['as' => 'register', 'RegisterController@create']);
-Route::post('/store', 'RegisterController@store');
+Route::group(['prefix' => 'customer'], function () {
+    Route::get('/create', ['RegisterController@create']);
+    Route::post('/store', 'RegisterController@store');
+});
 
 Route::group(['prefix' => 'eduction'], function () {
     Route::get('/essay', 'EductionController@essay');
