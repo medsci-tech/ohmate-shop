@@ -19,12 +19,12 @@ class WechatMiddleware
         if (\Session::has('logged_user')) {
             return $next($request);
         } else {
+            echo $request->method();
             $appId  = env('WX_APPID');
             $secret = env('WX_SECRET');
             $auth = new Auth($appId, $secret);
             $user = $auth->authorize(url($request->fullUrl()));
             \Session::put('logged_user', $user->all());
-            dd($request->method());
             return $next($request);
         } /*else>*/
     }
