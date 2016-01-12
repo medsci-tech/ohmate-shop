@@ -21,7 +21,7 @@ class AccessMiddleware
         $customer = Customer::where('openid', $user['openid'])->first();
 
         if ((!$customer) || (!$customer->phone) || (!$customer->is_registered)) {
-            return redirect('/customer/create');
+            return redirect('/register/create');
         } /*if>*/
 
         if (Carbon::now()->diffInMinutes($customer->updated_at) > 30) {
