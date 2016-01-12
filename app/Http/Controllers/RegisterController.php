@@ -13,7 +13,7 @@ class RegisterController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth.wechat');
+//        $this->middleware('auth.wechat');
     }
 
     public function create()
@@ -23,6 +23,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->all());
         \Log::info('Register-store' . $request);
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone',
