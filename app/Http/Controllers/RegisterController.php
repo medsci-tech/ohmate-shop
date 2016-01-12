@@ -12,13 +12,11 @@ class RegisterController extends Controller
 {
     function __construct()
     {
-        \Log::info('weixin' . __LINE__);
         $this->middleware('auth.wechat');
     }
 
     public function create()
     {
-        \Log::info('weixin' . __LINE__);
         return 'customer.create';
     }
 
