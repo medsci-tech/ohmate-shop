@@ -13,7 +13,13 @@ class RegisterController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth.wechat');
+        $this->middleware('auth.wechat', [
+            'except' => ['focus']
+        ]);
+    }
+
+    public function focus() {
+        return 'focus';
     }
 
     public function create()
@@ -33,7 +39,7 @@ class RegisterController extends Controller
         $user       = \Session::get('logged_user');
         $customer   = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
-            return view('register.focus');
+            return redirect('/register/focus');
         } /*if>*/
 
         if (($customer->is_registered) || ($customer->phone)) {
