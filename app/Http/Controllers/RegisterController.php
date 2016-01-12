@@ -12,12 +12,14 @@ class RegisterController extends Controller
 {
     function __construct()
     {
+        \Log::info('weixin' . __LINE__);
         $this->middleware('auth.wechat');
     }
 
     public function create()
     {
-        return 'create';
+        \Log::info('weixin' . __LINE__);
+        return 'customer.create';
     }
 
     public function store(Request $request)
@@ -32,7 +34,7 @@ class RegisterController extends Controller
         $user       = \Session::get('logged_user');
         $customer   = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
-            return 'error';
+            return 'customer.error';
         } /*if>*/
 
         $customer->phone        = $request->phone;
@@ -40,7 +42,7 @@ class RegisterController extends Controller
         $customer->nickname     = $user['nickname'];
         $customer->save();
 
-        return 'success';
+        return 'customer.success';
     }
 
 } /*class*/
