@@ -17,7 +17,7 @@ class RegisterController extends Controller
 
     public function create()
     {
-        return 'customer.create';
+        return view('register.create');
     }
 
     public function store(Request $request)
@@ -31,8 +31,8 @@ class RegisterController extends Controller
 
         $user       = \Session::get('logged_user');
         $customer   = Customer::where('openid', $user['openid'])->first();
-        if (!$customer) {
-            return 'customer.error';
+        if ((!$customer) || ($customer->phone) || ($customer->is_registered)) {
+            return view('register.error');
         } /*if>*/
 
         $customer->phone        = $request->phone;
@@ -40,7 +40,7 @@ class RegisterController extends Controller
         $customer->nickname     = $user['nickname'];
         $customer->save();
 
-        return 'customer.success';
+        return view('register.success');
     }
 
 } /*class*/
