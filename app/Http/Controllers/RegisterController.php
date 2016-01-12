@@ -39,6 +39,8 @@ class RegisterController extends Controller
         $customer->phone        = $request->phone;
         $customer->headimgurl   = $user['headimgurl'];
         $customer->nickname     = $user['nickname'];
+        $customer->type_id      = CustomerType::where('type_en', 'patient')->first()->id;
+        $customer->is_registered = true;
 
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
         $result = $qrCode->forever($customer->id);

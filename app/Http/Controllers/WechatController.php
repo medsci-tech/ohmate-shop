@@ -52,8 +52,7 @@ class WechatController extends Controller{
             } /*if>*/
 
             $customer = new Customer();
-            $customer->openid   = $openId;
-            $customer->type_id  = CustomerType::where('type_en', 'patient')->first()->id;
+            $customer->openid = $openId;
 
             $eventKey   = $event['EventKey'];
             $countEvent = count($eventKey);
