@@ -40,6 +40,7 @@ class WechatController extends Controller{
 
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
+            \Log::info('weixin-event' . $event);
             $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
@@ -47,8 +48,9 @@ class WechatController extends Controller{
             } /*if>*/
 
             $customer = new Customer();
-            $customer->openid = $openId;
-            $customer->is_registered = false;
+            $customer->openid           = $openId;
+            $customer->is_registered    = false;
+            $customer->type_id = CustomerType::where('type_en', 'patient')->first()->id;
 
             $eventKey = $event['EventKey'];
             if (is_array($eventKey) && (0 == count($eventKey))) {
@@ -77,7 +79,7 @@ class WechatController extends Controller{
             $buttonEdu->buttons([
                 new MenuItem('课程专区', 'view', url('/eduction/essay')),
                 new MenuItem('视频专区', 'view', url('/eduction/video')),
-                new MenuItem('视频专区', 'view', url('/eduction/game')),
+                new MenuItem('每日签到', 'view', url('/eduction/game')),
             ]),
             /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),

@@ -50,7 +50,6 @@ class RegisterController extends Controller
         $customer->phone        = $request->phone;
         $customer->headimgurl   = $user['headimgurl'];
         $customer->nickname     = $user['nickname'];
-        $customer->type_id      = CustomerType::where('type_en', 'patient')->first()->id;
         $customer->is_registered = true;
 
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
@@ -63,6 +62,7 @@ class RegisterController extends Controller
     }
 
     public function sms(Request $request) {
+<<<<<<< HEAD
         $phone = $request->input('phone');
 
         $len=6;
@@ -71,26 +71,45 @@ class RegisterController extends Controller
         $password="";
         while (strlen($password)<$len)
             $password.=substr($chars,(mt_rand()%strlen($chars)),1);
+=======
+        $phone = $request->input(['phone']);
 
-        $code = $password;
+        $len = 6;
+        $chars = '0123456789';
+        mt_srand((double)microtime() * 1000000 * getmypid());
+        $code = "";
+        while (strlen($code) < $len) {
+            $code .= substr($chars, (mt_rand() % strlen($chars)), 1);
+        }
+>>>>>>> refs/remotes/origin/djs
+
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
 
-        curl_setopt($ch, CURLOPT_HTTP_VERSION  , CURL_HTTP_VERSION_1_0 );
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
 
-        curl_setopt($ch, CURLOPT_HTTPAUTH , CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_USERPWD  , 'api:key-'.env('SMS_KEY'));
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD, 'api:key-' . env('SMS_KEY'));
 
         curl_setopt($ch, CURLOPT_POST, TRUE);
+<<<<<<< HEAD
         curl_setopt($ch, CURLOPT_POSTFIELDS,
             array('mobile' => $phone, 'message' => '验证码：' . $code . '【易康商城】'));
 
         $res = curl_exec( $ch );
         curl_close( $ch );
+=======
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('mobile' => $phone,
+            'message' => '验证码：' . $code . '【易康商城】'));
+
+        $res = curl_exec($ch);
+        curl_close($ch);
+
+>>>>>>> refs/remotes/origin/djs
         var_dump($res);
     }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>用户注册</title>
     <script type="text/javascript">
-        function validatemobile() {
+        function validateMobile() {
             var mobile = document.getElementById('phone').value;
             if (mobile.length == 0) {
                 document.getElementById('label').innerText = '请输入手机号码！';
@@ -26,19 +26,16 @@
             return true;
         }
 
-        function turnTo(){
-            if(validateMobile()) {
+        function turnTo() {
+            if (validateMobile()) {
                 var mobile = document.getElementById('phone').value;
-                window.location.href = '/smsrequest?phone='+mobile;
+                window.location.href = '/smsrequest?phone=' + mobile;
             }
-            //也可以
-//            document.form.action = "/smsrequest";
-//            document.form.submit();
         }
     </script>
 </head>
 <body>
-<form action="{{url('/customer/store')}}" method="POST">
+<form action="{{url('/register/store')}}" method="POST">
     {{csrf_field()}}
     <p>
         <span>输入手机号</span>
