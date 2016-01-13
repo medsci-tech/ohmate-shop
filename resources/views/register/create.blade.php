@@ -56,7 +56,7 @@
         function turnTo() {
             if (validateMobile()) {
                 var mobile = document.getElementById('phone').value;
-                window.location.href = '/smsrequest?phone=' + mobile;
+                window.location.href = '/sms?phone=' + mobile;
             }
         }
     </script>
