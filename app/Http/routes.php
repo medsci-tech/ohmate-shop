@@ -19,6 +19,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['prefix' => 'register'], function () {
         Route::get('/create', 'RegisterController@create');
+        Route::get('/focus', 'RegisterController@focus');
         Route::post('/store', 'RegisterController@store');
     });
 
