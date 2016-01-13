@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>用户注册</title>
     <script type="text/javascript">
-        function validatemobile() {
+        function validateMobile() {
             var mobile = document.getElementById('phone').value;
             if (mobile.length == 0) {
                 document.getElementById('label').innerText = '请输入手机号码！';
@@ -26,6 +26,12 @@
             return true;
         }
 
+        function turnTo() {
+            if (validateMobile()) {
+                var mobile = document.getElementById('phone').value;
+                window.location.href = '/smsrequest?phone=' + mobile;
+            }
+        }
     </script>
 </head>
 <body>
@@ -39,6 +45,7 @@
         </label>
     </p>
     <p><input type="submit" value="确定"></p>
+    <p><input type="button" value="获取短信验证码" onclick='turnTo();'/></p>
 </form>
 </body>
 </html>
