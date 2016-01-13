@@ -43,7 +43,7 @@ class WechatController extends Controller{
             \Log::info('location' . $event);
             $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
-            if($customer) {
+            if(!$customer) {
                 return;
             } /*if>*/
 
