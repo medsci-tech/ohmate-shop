@@ -35,12 +35,27 @@ class WechatController extends Controller{
 
         /* scan event */
         $server->on('event', 'scan', function($event) {
-            \Log::info('weixin' . $event);
+            \Log::info('scan' . $event);
+        });
+
+        /* location event */
+        $server->on('event', 'location', function($event) {
+            \Log::info('location' . $event);
+            $openId     = $event['FromUserName'];
+            $customer   = Customer::where('openid', $openId)->first();
+            if($customer) {
+                return;
+            } /*if>*/
+
+            $customer->latitude     = $event['Latitude'];
+            $customer->longitude    = $event['Longitude'];
+            $customer->precision    = $event['Precision'];
+            $customer->save();
         });
 
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
-            \Log::info('weixin-event' . $event);
+            \Log::info('subscribe' . $event);
             $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
