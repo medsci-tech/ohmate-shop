@@ -6,6 +6,6 @@
 </head>
 <body>
 <h1>Hello, <?php echo $qrCode; ?></h1>
-<img src="<?php $qrCode; ?>" />
+<img src="{{ $qrCode }}" />
 </body>
 </html>
