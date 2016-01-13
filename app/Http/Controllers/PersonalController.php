@@ -30,6 +30,11 @@ class PersonalController extends Controller
         return 'beans';
     }
 
+    public function orders()
+    {
+        return 'orders';
+    }
+
     public function advertisement()
     {
         return 'advertisement';
