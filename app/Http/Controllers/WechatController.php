@@ -68,7 +68,7 @@ class WechatController extends Controller{
         return $server->serve();
     }
 
-    public function wechatMenu() {
+    public function menu() {
         $menuService = new Menu(env('WX_APPID'), env('WX_SECRET'));
 
         $buttonEdu  = new MenuItem("教育学习");
