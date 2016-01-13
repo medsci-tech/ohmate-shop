@@ -66,14 +66,16 @@ class PersonalController extends Controller
 
         $customerBeans = CustomerBean::where('customer_id', $customer->id);
 
+        \Log::info('beans:' . $customerBeans);
+
         $temp = '';
         foreach ($customerBeans as $customerBean) {
             $temp = '积分兑换规则:' . $customerBean->bean_rate_id . ' 积分原始值' .
-                $customerBean->value . '.result' . $customerBean->result . '/n';
+                $customerBean->value . '.result' . $customerBean->result . '\n';
         }
 
 
-        $info = '昵称:' . $customer->nickname . '/n'.$temp;
+        $info = '昵称:' . $customer->nickname . '\n'.$temp;
         return 'beans '.$info;
     }
 
