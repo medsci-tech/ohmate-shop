@@ -21,8 +21,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function focus() {
-        return 'focus';
+    public function focus()
+    {
+        return view('register.focus');
     }
 
     public function create()
@@ -47,7 +48,7 @@ class RegisterController extends Controller
         } /*if>*/
 
         if (($customer->is_registered) || ($customer->phone)) {
-            return view('register.error');
+            return redirect('/register/error');
         } /*if>*/
 
         $referrer = $customer->referrer_id;
@@ -122,7 +123,6 @@ class RegisterController extends Controller
 
         $customer->auth_code = $code;
         $customer->save();
-
     }
 
 } /*class*/

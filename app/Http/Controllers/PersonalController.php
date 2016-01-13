@@ -15,7 +15,6 @@ class PersonalController extends Controller
     //
     function __construct()
     {
-        // TODO: Implement __construct() method.
         $this->middleware('auth.wechat');
         $this->middleware('auth.access');
     }
@@ -28,6 +27,11 @@ class PersonalController extends Controller
     public function beans()
     {
         return 'beans';
+    }
+
+    public function addresses()
+    {
+        return 'addresses';
     }
 
     public function orders()

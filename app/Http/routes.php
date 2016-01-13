@@ -14,11 +14,10 @@
 Route::group(['middleware' => 'web'], function () {
     Route::any('/wechat', 'WechatController@serve');
     Route::get('/menu', 'WechatController@menu');
-    Route::get('/about', 'AboutController@index');
 
     Route::group(['prefix' => 'register'], function () {
-        Route::get('/create', 'RegisterController@create');
         Route::get('/focus', 'RegisterController@focus');
+        Route::get('/create', 'RegisterController@create');
         Route::post('/store', 'RegisterController@store');
         Route::any('/sms', 'RegisterController@sms');
     });
@@ -26,11 +25,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'eduction'], function () {
         Route::get('/essay', 'EductionController@essay');
         Route::get('/video', 'EductionController@video');
+        Route::get('/game', 'EductionController@game');
     });
 
     Route::group(['prefix' => 'personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
+        Route::get('/addresses', 'PersonalController@addresses');
         Route::get('/orders', 'PersonalController@orders');
         Route::get('/advertisement', 'PersonalController@advertisement');
     });
