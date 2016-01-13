@@ -37,6 +37,26 @@ class PersonalController extends Controller
 
     public function advertisement()
     {
+        if (!\Session::has('logged_user')) {
+            return "session no exists";
+        }/*if>*/
+
+        $user = \Session::get('logged_user');
+
+        $customer = Customer::where('openid', $user['openid'])->first();
+
+        if (!$customer) {
+            return redirect('/register/focus');
+        } /*if>*/
+
+        if ((!$customer->phone) || (!$customer->is_registered)) {
+            return redirect('/register/create');
+        } /*if>*/
+
+        if (!$customer->qr_code) {
+            return redirect($customer->qr_code);
+        } /*if>*/
+
         return 'advertisement';
     }
 
