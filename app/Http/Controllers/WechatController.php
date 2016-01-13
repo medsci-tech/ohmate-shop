@@ -34,7 +34,7 @@ class WechatController extends Controller{
         });
 
         /* scan event */
-        $server->on('event', 'SCAN', function($event) {
+        $server->on('event', 'scan', function($event) {
             \Log::info('weixin' . $event);
         });
 
@@ -87,6 +87,7 @@ class WechatController extends Controller{
             $buttonInfo->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),
                 new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
+                new MenuItem('迈豆钱包', 'view', url('/personal/orders')),
                 new MenuItem('糖友推广', 'view', url('/personal/advertisement')),
                 new MenuItem('联系我们', 'view', url('/about')),
             ]),

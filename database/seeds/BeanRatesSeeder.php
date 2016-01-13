@@ -17,11 +17,7 @@ class BeanRatesSeeder extends Seeder
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'register',  'action_ch' => '注册', 'rate' => 2000]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['action_en' => 'invite',  'action_ch' => '安利', 'rate' => 100]
+            ['action_en' => 'register',  'action_ch' => '注册', 'rate' => 2080]
         );
 
         DB::table('bean_rates')->insert(
@@ -49,11 +45,23 @@ class BeanRatesSeeder extends Seeder
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'education_feedback',  'action_ch' => '患者学习返利', 'rate' => 0.1]
+            ['action_en' => 'education_feedback_doctor',  'action_ch' => '患者学习返利', 'rate' => 0.1]
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'consume_feedback',  'action_ch' => '患者消费返利', 'rate' => 0.05]
+            ['action_en' => 'consume_feedback_doctor',  'action_ch' => '患者消费返利', 'rate' => 0.05]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'invite_feedback_customer',  'action_ch' => '安利', 'rate' => 100]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'invite_feedback_doctor',  'action_ch' => '安利', 'rate' => 3000]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'invite_feedback_volunteer',  'action_ch' => '安利', 'rate' => 500]
         );
 
     }
