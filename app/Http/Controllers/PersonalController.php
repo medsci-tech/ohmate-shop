@@ -54,7 +54,7 @@ class PersonalController extends Controller
             return redirect('/register/create');
         } /*if>*/
 
-        if (!$customer->qr_code) {
+        if ($customer->qr_code) {
             return redirect($customer->qr_code);
         } /*if>*/
 
