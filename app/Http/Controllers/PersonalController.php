@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\Models\Customer;
+use \App\Models\CustomerBean;
 
 
 
@@ -47,7 +48,33 @@ class PersonalController extends Controller
 
     public function beans()
     {
-        return 'beans';
+        if (!\Session::has('logged_user')) {
+            return "session no exists";
+        }/*if>*/
+
+        $user = \Session::get('logged_user');
+
+        $customer = Customer::where('openid', $user['openid'])->first();
+        \Log::info('advertisement:' . $customer);
+        if (!$customer) {
+            return redirect('/register/focus');
+        } /*if>*/
+
+        if ((!$customer->phone) || (!$customer->is_registered)) {
+            return redirect('/register/create');
+        } /*if>*/
+
+        $customerBeans = CustomerBean::where('customer_id', $customer->id);
+
+        $temp = '';
+        foreach ($customerBeans as $customerBean) {
+            $temp = '积分兑换规则:' . $customerBean->bean_rate_id . ' 积分原始值' .
+                $customerBean->value . '.result' . $customerBean->result . '/n';
+        }
+
+
+        $info = '昵称:' . $customer->nickname . '/n'.$temp;
+        return 'beans '.$info;
     }
 
     public function orders()
