@@ -63,13 +63,13 @@ class RegisterController extends Controller
     }
 
     public function sms(Request $request) {
-        $phone = $request;
+        $phone = $request->input('phone');
 
         $len=6;
         $chars='0123456789';
         mt_srand((double)microtime()*1000000*getmypid());
         $password="";
-        while(strlen($password)<$len)
+        while (strlen($password)<$len)
             $password.=substr($chars,(mt_rand()%strlen($chars)),1);
 
         $code = $password;
@@ -86,13 +86,12 @@ class RegisterController extends Controller
         curl_setopt($ch, CURLOPT_USERPWD  , 'api:key-'.env('SMS_KEY'));
 
         curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, array('mobile' => $phone['phone'],'message' => '验证码：'.$code.'【易康商城】'));
+        curl_setopt($ch, CURLOPT_POSTFIELDS,
+            array('mobile' => $phone, 'message' => '验证码：' . $code . '【易康商城】'));
 
         $res = curl_exec( $ch );
         curl_close( $ch );
-//        $res  = curl_error( $ch );
         var_dump($res);
-
     }
 
 } /*class*/
