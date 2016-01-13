@@ -5,6 +5,6 @@
     <title>糖友推广</title>
 </head>
 <body>
-
+<img src="<?php $qrCode ?>">
 </body>
 </html>
