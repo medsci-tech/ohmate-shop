@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Session;
 use Overtrue\Wechat\Auth;
 
 class WechatMiddleware
@@ -16,8 +17,6 @@ class WechatMiddleware
      */
     public function handle($request, Closure $next)
     {
-        echo $request->method();
-
         if (\Session::has('logged_user')) {
             return $next($request);
         } else {

@@ -18,6 +18,7 @@ class AccessMiddleware
     public function handle($request, Closure $next)
     {
         $user = \Session::get('logged_user');
+
         $customer = Customer::where('openid', $user['openid'])->first();
 
         if ((!$customer) || (!$customer->phone) || (!$customer->is_registered)) {
