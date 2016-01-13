@@ -56,7 +56,7 @@ class PersonalController extends Controller
 
         if ($customer->qr_code) {
             $qrCode = $customer->qr_code;
-            return view('personal.advertisement',$qrCode);
+            return view('personal.advertisement', ['qrCode' => $qrCode]);
         } /*if>*/
 
         return 'advertisement';
