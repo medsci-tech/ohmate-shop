@@ -40,6 +40,7 @@ class WechatController extends Controller{
 
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
+            \Log::info('weixin-event' . $event);
             $openId     = $event['FromUserName'];
             $customer   = Customer::where('openid', $openId)->first();
             if($customer) {
@@ -49,6 +50,7 @@ class WechatController extends Controller{
             $customer = new Customer();
             $customer->openid = $openId;
             $customer->is_registered = false;
+            $customer->type_id = 1;
 
             $eventKey = $event['EventKey'];
             if (is_array($eventKey) && (0 == count($eventKey))) {
