@@ -86,9 +86,9 @@ class WechatController extends Controller{
             /* 个人中心 */
             $buttonInfo->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),
-                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
-                new MenuItem('迈豆钱包', 'view', url('/personal/orders')),
-                new MenuItem('糖友推广', 'view', url('/personal/advertisement')),
+                new MenuItem('我的迈豆', 'view', url('/personal/beans')),
+                new MenuItem('我的订单', 'view', url('/personal/orders')),
+                new MenuItem('我的糖友', 'view', url('/personal/advertisement')),
                 new MenuItem('联系我们', 'view', url('/about')),
             ]),
         ];
