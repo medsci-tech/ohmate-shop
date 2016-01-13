@@ -45,7 +45,7 @@ class PersonalController extends Controller
         $user = \Session::get('logged_user');
 
         $customer = Customer::where('openid', $user['openid'])->first();
-
+        \Log::info('advertisement:' . $customer);
         if (!$customer) {
             return redirect('/register/focus');
         } /*if>*/
