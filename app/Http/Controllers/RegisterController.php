@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Hash;
 use App\Http\Requests;
 use \App\Models\Customer;
+use \App\Models\BeanRate;
+use \App\Models\CustomerBean;
 use App\Http\Controllers\Controller;
 use Overtrue\Wechat\QRCode;
 
@@ -47,6 +50,7 @@ class RegisterController extends Controller
             return view('register.error');
         } /*if>*/
 
+        $referrer = $customer->referrer_id;
         $customer->phone        = $request->phone;
         $customer->headimgurl   = $user['headimgurl'];
         $customer->nickname     = $user['nickname'];
@@ -56,33 +60,35 @@ class RegisterController extends Controller
         $result = $qrCode->forever($customer->id);
         $customer->qr_code = $qrCode->show($result->ticket);
 
+        $beanRate = BeanRate::where('action_en', 'register')->first();
+        if ($beanRate) {
+            $bean = new CustomerBean();
+            $bean->customer_id  = $customer->id;
+            $bean->bean_rate_id = $beanRate->id;
+            $bean->value = 1;
+            $bean->result = $beanRate.rate * $bean->value;
+            $bean->save();
+        } /*if>*/
         $customer->save();
+
+        $beanRate = BeanRate::where('action_en', 'invite')->first();
+        if ($beanRate) {
+            if (0 != $referrer) {
+                $bean = new CustomerBean();
+                $bean->customer_id  = $referrer;
+                $bean->bean_rate_id = $beanRate->id;
+                $bean->value = 1;
+                $bean->result = $beanRate.rate * $bean->value;
+                $bean->save();
+            } /*if>>*/
+        } /*if>*/
 
         return view('register.success');
     }
 
     public function sms(Request $request) {
-<<<<<<< HEAD
-        $phone = $request->input('phone');
-
-        $len=6;
-        $chars='0123456789';
-        mt_srand((double)microtime()*1000000*getmypid());
-        $password="";
-        while (strlen($password)<$len)
-            $password.=substr($chars,(mt_rand()%strlen($chars)),1);
-=======
-        $phone = $request->input(['phone']);
-
-        $len = 6;
-        $chars = '0123456789';
-        mt_srand((double)microtime() * 1000000 * getmypid());
-        $code = "";
-        while (strlen($code) < $len) {
-            $code .= substr($chars, (mt_rand() % strlen($chars)), 1);
-        }
->>>>>>> refs/remotes/origin/djs
-
+        $phone  = $request->input(['phone']);
+        $code   = rand(000000, 999999);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
@@ -91,26 +97,32 @@ class RegisterController extends Controller
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
-
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, 'api:key-' . env('SMS_KEY'));
-
         curl_setopt($ch, CURLOPT_POST, TRUE);
-<<<<<<< HEAD
         curl_setopt($ch, CURLOPT_POSTFIELDS,
             array('mobile' => $phone, 'message' => '验证码：' . $code . '【易康商城】'));
-
-        $res = curl_exec( $ch );
-        curl_close( $ch );
-=======
-        curl_setopt($ch, CURLOPT_POSTFIELDS, array('mobile' => $phone,
-            'message' => '验证码：' . $code . '【易康商城】'));
 
         $res = curl_exec($ch);
         curl_close($ch);
 
->>>>>>> refs/remotes/origin/djs
-        var_dump($res);
+        if (!$res) {
+            return view('register.error');
+        } /*if>*/
+
+        $user       = \Session::get('logged_user');
+        $customer   = Customer::where('openid', $user['openid'])->first();
+        if (!$customer) {
+            return redirect('/register/focus');
+        } /*if>*/
+
+        if (($customer->is_registered) || ($customer->phone)) {
+            return view('register.error');
+        } /*if>*/
+
+        $customer->auth_code = $code;
+        $customer->save();
+
     }
 
 } /*class*/

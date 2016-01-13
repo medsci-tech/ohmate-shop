@@ -34,7 +34,7 @@ class WechatController extends Controller{
         });
 
         /* scan event */
-        $server->on('event', 'SCAN', function($event) {
+        $server->on('event', 'scan', function($event) {
             \Log::info('weixin' . $event);
         });
 
