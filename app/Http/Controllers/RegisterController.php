@@ -66,7 +66,7 @@ class RegisterController extends Controller
             $bean->customer_id  = $customer->id;
             $bean->bean_rate_id = $beanRate->id;
             $bean->value = 1;
-            $bean->result = $beanRate.rate * $bean->value;
+            $bean->result = $beanRate->rate * $bean->value;
             $bean->save();
         } /*if>*/
         $customer->save();
@@ -78,7 +78,7 @@ class RegisterController extends Controller
                 $bean->customer_id  = $referrer;
                 $bean->bean_rate_id = $beanRate->id;
                 $bean->value = 1;
-                $bean->result = $beanRate.rate * $bean->value;
+                $bean->result = $beanRate->rate * $bean->value;
                 $bean->save();
             } /*if>>*/
         } /*if>*/
