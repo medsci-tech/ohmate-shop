@@ -18,15 +18,17 @@ class CreateCustomersTable extends Migration
             $table->string('openid')->comment('wechat open id');
             $table->string('nickname')->nullable()->comment('wechat nick name');
             $table->string('headimgurl')->nullable()->comment('wechat headimgurl');
-
-            $table->integer('referrer_id')->unsigned()->nullable()->default(0)->commment('the customer id of referrer');
             $table->string('qr_code')->nullable()->comment('personal qr code');
 
             $table->string('phone', 31)->nullable()->comment('personal telephone');
             $table->string('auth_code', 11)->nullable()->comment('sms auth code');
 
-            $table->boolean('is_registered')->nullable()->default(false)->comment('if the customer is registered');
+            $table->decimal('latitude', 8)->nullable()->default(0)->comment('经度');
+            $table->decimal('longitude', 8)->nullable()->default(0)->comment('维度');
+            $table->decimal('precision', 8)->nullable()->default(0)->comment('精度');
 
+            $table->integer('referrer_id')->unsigned()->nullable()->default(0)->commment('the customer id of referrer');
+            $table->boolean('is_registered')->nullable()->default(false)->comment('if the customer is registered');
             $table->unsignedInteger('beans_total')->default(0)->comment('迈豆总额');
 
             $table->index('openid');

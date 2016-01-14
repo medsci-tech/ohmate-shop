@@ -25,6 +25,7 @@ class CreateCustomerBeansTable extends Migration
             $table->integer('result')->unsigned()->comment('result = rate * result');
 
             $table->boolean('valid')->default(false)->comment('积分是否有效');
+            $table->string('detail')->nullable()->default('')->comment('积分备注');
 
             $table->index('customer_id');
             $table->index('bean_rate_id');

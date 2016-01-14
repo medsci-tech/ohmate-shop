@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>关于我们</title>
-</head>
-<body>
-
-<a href="weixin://profile/gh_9b2a1136cce0 ">关注他</a>
-</body>
-</html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ming
+ * Date: 2016/1/13
+ * Time: 17:44
+ */
+<h1>focus</h1>
+<h1>去关注</h1>
