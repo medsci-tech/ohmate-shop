@@ -22,7 +22,7 @@ class RegisterController extends Controller
     }
 
     public function focus() {
-        return 'focus';
+        return view('register.focus');
     }
 
     public function create()
