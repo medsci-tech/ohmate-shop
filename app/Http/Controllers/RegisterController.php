@@ -21,8 +21,19 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function focus() {
+    public function focus()
+    {
         return view('register.focus');
+    }
+
+    public function error()
+    {
+        return view('register.error');
+    }
+
+    public function excess()
+    {
+        return view('register.excess');
     }
 
     public function create()

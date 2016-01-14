@@ -79,12 +79,17 @@ class PersonalController extends Controller
         return 'beans '.$info;
     }
 
+    public function addresses()
+    {
+        return 'addresses';
+    }
+
     public function orders()
     {
         return 'orders';
     }
 
-    public function advertisement()
+    public function friend()
     {
         if (!\Session::has('logged_user')) {
             return "session no exists";
@@ -106,7 +111,7 @@ class PersonalController extends Controller
             return view('personal.advertisement', ['qrCode' => $customer->qr_code]);
         } /*if>*/
 
-        return 'advertisement';
+        return 'friend';
     }
 
 } /*class*/
