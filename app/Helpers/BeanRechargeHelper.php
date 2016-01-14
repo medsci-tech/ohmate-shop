@@ -12,6 +12,7 @@ use \App\Constants\AppConstant;
 use \App\Models\Customer;
 use \App\Models\BeanRate;
 use \App\Models\CustomerBean;
+use \App\Models\CustomerType;
 
 class BeanRechargeHelper {
 
@@ -50,7 +51,7 @@ class BeanRechargeHelper {
             } /* else>> */
         } /*else>*/
         $ret = $customer->save();
-        return ret;
+        return $ret;
     }
 
 } /*class*/

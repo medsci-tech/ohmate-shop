@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use Hash;
 use App\Http\Requests;
-use \App\Constants\AppConstant;
 use \App\Models\Customer;
 use \App\Models\BeanRate;
 use \App\Models\CustomerBean;
@@ -67,9 +66,9 @@ class RegisterController extends Controller
         } /*if>*/
 
         $referrer = $customer->referrer_id;
-        $customer->phone        = $request->phone;
-        $customer->headimgurl   = $user['headimgurl'];
-        $customer->nickname     = $user['nickname'];
+        $customer->phone = $request->phone;
+        $customer->headimgurl = $user['headimgurl'];
+        $customer->nickname = $user['nickname'];
         $customer->is_registered = true;
 
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
@@ -80,7 +79,7 @@ class RegisterController extends Controller
         $beanRate = BeanRate::where('action_en', 'register')->first();
         if ($beanRate) {
             $bean = new CustomerBean();
-            $bean->customer_id  = $customer->id;
+            $bean->customer_id = $customer->id;
             $bean->bean_rate_id = $beanRate->id;
             $bean->value = 1;
             $bean->result = $beanRate->rate * $bean->value;
@@ -91,7 +90,7 @@ class RegisterController extends Controller
         if ($beanRate) {
             if (0 != $referrer) {
                 $bean = new CustomerBean();
-                $bean->customer_id  = $referrer;
+                $bean->customer_id = $referrer;
                 $bean->bean_rate_id = $beanRate->id;
                 $bean->value = 1;
                 $bean->result = $beanRate->rate * $bean->value;
@@ -102,13 +101,13 @@ class RegisterController extends Controller
         return view('register.success');
     }
 
-    //TODO need fix
     public function sms(Request $request) {
         $phone  = $request->input(['phone']);
         $code   = rand(000000, 999999);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
+
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -117,7 +116,8 @@ class RegisterController extends Controller
         curl_setopt($ch, CURLOPT_USERPWD, 'api:key-' . env('SMS_KEY'));
         curl_setopt($ch, CURLOPT_POST, TRUE);
         curl_setopt($ch, CURLOPT_POSTFIELDS,
-            array('mobile' => $phone, 'message' => '验证码:' . $code . '【易康商城】'));
+            array('mobile' => $phone, 'message' => '验证码：' . $code . '【易康商城】'));
+
         $res = curl_exec($ch);
         curl_close($ch);
 
@@ -137,6 +137,7 @@ class RegisterController extends Controller
 
         $customer->auth_code = $code;
         $customer->save();
+
     }
 
 } /*class*/
