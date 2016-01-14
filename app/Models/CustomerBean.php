@@ -11,6 +11,6 @@ class CustomerBean extends Model
 
     protected function beanRate()
     {
-        return $this->belongsTo('App\Models\BeanRate');
+        return $this->belongsTo('App\Models\BeanRate', 'bean_rate_id');
     }
 }
