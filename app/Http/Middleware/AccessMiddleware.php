@@ -20,12 +20,12 @@ class AccessMiddleware
     {
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!$user) {
-            return redirect(ATTENTION_URL);
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
-            return redirect(ATTENTION_URL);
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         if ((!$customer->phone) || (!$customer->is_registered)) {

@@ -33,7 +33,7 @@ class PersonalController extends Controller
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
         if (!$customer) {
-            return redirect(ATTENTION_URL);
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         if ((!$customer->phone) || (!$customer->is_registered)) {
@@ -57,7 +57,7 @@ class PersonalController extends Controller
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
         if (!$customer) {
-            return redirect(ATTENTION_URL);
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         if ((!$customer->phone) || (!$customer->is_registered)) {
