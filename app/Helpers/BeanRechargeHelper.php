@@ -32,7 +32,7 @@ class BeanRechargeHelper {
     }
 
     public static function inviteFeedback($referrer) {
-        if ($referrer) {
+        if (0 == $referrer) {
             return false;
         } /*if>*/
 
