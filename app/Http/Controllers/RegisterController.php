@@ -48,45 +48,49 @@ class RegisterController extends Controller
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
         if ($validator->fails()) {
-            return redirect()->route('register')->withErrors($validator)->withInput();
+            return redirect('/register/create')->withErrors($validator)->withInput();
         } /*if>*/
 
-        $user       = \Session::get('logged_user');
-        $customer   = Customer::where('openid', $user['openid'])->first();
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!$user) {
+            return redirect('/register/error');
+        } /*if>*/
+
+        $customer = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
             return redirect('/register/focus');
         } /*if>*/
 
         if (($customer->is_registered) || ($customer->phone)) {
-            return view('register.error');
+            return redirect('/register/excess');
         } /*if>*/
 
         $referrer = $customer->referrer_id;
-        $customer->phone        = $request->phone;
-        $customer->headimgurl   = $user['headimgurl'];
-        $customer->nickname     = $user['nickname'];
+        $customer->phone = $request->phone;
+        $customer->headimgurl = $user['headimgurl'];
+        $customer->nickname = $user['nickname'];
         $customer->is_registered = true;
 
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
         $result = $qrCode->forever($customer->id);
         $customer->qr_code = $qrCode->show($result->ticket);
+        $customer->save();
 
         $beanRate = BeanRate::where('action_en', 'register')->first();
         if ($beanRate) {
             $bean = new CustomerBean();
-            $bean->customer_id  = $customer->id;
+            $bean->customer_id = $customer->id;
             $bean->bean_rate_id = $beanRate->id;
             $bean->value = 1;
             $bean->result = $beanRate->rate * $bean->value;
             $bean->save();
         } /*if>*/
-        $customer->save();
 
         $beanRate = BeanRate::where('action_en', 'invite')->first();
         if ($beanRate) {
             if (0 != $referrer) {
                 $bean = new CustomerBean();
-                $bean->customer_id  = $referrer;
+                $bean->customer_id = $referrer;
                 $bean->bean_rate_id = $beanRate->id;
                 $bean->value = 1;
                 $bean->result = $beanRate->rate * $bean->value;
