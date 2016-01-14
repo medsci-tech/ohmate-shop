@@ -39,9 +39,9 @@ class PersonalController extends Controller
         return 'orders';
     }
 
-    public function advertisement()
+    public function friend()
     {
-        return 'advertisement';
+        return 'friend';
     }
 
 } /*class*/

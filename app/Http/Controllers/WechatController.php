@@ -18,6 +18,9 @@ use Overtrue\Wechat\Message;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 
+use App\Constants\AppConstant;
+use App\Helpers\BeanRechargeHelper;
+
 class WechatController extends Controller {
 
     public function serve(Request $request) {
@@ -68,9 +71,18 @@ class WechatController extends Controller {
             } else {
                 \Log::info('weixin-EventKey ' . $eventKey);
                 $referrerId = (int)substr($eventKey, strlen('qrscene_'));
-                $customer->referrer_id = $referrerId;
+                $referrer   = Customer::where('id', $referrerId)->first();
+                if (!$referrer) {
+                    $customer->referrer_id = 0;
+                } else {
+                    $customer->referrer_id = $referrer->id;
+                } /* else>> */
             } /*else>*/
-            $customer->save();
+            $ret = $customer->save();
+            if ($ret) {
+                $customer   = Customer::where('openid', $openId)->first();
+                BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_FOCUS);
+            } /*if>*/
 
             return Message::make('text')->content('感谢您关注!');
         });
@@ -81,25 +93,24 @@ class WechatController extends Controller {
     public function menu() {
         $menuService = new Menu(env('WX_APPID'), env('WX_SECRET'));
 
-        $buttonEdu  = new MenuItem("教育学习");
-        $buttonInfo = new MenuItem("个人中心");
+        $buttonEducation  = new MenuItem("教育学习");
+        $buttonPersonal = new MenuItem("个人中心");
 
         $menus = [
             /* 教育学习 */
-            $buttonEdu->buttons([
-                new MenuItem('课程专区', 'view', url('/eduction/essay')),
-                new MenuItem('视频专区', 'view', url('/eduction/video')),
+            $buttonEducation->buttons([
+                new MenuItem('教育频道', 'view', url('/eduction/essay')),
                 new MenuItem('每日签到', 'view', url('/eduction/game')),
             ]),
             /* 易康商城 */
             new MenuItem("易康商城", 'view', url('/shop/index')),
             /* 个人中心 */
-            $buttonInfo->buttons([
+            $buttonPersonal->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),
                 new MenuItem('我的迈豆', 'view', url('/personal/beans')),
-                new MenuItem('我的地址', 'view', url('/personal/addresses')),
                 new MenuItem('我的订单', 'view', url('/personal/orders')),
-                new MenuItem('我的糖友', 'view', url('/personal/advertisement')),
+                new MenuItem('我的地址', 'view', url('/personal/addresses')),
+                new MenuItem('我的糖友', 'view', url('/personal/friend')),
             ]),
         ];
 

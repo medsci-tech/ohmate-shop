@@ -7,21 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class EductionController extends Controller
+class ShopController extends Controller
 {
+    //
     function __construct()
     {
         $this->middleware('auth.wechat');
+        $this->middleware('auth.access');
     }
 
-    public function essay()
+    public function index()
     {
-        return 'essay';
-    }
-
-    public function game()
-    {
-        return 'game';
+        return 'index';
     }
 
 } /*class*/
