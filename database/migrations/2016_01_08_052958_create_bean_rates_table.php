@@ -16,7 +16,7 @@ class CreateBeanRatesTable extends Migration
             $table->increments('id');
             $table->string('action_en', 31)->comment('操作en');
             $table->string('action_ch', 31)->comment('操作ch');
-            $table->integer('rate')->unsigned()->nullable()->default(0)->comment('操作兑换积分');
+            $table->double('rate')->unsigned()->nullable()->default(0)->comment('操作兑换积分');
             $table->timestamps();
         });
     }
