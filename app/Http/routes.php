@@ -13,24 +13,32 @@
 
 Route::group(['middleware' => 'web'], function () {
     Route::any('/wechat', 'WechatController@serve');
-    Route::get('/makemenu', 'WechatController@wechatMenu');
-    Route::get('/about', 'AboutController@index');
-    Route::any('/smsrequest', 'RegisterController@sms');
+    Route::get('/menu', 'WechatController@menu');
 
     Route::group(['prefix' => 'register'], function () {
         Route::get('/create', 'RegisterController@create');
-        Route::get('/focus', 'RegisterController@focus');
         Route::post('/store', 'RegisterController@store');
+        Route::post('/sms', 'RegisterController@sms');
+
+        Route::get('/focus', 'RegisterController@focus');
+        Route::get('/error', 'RegisterController@error');
+        Route::get('/excess', 'RegisterController@excess');
+    });
+
+    Route::group(['prefix' => 'shop'], function () {
+        Route::get('/index', 'ShopController@index');
     });
 
     Route::group(['prefix' => 'eduction'], function () {
         Route::get('/essay', 'EductionController@essay');
-        Route::get('/video', 'EductionController@video');
+        Route::get('/game', 'EductionController@game');
     });
 
     Route::group(['prefix' => 'personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
-        Route::get('/advertisement', 'PersonalController@advertisement');
+        Route::get('/addresses', 'PersonalController@addresses');
+        Route::get('/orders', 'PersonalController@orders');
+        Route::get('/friend', 'PersonalController@friend');
     });
 });

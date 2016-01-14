@@ -21,11 +21,7 @@ class BeanRatesSeeder extends Seeder
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'essays_scan',  'action_ch' => '浏览图文', 'rate' => 10]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['action_en' => 'video_scan',  'action_ch' => '浏览视频', 'rate' => 25]
+            ['action_en' => 'sign_in',  'action_ch' => '签到', 'rate' => 20]
         );
 
         DB::table('bean_rates')->insert(
@@ -33,27 +29,11 @@ class BeanRatesSeeder extends Seeder
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'vip_essays_scan',  'action_ch' => 'vip浏览图文', 'rate' => 20]
+            ['action_en' => 'scan_article',  'action_ch' => '浏览图文', 'rate' => 10]
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'vip_video_scan',  'action_ch' => 'vip浏览视频', 'rate' => 50]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['action_en' => 'vip_consume',  'action_ch' => 'vip消费', 'rate' => 0.05]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['action_en' => 'education_feedback_doctor',  'action_ch' => '患者学习返利', 'rate' => 0.1]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['action_en' => 'consume_feedback_doctor',  'action_ch' => '患者消费返利', 'rate' => 0.05]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['action_en' => 'invite_feedback_customer',  'action_ch' => '安利', 'rate' => 100]
+            ['action_en' => 'scan_video',  'action_ch' => '浏览视频', 'rate' => 25]
         );
 
         DB::table('bean_rates')->insert(
@@ -62,6 +42,18 @@ class BeanRatesSeeder extends Seeder
 
         DB::table('bean_rates')->insert(
             ['action_en' => 'invite_feedback_volunteer',  'action_ch' => '安利', 'rate' => 500]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'invite_feedback_customer',  'action_ch' => '安利', 'rate' => 100]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'feedback_doctor_education',  'action_ch' => '患者学习返利', 'rate' => 0.1]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'feedback_doctor_consume',  'action_ch' => '患者消费返利', 'rate' => 0.05]
         );
 
     }

@@ -19,11 +19,6 @@ class EductionController extends Controller
         return 'essay';
     }
 
-    public function video()
-    {
-        return 'video';
-    }
-
     public function game()
     {
         return 'game';
