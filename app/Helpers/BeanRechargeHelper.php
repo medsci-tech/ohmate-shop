@@ -51,7 +51,7 @@ class BeanRechargeHelper {
             } /* else>> */
         } /*else>*/
         $ret = $customer->save();
-        return ret;
+        return $ret;
     }
 
 } /*class*/
