@@ -33,21 +33,17 @@ class BeanRechargeHelper {
 
     public static function inviteFeedback($referrer) {
         \Log::info('BeanRechargeHelper:inviteFeedback$referrer:' . $referrer);
-        \Log::debug('1');
         if (0 == $referrer) {
-            \Log::debug('2');
             return false;
         } /*if>*/
 
         $customer = Customer::where('id', $referrer)->first();
+
         if (!$customer) {
-            \Log::debug('3');
             return false;
         } /*if>*/
 
-        \Log::debug('4');
-        recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
-        \Log::debug('5');
+        BeanRechargeHelper::recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
     }
 
 } /*class*/
