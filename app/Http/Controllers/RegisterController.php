@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Hash;
 use App\Http\Requests;
 use \App\Models\Customer;
-use \App\Models\BeanRate;
-use \App\Models\CustomerBean;
-use App\Http\Controllers\Controller;
 use Overtrue\Wechat\QRCode;
 use \App\Constants\AppConstant;
+use \App\Helpers\BeanRechargeHelper;
 
 class RegisterController extends Controller
 {
@@ -77,26 +74,9 @@ class RegisterController extends Controller
         $customer->qr_code = $qrCode->show($result->ticket);
         $customer->save();
 
-        $beanRate = BeanRate::where('action_en', 'register')->first();
-        if ($beanRate) {
-            $bean = new CustomerBean();
-            $bean->customer_id = $customer->id;
-            $bean->bean_rate_id = $beanRate->id;
-            $bean->value = 1;
-            $bean->result = $beanRate->rate * $bean->value;
-            $bean->save();
-        } /*if>*/
-
-        $beanRate = BeanRate::where('action_en', 'invite')->first();
-        if ($beanRate) {
-            if (0 != $referrer) {
-                $bean = new CustomerBean();
-                $bean->customer_id = $referrer;
-                $bean->bean_rate_id = $beanRate->id;
-                $bean->value = 1;
-                $bean->result = $beanRate->rate * $bean->value;
-                $bean->save();
-            } /*if>>*/
+        $ret = BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_REGISTER);
+        if ($ret) {
+            BeanRechargeHelper::inviteFeedback($referrer);
         } /*if>*/
 
         return view('register.success');

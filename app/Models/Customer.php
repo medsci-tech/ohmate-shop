@@ -9,7 +9,7 @@ class Customer extends Model
     //
     protected $table = 'customers';
 
-    public function customerTypes()
+    public function type()
     {
         return $this->belongsTo('App\Models\CustomerType');
     }
