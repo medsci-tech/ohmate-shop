@@ -42,7 +42,7 @@ class BeanRechargeHelper {
             return false;
         } /*if>*/
 
-        recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
+        BeanRechargeHelper::recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
     }
 
 } /*class*/
