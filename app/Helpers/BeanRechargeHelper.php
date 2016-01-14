@@ -32,21 +32,17 @@ class BeanRechargeHelper {
     }
 
     public static function inviteFeedback($referrer) {
+        \Log::info('BeanRechargeHelper:inviteFeedback$referrer:' . $referrer);
         if (0 == $referrer) {
             return false;
         } /*if>*/
 
         $customer = Customer::where('id', $referrer)->first();
-        if ($customer) {
+        if (!$customer) {
             return false;
         } /*if>*/
 
-        $type = $customer->type->type_en;
-        if ($type == AppConstant::CUSTOMER_DOCTOR) {
-            recharge($referrer, AppConstant::BEAN_ACTION_DOCTOR_INVITE);
-        } else {
-            recharge($referrer, AppConstant::BEAN_ACTION_CUSTOMER_INVITE);
-        } /*else>*/
+        recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
     }
 
 } /*class*/
