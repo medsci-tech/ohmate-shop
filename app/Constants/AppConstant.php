@@ -29,10 +29,7 @@ class AppConstant {
     const BEAN_ACTION_SIGN_IN       = 'sign_in';
     const BEAN_ACTION_SCAN_ARTICLE  = 'scan_article';
     const BEAN_ACTION_SCAN_VIDEO    = 'scan_video';
-
-    const BEAN_ACTION_DOCTOR_INVITE     = 'invite_feedback_doctor';
-    const BEAN_ACTION_VOLUNTEER_INVITE  = 'invite_feedback_volunteer';
-    const BEAN_ACTION_CUSTOMER_INVITE   = 'invite_feedback_customer';
+    const BEAN_ACTION_INVITE        = 'invite';
 
     const BEAN_ACTION_EDUCATION_FEEDBACK    = 'feedback_doctor_education';
     const BEAN_ACTION_CONSUME_FEEDBACK      = 'feedback_doctor_consume';

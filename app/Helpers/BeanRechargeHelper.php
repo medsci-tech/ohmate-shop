@@ -42,12 +42,7 @@ class BeanRechargeHelper {
             return false;
         } /*if>*/
 
-        $type = $customer->type->type_en;
-        if ($type == AppConstant::CUSTOMER_DOCTOR) {
-            recharge($referrer, AppConstant::BEAN_ACTION_DOCTOR_INVITE);
-        } else {
-            recharge($referrer, AppConstant::BEAN_ACTION_CUSTOMER_INVITE);
-        } /*else>*/
+        recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
     }
 
 } /*class*/
