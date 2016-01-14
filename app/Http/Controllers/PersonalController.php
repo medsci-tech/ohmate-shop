@@ -64,7 +64,7 @@ class PersonalController extends Controller
             return redirect('/register/create');
         } /*if>*/
 
-        $customerBeans = CustomerBean::where('customer_id', $customer->id);
+        $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
 
 
         $temp = '';
