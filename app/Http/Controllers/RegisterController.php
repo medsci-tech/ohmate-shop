@@ -11,6 +11,7 @@ use \App\Models\BeanRate;
 use \App\Models\CustomerBean;
 use App\Http\Controllers\Controller;
 use Overtrue\Wechat\QRCode;
+use \App\Constants\AppConstant;
 
 class RegisterController extends Controller
 {
