@@ -56,7 +56,7 @@ class RegisterController extends Controller
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
-            return redirect('/register/focus');
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         if (($customer->is_registered) || ($customer->phone)) {
@@ -109,7 +109,7 @@ class RegisterController extends Controller
         $user       = \Session::get('logged_user');
         $customer   = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
-            return redirect('/register/focus');
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         if (($customer->is_registered) || ($customer->phone)) {

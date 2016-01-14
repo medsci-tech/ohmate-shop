@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Customer;
-
+use App\Models\CustomerType;
 use Illuminate\Http\Request;
 use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Message;
