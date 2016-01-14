@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHospitalsTable extends Migration
+class CreateCustomerAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateHospitalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hospitals', function (Blueprint $table) {
+        Schema::create('customer_addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ class CreateHospitalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('hospitals');
+        Schema::drop('customer_addresses');
     }
 }
