@@ -40,7 +40,7 @@ class BeanRechargeHelper {
         } /*if>*/
 
         $customer = Customer::where('id', $referrer)->first();
-        if ($customer) {
+        if (!$customer) {
             \Log::debug('3');
             return false;
         } /*if>*/
