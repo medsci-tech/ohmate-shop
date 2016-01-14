@@ -10,7 +10,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Customer;
-use App\Models\CustomerType;
 
 use Illuminate\Http\Request;
 use Overtrue\Wechat\Server;
@@ -60,11 +59,29 @@ class WechatController extends Controller {
                 return Message::make('text')->content('欢迎您回来!');
             } /*if>*/
 
+            $customer = new Customer();
+            $customer->openid           = $openId;
+            $customer->is_registered    = false;
+            $customer->type_id = CustomerType::where('type_en', AppConstant::CUSTOMER_PATIENT)->first()->id;
+
             $eventKey   = $event['EventKey'];
-            $ret        = BeanRechargeHelper::save($openId, $eventKey);
+            if (is_array($eventKey) && (0 == count($eventKey))) {
+                $customer->referrer_id = 0;
+            } else {
+                $referrerId = (int)substr($eventKey, strlen('qrscene_'));
+                $referrer   = Customer::where('id', $referrerId)->first();
+                if (!$referrer) {
+                    $customer->referrer_id = 0;
+                } else {
+                    $customer->referrer_id = $referrer->id;
+                } /* else>> */
+            } /*else>*/
+            $ret = $customer->save();
             if ($ret) {
                 $customer = Customer::where('openid', $openId)->first();
-                BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_FOCUS);
+                if ($customer) {
+                    BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_FOCUS);
+                } /*if>>*/
             } /*if>*/
 
             return Message::make('text')->content('感谢您关注!');
@@ -76,8 +93,9 @@ class WechatController extends Controller {
     public function menu() {
         $menuService = new Menu(env('WX_APPID'), env('WX_SECRET'));
 
-        $buttonEducation  = new MenuItem("教育学习");
-        $buttonPersonal = new MenuItem("个人中心");
+        $buttonEducation    = new MenuItem("教育学习");
+        $buttonShop         = new MenuItem("易康商城");
+        $buttonPersonal     = new MenuItem("个人中心");
 
         $menus = [
             /* 教育学习 */

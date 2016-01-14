@@ -28,30 +28,25 @@ class BeanRechargeHelper {
         $bean->value    = $value;
         $bean->result   = $beanRate->rate * $value;
         $ret = $bean->save();
-
         return ($ret);
     }
 
-    public static function save($openId, $eventKey) {
-        $customer = new Customer();
-        $customer->openid           = $openId;
-        $customer->is_registered    = false;
-        $customer->type_id = CustomerType::where('type_en', AppConstant::CUSTOMER_PATIENT)->first()->id;
+    public static function inviteFeedback($referrer) {
+        if ($referrer) {
+            return false;
+        } /*if>*/
 
-        if (is_array($eventKey) && (0 == count($eventKey))) {
-            $customer->referrer_id = 0;
+        $customer = Customer::where('id', $referrer)->first();
+        if ($customer) {
+            return false;
+        } /*if>*/
+
+        $type = $customer->type->type_en;
+        if ($type == AppConstant::CUSTOMER_DOCTOR) {
+            recharge($referrer, AppConstant::BEAN_ACTION_DOCTOR_INVITE);
         } else {
-            \Log::info('weixin-EventKey ' . $eventKey);
-            $referrerId = (int)substr($eventKey, strlen('qrscene_'));
-            $referrer   = Customer::where('id', $referrerId)->first();
-            if (!$referrer) {
-                $customer->referrer_id = 0;
-            } else {
-                $customer->referrer_id = $referrer->id;
-            } /* else>> */
+            recharge($referrer, AppConstant::BEAN_ACTION_CUSTOMER_INVITE);
         } /*else>*/
-        $ret = $customer->save();
-        return $ret;
     }
 
 } /*class*/
