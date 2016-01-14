@@ -16,6 +16,12 @@ class AppConstant {
     /* wechat expire interval */
     const WECHAT_EXPIRE_INTERVAL    = 30;
 
+    /* customer type */
+    const CUSTOMER_PATIENT      = 'patient';
+    const CUSTOMER_NURSE        = 'nurse';
+    const CUSTOMER_DOCTOR       = 'doctor';
+    const CUSTOMER_VOLUNTEER    = 'volunteer';
+
     /* Bean Actions */
     const BEAN_ACTION_FOCUS         = 'focus';
     const BEAN_ACTION_REGISTER      = 'register';
