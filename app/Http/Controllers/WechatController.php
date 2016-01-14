@@ -23,6 +23,28 @@ use App\Helpers\BeanRechargeHelper;
 
 class WechatController extends Controller {
 
+    private function saveNewCustomer($openId, $eventKey) {
+        $customer = new Customer();
+        $customer->openid           = $openId;
+        $customer->is_registered    = false;
+        $customer->type_id = CustomerType::where('type_en', AppConstant::CUSTOMER_PATIENT)->first()->id;
+
+        if (is_array($eventKey) && (0 == count($eventKey))) {
+            $customer->referrer_id = 0;
+        } else {
+            \Log::info('weixin-EventKey ' . $eventKey);
+            $referrerId = (int)substr($eventKey, strlen('qrscene_'));
+            $referrer   = Customer::where('id', $referrerId)->first();
+            if (!$referrer) {
+                $customer->referrer_id = 0;
+            } else {
+                $customer->referrer_id = $referrer->id;
+            } /* else>> */
+        } /*else>*/
+        $ret = $customer->save();
+        return ret;
+    }
+
     public function serve(Request $request) {
         $server = new Server(env('WX_APPID'), env('WX_TOKEN'), env('WX_ENCODING_AESKEY'));
 
@@ -60,27 +82,10 @@ class WechatController extends Controller {
                 return Message::make('text')->content('欢迎您回来!');
             } /*if>*/
 
-            $customer = new Customer();
-            $customer->openid           = $openId;
-            $customer->is_registered    = false;
-            $customer->type_id = CustomerType::where('type_en', 'patient')->first()->id;
-
-            $eventKey = $event['EventKey'];
-            if (is_array($eventKey) && (0 == count($eventKey))) {
-                $customer->referrer_id = 0;
-            } else {
-                \Log::info('weixin-EventKey ' . $eventKey);
-                $referrerId = (int)substr($eventKey, strlen('qrscene_'));
-                $referrer   = Customer::where('id', $referrerId)->first();
-                if (!$referrer) {
-                    $customer->referrer_id = 0;
-                } else {
-                    $customer->referrer_id = $referrer->id;
-                } /* else>> */
-            } /*else>*/
-            $ret = $customer->save();
+            $eventKey   = $event['EventKey'];
+            $ret        = saveNewCustomer($openId, $eventKey);
             if ($ret) {
-                $customer   = Customer::where('openid', $openId)->first();
+                $customer = Customer::where('openid', $openId)->first();
                 BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_FOCUS);
             } /*if>*/
 
