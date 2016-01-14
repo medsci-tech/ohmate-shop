@@ -8,6 +8,7 @@
 
 namespace App\Helpers;
 
+use \App\Constants\AppConstant;
 use \App\Models\Customer;
 use \App\Models\BeanRate;
 use \App\Models\CustomerBean;
@@ -28,6 +29,28 @@ class BeanRechargeHelper {
         $ret = $bean->save();
 
         return ($ret);
+    }
+
+    public static function save($openId, $eventKey) {
+        $customer = new Customer();
+        $customer->openid           = $openId;
+        $customer->is_registered    = false;
+        $customer->type_id = CustomerType::where('type_en', AppConstant::CUSTOMER_PATIENT)->first()->id;
+
+        if (is_array($eventKey) && (0 == count($eventKey))) {
+            $customer->referrer_id = 0;
+        } else {
+            \Log::info('weixin-EventKey ' . $eventKey);
+            $referrerId = (int)substr($eventKey, strlen('qrscene_'));
+            $referrer   = Customer::where('id', $referrerId)->first();
+            if (!$referrer) {
+                $customer->referrer_id = 0;
+            } else {
+                $customer->referrer_id = $referrer->id;
+            } /* else>> */
+        } /*else>*/
+        $ret = $customer->save();
+        return ret;
     }
 
 } /*class*/
