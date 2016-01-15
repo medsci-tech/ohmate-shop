@@ -63,8 +63,10 @@ class PersonalController extends Controller
         if ((!$customer->phone) || (!$customer->is_registered)) {
             return redirect('/register/create');
         } /*if>*/
-        
+
         $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
+
+        dd($customerBeans);
 
         $temp = '';
         foreach ($customerBeans as $customerBean) {
