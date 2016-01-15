@@ -101,17 +101,20 @@ class WechatController extends Controller {
             /* 教育学习 */
             $buttonEducation->buttons([
                 new MenuItem('教育频道', 'view', url('/eduction/essay')),
+                new MenuItem('注射指导', 'view', url('/eduction/injection')),
                 new MenuItem('每日签到', 'view', url('/eduction/game')),
             ]),
             /* 易康商城 */
-            new MenuItem("易康商城", 'view', url('/shop/index')),
+            $buttonShop->buttons([
+                new MenuItem('商城首页', 'view', url('/shop/index')),
+                new MenuItem('我的订单', 'view', url('/personal/orders')),
+                new MenuItem('我的地址', 'view', url('/personal/addresses')),
+            ]),
             /* 个人中心 */
             $buttonPersonal->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),
                 new MenuItem('我的迈豆', 'view', url('/personal/beans')),
-                new MenuItem('我的订单', 'view', url('/personal/orders')),
-                new MenuItem('我的地址', 'view', url('/personal/addresses')),
-                new MenuItem('我的糖友', 'view', url('/personal/friend')),
+                new MenuItem('糖友推广', 'view', url('/personal/friend')),
             ]),
         ];
 

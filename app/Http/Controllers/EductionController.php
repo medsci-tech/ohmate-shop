@@ -19,6 +19,11 @@ class EductionController extends Controller
         return 'essay';
     }
 
+    public function injection()
+    {
+        return 'injection';
+    }
+
     public function game()
     {
         return 'game';
