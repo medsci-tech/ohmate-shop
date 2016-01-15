@@ -33,8 +33,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['prefix' => 'shop'], function () {
         Route::get('/index', 'ShopController@index');
-        Route::get('/index', 'ShopController@orders');
-        Route::get('/index', 'ShopController@addresses');
+        Route::get('/orders', 'ShopController@orders');
+        Route::get('/addresses', 'ShopController@addresses');
     });
 
     Route::group(['prefix' => 'personal'], function () {
