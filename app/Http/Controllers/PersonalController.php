@@ -41,10 +41,7 @@ class PersonalController extends Controller
             return redirect('/register/create');
         } /*if>*/
 
-        $info = '昵称:' . $customer->nickname . ' 头像:' . $customer->headimgurl
-            . ' 电话:' . $customer->phone;
-
-        return 'information '.$info;
+        return $customer;
     }
 
     public function beans()
@@ -66,19 +63,16 @@ class PersonalController extends Controller
         } /*if>*/
 
         $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
-//        dd($customerBeans);
 
         $temp = '';
         foreach ($customerBeans as $customerBean) {
             \Log::info('beans:' . $customerBean);
             $beanRate = BeanRate::where('id', $customerBean->bean_rate_id)->first();
-            $temp .= '积分兑换规则:' . $beanRate->action_ch . ' 积分原始值' .
-                $customerBean->value . '.result' . $customerBean->result . '\n';
+            $temp .= '<p>' . '积分兑换规则:' . $beanRate->action_ch . ',value:' .
+                $customerBean->value . ',result:' . $customerBean->result . '</p>';
         }
 
-
-        $info = '昵称:' . $customer->nickname . '\n'.$temp;
-        return 'beans '.$info;
+        return $temp;
     }
 
     public function friend()
