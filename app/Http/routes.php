@@ -25,20 +25,21 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/excess', 'RegisterController@excess');
     });
 
-    Route::group(['prefix' => 'shop'], function () {
-        Route::get('/index', 'ShopController@index');
-    });
-
     Route::group(['prefix' => 'eduction'], function () {
         Route::get('/essay', 'EductionController@essay');
+        Route::get('/injection', 'EductionController@injection');
         Route::get('/game', 'EductionController@game');
+    });
+
+    Route::group(['prefix' => 'shop'], function () {
+        Route::get('/index', 'ShopController@index');
+        Route::get('/index', 'ShopController@orders');
+        Route::get('/index', 'ShopController@addresses');
     });
 
     Route::group(['prefix' => 'personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
-        Route::get('/addresses', 'PersonalController@addresses');
-        Route::get('/orders', 'PersonalController@orders');
         Route::get('/friend', 'PersonalController@friend');
     });
 });

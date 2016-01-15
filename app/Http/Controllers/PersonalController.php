@@ -81,16 +81,6 @@ class PersonalController extends Controller
         return 'beans '.$info;
     }
 
-    public function addresses()
-    {
-        return 'addresses';
-    }
-
-    public function orders()
-    {
-        return 'orders';
-    }
-
     public function friend()
     {
         if (!\Session::has(AppConstant::SESSION_USER_KEY)) {

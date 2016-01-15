@@ -21,4 +21,14 @@ class ShopController extends Controller
         return 'index';
     }
 
+    public function orders()
+    {
+        return 'orders';
+    }
+
+    public function addresses()
+    {
+        return 'addresses';
+    }
+
 } /*class*/
