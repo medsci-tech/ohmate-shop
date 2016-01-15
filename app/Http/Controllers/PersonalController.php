@@ -71,7 +71,7 @@ class PersonalController extends Controller
         $temp = '';
         foreach ($customerBeans as $customerBean) {
             \Log::info('beans:' . $customerBean);
-            $beanRate = BeanRate::where('id', $customerBean->bean_rate_id)->get();
+            $beanRate = BeanRate::where('id', $customerBean->bean_rate_id)->first();
             $temp .= '积分兑换规则:' . $beanRate->action_ch . ' 积分原始值' .
                 $customerBean->value . '.result' . $customerBean->result . '\n';
         }
