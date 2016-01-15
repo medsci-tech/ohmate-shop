@@ -38,13 +38,11 @@ class BeanRechargeHelper {
         } /*if>*/
 
         $customer = Customer::where('id', $referrer)->first();
-
         if (!$customer) {
             return false;
         } /*if>*/
 
-
-        BeanRechargeHelper::recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
+        self::recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
     }
 
 } /*class*/
