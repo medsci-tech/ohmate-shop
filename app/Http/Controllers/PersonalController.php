@@ -64,6 +64,11 @@ class PersonalController extends Controller
             return redirect('/register/create');
         } /*if>*/
 
+        $beanCounts = CustomerBean::where('customer_id', $customer->id)->count();
+        if ($beanCounts > 0) {
+            return 'beans counts ' . $beanCounts;
+        }
+
         $customerBeans = CustomerBean::where('customer_id', $customer->id)->take(1)->get();
 
 
