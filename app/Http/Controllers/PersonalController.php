@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\Models\Customer;
 use \App\Models\CustomerBean;
+use \App\Models\BeanRate;
 use \App\Constants\AppConstant;
 
 
@@ -65,13 +66,13 @@ class PersonalController extends Controller
         } /*if>*/
 
         $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
-
-        dd($customerBeans);
+//        dd($customerBeans);
 
         $temp = '';
         foreach ($customerBeans as $customerBean) {
             \Log::info('beans:' . $customerBean);
-            $temp .= '积分兑换规则:' . $customerBean->bean_rate_id . ' 积分原始值' .
+            $beanRate = BeanRate::where('id', $customerBean->bean_rate_id)->get();
+            $temp .= '积分兑换规则:' . $beanRate->action_ch . ' 积分原始值' .
                 $customerBean->value . '.result' . $customerBean->result . '\n';
         }
 
