@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\Models\Customer;
 use \App\Models\CustomerBean;
-
+use \App\Constants\AppConstant;
 
 
 
@@ -24,11 +24,11 @@ class PersonalController extends Controller
 
     public function information()
     {
-        if (!\Session::has('logged_user')) {
+        if (!\Session::has(AppConstant::SESSION_USER_KEY)) {
             return "session no exists";
         }/*if>*/
 
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
 
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
@@ -48,11 +48,11 @@ class PersonalController extends Controller
 
     public function beans()
     {
-        if (!\Session::has('logged_user')) {
+        if (!\Session::has(AppConstant::SESSION_USER_KEY)) {
             return "session no exists";
         }/*if>*/
 
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
 
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
@@ -64,7 +64,7 @@ class PersonalController extends Controller
             return redirect('/register/create');
         } /*if>*/
 
-        $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
+        $customerBeans = CustomerBean::where('customer_id', $customer->id)->take(1)->get();
 
 
         $temp = '';
@@ -91,11 +91,11 @@ class PersonalController extends Controller
 
     public function friend()
     {
-        if (!\Session::has('logged_user')) {
+        if (!\Session::has(AppConstant::SESSION_USER_KEY)) {
             return "session no exists";
         }/*if>*/
 
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
 
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
