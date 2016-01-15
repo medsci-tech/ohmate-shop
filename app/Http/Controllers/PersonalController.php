@@ -8,7 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\Models\Customer;
 use \App\Models\CustomerBean;
-
+use \App\Models\BeanRate;
+use \App\Constants\AppConstant;
 
 
 
@@ -24,11 +25,11 @@ class PersonalController extends Controller
 
     public function information()
     {
-        if (!\Session::has('logged_user')) {
+        if (!\Session::has(AppConstant::SESSION_USER_KEY)) {
             return "session no exists";
         }/*if>*/
 
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
 
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
@@ -48,11 +49,11 @@ class PersonalController extends Controller
 
     public function beans()
     {
-        if (!\Session::has('logged_user')) {
+        if (!\Session::has(AppConstant::SESSION_USER_KEY)) {
             return "session no exists";
         }/*if>*/
 
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
 
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
@@ -65,12 +66,13 @@ class PersonalController extends Controller
         } /*if>*/
 
         $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
-
+//        dd($customerBeans);
 
         $temp = '';
         foreach ($customerBeans as $customerBean) {
             \Log::info('beans:' . $customerBean);
-            $temp = '积分兑换规则:' . $customerBean->bean_rate_id . ' 积分原始值' .
+            $beanRate = BeanRate::where('id', $customerBean->bean_rate_id)->first();
+            $temp .= '积分兑换规则:' . $beanRate->action_ch . ' 积分原始值' .
                 $customerBean->value . '.result' . $customerBean->result . '\n';
         }
 
@@ -91,11 +93,11 @@ class PersonalController extends Controller
 
     public function friend()
     {
-        if (!\Session::has('logged_user')) {
+        if (!\Session::has(AppConstant::SESSION_USER_KEY)) {
             return "session no exists";
         }/*if>*/
 
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
 
         $customer = Customer::where('openid', $user['openid'])->first();
         \Log::info('advertisement:' . $customer);
