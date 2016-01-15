@@ -9,6 +9,7 @@ use \App\Models\Customer;
 use Overtrue\Wechat\QRCode;
 use \App\Constants\AppConstant;
 use \App\Helpers\BeanRechargeHelper;
+use \App\Helpers\SMSVerifyHelper;
 
 class RegisterController extends Controller
 {
@@ -83,42 +84,28 @@ class RegisterController extends Controller
     }
 
     public function sms(Request $request) {
-        $phone  = $request->input(['phone']);
-        $code   = rand(000000, 999999);
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
-
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_USERPWD, 'api:key-' . env('SMS_KEY'));
-        curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,
-            array('mobile' => $phone, 'message' => '验证码：' . $code . '【易康商城】'));
-
-        $res = curl_exec($ch);
-        curl_close($ch);
-
-        if (!$res) {
-            return view('register.error');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!$user) {
+            return redirect('/register/error');
         } /*if>*/
 
-        $user       = \Session::get('logged_user');
-        $customer   = Customer::where('openid', $user['openid'])->first();
+        $customer = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
-        if (($customer->is_registered) || ($customer->phone)) {
+        $phone  = $request->input(['phone']);
+        $number = SMSVerifyHelper::createVerifyNumber($phone);
+        if (!$number) {
             return view('register.error');
         } /*if>*/
 
-        $customer->auth_code = $code;
-        $customer->save();
+        if (($customer->is_registered) || ($customer->phone)) {
+            return redirect('/register/error');
+        } /*if>*/
 
+        $customer->auth_code = $number;
+        $customer->save();
     }
 
 } /*class*/
