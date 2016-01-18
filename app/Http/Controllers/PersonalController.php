@@ -50,21 +50,23 @@ class PersonalController extends Controller
         if (!$customer) {
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
+        $total = $customer->beans_total;
 
         $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
         if (!$customerBeans) {
             return view('personal.no_beans');
         } /*if>*/
 
-        $data = null;
+        $list = null;
         foreach ($customerBeans as $customerBean) {
-            $data[]['result']   = $customerBeans->result;
-            $data[]['detail']   = $customerBeans->detail;
-            $data[]['rate']     = $customerBeans->rate->action_ch;
-            $data[]['time']     = $customerBeans->updated_at;
+            $list[] = [ 'time' => $customerBeans->updated_at,
+                        'result' => $customerBeans->result,
+                        'action' => $customerBeans->rate->action_ch,
+                        'detail' => $customerBeans->detail];
         } /*for>*/
 
-        return $data;
+        return $list;
+//        return view('personal.beans', ['total' => $total, 'list' = $list]);
     }
 
     public function friend()

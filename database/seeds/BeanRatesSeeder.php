@@ -25,11 +25,15 @@ class BeanRatesSeeder extends Seeder
         );
 
         DB::table('bean_rates')->insert(
-            ['action_en' => 'consume',  'action_ch' => '消费', 'rate' => 0.02]
+            ['action_en' => 'consume',  'action_ch' => '消费', 'rate' => -1]
         );
 
         DB::table('bean_rates')->insert(
             ['action_en' => 'invite',  'action_ch' => '安利', 'rate' => 100]
+        );
+
+        DB::table('bean_rates')->insert(
+            ['action_en' => 'feedback',  'action_ch' => '返利', 'rate' => 0.02]
         );
 
         DB::table('bean_rates')->insert(

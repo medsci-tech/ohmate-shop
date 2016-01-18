@@ -11,7 +11,7 @@ class Customer extends Model
 
     public function type()
     {
-        return $this->belongsTo('App\Models\CustomerType', 'type_id');
+        return $this->belongsTo('App\Models\CustomerType', 'type_id', 'id');
     }
 
 }
