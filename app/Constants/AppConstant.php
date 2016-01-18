@@ -25,11 +25,13 @@ class AppConstant {
     /* Bean Actions */
     const BEAN_ACTION_FOCUS         = 'focus';
     const BEAN_ACTION_REGISTER      = 'register';
-    const BEAN_ACTION_CONSUME       = 'consume';
     const BEAN_ACTION_SIGN_IN       = 'sign_in';
+    const BEAN_ACTION_CONSUME       = 'consume';
+    const BEAN_ACTION_INVITE        = 'invite';
+    const BEAN_ACTION_FEEDBACK      = 'feedback';
+
     const BEAN_ACTION_SCAN_ARTICLE  = 'scan_article';
     const BEAN_ACTION_SCAN_VIDEO    = 'scan_video';
-    const BEAN_ACTION_INVITE        = 'invite';
 
     const BEAN_ACTION_EDUCATION_FEEDBACK    = 'feedback_doctor_education';
     const BEAN_ACTION_CONSUME_FEEDBACK      = 'feedback_doctor_consume';

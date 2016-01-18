@@ -12,6 +12,7 @@ class EductionController extends Controller
     function __construct()
     {
         $this->middleware('auth.wechat');
+        $this->middleware('beans.ceiling');
     }
 
     public function essay()
