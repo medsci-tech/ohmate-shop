@@ -13,11 +13,23 @@ class CustomerTypesSeeder extends Seeder
     {
         //
         DB::table('customer_types')->insert(
+            ['type_en' => 'test',  'type_ch' => 'test' ]
+        );
+
+        DB::table('customer_types')->insert(
             ['type_en' => 'patient',  'type_ch' => '患者' ]
         );
 
         DB::table('customer_types')->insert(
-            ['type_en' => 'volunteer',  'type_ch' => '志愿者' ]
+            ['type_en' => 'md_volunteer',  'type_ch' => '迈德志愿者' ]
+        );
+
+        DB::table('customer_types')->insert(
+            ['type_en' => 'merck_volunteer',  'type_ch' => '默克志愿者' ]
+        );
+
+        DB::table('customer_types')->insert(
+            ['type_en' => 'novo_volunteer',  'type_ch' => '诺和志愿者' ]
         );
 
         DB::table('customer_types')->insert(

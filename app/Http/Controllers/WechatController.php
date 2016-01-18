@@ -9,8 +9,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Customer;
+
 use App\Models\CustomerType;
+use App\Models\Customer;
+use App\Models\CustomerLocation;
+use App\Models\OhMateCustomer;
+
 use Illuminate\Http\Request;
 use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Message;
@@ -38,51 +42,51 @@ class WechatController extends Controller {
         /* location event */
         $server->on('event', 'location', function($event) {
             \Log::info('location' . $event);
-            $openId     = $event['FromUserName'];
-            $customer   = Customer::where('openid', $openId)->first();
-            if(!$customer) {
+            $openId = $event['FromUserName'];
+
+            $ohMateCustomer = OhMateCustomer::where('openid', $openId)->first();
+            if ((!$ohMateCustomer) || (!$ohMateCustomer->customer_id)) {
                 return;
             } /*if>*/
 
-            $customer->latitude     = $event['Latitude'];
-            $customer->longitude    = $event['Longitude'];
-            $customer->precision    = $event['Precision'];
-            $customer->save();
+            $customerLocation = CustomerLocation::where('customer_id', $ohMateCustomer->customer_id)->first();
+            if (!$customerLocation) {
+                $customerLocation = new CustomerLocation();
+            } /*if>*/
+            $customerLocation->latitude     = $event['Latitude'];
+            $customerLocation->longitude    = $event['Longitude'];
+            $customerLocation->precision    = $event['Precision'];
+            $customerLocation->save();
         });
 
         /* subscribe event */
         $server->on('event', 'subscribe', function($event) {
             \Log::info('subscribe' . $event);
-            $openId     = $event['FromUserName'];
-            $customer   = Customer::where('openid', $openId)->first();
-            if($customer) {
+            $openId = $event['FromUserName'];
+
+            $ohMateCustomer = OhMateCustomer::where('openid', $openId)->first();
+            if($ohMateCustomer) {
                 return Message::make('text')->content('欢迎您回来!');
             } /*if>*/
 
-            $customer = new Customer();
-            $customer->openid           = $openId;
-            $customer->is_registered    = false;
-            $customer->type_id = CustomerType::where('type_en', AppConstant::CUSTOMER_PATIENT)->first()->id;
+            $ohMateCustomer = new OhMateCustomer();
+//            $ohMateCustomer->customer_id    = Customer::where('phone', '01234567890')->first()->id;
+            $ohMateCustomer->customer_id    = Customer::where('type', 'test')->first()->id;
+            $ohMateCustomer->openid         = $openId;
 
-            $eventKey   = $event['EventKey'];
+            $eventKey = $event['EventKey'];
             if (is_array($eventKey) && (0 == count($eventKey))) {
-                $customer->referrer_id = 0;
+                $ohMateCustomer->referrer_id = 0;
             } else {
                 $referrerId = (int)substr($eventKey, strlen('qrscene_'));
                 $referrer   = Customer::where('id', $referrerId)->first();
                 if (!$referrer) {
-                    $customer->referrer_id = 0;
+                    $ohMateCustomer->referrer_id = 0;
                 } else {
-                    $customer->referrer_id = $referrer->id;
+                    $ohMateCustomer->referrer_id = $referrer->id;
                 } /* else>> */
             } /*else>*/
-            $ret = $customer->save();
-            if ($ret) {
-                $customer = Customer::where('openid', $openId)->first();
-                if ($customer) {
-                    BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_FOCUS);
-                } /*if>>*/
-            } /*if>*/
+            $ohMateCustomer->save();
 
             return Message::make('text')->content('感谢您关注!');
         });

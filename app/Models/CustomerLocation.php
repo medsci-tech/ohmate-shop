@@ -4,14 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerBean extends Model
+class CustomerLocation extends Model
 {
-    protected $table = 'customer_beans';
-
-    protected function rate()
-    {
-        return $this->belongsTo('App\Models\BeanRate', 'bean_rate_id');
-    }
+    protected $table = 'customer_locations';
 
     protected function customer()
     {
