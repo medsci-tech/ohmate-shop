@@ -9,7 +9,7 @@ class CustomerBean extends Model
     //
     protected $table = 'customer_beans';
 
-    protected function beanRate()
+    protected function rate()
     {
         return $this->belongsTo('App\Models\BeanRate', 'bean_rate_id');
     }

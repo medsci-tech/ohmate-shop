@@ -9,7 +9,7 @@ class BeanRate extends Model
     //
     protected $table = 'bean_rates';
 
-    public function customerBeans() {
+    public function beans() {
         return $this->hasMany('App\Models\CustomerBean', 'bean_rate_id', 'id');
     }
 }
