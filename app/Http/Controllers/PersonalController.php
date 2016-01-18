@@ -59,7 +59,7 @@ class PersonalController extends Controller
 
         $list = null;
         foreach ($customerBeans as $customerBean) {
-            $list[] = [ 'time' => $customerBeans->updated_at,
+            $list[] = [
                         'result' => $customerBeans->result,
                         'action' => $customerBeans->rate->action_ch,
                         'detail' => $customerBeans->detail];
