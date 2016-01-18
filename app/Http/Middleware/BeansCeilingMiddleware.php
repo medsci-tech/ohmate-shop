@@ -6,6 +6,7 @@ use Closure;
 use DB;
 use Carbon\Carbon;
 use App\Constants\AppConstant;
+use App\Models\Customer;
 use App\Models\CustomerBean;
 use App\Models\BeanRate;
 
