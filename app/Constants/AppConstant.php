@@ -16,6 +16,9 @@ class AppConstant {
     /* wechat expire interval */
     const WECHAT_EXPIRE_INTERVAL    = 30;
 
+    /* education daily ceiling */
+    const EDUCATION_DAILY_CEILING    = 200;
+
     /* customer type */
     const CUSTOMER_PATIENT      = 'patient';
     const CUSTOMER_NURSE        = 'nurse';
