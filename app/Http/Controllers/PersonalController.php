@@ -51,7 +51,7 @@ class PersonalController extends Controller
         } /*if>*/
 
         $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if ((!$ohMateCustomer) || (!$ohMateCustomer->customer_id)) {
+        if ((!$ohMateCustomer) || (0 == $ohMateCustomer->customer_id)) {
             return redirect('/personal/error');
         } /*if>*/
 
@@ -87,7 +87,7 @@ class PersonalController extends Controller
         } /*if>*/
 
         $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if ((!$ohMateCustomer) || (!$ohMateCustomer->customer_id)) {
+        if ((!$ohMateCustomer) || (0 == $ohMateCustomer->customer_id)) {
             return redirect('/personal/error');
         } /*if>*/
 

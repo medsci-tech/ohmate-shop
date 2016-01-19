@@ -29,7 +29,7 @@ class AccessMiddleware
         if (!$ohMateCustomer) {
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
-        if (!$ohMateCustomer->customer_id) {
+        if (0 == $ohMateCustomer->customer_id) {
             return redirect('/register/create');
         } /*if>*/
         $customer = Customer::where('id', $ohMateCustomer->customer_id)->first();

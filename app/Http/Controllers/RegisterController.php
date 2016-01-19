@@ -62,7 +62,7 @@ class RegisterController extends Controller
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
-        if (!$ohMateCustomer->customer_id) {
+        if (0 == $ohMateCustomer->customer_id) {
             return redirect('/register/excess');
         } /*if>*/
 
