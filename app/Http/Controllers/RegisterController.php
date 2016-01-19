@@ -74,6 +74,7 @@ class RegisterController extends Controller
         $customer->save();
         \Log::info('RegisterController:store:customerId' . $customer->id);
 
+        $ohMateCustomer->customer_id      = $customer->id;
         $ohMateCustomer->head_image_url   = $user['headimgurl'];
         $ohMateCustomer->nickname         = $user['nickname'];
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
