@@ -10,12 +10,7 @@ class BeanRate extends Model
 
     public function beans()
     {
-        return $this->hasMany('App\Models\CustomerBean', 'bean_rate_id', 'id');
-    }
-
-    public function project()
-    {
-        return $this->belongsTo('App\Models\Project', 'bean_rate_id', 'id');
+        return $this->hasMany('App\Models\CustomerBean', 'bean_rate_id');
     }
 
 }

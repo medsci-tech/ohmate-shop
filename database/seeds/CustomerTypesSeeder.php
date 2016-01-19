@@ -11,25 +11,13 @@ class CustomerTypesSeeder extends Seeder
      */
     public function run()
     {
-        //
+
         DB::table('customer_types')->insert(
-            ['type_en' => 'test',  'type_ch' => 'test' ]
+            ['type_en' => 'common',  'type_ch' => '普通用户' ]
         );
 
         DB::table('customer_types')->insert(
-            ['type_en' => 'patient',  'type_ch' => '患者' ]
-        );
-
-        DB::table('customer_types')->insert(
-            ['type_en' => 'md_volunteer',  'type_ch' => '迈德志愿者' ]
-        );
-
-        DB::table('customer_types')->insert(
-            ['type_en' => 'merck_volunteer',  'type_ch' => '默克志愿者' ]
-        );
-
-        DB::table('customer_types')->insert(
-            ['type_en' => 'novo_volunteer',  'type_ch' => '诺和志愿者' ]
+            ['type_en' => 'volunteer',  'type_ch' => '志愿者' ]
         );
 
         DB::table('customer_types')->insert(
@@ -40,5 +28,9 @@ class CustomerTypesSeeder extends Seeder
             ['type_en' => 'doctor',  'type_ch' => '医生' ]
         );
 
+        DB::table('customer_types')->insert(
+            ['type_en' => 'enterprise',  'type_ch' => '企业' ]
+        );
     }
+
 }

@@ -14,9 +14,7 @@ class CreateRhMateCustomersTable extends Migration
     {
         Schema::create('rh_mate_customers', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->integer('customer_id')->unsigned()->comment('用户');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->integer('customer_id')->unsigned()->default(0)->comment('用户');
 
             $table->string('openid')->comment('wechat open id');
             $table->string('nickname')->nullable()->comment('wechat nick name');
@@ -34,9 +32,6 @@ class CreateRhMateCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::table('rh_mate_customers', function (Blueprint $table) {
-            $table->dropForeign('oh_mate_customers_customer_id_foreign');
-        });
         Schema::drop('rh_mate_customers');
     }
 }

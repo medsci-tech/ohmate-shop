@@ -17,10 +17,9 @@ class CreateCustomersTable extends Migration
             $table->integer('type_id')->unsigned()->comment('用户类型ID');
             $table->foreign('type_id')->references('id')->on('customer_types');
 
-            $table->string('phone', 31)->nullable()->comment('personal telephone');
-            $table->boolean('is_registered')->default(false)->comment('if the customer is registered');
-
             $table->double('beans_total', 15, 2)->default(0)->comment('迈豆总额');
+
+            $table->string('phone', 31)->nullable()->comment('personal telephone');
             $table->unique('phone');
 
             $table->timestamps();

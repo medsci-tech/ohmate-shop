@@ -10,7 +10,7 @@ class CustomerType extends Model
 
     public function customers()
     {
-        return $this->hasMany('App\Models\Customer', 'type_id', 'id');
+        return $this->hasMany('App\Models\Customer', 'type_id');
     }
 
 } /*class*/

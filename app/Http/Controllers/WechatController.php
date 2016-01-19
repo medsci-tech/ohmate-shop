@@ -49,9 +49,15 @@ class WechatController extends Controller {
                 return;
             } /*if>*/
 
-            $customerLocation = CustomerLocation::where('customer_id', $ohMateCustomer->customer_id)->first();
+            $customer = Customer::where('id', $ohMateCustomer->customer_id)->first();
+            if (!$customer) {
+                return;
+            } /*if>*/
+
+            $customerLocation = CustomerLocation::where('customer_id', $customer->id)->first();
             if (!$customerLocation) {
                 $customerLocation = new CustomerLocation();
+                $customerLocation->customer_id = $ohMateCustomer->customer_id;
             } /*if>*/
             $customerLocation->latitude     = $event['Latitude'];
             $customerLocation->longitude    = $event['Longitude'];
@@ -70,8 +76,7 @@ class WechatController extends Controller {
             } /*if>*/
 
             $ohMateCustomer = new OhMateCustomer();
-//            $ohMateCustomer->customer_id    = Customer::where('phone', '01234567890')->first()->id;
-            $ohMateCustomer->customer_id    = Customer::where('type', 'test')->first()->id;
+            $ohMateCustomer->customer_id    = 0;
             $ohMateCustomer->openid         = $openId;
 
             $eventKey = $event['EventKey'];

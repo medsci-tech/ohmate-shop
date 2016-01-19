@@ -10,17 +10,17 @@ class Customer extends Model
 
     public function type()
     {
-        return $this->belongsTo('App\Models\CustomerType', 'type_id', 'id');
+        return $this->belongsTo('App\Models\CustomerType', 'type_id');
     }
 
     public function beans()
     {
-        return $this->hasMany('App\Models\CustomerBean', 'customer_id', 'id');
+        return $this->hasMany('App\Models\CustomerBean', 'customer_id');
     }
 
     public function location()
     {
-        return $this->hasOne('App\Models\CustomerLocation', 'customer_id', 'id');
+        return $this->hasOne('App\Models\CustomerLocation', 'customer_id');
     }
 
 }

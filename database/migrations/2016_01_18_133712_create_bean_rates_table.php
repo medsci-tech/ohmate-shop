@@ -14,8 +14,9 @@ class CreateBeanRatesTable extends Migration
     {
         Schema::create('bean_rates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('project_id')->unsigned()->comment('项目');
-            $table->foreign('project_id')->references('id')->on('projects');
+
+            $table->string('project_en', 31)->comment('项目en');
+            $table->string('project_ch', 31)->comment('项目ch');
 
             $table->string('action_en', 31)->comment('操作en');
             $table->string('action_ch', 31)->comment('操作ch');
@@ -32,9 +33,6 @@ class CreateBeanRatesTable extends Migration
      */
     public function down()
     {
-        Schema::table('bean_rates', function (Blueprint $table) {
-            $table->dropForeign('bean_rates_project_id_foreign');
-        });
         Schema::drop('bean_rates');
     }
 }
