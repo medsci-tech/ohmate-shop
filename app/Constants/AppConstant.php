@@ -20,10 +20,11 @@ class AppConstant {
     const EDUCATION_DAILY_CEILING    = 200;
 
     /* customer type */
-    const CUSTOMER_PATIENT      = 'patient';
+    const CUSTOMER_COMMON       = 'common';
+    const CUSTOMER_VOLUNTEER    = 'volunteer';
     const CUSTOMER_NURSE        = 'nurse';
     const CUSTOMER_DOCTOR       = 'doctor';
-    const CUSTOMER_VOLUNTEER    = 'volunteer';
+    const CUSTOMER_ENTERPRISE   = 'enterprise';
 
     /* Bean Actions */
     const BEAN_ACTION_FOCUS         = 'focus';

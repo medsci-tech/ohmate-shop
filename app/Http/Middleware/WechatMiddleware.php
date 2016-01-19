@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use \App\Constants\AppConstant;
 use Illuminate\Support\Facades\Session;
 use Overtrue\Wechat\Auth;
+use App\Constants\AppConstant;
 
 class WechatMiddleware
 {

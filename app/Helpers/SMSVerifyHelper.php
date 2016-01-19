@@ -20,7 +20,7 @@ class SMSVerifyHelper {
         $hashNumber = mt_rand(100000, 999999);
         $message    = '注册验证码:' . $hashNumber . '【易康商城】';
         $res = self::getMessageCode($phone, $message);
-        \Log::debug('xsm-' . $res);
+        \Log::debug('SMSVerifyHelper:createVerifyNumber' . $res);
         if ($res) {
             return $hashNumber;
         } /*if>*/

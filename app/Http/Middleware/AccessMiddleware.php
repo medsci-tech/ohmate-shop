@@ -3,9 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use \App\Constants\AppConstant;
 use Carbon\Carbon;
-use \App\Models\Customer;
+use App\Constants\AppConstant;
+use App\Models\Customer;
+use App\Models\OhMateCustomer;
+
 
 class AccessMiddleware
 {
@@ -23,19 +25,22 @@ class AccessMiddleware
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if (!$customer) {
+        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
+        if (!$ohMateCustomer) {
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
-
-        if ((!$customer->phone) || (!$customer->is_registered)) {
+        if (!$ohMateCustomer->customer_id) {
+            return redirect('/register/create');
+        } /*if>*/
+        $customer = Customer::where('id', $ohMateCustomer->customer_id)->first();
+        if (!$customer) {
             return redirect('/register/create');
         } /*if>*/
 
-        if (Carbon::now()->diffInMinutes($customer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL) {
-            $customer->headimgurl   = $user['headimgurl'];
-            $customer->nickname     = $user['nickname'];
-            $customer->save();
+        if (Carbon::now()->diffInMinutes($ohMateCustomer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL) {
+            $ohMateCustomer->head_image_url = $user['headimgurl'];
+            $ohMateCustomer->nickname       = $user['nickname'];
+            $ohMateCustomer->save();
         } /*if>*/
 
         return $next($request);

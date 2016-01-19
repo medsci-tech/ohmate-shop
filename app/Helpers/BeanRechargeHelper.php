@@ -32,7 +32,7 @@ class BeanRechargeHelper {
     }
 
     public static function inviteFeedback($referrer) {
-        \Log::info('BeanRechargeHelper:inviteFeedback$referrer:' . $referrer);
+        \Log::info('BeanRechargeHelper:inviteFeedback:referrer:' . $referrer);
         if (0 == $referrer) {
             return false;
         } /*if>*/

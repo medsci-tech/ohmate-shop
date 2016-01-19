@@ -21,8 +21,8 @@ class CreateCustomerBeansTable extends Migration
             $table->integer('bean_rate_id')->unsigned()->comment('积分兑换规则');
             $table->foreign('bean_rate_id')->references('id')->on('bean_rates');
 
-            $table->double('value')->unsigned()->comment('积分原始值');
-            $table->double('result')->unsigned()->comment('result = rate * result');
+            $table->double('value', 15, 2)->comment('积分原始值');
+            $table->double('result', 15, 2)->comment('result = rate * value');
 
             $table->boolean('valid')->default(false)->comment('积分是否有效');
             $table->string('detail')->nullable()->default('')->comment('积分备注');
@@ -42,11 +42,9 @@ class CreateCustomerBeansTable extends Migration
     public function down()
     {
         Schema::table('customer_beans', function (Blueprint $table) {
-            //
             $table->dropForeign('customer_beans_customer_id_foreign');
             $table->dropForeign('customer_beans_bean_rate_id_foreign');
         });
-
         Schema::drop('customer_beans');
     }
 }
