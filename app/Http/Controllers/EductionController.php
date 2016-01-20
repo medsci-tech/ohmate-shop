@@ -15,9 +15,9 @@ class EductionController extends Controller
         $this->middleware('beans.ceiling');
     }
 
-    public function essay()
+    public function article()
     {
-        return 'essay';
+        return 'article';
     }
 
     public function injection()

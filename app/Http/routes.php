@@ -26,7 +26,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::group(['prefix' => 'eduction'], function () {
-        Route::get('/essay', 'EductionController@essay');
+        Route::get('/article', 'EductionController@article');
         Route::get('/injection', 'EductionController@injection');
         Route::get('/game', 'EductionController@game');
     });

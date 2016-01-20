@@ -17,7 +17,6 @@ class CreateBeanRatesTable extends Migration
 
             $table->string('project_en', 31)->comment('项目en');
             $table->string('project_ch', 31)->comment('项目ch');
-
             $table->string('action_en', 31)->comment('操作en');
             $table->string('action_ch', 31)->comment('操作ch');
             $table->double('rate', 15, 2)->nullable()->default(0)->comment('操作<->积分兑换率');

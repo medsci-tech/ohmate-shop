@@ -12,7 +12,6 @@ use App\Constants\AppConstant;
 
 class PersonalController extends Controller
 {
-    //
     function __construct()
     {
         $this->middleware('auth.wechat');
@@ -60,7 +59,7 @@ class PersonalController extends Controller
             return redirect('/personal/error');
         } /*if>*/
 
-        $customerBeans = $customer->beans();
+        $customerBeans = $customer->beans;
         if (!$customerBeans) {
             return view('personal.no_beans');
         } /*if>*/

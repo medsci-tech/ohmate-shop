@@ -109,7 +109,7 @@ class WechatController extends Controller {
         $menus = [
             /* 教育学习 */
             $buttonEducation->buttons([
-                new MenuItem('教育频道', 'view', url('/eduction/essay')),
+                new MenuItem('教育频道', 'view', url('/eduction/article')),
                 new MenuItem('注射指导', 'view', url('/eduction/injection')),
                 new MenuItem('每日签到', 'view', url('/eduction/game')),
             ]),
