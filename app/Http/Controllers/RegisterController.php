@@ -59,7 +59,7 @@ class RegisterController extends Controller
 
         $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
         if (!$ohMateCustomer) {
-            return redirect(AppConstant::ATTENTION_URL);
+            return redirect('/register/error');
         } /*if>*/
 
         if (0 != $ohMateCustomer->customer_id) {
@@ -98,13 +98,13 @@ class RegisterController extends Controller
 
         $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
         if (!$ohMateCustomer) {
-            return redirect(AppConstant::ATTENTION_URL);
+            return redirect('/register/error');
         } /*if>*/
 
         $phone  = $request->input(['phone']);
         $number = SMSVerifyHelper::createVerifyNumber($phone);
         if (!$number) {
-            return view('register.error');
+            return redirect('/register/error');
         } /*if>*/
 
         $ohMateCustomer->auth_code = $number;

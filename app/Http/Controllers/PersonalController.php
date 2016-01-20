@@ -12,7 +12,6 @@ use App\Constants\AppConstant;
 
 class PersonalController extends Controller
 {
-    //
     function __construct()
     {
         $this->middleware('auth.wechat');

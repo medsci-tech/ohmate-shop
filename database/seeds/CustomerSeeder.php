@@ -13,7 +13,6 @@ class CustomerSeeder extends Seeder
      */
     public function run()
     {
-        //
         $typeId = CustomerType::where('type_en', 'enterprise')->first()->id;
         DB::table('customers')->insert(
             ['type_id' => $typeId,  'beans_total' => 0, 'phone' => 'ykbl' ]
