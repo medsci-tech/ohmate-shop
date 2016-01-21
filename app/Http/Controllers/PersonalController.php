@@ -70,7 +70,7 @@ class PersonalController extends Controller
                         'result'        => $customerBean->result,
                         'project_ch'    => $customerBean->rate->project_ch,
                         'action'        => $customerBean->rate->action_ch,
-                        'time'          => $customerBean->updated_at,
+                        'time'          => $customerBean->updated_at->date,
                         'detail'        => $customerBean->detail];
         } /*for>*/
 
