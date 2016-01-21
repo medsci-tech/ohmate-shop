@@ -46,4 +46,28 @@ class BeanRechargeHelper {
         return $ret;
     }
 
+    public static function scanArticleFeedback($user)
+    {
+        \Log::info('BeanRechargeHelper:scanArticleFeedback:user:' . $user);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer) {
+            return false;
+        } /*if>*/
+
+        $ret = self::recharge($user, AppConstant::BEAN_ACTION_SCAN_ARTICLE);
+        return $ret;
+    }
+
+    public static function scanVideoFeedback($user)
+    {
+        \Log::info('BeanRechargeHelper:scanArticleFeedback:user:' . $user);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer) {
+            return false;
+        } /*if>*/
+
+        $ret = self::recharge($user, AppConstant::BEAN_ACTION_SCAN_VIDEO);
+        return $ret;
+    }
+
 } /*class*/

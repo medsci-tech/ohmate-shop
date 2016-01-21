@@ -32,7 +32,7 @@ class BeanRatesSeeder extends Seeder
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'feedback',  'action_ch' => '返利', 'rate' => 0.02]
+            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'consume_feedback',  'action_ch' => '返利', 'rate' => 0.02]
         );
 
         DB::table('bean_rates')->insert(
