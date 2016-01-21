@@ -10,6 +10,6 @@ class Video extends Model
 
     public function type()
     {
-        return $this->belongsTo('App\Models\Video', 'type_id');
+        return $this->belongsTo('App\Models\VideoType', 'type_id');
     }
 }
