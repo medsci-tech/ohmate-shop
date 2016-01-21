@@ -99,7 +99,6 @@ class PersonalController extends Controller
         return view('personal.friend', $data);
     }
 
-
     public function memberIntroduction()
     {
         return view('personal.member_introduction');
