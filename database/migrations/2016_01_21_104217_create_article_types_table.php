@@ -14,6 +14,8 @@ class CreateArticleTypesTable extends Migration
     {
         Schema::create('article_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type_en', 11)->comment('文章类型-英');
+            $table->string('type_ch', 11)->comment('文章类型-中');
             $table->timestamps();
         });
     }

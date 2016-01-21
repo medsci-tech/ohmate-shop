@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    //
+    protected $table = 'videos';
+
+    public function type()
+    {
+        return $this->belongsTo('App\Models\Video', 'type_id');
+    }
 }

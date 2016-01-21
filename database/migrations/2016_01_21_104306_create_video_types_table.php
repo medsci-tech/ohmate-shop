@@ -14,6 +14,8 @@ class CreateVideoTypesTable extends Migration
     {
         Schema::create('video_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type_en', 11)->comment('视频类型-英');
+            $table->string('type_ch', 11)->comment('视频类型-中');
             $table->timestamps();
         });
     }
