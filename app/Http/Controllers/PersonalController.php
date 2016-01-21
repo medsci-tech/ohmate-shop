@@ -117,6 +117,7 @@ class PersonalController extends Controller
 
     public function customerService()
     {
-        return view('personal.customer_service');    }
+        return view('personal.customer_service');
+    }
 
 } /*class*/
