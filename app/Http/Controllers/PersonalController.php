@@ -99,4 +99,24 @@ class PersonalController extends Controller
         return view('personal.friend', $data);
     }
 
+
+    public function memberIntroduction()
+    {
+        return view('personal.member_introduction');
+    }
+
+    public function beanRules()
+    {
+        return view('personal.bean_rules');
+    }
+
+    public function aboutUs()
+    {
+        return view('personal.about_us');
+    }
+
+    public function customerService()
+    {
+        return view('personal.customer_service');    }
+
 } /*class*/

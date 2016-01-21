@@ -41,5 +41,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
         Route::get('/friend', 'PersonalController@friend');
+
+        Route::get('/member-introduction', 'PersonalController@memberIntroduction');
+        Route::get('/bean-rules', 'PersonalController@beanRules');
+        Route::get('/about-us', 'PersonalController@aboutUs');
+        Route::get('/customer-service', 'PersonalController@customerService');
     });
 });
