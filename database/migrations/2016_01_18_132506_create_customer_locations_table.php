@@ -14,13 +14,12 @@ class CreateCustomerLocationsTable extends Migration
     {
         Schema::create('customer_locations', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
 
-            $table->decimal('latitude', 8, 5)->nullable()->default(0)->comment('经度');
-            $table->decimal('longitude', 8, 5)->nullable()->default(0)->comment('维度');
-            $table->decimal('precision', 8, 5)->nullable()->default(0)->comment('精度');
+            $table->decimal('latitude', 8, 5)->default(0)->comment('经度');
+            $table->decimal('longitude', 8, 5)->default(0)->comment('维度');
+            $table->decimal('precision', 8, 5)->default(0)->comment('精度');
 
             $table->timestamps();
         });

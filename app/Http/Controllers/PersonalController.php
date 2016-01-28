@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
-use App\Models\OhMateCustomer;
 use App\Constants\AppConstant;
 
 class PersonalController extends Controller
@@ -25,18 +24,13 @@ class PersonalController extends Controller
             return redirect('/personal/error');
         } /*if>*/
 
-        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if ((!$ohMateCustomer) || (!$ohMateCustomer->customer_id)) {
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if ((!$customer) || (!$customer->is_registered)) {
             return redirect('/personal/error');
         } /*if>*/
 
-        $customer = Customer::where('id', $ohMateCustomer->customer_id)->first();
-        if (!$customer) {
-            return redirect('/personal/error');
-        } /*if>*/
-
-        $data['nickname']           = $ohMateCustomer->nickname;
-        $data['head_image_url']     = $ohMateCustomer->head_image_url;
+        $data['nickname']           = $customer->nickname;
+        $data['head_image_url']     = $customer->head_image_url;
         $data['beans_total']        = $customer->beans_total;
         return $data;
 //        return view('personal.information', $data);
@@ -49,13 +43,8 @@ class PersonalController extends Controller
             return redirect('/personal/error');
         } /*if>*/
 
-        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if ((!$ohMateCustomer) || (0 == $ohMateCustomer->customer_id)) {
-            return redirect('/personal/error');
-        } /*if>*/
-
-        $customer = Customer::where('id', $ohMateCustomer->customer_id)->first();
-        if (!$customer) {
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if ((!$customer) || (!$customer->is_registered)) {
             return redirect('/personal/error');
         } /*if>*/
 
@@ -67,15 +56,20 @@ class PersonalController extends Controller
         $list = null;
         foreach ($customerBeans as $customerBean) {
             $list[] = [
-                        'result'        => $customerBean->result,
-                        'project_ch'    => $customerBean->rate->project_ch,
-                        'action'        => $customerBean->rate->action_ch,
-                        'time'          => $customerBean->updated_at->date,
-                        'detail'        => $customerBean->detail];
+                'result'    => $customerBean->result,
+                'action'    => $customerBean->rate->action_ch,
+                'time'      => $customerBean->updated_at->date,
+                'detail'    => $customerBean->detail
+            ];
         } /*for>*/
 
         return $list;
 //        return view('personal.beans', ['total' => $total, 'list' = $list]);
+    }
+
+    public function game()
+    {
+        return view('personal.game');
     }
 
     public function friend()
@@ -85,17 +79,13 @@ class PersonalController extends Controller
             return redirect('/personal/error');
         } /*if>*/
 
-        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if ((!$ohMateCustomer) || (0 == $ohMateCustomer->customer_id)) {
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if ((!$customer) || (!$customer->is_registered) || (!$customer->qr_code)) {
             return redirect('/personal/error');
         } /*if>*/
 
-        if (!$ohMateCustomer->qr_code) {
-            return redirect('/personal/error');
-        } /*if>*/
-
-        $data['nickname']   = $ohMateCustomer->nickname;
-        $data['qrCode']     = $ohMateCustomer->qr_code;
+        $data['nickname']   = $customer->nickname;
+        $data['qrCode']     = $customer->qr_code;
         return view('personal.friend', $data);
     }
 

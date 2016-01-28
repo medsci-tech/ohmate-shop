@@ -20,8 +20,9 @@ class CreateVideosTable extends Migration
             $table->string('title')->comment('视频标题');
             $table->string('thumbnail')->comment('视频缩略图');
             $table->string('uri')->comment('视频uri');
-            $table->integer('weight')->unsigned()->comment('权重');
-            $table->integer('count')->unsigned()->comment('阅读量');
+            $table->boolean('top')->default(false)->comment('top');
+            $table->integer('weight')->unsigned()->default(0)->comment('权重');
+            $table->integer('count')->unsigned()->default(0)->comment('阅读量');
             $table->timestamps();
         });
     }

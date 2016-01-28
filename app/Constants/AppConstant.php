@@ -27,7 +27,6 @@ class AppConstant {
     const CUSTOMER_ENTERPRISE   = 'enterprise';
 
     /* Bean Actions */
-    const BEAN_ACTION_FOCUS         = 'focus';
     const BEAN_ACTION_REGISTER      = 'register';
     const BEAN_ACTION_SIGN_IN       = 'sign_in';
     const BEAN_ACTION_CONSUME       = 'consume';
