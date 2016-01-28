@@ -51,6 +51,5 @@ class Kernel extends HttpKernel
 
         'auth.wechat' => \App\Http\Middleware\WechatMiddleware::class,
         'auth.access' => \App\Http\Middleware\AccessMiddleware::class,
-        'beans.ceiling' => \App\Http\Middleware\BeansCeilingMiddleware::class,
     ];
 }

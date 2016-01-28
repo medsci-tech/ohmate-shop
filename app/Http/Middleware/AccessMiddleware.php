@@ -6,8 +6,6 @@ use Closure;
 use Carbon\Carbon;
 use App\Constants\AppConstant;
 use App\Models\Customer;
-use App\Models\OhMateCustomer;
-
 
 class AccessMiddleware
 {
@@ -25,22 +23,18 @@ class AccessMiddleware
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
-        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if (!$ohMateCustomer) {
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if (!$customer) {
             return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
-        if (0 == $ohMateCustomer->customer_id) {
-            return redirect('/register/create');
-        } /*if>*/
-        $customer = Customer::where('id', $ohMateCustomer->customer_id)->first();
-        if (!$customer) {
+        if (!$customer->is_registered) {
             return redirect('/register/create');
         } /*if>*/
 
-        if (Carbon::now()->diffInMinutes($ohMateCustomer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL) {
-            $ohMateCustomer->head_image_url = $user['headimgurl'];
-            $ohMateCustomer->nickname       = $user['nickname'];
-            $ohMateCustomer->save();
+        if (Carbon::now()->diffInMinutes($customer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL) {
+            $customer->head_image_url = $user['headimgurl'];
+            $customer->nickname       = $user['nickname'];
+            $customer->save();
         } /*if>*/
 
         return $next($request);

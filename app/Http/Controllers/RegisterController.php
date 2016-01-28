@@ -9,7 +9,6 @@ use App\Http\Requests;
 use App\Constants\AppConstant;
 use App\Models\CustomerType;
 use App\Models\Customer;
-use App\Models\OhMateCustomer;
 use App\Helpers\BeanRechargeHelper;
 use App\Helpers\SMSVerifyHelper;
 
@@ -32,11 +31,6 @@ class RegisterController extends Controller
         return view('register.error');
     }
 
-    public function excess()
-    {
-        return view('register.excess');
-    }
-
     public function create()
     {
         return view('register.create');
@@ -57,34 +51,29 @@ class RegisterController extends Controller
             return redirect('/register/error');
         } /*if>*/
 
-        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if (!$ohMateCustomer) {
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if ((!$customer) || (!$customer->is_registered)) {
             return redirect('/register/error');
         } /*if>*/
 
-        if (0 != $ohMateCustomer->customer_id) {
-            return redirect('/register/excess');
-        } /*if>*/
-
-        $customer = new Customer();
-        $customer->phone        = $request->phone;
-        $customer->beans_total  = 0;
         $typeId = CustomerType::where('type_en', AppConstant::CUSTOMER_COMMON)->first()->id;
-        $customer->type_id = $typeId;
+        $customer->type_id  = $typeId;
+        $customer->phone    = $request->input(['phone']);
+        $customer->is_registered    = true;
+        $customer->beans_total      = 0;
+        $customer->nickname         = $user['nickname'];
+        $customer->head_image_url   = $user['headimgurl'];
         $customer->save();
         \Log::info('RegisterController:store:customerId' . $customer->id);
 
-        $ohMateCustomer->customer_id      = $customer->id;
-        $ohMateCustomer->head_image_url   = $user['headimgurl'];
-        $ohMateCustomer->nickname         = $user['nickname'];
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
         $result = $qrCode->forever($customer->id);
-        $ohMateCustomer->qr_code = $qrCode->show($result->ticket);
-        $ohMateCustomer->save();
+        $customer->qr_code = $qrCode->show($result->ticket);
+        $customer->save();
 
         $ret = BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_REGISTER);
         if ($ret) {
-            BeanRechargeHelper::inviteFeedback($ohMateCustomer->referrer_id);
+            BeanRechargeHelper::inviteFeedback($customer->referrer_id);
         } /*if>*/
 
         return view('register.success');
@@ -96,19 +85,12 @@ class RegisterController extends Controller
             return redirect('/register/error');
         } /*if>*/
 
-        $ohMateCustomer = OhMateCustomer::where('openid', $user['openid'])->first();
-        if (!$ohMateCustomer) {
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if ((!$customer) || (!$customer->is_registered)) {
             return redirect('/register/error');
         } /*if>*/
 
         $phone  = $request->input(['phone']);
-        $number = SMSVerifyHelper::createVerifyNumber($phone);
-        if (!$number) {
-            return redirect('/register/error');
-        } /*if>*/
-
-        $ohMateCustomer->auth_code = $number;
-        $ohMateCustomer->save();
     }
 
 } /*class*/

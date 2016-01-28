@@ -12,43 +12,39 @@ class BeanRatesSeeder extends Seeder
     public function run()
     {
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'focus',  'action_ch' => '关注', 'rate' => 100]
+            ['action_en' => 'register',  'action_ch' => '注册', 'rate' => 2000]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'register',  'action_ch' => '注册', 'rate' => 2080]
+            ['action_en' => 'sign_in',  'action_ch' => '签到', 'rate' => 20]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'sign_in',  'action_ch' => '签到', 'rate' => 20]
+            ['action_en' => 'consume',  'action_ch' => '消费', 'rate' => -1]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'consume',  'action_ch' => '消费', 'rate' => -1]
+            ['action_en' => 'invite',  'action_ch' => '安利', 'rate' => 100]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'invite',  'action_ch' => '安利', 'rate' => 100]
+            ['action_en' => 'consume_feedback',  'action_ch' => '返利', 'rate' => 0.02]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'feedback',  'action_ch' => '返利', 'rate' => 0.02]
+            ['action_en' => 'scan_article',  'action_ch' => '浏览图文', 'rate' => 10]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'scan_article',  'action_ch' => '浏览图文', 'rate' => 10]
+            ['action_en' => 'scan_video',  'action_ch' => '浏览视频', 'rate' => 20]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'scan_video',  'action_ch' => '浏览视频', 'rate' => 25]
+            ['action_en' => 'feedback_doctor_education',  'action_ch' => '患者学习返利', 'rate' => 0.1]
         );
 
         DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'feedback_doctor_education',  'action_ch' => '患者学习返利', 'rate' => 0.1]
-        );
-
-        DB::table('bean_rates')->insert(
-            ['project_en' => 'zry',  'project_ch' => '针融易', 'action_en' => 'feedback_doctor_consume',  'action_ch' => '患者消费返利', 'rate' => 0.05]
+            ['action_en' => 'feedback_doctor_consume',  'action_ch' => '患者消费返利', 'rate' => 0.05]
         );
     }
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBeanRatesTable extends Migration
+class CreateVideoTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateBeanRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bean_rates', function (Blueprint $table) {
+        Schema::create('video_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('action_en', 31)->comment('操作en');
-            $table->string('action_ch', 31)->comment('操作ch');
-            $table->double('rate', 15, 2)->default(0)->comment('操作<->积分兑换率');
+            $table->string('type_en', 11)->comment('视频类型-英');
+            $table->string('type_ch', 11)->comment('视频类型-中');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateBeanRatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bean_rates');
+        Schema::drop('video_types');
     }
 }
