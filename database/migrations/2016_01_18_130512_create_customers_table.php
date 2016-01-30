@@ -16,6 +16,7 @@ class CreateCustomersTable extends Migration
             $table->increments('id');
             $table->integer('type_id')->unsigned()->comment('用户类型ID');
             $table->foreign('type_id')->references('id')->on('customer_types');
+            $table->integer('referrer_id')->unsigned()->default(0)->comment();
 
             $table->string('phone', 31)->nullable()->comment('personal telephone');
             $table->unique('phone');

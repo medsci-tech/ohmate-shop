@@ -13,16 +13,14 @@ use App\Http\Requests;
 use App\Models\CustomerType;
 use App\Models\Customer;
 use App\Models\CustomerLocation;
-use App\Models\OhMateCustomer;
+use App\Constants\AppConstant;
+use App\Helpers\BeanRechargeHelper;
 
 use Illuminate\Http\Request;
 use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Message;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
-
-use App\Constants\AppConstant;
-use App\Helpers\BeanRechargeHelper;
 
 class WechatController extends Controller {
 
@@ -67,6 +65,9 @@ class WechatController extends Controller {
 
             $customer = new Customer();
             $customer->openid = $openId;
+            $typeId = CustomerType::where('type_en', AppConstant::CUSTOMER_COMMON)->first()->id;
+            $customer->type_id  = $typeId;
+
             $eventKey = $event['EventKey'];
             if (is_array($eventKey) && (0 == count($eventKey))) {
                 $customer->referrer_id = 0;

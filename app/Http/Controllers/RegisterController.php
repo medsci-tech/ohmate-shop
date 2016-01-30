@@ -56,8 +56,6 @@ class RegisterController extends Controller
             return redirect('/register/error');
         } /*if>*/
 
-        $typeId = CustomerType::where('type_en', AppConstant::CUSTOMER_COMMON)->first()->id;
-        $customer->type_id  = $typeId;
         $customer->phone    = $request->input(['phone']);
         $customer->is_registered    = true;
         $customer->beans_total      = 0;
