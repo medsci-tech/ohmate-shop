@@ -58,7 +58,7 @@ class PersonalController extends Controller
             $list[] = [
                 'result'    => $customerBean->result,
                 'action'    => $customerBean->rate->action_ch,
-                'time'      => $customerBean->updated_at->date,
+                'time'      => $customerBean->updated_at,
                 'detail'    => $customerBean->detail
             ];
         } /*for>*/
