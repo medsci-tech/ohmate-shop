@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\CustomerType;
 
 class CustomersSeeder extends Seeder
 {
