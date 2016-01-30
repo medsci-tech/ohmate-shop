@@ -52,7 +52,8 @@ class RegisterController extends Controller
         } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
+        if ((!$customer) || ($customer->is_registered)) {
+            \Log::error('222');
             return redirect('/register/error');
         } /*if>*/
 
