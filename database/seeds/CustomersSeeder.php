@@ -13,7 +13,7 @@ class CustomersSeeder extends Seeder
     {
         $typeId = CustomerType::where('type_en', 'enterprise')->first()->id;
         DB::table('customers')->insert(
-            ['id' => 0 , 'type_id' => $typeId, 'openid' => 'enterprise']
+            ['id' => 1 , 'type_id' => $typeId, 'openid' => 'enterprise']
         );
     }
 }
