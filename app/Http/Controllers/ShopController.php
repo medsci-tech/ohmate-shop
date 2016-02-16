@@ -18,7 +18,9 @@ class ShopController extends Controller
 
     public function index()
     {
-        return 'index';
+        return redirect('http://test.ohmate.com.cn/shop')->with([
+            'user' => \Session::get(AppConstant::SESSION_USER_KEY)
+        ]);
     }
 
     public function orders()

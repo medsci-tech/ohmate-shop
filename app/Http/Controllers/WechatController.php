@@ -103,7 +103,7 @@ class WechatController extends Controller {
             /* 易康商城 */
             $buttonShop->buttons([
 //                new MenuItem('商城首页', 'view', url('/shop/index')),
-                new MenuItem('商城首页', 'view', url('http://test.ohmate.com.cn/shop')),
+                new MenuItem('商城首页', 'view', url('/shop/index')),
                 new MenuItem('我的订单', 'view', url('/shop/orders')),
                 new MenuItem('我的地址', 'view', url('/shop/addresses')),
             ]),
