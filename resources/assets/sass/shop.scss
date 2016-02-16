@@ -1,0 +1,215 @@
+body {
+  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+a, a:focus, a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+$shop_border: 2px solid #eee;
+
+.swiper-container {
+  border-bottom: 4px solid #EEEEEE;
+}
+
+.container {
+  background-color: #EEEEEE;
+  .navbar-fixed-bottom {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    text-align: center;
+    border-top: 1px solid #EEEEEE;
+    background-color: #fff;
+    .nav-button {
+      padding: 5px 0px 0px 0px;
+      display: inline-block;
+      width: 18.5%;
+      color: #a3a3a3;
+      p {
+        margin-bottom: 2px;
+      }
+      img {
+        width: 35%;
+      }
+    }
+  }
+
+  .row {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    background-color: #ffffff;
+>>>>>>> 33a5bf8aecde65299fe50698cfe7f80ca66d69be
+=======
+    background-color: #ffffff;
+>>>>>>> 4aeb22f38508cf164fc7e1cfb0989882c2562c07
+    .col-xs-6:first-child {
+      height: 200px;
+      img {
+        width: 90px;
+        float: right;
+      }
+    }
+    .col-xs-6:nth-child(2), .col-xs-6:nth-child(3) {
+      height: 100px;
+      img {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 42px;
+      }
+    }
+  }
+  .col-xs-6 {
+    border-right: $shop_border;
+    border-bottom: $shop_border;
+    height: 162px;
+    background-color: #FFFFFF;
+    > h4 {
+      margin-bottom: 2px;
+      font-size: 15px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    > p {
+      font-size: 12px;
+      color: #a3a3a3;
+      margin-bottom: 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    img {
+      width: 80px;
+      float: right;
+    }
+    div {
+      position: absolute;
+      bottom: 0px;
+      left: 10px;
+      right: 10px;
+      border-top: 1px solid #ddd;
+      display: inline-block;
+      span {
+        font-size: 15px;
+        font-weight: bold;
+        color: #f71212;
+      }
+      p {
+        float: right;
+        margin-top: 5px;
+        margin-bottom: 0px;
+        font-size: 13px;
+        color: #a3a3a3;
+      }
+    }
+  }
+  .col-xs-6:last-child {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    margin-bottom: 50px;
+=======
+    margin-bottom: 48px;
+>>>>>>> 33a5bf8aecde65299fe50698cfe7f80ca66d69be
+=======
+    margin-bottom: 48px;
+>>>>>>> 4aeb22f38508cf164fc7e1cfb0989882c2562c07
+  }
+
+}
+
+.nav-active {
+  color: #f71212;
+}
+
+.category {
+  padding: 0px;
+  .col-xs-3 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    position: fixed;
+>>>>>>> 33a5bf8aecde65299fe50698cfe7f80ca66d69be
+=======
+    position: fixed;
+>>>>>>> 4aeb22f38508cf164fc7e1cfb0989882c2562c07
+    padding: 0px;
+    text-align: center;
+    li {
+      padding-top: 8px;
+      padding-bottom: 8px;
+      font-size: 16px;
+      border-right: $shop_border;
+      border-bottom: $shop_border;
+      background-color: #fff;
+    }
+    .li-active {
+      border-left: 5px solid #f71212;
+      padding-right: 5px;
+    }
+  }
+
+  .col-xs-9 {
+    padding: 0px;
+<<<<<<< HEAD
+<<<<<<< HEAD
+  }
+=======
+=======
+>>>>>>> 4aeb22f38508cf164fc7e1cfb0989882c2562c07
+    float: right;
+  }
+}
+
+.order-form {
+  p {
+    margin: 0px;
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid #dddddd;
+    span {
+      float: right;
+      color: #f71212;
+    }
+    .order-finished {
+      color: #a3a3a3;
+    }
+    small {
+      color: #a3a3a3;
+    }
+  }
+  p:last-child {
+    margin-top: 64px;
+    border-top: 1px solid #dddddd;
+  }
+  .img-group {
+    margin-right: 15%;
+
+    div {
+      padding-right: 0px;
+      img {
+        width: 64px;
+      }
+    }
+
+  }
+  .arrow {
+    position: absolute;
+    top: 55px;
+    right: 18px;
+    width: 15px;
+    height: 15px;
+    border-right: 2px solid #a3a3a3;
+    border-bottom: 2px solid #a3a3a3;
+    transform: rotate(-45deg);
+  }
+  border-bottom: 1px solid #dddddd;
+<<<<<<< HEAD
+>>>>>>> 33a5bf8aecde65299fe50698cfe7f80ca66d69be
+}
+=======
+}
+
+>>>>>>> 4aeb22f38508cf164fc7e1cfb0989882c2562c07
