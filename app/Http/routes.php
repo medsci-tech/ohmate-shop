@@ -42,7 +42,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/beans', 'PersonalController@beans');
         Route::get('/game', 'PersonalController@game');
         Route::get('/friend', 'PersonalController@friend');
-
         Route::get('/error', 'PersonalController@error');
 
         Route::get('/member-introduction', 'PersonalController@memberIntroduction');
