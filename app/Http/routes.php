@@ -31,7 +31,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/injection/view', 'EductionController@injectionView');
     });
 
-    Route::group(['prefix' => 'shop'], function () {
+    Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/orders', 'ShopController@orders');
         Route::get('/addresses', 'ShopController@addresses');
