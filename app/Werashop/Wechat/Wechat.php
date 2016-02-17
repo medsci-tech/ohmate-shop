@@ -78,7 +78,7 @@ class Wechat
     public function __construct()
     {
         $this->_appId = env('WX_APPID');
-        $this->_secret = env('WX_APPSECRET');
+        $this->_secret = env('WX_SECRET');
         $this->_aesKey = env('WX_ENCODING_AESKEY');
         $this->_token = env('WX_TOKEN');
     }
