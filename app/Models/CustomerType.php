@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class CustomerType
+ * @package App\Models
+ * @mixin \Eloquent
+ */
 class CustomerType extends Model
 {
     protected $table = 'customer_types';
@@ -12,5 +17,4 @@ class CustomerType extends Model
     {
         return $this->hasMany('App\Models\Customer', 'type_id');
     }
-
-} /*class*/
+}

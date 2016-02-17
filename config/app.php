@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\MessageServiceProvider::class,
         App\Providers\CartServiceProvider::class,
+        App\Providers\WechatServiceProvider::class,
 
         /*
          * IDE Helper
@@ -208,7 +209,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'MessageSender'   => App\Werashop\Message\Facades\MessageSender::class,
-        'Cart'      =>App\Werashop\Cart\Facades\Cart::class,
+        'Cart'      => App\Werashop\Cart\Facades\Cart::class,
+        'Wechat'    => App\Werashop\Wechat\Facades\Wechat::class,
     ],
 
 ];

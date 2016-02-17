@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Customer
+ * @package App\Models
+ * @mixin \Eloquent
+ */
 class Customer extends Model
 {
     protected $table = 'customers';
