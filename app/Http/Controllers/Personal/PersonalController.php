@@ -22,12 +22,12 @@ class PersonalController extends Controller
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!$user) {
             return redirect('/personal/error');
-        } /*if>*/
+        }
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if ((!$customer) || (!$customer->is_registered)) {
             return redirect('/personal/error');
-        } /*if>*/
+        }
 
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
@@ -41,17 +41,17 @@ class PersonalController extends Controller
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!$user) {
             return redirect('/personal/error');
-        } /*if>*/
+        }
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if ((!$customer) || (!$customer->is_registered)) {
             return redirect('/personal/error');
-        } /*if>*/
+        }
 
         $customerBeans = $customer->beans;
         if (!$customerBeans) {
             return view('personal.no_beans');
-        } /*if>*/
+        }
 
         $list = null;
         foreach ($customerBeans as $customerBean) {
@@ -61,7 +61,7 @@ class PersonalController extends Controller
                 'time'      => $customerBean->updated_at,
                 'detail'    => $customerBean->detail
             ];
-        } /*for>*/
+        }
 
         return $list;
 //        return view('personal.beans', ['total' => $total, 'list' = $list]);
@@ -77,12 +77,12 @@ class PersonalController extends Controller
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!$user) {
             return redirect('/personal/error');
-        } /*if>*/
+        }
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if ((!$customer) || (!$customer->is_registered) || (!$customer->qr_code)) {
             return redirect('/personal/error');
-        } /*if>*/
+        }
 
         $data['nickname']   = $customer->nickname;
         $data['qrCode']     = $customer->qr_code;
@@ -109,4 +109,4 @@ class PersonalController extends Controller
         return view('personal.customer_service');
     }
 
-} /*class*/
+}

@@ -2,10 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Werashop\Exceptions\UserNotCachedException;
+use App\Werashop\Exceptions\UserNotSubscribedException;
 use Closure;
 use Carbon\Carbon;
 use App\Constants\AppConstant;
 use App\Models\Customer;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AccessMiddleware
 {
@@ -18,27 +22,47 @@ class AccessMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        try {
+            $user = \Helper::getSessionCachedUser();
 
-        if (!$user) {
+            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+
+            if (!$customer->is_registered) {
+                return redirect('/register/create');
+            }
+
+            if ($this->userDatabaseExpired($customer)) {
+                $this->refreshUserDatabase($user, $customer);
+            }
+
+            return $next($request);
+        } catch (UserNotSubscribedException $e) {
+            return redirect(AppConstant::ATTENTION_URL);
+        } catch (UserNotCachedException $e) {
+            return redirect(AppConstant::ATTENTION_URL);
+        } catch (ModelNotFoundException $e) {
             return redirect(AppConstant::ATTENTION_URL);
         }
+    }
 
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if (!$customer) {
-            return redirect(AppConstant::ATTENTION_URL);
-        }
-        if (!$customer->is_registered) {
-            return redirect('/register/create');
-        }
+    /**
+     * @param $user
+     * @param Model $customer
+     */
+    protected function refreshUserDatabase($user, $customer)
+    {
+        $customer->head_image_url = $user['headimgurl'];
+        $customer->nickname = $user['nickname'];
+        $customer->save();
+    }
 
-        if (Carbon::now()->diffInMinutes($customer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL) {
-            $customer->head_image_url = $user['headimgurl'];
-            $customer->nickname       = $user['nickname'];
-            $customer->save();
-        }
-
-        return $next($request);
+    /**
+     * @param $customer
+     * @return bool
+     */
+    protected function userDatabaseExpired($customer)
+    {
+        return Carbon::now()->diffInMinutes($customer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL;
     }
 
 } /*class*/

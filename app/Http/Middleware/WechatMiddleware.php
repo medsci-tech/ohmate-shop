@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Overtrue\Wechat\Auth;
 use App\Constants\AppConstant;
@@ -18,14 +19,11 @@ class WechatMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (\Session::has(AppConstant::SESSION_USER_KEY)) {
+        if (\Helper::hasSessionCachedUser()) {
             return $next($request);
-        } /*if>*/
+        }
 
-        $appId  = env('WX_APPID');
-        $secret = env('WX_SECRET');
-        $auth = new Auth($appId, $secret);
-        $user = $auth->authorize(url($request->fullUrl()));
+        $user = \Wechat::authorizeUser($request->fullUrl());
         /*
          * if auth failed, this user maybe not a subscribed account,
          * but we allow this man go on to education page.
@@ -34,7 +32,7 @@ class WechatMiddleware
             \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
         } else {
             \Session::put(AppConstant::SESSION_USER_KEY, null);
-        }/*if>*/
+        }
 
         return $next($request);
     }

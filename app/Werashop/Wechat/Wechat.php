@@ -7,6 +7,7 @@ use App\Constants\AppConstant;
 use App\Models\Customer;
 use App\Models\CustomerLocation;
 use App\Models\CustomerType;
+use Overtrue\Wechat\Auth;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
@@ -205,5 +206,18 @@ class Wechat
             return Message::make('text')->content('您好!');
         };
 
+    }
+
+    /**
+     * @param string $jump_url
+     * @return null|\Overtrue\Wechat\Utils\Bag
+     */
+    public function authorizeUser($jump_url)
+    {
+        $appId = $this->_appId;
+        $secret = $this->_secret;
+        $auth = new Auth($appId, $secret);
+        $user = $auth->authorize(url($jump_url));
+        return $user;
     }
 }

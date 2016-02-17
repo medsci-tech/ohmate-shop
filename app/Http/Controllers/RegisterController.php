@@ -80,9 +80,6 @@ class RegisterController extends Controller
 
     public function sms(Request $request) {
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/register/error');
-        } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if ((!$customer) || (!$customer->is_registered)) {

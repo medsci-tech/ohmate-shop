@@ -10344,6 +10344,42 @@ namespace {
             return \App\Werashop\Wechat\Wechat::messageEventCallback();
         }
         
+        /**
+         * 
+         *
+         * @param string $jump_url
+         * @return null|\Overtrue\Wechat\Utils\Bag 
+         * @static 
+         */
+        public static function authorizeUser($jump_url){
+            return \App\Werashop\Wechat\Wechat::authorizeUser($jump_url);
+        }
+        
+    }
+
+
+    class Helper extends \App\Werashop\Helper\Facades\Helper{
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @throws UserNotCachedException
+         * @static 
+         */
+        public static function getSessionCachedUser(){
+            return \App\Werashop\Helper\Helper::getSessionCachedUser();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function hasSessionCachedUser(){
+            return \App\Werashop\Helper\Helper::hasSessionCachedUser();
+        }
+        
     }
 
 
