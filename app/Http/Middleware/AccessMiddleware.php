@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use \App\Constants\AppConstant;
 use Carbon\Carbon;
-use \App\Models\Customer;
+use App\Constants\AppConstant;
+use App\Models\Customer;
 
 class AccessMiddleware
 {
@@ -20,21 +20,20 @@ class AccessMiddleware
     {
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!$user) {
-            return redirect('/register/focus');
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if (!$customer) {
-            return redirect('/register/focus');
+            return redirect(AppConstant::ATTENTION_URL);
         } /*if>*/
-
-        if ((!$customer->phone) || (!$customer->is_registered)) {
+        if (!$customer->is_registered) {
             return redirect('/register/create');
         } /*if>*/
 
         if (Carbon::now()->diffInMinutes($customer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL) {
-            $customer->headimgurl   = $user['headimgurl'];
-            $customer->nickname     = $user['nickname'];
+            $customer->head_image_url = $user['headimgurl'];
+            $customer->nickname       = $user['nickname'];
             $customer->save();
         } /*if>*/
 

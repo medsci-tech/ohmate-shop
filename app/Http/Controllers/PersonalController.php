@@ -6,112 +6,107 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use \App\Models\Customer;
-use \App\Models\CustomerBean;
-
-
-
+use App\Models\Customer;
+use App\Constants\AppConstant;
 
 class PersonalController extends Controller
 {
-    //
     function __construct()
     {
-        // TODO: Implement __construct() method.
         $this->middleware('auth.wechat');
         $this->middleware('auth.access');
     }
 
     public function information()
     {
-        if (!\Session::has('logged_user')) {
-            return "session no exists";
-        }/*if>*/
-
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!$user) {
+            return redirect('/personal/error');
+        } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
-        \Log::info('advertisement:' . $customer);
-        if (!$customer) {
-            return redirect('/register/focus');
+        if ((!$customer) || (!$customer->is_registered)) {
+            return redirect('/personal/error');
         } /*if>*/
 
-        if ((!$customer->phone) || (!$customer->is_registered)) {
-            return redirect('/register/create');
-        } /*if>*/
-
-        $info = '昵称:' . $customer->nickname . ' 头像:' . $customer->headimgurl
-            . ' 电话:' . $customer->phone;
-
-        return 'information '.$info;
+        $data['nickname']           = $customer->nickname;
+        $data['head_image_url']     = $customer->head_image_url;
+        $data['beans_total']        = $customer->beans_total;
+        return $data;
+//        return view('personal.information', $data);
     }
 
     public function beans()
     {
-        if (!\Session::has('logged_user')) {
-            return "session no exists";
-        }/*if>*/
-
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!$user) {
+            return redirect('/personal/error');
+        } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
-        \Log::info('advertisement:' . $customer);
-        if (!$customer) {
-            return redirect('/register/focus');
+        if ((!$customer) || (!$customer->is_registered)) {
+            return redirect('/personal/error');
         } /*if>*/
 
-        if ((!$customer->phone) || (!$customer->is_registered)) {
-            return redirect('/register/create');
+        $customerBeans = $customer->beans;
+        if (!$customerBeans) {
+            return view('personal.no_beans');
         } /*if>*/
 
-        $customerBeans = CustomerBean::where('customer_id', $customer->id)->get();
-
-
-        $temp = '';
+        $list = null;
         foreach ($customerBeans as $customerBean) {
-            \Log::info('beans:' . $customerBean);
-            $temp = '积分兑换规则:' . $customerBean->bean_rate_id . ' 积分原始值' .
-                $customerBean->value . '.result' . $customerBean->result . '\n';
-        }
+            $list[] = [
+                'result'    => $customerBean->result,
+                'action'    => $customerBean->rate->action_ch,
+                'time'      => $customerBean->updated_at,
+                'detail'    => $customerBean->detail
+            ];
+        } /*for>*/
 
-
-        $info = '昵称:' . $customer->nickname . '\n'.$temp;
-        return 'beans '.$info;
+        return $list;
+//        return view('personal.beans', ['total' => $total, 'list' = $list]);
     }
 
-    public function addresses()
+    public function game()
     {
-        return 'addresses';
-    }
-
-    public function orders()
-    {
-        return 'orders';
+        return view('personal.game');
     }
 
     public function friend()
     {
-        if (!\Session::has('logged_user')) {
-            return "session no exists";
-        }/*if>*/
-
-        $user = \Session::get('logged_user');
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!$user) {
+            return redirect('/personal/error');
+        } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
-        \Log::info('advertisement:' . $customer);
-        if (!$customer) {
-            return redirect('/register/focus');
+        if ((!$customer) || (!$customer->is_registered) || (!$customer->qr_code)) {
+            return redirect('/personal/error');
         } /*if>*/
 
-        if ((!$customer->phone) || (!$customer->is_registered)) {
-            return redirect('/register/create');
-        } /*if>*/
+        $data['nickname']   = $customer->nickname;
+        $data['qrCode']     = $customer->qr_code;
+        return view('personal.friend', $data);
+    }
 
-        if ($customer->qr_code) {
-            return view('personal.advertisement', ['qrCode' => $customer->qr_code]);
-        } /*if>*/
+    public function memberIntroduction()
+    {
+        return view('personal.member_introduction');
+    }
 
-        return 'friend';
+    public function beanRules()
+    {
+        return view('personal.bean_rules');
+    }
+
+    public function aboutUs()
+    {
+        return view('personal.about_us');
+    }
+
+    public function customerService()
+    {
+        return view('personal.customer_service');
     }
 
 } /*class*/

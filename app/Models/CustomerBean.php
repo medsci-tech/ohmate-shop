@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomerBean extends Model
 {
-    //
     protected $table = 'customer_beans';
 
-    protected function beanRate()
+    protected function rate()
     {
-        return $this->belongsTo('App\Models\BeanRate');
+        return $this->belongsTo('App\Models\BeanRate', 'bean_rate_id');
+    }
+
+    protected function customer()
+    {
+        return $this->belongsTo('App\Models\Customer', 'customer_id');
     }
 }

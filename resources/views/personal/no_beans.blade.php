@@ -1,11 +1,11 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>注册失败</title>
+    <title>没有迈豆</title>
 </head>
 <body>
-<h1>excess</h1>
-<h1>不要重复注册</h1>
+<h1>no_beans</h1>
+<h1>没有迈豆</h1>
 
 </body>
 </html>

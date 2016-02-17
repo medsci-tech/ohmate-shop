@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Constants\AppConstant;
+use App\Models\Customer;
+use App\Helpers\BeanRechargeHelper;
+
 class EductionController extends Controller
 {
     function __construct()
@@ -14,14 +18,29 @@ class EductionController extends Controller
         $this->middleware('auth.wechat');
     }
 
-    public function essay()
+    public function article()
     {
-        return 'essay';
+        return 'article';
     }
 
-    public function game()
+    public function injection()
     {
-        return 'game';
+        return 'injection';
+    }
+
+    public function injectionView(Request $request)
+    {
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!$user) {
+            return;
+        } /*if>*/
+
+        $customer = Customer::where('openid', $user['openid'])->first();
+        if ((!$customer) || (!$customer->is_registered)) {
+            return;
+        } /*if>*/
+
+
     }
 
 } /*class*/

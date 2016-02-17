@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\AppConstant;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,7 +19,24 @@ class ShopController extends Controller
 
     public function index()
     {
-        return 'index';
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+//        return redirect('http://test.ohmate.com.cn/shop')->with([
+//            'user' => $user
+//        ]);
+
+        return http_redirect('http://test.ohmate.com.cn/shop', [
+            'user' => $user
+        ]);
+    }
+
+    public function orders()
+    {
+        return 'orders';
+    }
+
+    public function addresses()
+    {
+        return 'addresses';
     }
 
 } /*class*/

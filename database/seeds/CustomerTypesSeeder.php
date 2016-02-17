@@ -11,9 +11,9 @@ class CustomerTypesSeeder extends Seeder
      */
     public function run()
     {
-        //
+
         DB::table('customer_types')->insert(
-            ['type_en' => 'patient',  'type_ch' => '患者' ]
+            ['type_en' => 'common',  'type_ch' => '普通用户' ]
         );
 
         DB::table('customer_types')->insert(
@@ -28,5 +28,9 @@ class CustomerTypesSeeder extends Seeder
             ['type_en' => 'doctor',  'type_ch' => '医生' ]
         );
 
+        DB::table('customer_types')->insert(
+            ['type_en' => 'enterprise',  'type_ch' => '企业' ]
+        );
     }
+
 }

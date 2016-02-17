@@ -22,23 +22,31 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::get('/focus', 'RegisterController@focus');
         Route::get('/error', 'RegisterController@error');
-        Route::get('/excess', 'RegisterController@excess');
-    });
-
-    Route::group(['prefix' => 'shop'], function () {
-        Route::get('/index', 'ShopController@index');
     });
 
     Route::group(['prefix' => 'eduction'], function () {
-        Route::get('/essay', 'EductionController@essay');
-        Route::get('/game', 'EductionController@game');
+        Route::get('/article', 'EductionController@article');
+        Route::get('/injection', 'EductionController@injection');
+
+        Route::post('/injection/view', 'EductionController@injectionView');
+    });
+
+    Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
+        Route::get('/index', 'ShopController@index');
+        Route::get('/orders', 'ShopController@orders');
+        Route::get('/addresses', 'ShopController@addresses');
     });
 
     Route::group(['prefix' => 'personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
-        Route::get('/addresses', 'PersonalController@addresses');
-        Route::get('/orders', 'PersonalController@orders');
+        Route::get('/game', 'PersonalController@game');
         Route::get('/friend', 'PersonalController@friend');
+        Route::get('/error', 'PersonalController@error');
+
+        Route::get('/member-introduction', 'PersonalController@memberIntroduction');
+        Route::get('/bean-rules', 'PersonalController@beanRules');
+        Route::get('/about-us', 'PersonalController@aboutUs');
+        Route::get('/customer-service', 'PersonalController@customerService');
     });
 });
