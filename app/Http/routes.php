@@ -50,3 +50,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/customer-service', 'PersonalController@customerService');
     });
 });
+
+
+
+Route::any('github', 'Github\GithubController@onEvent');
