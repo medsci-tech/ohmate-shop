@@ -21,7 +21,7 @@ class ShopController extends Controller
     public function index()
     {
         return view('shop.index')->with([
-            'items' => Commodity::with('image')
+            'items' => Commodity::with('images')->get()
         ]);
     }
 
