@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Constants\AppConstant;
+use App\Models\Commodity;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,17 +20,9 @@ class ShopController extends Controller
 
     public function index()
     {
-        return view('shop.index');
+        return view('shop.index')->with([
+            'items' => Commodity::with('image')
+        ]);
     }
 
-    public function orders()
-    {
-        return 'orders';
-    }
-
-    public function addresses()
-    {
-        return 'addresses';
-    }
-
-} /*class*/
+}

@@ -9,5 +9,7 @@ use App\Http\Controllers\Controller;
 
 class AddressController extends Controller
 {
-    //
+    public function index() {
+        return 'address.index';
+    }
 }

@@ -12,6 +12,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Commodity extends Model implements Buyable
 {
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(CommodityImage::class);
+    }
+
+
     public function getPrice()
     {
         return $this->price;
