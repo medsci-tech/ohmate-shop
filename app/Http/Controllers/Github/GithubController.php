@@ -11,6 +11,5 @@ class GithubController extends Controller
 {
     public function onEvent() {
         exec('git pull origin master', $d);
-        dd($d);
     }
 }
