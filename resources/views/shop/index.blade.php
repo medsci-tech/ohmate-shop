@@ -83,8 +83,8 @@
 
 </div>
 
-<script src="../js/vendor/jquery-2.1.4.min.js"></script>
-<script src="../js/vendor/swiper-3.3.0.min.js"></script>
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('/js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
