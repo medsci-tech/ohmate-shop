@@ -40,7 +40,6 @@
         <img src="../../image/shop_icon/Delete.png" alt="" @click="removeGoods(goods)">
       </div>
     </div>
-
     <h5>消费明细></h5>
     <div class="cart-detail">
       <ul class="list-unstyled">
@@ -72,6 +71,23 @@
       </div>
     </div>
 
+
+    <div class="address">
+      <template v-if=" address == null ">
+        <a class="btn  btn-default center-block" href="">添加收货地址</a>
+      </template>
+      <template v-else>
+        <p>默认收货地址 <a href=""><span>管理地址</span></a></p>
+        <p class="col-xs-4">收货人</p>
+        <span class="col-xs-3">{{ address.name }}</span>
+        <span class="col-xs-5">{{ address.phone }}</span>
+        <div class="clearfix visible-xs-block"></div>
+        <p class="col-xs-4">收货地址</p>
+        <span class="col-xs-8">{{ address.address }}</span>
+        <div class="clearfix visible-xs-block"></div>
+      </template>
+    </div>
+
   </template>
 
   <template v-if=" cart.length == 0 ">
@@ -82,7 +98,7 @@
         <a href="">
           <img src="../../image/shop_nav/HOME-1.png" alt=""><br>
 
-          <p class="nav-active">首页</p>
+          <p>首页</p>
         </a>
       </div>
 
@@ -98,7 +114,7 @@
         <a href="shop_cart">
           <img src="../../image/shop_nav/SHOPPING.png" alt=""><br>
 
-          <p>购物车</p>
+          <p class="nav-active">购物车</p>
         </a>
       </div>
 
