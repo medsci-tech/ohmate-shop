@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Werashop\Exceptions\UserNotCachedException;
+use App\Werashop\Exceptions\UserNotSubscribedException;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -25,6 +26,7 @@ class Handler extends ExceptionHandler
         ValidationException::class,
         TokenMismatchException::class,
         UserNotCachedException::class,
+        UserNotSubscribedException::class,
     ];
 
     /**

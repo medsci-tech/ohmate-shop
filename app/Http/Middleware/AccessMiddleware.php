@@ -65,4 +65,4 @@ class AccessMiddleware
         return Carbon::now()->diffInMinutes($customer->updated_at) > AppConstant::WECHAT_EXPIRE_INTERVAL;
     }
 
-} /*class*/
+}
