@@ -10,26 +10,26 @@ var shop_cart = new Vue({
         detail: '一次性使用无菌注射针',
         price: 22.00,
         priceBefore: 30.00,
-        num: 1,
+        num: 1
       },
       {
         name: '易折清洁消毒棒2',
         detail: '一次性使用无菌注射针',
         price: 22.00,
         priceBefore: 30.00,
-        num: 1,
+        num: 1
       },
-      {
-        name: '易折清洁消毒棒3',
-        detail: '一次性使用无菌注射针',
-        price: 22.00,
-        priceBefore: 30.00,
-        num: 1,
-      }
     ],
+
     person: {
       beans: 900,
-      consume: 0,
+      consume: 0
+    },
+
+    address: {
+      name: '杨先生',
+      phone: '18311561869',
+      address: '湖北省武汉市东湖高新大道3234号'
     }
   },
 
@@ -72,7 +72,7 @@ var shop_cart = new Vue({
       }
     },
     beansConsume: function () {
-    },
+    }
   }
 });
 

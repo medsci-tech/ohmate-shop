@@ -146,7 +146,7 @@ a, a:focus, a:hover {
     transform: rotate(-45deg); }
 
 #cart_form {
-  margin-bottom: 4em; }
+  margin-bottom: 5em; }
   #cart_form .row {
     border-bottom: 2px solid #eeeeee;
     background-color: #FFFFFF; }
@@ -184,6 +184,7 @@ a, a:focus, a:hover {
             bottom: .8em;
             right: 3.5em;
             width: 2em;
+            border-radius: 5px;
             text-align: center; }
           #cart_form .row .col-xs-9 > div > div span:last-child {
             position: relative;
@@ -201,7 +202,8 @@ a, a:focus, a:hover {
     margin-right: -15px;
     margin-left: -15px;
     padding-left: 15px;
-    padding-right: 15px; }
+    padding-right: 15px;
+    padding-bottom: 10px; }
     #cart_form .cart-detail ul {
       margin-bottom: 0px; }
     #cart_form .cart-detail li {
@@ -222,6 +224,10 @@ a, a:focus, a:hover {
       #cart_form .cart-detail p span {
         float: right;
         color: #000000; }
+      #cart_form .cart-detail p input {
+        width: 4em;
+        border-radius: 5px;
+        text-align: center; }
   #cart_form .cart-submit {
     padding: 0px;
     margin: auto; }
@@ -243,5 +249,26 @@ a, a:focus, a:hover {
         margin-top: 4px;
         color: #FFFFFF;
         background-color: #f71212; }
+
+.address {
+  margin: 10px -15px 0px -15px;
+  padding: 5px 15px 5px 15px;
+  background-color: #fff; }
+  .address a {
+    margin: 20px; }
+  .address P {
+    padding-left: 0;
+    font-size: 16px; }
+    .address P:first-child {
+      font-size: small;
+      color: #a3a3a3; }
+      .address P:first-child span {
+        float: right;
+        color: #f71212; }
+    .address P:nth-child(2) {
+      margin-bottom: 4px; }
+  .address span {
+    margin: 0;
+    padding: 0; }
 
 /*# sourceMappingURL=shop.css.map */
