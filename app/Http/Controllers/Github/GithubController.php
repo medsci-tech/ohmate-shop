@@ -10,6 +10,6 @@ use App\Http\Controllers\Controller;
 class GithubController extends Controller
 {
     public function onEvent() {
-        exec('git pull origin master');
+        echo exec('git pull origin master');
     }
 }
