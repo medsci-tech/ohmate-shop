@@ -9,5 +9,7 @@ use App\Http\Controllers\Controller;
 
 class PersonalController extends Controller
 {
-    //
+    public function index() {
+        return 'personal.index';
+    }
 }
