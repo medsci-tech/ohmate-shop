@@ -1,3 +1,4 @@
+@import url(bootstrap.min.css);
 body {
   font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   background-color: #EEEEEE; }
@@ -270,5 +271,65 @@ a, a:focus, a:hover {
   .address span {
     margin: 0;
     padding: 0; }
+  .address .clearfix {
+    display: block; }
+
+#addresses {
+  margin-bottom: 20px; }
+  #addresses .row {
+    position: relative;
+    margin: 0px -15px 0px -15px;
+    padding: 15px 15px 5px 15px;
+    background-color: #fff;
+    border-top: 1px solid #EEEEEE; }
+    #addresses .row P {
+      margin-bottom: 5px;
+      padding: 0px 10px 0px 30px; }
+    #addresses .row span {
+      margin: 0;
+      padding: 0; }
+    #addresses .row .clearfix {
+      display: block; }
+    #addresses .row > img:first-child {
+      position: absolute;
+      width: 20px;
+      padding-top: .8em; }
+    #addresses .row > img:last-child {
+      position: absolute;
+      width: 10px;
+      top: 1em;
+      right: 1em; }
+  #addresses form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: inherit; }
+  #addresses form span {
+    position: absolute; }
+  #addresses form input {
+    width: 75%;
+    max-width: 300px;
+    margin-left: 5em;
+    padding-left: 10px;
+    border-radius: 5px; }
+  #addresses form div {
+    width: 75%;
+    max-width: 300px;
+    margin-left: 5em;
+    display: inline-block; }
+    #addresses form div input {
+      width: 100%;
+      margin-left: 0px; }
+  #addresses form select {
+    width: 100%;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    border-radius: 5px; }
+  #addresses form button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 70%;
+    max-width: 320px;
+    background-color: #f71212;
+    color: #fff; }
 
 /*# sourceMappingURL=shop.css.map */
