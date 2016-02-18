@@ -74,10 +74,10 @@
 
     <div class="address">
       <template v-if=" address == null ">
-        <a class="btn  btn-default center-block" href="">添加收货地址</a>
+        <a class="btn  btn-default center-block" href="{{url('shop/address')}}">添加收货地址</a>
       </template>
       <template v-else>
-        <p>默认收货地址 <a href=""><span>管理地址</span></a></p>
+        <p>默认收货地址 <a href="{{url('shop/address')}}"><span>管理地址</span></a></p>
         <p class="col-xs-4">收货人</p>
         <span class="col-xs-3">@{{ address.name }}</span>
         <span class="col-xs-5">@{{ address.phone }}</span>

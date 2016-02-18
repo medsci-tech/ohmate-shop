@@ -14,7 +14,7 @@ a, a:focus, a:hover {
 
 .container {
   background-color: #EEEEEE;
-  max-width: 600px; }
+  max-width: 500px; }
   .container .navbar-fixed-bottom {
     padding-left: 2.5%;
     padding-right: 2.5%;
@@ -56,7 +56,6 @@ a, a:focus, a:hover {
     .container .col-xs-6 > h4 {
       margin-bottom: 2px;
       font-size: 15px;
-      font-weight: bold;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
@@ -330,5 +329,44 @@ a, a:focus, a:hover {
     max-width: 320px;
     background-color: #f71212;
     color: #fff; }
+
+#goods .row {
+  margin-bottom: 5px;
+  padding-left: 15px; }
+  #goods .row span {
+    font-size: 20px;
+    color: #f71212;
+    padding-right: 5px; }
+  #goods .row s {
+    color: #a3a3a3; }
+  #goods .row h4 {
+    margin-bottom: 5px; }
+  #goods .row p {
+    color: #a3a3a3; }
+#goods .navbar-fixed-bottom {
+  padding: 0; }
+  #goods .navbar-fixed-bottom .col-xs-4 {
+    padding: 8px 0;
+    height: 50px; }
+    #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) {
+      border-right: 1px solid #a3a3a3; }
+    #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) {
+      border-right: 1px solid #a3a3a3; }
+      #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) button {
+        background-color: #fff; }
+    #goods .navbar-fixed-bottom .col-xs-4:nth-child(3) a {
+      width: 85px;
+      background-color: #f71212;
+      color: #fff; }
+  #goods .navbar-fixed-bottom span {
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
+    font-size: 20px; }
+  #goods .navbar-fixed-bottom input {
+    width: 2em;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px; }
 
 /*# sourceMappingURL=shop.css.map */
