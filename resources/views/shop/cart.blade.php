@@ -25,8 +25,8 @@
         <p>@{{ goods.detail }}</p>
         <br>
         <div>
-          <span>￥@{{ goods.price | currency '￥'  }}</span>
-          <s>￥@{{ goods.priceBefore   | currency '￥'  }}</s>
+          <span>@{{ goods.price | currency '￥'  }}</span>
+          <s>@{{ goods.priceBefore   | currency '￥'  }}</s>
           <div>
             <p>数量</p>
             <span @click="numMinus(goods)">－</span>
