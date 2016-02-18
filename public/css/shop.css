@@ -13,17 +13,13 @@ a, a:focus, a:hover {
     margin: auto; }
 
 .container {
-  background-color: #EEEEEE; }
-  @media (min-width: 768px) {
-    .container .navbar-fixed-bottom {
-      width: 750px; } }
-  @media (min-width: 992px) {
-    .container .navbar-fixed-bottom {
-      width: 970px; } }
+  background-color: #EEEEEE;
+  max-width: 600px; }
   .container .navbar-fixed-bottom {
     padding-left: 2.5%;
     padding-right: 2.5%;
     margin: auto;
+    max-width: 500px;
     text-align: center;
     border-top: 1px solid #EEEEEE;
     background-color: #fff; }
@@ -77,17 +73,15 @@ a, a:focus, a:hover {
     .container .col-xs-6 div {
       position: absolute;
       bottom: 0px;
-      left: 10px;
+      left: 15px;
       right: 10px;
-      border-top: 1px solid #ddd;
-      display: inline-block; }
+      display: inline; }
       .container .col-xs-6 div span {
-        font-size: 15px;
-        font-weight: bold;
-        color: #f71212; }
+        font-size: 17px;
+        color: #f71212;
+        margin-right: 5px; }
       .container .col-xs-6 div p {
-        float: right;
-        margin-top: 5px;
+        margin-top: 0px;
         margin-bottom: 0px;
         font-size: 13px;
         color: #a3a3a3; }
@@ -292,6 +286,7 @@ a, a:focus, a:hover {
       display: block; }
     #addresses .row > img:first-child {
       position: absolute;
+      z-index: 100;
       width: 20px;
       padding-top: .8em; }
     #addresses .row > img:last-child {
@@ -307,10 +302,12 @@ a, a:focus, a:hover {
     position: absolute; }
   #addresses form input {
     width: 75%;
+    height: 30px;
     max-width: 300px;
     margin-left: 5em;
     padding-left: 10px;
-    border-radius: 5px; }
+    border-radius: 5px;
+    border-color: #a3a3a3; }
   #addresses form div {
     width: 75%;
     max-width: 300px;
@@ -321,9 +318,11 @@ a, a:focus, a:hover {
       margin-left: 0px; }
   #addresses form select {
     width: 100%;
+    height: 30px;
     margin-bottom: 5px;
     padding-left: 10px;
-    border-radius: 5px; }
+    border-radius: 5px;
+    border-color: #a3a3a3; }
   #addresses form button {
     margin-top: 20px;
     margin-bottom: 20px;
