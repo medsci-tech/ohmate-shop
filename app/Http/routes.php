@@ -13,7 +13,7 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::group(['prifix' => 'wechat', 'namespace' => 'Wechat'], function () {
+    Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {
         Route::any('/', 'WechatController@serve');
         Route::get('/menu', 'WechatController@menu');
     });
