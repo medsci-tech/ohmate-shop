@@ -8,10 +8,14 @@
 
 namespace App\Http\Controllers\Wechat;
 
+use App\Constants\AppConstant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use App\Models\Customer;
+use App\Models\CustomerType;
 use Illuminate\Http\Request;
+use Overtrue\Wechat\Message;
 use Wechat;
 
 class WechatController extends Controller
