@@ -15,7 +15,7 @@
   <nav class="navbar-fixed-bottom">
     <div class="nav-button">
       <a href="{{url('/shop/index')}}">
-        <img src="{{url('/image/shop_nav/HOME-1.png')}}" alt=""><br>
+        <img src="{{url('/image/shop_nav/HOME.png')}}" alt=""><br>
         <p>首页</p>
       </a>
     </div>
@@ -77,7 +77,7 @@
 
 </div>
 
-<script src="../js/vendor/jquery-2.1.4.min.js"></script>
-<script src="../js/shop_category.js"></script>
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('/js/shop_category.js')}}"></script>
 </body>
 </html>

@@ -16,11 +16,11 @@
     >
 
     <p class="col-xs-4" @click="chooseAdd(address)">收货人</p>
-    <span class="col-xs-3"  @click="editAdd(address)">{{ address.name }}</span>
-    <span class="col-xs-5"  @click="editAdd(address)">{{ address.phone }}</span>
+    <span class="col-xs-3"  @click="editAdd(address)">@{{ address.name }}</span>
+    <span class="col-xs-5"  @click="editAdd(address)">@{{ address.phone }}</span>
     <div class="clearfix"></div>
     <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
-    <span class="col-xs-8"  @click="editAdd(address)">{{ address.address }}</span>
+    <span class="col-xs-8"  @click="editAdd(address)">@{{ address.address }}</span>
     <div class="clearfix"></div>
     <img v-if=" address.default == false " src="../../image/shop_icon/Delete.png" alt="" @click="removeAdd(address)">
   </div>
@@ -50,13 +50,13 @@
 </div>
 </body>
 
-<script src="../../js/vendor/jquery-2.1.4.min.js"></script>
-<script src="../../js/vendor/vue.js"></script>
-<script src="../../js/vendor/city.js"></script>
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('/js/vendor/vue.js')}}"></script>
+<script src="{{asset('/js/vendor/city.js')}}"></script>
 <script>
   $(function(){
     city_selector();
   });
 </script>
-<script src="../../js/address.js"></script>
+<script src="{{asset('/js/address.js')}}"></script>
 </html>
