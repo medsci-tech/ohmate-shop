@@ -9,16 +9,18 @@
 
 <body>
 <div class="container" id="addresses">
-  <h5 v-show=" addresses != '' ">选择收货地址</h5>
-  <div class="row" v-for="address in addresses"  @click="editAdd(address)">
-    <img v-bind:src=" address.default?chooseImg.imgtrue:chooseImg.imgfalse " alt="" @click="chooseAdd(address)">
+  <h5 v-show=" addresses != '' ">选择收货地址 <small>(点击编辑)</small></h5>
+  <div class="row" v-for="address in addresses">
+    <img v-bind:src=" address.default?chooseImg.imgtrue:chooseImg.imgfalse "
+         alt="" @click="chooseAdd(address)"
+    >
 
-    <p class="col-xs-4">收货人</p>
-    <span class="col-xs-3">{{ address.name }}</span>
-    <span class="col-xs-5">{{ address.phone }}</span>
+    <p class="col-xs-4" @click="chooseAdd(address)">收货人</p>
+    <span class="col-xs-3"  @click="editAdd(address)">{{ address.name }}</span>
+    <span class="col-xs-5"  @click="editAdd(address)">{{ address.phone }}</span>
     <div class="clearfix"></div>
-    <p class="col-xs-4">收货地址</p>
-    <span class="col-xs-8">{{ address.address }}</span>
+    <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
+    <span class="col-xs-8"  @click="editAdd(address)">{{ address.address }}</span>
     <div class="clearfix"></div>
     <img v-if=" address.default == false " src="../../image/shop_icon/Delete.png" alt="" @click="removeAdd(address)">
   </div>
