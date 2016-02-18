@@ -25,8 +25,8 @@
         <p>@{{ goods.detail }}</p>
         <br>
         <div>
-          <span>￥@{{ goods.price }}</span>
-          <s>￥@{{ goods.priceBefore }}</s>
+          <span>￥@{{ goods.price | currency '￥'  }}</span>
+          <s>￥@{{ goods.priceBefore   | currency '￥'  }}</s>
           <div>
             <p>数量</p>
             <span @click="numMinus(goods)">－</span>
@@ -95,7 +95,7 @@
     <nav class="navbar-fixed-bottom">
 
       <div class="nav-button">
-        <a href="">
+        <a href="{{url('shop/index')}}">
           <img src="{{asset('image/shop_nav/HOME.png')}}" alt=""><br>
 
           <p>首页</p>
