@@ -173,7 +173,7 @@ class Wechat
             $customer = Customer::where('openid', $openId)->first();
             if ($customer) {
                 return Message::make('text')->content('欢迎您回来!');
-            } /*if>*/
+            }
 
             $customer = new Customer();
             $customer->openid = $openId;
@@ -190,8 +190,8 @@ class Wechat
                     $customer->referrer_id = 0;
                 } else {
                     $customer->referrer_id = $referrer->id;
-                } /* else>> */
-            } /*else>*/
+                }
+            }
             $customer->save();
 
             return Message::make('text')->content('感谢您关注!');
