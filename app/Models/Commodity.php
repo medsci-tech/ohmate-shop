@@ -58,7 +58,6 @@ class Commodity extends Model implements Buyable
      */
     public function getImageSet()
     {
-        return [];
-        //TODO
+        return $this->images()->get()->toArray();
     }
 }

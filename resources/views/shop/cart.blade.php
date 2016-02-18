@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>购物车</title>
-  <link rel="stylesheet" href="../../css/swiper-3.3.0.min.css">
-  <link rel="stylesheet" href="../../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../css/shop.css">
+  <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
 
 </head>
 <body>
@@ -17,16 +17,16 @@
 
     <div class="row" v-for="goods in cart">
       <div class="col-xs-3">
-        <img class="img-responsive" src="../../image/test02.png" alt="">
+        <img class="img-responsive" src="{{asset('image/test02.png')}}" alt="">
       </div>
       <div class="col-xs-9">
-        <h4>{{ goods.name }}</h4>
+        <h4>@{{ goods.name }}</h4>
 
-        <p>{{ goods.detail }}</p>
+        <p>@{{ goods.detail }}</p>
         <br>
         <div>
-          <span>￥{{ goods.price }}</span>
-          <s>￥{{ goods.priceBefore }}</s>
+          <span>￥@{{ goods.price }}</span>
+          <s>￥@{{ goods.priceBefore }}</s>
           <div>
             <p>数量</p>
             <span @click="numMinus(goods)">－</span>

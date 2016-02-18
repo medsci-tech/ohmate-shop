@@ -40,6 +40,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/personal', 'PersonalController@index');
     });
 
+    Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
+        Route::get('/', 'CartController@index');
+    });
+
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
