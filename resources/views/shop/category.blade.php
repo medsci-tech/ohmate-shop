@@ -61,16 +61,17 @@
 
   <div class="col-xs-9">
 
-    @foreach($items as $item)
-      <div class="col-xs-6">
-        <h4>{{$item->name}}</h4>
-        <p>{{$item->remark}}</p>
-        <img class="img-responsive" src="{{url('/image/test02.png')}}" alt="">
-        <div>
-          <p> <span>￥{{$item->price}}</span>{{intval($item->price * 100)}}迈豆</p>
-        </div>
+    <div class="col-xs-6">
+      <h4>诺和针</h4>
+
+      <p>一次性使用无菌注射针</p>
+      <img class="img-responsive" src="{{url('/image/test02.png')}}" alt="">
+      <div>
+        <span>￥22</span>
+
+        <p>迈豆换购价2200</p>
       </div>
-    @endforeach
+    </div>
 
   </div>
 
