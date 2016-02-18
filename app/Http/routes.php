@@ -38,11 +38,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/orders', 'OrderController@index');
         Route::get('/addresses', 'AddressController@index');
         Route::get('/personal', 'PersonalController@index');
+        Route::get('/cart', 'CartController@index');
     });
 
-    Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
-        Route::get('/', 'CartController@index');
-    });
 
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
