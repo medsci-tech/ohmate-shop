@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <title>我的地址</title>
+  <link rel="stylesheet" href="../../css/shop.css">
+</head>
+
+<body>
+<div class="container" id="addresses">
+  <h5 v-show=" addresses != '' ">选择收货地址</h5>
+  <div class="row" v-for="address in addresses"  @click="editAdd(address)">
+    <img v-bind:src=" address.default?chooseImg.imgtrue:chooseImg.imgfalse " alt="" @click="chooseAdd(address)">
+
+    <p class="col-xs-4">收货人</p>
+    <span class="col-xs-3">{{ address.name }}</span>
+    <span class="col-xs-5">{{ address.phone }}</span>
+    <div class="clearfix"></div>
+    <p class="col-xs-4">收货地址</p>
+    <span class="col-xs-8">{{ address.address }}</span>
+    <div class="clearfix"></div>
+    <img v-if=" address.default == false " src="../../image/shop_icon/Delete.png" alt="" @click="removeAdd(address)">
+  </div>
+
+  <h5>添加收货地址</h5>
+  <div class="row text-center">
+    <form @submit.prevent="addAdd">
+      <label class="center-block"><span>收货人&emsp;</span>
+        <input required type="text" placeholder="收货人姓名" v-model="newAdd.name">
+      </label>
+      <label><span>手机号&emsp;</span>
+        <input required type="text" placeholder="收货人号码" v-model="newAdd.phone">
+      </label>
+      <div class="clearfix"></div>
+      <label><span>详细地址</span>
+        <div>
+          <select name="province" id="province"></select>
+          <select name="city" id="city"></select>
+          <select name="area" id="area"></select>
+          <input required type="text" placeholder="街道地址" v-model="newAdd.address">
+        </div>
+      </label>
+      <div class="clearfix"></div>
+      <button class="btn">添加并设为默认</button>
+    </form>
+  </div>
+</div>
+</body>
+
+<script src="../../js/vendor/jquery-2.1.4.min.js"></script>
+<script src="../../js/vendor/vue.js"></script>
+<script src="../../js/vendor/city.js"></script>
+<script>
+  $(function(){
+    city_selector();
+  });
+</script>
+<script src="../../js/address.js"></script>
+</html>
