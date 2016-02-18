@@ -41,7 +41,7 @@ class AccessMiddleware
         } catch (UserNotCachedException $e) {
             return redirect(AppConstant::ATTENTION_URL);
         } catch (ModelNotFoundException $e) {
-            return redirect(AppConstant::ATTENTION_URL);
+            return redirect('/register/create');
         }
     }
 
