@@ -10,8 +10,6 @@ use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
     public function index() {
-        return view('shop.category')->with([
-          'items' => Commodity::with('images')->get()
-        ]);
+        return view('shop.category');
     }
 }
