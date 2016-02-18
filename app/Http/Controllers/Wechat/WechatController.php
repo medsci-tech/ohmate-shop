@@ -23,12 +23,9 @@ class WechatController extends Controller
 
     public function serve(Request $request)
     {
-        \Log::info('ttttttttttttt');
         $server = Wechat::getServer();
 
-        $server->on('message', function ($message) {
-            return Message::make('text')->content('您好!');
-        });
+        $server->on('message', Wechat::messageEventCallback());
 
         $server->on('event', 'location', function ($event) {
             $openId = $event['FromUserName'];
