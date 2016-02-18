@@ -23,6 +23,7 @@ class WechatController extends Controller
 
     public function serve(Request $request)
     {
+        \Log::info('ttttttttttttt');
         $server = Wechat::getServer();
 
         $server->on('message', function ($message) {
