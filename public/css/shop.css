@@ -39,7 +39,7 @@ a, a:focus, a:hover {
     .container .row .col-xs-6:first-child {
       height: 200px; }
       .container .row .col-xs-6:first-child img {
-        width: 90px;
+        width: 140px;
         float: right; }
     .container .row .col-xs-6:nth-child(2), .container .row .col-xs-6:nth-child(3) {
       height: 100px; }
@@ -47,7 +47,7 @@ a, a:focus, a:hover {
         position: absolute;
         right: 10px;
         top: 10px;
-        width: 42px; }
+        width: 60px; }
   .container .col-xs-6 {
     border-right: 2px solid #eeeeee;
     border-bottom: 2px solid #eeeeee;
@@ -68,7 +68,7 @@ a, a:focus, a:hover {
       overflow: hidden;
       text-overflow: ellipsis; }
     .container .col-xs-6 img {
-      width: 80px;
+      width: 100px;
       float: right; }
     .container .col-xs-6 div {
       position: absolute;

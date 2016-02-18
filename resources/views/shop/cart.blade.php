@@ -22,7 +22,7 @@
       <div class="col-xs-9">
         <h4>@{{ goods.name }}</h4>
 
-        <p>@{{ goods.detail }}</p>
+        <p>@{{ goods.tag }}</p>
         <br>
         <div>
           <span>@{{ goods.price | currency '￥'  }}</span>
