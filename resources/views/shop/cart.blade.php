@@ -96,7 +96,7 @@
 
       <div class="nav-button">
         <a href="">
-          <img src="{{asset('image/shop_nav/HOME-1.png')}}" alt=""><br>
+          <img src="{{asset('image/shop_nav/HOME.png')}}" alt=""><br>
 
           <p>首页</p>
         </a>
@@ -112,7 +112,7 @@
 
       <div class="nav-button">
         <a href="{{url('shop/cart')}}">
-          <img src="{{asset('image/shop_nav/SHOPPING.png')}}" alt=""><br>
+          <img src="{{asset('image/shop_nav/SHOPPING-1.png')}}" alt=""><br>
 
           <p class="nav-active">购物车</p>
         </a>
