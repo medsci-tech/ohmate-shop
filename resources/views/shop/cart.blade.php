@@ -29,15 +29,15 @@
           <s>@{{ goods.priceBefore   | currency '￥'  }}</s>
           <div>
             <p>数量</p>
-            <span \@click="numMinus(goods)">－</span>
+            <span @click="numMinus(goods)">－</span>
             <input v-model='goods.num' number debounce="200" type="text" maxlength="2"
                    onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
                    onblur="if( this.value == 0 ) this.value = 1;"
             >
-            <span \@click="numAdd(goods)">＋</span>
+            <span @click="numAdd(goods)">＋</span>
           </div>
         </div>
-        <img src="../../image/shop_icon/Delete.png" alt="" \@click="removeGoods(goods)">
+        <img src="../../image/shop_icon/Delete.png" alt="" @click="removeGoods(goods)">
       </div>
     </div>
     <h5>消费明细></h5>
@@ -56,7 +56,7 @@
         <span>
           <input type="text" v-model=" person.consume " number debounce="200" maxlength="6"
                  onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
-          \@blur="beansConsume()"
+          @blur="beansConsume()"
           >
           迈豆
         </span>

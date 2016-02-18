@@ -39,8 +39,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/addresses', 'AddressController@index');
         Route::get('/personal', 'PersonalController@index');
         Route::get('/cart', 'CartController@index');
-
-        Route::resource('commodity', 'CommodityController');
     });
 
 

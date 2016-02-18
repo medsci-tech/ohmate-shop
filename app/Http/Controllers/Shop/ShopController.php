@@ -24,4 +24,5 @@ class ShopController extends Controller
             'items' => Commodity::with('images')->get()
         ]);
     }
+
 }
