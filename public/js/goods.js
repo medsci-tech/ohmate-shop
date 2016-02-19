@@ -16,11 +16,12 @@ var cart = [
 localStorage.cart = JSON.stringify(cart);
 
 
-if (localStorage.cart != 'undefined'){
+if (localStorage.cart != 'undefined' || localStorage.cart) {
   var cart = JSON.parse(localStorage.cart);
 } else {
   var cart = [];
-};
+}
+
 
 var list = new Vue({
     el: '#goods',

@@ -2,11 +2,12 @@
  * Created by 鹏飞 on 2016/2/14.
  */
 
-if (localStorage.cart != 'undefined'){
+if (localStorage.cart != 'undefined' || localStorage.cart) {
   var cart = JSON.parse(localStorage.cart);
 } else {
   var cart = [];
-};
+}
+
 
 var shop_cart = new Vue({
   el: '#cart_form',
