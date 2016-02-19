@@ -2,7 +2,11 @@
  * Created by 鹏飞 on 2016/2/14.
  */
 
-var cart = JSON.parse(localStorage.cart);
+if (localStorage.cart){
+  var cart = JSON.parse(localStorage.cart);
+} else {
+  var cart = null;
+};
 
 var shop_cart = new Vue({
   el: '#cart_form',

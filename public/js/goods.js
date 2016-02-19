@@ -15,6 +15,11 @@ var cart = [
 
 localStorage.cart = JSON.stringify(cart);
 
+if (localStorage.cart){
+  var cart = JSON.parse(localStorage.cart);
+} else {
+  var cart = null;
+};
 
 
 var list = new Vue({
