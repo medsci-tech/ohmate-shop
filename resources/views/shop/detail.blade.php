@@ -59,7 +59,7 @@
 <script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script src="{{asset('js/vendor/vue.js')}}"></script>
-<script src="{{asset('js/goods.js')}}">
+<script>
   var cart = [
     {
       id: '1',
