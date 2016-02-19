@@ -40,8 +40,8 @@
           <select name="province" id="province"></select>
           <select name="city" id="city"></select>
           <select name="area" id="area"></select>
-          <input required type="text" placeholder="街道地址" v-model="newAdd.address">
         </div>
+        <input required type="text" placeholder="街道地址" v-model="newAdd.address">
       </label>
       <div class="clearfix"></div>
       <button class="btn">添加并设为默认</button>
