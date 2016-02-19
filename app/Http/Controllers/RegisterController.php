@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Werashop\Exceptions\UserNotCachedException;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Overtrue\Wechat\QRCode;
@@ -41,6 +42,7 @@ class RegisterController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone',
+            'code' => 'required|digits:6'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -53,6 +55,14 @@ class RegisterController extends Controller
             return view('errors.custom')->with([
                 'message' => '用户查找失败,请尝试取消关注后重新关注.'
             ]);
+        }
+
+        if ($request->input('code') != $customer->auth_code) {
+            return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
+        }
+
+        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
+            return redirect()->back()->with('error_message', '验证码过期!')->withInput();
         }
 
         $customer->update([
@@ -73,15 +83,32 @@ class RegisterController extends Controller
     }
 
     public function sms(Request $request) {
+        $validator = \Validator::make($request->all(), [
+            'phone' => 'required|digits:11|unique:customers,phone',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
-            return redirect('/register/error');
+        try {
+            $user = \Helper::getSessionCachedUser();
+            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+        } catch (\Exception $e) {
+            return view('errors.custom')->with([
+                'message' => '用户查找失败,请尝试取消关注后重新关注.'
+            ]);
         }
 
         $phone  = $request->input(['phone']);
+        $code = \MessageSender::generateMessageVerify();
+        \MessageSender::sendMessageVerify($phone, $code);
+
+        $customer->update([
+            'auth_code' => $code,
+            'auth_code_expired' => Carbon::now()->addMinute(AppConstant::AUTH_CODE_EXPIRE_INTERVAL)
+        ]);
+
+        return response()->json(['success' => true]);
     }
 
 }
