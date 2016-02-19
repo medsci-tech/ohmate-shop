@@ -38,24 +38,24 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        \Log::info('RegisterController:store:request' . $request);
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
         if ($validator->fails()) {
-            return redirect('/register/create')->withErrors($validator)->withInput();
-        } /*if>*/
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        $user = \Helper::getSessionCachedUser();
         if (!$user) {
+            dd('1111');
             return redirect('/register/error');
-        } /*if>*/
+        }
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if ((!$customer) || ($customer->is_registered)) {
-            \Log::error('222');
+            dd('2222');
             return redirect('/register/error');
-        } /*if>*/
+        }
 
         $customer->phone    = $request->input(['phone']);
         $customer->is_registered    = true;
@@ -63,7 +63,6 @@ class RegisterController extends Controller
         $customer->nickname         = $user['nickname'];
         $customer->head_image_url   = $user['headimgurl'];
         $customer->save();
-        \Log::info('RegisterController:store:customerId' . $customer->id);
 
         $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
         $result = $qrCode->forever($customer->id);
@@ -80,9 +79,6 @@ class RegisterController extends Controller
 
     public function sms(Request $request) {
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/register/error');
-        } /*if>*/
 
         $customer = Customer::where('openid', $user['openid'])->first();
         if ((!$customer) || (!$customer->is_registered)) {

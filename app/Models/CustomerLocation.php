@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class CustomerLocation
+ * @package App\Models
+ * @mixin \Eloquent
+ */
 class CustomerLocation extends Model
 {
     protected $table = 'customer_locations';
