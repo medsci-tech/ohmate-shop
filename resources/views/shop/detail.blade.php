@@ -147,7 +147,6 @@
     autoplay: 4000,
     speed: 500
   });
-
 </script>
 </body>
 </html>
