@@ -7,7 +7,7 @@
 var shop_cart = new Vue({
   el: '#cart_form',
   data: {
-    cart: localStorage.cart,
+    cart: JSON.parse(localStorage.cart),
 
     person: {
       beans: 900,
