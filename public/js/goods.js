@@ -2,7 +2,7 @@
  * Created by 鹏飞 on 2016/2/18.
  */
 
-var items = [
+var cart = [
   {
     id: '1',
     name: '易折清洁消毒棒',
@@ -13,14 +13,14 @@ var items = [
   }
 ];
 
-localStorage.cart = JSON.stringify(items);
+localStorage.cart = JSON.stringify(cart);
 
-if (localStorage.cart){
-  var items = JSON.parse(localStorage.cart);
+
+if (localStorage.cart != 'undefined'){
+  var cart = JSON.parse(localStorage.cart);
 } else {
-  var items = null;
+  var cart = [];
 };
-
 
 var list = new Vue({
     el: '#goods',
@@ -33,7 +33,7 @@ var list = new Vue({
         priceBefore: 30.00,
         num: 1
       },
-      cart: items
+      cart: cart
     },
     computed: {
       alreadyHave: function () {

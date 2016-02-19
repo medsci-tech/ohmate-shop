@@ -2,17 +2,17 @@
  * Created by 鹏飞 on 2016/2/14.
  */
 
-if (localStorage.cart){
-  var items = JSON.parse(localStorage.cart);
+if (localStorage.cart != 'undefined'){
+  var cart = JSON.parse(localStorage.cart);
 } else {
-  var items = null;
+  var cart = [];
 };
 
 var shop_cart = new Vue({
   el: '#cart_form',
   data: {
 
-    cart: items,
+    cart: cart,
 
     person: {
       beans: 900,
