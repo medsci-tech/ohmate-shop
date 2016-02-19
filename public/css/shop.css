@@ -296,6 +296,7 @@ a, a:focus, a:hover {
   #addresses form span {
     position: absolute; }
   #addresses form input {
+    z-index: 100;
     width: 75%;
     height: 30px;
     max-width: 300px;
@@ -309,7 +310,6 @@ a, a:focus, a:hover {
     margin-left: 5em;
     display: inline-block; }
     #addresses form div input {
-      z-index: 100;
       width: 100%;
       margin-left: 0px; }
   #addresses form select {
