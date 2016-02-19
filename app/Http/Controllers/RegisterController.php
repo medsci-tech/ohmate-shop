@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Werashop\Exceptions\UserNotCachedException;
 use Illuminate\Http\Request;
 
 use Overtrue\Wechat\QRCode;
@@ -45,20 +46,14 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $user = \Helper::getSessionCachedUser();
-        if (!$user) {
-            return redirect('/register/error');
-        }
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || ($customer->is_registered)) {
+        try {
+            $user = \Helper::getSessionCachedUser();
+            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+        } catch (\Exception $e) {
             return view('errors.custom')->with([
                 'message' => '用户查找失败,请尝试取消关注后重新关注.'
             ]);
         }
-
-        $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
-        $result = $qrCode->forever($customer->id);
 
         $customer->update([
             'phone' => $request->input('phone'),
@@ -66,7 +61,7 @@ class RegisterController extends Controller
             'beans_total' => 0,
             'nickname' => $user['nickname'],
             'head_image_url' => $user['headimgurl'],
-            'qr_code' => $qrCode->show($result->ticket),
+            'qr_code' => \Wechat::getForeverQrCodeUrl($customer->id),
         ]);
 
         $ret = BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_REGISTER);

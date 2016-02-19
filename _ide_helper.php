@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.8 on 2016-02-17.
+ * Generated for Laravel 5.2.8 on 2016-02-19.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10353,6 +10353,15 @@ namespace {
          */
         public static function authorizeUser($jump_url){
             return \App\Werashop\Wechat\Wechat::authorizeUser($jump_url);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getForeverQrCodeUrl($scene_id){
+            return \App\Werashop\Wechat\Wechat::getForeverQrCodeUrl($scene_id);
         }
         
     }

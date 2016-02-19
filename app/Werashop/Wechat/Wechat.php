@@ -11,6 +11,7 @@ use Overtrue\Wechat\Auth;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
+use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
 
 /**
@@ -219,5 +220,13 @@ class Wechat
         $auth = new Auth($appId, $secret);
         $user = $auth->authorize(url($jump_url));
         return $user;
+    }
+
+    public function getForeverQrCodeUrl($scene_id)
+    {
+        $qrCode = new QRCode($this->_appId, $this->_secret);
+        $result = $qrCode->forever($scene_id);
+
+        return $qrCode->show($result->ticket);
     }
 }

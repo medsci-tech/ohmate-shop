@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Commodity
  *
  * @mixin \Eloquent
+ * @property integer $id
+ * @property string $name
+ * @property string $remark
+ * @property string $introduction
+ * @property float $price
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CommodityImage[] $images
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
  */
 class Commodity extends Model implements Buyable
 {
