@@ -68,14 +68,16 @@
     <div class="row">
 
         @foreach($items as $item)
-            <div class="col-xs-6">
-                <h4>{{$item->name}}</h4>
-                <p>{{$item->remark}}</p>
-                <img class="img-responsive" src="{{url('/image/test02.png')}}" alt="">
-                <div>
-                    <p> <span>￥{{$item->price}}</span>{{intval($item->price * 100)}}迈豆</p>
+            <a href="{{url('/shop/goods')}}">
+                <div class="col-xs-6">
+                    <h4>{{$item->name}}</h4>
+                    <p>{{$item->remark}}</p>
+                    <img class="img-responsive" src="{{url('/image/test02.png')}}" alt="">
+                    <div>
+                       <p> <span>￥{{$item->price}}</span>{{intval($item->price * 100)}}迈豆</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 
