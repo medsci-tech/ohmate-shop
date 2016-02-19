@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>购物车</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
 
 </head>
