@@ -13,6 +13,8 @@ class Customer extends Model
 {
     protected $table = 'customers';
 
+    protected $guarded = [];
+
     public function type()
     {
         return $this->belongsTo('App\Models\CustomerType', 'type_id');

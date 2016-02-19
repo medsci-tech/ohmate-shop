@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
 {
-    //
     function __construct()
     {
         $this->middleware('auth.wechat');
@@ -24,5 +23,4 @@ class ShopController extends Controller
             'items' => Commodity::with('images')->get()
         ]);
     }
-
 }
