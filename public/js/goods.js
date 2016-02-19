@@ -1,7 +1,3 @@
-/**
- * Created by 鹏飞 on 2016/2/18.
- */
-
 var cart = [
   {
     id: '1',
