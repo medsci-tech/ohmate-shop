@@ -96,8 +96,8 @@
           id: '{{$item->id}}',
           name: '{{$item->name}}',
           tag: '{{$item->remark}}',
-          price: '{{$item->price}}',
-          priceBefore: '{{floor($item->price * 1.25)}}',
+          price: {{$item->price}},
+          priceBefore: {{floor($item->price * 1.25)}},
           num: 1
         },
         cart: cart
