@@ -33,6 +33,8 @@ class Customer extends Model
 
     protected $guarded = [];
 
+    protected $timestamps = ['created_at', 'updated_at', 'auth_code_expired'];
+
     public function type()
     {
         return $this->belongsTo('App\Models\CustomerType', 'type_id');
