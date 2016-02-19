@@ -18,7 +18,8 @@ var shop_cart = new Vue({
     address: {
       name: '杨先生',
       phone: '18311561869',
-      address: '湖北省武汉市东湖高新大道3234号'
+      address: '湖北省武汉市东湖高新大道3234号',
+      postage: 8
     }
   },
 
@@ -44,6 +45,7 @@ var shop_cart = new Vue({
   methods: {
     removeGoods: function (e) {
       this.cart.$remove(e);
+      localStorage.cart = JSON.stringify(this.cart);
     },
     priceGoods: function (e) {
       return e.price * e.num;

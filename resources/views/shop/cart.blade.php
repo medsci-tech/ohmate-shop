@@ -50,7 +50,7 @@
         </li>
       </ul>
       <p>商品价格<span>@{{ priceAll | currency '￥' }}</span></p>
-      <p>运费 <span>￥8.00</span></p>
+      <p>运费 <span>@{{ address.postage | currency '￥' }}</span></p>
       <p>迈豆折扣
         <span>－@{{ priceDiscount | currency '￥' }}</span>
         <span>
@@ -162,7 +162,8 @@
       address: {
         name: '杨先生',
         phone: '18311561869',
-        address: '湖北省武汉市东湖高新大道3234号'
+        address: '湖北省武汉市东湖高新大道3234号',
+        postage: 8
       }
     },
 

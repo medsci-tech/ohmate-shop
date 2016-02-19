@@ -9,24 +9,28 @@ var address = new Vue({
         name: '杨先生',
         phone: '18311561869',
         address: '湖北省武汉市东湖高新大道3234号',
+        postage: 8,
         default: true
       },
       {
         name: '杨先生2',
         phone: '18311561869',
         address: '湖北省武汉市东湖高新大道3234号',
+        postage: 8,
         default: false
       },
       {
         name: '杨先生3',
         phone: '18311561869',
         address: '湖北省武汉市东湖高新大道3234号',
+        postage: 8,
         default: false
       },
       {
         name: '杨先生4',
         phone: '18311561869',
         address: '湖北省武汉市东湖高新大道3234号',
+        postage: 8,
         default: false
       }
     ],
@@ -34,6 +38,7 @@ var address = new Vue({
       name: '',
       phone: '',
       address: '',
+      postage: 8,
       default: false
     },
     chooseImg: {
@@ -62,16 +67,21 @@ var address = new Vue({
         for (i = 0; i < this.addresses.length; i++) {
           this.addresses[i].default = false;
         }
+        if ($('#province').val() == '新疆维吾尔自治区' || $('#province').val() == '西藏自治区') {
+          this.newAdd.postage = 12;
+        }
         this.addresses.push({
           name: this.newAdd.name,
           phone: this.newAdd.phone,
           address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address,
+          postage: this.newAdd.postage,
           default: true
         });
         this.newAdd = {
           name: '',
           phone: '',
           address: '',
+          postage: 8,
           default: false
         }
       }
