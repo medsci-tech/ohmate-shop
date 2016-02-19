@@ -69,7 +69,7 @@
 
         @foreach($items as $item)
         <div class="col-xs-6">
-            <a href="{{url('/shop/goods')}}">
+            <a href="{{url('/shop/commodity/'). $item->id}}">
                 <h4>{{$item->name}}</h4>
                 <p>{{$item->remark}}</p>
                 <img class="img-responsive" src="{{url('/image/test02.png')}}" alt="">
