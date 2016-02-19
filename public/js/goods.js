@@ -1,4 +1,4 @@
-if (localStorage.cart != 'undefined' && localStorage.cart) {
+if (localStorage.cart != 'undefined') {
   var cart = JSON.parse(localStorage.cart);
 } else {
   var cart = [];
