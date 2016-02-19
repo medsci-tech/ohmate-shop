@@ -53,7 +53,7 @@
       <p>运费 <span>@{{ address.postage | currency '￥' }}</span></p>
       <p>迈豆折扣
         <span>－@{{ priceDiscount | currency '￥' }}</span>
-        <span>{{ priceDiscount*100 }}迈豆</span>
+        <span>@{{ priceDiscount*100 }}迈豆</span>
       </p>
     </div>
     <div class="navbar-fixed-bottom cart-submit">
