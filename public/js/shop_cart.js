@@ -3,16 +3,16 @@
  */
 
 if (localStorage.cart){
-  var cart = JSON.parse(localStorage.cart);
+  var items = JSON.parse(localStorage.cart);
 } else {
-  var cart = null;
+  var items = null;
 };
 
 var shop_cart = new Vue({
   el: '#cart_form',
   data: {
 
-    cart: cart,
+    cart: items,
 
     person: {
       beans: 900,
