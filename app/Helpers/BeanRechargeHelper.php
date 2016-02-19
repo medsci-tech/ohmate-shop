@@ -20,7 +20,7 @@ class BeanRechargeHelper {
         $beanRate = BeanRate::where('action_en', $action)->first();
         if (!$beanRate) {
             return false;
-        } /*if>*/
+        }
 
         $bean = new CustomerBean();
         $bean->customer_id  = $user;

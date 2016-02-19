@@ -84,12 +84,20 @@
   var list = new Vue({
       el: '#goods',
       data: {
+//        goods: {
+//          id: '2',
+//          name: '易折清洁消毒棒',
+//          tag: '一次性使用无菌注射针',
+//          price: 22.00,
+//          priceBefore: 30.00,
+//          num: 1
+//        },
         goods: {
-          id: '2',
-          name: '易折清洁消毒棒',
-          tag: '一次性使用无菌注射针',
-          price: 22.00,
-          priceBefore: 30.00,
+          id: '{{$item->id}}',
+          name: '{{$item->name}}',
+          tag: '{{$item->remark}}',
+          price: '{{$item->price}}',
+          priceBefore: '{{floor($item->price * 1.25)}}',
           num: 1
         },
         cart: cart
