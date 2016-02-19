@@ -218,10 +218,6 @@ a, a:focus, a:hover {
       #cart_form .cart-detail p span {
         float: right;
         color: #000000; }
-      #cart_form .cart-detail p input {
-        width: 4em;
-        border-radius: 5px;
-        text-align: center; }
   #cart_form .cart-submit {
     padding: 0px;
     margin: auto; }
@@ -313,6 +309,7 @@ a, a:focus, a:hover {
     margin-left: 5em;
     display: inline-block; }
     #addresses form div input {
+      z-index: 100;
       width: 100%;
       margin-left: 0px; }
   #addresses form select {

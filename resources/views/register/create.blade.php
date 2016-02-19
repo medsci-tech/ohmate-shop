@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>用户注册</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="{{asset('/css/register.css')}}">
     <script type="text/javascript">
         function validateMobile() {
             var mobile = document.getElementById('phone').value;
