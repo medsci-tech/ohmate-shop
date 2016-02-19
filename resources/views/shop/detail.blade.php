@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>易康商城</title>
   <link rel="stylesheet" href="{{asset('css/swiper-3.3.0.min.css')}}">
-  <link rel="stylesheet" href="{{asset('css/shop.css')"}}>
+  <link rel="stylesheet" href="{{asset('css/shop.css')}}">
 
 </head>
 <body>
@@ -54,9 +54,7 @@
       <a href="{{url('shop/cart')}}" class="btn" @click="addGoods()">立即购买</a>
     </div>
   </div>
-
 </div>
-
 
 <script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
@@ -70,8 +68,9 @@
     loop: true,
     visiblilityFullfit: true,
     autoplay: 4000,
-    speed: 500,
+    speed: 500
   });
+
 </script>
 </body>
 </html>
