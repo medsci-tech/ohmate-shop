@@ -152,7 +152,6 @@
   var shop_cart = new Vue({
     el: '#cart_form',
     data: {
-
       cart: cart,
 
       person: {
@@ -176,10 +175,8 @@
         return all;
       },
       priceDiscount: function () {
-        if (this.person.consume > this.person.beans || this.person.consume > this.priceAll * 100) {
-          this.person.consume =
-            this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
-        }
+        this.person.consume =
+          this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
         return this.person.consume / 100;
       },
       priceCount: function () {
