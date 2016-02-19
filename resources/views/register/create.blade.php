@@ -65,7 +65,6 @@
 <body>
 <div class="container">
     <form class="register"  action="{{url('/register/store')}}" method="POST">
-        {{csrf_field()}}
         <div class="form-group">
             <label><span id="label_phone"></span>
                 <input type="text" id="phone" class="form-control" placeholder="请输入手机号" required>
@@ -84,6 +83,7 @@
                 已阅读并同意《<a>易康伴侣服务协议</a>》
             </label>
         </div>
+        {{csrf_field()}}
     </form>
 </div>
 </body>
