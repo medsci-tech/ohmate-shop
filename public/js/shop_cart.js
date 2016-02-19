@@ -2,12 +2,13 @@
  * Created by 鹏飞 on 2016/2/14.
  */
 
-
+var cart = JSON.parse(localStorage.cart);
 
 var shop_cart = new Vue({
   el: '#cart_form',
   data: {
-    cart: JSON.parse(localStorage.cart),
+
+    cart: cart,
 
     person: {
       beans: 900,
