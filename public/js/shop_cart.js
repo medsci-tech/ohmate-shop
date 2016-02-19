@@ -1,7 +1,3 @@
-/**
- * Created by 鹏飞 on 2016/2/14.
- */
-
 if (localStorage.cart != 'undefined' && localStorage.cart) {
   var cart = JSON.parse(localStorage.cart);
 } else {
@@ -12,7 +8,6 @@ if (localStorage.cart != 'undefined' && localStorage.cart) {
 var shop_cart = new Vue({
   el: '#cart_form',
   data: {
-
     cart: cart,
 
     person: {
@@ -23,7 +18,8 @@ var shop_cart = new Vue({
     address: {
       name: '杨先生',
       phone: '18311561869',
-      address: '湖北省武汉市东湖高新大道3234号'
+      address: '湖北省武汉市东湖高新大道3234号',
+      postage: 8
     }
   },
 
@@ -36,10 +32,8 @@ var shop_cart = new Vue({
       return all;
     },
     priceDiscount: function () {
-      if (this.person.consume > this.person.beans || this.person.consume > this.priceAll * 100) {
-        this.person.consume =
-          this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
-      }
+      this.person.consume =
+        this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
       return this.person.consume / 100;
     },
     priceCount: function () {
@@ -51,6 +45,7 @@ var shop_cart = new Vue({
   methods: {
     removeGoods: function (e) {
       this.cart.$remove(e);
+      localStorage.cart = JSON.stringify(this.cart);
     },
     priceGoods: function (e) {
       return e.price * e.num;

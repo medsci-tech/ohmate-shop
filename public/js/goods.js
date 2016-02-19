@@ -1,21 +1,3 @@
-/**
- * Created by 鹏飞 on 2016/2/18.
- */
-
-var cart = [
-  {
-    id: '1',
-    name: '易折清洁消毒棒',
-    tag: '一次性使用无菌注射针',
-    price: 22.00,
-    priceBefore: 30.00,
-    num: 1
-  }
-];
-
-localStorage.cart = JSON.stringify(cart);
-
-
 if (localStorage.cart != 'undefined' && localStorage.cart) {
   var cart = JSON.parse(localStorage.cart);
 } else {
@@ -23,52 +5,61 @@ if (localStorage.cart != 'undefined' && localStorage.cart) {
 }
 
 
-var list = new Vue({
-    el: '#goods',
-    data: {
-      goods: {
-        id: '2',
-        name: '易折清洁消毒棒',
-        tag: '一次性使用无菌注射针',
-        price: 22.00,
-        priceBefore: 30.00,
-        num: 1
-      },
-      cart: cart
-    },
-    computed: {
-      alreadyHave: function () {
-        for (i = 0; i < this.cart.length; i++) {
-          if (this.cart[i].id == this.goods.id) {
-            return i;
-          }
-        }
-        return -1;
-      }
+var shop_cart = new Vue({
+  el: '#cart_form',
+  data: {
+    cart: cart,
+
+    person: {
+      beans: 900,
+      consume: 0
     },
 
-    methods: {
-      addGoods: function () {
-        if (this.alreadyHave != -1) {
-          this.cart[this.alreadyHave].num += this.goods.num;
-          localStorage.cart = JSON.stringify(this.cart);
-        } else {
-          this.cart.push(this.goods);
-          localStorage.cart = JSON.stringify(this.cart);
-          this.cart = JSON.parse(localStorage.cart);
-        }
-        this.goods.num = 1;
-      },
-      numMinus: function () {
-        if (this.goods.num >= 2) {
-          this.goods.num--;
-        }
-      },
-      numAdd: function () {
-        if (this.goods.num <= 98) {
-          this.goods.num++;
-        }
-      }
+    address: {
+      name: '杨先生',
+      phone: '18311561869',
+      address: '湖北省武汉市东湖高新大道3234号'
     }
-  })
-  ;
+  },
+
+  computed: {
+    priceAll: function () {
+      var all = 0;
+      for (i = 0; i < this.cart.length; i++) {
+        all += this.cart[i].price * this.cart[i].num;
+      }
+      return all;
+    },
+    priceDiscount: function () {
+      this.person.consume =
+        this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
+      return this.person.consume / 100;
+    },
+    priceCount: function () {
+      return this.priceAll + 8 - this.priceDiscount;
+    }
+
+  },
+
+  methods: {
+    removeGoods: function (e) {
+      this.cart.$remove(e);
+    },
+    priceGoods: function (e) {
+      return e.price * e.num;
+    },
+    numMinus: function (e) {
+      if (e.num >= 2) {
+        e.num--;
+      }
+    },
+    numAdd: function (e) {
+      if (e.num <= 98) {
+        e.num++;
+      }
+    },
+    beansConsume: function () {
+    }
+  }
+});
+
