@@ -60,20 +60,6 @@
 <script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script src="{{asset('js/vendor/vue.js')}}"></script>
 <script>
-  var cart = [
-    {
-      id: '1',
-      name: '易折清洁消毒棒',
-      tag: '一次性使用无菌注射针',
-      price: 22.00,
-      priceBefore: 30.00,
-      num: 1
-    }
-  ];
-
-  localStorage.cart = JSON.stringify(cart);
-
-
   if (localStorage.cart != 'undefined'){
     var cart = JSON.parse(localStorage.cart);
   } else {
