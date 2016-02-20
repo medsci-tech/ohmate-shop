@@ -35,14 +35,14 @@
         <input required type="text" placeholder="收货人号码" v-model="newAdd.phone">
       </label>
       <div class="clearfix"></div>
-      <label><span>详细地址</span>
         <div>
-          <select name="province" id="province"></select>
-          <select name="city" id="city"></select>
-          <select name="area" id="area"></select>
+            <select name="province" id="province"></select>
+            <select name="city" id="city"></select>
+            <select name="area" id="area"></select>
         </div>
+      <label><span id="street">详细地址</span>
+        <input required type="text" placeholder="街道地址" v-model="newAdd.address">
       </label>
-      <input id="street" required type="text" placeholder="街道地址" v-model="newAdd.address">
       <div class="clearfix"></div>
       <button class="btn">添加并设为默认</button>
     </form>
