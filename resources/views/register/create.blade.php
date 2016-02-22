@@ -110,9 +110,7 @@
           $('.form-group button').text('重新发送');
         }
       }
-    }
-    ;
-  }
+    };
   }
 </script>
 </body>
