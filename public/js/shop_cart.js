@@ -11,7 +11,7 @@ var shop_cart = new Vue({
     cart: cart,
 
     person: {
-      beans: 900,
+      beans: 90000,
       consume: 0
     },
 
@@ -61,6 +61,9 @@ var shop_cart = new Vue({
       }
     },
     beansConsume: function () {
+    },
+    postCart: function() {
+      $.post('/shop/order/create',JSON.stringify(shop_cart.$data));
     }
   }
 });
