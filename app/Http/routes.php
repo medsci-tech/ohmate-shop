@@ -35,7 +35,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/category', 'CategoryController@index');
-        Route::get('/orders', 'OrderController@index');
+
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/', 'OrderController@index');
+            Route::post('create', 'OrderController@create');
+        });
+
         Route::get('/address', 'AddressController@index');
         Route::get('/personal', 'PersonalController@index');
         Route::get('/cart', 'CartController@index');

@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
-    //
+    protected $guarded = [];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
