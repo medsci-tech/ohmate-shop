@@ -100,6 +100,7 @@
         "json"
       );
       var i = 11;
+
       function timer() {
         i--;
         $('.form-group button').text(i + '秒后重新发送');
@@ -110,7 +111,9 @@
         }
         setTimeout(timer, 1000);
       }
-    };
+
+      timer();
+    }
   }
 </script>
 </body>
