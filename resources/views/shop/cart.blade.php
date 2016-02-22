@@ -199,7 +199,7 @@
       beansConsume: function () {
       },
       postCart: function() {
-        $.post("shop/order/create",shop_cart.data);
+        $.post(url('shop/order/create'),JSON.stringify(shop_cart.data));
       }
     }
   });
