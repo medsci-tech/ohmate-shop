@@ -99,20 +99,19 @@
         },
         "json"
       );
-      var i = 11;
 
-      function timer() {
+      function timer(i) {
         i--;
         $('.form-group button').text(i + '秒后重发');
+        setTimeout(timer, 1000);
         if (i == 0) {
           clearTimeout(timer);
           $('.form-group button').removeAttr("disabled");
           $('.form-group button').text('重新发送');
         }
-        setTimeout(timer, 1000);
       }
 
-      timer();
+      timer(61);
     }
   }
 </script>
