@@ -10355,6 +10355,15 @@ namespace {
             return \App\Werashop\Wechat\Wechat::authorizeUser($jump_url);
         }
         
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getForeverQrCodeUrl($scene_id){
+            return \App\Werashop\Wechat\Wechat::getForeverQrCodeUrl($scene_id);
+        }
+        
     }
 
 
@@ -10365,6 +10374,7 @@ namespace {
          *
          * @return mixed 
          * @throws UserNotCachedException
+         * @throws UserNotSubscribedException;
          * @static 
          */
         public static function getSessionCachedUser(){
@@ -10374,10 +10384,31 @@ namespace {
         /**
          * 
          *
+         * @return bool 
          * @static 
          */
         public static function hasSessionCachedUser(){
             return \App\Werashop\Helper\Helper::hasSessionCachedUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getUser(){
+            return \App\Werashop\Helper\Helper::getUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return \App\Models\Customer; 
+         * @static 
+         */
+        public static function getCustomer(){
+            return \App\Werashop\Helper\Helper::getCustomer();
         }
         
     }

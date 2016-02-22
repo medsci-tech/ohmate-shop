@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>用户注册</title>
+    <link rel="stylesheet" href="{{asset('/css/register.css')}}">
     <script type="text/javascript">
         function validateMobile() {
             var mobile = document.getElementById('phone').value;
@@ -62,24 +63,28 @@
     </script>
 </head>
 <body>
-<form action="{{url('/register/store')}}" method="POST">
-    {{csrf_field()}}
-    <p>
-        <span>输入手机号</span>
-        <br>
-        <input id="phone" name="phone" type="text">
-        <label id="label_phone" for="phone"></label>
-        </label>
-    </p>
-    <p>
-        <span>输入验证码</span>
-        <br>
-        <input id="code" name="code" type="text">
-        <label id="label_code" for="code"></label>
-        </label>
-    </p>
-    <p><input type="submit" value="确定"></p>
-    <p><input type="button" value="获取短信验证码" onclick='turnTo();'/></p>
-</form>
+<div class="container">
+    <form class="register"  action="{{url('/register/store')}}" method="POST">
+        <div class="form-group">
+            <label><span id="label_phone"></span>
+                <input type="text" id="phone" class="form-control" placeholder="请输入手机号" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <label><span id="label_code"></span>
+                <input type="text" id="code" class="form-control" placeholder="请输入验证码" required>
+            </label>
+            <button type="button" class="btn btn-info" onclick='turnTo();'>获取验证码</button>
+        </div>
+        <button type="submit" class="btn btn-block">确&emsp;认</button>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" checked required>
+                已阅读并同意《<a>易康伴侣服务协议</a>》
+            </label>
+        </div>
+        {{csrf_field()}}
+    </form>
+</div>
 </body>
 </html>

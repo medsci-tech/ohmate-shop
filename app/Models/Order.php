@@ -8,10 +8,17 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Order
  *
  * @mixin \Eloquent
+ * @property integer $id
+ * @property integer $user_id
+ * @property float $total_price
+ * @property integer $order_status_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \App\Models\OrderStatus $status
  */
 class Order extends Model
 {
-    //
+    protected $guarded = [];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

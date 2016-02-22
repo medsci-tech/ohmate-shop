@@ -4,41 +4,17 @@
 var address = new Vue({
   el: '#addresses',
   data: {
-    addresses: [
-      {
-        name: '杨先生',
-        phone: '18311561869',
-        address: '湖北省武汉市东湖高新大道3234号',
-        default: true
-      },
-      {
-        name: '杨先生2',
-        phone: '18311561869',
-        address: '湖北省武汉市东湖高新大道3234号',
-        default: false
-      },
-      {
-        name: '杨先生3',
-        phone: '18311561869',
-        address: '湖北省武汉市东湖高新大道3234号',
-        default: false
-      },
-      {
-        name: '杨先生4',
-        phone: '18311561869',
-        address: '湖北省武汉市东湖高新大道3234号',
-        default: false
-      }
-    ],
+    addresses: [],
     newAdd: {
       name: '',
       phone: '',
       address: '',
+      postage: 8,
       default: false
     },
     chooseImg: {
-      imgtrue: '../../image/shop_icon/icon.png',
-      imgfalse: '../../image/shop_icon/icon1.png'
+      imgtrue: '/image/shop_icon/icon.png',
+      imgfalse: '/image/shop_icon/icon1.png'
     },
   },
 
@@ -62,23 +38,28 @@ var address = new Vue({
         for (i = 0; i < this.addresses.length; i++) {
           this.addresses[i].default = false;
         }
+        if ($('#province').val() == '新疆维吾尔自治区' || $('#province').val() == '西藏自治区') {
+          this.newAdd.postage = 12;
+        }
         this.addresses.push({
           name: this.newAdd.name,
           phone: this.newAdd.phone,
           address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address,
+          postage: this.newAdd.postage,
           default: true
         });
         this.newAdd = {
           name: '',
           phone: '',
           address: '',
+          postage: 8,
           default: false
         }
       }
     },
     editAdd: function (e) {
       if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
-        if (e.default == true) {
+        if (e.default == true && this.addresses.length != 0) {
           this.addresses.$remove(e);
           this.addresses[0].default = true;
         } else {

@@ -35,10 +35,22 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/category', 'CategoryController@index');
-        Route::get('/orders', 'OrderController@index');
-        Route::get('/address', 'AddressController@index');
+
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/', 'OrderController@index');
+            Route::post('generate-config', 'OrderController@generateConfig');
+            Route::post('create', 'OrderController@create');
+        });
+
+        Route::group(['prefix' => 'address'], function () {
+            Route::get('/', 'AddressController@index');
+            Route::post('create', 'AddressController@create');
+            Route::post('delete', 'AddressController@delete');
+        });
+
         Route::get('/personal', 'PersonalController@index');
         Route::get('/cart', 'CartController@index');
+        Route::resource('/commodity', 'CommodityController');
     });
 
 
@@ -54,7 +66,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/customer-service', 'PersonalController@customerService');
     });
 });
-
 
 
 Route::any('github', 'Github\GithubController@onEvent');

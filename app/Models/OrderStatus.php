@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\OrderStatus
  *
  * @mixin \Eloquent
+ * @property integer $id
+ * @property string $name
+ * @property string $label
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  */
 class OrderStatus extends Model
 {

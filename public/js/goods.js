@@ -1,25 +1,8 @@
-/**
- * Created by 鹏飞 on 2016/2/18.
- */
-
-var items = [
-  {
-    id: '1',
-    name: '易折清洁消毒棒',
-    tag: '一次性使用无菌注射针',
-    price: 22.00,
-    priceBefore: 30.00,
-    num: 1
-  }
-];
-
-localStorage.cart = JSON.stringify(items);
-
-if (localStorage.cart){
-  var items = JSON.parse(localStorage.cart);
+if (localStorage.cart != 'undefined') {
+  var cart = JSON.parse(localStorage.cart);
 } else {
-  var items = null;
-};
+  var cart = [];
+}
 
 
 var list = new Vue({
@@ -27,13 +10,13 @@ var list = new Vue({
     data: {
       goods: {
         id: '2',
-        name: '易折清洁消毒棒',
+        name: '诺和针',
         tag: '一次性使用无菌注射针',
         price: 22.00,
         priceBefore: 30.00,
         num: 1
       },
-      cart: items
+      cart: cart
     },
     computed: {
       alreadyHave: function () {
@@ -50,12 +33,18 @@ var list = new Vue({
       addGoods: function () {
         if (this.alreadyHave != -1) {
           this.cart[this.alreadyHave].num += this.goods.num;
-          localStorage.cart = JSON.stringify(this.cart);
+          if (this.cart[this.alreadyHave].num >= 99)this.cart[this.alreadyHave].num = 99;
         } else {
-          this.cart.push(this.goods);
-          localStorage.cart = JSON.stringify(this.cart);
-          this.cart = JSON.parse(localStorage.cart);
+          this.cart.push({
+            id: this.goods.id,
+            name: this.goods.name,
+            tag: this.goods.tag,
+            price: this.goods.price,
+            priceBefore: this.goods.priceBefore,
+            num: this.goods.num
+          });
         }
+        localStorage.cart = JSON.stringify(this.cart);
         this.goods.num = 1;
       },
       numMinus: function () {

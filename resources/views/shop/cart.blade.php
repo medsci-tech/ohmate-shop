@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>购物车</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
 
 </head>
@@ -50,16 +49,10 @@
         </li>
       </ul>
       <p>商品价格<span>@{{ priceAll | currency '￥' }}</span></p>
-      <p>运费 <span>￥8.00</span></p>
+      <p>运费 <span>@{{ address.postage | currency '￥' }}</span></p>
       <p>迈豆折扣
         <span>－@{{ priceDiscount | currency '￥' }}</span>
-        <span>
-          <input type="text" v-model=" person.consume " number debounce="200" maxlength="6"
-                 onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
-          @blur="beansConsume()"
-          >
-          迈豆
-        </span>
+        <span>@{{ priceDiscount*100 }}迈豆</span>
       </p>
     </div>
     <div class="navbar-fixed-bottom cart-submit">
@@ -67,7 +60,7 @@
         <p>合计 <span>@{{ priceCount | currency '￥' }}</span></p>
       </div>
       <div class="col-xs-4">
-        <button class="btn btn-lg">付&emsp;款</button>
+        <button class="btn btn-lg" @click="postCart()">付&emsp;款</button>
       </div>
     </div>
 

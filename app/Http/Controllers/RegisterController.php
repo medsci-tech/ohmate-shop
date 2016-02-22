@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Werashop\Exceptions\UserNotCachedException;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Overtrue\Wechat\QRCode;
@@ -40,52 +42,60 @@ class RegisterController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone',
+            'code' => 'required|digits:6'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $user = \Helper::getSessionCachedUser();
-        if (!$user) {
-            dd('1111');
-            return redirect('/register/error');
+        $user = \Helper::getUser();
+        $customer = \Helper::getCustomer();
+
+        if ($request->input('code') != $customer->auth_code) {
+            return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
         }
 
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || ($customer->is_registered)) {
-            dd('2222');
-            return redirect('/register/error');
+        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
+            return redirect()->back()->with('error_message', '验证码过期!')->withInput();
         }
 
-        $customer->phone    = $request->input(['phone']);
-        $customer->is_registered    = true;
-        $customer->beans_total      = 0;
-        $customer->nickname         = $user['nickname'];
-        $customer->head_image_url   = $user['headimgurl'];
-        $customer->save();
-
-        $qrCode = new QRCode(env('WX_APPID'), env('WX_SECRET'));
-        $result = $qrCode->forever($customer->id);
-        $customer->qr_code = $qrCode->show($result->ticket);
-        $customer->save();
+        $customer->update([
+            'phone' => $request->input('phone'),
+            'is_registered' => true,
+            'beans_total' => 0,
+            'nickname' => $user['nickname'],
+            'head_image_url' => $user['headimgurl'],
+            'qr_code' => \Wechat::getForeverQrCodeUrl($customer->id),
+        ]);
 
         $ret = BeanRechargeHelper::recharge($customer->id, AppConstant::BEAN_ACTION_REGISTER);
         if ($ret) {
             BeanRechargeHelper::inviteFeedback($customer->referrer_id);
-        } /*if>*/
+        }
 
         return view('register.success');
     }
 
     public function sms(Request $request) {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        $validator = \Validator::make($request->all(), [
+            'phone' => 'required|digits:11|unique:customers,phone',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
-            return redirect('/register/error');
-        } /*if>*/
+        $customer = \Helper::getCustomer();
 
         $phone  = $request->input(['phone']);
+        $code = \MessageSender::generateMessageVerify();
+        \MessageSender::sendMessageVerify($phone, $code);
+
+        $customer->update([
+            'auth_code' => $code,
+            'auth_code_expired' => Carbon::now()->addMinute(AppConstant::AUTH_CODE_EXPIRE_INTERVAL)
+        ]);
+
+        return response()->json(['success' => true]);
     }
 
-} /*class*/
+}

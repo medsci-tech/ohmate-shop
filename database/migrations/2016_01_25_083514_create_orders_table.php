@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->double('total_price')->default(0.00);
-            $table->unsignedInteger('order_status_id')->default(0);
+            $table->unsignedInteger('order_status_id')->default(1);
             $table->timestamps();
 
             $table->foreign('user_id')

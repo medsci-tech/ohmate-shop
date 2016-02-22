@@ -1,0 +1,49 @@
+@import url(bootstrap.min.css);
+body {
+  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  background-color: #1ABC9C; }
+
+.register {
+  margin: 40px auto;
+  padding: 22px 15px 20px 15px;
+  max-width: 350px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px gray; }
+.register input {
+  height: 40px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
+  font-weight: normal; }
+.register label input:focus {
+  border-color: #1ABC9C; }
+.register label input:focus + label {
+  color: #1ABC9C; }
+.register > button {
+  height: 40px;
+  background-color: #16A085;
+  color: #FFFFFF;
+  font-size: larger; }
+.register .form-group button {
+  float: right;
+  height: 40px;
+  width: 37%;
+  border-radius: 5px;
+  color: #FFFFFF;
+  background-color: #1ABC9C; }
+.register .form-group:nth-child(1) label {
+  width: 100%; }
+.register .form-group:nth-child(2) label {
+  width: 60%; }
+.register .checkbox {
+  text-align: center;
+  margin: 0;
+  padding-top: 15px; }
+.register .checkbox input {
+  margin-top: -10px; }
+.register .btn:active:focus, .register .btn:focus, .register .btn:hover {
+  outline: none;
+  color: #FFFFFF; }
+
+/*# sourceMappingURL=register.css.map */
