@@ -35,7 +35,7 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request->getContent());
+        dd(json_decode($request->getContent()));
         $customer = \Helper::getCustomer();
 
         $items = $request->input('items');
