@@ -88,7 +88,7 @@
 //        },
         goods: {
           id: '{{$item->id}}',
-          name: '{{$item->name}}',
+          name: '{{$item->name}}'.replace("&reg;","®"),
           tag: '{{$item->remark}}',
           price: {{$item->price}},
           priceBefore: {{$item->price * 1.25}},
