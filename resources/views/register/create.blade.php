@@ -105,11 +105,12 @@
       function timer() {
         i--;
         $('.form-group button').text(i + '秒后重发');
-        setTimeout(timer, 1000);
         if (i == 0) {
           clearTimeout(timer);
           $('.form-group button').removeAttr("disabled");
           $('.form-group button').text('重新发送');
+        } else {
+          setTimeout(timer, 1000);
         }
       }
     }
