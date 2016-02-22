@@ -88,8 +88,8 @@
   function turnTo() {
     if (validateMobile()) {
       $('.form-group button').attr("disabled", "disabled");
-      $('.form-group button').delay(60000).removeAttr("disabled");
-      $('.form-group button').delay(60000).text('重新发送');
+      $('.form-group button').delay(10000).removeAttr("disabled");
+      $('.form-group button').delay(10000).text('重新发送');
       var mobile = document.getElementById('phone').value;
       $.get(
         '/register/sms?phone=' + mobile,
@@ -101,9 +101,8 @@
         },
         "json"
       );
-      for (i = 60; i > 1; i--) {
-        $('.form-group button').text( i+'秒后重新发送');
-        setTimeout("",1000);
+      for (i = 10; i > 1; i--) {
+        setTimeout($('.form-group button').text( i+'秒后重新发送'),1000);
       };
     }
   }
