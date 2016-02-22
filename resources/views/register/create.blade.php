@@ -11,12 +11,12 @@
   <form class="register" action="{{url('/register/store')}}" method="POST">
     <div class="form-group">
       <label><span id="label_phone"></span>
-        <input type="text" id="phone" class="form-control" placeholder="请输入手机号" required>
+        <input type="text" name="phone" id="phone" class="form-control" placeholder="请输入手机号" required>
       </label>
     </div>
     <div class="form-group">
       <label><span id="label_code"></span>
-        <input type="text" id="code" class="form-control" placeholder="请输入验证码" required>
+        <input type="text" name="code" id="code" class="form-control" placeholder="请输入验证码" required>
       </label>
       <button type="button" class="btn btn-info" onclick='turnTo();'>获取验证码</button>
     </div>
@@ -87,6 +87,7 @@
 
   function turnTo() {
     if (validateMobile()) {
+      $('.form-group button').addClass('default');
       var mobile = document.getElementById('phone').value;
       $.get(
         '/register/sms?phone=' + mobile,
