@@ -84,7 +84,7 @@ class RegisterController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'error_message' => '手机号已注册过.'
+                'error_message' => $validator->errors()->getMessages()
             ]);
         }
 
