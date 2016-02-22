@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.8 on 2016-02-19.
+ * Generated for Laravel 5.2.8 on 2016-02-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10374,6 +10374,7 @@ namespace {
          *
          * @return mixed 
          * @throws UserNotCachedException
+         * @throws UserNotSubscribedException;
          * @static 
          */
         public static function getSessionCachedUser(){
@@ -10383,10 +10384,31 @@ namespace {
         /**
          * 
          *
+         * @return bool 
          * @static 
          */
         public static function hasSessionCachedUser(){
             return \App\Werashop\Helper\Helper::hasSessionCachedUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getUser(){
+            return \App\Werashop\Helper\Helper::getUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return \App\Models\Customer; 
+         * @static 
+         */
+        public static function getCustomer(){
+            return \App\Werashop\Helper\Helper::getCustomer();
         }
         
     }

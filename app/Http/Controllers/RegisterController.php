@@ -48,14 +48,8 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        try {
-            $user = \Helper::getSessionCachedUser();
-            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
-        } catch (\Exception $e) {
-            return view('errors.custom')->with([
-                'message' => '用户查找失败,请尝试取消关注后重新关注.'
-            ]);
-        }
+        $user = \Helper::getUser();
+        $customer = \Helper::getCustomer();
 
         if ($request->input('code') != $customer->auth_code) {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
@@ -90,14 +84,7 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        try {
-            $user = \Helper::getSessionCachedUser();
-            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
-        } catch (\Exception $e) {
-            return view('errors.custom')->with([
-                'message' => '用户查找失败,请尝试取消关注后重新关注.'
-            ]);
-        }
+        $customer = \Helper::getCustomer();
 
         $phone  = $request->input(['phone']);
         $code = \MessageSender::generateMessageVerify();

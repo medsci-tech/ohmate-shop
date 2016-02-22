@@ -26,28 +26,55 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\CustomerType $type
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CustomerBean[] $beans
  * @property-read \App\Models\CustomerLocation $location
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  */
 class Customer extends Model
 {
+    /**
+     * @var string
+     */
     protected $table = 'customers';
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
+    /**
+     * @var array
+     */
     public $timestamps = ['created_at', 'updated_at', 'auth_code_expired'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function type()
     {
-        return $this->belongsTo('App\Models\CustomerType', 'type_id');
+        return $this->belongsTo(CustomerType::class, 'type_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function beans()
     {
-        return $this->hasMany('App\Models\CustomerBean', 'customer_id');
+        return $this->hasMany(CustomerBean::class, 'customer_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function location()
     {
-        return $this->hasOne('App\Models\CustomerLocation', 'customer_id');
+        return $this->hasOne(CustomerLocation::class, 'customer_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
 }
