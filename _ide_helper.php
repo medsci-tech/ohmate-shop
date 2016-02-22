@@ -10414,5 +10414,118 @@ namespace {
     }
 
 
+    class BeanRecharger extends \App\Werashop\Bean\Facades\BeanRecharger{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function test(){
+            return \App\Werashop\Bean\BeanRecharger::test();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function recharge($user, $action, $value = 1){
+            return \App\Werashop\Bean\BeanRecharger::recharge($user, $action, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function update($user, $action, $value){
+            return \App\Werashop\Bean\BeanRecharger::update($user, $action, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function register($user){
+            return \App\Werashop\Bean\BeanRecharger::register($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function signIn($user){
+            return \App\Werashop\Bean\BeanRecharger::signIn($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function consume($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function invite($referrer){
+            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function scanArticle($user){
+            return \App\Werashop\Bean\BeanRecharger::scanArticle($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function scanVideo($user){
+            return \App\Werashop\Bean\BeanRecharger::scanVideo($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function consumeFeedback($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consumeFeedback($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function doctorEducationFeedback($user){
+            return \App\Werashop\Bean\BeanRecharger::doctorEducationFeedback($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function doctorConsumeFeedback($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::doctorConsumeFeedback($user, $value);
+        }
+        
+    }
+
+
 }
 

@@ -77,4 +77,11 @@ class Customer extends Model
         return $this->hasMany(Order::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function addresses()
+    {
+        return $this->hasMany(\App\Models\Address::class);
+    }
 }

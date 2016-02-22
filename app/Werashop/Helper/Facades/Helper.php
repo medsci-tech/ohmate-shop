@@ -3,7 +3,6 @@
 
 namespace App\Werashop\Helper\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 class Helper extends Facade

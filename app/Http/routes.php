@@ -38,10 +38,16 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', 'OrderController@index');
+            Route::post('generate-config', 'OrderController@generateConfig');
             Route::post('create', 'OrderController@create');
         });
 
-        Route::get('/address', 'AddressController@index');
+        Route::group(['prefix' => 'address'], function () {
+            Route::get('/', 'AddressController@index');
+            Route::post('create', 'AddressController@create');
+            Route::post('delete', 'AddressController@delete');
+        });
+
         Route::get('/personal', 'PersonalController@index');
         Route::get('/cart', 'CartController@index');
         Route::resource('/commodity', 'CommodityController');

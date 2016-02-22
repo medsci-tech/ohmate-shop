@@ -18,8 +18,8 @@ class OrderController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth.wechat');
-//        $this->middleware('auth.access');
+        $this->middleware('auth.wechat');
+        $this->middleware('auth.access');
     }
 
     public function index() {
@@ -33,7 +33,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return \Response
      */
-    public function create(Request $request)
+    public function generateConfig(Request $request)
     {
         dd(json_decode($request->getContent()));
         $customer = \Helper::getCustomer();
