@@ -26,6 +26,14 @@ var address = new Vue({
       } else {
         this.addresses.$remove(e);
       }
+      $.post('/shop/address/create', JSON.stringify(address.$data.addresses),
+        function(data, status){
+          if (data.success) {
+          } else {
+            alert('服务器异常!');
+          }
+        }, "json"
+      );
     },
     chooseAdd: function (e) {
       for (i = 0; i < this.addresses.length; i++) {
@@ -54,7 +62,8 @@ var address = new Vue({
           address: '',
           postage: 8,
           default: false
-        }
+        };
+        $.post('/shop/address/create', JSON.stringify(address.$data.addresses));
       }
     },
     editAdd: function (e) {
