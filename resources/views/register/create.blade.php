@@ -94,7 +94,7 @@
         function (data) {
           if (data.success) {
           } else {
-            alert('服务器异常!');
+            alert(data.error_message.phone);
           }
         },
         "json"
