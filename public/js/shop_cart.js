@@ -13,14 +13,8 @@ var shop_cart = new Vue({
     person: {
       beans: 90000,
       consume: 0
-    },
-
-    address: {
-      name: '杨先生',
-      phone: '18311561869',
-      address: '湖北省武汉市东湖高新大道3234号',
-      postage: 8
     }
+
   },
 
   computed: {
