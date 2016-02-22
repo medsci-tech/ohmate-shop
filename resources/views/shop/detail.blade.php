@@ -68,7 +68,6 @@
 <script src="{{asset('js/vendor/vue.js')}}"></script>
 <script>
   if (localStorage.cart != 'undefined') {
-    localStorage.cart = localStorage.cart.replace("&reg;","®");
     var cart = JSON.parse(localStorage.cart);
   } else {
     var cart = [];
