@@ -87,7 +87,7 @@
 
   function turnTo() {
     if (validateMobile()) {
-      $('.form-group button').addClass('default');
+      $('.form-group button').attr("disable","disable");
       var mobile = document.getElementById('phone').value;
       $.get(
         '/register/sms?phone=' + mobile,
