@@ -60,7 +60,7 @@
         <p>合计 <span>@{{ priceCount | currency '￥' }}</span></p>
       </div>
       <div class="col-xs-4">
-        <button class="btn btn-lg" @click="postCart()">付&emsp;款</button>
+        <button class="btn btn-lg" @click="postCart">付&emsp;款</button>
       </div>
     </div>
 
@@ -199,7 +199,7 @@
       beansConsume: function () {
       },
       postCart: function() {
-        jQuery.post(url('shop/order/create'),JSON.stringify(shop_cart.data));
+        $.post(url('shop/order/create'),JSON.stringify(shop_cart.data));
       }
     }
   });
