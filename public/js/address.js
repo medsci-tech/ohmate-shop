@@ -59,7 +59,7 @@ var address = new Vue({
     },
     editAdd: function (e) {
       if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
-        if (e.default == true) {
+        if (e.default == true && this.addresses.length != 0) {
           this.addresses.$remove(e);
           this.addresses[0].default = true;
         } else {
