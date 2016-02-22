@@ -31,7 +31,7 @@ class AddressController extends Controller
         $customer = \Helper::getCustomer();
 
         return view('shop.address')->with([
-            'items' =>
+            'items' => $customer->addresses()->get()
         ]);
     }
 
@@ -39,6 +39,15 @@ class AddressController extends Controller
      * @param Request $request
      */
     public function create(Request $request)
+    {
+        $item = json_decode($request->getContent());
+        dd($item);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function delete(Request $request)
     {
         $item = json_decode($request->getContent());
         dd($item);
