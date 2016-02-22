@@ -13,6 +13,6 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         '/wechat*',
-        '/shop/orders/create'
+        '/shop/order/create'
     ];
 }
