@@ -2,6 +2,7 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>用户注册</title>
   <link rel="stylesheet" href="{{asset('/css/register.css')}}">
 </head>
@@ -23,8 +24,9 @@
     <div class="checkbox">
       <label>
         <input type="checkbox" checked required>
-        已阅读并同意《<a>易康伴侣服务协议</a>》
+        已阅读并同意
       </label>
+      <span>《<a>易康伴侣服务协议</a>》</span>
     </div>
     {{csrf_field()}}
   </form>
