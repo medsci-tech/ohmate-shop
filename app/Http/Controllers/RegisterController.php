@@ -82,7 +82,10 @@ class RegisterController extends Controller
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json([
+                'success' => false,
+                'error_message' => '手机号已注册过.'
+            ]);
         }
 
         $customer = \Helper::getCustomer();
