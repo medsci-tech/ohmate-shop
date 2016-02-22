@@ -41,7 +41,11 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('create', 'OrderController@create');
         });
 
-        Route::get('/address', 'AddressController@index');
+        Route::group(['prefix' => 'address'], function () {
+            Route::get('/', 'AddressController@index');
+            Route::post('create', 'AddressController@create');
+        });
+
         Route::get('/personal', 'PersonalController@index');
         Route::get('/cart', 'CartController@index');
         Route::resource('/commodity', 'CommodityController');
