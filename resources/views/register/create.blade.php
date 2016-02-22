@@ -4,74 +4,6 @@
   <meta charset="UTF-8">
   <title>用户注册</title>
   <link rel="stylesheet" href="{{asset('/css/register.css')}}">
-  <script type="text/javascript">
-    function validateMobile() {
-      var mobile = document.getElementById('phone').value;
-      var code = document.getElementById('code').value;
-      if (mobile.length == 0) {
-        document.getElementById('label_phone').innerText = '请输入手机号码！';
-        document.getElementById('phone').focus();
-        return false;
-      }
-      if (mobile.length != 11) {
-        document.getElementById('label_phone').innerText = '请输入有效的手机号码！';
-        document.getElementById('phone').focus();
-        return false;
-      }
-
-      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-      if (!myreg.test(mobile)) {
-        document.getElementById('label_phone').innerText = '请输入有效的手机号码！';
-        document.getElementById('phone').focus();
-        return false;
-      }
-
-      return true;
-
-    }
-
-    function validateAll() {
-      if (!validateMobile()) {
-        return false;
-      }
-
-      if (code.length == 0) {
-        document.getElementById('label_code').innerText = '请输入验证码！';
-        document.getElementById('code').focus();
-        return false;
-      }
-
-      if (code.length != 6) {
-        document.getElementById('label_code').innerText = '请输入有效的验证码！';
-        document.getElementById('code').focus();
-        return false;
-      }
-
-      if (isNaN(code)) {
-        document.getElementById('label_code').innerText = '请输入有效的验证码！';
-        document.getElementById('code').focus();
-        return false;
-      }
-
-      return true;
-    }
-
-    function turnTo() {
-      if (validateMobile()) {
-        var mobile = document.getElementById('phone').value;
-        $.get(
-          '/register/sms?phone=' + mobile,
-          function (data) {
-            if (data.success) {
-            } else {
-              alert('服务器异常!');
-            }
-          },
-          "json"
-        );
-      }
-    }
-  </script>
 </head>
 <body>
 <div class="container">
@@ -97,5 +29,75 @@
     {{csrf_field()}}
   </form>
 </div>
+
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript">
+  function validateMobile() {
+    var mobile = document.getElementById('phone').value;
+    var code = document.getElementById('code').value;
+    if (mobile.length == 0) {
+      document.getElementById('label_phone').innerText = '请输入手机号码！';
+      document.getElementById('phone').focus();
+      return false;
+    }
+    if (mobile.length != 11) {
+      document.getElementById('label_phone').innerText = '请输入有效的手机号码！';
+      document.getElementById('phone').focus();
+      return false;
+    }
+
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if (!myreg.test(mobile)) {
+      document.getElementById('label_phone').innerText = '请输入有效的手机号码！';
+      document.getElementById('phone').focus();
+      return false;
+    }
+
+    return true;
+
+  }
+
+  function validateAll() {
+    if (!validateMobile()) {
+      return false;
+    }
+
+    if (code.length == 0) {
+      document.getElementById('label_code').innerText = '请输入验证码！';
+      document.getElementById('code').focus();
+      return false;
+    }
+
+    if (code.length != 6) {
+      document.getElementById('label_code').innerText = '请输入有效的验证码！';
+      document.getElementById('code').focus();
+      return false;
+    }
+
+    if (isNaN(code)) {
+      document.getElementById('label_code').innerText = '请输入有效的验证码！';
+      document.getElementById('code').focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  function turnTo() {
+    if (validateMobile()) {
+      var mobile = document.getElementById('phone').value;
+      $.get(
+        '/register/sms?phone=' + mobile,
+        function (data) {
+          if (data.success) {
+          } else {
+            alert('服务器异常!');
+          }
+        },
+        "json"
+      );
+    }
+  }
+</script>
 </body>
 </html>
