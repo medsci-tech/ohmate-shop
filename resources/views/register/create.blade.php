@@ -88,8 +88,6 @@
   function turnTo() {
     if (validateMobile()) {
       $('.form-group button').attr("disabled", "disabled");
-      $('.form-group button').delay(10000).removeAttr("disabled");
-      $('.form-group button').delay(10000).text('重新发送');
       var mobile = document.getElementById('phone').value;
       $.get(
         '/register/sms?phone=' + mobile,
@@ -102,13 +100,19 @@
         "json"
       );
       var i = 10;
-      setInterval(timer,1000);
-      var timer = function (){
+      setInterval(timer, 1000);
+      var timer = function () {
         i--;
-        $('.form-group button').text(i+'秒后重新发送');
-        if( i == 1 ) clearInterval(timer);
-      };
+        $('.form-group button').text(i + '秒后重新发送');
+        if (i == 0) {
+          clearInterval(timer);
+          $('.form-group button').removeAttr("disabled");
+          $('.form-group button').text('重新发送');
+        }
+      }
     }
+    ;
+  }
   }
 </script>
 </body>
