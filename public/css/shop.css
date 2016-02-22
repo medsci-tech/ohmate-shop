@@ -170,16 +170,15 @@ a, a:focus, a:hover {
         #cart_form .row .col-xs-9 > div > div {
           display: inline-block;
           float: right;
-          padding-right: 3.7em; }
+          padding-right: 3em; }
           #cart_form .row .col-xs-9 > div > div p {
             display: inline-block; }
           #cart_form .row .col-xs-9 > div > div input {
             position: absolute;
-            bottom: .8em;
-            right: 3.5em;
-            width: 2em;
-            border-radius: 5px;
-            text-align: center; }
+            bottom: .6em;
+            right: 2.8em;
+            width: 2.1em;
+            border-radius: 5px; }
           #cart_form .row .col-xs-9 > div > div span:last-child {
             position: relative;
             left: 3em; }
@@ -360,9 +359,28 @@ a, a:focus, a:hover {
     display: inline-block;
     font-size: 20px; }
   #goods .navbar-fixed-bottom input {
-    width: 2em;
+    width: 2.1em;
     display: inline-block;
-    text-align: center;
     border-radius: 5px; }
+#goods .jumbotron {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition-duration: 1500ms; }
+  #goods .jumbotron .alert {
+    position: fixed;
+    top: 200px;
+    left: 25%;
+    width: 50%;
+    opacity: 0.9;
+    background-color: #404040;
+    color: #FFFFFF; }
 
 /*# sourceMappingURL=shop.css.map */

@@ -54,6 +54,13 @@
       <a href="{{url('shop/cart')}}" class="btn" @click="addGoods()">立即购买</a>
     </div>
   </div>
+
+  <div class="jumbotron">
+    <div class="alert text-center" role="alert">
+      添加成功
+    </div>
+  </div>
+
 </div>
 
 <script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
@@ -115,6 +122,10 @@
           }
           localStorage.cart = JSON.stringify(this.cart);
           this.goods.num = 1;
+          $('.jumbotron').show();
+          $('.jumbotron').delay(1000).hide(0);
+          $('.jumbotron .alert').show();
+          $('.jumbotron .alert').delay(300).fadeOut(700);
         },
         numMinus: function () {
           if (this.goods.num >= 2) {

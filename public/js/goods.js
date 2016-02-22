@@ -33,6 +33,7 @@ var list = new Vue({
       addGoods: function () {
         if (this.alreadyHave != -1) {
           this.cart[this.alreadyHave].num += this.goods.num;
+          if (this.cart[this.alreadyHave].num >= 99)this.cart[this.alreadyHave].num = 99;
         } else {
           this.cart.push({
             id: this.goods.id,
