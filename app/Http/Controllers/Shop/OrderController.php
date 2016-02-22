@@ -31,9 +31,11 @@ class OrderController extends Controller
      * 依据前台post消息创建订单
      *
      * @param Request $request
+     * @return \Response
      */
     public function create(Request $request)
     {
+        dd($request->all());
         $customer = \Helper::getCustomer();
 
         $items = $request->input('items');
@@ -42,7 +44,16 @@ class OrderController extends Controller
         $customer->orders()->save($order);
 
         foreach ($items as $item) {
-
+            //todo iterator
         }
+
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
+    public function pay(Request $request)
+    {
+        //todo pay
     }
 }
