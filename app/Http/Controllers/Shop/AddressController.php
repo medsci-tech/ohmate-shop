@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Werashop\Helper\Facades\Helper;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,7 +27,12 @@ class AddressController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        return view('shop.address');
+
+        $customer = \Helper::getCustomer();
+
+        return view('shop.address')->with([
+            'items' =>
+        ]);
     }
 
     /**
