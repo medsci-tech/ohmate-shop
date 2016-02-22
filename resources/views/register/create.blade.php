@@ -101,8 +101,12 @@
         },
         "json"
       );
-      for (i = 10; i > 1; i--) {
-        setTimeout($('.form-group button').text( i+'秒后重新发送'),1000);
+      var i = 10;
+      setInterval(timer,1000);
+      var timer = function (){
+        i--;
+        $('.form-group button').text(i+'秒后重新发送');
+        if( i == 1 ) clearInterval(timer);
       };
     }
   }
