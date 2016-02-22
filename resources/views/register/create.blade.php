@@ -99,9 +99,8 @@
         },
         "json"
       );
-      var i = 10;
-      setInterval(timer, 1000);
-      var timer = function () {
+      var i = 11;
+      function timer() {
         i--;
         $('.form-group button').text(i + '秒后重新发送');
         if (i == 0) {
@@ -109,6 +108,7 @@
           $('.form-group button').removeAttr("disabled");
           $('.form-group button').text('重新发送');
         }
+        setTimeout(timer, 1000);
       }
     };
   }
