@@ -33,7 +33,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return \Response
      */
-    public function create(Request $request)
+    public function generateConfig(Request $request)
     {
         dd(json_decode($request->getContent()));
         $customer = \Helper::getCustomer();

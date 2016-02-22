@@ -38,6 +38,7 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', 'OrderController@index');
+            Route::post('generate-config', 'OrderController@generateConfig');
             Route::post('create', 'OrderController@create');
         });
 
