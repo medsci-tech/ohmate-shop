@@ -21,7 +21,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'register'], function () {
         Route::get('/create', 'RegisterController@create');
         Route::post('/store', 'RegisterController@store');
-        Route::post('/sms', 'RegisterController@sms');
+        Route::get('/sms', 'RegisterController@sms');
         Route::get('/focus', 'RegisterController@focus');
         Route::get('/error', 'RegisterController@error');
     });
