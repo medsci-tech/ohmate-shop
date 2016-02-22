@@ -170,13 +170,13 @@ a, a:focus, a:hover {
         #cart_form .row .col-xs-9 > div > div {
           display: inline-block;
           float: right;
-          padding-right: 3.7em; }
+          padding-right: 3em; }
           #cart_form .row .col-xs-9 > div > div p {
             display: inline-block; }
           #cart_form .row .col-xs-9 > div > div input {
             position: absolute;
-            bottom: .8em;
-            right: 3.5em;
+            bottom: .6em;
+            right: 2.8em;
             width: 2.1em;
             border-radius: 5px;
             text-align: center; }
