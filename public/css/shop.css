@@ -177,7 +177,7 @@ a, a:focus, a:hover {
             position: absolute;
             bottom: .6em;
             right: 2.8em;
-            width: 2.1em;
+            width: 2.5em;
             border-radius: 5px; }
           #cart_form .row .col-xs-9 > div > div span:last-child {
             position: relative;
@@ -359,7 +359,7 @@ a, a:focus, a:hover {
     display: inline-block;
     font-size: 20px; }
   #goods .navbar-fixed-bottom input {
-    width: 2.1em;
+    width: 2.5em;
     display: inline-block;
     border-radius: 5px; }
 #goods .jumbotron {
