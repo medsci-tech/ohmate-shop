@@ -63,7 +63,7 @@ var shop_cart = new Vue({
     beansConsume: function () {
     },
     postCart: function() {
-      $.post("",JSON.stringify(shop_cart.$data));
+      $.post(url('shop/order/create'),JSON.stringify(shop_cart.$data));
     }
   }
 });
