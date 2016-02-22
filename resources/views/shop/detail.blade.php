@@ -67,11 +67,12 @@
 <script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script src="{{asset('js/vendor/vue.js')}}"></script>
 <script>
-  if (localStorage.cart != 'undefined'){
+  if (localStorage.cart != 'undefined') {
     var cart = JSON.parse(localStorage.cart);
+    cart.replace('&reg;','®');
   } else {
     var cart = [];
-  };
+  }
 
 
   var list = new Vue({
