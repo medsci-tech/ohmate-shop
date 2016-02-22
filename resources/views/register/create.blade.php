@@ -103,9 +103,9 @@
 
       function timer() {
         i--;
-        $('.form-group button').text(i + '秒后重新发送');
+        $('.form-group button').text(i + '秒后重发');
         if (i == 0) {
-          clearInterval(timer);
+          clearTimeout(timer);
           $('.form-group button').removeAttr("disabled");
           $('.form-group button').text('重新发送');
         }
