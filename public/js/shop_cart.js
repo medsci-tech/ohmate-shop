@@ -58,7 +58,14 @@ var shop_cart = new Vue({
     },
     postCart: function() {
       console.log(JSON.stringify(shop_cart.$data));
-      $.post('/shop/order/create',JSON.stringify(shop_cart.$data));
+      $.post('/shop/order/create',JSON.stringify(shop_cart.$data),
+        function(data, status){
+          if (data.success) {
+          } else {
+            alert('服务器异常!');
+          }
+        }, "json"
+      );
     }
   }
 });

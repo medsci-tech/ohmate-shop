@@ -45,6 +45,7 @@ class RegisterController extends Controller
             'code' => 'required|digits:6'
         ]);
         if ($validator->fails()) {
+            dd($validator->errors());
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -81,7 +82,10 @@ class RegisterController extends Controller
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json([
+                'success' => false,
+                'error_message' => $validator->errors()->getMessages()
+            ]);
         }
 
         $customer = \Helper::getCustomer();
