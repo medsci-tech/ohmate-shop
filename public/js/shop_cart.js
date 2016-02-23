@@ -1,6 +1,5 @@
 if (localStorage.cart != 'undefined' && localStorage.cart) {
   var cart = JSON.parse(localStorage.cart);
-  cart = cart.replace("&reg;","®");
 } else {
   var cart = [];
 }
