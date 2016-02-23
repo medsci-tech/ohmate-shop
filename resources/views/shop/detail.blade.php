@@ -924,8 +924,8 @@
       tokensToExp: tokensToExp
     });
 
-    var delimiters = ['{{', '}}'];
-    var unsafeDelimiters = ['{{{', '}}}'];
+    var delimiters = ['@{{', '}}'];
+    var unsafeDelimiters = ['@{{{', '}}}'];
 
     var config = Object.defineProperties({
 
@@ -5302,7 +5302,7 @@
 
       bind: function bind() {
         // a comment node means this is a binding for
-        // {{{ inline unescaped html }}}
+        // @{{{ inline unescaped html }}}
         if (this.el.nodeType === 8) {
           // hold nodes
           this.nodes = [];
