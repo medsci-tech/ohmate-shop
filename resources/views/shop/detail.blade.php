@@ -75,6 +75,7 @@
     num: 1
   };
 
+  
   if (typeof localStorage.cart != 'undefined') {
     var cart = JSON.parse(localStorage.cart);
   } else {
