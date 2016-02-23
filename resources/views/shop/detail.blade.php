@@ -60,6 +60,7 @@
     </div>
   </div>
 
+  <div id="test"></div>
 </div>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
@@ -75,10 +76,13 @@
     num: 1
   };
 
+
+  $('#test').text(localStorage.cart);
+  
   if (localStorage.cart != 'undefined' && localStorage.cart ) {
-    cart = JSON.parse(localStorage.cart);
+    var cart = JSON.parse(localStorage.cart);
   } else {
-    cart = [];
+    var cart = [];
   }
 
 
