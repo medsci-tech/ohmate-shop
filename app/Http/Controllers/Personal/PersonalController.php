@@ -19,39 +19,21 @@ class PersonalController extends Controller
 
     public function information()
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/personal/error');
-        }
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
-            return redirect('/personal/error');
-        }
-
+        $customer = \Helper::getCustomer();
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
+        $data['type']               = $customer->type;
         $data['beans_total']        = $customer->beans_total;
-        return $data;
-//        return view('personal.information', $data);
+        return view('personal.information', $data);
     }
 
     public function beans()
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/personal/error');
-        }
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
-            return redirect('/personal/error');
-        }
-
+        $customer = \Helper::getCustomer();
         $customerBeans = $customer->beans;
         if (!$customerBeans) {
-            return view('personal.no_beans');
-        }
+            return view('personal.no-beans');
+        } /*if>*/
 
         $list = null;
         foreach ($customerBeans as $customerBean) {
@@ -74,16 +56,7 @@ class PersonalController extends Controller
 
     public function friend()
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/personal/error');
-        }
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered) || (!$customer->qr_code)) {
-            return redirect('/personal/error');
-        }
-
+        $customer = \Helper::getCustomer();
         $data['nickname']   = $customer->nickname;
         $data['qrCode']     = $customer->qr_code;
         return view('personal.friend', $data);
