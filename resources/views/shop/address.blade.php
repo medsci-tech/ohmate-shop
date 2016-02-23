@@ -138,10 +138,10 @@
     }
   });
 </script>
+<script src="{{asset('/js/city.js')}}"></script>
 <script>
-  $(function () {
-    city_selector();
-  });
+$(function () {
+city_selector();
+});
 </script>
-<script src="{{asset('/js/address.js')}}"></script>
 </html>
