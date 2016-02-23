@@ -59,8 +59,7 @@
       添加成功
     </div>
   </div>
-
-  <div id="test"></div>
+  
 </div>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
@@ -75,10 +74,6 @@
     priceBefore: {{$item->price * 1.25}},
     num: 1
   };
-
-  localStorage.clear();
-
-  $('#test').text(localStorage.cart != 'undefined');
 
   if (localStorage.cart != 'undefined' && localStorage.cart ) {
     var cart = JSON.parse(localStorage.cart);
