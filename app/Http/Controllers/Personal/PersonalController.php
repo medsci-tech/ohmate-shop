@@ -35,6 +35,7 @@ class PersonalController extends Controller
             return view('personal.no-beans');
         } /*if>*/
 
+        $total = $customer->beans_total;
         $list = null;
         foreach ($customerBeans as $customerBean) {
             $list[] = [
@@ -45,8 +46,7 @@ class PersonalController extends Controller
             ];
         }
 
-        return $list;
-//        return view('personal.beans', ['total' => $total, 'list' = $list]);
+        return view('personal.beans', ['total' => $total, 'list' => $list]);
     }
 
     public function game()
