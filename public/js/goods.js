@@ -15,7 +15,7 @@ var list = new Vue({
         price: 22.00,
         priceBefore: 30.00,
         num: 1
-      },
+      }
 //        goods: {
 //          id: '{{$item->id}}',
 //          name: '{{$item->name}}'.replace("&reg;","®"),
@@ -70,4 +70,3 @@ var list = new Vue({
 //      }
     }
   })
-  ;
