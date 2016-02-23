@@ -59,7 +59,7 @@
       添加成功
     </div>
   </div>
-  
+
 </div>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
@@ -75,7 +75,7 @@
     num: 1
   };
 
-  if (localStorage.cart != 'undefined' && localStorage.cart ) {
+  if (typeof localStorage.cart != 'undefined') {
     var cart = JSON.parse(localStorage.cart);
   } else {
     var cart = [];
