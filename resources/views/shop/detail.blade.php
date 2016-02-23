@@ -76,15 +76,15 @@
     num: 1
   };
 
-  localStorage.cart.clear();
+  localStorage.clear();
 
   $('#test').text(localStorage.cart != 'undefined');
 
-//  if (localStorage.cart != 'undefined' && localStorage.cart ) {
-//    var cart = JSON.parse(localStorage.cart);
-//  } else {
-//    var cart = [];
-//  }
+  if (localStorage.cart != 'undefined' && localStorage.cart ) {
+    var cart = JSON.parse(localStorage.cart);
+  } else {
+    var cart = [];
+  }
 
 
   var list = new Vue({
