@@ -24,6 +24,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/sms', 'RegisterController@sms');
         Route::get('/focus', 'RegisterController@focus');
         Route::get('/error', 'RegisterController@error');
+        Route::get('/success', 'RegisterController@success');
     });
 
     Route::group(['prefix' => 'eduction'], function () {
@@ -53,7 +54,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource('/commodity', 'CommodityController');
     });
 
-
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
@@ -66,6 +66,5 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/customer-service', 'PersonalController@customerService');
     });
 });
-
 
 Route::any('github', 'Github\GithubController@onEvent');

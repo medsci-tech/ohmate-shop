@@ -28,6 +28,11 @@ class RegisterController extends Controller
         return view('register.error');
     }
 
+    public function success()
+    {
+        return view('register.success');
+    }
+
     public function create()
     {
         return view('register.create');
@@ -73,7 +78,7 @@ class RegisterController extends Controller
             \BeanRecharger::invite($customer->referrer_id);
         } /*if>*/
 
-        return view('register.success');
+        return redirect('register/success');
     }
 
     public function sms(Request $request) {
