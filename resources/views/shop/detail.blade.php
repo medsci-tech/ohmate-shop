@@ -78,11 +78,10 @@
   if (localStorage.cart != 'undefined') {
     var cart = JSON.parse(localStorage.cart);
   } else {
-    var cart = goods;
+    var cart = [];
   }
 
-
-  var list = new Vue({
+  new Vue({
     el: '#goods',
     data: {
       //goods: {
@@ -139,7 +138,7 @@
         }
       }
     }
-  });
+  })
 
 </script>
 <script>
