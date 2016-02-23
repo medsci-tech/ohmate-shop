@@ -138,7 +138,7 @@
     }
   });
 </script>
-<script src="{{asset('/js/city.js')}}"></script>
+<script src="{{asset('/js/vendor/city.js')}}"></script>
 <script>
 $(function () {
 city_selector();
