@@ -16,7 +16,7 @@
 
     <div class="row" v-for="goods in cart">
       <div class="col-xs-3">
-        <img class="img-responsive" src="{{asset('image/test02.png')}}" alt="">
+        <img class="img-responsive" src="{{asset('/image/test02.png')}}" alt="">
       </div>
       <div class="col-xs-9">
         <h4>@{{ goods.name }}</h4>
@@ -36,7 +36,7 @@
             <span @click="numAdd(goods)">＋</span>
           </div>
         </div>
-        <img src="../../image/shop_icon/Delete.png" alt="" @click="removeGoods(goods)">
+        <img src="{{asset('/image/shop_icon/Delete.png')}}" alt="" @click="removeGoods(goods)">
       </div>
     </div>
     <h5>消费明细></h5>
@@ -67,10 +67,10 @@
 
     <div class="address">
       <template v-if=" address == null ">
-        <a class="btn  btn-default center-block" href="{{url('shop/address')}}">添加收货地址</a>
+        <a class="btn  btn-default center-block" href="{{url('/shop/address')}}">添加收货地址</a>
       </template>
       <template v-else>
-        <p>默认收货地址 <a href="{{url('shop/address')}}"><span>管理地址</span></a></p>
+        <p>默认收货地址 <a href="{{url('/shop/address')}}"><span>管理地址</span></a></p>
         <p class="col-xs-4">收货人</p>
         <span class="col-xs-3">@{{ address.name }}</span>
         <span class="col-xs-5">@{{ address.phone }}</span>
@@ -88,40 +88,40 @@
     <nav class="navbar-fixed-bottom">
 
       <div class="nav-button">
-        <a href="{{url('shop/index')}}">
-          <img src="{{asset('image/shop_nav/HOME.png')}}" alt=""><br>
+        <a href="{{url('/shop/index')}}">
+          <img src="{{asset('/image/shop_nav/HOME.png')}}" alt=""><br>
 
           <p>首页</p>
         </a>
       </div>
 
       <div class="nav-button">
-        <a href="{{url('shop/category')}}">
-          <img src="{{asset('image/shop_nav/classification.png')}}" alt=""><br>
+        <a href="{{url('/shop/category')}}">
+          <img src="{{asset('/image/shop_nav/classification.png')}}" alt=""><br>
 
           <p>分类</p>
         </a>
       </div>
 
       <div class="nav-button">
-        <a href="{{url('shop/cart')}}">
-          <img src="{{asset('image/shop_nav/SHOPPING-1.png')}}" alt=""><br>
+        <a href="{{url('/shop/cart')}}">
+          <img src="{{asset('/image/shop_nav/SHOPPING-1.png')}}" alt=""><br>
 
           <p class="nav-active">购物车</p>
         </a>
       </div>
 
       <div class="nav-button">
-        <a href="{{url('shop/order')}}">
-          <img src="{{asset('image/shop_nav/NOTEPAD.png')}}" alt=""><br>
+        <a href="{{url('/shop/order')}}">
+          <img src="{{asset('/image/shop_nav/NOTEPAD.png')}}" alt=""><br>
 
           <p>订单</p>
         </a>
       </div>
 
       <div class="nav-button">
-        <a href="{{url('shop/personal')}}">
-          <img src="{{asset('image/shop_nav/USER.png')}}" alt=""><br>
+        <a href="{{url('/shop/personal')}}">
+          <img src="{{asset('/image/shop_nav/USER.png')}}" alt=""><br>
 
           <p>个人</p>
         </a>
@@ -132,9 +132,9 @@
 
 </div>
 
-<script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
-<script src="{{asset('js/vendor/vue.js')}}"></script>
-<script src="{{asset('js/shop_cart.js')}}"></script>
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('/js/vendor/vue.js')}}"></script>
+<script src="{{asset('/js/shop_cart.js')}}"></script>
 
 </body>
 </html>
