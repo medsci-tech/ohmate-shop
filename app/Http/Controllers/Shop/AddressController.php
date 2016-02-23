@@ -30,7 +30,6 @@ class AddressController extends Controller
 
         $customer = \Helper::getCustomer();
 
-        dd($customer->addresses()->get());
         return view('shop.address')->with([
             'items' => $customer->addresses()->get()
         ]);
