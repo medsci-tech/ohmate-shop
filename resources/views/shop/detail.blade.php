@@ -75,9 +75,7 @@
     num: 1
   };
 
-  var cart;
-
-  if (localStorage.cart != 'undefined') {
+  if (localStorage.cart != 'undefined' && localStorage.cart ) {
     cart = JSON.parse(localStorage.cart);
   } else {
     cart = [];
