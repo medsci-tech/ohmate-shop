@@ -8,8 +8,6 @@ if (localStorage.cart != 'undefined') {
 var list = new Vue({
     el: '#goods',
     data: {
-      goods: goods
-      },
 //        goods: {
 //          id: '{{$item->id}}',
 //          name: '{{$item->name}}'.replace("&reg;","®"),
