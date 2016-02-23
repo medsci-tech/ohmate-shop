@@ -85,16 +85,16 @@
   var list = new Vue({
     el: '#goods',
     data: {
-      //goods: {
-      //  id: '2',
-      //  name: '易折清洁消毒棒',
-      //  tag: '一次性使用无菌注射针',
-      //  price: 22.00,
-      //  priceBefore: 30.00,
-      //  num: 1
-      //},
-      goods: goods,
-      cart: cart
+      goods: {
+        id: '2',
+        name: '易折清洁消毒棒',
+        tag: '一次性使用无菌注射针',
+        price: 22.00,
+        priceBefore: 30.00,
+        num: 1
+      },
+//      goods: goods,
+//      cart: cart
     },
 //    computed: {
 //      alreadyHave: function () {
