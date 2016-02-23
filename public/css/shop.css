@@ -109,6 +109,8 @@ a, a:focus, a:hover {
 
 .order-form {
   border-bottom: 1px solid #dddddd; }
+  .order-form:last-child {
+    margin-bottom: 52px; }
   .order-form p {
     margin: 0px;
     padding: 5px 0px 5px 0px;

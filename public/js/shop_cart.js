@@ -1,5 +1,5 @@
 if (localStorage.cart != 'undefined' && localStorage.cart) {
-  var cart = JSON.parse(localStorage.cart);
+  var cart = JSON.parse(localStorage.cart).replace("&reg;","®");
 } else {
   var cart = [];
 }
@@ -31,7 +31,11 @@ var shop_cart = new Vue({
       return this.person.consume / 100;
     },
     priceCount: function () {
-      return this.priceAll + 8 - this.priceDiscount;
+      if (this.address == null ) {
+        return this.priceAll - this.priceDiscount;
+      }else{
+        return this.priceAll + this.address.postage - this.priceDiscount;
+      }
     }
 
   },
