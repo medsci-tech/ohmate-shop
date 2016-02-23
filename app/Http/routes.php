@@ -27,10 +27,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/success', 'RegisterController@success');
     });
 
-    Route::group(['prefix' => 'eduction'], function () {
-        Route::get('/article', 'EductionController@article');
-        Route::get('/injection', 'EductionController@injection');
+    Route::group(['prefix' => 'eduction', 'namespace' => 'Education'], function () {
+        Route::get('/injection', 'EductionController@injections');
         Route::post('/injection/view', 'EductionController@injectionView');
+        Route::get('/article', 'EductionController@articles');
     });
 
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
