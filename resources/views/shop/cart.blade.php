@@ -49,7 +49,7 @@
         </li>
       </ul>
       <p>商品价格<span>@{{ priceAll | currency '￥' }}</span></p>
-      <p>运费 <span>@{{ address.postage | currency '￥' }}</span></p>
+      <p>运费 <span>@{{ postage | currency '￥' }}</span></p>
       <p>迈豆折扣
         <span>－@{{ priceDiscount | currency '￥' }}</span>
         <span>@{{ priceDiscount*100 }}迈豆</span>

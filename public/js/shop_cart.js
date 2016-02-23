@@ -6,71 +6,84 @@ if (localStorage.cart != 'undefined' && localStorage.cart) {
 
 
 var shop_cart = new Vue({
-  el: '#cart_form',
-  data: {
-    cart: cart,
+    el: '#cart_form',
+    data: {
+      cart: cart,
 
-    person: {
-      beans: 90000,
-      consume: 0
+      person: {
+        beans: 90000,
+        consume: 0
+      }
+
+    },
+
+    computed: {
+      priceAll: function () {
+        var all = 0;
+        for (i = 0; i < this.cart.length; i++) {
+          all += this.cart[i].price * this.cart[i].num;
+        }
+        return all;
+      },
+      priceDiscount: function () {
+        this.person.consume =
+          this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
+        return this.person.consume / 100;
+      },
+      priceCount: function () {
+        if (this.address == null) {
+          return this.priceAll + 8 - this.priceDiscount;
+        } else {
+          return this.priceAll + this.address.postage - this.priceDiscount;
+        }
+      },
+      postage: function () {
+        if (this.address == null) {
+          return 8;
+        } else {
+          return this.address.postage;
+        }
+      }
+
+    },
+
+    methods: {
+      removeGoods: function (e) {
+        this.cart.$remove(e);
+        localStorage.cart = JSON.stringify(this.cart);
+      }
+      ,
+      priceGoods: function (e) {
+        return e.price * e.num;
+      }
+      ,
+      numMinus: function (e) {
+        if (e.num >= 2) {
+          e.num--;
+        }
+      }
+      ,
+      numAdd: function (e) {
+        if (e.num <= 98) {
+          e.num++;
+        }
+      }
+      ,
+      beansConsume: function () {
+      }
+      ,
+      postCart: function () {
+        console.log(JSON.stringify(shop_cart.$data));
+        $.post('/shop/order/create', JSON.stringify(shop_cart.$data),
+          function (data, status) {
+            if (data.success) {
+            } else {
+              alert('服务器异常!');
+            }
+          }, "json"
+        );
+      }
     }
-
-  },
-
-  computed: {
-    priceAll: function () {
-      var all = 0;
-      for (i = 0; i < this.cart.length; i++) {
-        all += this.cart[i].price * this.cart[i].num;
-      }
-      return all;
-    },
-    priceDiscount: function () {
-      this.person.consume =
-        this.person.beans < this.priceAll * 100 ? this.person.beans : this.priceAll * 100;
-      return this.person.consume / 100;
-    },
-    priceCount: function () {
-      if (this.address == null ) {
-        return this.priceAll - this.priceDiscount;
-      }else{
-        return this.priceAll + this.address.postage - this.priceDiscount;
-      }
-    }
-
-  },
-
-  methods: {
-    removeGoods: function (e) {
-      this.cart.$remove(e);
-      localStorage.cart = JSON.stringify(this.cart);
-    },
-    priceGoods: function (e) {
-      return e.price * e.num;
-    },
-    numMinus: function (e) {
-      if (e.num >= 2) {
-        e.num--;
-      }
-    },
-    numAdd: function (e) {
-      if (e.num <= 98) {
-        e.num++;
-      }
-    },
-    beansConsume: function () {
-    },
-    postCart: function() {
-      console.log(JSON.stringify(shop_cart.$data));
-      $.post('/shop/order/create',JSON.stringify(shop_cart.$data),
-        function(data, status){
-          if (data.success) {
-          } else {
-            alert('服务器异常!');
-          }
-        }, "json"
-      );
-    }
-  }
-});
+  })
+  ;
 

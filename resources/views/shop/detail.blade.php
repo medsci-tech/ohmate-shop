@@ -6,6 +6,9 @@
   <title>易康商城</title>
   <link rel="stylesheet" href="{{asset('css/swiper-3.3.0.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/shop.css')}}">
+  <script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
+  <script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
+  <script src="{{asset('js/vendor/vue.js')}}"></script>
 
 </head>
 <body>
@@ -63,9 +66,6 @@
 
 </div>
 
-<script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
-<script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
-<script src="{{asset('js/vendor/vue.js')}}"></script>
 <script>
   if (localStorage.cart != 'undefined') {
     var cart = JSON.parse(localStorage.cart);
