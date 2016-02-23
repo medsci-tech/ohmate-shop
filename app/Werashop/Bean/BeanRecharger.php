@@ -38,11 +38,7 @@ class BeanRecharger
         $bean->customer_id  = $user;
         $bean->bean_rate_id = $beanRate->id;
         $bean->value        = $value;
-        if ($action == AppConstant::BEAN_ACTION_CONSUME) {
-            $bean->result       = $beanRate->rate * $value * (-1);
-        } else {
-            $bean->result       = $beanRate->rate * $value;
-        }
+        $bean->result       = $beanRate->rate * $value;
         $ret = $bean->save();
         return ($ret);
     }
