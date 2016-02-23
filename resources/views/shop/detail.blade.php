@@ -94,7 +94,7 @@
       //  num: 1
       //},
       goods: goods,
-//      cart: cart,
+      cart: cart,
     },
     computed: {
       alreadyHave: function () {
