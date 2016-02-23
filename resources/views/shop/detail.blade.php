@@ -78,12 +78,12 @@
 
 
   $('#test').text(localStorage.cart);
-  
-  if (localStorage.cart != 'undefined' && localStorage.cart ) {
-    var cart = JSON.parse(localStorage.cart);
-  } else {
-    var cart = [];
-  }
+
+//  if (localStorage.cart != 'undefined' && localStorage.cart ) {
+//    var cart = JSON.parse(localStorage.cart);
+//  } else {
+//    var cart = [];
+//  }
 
 
   var list = new Vue({
@@ -98,7 +98,7 @@
       //  num: 1
       //},
       goods: goods,
-      cart: cart,
+//      cart: cart,
     },
     computed: {
       alreadyHave: function () {
