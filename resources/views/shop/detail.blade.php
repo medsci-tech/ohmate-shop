@@ -66,22 +66,35 @@
 <script src="{{asset('/js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
+  var goods = {
+    id: '{{$item->id}}',
+    name: '{{$item->name}}'.replace("&reg;", "®"),
+    tag: '{{$item->remark}}',
+    price: {{$item->price}},
+    priceBefore: {{$item->price * 1.25}},
+    num: 1
+  };
 
+//  if (localStorage.cart != 'undefined') {
+//    var cart = JSON.parse(localStorage.cart);
+//  } else {
+//    var cart = [];
+//  }
 
 
   var list = new Vue({
     el: '#goods',
     data: {
-      goods: {
-        id: '2',
-        name: '易折清洁消毒棒',
-        tag: '一次性使用无菌注射针',
-        price: 22.00,
-        priceBefore: 30.00,
-        num: 1
-      },
-//      goods: goods,
-//      cart: cart
+      //goods: {
+      //  id: '2',
+      //  name: '易折清洁消毒棒',
+      //  tag: '一次性使用无菌注射针',
+      //  price: 22.00,
+      //  priceBefore: 30.00,
+      //  num: 1
+      //},
+      goods: goods,
+      cart: cart
     },
 //    computed: {
 //      alreadyHave: function () {
