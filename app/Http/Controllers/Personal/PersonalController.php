@@ -91,22 +91,22 @@ class PersonalController extends Controller
 
     public function memberIntroduction()
     {
-        return view('personal.member_introduction');
+        return view('personal.member-introduction');
     }
 
     public function beanRules()
     {
-        return view('personal.bean_rules');
+        return view('personal.bean-rules');
     }
 
     public function aboutUs()
     {
-        return view('personal.about_us');
+        return view('personal.about-us');
     }
 
     public function customerService()
     {
-        return view('personal.customer_service');
+        return view('personal.customer-service');
     }
 
 }
