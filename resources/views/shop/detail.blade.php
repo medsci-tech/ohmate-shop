@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>易康商城</title>
-  <link rel="stylesheet" href="{{asset('css/swiper-3.3.0.min.css')}}">
-  <link rel="stylesheet" href="{{asset('css/shop.css')}}">
-  <script src="{{asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
-  <script src="{{asset('js/vendor/swiper-3.3.0.min.js')}}"></script>
-  <script src="{{asset('js/vendor/vue.js')}}"></script>
+  <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
+  <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+  <script src="{{asset('/js/vendor/swiper-3.3.0.min.js')}}"></script>
+  <script src="{{asset('/js/vendor/vue.js')}}"></script>
 
 </head>
 <body>
@@ -16,13 +16,13 @@
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img class="img-responsive" src="{{url('image/test04.jpg')}}">
+      <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
     </div>
     <div class="swiper-slide">
-      <img class="img-responsive" src="{{url('image/test04.jpg')}}">
+      <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
     </div>
     <div class="swiper-slide">
-      <img class="img-responsive" src="{{url('image/test04.jpg')}}">
+      <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
     </div>
   </div>
   <div class="swiper-pagination"></div>
@@ -66,7 +66,7 @@
 
 </div>
 
-<script src="{{asset('js/goods.js')}}"></script>
+<script src="{{asset('/js/goods.js')}}"></script>
 <script>
   var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
