@@ -133,13 +133,55 @@ a, a:focus, a:hover {
         width: 64px; }
   .order-form .arrow {
     position: absolute;
-    top: 55px;
+    margin-top: 24px;
     right: 18px;
     width: 15px;
     height: 15px;
     border-right: 2px solid #a3a3a3;
     border-bottom: 2px solid #a3a3a3;
     transform: rotate(-45deg); }
+
+#order-details {
+  margin-bottom: 5em; }
+  #order-details .row {
+    border-bottom: 2px solid #eeeeee;
+    background-color: #FFFFFF; }
+  #order-details h5 {
+    margin-bottom: 5px;
+    color: #a3a3a3; }
+  #order-details .cart-detail {
+    background-color: #FFFFFF;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px; }
+    #order-details .cart-detail ul {
+      margin-bottom: 0px; }
+    #order-details .cart-detail li {
+      padding-top: 2px;
+      padding-bottom: 3px; }
+      #order-details .cart-detail li:last-child {
+        border-bottom: 1px solid #EEEEEE; }
+    #order-details .cart-detail span:nth-child(2) {
+      position: absolute;
+      right: 40%; }
+    #order-details .cart-detail span:nth-child(3) {
+      float: right; }
+    #order-details .cart-detail p {
+      padding-top: 2px;
+      padding-bottom: 3px;
+      margin-bottom: 0px;
+      color: #a3a3a3; }
+      #order-details .cart-detail p span {
+        float: right;
+        color: #000000; }
+      #order-details .cart-detail p:last-child {
+        font-size: 18px;
+        color: #000000;
+        border-top: 1px solid #EEEEEE; }
+        #order-details .cart-detail p:last-child span {
+          color: #f71212; }
 
 #cart_form {
   margin-bottom: 5em; }
@@ -237,7 +279,8 @@ a, a:focus, a:hover {
         #cart_form .cart-submit div P span {
           color: #f71212; }
       #cart_form .cart-submit div button {
-        margin-top: 4px;
+        width: 85px;
+        margin-top: 11px;
         color: #FFFFFF;
         background-color: #f71212; }
 
