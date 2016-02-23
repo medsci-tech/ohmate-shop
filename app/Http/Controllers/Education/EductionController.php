@@ -26,9 +26,7 @@ class EductionController extends Controller
     public function injectionView(Request $request)
     {
         $customer = \Helper::getCustomer();
-        if (!$customer) {
-            \BeanRecharger::scanVideo($customer->id);
-        } /*if>*/
+        \BeanRecharger::scanVideo($customer->id);
     }
 
 } /*class*/
