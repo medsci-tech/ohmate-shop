@@ -75,11 +75,11 @@
     num: 1
   }
 
-  if (localStorage.cart != 'undefined') {
-    var cart = JSON.parse(localStorage.cart);
-  } else {
-    var cart = [];
-  }
+//  if (localStorage.cart != 'undefined') {
+//    var cart = JSON.parse(localStorage.cart);
+//  } else {
+//    var cart = [];
+//  }
 
 
   var list = new Vue({
