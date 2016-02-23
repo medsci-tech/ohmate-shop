@@ -66,12 +66,12 @@
 <script src="{{asset('/js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-  var item = {
+  var goods = {
     id: '{{$item->id}}',
     name: '{{$item->name}}'.replace("&reg;", "®"),
     tag: '{{$item->remark}}',
-    price: {{$item->price}},
-    priceBefore: {{$item->price * 1.25}},
+    price: '{{$item->price}}',
+    priceBefore: '{{$item->price * 1.25}}',
     num: 1
   }
 
@@ -93,7 +93,7 @@
       //  priceBefore: 30.00,
       //  num: 1
       //},
-      goods: item,
+      goods: goods,
       cart: cart
     },
     computed: {
