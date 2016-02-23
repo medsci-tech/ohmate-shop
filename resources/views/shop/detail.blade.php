@@ -50,7 +50,7 @@
       <button class="btn" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a href="{{url('shop/cart')}}" class="btn" @click="addGoods()">立即购买</a>
+      <a href="{{url('/shop/cart')}}" class="btn" @click="addGoods()">立即购买</a>
     </div>
   </div>
 
@@ -78,7 +78,7 @@
   if (localStorage.cart != 'undefined') {
     var cart = JSON.parse(localStorage.cart);
   } else {
-    var cart = [];
+    var cart = goods;
   }
 
 
