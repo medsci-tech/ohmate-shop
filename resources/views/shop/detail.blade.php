@@ -76,8 +76,9 @@
     num: 1
   };
 
+  localStorage.cart.clear();
 
-  $('#test').text(localStorage.cart);
+  $('#test').text(localStorage.cart != 'undefined');
 
 //  if (localStorage.cart != 'undefined' && localStorage.cart ) {
 //    var cart = JSON.parse(localStorage.cart);
