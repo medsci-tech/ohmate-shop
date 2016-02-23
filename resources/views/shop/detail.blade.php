@@ -66,20 +66,7 @@
 <script src="{{asset('/js/vendor/swiper-3.3.0.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-  var goods = {
-    id: '{{$item->id}}',
-    name: '{{$item->name}}'.replace("&reg;", "®"),
-    tag: '{{$item->remark}}',
-    price: {{$item->price}},
-    priceBefore: {{$item->price * 1.25}},
-    num: 1
-  };
 
-  if (localStorage.cart != 'undefined') {
-    var cart = JSON.parse(localStorage.cart);
-  } else {
-    var cart = [];
-  }
 
 
   var list = new Vue({
