@@ -10,12 +10,20 @@ var list = new Vue({
     data: {
       goods: {
         id: '2',
-        name: '诺和针',
+        name: '易折清洁消毒棒',
         tag: '一次性使用无菌注射针',
         price: 22.00,
         priceBefore: 30.00,
         num: 1
       },
+//        goods: {
+//          id: '{{$item->id}}',
+//          name: '{{$item->name}}'.replace("&reg;","®"),
+//          tag: '{{$item->remark}}',
+//          price: {{$item->price}},
+//          priceBefore: {{$item->price * 1.25}},
+//          num: 1
+//         },
       cart: cart
     },
     computed: {
@@ -33,7 +41,6 @@ var list = new Vue({
       addGoods: function () {
         if (this.alreadyHave != -1) {
           this.cart[this.alreadyHave].num += this.goods.num;
-          if (this.cart[this.alreadyHave].num >= 99)this.cart[this.alreadyHave].num = 99;
         } else {
           this.cart.push({
             id: this.goods.id,
@@ -46,6 +53,10 @@ var list = new Vue({
         }
         localStorage.cart = JSON.stringify(this.cart);
         this.goods.num = 1;
+        $('.jumbotron').show();
+        $('.jumbotron').delay(1000).hide(0);
+        $('.jumbotron .alert').show();
+        $('.jumbotron .alert').delay(300).fadeOut(700);
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
