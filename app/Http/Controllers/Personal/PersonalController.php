@@ -57,9 +57,11 @@ class PersonalController extends Controller
     public function friend()
     {
         $customer = \Helper::getCustomer();
-        $data['nickname']   = $customer->nickname;
-        $data['qrCode']     = $customer->qr_code;
-        return view('personal.friend', $data);
+        $data['nickname']           = $customer->nickname;
+        $data['qrCode']             = $customer->qr_code;
+        $data['head_image_url']     = $customer->head_image_url;
+
+        return view('personal.friend', ['data' => $data]);
     }
 
     public function memberIntroduction()

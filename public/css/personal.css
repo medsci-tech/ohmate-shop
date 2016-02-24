@@ -119,3 +119,24 @@ body {
     border-color: #C8C8CD;
     border-style: solid;
 }
+
+/*名片*/
+.bianju{
+    padding: 10px 10px;
+}
+.bianju p{
+    font-size: 20px;
+}
+.tx {
+    float: left;
+    position: relative;
+}
+.tx img{
+    width: 80px;
+    height: 80px;
+}
+h3{
+    float: left;
+    margin-top: 5px;
+    width: 100%;
+}
