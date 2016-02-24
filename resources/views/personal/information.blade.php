@@ -23,7 +23,7 @@
             <p class="maidou_t">迈豆余额</p><br><p class="maidou">{{$data['beans_total']}}迈豆</p>
         </div>
         <div class="text-center qianbao_p_1">
-            <p class="maidou_t">礼品卡</p><br><p class="maidou">5张</p>
+            <p class="maidou_t">礼品卡</p><br><p class="maidou">0张</p>
         </div>
     </div>
     <div style="margin-top: 20px">
