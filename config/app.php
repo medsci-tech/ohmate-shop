@@ -155,6 +155,11 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\MessageServiceProvider::class,
+        App\Providers\CartServiceProvider::class,
+        App\Providers\WechatServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
+        App\Providers\BeanServiceProvider::class,
 
         /*
          * IDE Helper
@@ -204,6 +209,12 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'MessageSender' => App\Werashop\Message\Facades\MessageSender::class,
+        'Cart'          => App\Werashop\Cart\Facades\Cart::class,
+        'Wechat'        => App\Werashop\Wechat\Facades\Wechat::class,
+        'Helper'        => App\Werashop\Helper\Facades\Helper::class,
+        'BeanRecharger' => App\Werashop\Bean\Facades\BeanRecharger::class,
     ],
 
 ];

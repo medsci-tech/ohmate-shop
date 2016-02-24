@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.6 on 2016-01-06.
+ * Generated for Laravel 5.2.8 on 2016-02-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3233,7 +3233,7 @@ namespace {
         }
         
         /**
-         * Add a relationship count condition to the query.
+         * Add a relationship count / exists condition to the query.
          *
          * @param string $relation
          * @param string $operator
@@ -3248,7 +3248,7 @@ namespace {
         }
         
         /**
-         * Add a relationship count condition to the query.
+         * Add a relationship count / exists condition to the query.
          *
          * @param string $relation
          * @param string $boolean
@@ -3261,7 +3261,7 @@ namespace {
         }
         
         /**
-         * Add a relationship count condition to the query with where clauses.
+         * Add a relationship count / exists condition to the query with where clauses.
          *
          * @param string $relation
          * @param \Closure $callback
@@ -3275,7 +3275,7 @@ namespace {
         }
         
         /**
-         * Add a relationship count condition to the query with where clauses.
+         * Add a relationship count / exists condition to the query with where clauses.
          *
          * @param string $relation
          * @param \Closure|null $callback
@@ -3287,7 +3287,7 @@ namespace {
         }
         
         /**
-         * Add a relationship count condition to the query with an "or".
+         * Add a relationship count / exists condition to the query with an "or".
          *
          * @param string $relation
          * @param string $operator
@@ -3300,7 +3300,7 @@ namespace {
         }
         
         /**
-         * Add a relationship count condition to the query with where clauses and an "or".
+         * Add a relationship count / exists condition to the query with where clauses and an "or".
          *
          * @param string $relation
          * @param \Closure $callback
@@ -3729,6 +3729,19 @@ namespace {
          */
         public static function orWhereNotExists($callback){
             return \Illuminate\Database\Query\Builder::orWhereNotExists($callback);
+        }
+        
+        /**
+         * Add an exists clause to the query.
+         *
+         * @param \Illuminate\Database\Query\Builder $query
+         * @param string $boolean
+         * @param bool $not
+         * @return $this 
+         * @static 
+         */
+        public static function addWhereExistsQuery($query, $boolean = 'and', $not = false){
+            return \Illuminate\Database\Query\Builder::addWhereExistsQuery($query, $boolean, $not);
         }
         
         /**
@@ -10121,98 +10134,394 @@ namespace {
     }
 
 
-    class Shop extends \Amsgames\LaravelShop\LaravelShopFacade{
+    class MessageSender extends \App\Werashop\Message\Facades\MessageSender{
         
         /**
-         * Get the currently authenticated user or null.
+         * 
          *
-         * @return \Amsgames\LaravelShop\Illuminate\Auth\UserInterface|null 
+         * @param int $start
+         * @param int $end
+         * @return int 
          * @static 
          */
-        public static function user(){
-            return \Amsgames\LaravelShop\LaravelShop::user();
+        public static function generateMessageVerify($start = 0, $end = 999999){
+            return \App\Werashop\Message\LuosimaoMessageSender::generateMessageVerify($start, $end);
         }
         
         /**
-         * Checkout current user's cart.
+         * 
          *
+         * @param $phone
+         * @param $verify
+         * @return int 
          * @static 
          */
-        public static function setGateway($gatewayKey){
-            return \Amsgames\LaravelShop\LaravelShop::setGateway($gatewayKey);
+        public static function sendMessageVerify($phone, $verify){
+            return \App\Werashop\Message\LuosimaoMessageSender::sendMessageVerify($phone, $verify);
+        }
+        
+    }
+
+
+    class Cart extends \App\Werashop\Cart\Facades\Cart{
+        
+        /**
+         * 
+         *
+         * @return mixed|static 
+         * @static 
+         */
+        public static function getInstance(){
+            return \App\Werashop\Cart\SessionDrivenCart::getInstance();
         }
         
         /**
-         * Checkout current user's cart.
+         * 
          *
+         * @param \App\Werashop\Cart\Buyable $item
+         * @param int $amount
+         * @return $this 
          * @static 
          */
-        public static function getGateway(){
-            return \Amsgames\LaravelShop\LaravelShop::getGateway();
+        public static function addItem($item, $amount = 1){
+            return \App\Werashop\Cart\SessionDrivenCart::addItem($item, $amount);
         }
         
         /**
-         * Checkout current user's cart.
+         * 
          *
-         * @param object $cart For specific cart.
-         * @return bool 
+         * @param int $id
+         * @return array 
          * @static 
          */
-        public static function checkout($cart = null){
-            return \Amsgames\LaravelShop\LaravelShop::checkout($cart);
+        public static function removeItemsById($id){
+            return \App\Werashop\Cart\SessionDrivenCart::removeItemsById($id);
         }
         
         /**
-         * Returns placed order.
+         * 
          *
-         * @param object $cart For specific cart.
-         * @return object 
+         * @param array $query
+         * @return array 
          * @static 
          */
-        public static function placeOrder($cart = null){
-            return \Amsgames\LaravelShop\LaravelShop::placeOrder($cart);
+        public static function removeItems($query){
+            return \App\Werashop\Cart\SessionDrivenCart::removeItems($query);
         }
         
         /**
-         * Handles gateway callbacks.
+         * 
          *
-         * @param string $order Order.
-         * @param string $status Callback status
+         * @return $this 
          * @static 
          */
-        public static function callback($order, $transaction, $status, $data = null){
-            return \Amsgames\LaravelShop\LaravelShop::callback($order, $transaction, $status, $data);
+        public static function flush(){
+            return \App\Werashop\Cart\SessionDrivenCart::flush();
         }
         
         /**
-         * Formats any value to price format set in config.
+         * 
          *
-         * @param mixed $value Value to format.
+         * @return \Illuminate\Support\Collection 
+         * @static 
+         */
+        public static function getItems(){
+            return \App\Werashop\Cart\SessionDrivenCart::getItems();
+        }
+        
+        /**
+         * 
+         *
+         * @return float 
+         * @static 
+         */
+        public static function getTotalCost(){
+            return \App\Werashop\Cart\SessionDrivenCart::getTotalCost();
+        }
+        
+        /**
+         * 
+         *
          * @return string 
          * @static 
          */
-        public static function format($value){
-            return \Amsgames\LaravelShop\LaravelShop::format($value);
+        public static function checkout(){
+            return \App\Werashop\Cart\SessionDrivenCart::checkout();
+        }
+        
+    }
+
+
+    class Wechat extends \App\Werashop\Wechat\Facades\Wechat{
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function getAppId(){
+            return \App\Werashop\Wechat\Wechat::getAppId();
         }
         
         /**
-         * Retuns gateway.
+         * 
          *
-         * @return object 
+         * @return mixed 
          * @static 
          */
-        public static function gateway(){
-            return \Amsgames\LaravelShop\LaravelShop::gateway();
+        public static function getSecret(){
+            return \App\Werashop\Wechat\Wechat::getSecret();
         }
         
         /**
-         * Retuns exception.
+         * 
          *
-         * @return \Amsgames\LaravelShop\Exception 
+         * @return mixed 
          * @static 
          */
-        public static function exception(){
-            return \Amsgames\LaravelShop\LaravelShop::exception();
+        public static function getAesKey(){
+            return \App\Werashop\Wechat\Wechat::getAesKey();
+        }
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function getToken(){
+            return \App\Werashop\Wechat\Wechat::getToken();
+        }
+        
+        /**
+         * 
+         *
+         * @return boolean 
+         * @static 
+         */
+        public static function generateMenu(){
+            return \App\Werashop\Wechat\Wechat::generateMenu();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Overtrue\Wechat\Server 
+         * @static 
+         */
+        public static function getServer(){
+            return \App\Werashop\Wechat\Wechat::getServer();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Closure 
+         * @static 
+         */
+        public static function locationEventCallback(){
+            return \App\Werashop\Wechat\Wechat::locationEventCallback();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Closure 
+         * @static 
+         */
+        public static function subscribeEventCallback(){
+            return \App\Werashop\Wechat\Wechat::subscribeEventCallback();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Closure 
+         * @static 
+         */
+        public static function messageEventCallback(){
+            return \App\Werashop\Wechat\Wechat::messageEventCallback();
+        }
+        
+        /**
+         * 
+         *
+         * @param string $jump_url
+         * @return null|\Overtrue\Wechat\Utils\Bag 
+         * @static 
+         */
+        public static function authorizeUser($jump_url){
+            return \App\Werashop\Wechat\Wechat::authorizeUser($jump_url);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getForeverQrCodeUrl($scene_id){
+            return \App\Werashop\Wechat\Wechat::getForeverQrCodeUrl($scene_id);
+        }
+        
+    }
+
+
+    class Helper extends \App\Werashop\Helper\Facades\Helper{
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @throws UserNotCachedException
+         * @throws UserNotSubscribedException;
+         * @static 
+         */
+        public static function getSessionCachedUser(){
+            return \App\Werashop\Helper\Helper::getSessionCachedUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function hasSessionCachedUser(){
+            return \App\Werashop\Helper\Helper::hasSessionCachedUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getUser(){
+            return \App\Werashop\Helper\Helper::getUser();
+        }
+        
+        /**
+         * 
+         *
+         * @return \App\Models\Customer; 
+         * @static 
+         */
+        public static function getCustomer(){
+            return \App\Werashop\Helper\Helper::getCustomer();
+        }
+        
+    }
+
+
+    class BeanRecharger extends \App\Werashop\Bean\Facades\BeanRecharger{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function test(){
+            return \App\Werashop\Bean\BeanRecharger::test();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function recharge($user, $action, $value = 1){
+            return \App\Werashop\Bean\BeanRecharger::recharge($user, $action, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function update($user, $action, $value){
+            return \App\Werashop\Bean\BeanRecharger::update($user, $action, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function register($user){
+            return \App\Werashop\Bean\BeanRecharger::register($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function signIn($user){
+            return \App\Werashop\Bean\BeanRecharger::signIn($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function consume($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function invite($referrer){
+            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function scanArticle($user){
+            return \App\Werashop\Bean\BeanRecharger::scanArticle($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function scanVideo($user){
+            return \App\Werashop\Bean\BeanRecharger::scanVideo($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function consumeFeedback($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consumeFeedback($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function doctorEducationFeedback($user){
+            return \App\Werashop\Bean\BeanRecharger::doctorEducationFeedback($user);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function doctorConsumeFeedback($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::doctorConsumeFeedback($user, $value);
         }
         
     }
