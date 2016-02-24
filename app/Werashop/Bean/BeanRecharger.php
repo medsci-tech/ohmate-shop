@@ -29,7 +29,7 @@ class BeanRecharger
         } /*if>*/
 
         $result = $beanRate->rate * $value;
-        $ret = update($user, $action, $result);
+        $ret    = $this->update($user, $action, $result);
         if (!$ret) {
             return false;
         } /*if>*/
