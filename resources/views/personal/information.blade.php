@@ -11,7 +11,7 @@
 <div>
     <div class="head">
         <div class="head-img">
-            <img src="{{$data['head_image_url']}}}">
+            <img src="{{$data['head_image_url']}}">
         </div>
         <div class="head-dsb">
             <p class="dsb-name">{{$data['nickname']}}</p>
