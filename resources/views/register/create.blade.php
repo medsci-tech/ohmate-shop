@@ -26,7 +26,7 @@
         <input type="checkbox" checked required>
         已阅读并同意
       </label>
-      <span>《<a data-toggle="modal" data-target="#myModal">易康伴侣服务协议</a>》</span>
+      <span data-toggle="modal" data-target="#myModal">《易康伴侣服务协议》</span>
     </div>
     {{csrf_field()}}
   </form>
