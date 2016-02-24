@@ -70,9 +70,7 @@ var address = new Vue({
       if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
         if (e.default == true) {
           this.addresses[0].default = true;
-          this.addresses.$remove(e);
         } else {
-          this.addresses.$remove(e);
         }
         this.newAdd.name = e.name;
         this.newAdd.phone = e.phone;

@@ -26,13 +26,30 @@
         <input type="checkbox" checked required>
         已阅读并同意
       </label>
-      <span>《<a>易康伴侣服务协议</a>》</span>
+      <span>《<a data-toggle="modal" data-target="#myModal">易康伴侣服务协议</a>》</span>
     </div>
     {{csrf_field()}}
   </form>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">&emsp;易康伴侣服务协议</h4>
+        </div>
+        <div class="modal-body">
+          同意
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-block center-block" data-dismiss="modal">确&emsp;认</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('/js/vendor/bootstrap.min.js')}}"></script>
 <script type="text/javascript">
   function validateMobile() {
     var mobile = document.getElementById('phone').value;
