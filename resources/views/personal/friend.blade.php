@@ -8,7 +8,7 @@
     <link href="/css/personal.css" rel="stylesheet">
 </head>
 <body>
-<div class="bianju">
+<div class="bianju" style="padding-left: 10px; padding-right: 10px">
     {{--<div class="tx">--}}
         {{--<img src="{{$data['head_image_url']}}" class="img-rounded" style="width: 80px;height: 80px">--}}
     {{--</div>--}}
