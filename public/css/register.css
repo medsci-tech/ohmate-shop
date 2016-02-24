@@ -46,6 +46,7 @@ body {
       color: #428bca; }
   .register .btn:active:focus, .register .btn:focus, .register .btn:hover {
     outline: none;
+    border: none;
     color: #FFFFFF; }
 
 /*# sourceMappingURL=register.css.map */
