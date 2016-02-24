@@ -35,7 +35,7 @@ class EductionController extends Controller
             ->orderBy('id','desc')
             ->get();
 
-        return view('education.article', $articles);
+        return view('education.article', ['articles'=>$articles]);
     }
 
 } /*class*/
