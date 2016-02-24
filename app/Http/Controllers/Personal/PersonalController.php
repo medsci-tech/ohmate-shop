@@ -22,7 +22,7 @@ class PersonalController extends Controller
         $customer = \Helper::getCustomer();
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
-        $data['type']               = $customer->type;
+        $data['type']               = $customer->type->type_ch;
         $data['beans_total']        = $customer->beans_total;
         return view('personal.information', ['data' => $data]);
     }
