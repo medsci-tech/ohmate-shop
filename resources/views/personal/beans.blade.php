@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>迈豆钱包</title>
-  <link rel="stylesheet" href="../../css/personal.css">
+  <link rel="stylesheet" href="/css/beans.css">
 </head>
 <body>
 <div class="container">
