@@ -18,7 +18,7 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{$index['title']}}</h4>
-                <a href="{{$index['uri']}}"><p>对糖尿病有个初步的了解</p></a>
+                <a href="{{$index['uri']}}"><p>{{$index['description']}}</p></a>
                 <span>阅读量&emsp;{{$index['count']}}</span>
             </div>
         </div>

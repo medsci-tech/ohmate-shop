@@ -1,5 +1,4 @@
 body {
-    font-family: "Microsoft YaHei UI";
     background-color: #E4E2E2
 }
 
@@ -13,30 +12,31 @@ body {
 .head-img {
     position: absolute;
     padding: 0px 10px;
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
 }
 
 .head-img img {
-    margin-top: 20px;
-    border-radius: 35px;
-    width: 70px;
-    height: 70px;
+    margin-top: 17px;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
 }
 
 .head-dsb {
-    margin-top: 30px;
+    margin-top: 25px;
     position: absolute;
     left: 50%;
 }
 .dsb-name{
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .dsb-id {
-    font-size: 17px;
+    font-size: 19px;
     margin-top: 0.08rem;
-    color: #0883EF;
+    color: #de5145
+;
 }
 
 .qianbao {
@@ -58,12 +58,12 @@ body {
     margin-top: 7px;
 }
 .maidou_t{
-    font-size: 15px;
+    font-size: 19px;
 }
 .maidou {
-    font-size: 17px;
+    font-size: 20px;
     margin-top: -21px;
-    color: #0883EF;
+    color: #de5145;
 }
 
 .line {
@@ -84,7 +84,7 @@ body {
 .lt-dsb {
     position: relative;
     height: 50px;
-    line-height: 4.5rem;
+    line-height: 5rem;
     margin-left: 0.15rem;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -95,7 +95,7 @@ body {
 
 .lt-dsb p {
     margin-left: 0.2rem;
-    font-size: 15px;
+    font-size: 19px;
     color: #838383;
 }
 
