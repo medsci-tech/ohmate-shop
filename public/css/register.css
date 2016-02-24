@@ -42,6 +42,7 @@ body {
     .register .checkbox input {
       height: inherit; }
     .register .checkbox span {
+      z-index: 9999;
       color: #428bca; }
   .register .btn:active:focus, .register .btn:focus, .register .btn:hover {
     outline: none;

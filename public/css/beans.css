@@ -1,0 +1,56 @@
+@import url(bootstrap.min.css);
+body {
+  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  background-color: #EEEEEE; }
+
+a, a:focus, a:hover {
+  color: inherit;
+  text-decoration: none; }
+
+.row {
+  background-color: #fff;
+  border-top: 1px solid #EEEEEE; }
+  .row:first-child {
+    margin-bottom: 5px;
+    background-color: #de5145; }
+  .row .col-xs-3 {
+    margin-top: 20px; }
+    .row .col-xs-3 p {
+      margin: 0; }
+
+#beans-header {
+  padding: 5px; }
+  #beans-header img {
+    margin-left: 25px;
+    width: 70px;
+    border-radius: 100%; }
+  #beans-header h4 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #FFFFFF; }
+    #beans-header h4 span {
+      padding-right: 10px;
+      font-size: 38px;
+      color: #ffce44; }
+
+.media {
+  padding: 10px 10px 10px 0px;
+  margin: 0; }
+  .media img {
+    width: 40px;
+    border-radius: 100%; }
+  .media p {
+    position: absolute;
+    bottom: 10px;
+    margin: 0;
+    font-size: 13px;
+    color: #a3a3a3; }
+  .media .media-body {
+    padding-left: 8px; }
+    .media .media-body > span {
+      position: absolute;
+      bottom: 10px;
+      font-size: 10px; }
+
+/*# sourceMappingURL=personal.css.map */
