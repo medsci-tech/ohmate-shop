@@ -24,7 +24,7 @@ class PersonalController extends Controller
         $data['head_image_url']     = $customer->head_image_url;
         $data['type']               = $customer->type;
         $data['beans_total']        = $customer->beans_total;
-        return view('personal.information', $data);
+        return view('personal.information', ['data' => $data]);
     }
 
     public function beans()

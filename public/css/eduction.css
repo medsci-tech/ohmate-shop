@@ -8,22 +8,23 @@ a, a:focus, a:hover {
   text-decoration: none; }
 
 .row {
-  background-color: #fff; }
+  background-color: #fff;
+  margin-bottom: 5px; }
 
 .media {
   position: relative;
   padding: 10px; }
-  .media img {
-    width: 120px; }
-  .media p {
-    margin: 0;
-    font-size: 13px;
-    color: #a3a3a3; }
-  .media h4 {
-    font-size: 16px; }
-  .media .media-body > span {
-    position: absolute;
-    bottom: 10px;
-    font-size: 10px; }
+.media img {
+  width: 120px; }
+.media p {
+  margin: 0;
+  font-size: 13px;
+  color: #a3a3a3; }
+.media h4 {
+  font-size: 16px; }
+.media .media-body > span {
+  position: absolute;
+  bottom: 10px;
+  font-size: 10px; }
 
 /*# sourceMappingURL=eduction.css.map */
