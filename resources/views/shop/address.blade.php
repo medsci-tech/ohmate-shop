@@ -61,17 +61,19 @@
 
   var addresses = [];
 
-  var addReload = $.post('/shop/address/list', {},
-    function (data) {
-      if (data.success) {
-        if (e.is_default == true) {
-          addresses = data.data
+  function addReload() {
+    $.post('/shop/address/list', {},
+      function (data) {
+        if (data.success) {
+          if (e.is_default == true) {
+            addresses = data.data
+          }
+        } else {
+          alert('服务器异常!');
         }
-      } else {
-        alert('服务器异常!');
-      }
-    }, "json"
-  );
+      }, "json"
+    );
+  }
 
   addReload();
 
