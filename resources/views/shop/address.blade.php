@@ -142,7 +142,7 @@
       editAdd: function (e) {
         if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
           $('#button').text('完成');
-          $('#button').attr('@click', 'edit(address)');
+          $('#button').attr('v-on:click', 'edit(address)');
           this.newAdd.name = e.name;
           this.newAdd.phone = e.phone;
           this.newAdd.provice = e.provice;
