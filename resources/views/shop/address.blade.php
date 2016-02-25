@@ -65,7 +65,7 @@
     data: {
       addresses: [],
       newAdd: {
-        id: '',
+        id: -1,
         name: '',
         phone: '',
         province: '选择省',
@@ -119,7 +119,14 @@
           }, "json"
         )
       },
-      addAdd: function () {
+      submitAdd: function () {
+        if (this.newAdd.id == '-1'){
+          list.addFun();
+        } else {
+          list.editFun();
+        }
+      },
+      addFun: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
           $.post('/shop/address/create',
             {
@@ -134,6 +141,7 @@
               if (data.success) {
                 list.addReload();
                 list.newAdd = {
+                  id: -1,
                   name: '',
                   phone: '',
                   province: '选择省',
@@ -151,13 +159,13 @@
       },
       editAdd: function (e) {
         $('#title').text('修改收货地址');
-        $('#button button').text('完成');
-        $('#button').attr('v-on:submit.prevent', 'edit()');
+        $('#button button').text('完'+' '+'成');
+        this.newAdd.id = e.id;
         this.newAdd.name = e.name;
         this.newAdd.phone = e.phone;
         this.newAdd.id = e.id;
       },
-      edit: function () {
+      editFun: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
           $.post('/shop/address/update',
             {
@@ -173,6 +181,7 @@
               if (data.success) {
                 list.addReload();
                 list.newAdd = {
+                  id: -1,
                   name: '',
                   phone: '',
                   province: '选择省',
@@ -181,6 +190,8 @@
                   address: '',
                   is_default: false
                 };
+                $('#title').text('添加收货地址');
+                $('#button button').text('添加并设为默认');
               } else {
                 alert('服务器异常5!');
               }
