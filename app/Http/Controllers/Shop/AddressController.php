@@ -72,8 +72,11 @@ class AddressController extends Controller
         ]);
     }
 
+
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function delete(Request $request)
     {
@@ -104,8 +107,10 @@ class AddressController extends Controller
         ]);
     }
 
+
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request)
     {
