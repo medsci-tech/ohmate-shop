@@ -98,8 +98,8 @@ class Wechat
             ]),
             (new MenuItem("易康商城"))->buttons([
                 new MenuItem('商城首页', 'view', url('/shop/index')),
-                new MenuItem('我的订单', 'view', url('/shop/orders')),
-                new MenuItem('我的地址', 'view', url('/shop/addresses')),
+                new MenuItem('我的订单', 'view', url('/shop/order')),
+                new MenuItem('我的地址', 'view', url('/shop/address')),
             ]),
             (new MenuItem("个人中心"))->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),
