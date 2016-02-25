@@ -84,7 +84,7 @@ var shop_cart = new Vue({
     },
     postCart: function () {
       console.log(JSON.stringify(shop_cart.$data));
-      $.post('/shop/order/create',
+      $.post('/shop/order/generate-config',
         {
           cart: this.cartList,
           address_id: this.address.id
