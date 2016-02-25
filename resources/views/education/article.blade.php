@@ -47,6 +47,23 @@
                 }
             });
 
+            var requestUrl = '/eduction/article/read';
+            $.ajax({
+                url : requestUrl,
+                data: {
+                    id: id
+                },
+                type : "get",
+                dataType : "json",
+                success: function (json) {
+
+                },
+                error: function (xhr, status, errorThrown) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
+
+
         });
 
 //        window.location.href = uri;

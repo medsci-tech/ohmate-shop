@@ -48,4 +48,13 @@ class EductionController extends Controller
         }
     }
 
+    public function articleRead(Request $request)
+    {
+        $articles = Article::where('id', $request->input('id'))->first();
+        $customer = \Helper::getCustomer();
+        if ($customer != null && $articles != null) {
+            $ret = \BeanRecharger::scanArticle($customer->id);
+        }
+    }
+
 } /*class*/
