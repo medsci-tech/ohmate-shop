@@ -37,7 +37,7 @@
                 data: {
                     id: id
                 },
-                type : "get",
+                type : "post",
                 dataType : "json",
                 success: function (json) {
 
@@ -55,6 +55,24 @@
     function reLoad() {
         var flag = document.getElementById('text_click').value;
         if(flag=='1') {
+            $(function () {
+                var requestUrls = '/eduction/article/read';
+                $.ajax({
+                    url: requestUrls,
+                    data: {
+                        id: id
+                    },
+                    type: "post",
+                    dataType: "json",
+                    success: function (json) {
+
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        alert("Sorry, there was a problem!");
+                    }
+                });
+
+            });
             window.location.href = '/eduction/article';
         }
     }
