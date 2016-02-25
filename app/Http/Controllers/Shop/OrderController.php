@@ -38,13 +38,13 @@ class OrderController extends Controller
         dd($request->all());
         $customer = \Helper::getCustomer();
 
-        $items = $request->input('items');
+        $items = $request->input('cart');
 
         $order = new Order();
         $customer->orders()->save($order);
 
         foreach ($items as $item) {
-            //todo iterator
+            //
         }
 
         return response()->json([
