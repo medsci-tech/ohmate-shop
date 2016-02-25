@@ -60,8 +60,6 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
 
-  list.addReload();
-
   var list = new Vue({
     el: '#addresses',
     data: {
@@ -165,6 +163,8 @@
       }
     }
   });
+
+  list.addReload();
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
 <script>
