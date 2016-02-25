@@ -38,7 +38,10 @@ class AddressController extends Controller
     {
         $customer = \Helper::getCustomer();
 
-        return response()->json($customer->addresses()->get()->toArray());
+        return response()->json([
+            'success' => true,
+            'data' => $customer->addresses()->get()->toArray()
+        ]);
     }
 
     /**
