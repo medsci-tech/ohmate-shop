@@ -13,11 +13,11 @@ class LuosimaoMessageSender implements MessageSenderInterface
     /**
      * @param int $start
      * @param int $end
-     * @return int
+     * @return string
      */
     public function generateMessageVerify($start = 000000, $end = 999999)
     {
-        return random_int($start, $end);
+        return sprintf('%06d',random_int($start, $end));
     }
 
     /**
