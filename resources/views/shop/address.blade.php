@@ -28,10 +28,10 @@
          alt="" @click="removeAdd(address)">
   </div>
 
-  <h5>添加收货地址</h5>
+  <h5 id="title">添加收货地址</h5>
 
   <div class="row text-center">
-    <form @submit.prevent="addAdd">
+    <form id="button" v-on:submit.prevent="addAdd">
       <label class="center-block"><span>收货人&emsp;</span>
         <input required type="text" placeholder="收货人姓名" v-model="newAdd.name">
       </label>
@@ -50,7 +50,7 @@
       </label>
 
       <div class="clearfix"></div>
-      <button id="button" class="btn">添加并设为默认</button>
+      <button class="btn">添加并设为默认</button>
     </form>
   </div>
 </div>
@@ -65,6 +65,7 @@
     data: {
       addresses: [],
       newAdd: {
+        id: '',
         name: '',
         phone: '',
         province: '选择省',
@@ -149,16 +150,18 @@
         }
       },
       editAdd: function (e) {
-          $('#button').text('完成');
-          $('#button').attr('v-on:click', 'edit(address)');
-          this.newAdd.name = e.name;
-          this.newAdd.phone = e.phone;
+        $('#title').text('修改收货地址');
+        $('#button button').text('完成');
+        $('#button').attr('v-on:submit.prevent', 'edit(address)');
+        this.newAdd.name = e.name;
+        this.newAdd.phone = e.phone;
+        this.newAdd.id = e.id;
       },
-      edit: function (e) {
+      edit: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
           $.post('/shop/address/update',
             {
-              id: e.id,
+              id: this.newAdd.id,
               name: this.newAdd.name,
               phone: this.newAdd.phone,
               province: this.newAdd.province,
