@@ -124,7 +124,7 @@
             {
               name: this.newAdd.name,
               phone: this.newAdd.phone,
-              provice: this.newAdd.province,
+              province: this.newAdd.province,
               city: this.newAdd.city,
               district: this.newAdd.district,
               address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
