@@ -1,3 +1,9 @@
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
 if (typeof localStorage.cart != 'undefined') {
   var cart = JSON.parse(localStorage.cart);
 } else {
