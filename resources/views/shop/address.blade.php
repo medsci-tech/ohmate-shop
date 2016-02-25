@@ -105,19 +105,21 @@
         );
       },
       chooseAdd: function (e) {
-        $.post('/shop/address/update',
-          {
-            id: e.id,
-            is_default: true
-          },
-          function (data) {
-            if (data.success) {
-              list.addReload();
-            } else {
-              alert('服务器异常3!');
-            }
-          }, "json"
-        )
+        if (!e.is_default) {
+          $.post('/shop/address/update',
+            {
+              id: e.id,
+              is_default: true
+            },
+            function (data) {
+              if (data.success) {
+                list.addReload();
+              } else {
+                alert('服务器异常3!');
+              }
+            }, "json"
+          )
+        }
       },
       submitAdd: function () {
         if (this.newAdd.id == '-1'){
