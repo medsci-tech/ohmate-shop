@@ -13,19 +13,18 @@ class PersonalController extends Controller
 {
     function __construct()
     {
-//        $this->middleware('auth.wechat');
-//        $this->middleware('auth.access');
+        $this->middleware('auth.wechat');
+        $this->middleware('auth.access');
     }
 
     public function information()
     {
-//        $customer = \Helper::getCustomer();
-//        $data['nickname']           = $customer->nickname;
-//        $data['head_image_url']     = $customer->head_image_url;
-//        $data['type']               = $customer->type->type_ch;
-//        $data['beans_total']        = $customer->beans_total;
-//        return view('personal.information', ['data' => $data]);
-        return view('personal.information');
+        $customer = \Helper::getCustomer();
+        $data['nickname']           = $customer->nickname;
+        $data['head_image_url']     = $customer->head_image_url;
+        $data['type']               = $customer->type->type_ch;
+        $data['beans_total']        = $customer->beans_total;
+        return view('personal.information', ['data' => $data]);
     }
 
     public function beans()
