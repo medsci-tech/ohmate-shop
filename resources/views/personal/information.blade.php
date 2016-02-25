@@ -6,6 +6,11 @@
     <title>会员信息</title>
     <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/personal.css" rel="stylesheet">
+    <script type="text/javascript">
+        function goAbout() {
+            window.location.href = '/personal/about-us';
+        }
+    </script>
 </head>
 <body>
 <div>
@@ -45,7 +50,7 @@
     <div style="margin-top: 20px">
         <div class="mt-1">
             <div class="ps-lt">
-                <div class="lt-dsb">
+                <div class="lt-dsb" onclick="goAbout();">
                     <p>关于我们</p>
                     <i class="jt"></i>
                 </div>
