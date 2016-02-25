@@ -29,13 +29,23 @@ class EductionController extends Controller
         \BeanRecharger::scanVideo($customer->id);
     }
 
-    public function articleView(Request $request)
+    public function articleList(Request $request)
     {
         $articles = Article::where('top', true)
             ->orderBy('id','desc')
             ->get();
 
         return view('education.article', ['articles'=>$articles]);
+    }
+
+    public function articleView(Request $request)
+    {
+        $articles = Article::where('id', $request->input('id'))->first();
+        if($articles) {
+            $count = $articles->count + 1;
+            $articles->count = $count;
+            $articles->save();
+        }
     }
 
 } /*class*/

@@ -18,12 +18,38 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{$index['title']}}</h4>
-                <a href="{{$index['uri']}}"><p>{{$index['description']}}</p></a>
+                <a href="{{$index['uri']}}" onclick="updateView({{$index['id']}})"><p>{{$index['description']}}</p></a>
                 <span>阅读量&emsp;{{$index['count']}}</span>
             </div>
         </div>
     </div>
     @endforeach
 </div>
+
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript">
+    function updateView(id) {
+        $(function () {
+            var requestUrl = '/eduction/article/view';
+            $.ajax({
+                url : requestUrl,
+                data: {
+                    id: id
+                },
+                type : "get",
+                dataType : "json",
+                success: function (json) {
+
+                },
+                error: function (xhr, status, errorThrown) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
+
+        });
+
+//        window.location.href = uri;
+    }
+</script>
 </body>
 </html>
