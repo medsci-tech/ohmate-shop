@@ -39,4 +39,14 @@ class Order extends Model
         }
         return false;
     }
+
+    public function commodities()
+    {
+        return $this->belongsToMany(Commodity::class)->withPivot(['amount']);
+    }
+
+    public function addCommodity(Commodity $commodity)
+    {
+        $this->comm
+    }
 }
