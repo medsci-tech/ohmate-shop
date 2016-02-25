@@ -37,7 +37,7 @@
                 data: {
                     id: id
                 },
-                type : "get",
+                type : "post",
                 dataType : "json",
                 success: function (json) {
 
@@ -62,7 +62,7 @@
                     data: {
                         id: id
                     },
-                    type: "get",
+                    type: "post",
                     dataType: "json",
                     success: function (json) {
 
