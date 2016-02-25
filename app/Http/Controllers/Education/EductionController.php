@@ -35,24 +35,25 @@ class EductionController extends Controller
             ->orderBy('id','desc')
             ->get();
 
-        return view('education.article', ['articles'=>$articles]);
+        return view('education.article', ['articles' => $articles]);
     }
 
     public function articleView(Request $request)
     {
         $articles = Article::where('id', $request->input('id'))->first();
         if($articles) {
-            $count = $articles->count + 1;
-            $articles->count = $count;
+            $articles->count += 1;
             $articles->save();
         }
     }
 
     public function articleRead(Request $request)
     {
+        \Log::info('EductionController:articleRead');
         $articles = Article::where('id', $request->input('id'))->first();
         $customer = \Helper::getCustomer();
         if ($customer != null && $articles != null) {
+            \Log::info('EductionController:articleRead:step');
             $ret = \BeanRecharger::scanArticle($customer->id);
         }
     }
