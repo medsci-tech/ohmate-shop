@@ -26,8 +26,8 @@ class AddressController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index() {
-
+    public function index()
+    {
         $customer = \Helper::getCustomer();
 
         dd($customer->addresses()->get()->toJson());
@@ -35,6 +35,15 @@ class AddressController extends Controller
         return view('shop.address')->with([
             'items' => $customer->addresses()->get()
         ]);
+    }
+
+    public function list()
+    {
+        $customer = \Helper::getCustomer();
+
+        dd($customer->addresses()->get()->toJson());
+
+        return response()->json($customer->addresses()->get()->toArray());
     }
 
     /**
