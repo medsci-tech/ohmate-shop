@@ -66,7 +66,6 @@
         name: '',
         phone: '',
         address: '',
-        postage: 8,
         default: false
       },
       chooseImg: {
