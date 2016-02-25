@@ -47,6 +47,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/', 'AddressController@index');
             Route::post('create', 'AddressController@create');
             Route::post('delete', 'AddressController@delete');
+            Route::post('update', 'AddressController@update');
             Route::post('list', 'AddressController@addressList');
         });
 

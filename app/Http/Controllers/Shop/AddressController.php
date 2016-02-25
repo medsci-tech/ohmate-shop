@@ -49,7 +49,7 @@ class AddressController extends Controller
      */
     public function create(Request $request)
     {
-        $item = json_decode($request->getContent());
+        $item = json_decode($request->all());
         dd($item);
     }
 
@@ -58,7 +58,16 @@ class AddressController extends Controller
      */
     public function delete(Request $request)
     {
-        $item = json_decode($request->getContent());
+        $item = json_decode($request->all());
+        dd($item);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $item = json_decode($request->all());
         dd($item);
     }
 }
