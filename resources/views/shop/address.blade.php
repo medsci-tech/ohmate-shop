@@ -41,9 +41,9 @@
 
       <div class="clearfix"></div>
       <div>
-        <select name="province" id="province"></select>
-        <select name="city" id="city"></select>
-        <select name="area" id="area"></select>
+        <select name="province" id="province" v-model="newAdd.province"></select>
+        <select name="city" id="city" v-model="newAdd.city"></select>
+        <select name="area" id="area" v-model="newAdd.district"></select>
       </div>
       <label><span id="street">详细地址</span>
         <input required type="text" placeholder="街道地址" v-model="newAdd.address">
@@ -67,6 +67,9 @@
       newAdd: {
         name: '',
         phone: '',
+        provice: '',
+        city: '',
+        district: '',
         address: '',
         is_default: false
       },
@@ -121,6 +124,9 @@
             {
               name: this.newAdd.name,
               phone: this.newAdd.phone,
+              provice: this.newAdd.provice,
+              city: this.newAdd.city,
+              district: this.newAdd.district,
               address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
             },
             function (data) {
@@ -136,9 +142,12 @@
       editAdd: function (e) {
         if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
           $('#button').text('完成');
-          $('#button').attr('@click', 'edit(address)');
+          $('#button').attr('v-on:click', 'edit(address)');
           this.newAdd.name = e.name;
           this.newAdd.phone = e.phone;
+          this.newAdd.provice = e.provice;
+          this.newAdd.city = e.city;
+          this.newAdd.district = e.district;
         }
       },
       edit: function (e) {
