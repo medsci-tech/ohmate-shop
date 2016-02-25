@@ -47,7 +47,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/', 'AddressController@index');
             Route::post('create', 'AddressController@create');
             Route::post('delete', 'AddressController@delete');
-            Route::post('list', 'AddressController@list');
+            Route::post('list', 'AddressController@addressList');
         });
 
         Route::get('/personal', 'PersonalController@index');

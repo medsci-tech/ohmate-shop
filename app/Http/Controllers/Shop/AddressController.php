@@ -31,7 +31,10 @@ class AddressController extends Controller
         return view('shop.address');
     }
 
-    public function list()
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addressList()
     {
         $customer = \Helper::getCustomer();
 
