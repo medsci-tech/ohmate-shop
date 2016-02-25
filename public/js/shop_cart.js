@@ -1,4 +1,4 @@
-if (localStorage.cart != 'undefined' && localStorage.cart) {
+if (typeof localStorage.cart != 'undefined') {
   var cart = JSON.parse(localStorage.cart);
 } else {
   var cart = [];
@@ -9,15 +9,17 @@ var shop_cart = new Vue({
     el: '#cart_form',
     data: {
       cart: cart,
-
-      person: {
-        beans: 90000,
-        consume: 0
-      }
-
+      personal: []
     },
 
     computed: {
+      cartList: function () {
+        var list = [];
+        for (i = 0; i < this.cart.length; i++) {
+          list.push()
+        }
+        return list;
+      },
       priceAll: function () {
         var all = 0;
         for (i = 0; i < this.cart.length; i++) {
@@ -44,37 +46,39 @@ var shop_cart = new Vue({
           return this.address.postage;
         }
       }
-
     },
 
     methods: {
       removeGoods: function (e) {
         this.cart.$remove(e);
         localStorage.cart = JSON.stringify(this.cart);
-      }
-      ,
+      },
       priceGoods: function (e) {
         return e.price * e.num;
-      }
-      ,
+      },
       numMinus: function (e) {
         if (e.num >= 2) {
           e.num--;
         }
-      }
-      ,
+      },
       numAdd: function (e) {
         if (e.num <= 98) {
           e.num++;
         }
-      }
-      ,
-      beansConsume: function () {
-      }
-      ,
+      },
+      getPersonal: function () {
+        $post('/cart/customer-information',{},
+          function(data){
+            if (data.success) {
+              shop_cart.personal = data.data;
+            }
+          },"json"
+        )
+      },
       postCart: function () {
         console.log(JSON.stringify(shop_cart.$data));
-        $.post('/shop/order/create', JSON.stringify(shop_cart.$data),
+        $.post('/shop/order/create',
+          {},
           function (data) {
             if (data.success) {
               function onBridgeReady() {
@@ -89,11 +93,11 @@ var shop_cart = new Vue({
                   },
                   function (res) {
                     if (res.err_msg == "get_brand_wcpay_request：ok") {
-                      shop_cart.cart = [];
-                      localStorage.cart.clear();
                       $.post('/shop/order/create', {"get_brand_wcpay_request": "ok"},
                         function (data) {
                           if (data.success){
+                            shop_cart.cart = [];
+                            localStorage.cart.clear();
                           }
                         }, "json"
                       );
