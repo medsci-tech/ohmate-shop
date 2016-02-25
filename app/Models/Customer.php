@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CustomerBean[] $beans
  * @property-read \App\Models\CustomerLocation $location
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Address[] $addresses
  */
 class Customer extends Model
 {
