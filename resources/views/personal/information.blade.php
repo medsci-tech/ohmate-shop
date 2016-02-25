@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>会员信息</title>
     <link rel="stylesheet" href="/css/weui.min.css">
-    <link rel="stylesheet" href="/css/personal.css">
+    <link rel="stylesheet" href="/css/member.css">
 <body>
 <div class="page slideIn cell">
     <div class="hd img_t">
