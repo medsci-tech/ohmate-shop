@@ -22,7 +22,7 @@
     <span class="col-xs-5" @click="editAdd(address)">@{{ address.phone }}</span>
     <div class="clearfix"></div>
     <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
-    <span class="col-xs-8" @click="editAdd(address)">@{{ address.address }}</span>
+    <span class="col-xs-8" @click="editAdd(address)">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</span>
     <div class="clearfix"></div>
     <img v-if=" address.is_default == false " src="{{url('/image/shop_icon/Delete.png')}}"
          alt="" @click="removeAdd(address)">
@@ -31,7 +31,7 @@
   <h5 id="title">添加收货地址</h5>
 
   <div class="row text-center">
-    <form id="button" v-on:submit.prevent="addAdd">
+    <form id="button" @submit.prevent="submitAdd">
       <label class="center-block"><span>收货人&emsp;</span>
         <input required type="text" placeholder="收货人姓名" v-model="newAdd.name">
       </label>
@@ -137,7 +137,7 @@
               province: this.newAdd.province,
               city: this.newAdd.city,
               district: this.newAdd.district,
-              address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
+              address: this.newAdd.address
             },
             function (data) {
               if (data.success) {
@@ -165,7 +165,10 @@
         this.newAdd.id = e.id;
         this.newAdd.name = e.name;
         this.newAdd.phone = e.phone;
-        this.newAdd.id = e.id;
+        this.newAdd.province = e.province;
+        this.newAdd.city = e.city;
+        this.newAdd.district = e.district;
+        this.newAdd.address = e.address;
       },
       editFun: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
@@ -177,7 +180,7 @@
               province: this.newAdd.province,
               city: this.newAdd.city,
               district: this.newAdd.district,
-              address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
+              address: this.newAdd.address
             },
             function (data) {
               if (data.success) {
