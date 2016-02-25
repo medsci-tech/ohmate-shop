@@ -12,7 +12,7 @@
   <h5 v-show=" addresses != '' ">选择收货地址
     <small>(点击编辑)</small>
   </h5>
-  <div class="row" id="test" v-for="address in addresses">
+  <div class="row" v-for="address in addresses">
     <img v-bind:src=" address.is_default?chooseImg.imgtrue:chooseImg.imgfalse "
          alt="" @click="chooseAdd(address)"
     >
@@ -53,6 +53,7 @@
       <button id="button" class="btn">添加并设为默认</button>
     </form>
   </div>
+  <div>@{{ list.data }}</div>
 </div>
 </body>
 
@@ -127,23 +128,22 @@
         )
       },
       addAdd: function () {
-        $('#test').attr('width','100%');
-//        if ($('#province').val() && $('#city').val() && $('#area').val()) {
-//          $.post('/shop/address/create',
-//            {
-//              name: this.newAdd.name,
-//              phone: this.newAdd.phone,
-//              address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
-//            },
-//            function (data) {
-//              if (data.success) {
-//                list.addReload();
-//              } else {
-//                alert('服务器异常4!');
-//              }
-//            }, "json"
-//          );
-//        }
+        if ($('#province').val() && $('#city').val() && $('#area').val()) {
+          $.post('/shop/address/create',
+            {
+              name: this.newAdd.name,
+              phone: this.newAdd.phone,
+              address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
+            },
+            function (data) {
+              if (data.success) {
+                list.addReload();
+              } else {
+                alert('服务器异常4!');
+              }
+            }, "json"
+          );
+        }
       },
       editAdd: function (e) {
         if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
