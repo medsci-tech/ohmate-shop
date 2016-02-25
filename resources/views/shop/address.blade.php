@@ -17,11 +17,11 @@
     >
 
     <p class="col-xs-4" @click="chooseAdd(address)">收货人</p>
-    <span class="col-xs-3" @click="editAdd(address)">@{{ address.name }}</span>
-    <span class="col-xs-5" @click="editAdd(address)">@{{ address.phone }}</span>
+    <span class="col-xs-3">@{{ address.name }}</span>
+    <span class="col-xs-5">@{{ address.phone }}</span>
     <div class="clearfix"></div>
     <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
-    <span class="col-xs-8" @click="editAdd(address)">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</span>
+    <span class="col-xs-8">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</span>
     <div class="clearfix"></div>
     <img v-if=" address.is_default == false " src="{{url('/image/shop_icon/Delete.png')}}"
          alt="" @click="removeAdd(address)">
@@ -120,7 +120,7 @@
           )
         }
       },
-      
+
       addFun: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
           $.post('/shop/address/create',
