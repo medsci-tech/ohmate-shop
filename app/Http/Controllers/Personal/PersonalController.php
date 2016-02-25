@@ -49,11 +49,6 @@ class PersonalController extends Controller
         return view('personal.beans', ['total' => $total, 'list' => $list]);
     }
 
-    public function game()
-    {
-        return view('personal.game');
-    }
-
     public function friend()
     {
         $customer = \Helper::getCustomer();
@@ -64,11 +59,6 @@ class PersonalController extends Controller
         return view('personal.friend', ['data' => $data]);
     }
 
-    public function memberIntroduction()
-    {
-        return view('personal.member-introduction');
-    }
-
     public function beanRules()
     {
         return view('personal.bean-rules');
@@ -77,11 +67,6 @@ class PersonalController extends Controller
     public function aboutUs()
     {
         return view('personal.about-us');
-    }
-
-    public function customerService()
-    {
-        return view('personal.customer-service');
     }
 
 }

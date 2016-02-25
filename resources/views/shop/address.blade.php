@@ -172,6 +172,7 @@
       }
     }
   });
+
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
 <script>
