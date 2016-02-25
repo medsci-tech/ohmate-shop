@@ -76,7 +76,7 @@ class Helper
      * @param string $province
      * @return int
      */
-    public function getPostFee(string $province)
+    public function getPostFee($province)
     {
         if (in_array($province, ['新疆', '西藏', '新疆省', '西藏省'])) {
             return 12;
