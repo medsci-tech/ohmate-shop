@@ -26,10 +26,12 @@
     @endforeach
 </div>
 <input type="hidden" id="text_click" value="-1">
+<input type="hidden" id="text_id" value="-1">
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script type="text/javascript">
     function updateView(id) {
         document.getElementById('text_click').value ='1';
+        document.getElementById('text_id').value = id;
         $(function () {
             var requestUrl = '/eduction/article/view';
             $.ajax({
@@ -54,6 +56,7 @@
 
     function reLoad() {
         var flag = document.getElementById('text_click').value;
+        var id = document.getElementById('text_id').value;
         if(flag=='1') {
             $(function () {
                 var requestUrls = '/eduction/article/read';
