@@ -42,6 +42,10 @@ class Address extends Model
      */
     public function setIsDefaultAttribute($b)
     {
+        if (is_string($b)) {
+            $b = ($b == 'true')? true : false;
+        }
+
         $this->attributes['is_default'] = intval($b);
     }
 }
