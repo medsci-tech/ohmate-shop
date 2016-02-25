@@ -77,8 +77,31 @@ class AddressController extends Controller
      */
     public function delete(Request $request)
     {
-        $item = $request->all();
-        dd($item);
+        $validator = \Validator::make($request->all(), [
+            'id' => 'required|exists:addresses',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'error_messages' => $validator->errors()->getMessages()
+            ]);
+        }
+
+        $customer = \Helper::getCustomer();
+        $address = Address::find($request->input('id'));
+        if ($address->customer_id != $customer->id) {
+            return response()->json([
+                'success' => false,
+                'error_messages' => 'not matched'
+            ]);
+        }
+
+        $address->delete();
+
+        return response()->json([
+            'success' => true,
+            'id' => $address->id
+        ]);
     }
 
     /**
@@ -86,7 +109,31 @@ class AddressController extends Controller
      */
     public function update(Request $request)
     {
-        $item = $request->all();
-        dd($item);
+        $validator = \Validator::make($request->all(), [
+            'id' => 'required|exists:addresses',
+            'phone' => 'digits:11',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'error_messages' => $validator->errors()->getMessages()
+            ]);
+        }
+
+        $customer = \Helper::getCustomer();
+        $address = Address::find($request->input('id'));
+        if ($address->customer_id != $customer->id) {
+            return response()->json([
+                'success' => false,
+                'error_messages' => 'not matched'
+            ]);
+        }
+
+        $address->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'id' => $address->id
+        ]);
     }
 }
