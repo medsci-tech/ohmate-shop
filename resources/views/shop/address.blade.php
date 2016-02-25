@@ -67,7 +67,7 @@
       newAdd: {
         name: '',
         phone: '',
-        provice: '',
+        province: '',
         city: '',
         district: '',
         address: '',
@@ -124,7 +124,7 @@
             {
               name: this.newAdd.name,
               phone: this.newAdd.phone,
-              provice: this.newAdd.provice,
+              provice: this.newAdd.province,
               city: this.newAdd.city,
               district: this.newAdd.district,
               address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
@@ -145,7 +145,7 @@
           $('#button').attr('v-on:click', 'edit(address)');
           this.newAdd.name = e.name;
           this.newAdd.phone = e.phone;
-          this.newAdd.provice = e.provice;
+          this.newAdd.provice = e.province;
           this.newAdd.city = e.city;
           this.newAdd.district = e.district;
         }
