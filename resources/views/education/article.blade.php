@@ -18,7 +18,7 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{$index['title']}}</h4>
-                <a href="{{$index['uri']}}" onclick="updateView({{$index['id']}})"><p>{{$index['description']}}</p></a>
+                <a onclick="updateView({{$index['id']}})"><p>{{$index['description']}}</p></a>
                 <span>阅读量&emsp;{{$index['count']}}</span>
             </div>
         </div>
