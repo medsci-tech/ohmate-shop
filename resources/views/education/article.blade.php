@@ -40,29 +40,26 @@
                 type : "get",
                 dataType : "json",
                 success: function (json) {
+                    var requestUrls = '/eduction/article/read';
+                    $.ajax({
+                        url : requestUrls,
+                        data: {
+                            id: id
+                        },
+                        type : "get",
+                        dataType : "json",
+                        success: function (json) {
 
+                        },
+                        error: function (xhr, status, errorThrown) {
+                            alert("Sorry, there was a problem!");
+                        }
+                    });
                 },
                 error: function (xhr, status, errorThrown) {
                     alert("Sorry, there was a problem!");
                 }
             });
-
-            var requestUrl = '/eduction/article/read';
-            $.ajax({
-                url : requestUrl,
-                data: {
-                    id: id
-                },
-                type : "get",
-                dataType : "json",
-                success: function (json) {
-
-                },
-                error: function (xhr, status, errorThrown) {
-                    alert("Sorry, there was a problem!");
-                }
-            });
-
 
         });
 
