@@ -47,7 +47,7 @@ var shop_cart = new Vue({
       if (this.address == null) {
         return 8;
       } else {
-        return this.address.postage;
+        return this.post_fee;
       }
     }
   },
