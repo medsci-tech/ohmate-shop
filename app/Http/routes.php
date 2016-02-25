@@ -30,7 +30,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'eduction', 'namespace' => 'Education'], function () {
         Route::get('/injection', 'EductionController@injections');
         Route::post('/injection/view', 'EductionController@injectionView');
-        Route::get('/article', 'EductionController@articleView');
+        Route::get('/article', 'EductionController@articleList');
+        Route::get('/article/view', 'EductionController@articleView');
     });
 
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
