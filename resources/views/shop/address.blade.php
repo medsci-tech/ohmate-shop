@@ -175,7 +175,7 @@
     }
   });
 
-  address = [1];
+  addresses = [1];
 
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
