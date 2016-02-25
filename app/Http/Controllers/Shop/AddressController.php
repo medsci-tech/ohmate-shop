@@ -64,6 +64,13 @@ class AddressController extends Controller
         $customer = \Helper::getCustomer();
         $address = new Address($request->all());
 
+        //先重置所有default
+        if ($request->has('is_default') and $request->input('is_default') == 'true') {
+            $customer->addresses()->update([
+                'is_default' => false
+            ]);
+        }
+
         $customer->addresses()->save($address);
 
         return response()->json([
