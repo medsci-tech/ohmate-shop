@@ -65,7 +65,7 @@
   $.post('/shop/address/list', {},
     function (data) {
       if (data.success) {
-        list.addresses = data.data;
+        addresses = data.data;
       } else {
         alert('服务器异常1!');
       }
