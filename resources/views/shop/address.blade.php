@@ -24,7 +24,8 @@
     <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
     <span class="col-xs-8" @click="editAdd(address)">@{{ address.address }}</span>
     <div class="clearfix"></div>
-    <img v-if=" address.is_default == false " src="{{url('/image/shop_icon/Delete.png')}}" alt="" @click="removeAdd(address)">
+    <img v-if=" address.is_default == false " src="{{url('/image/shop_icon/Delete.png')}}"
+         alt="" @click="removeAdd(address)">
   </div>
 
   <h5>添加收货地址</h5>
@@ -59,26 +60,10 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
 
-  var addresses = [];
-
-  function addReload() {
-    $.post('/shop/address/list', {},
-      function (data) {
-        if (data.success) {
-          addresses = data.data;
-        } else {
-          alert('服务器异常1!');
-        }
-      }, "json"
-    );
-  }
-
-  addReload();
-
   var list = new Vue({
     el: '#addresses',
     data: {
-      addresses: addresses,
+      addresses: [],
       newAdd: {
         name: '',
         phone: '',
@@ -92,12 +77,23 @@
     },
 
     methods: {
+      addReload: function () {
+        $.post('/shop/address/list', {},
+          function (data) {
+            if (data.success) {
+              list.addresses = data.data;
+            } else {
+              alert('服务器异常1!');
+            }
+          }, "json"
+        );
+      },
       removeAdd: function (e) {
         $.post('/shop/address/delete',
           {id: e.id},
           function (data) {
             if (data.success) {
-              addReload();
+              list.addReload();
             } else {
               alert('服务器异常2!');
             }
@@ -112,11 +108,12 @@
           },
           function (data) {
             if (data.success) {
-              addReload();
+              list.addReload();
             } else {
               alert('服务器异常3!');
             }
-          }, "json")
+          }, "json"
+        )
       },
       addAdd: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
@@ -128,7 +125,7 @@
             },
             function (data) {
               if (data.success) {
-                addReload();
+                list.addReload();
               } else {
                 alert('服务器异常4!');
               }
@@ -155,7 +152,7 @@
             },
             function (data) {
               if (data.success) {
-                addReload();
+                list.addReload();
               } else {
                 alert('服务器异常5!');
               }
