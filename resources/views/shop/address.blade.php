@@ -67,9 +67,9 @@
         id: -1,
         name: '',
         phone: '',
-        province: '选择省',
-        city: '选择市',
-        district: '选择区',
+        province: '',
+        city: '',
+        district: '',
         address: '',
         is_default: false
       },
@@ -139,9 +139,9 @@
                   id: -1,
                   name: '',
                   phone: '',
-                  province: '选择省',
-                  city: '选择市',
-                  district: '选择区',
+                  province: '',
+                  city: '',
+                  district: '',
                   address: '',
                   is_default: false
                 };
