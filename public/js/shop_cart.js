@@ -33,7 +33,7 @@ var shop_cart = new Vue({
     },
     priceDiscount: function () {
       var consume =
-        this.personal.beans < this.priceAll * 100 ? this.personal.beans : this.priceAll * 100;
+        this.beans < this.priceAll * 100 ? this.beans : this.priceAll * 100;
       return consume / 100;
     },
     priceCount: function () {
@@ -73,13 +73,14 @@ var shop_cart = new Vue({
     getPersonal: function () {
       $.post('/shop/cart/customer-information',
         {
-          cart: cartList,
+          cart: this.cartList,
           address_id: this.address.id
         },
         function (data) {
           if (data.success) {
             shop_cart.beans = data.data.beans;
             shop_cart.address = data.data.default_address;
+            shop_cart.post_fee = data.data.post_fee;
           }
         }, "json"
       )
