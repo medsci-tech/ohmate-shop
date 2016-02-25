@@ -32,7 +32,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/injection/view', 'EductionController@injectionView');
         Route::get('/article', 'EductionController@articleList');
         Route::get('/article/view', 'EductionController@articleView');
-        Route::get('/article/book', 'EductionController@articleRead');
+        Route::get('/article/addBean', 'EductionController@addBean');
     });
 
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {

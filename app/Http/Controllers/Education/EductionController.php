@@ -47,14 +47,14 @@ class EductionController extends Controller
         }
     }
 
-    public function articleRead(Request $request)
+    public function addBean(Request $request)
     {
         \Log::info('EductionController:articleRead');
         $articles = Article::where('id', $request->input('id'))->first();
         $customer = \Helper::getCustomer();
         if ($customer != null && $articles != null) {
             \Log::info('EductionController:articleRead:step');
-            $ret = \BeanRecharger::scanArticle($customer->id);
+            \BeanRecharger::scanArticle($customer->id);
         }
     }
 
