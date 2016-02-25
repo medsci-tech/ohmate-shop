@@ -40,6 +40,7 @@
                 type : "get",
                 dataType : "json",
                 success: function (json) {
+                    alert('111');
                     var requestUrls = '/eduction/article/read';
                     $.ajax({
                         url : requestUrls,
@@ -49,7 +50,7 @@
                         type : "get",
                         dataType : "json",
                         success: function (json) {
-
+                            alert('222');
                         },
                         error: function (xhr, status, errorThrown) {
                             alert("Sorry, there was a problem!");
