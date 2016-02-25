@@ -10411,6 +10411,17 @@ namespace {
             return \App\Werashop\Helper\Helper::getCustomer();
         }
         
+        /**
+         * 
+         *
+         * @param string $province
+         * @return int 
+         * @static 
+         */
+        public static function getPostFee($province){
+            return \App\Werashop\Helper\Helper::getPostFee($province);
+        }
+        
     }
 
 
