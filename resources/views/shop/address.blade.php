@@ -152,7 +152,7 @@
       editAdd: function (e) {
         $('#title').text('修改收货地址');
         $('#button button').text('完成');
-        $('#button').attr('v-on:submit.prevent', 'edit(address)');
+        $('#button').attr('v-on:submit.prevent', 'edit()');
         this.newAdd.name = e.name;
         this.newAdd.phone = e.phone;
         this.newAdd.id = e.id;
