@@ -51,11 +51,11 @@ class EductionController extends Controller
     {
         \Log::info('EductionController:articleRead');
         $articles = Article::where('id', $request->input('id'))->first();
-        $customer = \Helper::getCustomer();
-        if ($customer != null && $articles != null) {
-            \Log::info('EductionController:articleRead:step');
-            \BeanRecharger::scanArticle($customer->id);
-        }
+//        $customer = \Helper::getCustomer();
+//        if ($customer != null && $articles != null) {
+//            \Log::info('EductionController:articleRead:step');
+//            \BeanRecharger::scanArticle($customer->id);
+//        }
     }
 
 } /*class*/
