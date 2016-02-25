@@ -10,7 +10,6 @@
 <body>
 <div class="container" id="addresses">
   <h5 v-show=" addresses != '' ">选择收货地址
-    <small>(点击编辑)</small>
   </h5>
   <div class="row" v-for="address in addresses">
     <img v-bind:src=" address.is_default?chooseImg.imgtrue:chooseImg.imgfalse "
@@ -31,7 +30,7 @@
   <h5 id="title">添加收货地址</h5>
 
   <div class="row text-center">
-    <form id="button" @submit.prevent="submitAdd">
+    <form id="button" @submit.prevent="addFun">
       <label class="center-block"><span>收货人&emsp;</span>
         <input required type="text" placeholder="收货人姓名" v-model="newAdd.name">
       </label>
@@ -121,13 +120,7 @@
           )
         }
       },
-      submitAdd: function () {
-        if (this.newAdd.id == '-1'){
-          list.addFun();
-        } else {
-          list.editFun();
-        }
-      },
+      
       addFun: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
           $.post('/shop/address/create',
@@ -159,51 +152,60 @@
           );
         }
       },
-      editAdd: function (e) {
-        $('#title').text('修改收货地址');
-        $('#button button').text('完'+' '+'成');
-        this.newAdd.id = e.id;
-        this.newAdd.name = e.name;
-        this.newAdd.phone = e.phone;
-        this.newAdd.province = e.province;
-        this.newAdd.city = e.city;
-        this.newAdd.district = e.district;
-        this.newAdd.address = e.address;
-      },
-      editFun: function () {
-        if ($('#province').val() && $('#city').val() && $('#area').val()) {
-          $.post('/shop/address/update',
-            {
-              id: this.newAdd.id,
-              name: this.newAdd.name,
-              phone: this.newAdd.phone,
-              province: this.newAdd.province,
-              city: this.newAdd.city,
-              district: this.newAdd.district,
-              address: this.newAdd.address
-            },
-            function (data) {
-              if (data.success) {
-                list.addReload();
-                list.newAdd = {
-                  id: -1,
-                  name: '',
-                  phone: '',
-                  province: '选择省',
-                  city: '选择市',
-                  district: '选择区',
-                  address: '',
-                  is_default: false
-                };
-                $('#title').text('添加收货地址');
-                $('#button button').text('添加并设为默认');
-              } else {
-                alert('服务器异常5!');
-              }
-            }, "json"
-          )
-        }
-      }
+
+//      submitAdd: function () {
+//        if (this.newAdd.id == '-1'){
+//          list.addFun();
+//        } else {
+//          list.editFun();
+//        }
+//      },
+
+//      editAdd: function (e) {
+//        $('#title').text('修改收货地址');
+//        $('#button button').text('完'+' '+'成');
+//        this.newAdd.id = e.id;
+//        this.newAdd.name = e.name;
+//        this.newAdd.phone = e.phone;
+//        this.newAdd.province = e.province;
+//        this.newAdd.city = e.city;
+//        this.newAdd.district = e.district;
+//        this.newAdd.address = e.address;
+//      },
+//      editFun: function () {
+//        if ($('#province').val() && $('#city').val() && $('#area').val()) {
+//          $.post('/shop/address/update',
+//            {
+//              id: this.newAdd.id,
+//              name: this.newAdd.name,
+//              phone: this.newAdd.phone,
+//              province: this.newAdd.province,
+//              city: this.newAdd.city,
+//              district: this.newAdd.district,
+//              address: this.newAdd.address
+//            },
+//            function (data) {
+//              if (data.success) {
+//                list.addReload();
+//                list.newAdd = {
+//                  id: -1,
+//                  name: '',
+//                  phone: '',
+//                  province: '选择省',
+//                  city: '选择市',
+//                  district: '选择区',
+//                  address: '',
+//                  is_default: false
+//                };
+//                $('#title').text('添加收货地址');
+//                $('#button button').text('添加并设为默认');
+//              } else {
+//                alert('服务器异常5!');
+//              }
+//            }, "json"
+//          )
+//        }
+//      }
     }
   });
 
