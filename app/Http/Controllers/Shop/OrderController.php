@@ -35,7 +35,7 @@ class OrderController extends Controller
      */
     public function generateConfig(Request $request)
     {
-        dd(json_decode($request->getContent()));
+        dd(json_decode($request->all()));
         $customer = \Helper::getCustomer();
 
         $items = $request->input('items');
