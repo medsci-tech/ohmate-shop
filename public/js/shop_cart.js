@@ -124,6 +124,6 @@ var shop_cart = new Vue({
         );
       }
     }
-  })
-  ;
+  });
 
+shop_cart.getPersonal();
