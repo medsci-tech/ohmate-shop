@@ -17,7 +17,7 @@
 
     <div class="row" v-for="goods in cart">
       <div class="col-xs-3">
-        <img class="img-responsive" src="{{url('/image/shop_goods')}}//@{{ goods.id }}.png" alt="">
+        <img class="img-responsive" src="{{url('/image/shop_goods')}}/" + @{{ goods.id }} + ".png" alt="">
       </div>
       <div class="col-xs-9">
         <h4>@{{ goods.name }}</h4>
