@@ -53,24 +53,12 @@
       <button id="button" class="btn">添加并设为默认</button>
     </form>
   </div>
-  <div>@{{ list.data }}</div>
 </div>
 </body>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-
-  var addresses;
-
-  $.post('/shop/address/list', {},
-    function (data) {
-      if (data.success) {
-        addresses = data.data;
-      } else {
-        alert('服务器异常1!');
-      }
-    }, "json");
 
   var list = new Vue({
     el: '#addresses',
@@ -168,13 +156,14 @@
               } else {
                 alert('服务器异常5!');
               }
-            },
-            "json"
+            }, "json"
           )
         }
       }
     }
   });
+
+  list.addReload();
 
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
