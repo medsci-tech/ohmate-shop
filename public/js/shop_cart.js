@@ -72,10 +72,7 @@ var shop_cart = new Vue({
     },
     getPersonal: function () {
       $.post('/shop/cart/customer-information',
-        {
-          cart: this.cartList,
-          address_id: this.address.id
-        },
+        {},
         function (data) {
           if (data.success) {
             shop_cart.beans = data.data.beans;
@@ -88,7 +85,10 @@ var shop_cart = new Vue({
     postCart: function () {
       console.log(JSON.stringify(shop_cart.$data));
       $.post('/shop/order/create',
-        {},
+        {
+          cart: this.cartList,
+          address_id: this.address.id
+        },
         function (data) {
           if (data.success) {
             function onBridgeReady() {
