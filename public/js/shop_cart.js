@@ -67,7 +67,7 @@ var shop_cart = new Vue({
         }
       },
       getPersonal: function () {
-        $.post('/cart/customer-information',{},
+        $.post('/shop/cart/customer-information',{},
           function(data){
             if (data.success) {
               shop_cart.personal = data.data;
