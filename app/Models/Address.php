@@ -38,9 +38,9 @@ class Address extends Model
     ];
 
     /**
-     * @param bool $b
+     * @param bool|string $b
      */
-    public function setIsDefaultAttribute(bool $b)
+    public function setIsDefaultAttribute($b)
     {
         $this->attributes['is_default'] = intval($b);
     }
