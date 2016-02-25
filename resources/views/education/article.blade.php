@@ -6,7 +6,7 @@
     <title>教育学习</title>
     <link rel="stylesheet" href="/css/eduction.css">
 </head>
-<body>
+<body onload="reLoad();">
 <div class="container">
     @foreach($articles as $index)
     <div class="row">
@@ -25,10 +25,11 @@
     </div>
     @endforeach
 </div>
-
+<input type="hidden" id="text_click" value="-1">
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script type="text/javascript">
     function updateView(id) {
+        document.getElementById('text_click').value ='1';
         $(function () {
             var requestUrl = '/eduction/article/view';
             $.ajax({
@@ -49,6 +50,13 @@
         });
 
 //        window.location.href = uri;
+    }
+
+    function reLoad() {
+        var flag = document.getElementById('text_click').value;
+        if(flag=='1') {
+            window.location.href = '/eduction/article';
+        }
     }
 </script>
 </body>
