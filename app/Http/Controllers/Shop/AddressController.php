@@ -134,6 +134,13 @@ class AddressController extends Controller
             ]);
         }
 
+        //先重置所有default
+        if ($request->has('is_default')) {
+            $customer->addresses()->update([
+                'is_default' => false
+            ]);
+        }
+
         $address->update($request->all());
 
         return response()->json([
