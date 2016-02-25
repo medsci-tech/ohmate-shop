@@ -67,9 +67,9 @@
       newAdd: {
         name: '',
         phone: '',
-        province: '',
-        city: '',
-        district: '',
+        province: '选择省',
+        city: '选择市',
+        district: '选择区',
         address: '',
         is_default: false
       },
@@ -135,9 +135,9 @@
                 list.newAdd = {
                   name: '',
                   phone: '',
-                  province: '',
-                  city: '',
-                  district: '',
+                  province: '选择省',
+                  city: '选择市',
+                  district: '选择区',
                   address: '',
                   is_default: false
                 };
@@ -172,9 +172,9 @@
                 list.newAdd = {
                   name: '',
                   phone: '',
-                  province: '',
-                  city: '',
-                  district: '',
+                  province: '选择省',
+                  city: '选择市',
+                  district: '选择区',
                   address: '',
                   is_default: false
                 };
