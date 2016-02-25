@@ -25,9 +25,23 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Address extends Model
 {
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'is_default' => 'boolean',
     ];
+
+    /**
+     * @param bool $b
+     */
+    public function setIsDefaultAttribute(bool $b)
+    {
+        $this->attributes['is_default'] = intval($b);
+    }
 }
