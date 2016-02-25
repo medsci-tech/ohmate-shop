@@ -130,7 +130,8 @@
               province: this.newAdd.province,
               city: this.newAdd.city,
               district: this.newAdd.district,
-              address: this.newAdd.address
+              address: this.newAdd.address,
+              is_default: true
             },
             function (data) {
               if (data.success) {
