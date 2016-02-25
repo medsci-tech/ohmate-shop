@@ -19,12 +19,13 @@ class PersonalController extends Controller
 
     public function information()
     {
-        $customer = \Helper::getCustomer();
-        $data['nickname']           = $customer->nickname;
-        $data['head_image_url']     = $customer->head_image_url;
-        $data['type']               = $customer->type->type_ch;
-        $data['beans_total']        = $customer->beans_total;
-        return view('personal.information', ['data' => $data]);
+//        $customer = \Helper::getCustomer();
+//        $data['nickname']           = $customer->nickname;
+//        $data['head_image_url']     = $customer->head_image_url;
+//        $data['type']               = $customer->type->type_ch;
+//        $data['beans_total']        = $customer->beans_total;
+//        return view('personal.information', ['data' => $data]);
+        return view('personal.information');
     }
 
     public function beans()
