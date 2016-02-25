@@ -60,6 +60,8 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
 
+  addresses = [];
+
   $.post('/shop/address/list', {},
     function (data) {
       if (data.success) {
@@ -72,7 +74,7 @@
   var list = new Vue({
     el: '#addresses',
     data: {
-      addresses: [],
+      addresses: addresses,
       newAdd: {
         name: '',
         phone: '',
