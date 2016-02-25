@@ -60,19 +60,10 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
 
-  $.post('/shop/address/list', {},
-    function (data) {
-      if (data.success) {
-        list.addresses = data.data;
-      } else {
-        alert('服务器异常1!');
-      }
-    }, "json");
-
   var list = new Vue({
     el: '#addresses',
     data: {
-      addresses: addresses,
+      addresses: [],
       newAdd: {
         name: '',
         phone: '',
@@ -165,13 +156,14 @@
               } else {
                 alert('服务器异常5!');
               }
-            },
-            "json"
+            }, "json"
           )
         }
       }
     }
   });
+
+  list.addReload();
 
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
