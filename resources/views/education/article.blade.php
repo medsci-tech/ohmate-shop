@@ -18,7 +18,7 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">{{$index['title']}}</h4>
-                <a href="{{$index['uri']}}" onclick="updateView({{$index['id']}})"><p>{{$index['description']}}</p></a>
+                <a onclick="updateView({{$index['id']}})"><p>{{$index['description']}}</p></a>
                 <span>阅读量&emsp;{{$index['count']}}</span>
             </div>
         </div>
@@ -49,6 +49,23 @@
                 }
             });
 
+            var requestUrls = '/eduction/article/read';
+            $.ajax({
+                url: requestUrls,
+                data: {
+                    id: id
+                },
+                type: "get",
+                dataType: "json",
+                success: function (json) {
+
+                },
+                error: function (xhr, status, errorThrown) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
+
+
         });
 
 //        window.location.href = uri;
@@ -58,24 +75,24 @@
         var flag = document.getElementById('text_click').value;
         var id = document.getElementById('text_id').value;
         if(flag=='1') {
-            $(function () {
-                var requestUrls = '/eduction/article/read';
-                $.ajax({
-                    url: requestUrls,
-                    data: {
-                        id: id
-                    },
-                    type: "get",
-                    dataType: "json",
-                    success: function (json) {
-
-                    },
-                    error: function (xhr, status, errorThrown) {
-                        alert("Sorry, there was a problem!");
-                    }
-                });
-
-            });
+//            $(function () {
+//                var requestUrls = '/eduction/article/read';
+//                $.ajax({
+//                    url: requestUrls,
+//                    data: {
+//                        id: id
+//                    },
+//                    type: "get",
+//                    dataType: "json",
+//                    success: function (json) {
+//
+//                    },
+//                    error: function (xhr, status, errorThrown) {
+//                        alert("Sorry, there was a problem!");
+//                    }
+//                });
+//
+//            });
             window.location.href = '/eduction/article';
         }
     }
