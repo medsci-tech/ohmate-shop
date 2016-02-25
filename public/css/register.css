@@ -40,7 +40,10 @@ body {
     margin: 0;
     padding-top: 15px; }
     .register .checkbox input {
-      top: 2px; }
+      height: inherit; }
+    .register .checkbox span {
+      z-index: 9999;
+      color: #428bca; }
   .register .btn:active:focus, .register .btn:focus, .register .btn:hover {
     outline: none;
     color: #FFFFFF; }

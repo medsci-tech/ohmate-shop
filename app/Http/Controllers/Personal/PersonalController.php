@@ -19,40 +19,23 @@ class PersonalController extends Controller
 
     public function information()
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/personal/error');
-        }
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
-            return redirect('/personal/error');
-        }
-
+        $customer = \Helper::getCustomer();
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
+        $data['type']               = $customer->type->type_ch;
         $data['beans_total']        = $customer->beans_total;
-        return $data;
-//        return view('personal.information', $data);
+        return view('personal.information', ['data' => $data]);
     }
 
     public function beans()
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/personal/error');
-        }
-
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered)) {
-            return redirect('/personal/error');
-        }
-
+        $customer = \Helper::getCustomer();
         $customerBeans = $customer->beans;
         if (!$customerBeans) {
-            return view('personal.no_beans');
-        }
+            return view('personal.no-beans');
+        } /*if>*/
 
+        $total = $customer->beans_total;
         $list = null;
         foreach ($customerBeans as $customerBean) {
             $list[] = [
@@ -63,8 +46,7 @@ class PersonalController extends Controller
             ];
         }
 
-        return $list;
-//        return view('personal.beans', ['total' => $total, 'list' = $list]);
+        return view('personal.beans', ['total' => $total, 'list' => $list]);
     }
 
     public function game()
@@ -74,39 +56,32 @@ class PersonalController extends Controller
 
     public function friend()
     {
-        $user = \Session::get(AppConstant::SESSION_USER_KEY);
-        if (!$user) {
-            return redirect('/personal/error');
-        }
+        $customer = \Helper::getCustomer();
+        $data['nickname']           = $customer->nickname;
+        $data['qrCode']             = $customer->qr_code;
+        $data['head_image_url']     = $customer->head_image_url;
 
-        $customer = Customer::where('openid', $user['openid'])->first();
-        if ((!$customer) || (!$customer->is_registered) || (!$customer->qr_code)) {
-            return redirect('/personal/error');
-        }
-
-        $data['nickname']   = $customer->nickname;
-        $data['qrCode']     = $customer->qr_code;
-        return view('personal.friend', $data);
+        return view('personal.friend', ['data' => $data]);
     }
 
     public function memberIntroduction()
     {
-        return view('personal.member_introduction');
+        return view('personal.member-introduction');
     }
 
     public function beanRules()
     {
-        return view('personal.bean_rules');
+        return view('personal.bean-rules');
     }
 
     public function aboutUs()
     {
-        return view('personal.about_us');
+        return view('personal.about-us');
     }
 
     public function customerService()
     {
-        return view('personal.customer_service');
+        return view('personal.customer-service');
     }
 
 }

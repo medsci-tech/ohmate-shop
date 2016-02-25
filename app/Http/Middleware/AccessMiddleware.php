@@ -23,26 +23,26 @@ class AccessMiddleware
     public function handle($request, Closure $next)
     {
         try {
-            $user = \Helper::getSessionCachedUser();
-
-            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+            $user       = \Helper::getSessionCachedUser();
+            $customer   = Customer::where('openid', $user['openid'])->firstOrFail();
 
             if (!$customer->is_registered) {
                 return redirect('/register/create');
-            }
+            } /*if>*/
 
             if ($this->userDatabaseExpired($customer)) {
                 $this->refreshUserDatabase($user, $customer);
-            }
+            } /*if>*/
 
             return $next($request);
+
         } catch (UserNotSubscribedException $e) {
             return redirect(AppConstant::ATTENTION_URL);
         } catch (UserNotCachedException $e) {
             return redirect(AppConstant::ATTENTION_URL);
         } catch (ModelNotFoundException $e) {
             return redirect('/register/create');
-        }
+        } /*catch>*/
     }
 
     /**
@@ -51,8 +51,8 @@ class AccessMiddleware
      */
     protected function refreshUserDatabase($user, $customer)
     {
-        $customer->head_image_url = $user['headimgurl'];
-        $customer->nickname = $user['nickname'];
+        $customer->head_image_url   = $user['headimgurl'];
+        $customer->nickname         = $user['nickname'];
         $customer->save();
     }
 
