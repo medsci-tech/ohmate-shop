@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>注册失败</title>
-    <link rel="stylesheet" href="../css/weui.min.css">
-    <link rel="stylesheet" href="../css/example.css">
+    <link rel="stylesheet" href="/css/weui.min.css">
+    <link rel="stylesheet" href="/css/member.css">
 <body>
 <div class="weui_msg">
     <div class="weui_icon_area">
