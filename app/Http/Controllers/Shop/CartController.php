@@ -22,7 +22,8 @@ class CartController extends Controller
             'success' => true,
             'data' => [
                 'beans' => $customer->beans_total,
-                'default_address' => $customer->addresses()->where('is_default', true)->first()
+                'default_address' => ($default_address = $customer->addresses()->where('is_default', true)->first()),
+                'post_fee' => \Helper::getPostFee($default_address->province)
             ]
         ]);
     }
