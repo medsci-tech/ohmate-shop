@@ -132,6 +132,15 @@
             function (data) {
               if (data.success) {
                 list.addReload();
+                list.newAdd = {
+                  name: '',
+                  phone: '',
+                  province: '',
+                  city: '',
+                  district: '',
+                  address: '',
+                  is_default: false
+                };
               } else {
                 alert('服务器异常4!');
               }
@@ -140,15 +149,10 @@
         }
       },
       editAdd: function (e) {
-        if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
           $('#button').text('完成');
           $('#button').attr('v-on:click', 'edit(address)');
           this.newAdd.name = e.name;
           this.newAdd.phone = e.phone;
-          this.newAdd.provice = e.province;
-          this.newAdd.city = e.city;
-          this.newAdd.district = e.district;
-        }
       },
       edit: function (e) {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
@@ -157,11 +161,23 @@
               id: e.id,
               name: this.newAdd.name,
               phone: this.newAdd.phone,
+              province: this.newAdd.province,
+              city: this.newAdd.city,
+              district: this.newAdd.district,
               address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
             },
             function (data) {
               if (data.success) {
                 list.addReload();
+                list.newAdd = {
+                  name: '',
+                  phone: '',
+                  province: '',
+                  city: '',
+                  district: '',
+                  address: '',
+                  is_default: false
+                };
               } else {
                 alert('服务器异常5!');
               }
