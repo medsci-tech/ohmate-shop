@@ -49,7 +49,7 @@
                 }
             });
 
-            var requestUrls = '/eduction/article/book';
+            var requestUrls = '/eduction/article/addBean';
             $.ajax({
                 url: requestUrls,
                 data: {
