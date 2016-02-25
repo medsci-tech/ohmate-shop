@@ -127,7 +127,7 @@
         )
       },
       addAdd: function () {
-        $('test').attr('width','100%');
+        $('#test').attr('width','100%');
 //        if ($('#province').val() && $('#city').val() && $('#area').val()) {
 //          $.post('/shop/address/create',
 //            {
