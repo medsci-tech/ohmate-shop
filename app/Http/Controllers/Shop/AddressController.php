@@ -26,12 +26,21 @@ class AddressController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index() {
+    public function index()
+    {
+        return view('shop.address');
+    }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addressList()
+    {
         $customer = \Helper::getCustomer();
 
-        return view('shop.address')->with([
-            'items' => $customer->addresses()->get()
+        return response()->json([
+            'success' => true,
+            'data' => $customer->addresses()->get()->toArray()
         ]);
     }
 

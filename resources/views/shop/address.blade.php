@@ -13,7 +13,7 @@
     <small>(点击编辑)</small>
   </h5>
   <div class="row" v-for="address in addresses">
-    <img v-bind:src=" address.default?chooseImg.imgtrue:chooseImg.imgfalse "
+    <img v-bind:src=" address.is_default?chooseImg.imgtrue:chooseImg.imgfalse "
          alt="" @click="chooseAdd(address)"
     >
 
@@ -24,7 +24,8 @@
     <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
     <span class="col-xs-8" @click="editAdd(address)">@{{ address.address }}</span>
     <div class="clearfix"></div>
-    <img v-if=" address.default == false " src="../../image/shop_icon/Delete.png" alt="" @click="removeAdd(address)">
+    <img v-if=" address.is_default == false " src="{{url('/image/shop_icon/Delete.png')}}"
+         alt="" @click="removeAdd(address)">
   </div>
 
   <h5>添加收货地址</h5>
@@ -49,7 +50,7 @@
       </label>
 
       <div class="clearfix"></div>
-      <button class="btn">添加并设为默认</button>
+      <button id="button" class="btn">添加并设为默认</button>
     </form>
   </div>
 </div>
@@ -58,16 +59,27 @@
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-  var address = new Vue({
+
+  addresses = [];
+
+  $.post('/shop/address/list', {},
+    function (data) {
+      if (data.success) {
+        addresses = data.data;
+      } else {
+        alert('服务器异常1!');
+      }
+    }, "json");
+
+  var list = new Vue({
     el: '#addresses',
     data: {
-      addresses: [],
+      addresses: addresses,
       newAdd: {
         name: '',
         phone: '',
         address: '',
-        postage: 8,
-        default: false
+        is_default: false
       },
       chooseImg: {
         imgtrue: '/image/shop_icon/icon.png',
@@ -76,69 +88,100 @@
     },
 
     methods: {
-      removeAdd: function (e) {
-        if (e.default == true) {
-          this.addresses.$remove(e);
-          this.addresses[0].default = true;
-        } else {
-          this.addresses.$remove(e);
-        }
-        $.post('/shop/address/create', JSON.stringify(address.$data.addresses),
-          function(data, status){
+      addReload: function () {
+        $.post('/shop/address/list', {},
+          function (data) {
             if (data.success) {
+              list.addresses = data.data;
             } else {
-              alert('服务器异常!');
+              alert('服务器异常1!');
+            }
+          }, "json"
+        );
+      },
+      removeAdd: function (e) {
+        $.post('/shop/address/delete',
+          {id: e.id},
+          function (data) {
+            if (data.success) {
+              list.addReload();
+            } else {
+              alert('服务器异常2!');
             }
           }, "json"
         );
       },
       chooseAdd: function (e) {
-        for (i = 0; i < this.addresses.length; i++) {
-          this.addresses[i].default = false;
-        }
-        e.default = true;
+        $.post('/shop/address/update',
+          {
+            id: e.id,
+            is_default: true
+          },
+          function (data) {
+            if (data.success) {
+              list.addReload();
+            } else {
+              alert('服务器异常3!');
+            }
+          }, "json"
+        )
       },
       addAdd: function () {
         if ($('#province').val() && $('#city').val() && $('#area').val()) {
-          for (i = 0; i < this.addresses.length; i++) {
-            this.addresses[i].default = false;
-          }
-          if ($('#province').val() == '新疆维吾尔自治区' || $('#province').val() == '西藏自治区') {
-            this.newAdd.postage = 12;
-          }
-          this.addresses.push({
-            name: this.newAdd.name,
-            phone: this.newAdd.phone,
-            address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address,
-            postage: this.newAdd.postage,
-            default: true
-          });
-          this.newAdd = {
-            name: '',
-            phone: '',
-            address: '',
-            postage: 8,
-            default: false
-          };
-          $.post('/shop/address/create', JSON.stringify(address.$data.addresses));
+          $.post('/shop/address/create',
+            {
+              name: this.newAdd.name,
+              phone: this.newAdd.phone,
+              address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
+            },
+            function (data) {
+              if (data.success) {
+                list.addReload();
+              } else {
+                alert('服务器异常4!');
+              }
+            }, "json"
+          );
         }
       },
       editAdd: function (e) {
         if ((this.newAdd.name || this.newAdd.phone || this.newAdd.address) == 0) {
-          if (e.default == true) {
-            this.addresses[0].default = true;
-          }
+          $('#button').text('完成');
+          $('#button').attr('@click', 'edit(address)');
           this.newAdd.name = e.name;
           this.newAdd.phone = e.phone;
+        }
+      },
+      edit: function (e) {
+        if ($('#province').val() && $('#city').val() && $('#area').val()) {
+          $.post('/shop/address/update',
+            {
+              id: e.id,
+              name: this.newAdd.name,
+              phone: this.newAdd.phone,
+              address: $('#province').val() + $('#city').val() + $('#area').val() + this.newAdd.address
+            },
+            function (data) {
+              if (data.success) {
+                list.addReload();
+              } else {
+                alert('服务器异常5!');
+              }
+            },
+            "json"
+          )
         }
       }
     }
   });
+
+  addresses = [1];
+
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
 <script>
-$(function () {
-city_selector();
-});
+  $(function () {
+    city_selector();
+  });
 </script>
 </html>
