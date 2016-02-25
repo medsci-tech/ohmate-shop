@@ -60,10 +60,21 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
 
+  addresses = [];
+
+  $.post('/shop/address/list', {},
+    function (data) {
+      if (data.success) {
+        addresses = data.data;
+      } else {
+        alert('服务器异常1!');
+      }
+    }, "json");
+
   var list = new Vue({
     el: '#addresses',
     data: {
-      addresses: [],
+      addresses: addresses,
       newAdd: {
         name: '',
         phone: '',
@@ -164,7 +175,6 @@
     }
   });
 
-  list.addReload();
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>
 <script>
