@@ -63,7 +63,7 @@
   var list = new Vue({
     el: '#addresses',
     data: {
-      addresses: addresses,
+      addresses: [],
       newAdd: {
         name: '',
         phone: '',
