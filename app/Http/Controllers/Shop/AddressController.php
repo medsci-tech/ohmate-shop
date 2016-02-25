@@ -28,20 +28,12 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $customer = \Helper::getCustomer();
-
-        dd($customer->addresses()->get()->toJson());
-
-        return view('shop.address')->with([
-            'items' => $customer->addresses()->get()
-        ]);
+        return view('shop.address');
     }
 
     public function list()
     {
         $customer = \Helper::getCustomer();
-
-        dd($customer->addresses()->get()->toJson());
 
         return response()->json($customer->addresses()->get()->toArray());
     }
