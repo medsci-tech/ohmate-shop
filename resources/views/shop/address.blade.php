@@ -60,7 +60,7 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
 
-  addresses = [];
+  var addresses;
 
   $.post('/shop/address/list', {},
     function (data) {
@@ -174,8 +174,6 @@
       }
     }
   });
-
-  addresses = [1];
 
 </script>
 <script src="{{asset('/js/vendor/city.js')}}"></script>

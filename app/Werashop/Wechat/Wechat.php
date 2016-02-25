@@ -116,7 +116,7 @@ class Wechat
     public function generateMenu()
     {
         $menuService = new Menu($this->_appId, $this->_secret);
-        $menus = $this->generateMenu();
+        $menus = $this->generateMenuItems();
 
         try {
             $menuService->set($menus);
