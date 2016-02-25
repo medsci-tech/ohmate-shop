@@ -34,35 +34,35 @@
     <div style="margin-top: 20px">
         <div class="mt-1">
             <div class="ps-lt">
-                <div class="lt-dsb">
-                    <p>会员介绍</p>
-                    <i class="jt"></i>
-                </div>
-            </div>
-            <div class="ps-lt">
                 <div class="lt-dsb cl-bb">
                     <p>迈豆规则</p>
                     <i class="jt"></i>
                 </div>
             </div>
-        </div>
-    </div>
-    <div style="margin-top: 20px">
-        <div class="mt-1">
             <div class="ps-lt">
                 <div class="lt-dsb" onclick="goAbout();">
                     <p>关于我们</p>
                     <i class="jt"></i>
                 </div>
             </div>
-            <div class="ps-lt">
-                <div class="lt-dsb cl-bb">
-                    <p>联系客服</p>
-                    <i class="jt"></i>
-                </div>
-            </div>
         </div>
     </div>
+    {{--<div style="margin-top: 20px">--}}
+        {{--<div class="mt-1">--}}
+            {{--<div class="ps-lt">--}}
+                {{--<div class="lt-dsb" onclick="goAbout();">--}}
+                    {{--<p>关于我们</p>--}}
+                    {{--<i class="jt"></i>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="ps-lt">--}}
+                {{--<div class="lt-dsb cl-bb">--}}
+                    {{--<p>联系客服</p>--}}
+                    {{--<i class="jt"></i>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 </div>
 </body>
 </html>
