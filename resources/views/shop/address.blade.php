@@ -24,7 +24,7 @@
     <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
     <span class="col-xs-8" @click="editAdd(address)">@{{ address.address }}</span>
     <div class="clearfix"></div>
-    <img v-if=" address.is_default == false " src="../../image/shop_icon/Delete.png" alt="" @click="removeAdd(address)">
+    <img v-if=" address.is_default == false " src="{{url('/image/shop_icon/Delete.png')}}" alt="" @click="removeAdd(address)">
   </div>
 
   <h5>添加收货地址</h5>
@@ -65,11 +65,9 @@
     $.post('/shop/address/list', {},
       function (data) {
         if (data.success) {
-          if (e.is_default == true) {
-            addresses = data.data
-          }
+          addresses = data.data;
         } else {
-          alert('服务器异常!');
+          alert('服务器异常1!');
         }
       }, "json"
     );
@@ -101,7 +99,7 @@
             if (data.success) {
               addReload();
             } else {
-              alert('服务器异常!');
+              alert('服务器异常2!');
             }
           }, "json"
         );
@@ -116,7 +114,7 @@
             if (data.success) {
               addReload();
             } else {
-              alert('服务器异常!');
+              alert('服务器异常3!');
             }
           }, "json")
       },
@@ -132,7 +130,7 @@
               if (data.success) {
                 addReload();
               } else {
-                alert('服务器异常!');
+                alert('服务器异常4!');
               }
             }, "json"
           );
@@ -159,7 +157,7 @@
               if (data.success) {
                 addReload();
               } else {
-                alert('服务器异常!');
+                alert('服务器异常5!');
               }
             },
             "json"
