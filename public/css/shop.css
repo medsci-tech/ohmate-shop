@@ -219,7 +219,7 @@ a, a:focus, a:hover {
             text-align: center;
             display: inline-block; }
             #cart_form .row .col-xs-9 > div > div p:nth-child(3) {
-              width: 1.2em; }
+              width: 20px; }
       #cart_form .row .col-xs-9 img {
         position: absolute;
         width: 10px;
