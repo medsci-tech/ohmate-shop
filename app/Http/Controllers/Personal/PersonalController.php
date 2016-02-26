@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Constants\AppConstant;
+use Carbon\Carbon;
 
 class PersonalController extends Controller
 {
@@ -36,8 +37,10 @@ class PersonalController extends Controller
         } /*if>*/
 
         $total = $customer->beans_total;
+
         $list = array();
         foreach ($customerBeans as $customerBean) {
+
             $row = array(
                 'result'    => $customerBean->result,
                 'action'    => $customerBean->rate->action_ch,
