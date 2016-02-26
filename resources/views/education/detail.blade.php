@@ -11,7 +11,6 @@
 <div>
 <img src="/image/education/450705577287905933.png" style="width: auto; height: auto">
 </div>
-<div class="actionsheet" style="overflow: hidden">
     <!--BEGIN actionSheet-->
     <div id="actionSheet_wrap">
         <div class="weui_mask_transition" id="mask" style="display: none;"></div>
@@ -27,7 +26,6 @@
         </div>
     </div>
     <!--END actionSheet-->
-</div>
 
 <script src="../../js/vendor/jquery-2.1.4.min.js"></script>
 <script>
