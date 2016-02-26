@@ -22,7 +22,7 @@
     <div class="weui_cell_bd weui_cell_primary">
       <p class="time">03-12<br>09:24</p>
     </div>
-    <div class="weui_cell_ft">{{$list['result']}}&nbsp;丨{{$list['action']}}</div>
+    <div class="weui_cell_ft">{{$index['result']}}&nbsp;丨{{$index['action']}}</div>
   </div>
   @endforeach
 
