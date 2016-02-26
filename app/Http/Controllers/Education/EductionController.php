@@ -29,4 +29,41 @@ class EductionController extends Controller
         \BeanRecharger::scanVideo($customer->id);
     }
 
+    public function articleList(Request $request)
+    {
+        $articles = Article::where('top', true)
+            ->orderBy('id','desc')
+            ->get();
+
+        return view('education.article', ['articles' => $articles]);
+    }
+
+    public function articleView(Request $request)
+    {
+        $articles = Article::where('id', $request->input('id'))->first();
+        if($articles) {
+            $articles->count += 1;
+            $articles->save();
+            return response()->json(['result' => '1']);
+        }
+        else {
+            return response()->json(['result' => '-1']);
+        }
+    }
+
+    public function addBean(Request $request)
+    {
+        \Log::info('EductionController:articleRead');
+        $articles = Article::where('id', $request->input('id'))->first();
+        $customer = \Helper::getCustomer();
+        if (($customer != null) && ($articles != null)) {
+            \Log::info('EductionController:articleRead:step');
+            \BeanRecharger::scanArticle($customer->id);
+            return response()->json(['result' => '1']);
+        }
+        else {
+            return response()->json(['result' => '-1']);
+        }
+    }
+
 } /*class*/

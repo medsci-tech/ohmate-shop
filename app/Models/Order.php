@@ -15,9 +15,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\OrderStatus $status
+ * @property integer $customer_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Commodity[] $commodities
+ * @property integer $address_id
+ * @property-read \App\Models\Address $address
  */
 class Order extends Model
 {
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
     /**
@@ -37,5 +44,31 @@ class Order extends Model
             return $this->status()->associate($next);
         }
         return false;
+    }
+
+    /**
+     * @return $this
+     */
+    public function commodities()
+    {
+        return $this->belongsToMany(Commodity::class)->withPivot(['amount']);
+    }
+
+
+    /**
+     * @param Commodity $commodity
+     * @return bool
+     */
+    public function addCommodity(Commodity $commodity)
+    {
+        return $this->commodities()->save($commodity);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 }

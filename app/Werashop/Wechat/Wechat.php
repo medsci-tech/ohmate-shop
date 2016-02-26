@@ -7,10 +7,12 @@ use App\Constants\AppConstant;
 use App\Models\Customer;
 use App\Models\CustomerLocation;
 use App\Models\CustomerType;
+use App\Models\Order;
 use Overtrue\Wechat\Auth;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
+use Overtrue\Wechat\Payment\Business;
 use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
 
@@ -98,13 +100,12 @@ class Wechat
             ]),
             (new MenuItem("易康商城"))->buttons([
                 new MenuItem('商城首页', 'view', url('/shop/index')),
-                new MenuItem('我的订单', 'view', url('/shop/orders')),
-                new MenuItem('我的地址', 'view', url('/shop/addresses')),
+                new MenuItem('我的订单', 'view', url('/shop/order')),
+                new MenuItem('我的地址', 'view', url('/shop/address')),
             ]),
             (new MenuItem("个人中心"))->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),
                 new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
-                new MenuItem('每日签到', 'view', url('/personal/game')),
                 new MenuItem('糖友推广', 'view', url('/personal/friend')),
             ]),
         ];
@@ -117,7 +118,7 @@ class Wechat
     public function generateMenu()
     {
         $menuService = new Menu($this->_appId, $this->_secret);
-        $menus = $this->generateMenu();
+        $menus = $this->generateMenuItems();
 
         try {
             $menuService->set($menus);
@@ -191,6 +192,7 @@ class Wechat
                     $customer->referrer_id = 0;
                 } else {
                     $customer->referrer_id = $referrer->id;
+                    \BeanRecharger::invite($customer->referrer_id);
                 }
             }
             $customer->save();
@@ -228,5 +230,10 @@ class Wechat
         $result = $qrCode->forever($scene_id);
 
         return $qrCode->show($result->ticket);
+    }
+
+    public function generatePaymentConfig(Order $order)
+    {
+//        $business = new Business($this->_appId, $this->_secret, $this)
     }
 }

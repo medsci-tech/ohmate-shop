@@ -17,8 +17,35 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $district
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property boolean $is_default
+ * @property integer $customer_id
+ * @property string $name
+ * @property string $phone
+ * @property string $postcode
  */
 class Address extends Model
 {
-    //
+    /**
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'is_default' => 'boolean',
+    ];
+
+    /**
+     * @param bool|string $b
+     */
+    public function setIsDefaultAttribute($b)
+    {
+        if (is_string($b)) {
+            $b = ($b == 'true')? true : false;
+        }
+
+        $this->attributes['is_default'] = intval($b);
+    }
 }

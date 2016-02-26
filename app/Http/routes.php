@@ -12,6 +12,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+    Route::any('/', 'WechatController@serve');
 
     Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {
         Route::any('/', 'WechatController@serve');
@@ -30,7 +31,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'eduction', 'namespace' => 'Education'], function () {
         Route::get('/injection', 'EductionController@injections');
         Route::post('/injection/view', 'EductionController@injectionView');
-        Route::get('/article', 'EductionController@articles');
+        Route::get('/article', 'EductionController@articleList');
+        Route::get('/article/view', 'EductionController@articleView');
+        Route::get('/article/addBean', 'EductionController@addBean');
     });
 
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
@@ -47,23 +50,26 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/', 'AddressController@index');
             Route::post('create', 'AddressController@create');
             Route::post('delete', 'AddressController@delete');
+            Route::post('update', 'AddressController@update');
+            Route::post('list', 'AddressController@addressList');
         });
 
         Route::get('/personal', 'PersonalController@index');
-        Route::get('/cart', 'CartController@index');
+
+        Route::group(['prefix' => 'cart'], function () {
+            Route::get('/', 'CartController@index');
+            Route::post('/customer-information', 'CartController@customerInformation');
+        });
         Route::resource('/commodity', 'CommodityController');
     });
 
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
-        Route::get('/game', 'PersonalController@game');
         Route::get('/friend', 'PersonalController@friend');
 
-        Route::get('/member-introduction', 'PersonalController@memberIntroduction');
         Route::get('/bean-rules', 'PersonalController@beanRules');
         Route::get('/about-us', 'PersonalController@aboutUs');
-        Route::get('/customer-service', 'PersonalController@customerService');
     });
 });
 

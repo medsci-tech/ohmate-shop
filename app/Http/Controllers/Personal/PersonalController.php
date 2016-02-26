@@ -22,9 +22,9 @@ class PersonalController extends Controller
         $customer = \Helper::getCustomer();
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
-        $data['type']               = $customer->type;
+        $data['type']               = $customer->type->type_ch;
         $data['beans_total']        = $customer->beans_total;
-        return view('personal.information', $data);
+        return view('personal.information', ['data' => $data]);
     }
 
     public function beans()
@@ -36,35 +36,28 @@ class PersonalController extends Controller
         } /*if>*/
 
         $total = $customer->beans_total;
-        $list = null;
+        $list = array();
         foreach ($customerBeans as $customerBean) {
-            $list[] = [
+            $row = array(
                 'result'    => $customerBean->result,
-                'action'    => $customerBean->rate->action_ch,
+                'action'    => $customerBean->rate()->action_ch,
                 'time'      => $customerBean->updated_at,
                 'detail'    => $customerBean->detail
-            ];
+            );
+            array_push($list, $row);
         }
 
         return view('personal.beans', ['total' => $total, 'list' => $list]);
     }
 
-    public function game()
-    {
-        return view('personal.game');
-    }
-
     public function friend()
     {
         $customer = \Helper::getCustomer();
-        $data['nickname']   = $customer->nickname;
-        $data['qrCode']     = $customer->qr_code;
-        return view('personal.friend', $data);
-    }
+        $data['nickname']           = $customer->nickname;
+        $data['qrCode']             = $customer->qr_code;
+        $data['head_image_url']     = $customer->head_image_url;
 
-    public function memberIntroduction()
-    {
-        return view('personal.member-introduction');
+        return view('personal.friend', ['data' => $data]);
     }
 
     public function beanRules()
@@ -75,11 +68,6 @@ class PersonalController extends Controller
     public function aboutUs()
     {
         return view('personal.about-us');
-    }
-
-    public function customerService()
-    {
-        return view('personal.customer-service');
     }
 
 }

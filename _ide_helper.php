@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.8 on 2016-02-22.
+ * Generated for Laravel 5.2.8 on 2016-02-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10141,7 +10141,7 @@ namespace {
          *
          * @param int $start
          * @param int $end
-         * @return int 
+         * @return string 
          * @static 
          */
         public static function generateMessageVerify($start = 0, $end = 999999){
@@ -10409,6 +10409,17 @@ namespace {
          */
         public static function getCustomer(){
             return \App\Werashop\Helper\Helper::getCustomer();
+        }
+        
+        /**
+         * 
+         *
+         * @param string $province
+         * @return int 
+         * @static 
+         */
+        public static function getPostFee($province){
+            return \App\Werashop\Helper\Helper::getPostFee($province);
         }
         
     }

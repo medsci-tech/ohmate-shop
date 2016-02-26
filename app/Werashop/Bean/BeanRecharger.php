@@ -58,6 +58,7 @@ class BeanRecharger
         } else {
             $customer->beans_total += $value;
         } /*else*/
+        $customer->save();
 
         return true;
     }

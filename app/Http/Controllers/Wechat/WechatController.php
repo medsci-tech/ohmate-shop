@@ -32,7 +32,10 @@ class WechatController extends Controller
 
     public function menu()
     {
-        return Wechat::generateMenu();
+        if (Wechat::generateMenu()) {
+            return '更新菜单成功';
+        } else {
+            return '更新菜单失败';
+        }
     }
-
 }
