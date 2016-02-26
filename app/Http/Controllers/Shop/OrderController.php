@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Models\Address;
+use App\Models\Commodity;
 use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -41,11 +43,14 @@ class OrderController extends Controller
         $items = $request->input('cart');
 
         $order = new Order();
-        $customer->orders()->save($order);
 
         foreach ($items as $item) {
-            //
+            $commodity = Commodity::find($item['id']);
+            $order->addCommodity($commodity);
         }
+
+        $address = Address::find($request->input('address_id'));
+        $customer->orders()->save($order);
 
         return response()->json([
             'success' => true

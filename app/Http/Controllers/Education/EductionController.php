@@ -15,7 +15,7 @@ class EductionController extends Controller
 {
     function __construct()
     {
-//        $this->middleware('auth.wechat');
+        $this->middleware('auth.wechat');
     }
 
     public function injections()
@@ -44,6 +44,10 @@ class EductionController extends Controller
         if($articles) {
             $articles->count += 1;
             $articles->save();
+            return response()->json(['result' => '1']);
+        }
+        else {
+            return response()->json(['result' => '-1']);
         }
     }
 
@@ -51,11 +55,15 @@ class EductionController extends Controller
     {
         \Log::info('EductionController:articleRead');
         $articles = Article::where('id', $request->input('id'))->first();
-//        $customer = \Helper::getCustomer();
-//        if ($customer != null && $articles != null) {
-//            \Log::info('EductionController:articleRead:step');
-//            \BeanRecharger::scanArticle($customer->id);
-//        }
+        $customer = \Helper::getCustomer();
+        if (($customer != null) && ($articles != null)) {
+            \Log::info('EductionController:articleRead:step');
+            \BeanRecharger::scanArticle($customer->id);
+            return response()->json(['result' => '1']);
+        }
+        else {
+            return response()->json(['result' => '-1']);
+        }
     }
 
 } /*class*/
