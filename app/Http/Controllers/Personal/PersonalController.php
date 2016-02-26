@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Constants\AppConstant;
+use Carbon\Carbon;
 
 class PersonalController extends Controller
 {
@@ -36,12 +37,26 @@ class PersonalController extends Controller
         } /*if>*/
 
         $total = $customer->beans_total;
+
         $list = array();
         foreach ($customerBeans as $customerBean) {
+            if ($customerBean->result > 0) {
+                $result = '+'.(string)$customerBean->result;
+            } else {
+                $result = '-'.(string)$customerBean->result;
+            }
+
+            $day =(string)$customerBean->updated_at->month.'月'.
+                (string)$customerBean->updated_at->day.'日';
+            $time = (string)$customerBean->updated_at->hour . '时' .
+                (string)$customerBean->updated_at->minute.'分';
+
             $row = array(
-                'result'    => $customerBean->result,
-                'action'    => $customerBean->rate()->action_ch,
-                'time'      => $customerBean->updated_at,
+                'result'    => $result,
+                'action'    => $customerBean->rate->action_ch,
+                'icons'     => $customerBean->rate->icon_url,
+                'day'       => $day,
+                'time'      => $time,
                 'detail'    => $customerBean->detail
             );
             array_push($list, $row);
