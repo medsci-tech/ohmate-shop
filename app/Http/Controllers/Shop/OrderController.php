@@ -37,25 +37,29 @@ class OrderController extends Controller
      */
     public function generateConfig(Request $request)
     {
-        dd($request->all());
         $customer = \Helper::getCustomer();
 
         $items = $request->input('cart');
 
         $order = new Order();
 
+        $address = Address::find($request->input('address_id'));
+        $order->customer()->associate($customer);
+        $order->address()->associate($address);
+        $order->save();
+
         foreach ($items as $item) {
             $commodity = Commodity::find($item['id']);
             $order->addCommodity($commodity);
         }
-
-        $address = Address::find($request->input('address_id'));
-        $order->address()->associate($address);
-        $customer->orders()->save($order);
-
+        
+        $result = \Wechat::generatePaymentConfig($order, $customer);
 
         return response()->json([
-            'success' => true
+            'success' => true,
+            'data' => [
+                'result' => $result
+            ]
         ]);
     }
 
