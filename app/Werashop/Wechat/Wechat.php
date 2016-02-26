@@ -252,8 +252,8 @@ class Wechat
     }
 
     /**
-     * @param Order $order
-     * @param Customer $customer
+     * @param \App\Models\Order $order
+     * @param \App\Models\Customer $customer
      * @return array|string
      */
     public function generatePaymentConfig(Order $order, Customer $customer)

@@ -5,7 +5,6 @@
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
-
  */
 
 namespace {
@@ -10370,8 +10369,8 @@ namespace {
         /**
          * 
          *
-         * @param \App\Werashop\Wechat\Order $order
-         * @param \App\Werashop\Wechat\Customer $customer
+         * @param \App\Models\Order $order
+         * @param \App\Models\Customer $customer
          * @return array|string 
          * @static 
          */
