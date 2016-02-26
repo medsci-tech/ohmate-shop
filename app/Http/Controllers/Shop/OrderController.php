@@ -50,8 +50,8 @@ class OrderController extends Controller
 
         foreach ($items as $item) {
             $commodity = Commodity::find($item['id']);
-            $order->addCommodity($commodity);
-            $order->increasePrice(floatval($commodity->price));
+            $order->addCommodity($commodity, $item['num']);
+            $order->increasePrice(floatval($commodity->price * $item['num']));
         }
 
         $result = \Wechat::generatePaymentConfig($order, $customer);

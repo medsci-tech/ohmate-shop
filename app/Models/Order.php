@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Models\Order
@@ -46,8 +47,9 @@ class Order extends Model
         return false;
     }
 
+
     /**
-     * @return $this
+     * @return BelongsToMany
      */
     public function commodities()
     {
@@ -57,11 +59,12 @@ class Order extends Model
 
     /**
      * @param Commodity $commodity
+     * @param int $amount
      * @return bool
      */
-    public function addCommodity(Commodity $commodity)
+    public function addCommodity(Commodity $commodity, $amount)
     {
-        return $this->commodities()->save($commodity);
+        return $this->commodities()->save($commodity, ['amount' => $amount]);
     }
 
     /**
