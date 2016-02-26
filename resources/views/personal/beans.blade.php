@@ -26,22 +26,6 @@
     <div class="weui_cell_ft">{{$index['result']}}&nbsp;丨{{$index['action']}}</div>
   </div>
   @endforeach
-
-  {{--<div class="weui_cell">--}}
-    {{--<div class="weui_cell_hd"><img src="../img/1.jpg" alt="" class="image"></div>--}}
-    {{--<div class="weui_cell_bd weui_cell_primary">--}}
-      {{--<p class="time" ">03-12<br>09:24</p>--}}
-    {{--</div>--}}
-    {{--<div class="weui_cell_ft">+2187&nbsp;丨用户注册</div>--}}
-  {{--</div>--}}
-
-  {{--<div class="weui_cell">--}}
-    {{--<div class="weui_cell_hd"><img src="../img/1.jpg" alt="" class="image"></div>--}}
-    {{--<div class="weui_cell_bd weui_cell_primary">--}}
-      {{--<p class="time">03-12<br>09:24</p>--}}
-    {{--</div>--}}
-    {{--<div class="weui_cell_ft">+2187&nbsp;丨用户注册</div>--}}
-  {{--</div>--}}
 </div>
 
 </body>
