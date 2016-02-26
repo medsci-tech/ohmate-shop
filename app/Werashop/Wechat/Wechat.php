@@ -8,7 +8,9 @@ use App\Models\Customer;
 use App\Models\CustomerLocation;
 use App\Models\CustomerType;
 use App\Models\Order;
+use Overtrue\Wechat\AccessToken;
 use Overtrue\Wechat\Auth;
+use Overtrue\Wechat\Http;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
@@ -259,7 +261,7 @@ class Wechat
     {
         $business = new Business($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
 
-        $wechat_order = new WechatOrder();
+        $wechat_order = new WechatOrder(new Http(new AccessToken($this->_appId, $this->_secret)));
         $wechat_order->body = 'test body';
         $wechat_order->out_trade_no = md5(uniqid().microtime());
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
