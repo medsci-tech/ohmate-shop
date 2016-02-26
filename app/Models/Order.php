@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\OrderStatus $status
  * @property integer $customer_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Commodity[] $commodities
+ * @property integer $address_id
+ * @property-read \App\Models\Address $address
  */
 class Order extends Model
 {
@@ -60,5 +62,13 @@ class Order extends Model
     public function addCommodity(Commodity $commodity)
     {
         return $this->commodities()->save($commodity);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 }
