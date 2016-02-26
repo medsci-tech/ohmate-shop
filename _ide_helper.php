@@ -10509,17 +10509,8 @@ namespace {
          *
          * @static 
          */
-        public static function scanArticle($user){
-            return \App\Werashop\Bean\BeanRecharger::scanArticle($user);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function scanVideo($user){
-            return \App\Werashop\Bean\BeanRecharger::scanVideo($user);
+        public static function study($user){
+            return \App\Werashop\Bean\BeanRecharger::study($user);
         }
         
         /**

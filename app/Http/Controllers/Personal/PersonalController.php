@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Constants\AppConstant;
+use Carbon\Carbon;
 
 class PersonalController extends Controller
 {
@@ -36,14 +37,35 @@ class PersonalController extends Controller
         } /*if>*/
 
         $total = $customer->beans_total;
+
         $list = array();
+        $lastTitle = null;
         foreach ($customerBeans as $customerBean) {
+
+            if ($customerBean->result > 0) {
+                $result = '+'.(string)$customerBean->result;
+            } else {
+                $result = '-'.(string)$customerBean->result;
+            }
+
+            $day = sprintf("%02d", $customerBean->updated_at->month) . '-' .
+                sprintf("%02d", $customerBean->updated_at->day);
+            $time = sprintf("%02d", $customerBean->updated_at->hour) . ':' .
+                sprintf("%02d", $customerBean->updated_at->minute);
+
+            $title = (string)$customerBean->updated_at->year.'年'.
+                (string)$customerBean->updated_at->month.'月账单';
+
             $row = array(
-                'result'    => $customerBean->result,
-                'action'    => $customerBean->rate()->action_ch,
-                'time'      => $customerBean->updated_at,
+                'result'    => $result,
+                'action'    => $customerBean->rate->action_ch,
+                'icons'     => $customerBean->rate->icon_url,
+                'day'       => $day,
+                'time'      => $time,
+                'title'     => $title,
                 'detail'    => $customerBean->detail
             );
+
             array_push($list, $row);
         }
 

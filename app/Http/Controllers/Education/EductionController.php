@@ -26,7 +26,6 @@ class EductionController extends Controller
     public function injectionView(Request $request)
     {
         $customer = \Helper::getCustomer();
-        \BeanRecharger::scanVideo($customer->id);
     }
 
     public function articleList(Request $request)
@@ -58,7 +57,7 @@ class EductionController extends Controller
         $customer = \Helper::getCustomer();
         if (($customer != null) && ($articles != null)) {
             \Log::info('EductionController:articleRead:step');
-            \BeanRecharger::scanArticle($customer->id);
+            \BeanRecharger::study($customer->id);
             return response()->json(['result' => '1']);
         }
         else {

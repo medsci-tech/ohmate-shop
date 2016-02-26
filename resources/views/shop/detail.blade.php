@@ -39,12 +39,9 @@
 
   <div class="navbar-fixed-bottom">
     <div class="col-xs-4">
-      <span @click="numMinus()">－</span>
-      <input v-model='goods.num' number debounce="200" type="text" maxlength="2"
-             onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
-             onblur="if( this.value == 0 ) this.value = 1;"
-      >
-      <span @click="numAdd()">＋</span>
+      <span @click="numMinus()" class="glyphicon glyphicon-minus"></span>
+      <p>@{{ goods.num }}</p>
+      <span @click="numAdd()" class="glyphicon glyphicon-plus"></span>
     </div>
     <div class="col-xs-4">
       <button class="btn" @click="addGoods()">加入购物车</button>

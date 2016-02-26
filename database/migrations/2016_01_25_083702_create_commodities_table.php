@@ -16,6 +16,7 @@ class CreateCommoditiesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('remark');
+            $table->text('introduction');
             $table->decimal('price');
             $table->timestamps();
 
@@ -24,6 +25,7 @@ class CreateCommoditiesTable extends Migration
         Schema::create('commodity_order', function (Blueprint $table) {
             $table->unsignedInteger('commodity_id');
             $table->unsignedInteger('order_id');
+            $table->integer('amount');
 
             $table->foreign('commodity_id')
                 ->references('id')
