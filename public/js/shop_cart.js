@@ -99,7 +99,7 @@ var shop_cart = new Vue({
           if (data.success) {
             function onBridgeReady() {
               WeixinJSBridge.invoke(
-                'getBrandWCPayRequest', data.data.result,
+                'getBrandWCPayRequest', JSON.parse(data.data.result),
                 function (res) {
                   if (res.err_msg == "get_brand_wcpay_request：ok") {
                     $.post('/shop/order/create', {"get_brand_wcpay_request": "ok"},
