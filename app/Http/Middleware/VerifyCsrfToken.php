@@ -15,6 +15,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/wechat*',
         '/shop/order/create',
         '/shop/address*',
-        '/register/sms'
+        '/register/sms',
+        '/shop/cart*'
     ];
 }

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>购物车</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
@@ -16,7 +17,7 @@
 
     <div class="row" v-for="goods in cart">
       <div class="col-xs-3">
-        <img class="img-responsive" src="{{asset('/image/test02.png')}}" alt="">
+        <img class="img-responsive" :src="'/image/shop_goods/' + goods.id + '.png'" alt="">
       </div>
       <div class="col-xs-9">
         <h4>@{{ goods.name }}</h4>

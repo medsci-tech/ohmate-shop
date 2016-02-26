@@ -45,7 +45,6 @@ class RegisterController extends Controller
             'code' => 'required|digits:6'
         ]);
         if ($validator->fails()) {
-            dd($validator->errors());
             return redirect()->back()->withErrors($validator)->withInput();
         } /*if>*/
 

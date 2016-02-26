@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Models\Address;
+use App\Models\Commodity;
 use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -35,17 +37,20 @@ class OrderController extends Controller
      */
     public function generateConfig(Request $request)
     {
-        dd(json_decode($request->getContent()));
+        dd($request->all());
         $customer = \Helper::getCustomer();
 
-        $items = $request->input('items');
+        $items = $request->input('cart');
 
         $order = new Order();
-        $customer->orders()->save($order);
 
         foreach ($items as $item) {
-            //todo iterator
+            $commodity = Commodity::find($item['id']);
+            $order->addCommodity($commodity);
         }
+
+        $address = Address::find($request->input('address_id'));
+        $customer->orders()->save($order);
 
         return response()->json([
             'success' => true

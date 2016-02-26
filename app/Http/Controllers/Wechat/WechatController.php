@@ -38,5 +38,4 @@ class WechatController extends Controller
             return '更新菜单失败';
         }
     }
-
 }

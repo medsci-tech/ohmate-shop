@@ -13,4 +13,18 @@ class CartController extends Controller
     {
         return view('shop.cart');
     }
+
+    public function customerInformation()
+    {
+        $customer = \Helper::getCustomer();
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'beans' => $customer->beans_total,
+                'default_address' => ($default_address = $customer->addresses()->where('is_default', true)->first()),
+                'post_fee' => \Helper::getPostFee($default_address->province)
+            ]
+        ]);
+    }
 }

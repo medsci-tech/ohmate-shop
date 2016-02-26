@@ -49,11 +49,16 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/', 'AddressController@index');
             Route::post('create', 'AddressController@create');
             Route::post('delete', 'AddressController@delete');
+            Route::post('update', 'AddressController@update');
             Route::post('list', 'AddressController@addressList');
         });
 
         Route::get('/personal', 'PersonalController@index');
-        Route::get('/cart', 'CartController@index');
+
+        Route::group(['prefix' => 'cart'], function () {
+            Route::get('/', 'CartController@index');
+            Route::post('/customer-information', 'CartController@customerInformation');
+        });
         Route::resource('/commodity', 'CommodityController');
     });
 
