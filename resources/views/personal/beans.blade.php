@@ -21,7 +21,7 @@
   <div class="weui_cell">
     <div class="weui_cell_hd"><img src="{{$index['icons']}}" alt="" class="image"></div>
     <div class="weui_cell_bd weui_cell_primary">
-      <p class="time">03-12<br>09:24</p>
+      <p class="time">{{$index['day']}}<br>{{$index['time']}}</p>
     </div>
     <div class="weui_cell_ft">{{$index['result']}}&nbsp;丨{{$index['action']}}</div>
   </div>

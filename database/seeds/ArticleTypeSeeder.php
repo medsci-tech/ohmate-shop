@@ -12,7 +12,19 @@ class ArticleTypeSeeder extends Seeder
     public function run()
     {
         DB::table('article_types')->insert(
-            ['type_en' => 'zry',  'type_ch' => '针融易']
+            ['type_en' => 'disease',  'type_ch' => '糖尿病危害']
+        );
+
+        DB::table('article_types')->insert(
+            ['type_en' => 'drug',  'type_ch' => '药物治疗']
+        );
+
+        DB::table('article_types')->insert(
+            ['type_en' => 'food',  'type_ch' => '膳食营养']
+        );
+
+        DB::table('article_types')->insert(
+            ['type_en' => 'sport',  'type_ch' => '合理运动']
         );
 
     }

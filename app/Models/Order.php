@@ -71,4 +71,12 @@ class Order extends Model
     {
         return $this->belongsTo(Address::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }
