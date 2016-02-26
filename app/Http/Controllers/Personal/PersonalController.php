@@ -69,6 +69,7 @@ class PersonalController extends Controller
             array_push($list, $row);
         }
 
+        //按月分组
         $items = array();
         foreach($list as $item) {
             $m_title = $item['title'];
@@ -81,9 +82,7 @@ class PersonalController extends Controller
             $items[$m_title]['items'][] = $item;
         }
 
-        dd($items);
-
-        return view('personal.beans', ['total' => $total, 'list' => $list, 'items'=>$items]);
+        return view('personal.beans', ['total' => $total, 'items' => $items]);
     }
 
     public function friend()
