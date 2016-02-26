@@ -28,7 +28,7 @@ class EductionController extends Controller
         $customer = \Helper::getCustomer();
     }
 
-    public function articleList(Request $request)
+    public function articles(Request $request)
     {
         $articles = Article::where('top', true)
             ->orderBy('id','desc')

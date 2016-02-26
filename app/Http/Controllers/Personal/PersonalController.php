@@ -69,6 +69,19 @@ class PersonalController extends Controller
             array_push($list, $row);
         }
 
+//        $items = array();
+//        foreach($list as $item) {
+//            $m_title = $item['title'];
+//            unset($item['order_id']);
+//
+//            if(!isset($items[$order_id])) {
+//                $items[$order_id] = array('order_id'=>$order_id, 'items'=>array());
+//            }
+//
+//            $items[$order_id]['items'][] = $item;
+//        }
+
+
         return view('personal.beans', ['total' => $total, 'list' => $list]);
     }
 
