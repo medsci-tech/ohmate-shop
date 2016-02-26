@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.8 on 2016-02-25.
+ * Generated for Laravel 5.2.7 on 2016-02-26.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10495,17 +10495,8 @@ namespace {
          *
          * @static 
          */
-        public static function scanArticle($user){
-            return \App\Werashop\Bean\BeanRecharger::scanArticle($user);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function scanVideo($user){
-            return \App\Werashop\Bean\BeanRecharger::scanVideo($user);
+        public static function study($user){
+            return \App\Werashop\Bean\BeanRecharger::study($user);
         }
         
         /**

@@ -115,27 +115,15 @@ class BeanRecharger
         return $ret;
     }
 
-    public function scanArticle($user)
+    public function study($user)
     {
-        \Log::info('BeanRecharger:scanArticle:user:' . $user);
+        \Log::info('BeanRecharger:study:user:' . $user);
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_SCAN_ARTICLE);
-        return $ret;
-    }
-
-    public function scanVideo($user)
-    {
-        \Log::info('BeanRecharger:scanVideo:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_SCAN_VIDEO);
+        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_STUDY);
         return $ret;
     }
 
