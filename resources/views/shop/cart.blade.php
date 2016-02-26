@@ -64,7 +64,7 @@
 
 
     <div class="address">
-      <template v-if=" address == null ">
+      <template v-if=" address == ''">
         <a class="btn  btn-default center-block" href="{{url('/shop/address')}}">添加收货地址</a>
       </template>
       <template v-else>
