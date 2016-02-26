@@ -44,7 +44,7 @@ class PersonalController extends Controller
             $row = array(
                 'result'    => $customerBean->result,
                 'action'    => $customerBean->rate->action_ch,
-                'icon'      => $customerBean->rate->icon_url,
+                'icons'      => $customerBean->rate->icon_url,
                 'time'      => $customerBean->updated_at,
                 'detail'    => $customerBean->detail
             );

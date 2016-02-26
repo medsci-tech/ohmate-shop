@@ -19,7 +19,7 @@
 <div class="weui_cells">
   @foreach($list as $index)
   <div class="weui_cell">
-    <div class="weui_cell_hd"><img src="{{$index['icon']}}" alt="" class="image"></div>
+    <div class="weui_cell_hd"><img src="{{$index['icons']}}" alt="" class="image"></div>
     <div class="weui_cell_bd weui_cell_primary">
       <p class="time">03-12<br>09:24</p>
     </div>
