@@ -9,14 +9,14 @@
 </head>
 <body>
 <div>
-<img src="/image/education/450705577287905933.png" style="width: auto; height: auto">
+    <img src="/image/education/1.png" style="width: auto; height: auto">
 </div>
     <!--BEGIN actionSheet-->
     <div id="actionSheet_wrap">
         <div class="weui_mask_transition" id="mask" style="display: none;"></div>
         <div class="weui_actionsheet" id="weui_actionsheet">
             <div class="weui_actionsheet_menu">
-                <img src="../../image/education/hongbao.png" alt="">
+                <img src="/image/education/hongbao.png" alt="">
                 <p>10迈豆</p>
             </div>
             <div class="weui_actionsheet_action">
