@@ -7,10 +7,12 @@ use App\Constants\AppConstant;
 use App\Models\Customer;
 use App\Models\CustomerLocation;
 use App\Models\CustomerType;
+use App\Models\Order;
 use Overtrue\Wechat\Auth;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
+use Overtrue\Wechat\Payment\Business;
 use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
 
@@ -228,5 +230,10 @@ class Wechat
         $result = $qrCode->forever($scene_id);
 
         return $qrCode->show($result->ticket);
+    }
+
+    public function generatePaymentConfig(Order $order)
+    {
+//        $business = new Business($this->_appId, $this->_secret, $this)
     }
 }
