@@ -84,7 +84,7 @@ class Order extends Model
      * @param float $price
      * @return bool
      */
-    public function increasePrice(float $price)
+    public function increasePrice($price)
     {
         $this->total_price = $this->total_price + $price;
         return $this->save();
