@@ -192,8 +192,7 @@ class Wechat
                     $customer->referrer_id = 0;
                 } else {
                     $customer->referrer_id = $referrer->id;
-                    \BeanRecharger::invite($customer->referrer_id);
-                }
+                } /*else>*/
             }
             $customer->save();
 
