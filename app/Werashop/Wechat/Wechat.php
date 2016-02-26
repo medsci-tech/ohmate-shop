@@ -265,7 +265,7 @@ class Wechat
         $wechat_order->body = 'test body';
         $wechat_order->out_trade_no = md5(uniqid().microtime());
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
-        $wechat_order->open_id = $customer->openid;
+        $wechat_order->openid = $customer->openid;
         $wechat_order->notify_url = url('/wechat/payment/notify');
 
         $unified_order = new UnifiedOrder($business, $wechat_order);
