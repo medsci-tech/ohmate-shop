@@ -47,10 +47,10 @@ class PersonalController extends Controller
                 $result = '-'.(string)$customerBean->result;
             }
 
-            $day = sprintf("%2d", (string)$customerBean->updated_at->month) . '-' .
-                sprintf("%2d", (string)$customerBean->updated_at->day);
-            $time = sprintf("%2d", (string)$customerBean->updated_at->hour) . ':' .
-                sprintf("%2d", (string)$customerBean->updated_at->minute);
+            $day = sprintf("%2d", $customerBean->updated_at->month) . '-' .
+                sprintf("%2d", $customerBean->updated_at->day);
+            $time = sprintf("%2d", $customerBean->updated_at->hour) . ':' .
+                sprintf("%2d", $customerBean->updated_at->minute);
 
 
             $row = array(
