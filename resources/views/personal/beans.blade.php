@@ -13,6 +13,7 @@
   <img src="/image/bean/top.png" width="100%" height="60px" >
 </div>
 <span class="span_maidou">{{$total}}&nbsp;迈豆</span>
+
 <div class="weui_cells_title">2016年3月账单</div>
 
 <div class="weui_cells">
