@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.8 on 2016-02-25.
+ * Generated for Laravel 5.2.8 on 2016-02-26.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10358,10 +10358,24 @@ namespace {
         /**
          * 
          *
+         * @param $scene_id
+         * @return string 
          * @static 
          */
         public static function getForeverQrCodeUrl($scene_id){
             return \App\Werashop\Wechat\Wechat::getForeverQrCodeUrl($scene_id);
+        }
+        
+        /**
+         * 
+         *
+         * @param \App\Werashop\Wechat\Order $order
+         * @param \App\Werashop\Wechat\Customer $customer
+         * @return array|string 
+         * @static 
+         */
+        public static function generatePaymentConfig($order, $customer){
+            return \App\Werashop\Wechat\Wechat::generatePaymentConfig($order, $customer);
         }
         
     }
