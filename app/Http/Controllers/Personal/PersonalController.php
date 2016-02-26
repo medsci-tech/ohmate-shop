@@ -40,7 +40,7 @@ class PersonalController extends Controller
         foreach ($customerBeans as $customerBean) {
             $row = array(
                 'result'    => $customerBean->result,
-                'action'    => $customerBean->rate()->action_ch,
+                'action'    => $customerBean->rate->action_ch,
                 'time'      => $customerBean->updated_at,
                 'detail'    => $customerBean->detail
             );
