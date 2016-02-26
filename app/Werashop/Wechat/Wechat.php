@@ -19,7 +19,7 @@ use Overtrue\Wechat\Payment\Business;
 use Overtrue\Wechat\Payment\UnifiedOrder;
 use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
-use Overtrue\Wechat\Shop\Order as WechatOrder;
+use Overtrue\Wechat\Payment\Order as WechatOrder;
 
 /**
  * Class Wechat
@@ -261,7 +261,7 @@ class Wechat
     {
         $business = new Business($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
 
-        $wechat_order = new WechatOrder(new Http(new AccessToken($this->_appId, $this->_secret)));
+        $wechat_order = new WechatOrder();
         $wechat_order->body = 'test body';
         $wechat_order->out_trade_no = md5(uniqid().microtime());
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
