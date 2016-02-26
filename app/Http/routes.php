@@ -12,6 +12,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+    Route::any('/', 'WechatController@serve');
 
     Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {
         Route::any('/', 'WechatController@serve');
@@ -30,7 +31,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'eduction', 'namespace' => 'Education'], function () {
         Route::get('/injection', 'EductionController@injections');
         Route::post('/injection/view', 'EductionController@injectionView');
-        Route::get('/article', 'EductionController@articleList');
+        Route::get('/article', 'EductionController@articles');
         Route::get('/article/view', 'EductionController@articleView');
         Route::get('/article/addBean', 'EductionController@addBean');
     });

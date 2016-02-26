@@ -8,6 +8,7 @@
 
 namespace App\Werashop\Bean;
 
+use Carbon\Carbon;
 use \App\Constants\AppConstant;
 use \App\Models\Customer;
 use \App\Models\BeanRate;
@@ -51,15 +52,15 @@ class BeanRecharger
         } /*if>*/
 
         if ($action == AppConstant::BEAN_ACTION_CONSUME) {
-            if ($value > $customer->beans_total) {
-                return false;
-            } /*if>>*/
-            $customer->beans_total -= $value;
+            if ($value >= $customer->beans_total) {
+                $customer->beans_total = 0;
+            } else {
+                $customer->beans_total -= $value;
+            }/*else>>*/
         } else {
             $customer->beans_total += $value;
         } /*else*/
         $customer->save();
-
         return true;
     }
 
@@ -115,6 +116,22 @@ class BeanRecharger
         return $ret;
     }
 
+    private function dailyCeiling($user)
+    {
+        $beanRate = BeanRate::where('action_en', AppConstant::BEAN_ACTION_STUDY)->first();
+        if (!$beanRate) {
+            return false;
+        } /*if>*/
+        $today = Carbon::today();
+
+        $total = DB::select('select sum(result) from customer_beans where customer_id = ? and Date(updated_at) = ?',
+                $user, $today);
+        if (($total + $beanRate->rate) > AppConstant::EDUCATION_DAILY_CEILING) {
+            return false;
+        } /*if>*/
+        return true;
+    }
+
     public function study($user)
     {
         \Log::info('BeanRecharger:study:user:' . $user);
@@ -122,6 +139,11 @@ class BeanRecharger
         if (!$customer) {
             return false;
         } /*if>*/
+
+        $ret = dailyCeiling($user);
+        if (!$ret) {
+            return false;
+        }
 
         $ret = $this->recharge($user, AppConstant::BEAN_ACTION_STUDY);
         return $ret;

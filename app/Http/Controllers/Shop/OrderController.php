@@ -50,7 +50,9 @@ class OrderController extends Controller
         }
 
         $address = Address::find($request->input('address_id'));
+        $order->address()->associate($address);
         $customer->orders()->save($order);
+
 
         return response()->json([
             'success' => true
