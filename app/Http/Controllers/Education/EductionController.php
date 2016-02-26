@@ -65,4 +65,9 @@ class EductionController extends Controller
         }
     }
 
+    public function detailView(Request $request)
+    {
+        return view('education.detail');
+    }
+
 } /*class*/

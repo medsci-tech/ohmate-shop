@@ -34,6 +34,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/article', 'EductionController@articles');
         Route::get('/article/view', 'EductionController@articleView');
         Route::get('/article/addBean', 'EductionController@addBean');
+        Route::get('/article/detail', 'EductionController@detailView');
     });
 
     Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
