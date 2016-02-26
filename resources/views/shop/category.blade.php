@@ -70,7 +70,7 @@
         <h4>诺和针</h4>
 
         <p>一次性使用无菌注射针</p>
-        <img class="img-responsive" src="{{url('/image/test02.png')}}" alt="">
+        <img class="img-responsive" src="{{url('/image/shop_goods/1.png')}}" alt="">
 
         <div>
           <span>￥22</span>
