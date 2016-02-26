@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-    <img src="/image/bean/1.png" style="width: 100%; height: auto">
+    <img src="/image/bean/1.jpg" style="width: 100%; height: 100%">
 </div>
     <!--BEGIN actionSheet-->
     <div id="actionSheet_wrap">
