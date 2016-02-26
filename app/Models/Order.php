@@ -79,4 +79,14 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    /**
+     * @param float $price
+     * @return bool
+     */
+    public function increasePrice(float $price)
+    {
+        $this->total_price = $this->total_price + $price;
+        return $this->save();
+    }
 }
