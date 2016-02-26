@@ -40,12 +40,19 @@ class PersonalController extends Controller
 
         $list = array();
         foreach ($customerBeans as $customerBean) {
+            if ($customerBean->result > 0) {
+                $result = '+'.(string)$customerBean->result;
+            } else {
+                $result = '-'.(string)$customerBean->result;
+            }
+            $time = (string)$customerBean->updated_at->hour . ':' .
+                (string)$customerBean->updated_at->minute;
 
             $row = array(
-                'result'    => $customerBean->result,
+                'result'    => $result,
                 'action'    => $customerBean->rate->action_ch,
-                'icons'      => $customerBean->rate->icon_url,
-                'time'      => $customerBean->updated_at,
+                'icons'     => $customerBean->rate->icon_url,
+                'time'      => $time,
                 'detail'    => $customerBean->detail
             );
             array_push($list, $row);
