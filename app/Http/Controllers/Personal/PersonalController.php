@@ -45,13 +45,17 @@ class PersonalController extends Controller
             } else {
                 $result = '-'.(string)$customerBean->result;
             }
-            $time = (string)$customerBean->updated_at->hour . ':' .
-                (string)$customerBean->updated_at->minute;
+
+            $day =(string)$customerBean->updated_at->month.'月'.
+                (string)$customerBean->updated_at->day.'日';
+            $time = (string)$customerBean->updated_at->hour . '时' .
+                (string)$customerBean->updated_at->minute.'分';
 
             $row = array(
                 'result'    => $result,
                 'action'    => $customerBean->rate->action_ch,
                 'icons'     => $customerBean->rate->icon_url,
+                'day'       => $day,
                 'time'      => $time,
                 'detail'    => $customerBean->detail
             );
