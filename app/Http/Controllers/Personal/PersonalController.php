@@ -40,16 +40,18 @@ class PersonalController extends Controller
 
         $list = array();
         foreach ($customerBeans as $customerBean) {
+
             if ($customerBean->result > 0) {
                 $result = '+'.(string)$customerBean->result;
             } else {
                 $result = '-'.(string)$customerBean->result;
             }
 
-            $day =(string)$customerBean->updated_at->month.'月'.
-                (string)$customerBean->updated_at->day.'日';
-            $time = (string)$customerBean->updated_at->hour . '时' .
-                (string)$customerBean->updated_at->minute.'分';
+            $day = sprintf("%2d", (string)$customerBean->updated_at->month) . '-' .
+                sprintf("%2d", (string)$customerBean->updated_at->day);
+            $time = sprintf("%2d", (string)$customerBean->updated_at->hour) . ':' .
+                sprintf("%2d", (string)$customerBean->updated_at->minute);
+
 
             $row = array(
                 'result'    => $result,
