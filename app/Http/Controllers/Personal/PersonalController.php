@@ -36,14 +36,15 @@ class PersonalController extends Controller
         } /*if>*/
 
         $total = $customer->beans_total;
-        $list = null;
+        $list = array();
         foreach ($customerBeans as $customerBean) {
-            $list[] = [
+            $row = array(
                 'result'    => $customerBean->result,
-                'action'    => $customerBean->rate->action_ch,
+                'action'    => $customerBean->rate()->action_ch,
                 'time'      => $customerBean->updated_at,
                 'detail'    => $customerBean->detail
-            ];
+            );
+            array_push($list, $row);
         }
 
         return view('personal.beans', ['total' => $total, 'list' => $list]);
