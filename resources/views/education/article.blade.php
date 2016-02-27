@@ -32,22 +32,22 @@
 <div class="container">
     <div class="row icon">
         <div class="medium-3 columns">
-            <img src="/image/icon1.png" class="icon_img">
+            <img src="/image/education/icon1.png" class="icon_img">
 
             <p class="icon_p">血糖检测</p>
         </div>
         <div class="medium-3 columns">
-            <img src="/image/icon2.png" class="icon_img">
+            <img src="/image/education/icon2.png" class="icon_img">
 
             <p class="icon_p">药物治疗</p>
         </div>
         <div class="medium-3 columns">
-            <img src="/image/icon3.png" class="icon_img">
+            <img src="/image/education/icon3.png" class="icon_img">
 
             <p class="icon_p">膳食营养</p>
         </div>
         <div class="medium-3 columns">
-            <img src="/image/icon4.png" class="icon_img">
+            <img src="/image/education/icon4.png" class="icon_img">
 
             <p class="icon_p">合理运动</p>
         </div>
