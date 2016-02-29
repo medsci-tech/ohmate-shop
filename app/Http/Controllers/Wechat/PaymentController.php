@@ -17,12 +17,15 @@ class PaymentController extends Controller
 
         $input = XML::parse($request->getContent());
 
-        $order = Order::where('wx_out_trade_no', $input['out_trade_no'])->firstOrFail();
-        $order->update(['wx_transaction_id' => $input['transaction_id']]);
-        $order->proceed();
+        if ($input['return_code'] == 'SUCCESS') {
+            $order = Order::where('wx_out_trade_no', $input['out_trade_no'])->firstOrFail();
+            $order->update(['wx_transaction_id' => $input['transaction_id']]);
+            $order->proceed();
 
-        $result = \Wechat::paymentNotify();
+            $result = \Wechat::paymentNotify();
+            return $result;
+        }
 
-        return $result;
+        return 'FAIL';
     }
 }
