@@ -74,7 +74,7 @@
         var flag = document.getElementById('text_click').value;
         var id = document.getElementById('text_id').value;
         if(flag=='1') {
-            window.location.href = '/eduction/article';
+            window.location.href = '/education/article/category?type=knowledge';
         }
     }
 </script>
