@@ -9,8 +9,10 @@ use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
-    public function notify()
+    public function notify(Request $request)
     {
+        \Log::debug('payment_notify', ['request' => $request]);
+
         $result = \Wechat::paymentNotify();
 
         return $result;
