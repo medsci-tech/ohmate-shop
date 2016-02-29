@@ -23,21 +23,36 @@ class EductionController extends Controller
         return view('education.injection');
     }
 
-    public function injectionView(Request $request)
+    public function index(Request $request)
     {
-        $customer = \Helper::getCustomer();
+        $topArticles = Article::where('top', true)->orderBy('updated_at','desc')->get();
+        if (!$topArticles) {
+            abort(404);
+        } /*if>*/
+        return view('education.article-index', ['articles' => $topArticles]);
     }
 
-    public function articles(Request $request)
+    public function category(Request $request)
     {
-        $articles = Article::where('top', true)
-            ->orderBy('id','desc')
-            ->get();
-
-        return view('education.article', ['articles' => $articles]);
+        $type = $request->input('type');
+        $typeArticles = Article::where('type_id', $type)->orderBy('updated_at','desc')->get();
+        if (!$typeArticles) {
+            abort(404);
+        } /*if>*/
+        return view('education.article-category', ['articles' => $typeArticles]);
     }
 
-    public function articleView(Request $request)
+    public function view(Request $request)
+    {
+        $id = $request->input('id');
+        $article = Article::where('id', $id)->first();
+        if (!$article) {
+            abort(404);
+        } /*if>*/
+        return view('education.article-view', $article);
+    }
+
+    public function updateCount(Request $request)
     {
         $articles = Article::where('id', $request->input('id'))->first();
         if($articles) {
@@ -50,7 +65,7 @@ class EductionController extends Controller
         }
     }
 
-    public function addBean(Request $request)
+    public function updateBean(Request $request)
     {
         \Log::info('EductionController:articleRead');
         $articles = Article::where('id', $request->input('id'))->first();
@@ -63,11 +78,6 @@ class EductionController extends Controller
         else {
             return response()->json(['result' => '-1']);
         }
-    }
-
-    public function detailView(Request $request)
-    {
-        return view('education.detail');
     }
 
 } /*class*/
