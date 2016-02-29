@@ -39,9 +39,9 @@ class Order extends Model
     /**
      * @return bool
      */
-    public function proceed()
+    public function paid()
     {
-        if ($next = $this->status->next()) {
+        if ($this->status->name == 'paying' && $next = $this->status->next()) {
             $this->status()->associate($next);
             return $this->save();
         }

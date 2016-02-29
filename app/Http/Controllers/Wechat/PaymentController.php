@@ -20,7 +20,7 @@ class PaymentController extends Controller
         if ($input['return_code'] == 'SUCCESS') {
             $order = Order::where('wx_out_trade_no', $input['out_trade_no'])->firstOrFail();
             $order->update(['wx_transaction_id' => $input['transaction_id']]);
-            $order->proceed();
+            $order->paid();
 
             $result = \Wechat::paymentNotify();
             return $result;
