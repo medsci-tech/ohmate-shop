@@ -70,6 +70,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
+        Route::get('/gifts', 'PersonalController@gifts');
         Route::get('/friend', 'PersonalController@friend');
 
         Route::get('/bean-rules', 'PersonalController@beanRules');

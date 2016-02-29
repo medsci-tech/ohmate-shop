@@ -231,15 +231,6 @@ body, html {
     height: 42px
 }
 
-.span_maidou {
-    font-size: 31px;
-    color: #FFFFFF;
-    top: 6px;
-    position: absolute;
-    width: 100%;
-    text-align: center;
-}
-
 .time {
     color: #888;
     font-size: 15px;
