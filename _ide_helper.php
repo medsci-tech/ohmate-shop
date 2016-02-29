@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.8 on 2016-02-26.
+ * Generated for Laravel 5.2.8 on 2016-02-29.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10378,6 +10378,16 @@ namespace {
             return \App\Werashop\Wechat\Wechat::generatePaymentConfig($order, $customer);
         }
         
+        /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */
+        public static function paymentNotify(){
+            return \App\Werashop\Wechat\Wechat::paymentNotify();
+        }
+        
     }
 
 
@@ -10453,6 +10463,10 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @param $action
+         * @param int $value
+         * @return bool 
          * @static 
          */
         public static function recharge($user, $action, $value = 1){
@@ -10462,6 +10476,10 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @param $action
+         * @param $value
+         * @return bool 
          * @static 
          */
         public static function update($user, $action, $value){
@@ -10471,6 +10489,8 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @return bool 
          * @static 
          */
         public static function register($user){
@@ -10480,6 +10500,8 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @return bool 
          * @static 
          */
         public static function signIn($user){
@@ -10489,6 +10511,9 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @param $value
+         * @return bool 
          * @static 
          */
         public static function consume($user, $value){
@@ -10498,6 +10523,8 @@ namespace {
         /**
          * 
          *
+         * @param $referrer
+         * @return bool 
          * @static 
          */
         public static function invite($referrer){
@@ -10507,6 +10534,8 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @return bool 
          * @static 
          */
         public static function study($user){
@@ -10516,6 +10545,9 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @param $value
+         * @return bool 
          * @static 
          */
         public static function consumeFeedback($user, $value){
@@ -10525,6 +10557,8 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @return bool 
          * @static 
          */
         public static function doctorEducationFeedback($user){
@@ -10534,6 +10568,9 @@ namespace {
         /**
          * 
          *
+         * @param $user
+         * @param $value
+         * @return bool 
          * @static 
          */
         public static function doctorConsumeFeedback($user, $value){

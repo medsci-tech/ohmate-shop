@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Models\Order
@@ -32,7 +33,7 @@ class Order extends Model
      */
     public function status()
     {
-        return $this->belongsTo(OrderStatus::class);
+        return $this->belongsTo(OrderStatus::class, 'order_status_id');
     }
 
     /**
@@ -40,14 +41,15 @@ class Order extends Model
      */
     public function proceed()
     {
-        if ($next = $this->status()->get()->next()) {
+        if ($next = $this->status->next()) {
             return $this->status()->associate($next);
         }
         return false;
     }
 
+
     /**
-     * @return $this
+     * @return BelongsToMany
      */
     public function commodities()
     {
@@ -57,11 +59,12 @@ class Order extends Model
 
     /**
      * @param Commodity $commodity
+     * @param int $amount
      * @return bool
      */
-    public function addCommodity(Commodity $commodity)
+    public function addCommodity(Commodity $commodity, $amount)
     {
-        return $this->commodities()->save($commodity);
+        return $this->commodities()->save($commodity, ['amount' => $amount]);
     }
 
     /**
@@ -78,5 +81,15 @@ class Order extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    /**
+     * @param float $price
+     * @return bool
+     */
+    public function increasePrice($price)
+    {
+        $this->total_price = $this->total_price + $price;
+        return $this->save();
     }
 }

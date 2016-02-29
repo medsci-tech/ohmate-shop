@@ -24,7 +24,7 @@
   <div class="swiper-pagination"></div>
 </div>
 
-<div class="container" id="goods">
+<div class="container" id="goods" v-cloak>
   <div class="row">
     <div>
       <span>@{{ goods.price | currency '￥' }}</span><s>原价@{{ goods.priceBefore | currency '￥' }}</s>
@@ -40,7 +40,7 @@
   <div class="navbar-fixed-bottom">
     <div class="col-xs-4">
       <span @click="numMinus()" class="glyphicon glyphicon-minus"></span>
-      <p>@{{ goods.num }}</p>
+      <p v-cloak>@{{ goods.num }}</p>
       <span @click="numAdd()" class="glyphicon glyphicon-plus"></span>
     </div>
     <div class="col-xs-4">
@@ -53,7 +53,8 @@
 
   <div class="jumbotron">
     <div class="alert text-center" role="alert">
-      添加成功
+      <p>@{{ goods.num }}件商品</p>
+      <p>添加成功</p>
     </div>
   </div>
 
@@ -117,12 +118,14 @@
             num: this.goods.num
           });
         }
-        localStorage.cart = JSON.stringify(this.cart);
-        this.goods.num = 1;
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
         $('.jumbotron .alert').delay(300).fadeOut(700);
+        localStorage.cart = JSON.stringify(this.cart);
+        setTimeout(function(){
+          this.goods.num = 1;
+        },900);
       },
       numMinus: function () {
         if (this.goods.num >= 2) {

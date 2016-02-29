@@ -64,7 +64,7 @@
 
 
     <div class="address">
-      <template v-if=" address == null ">
+      <template v-if=" address == ''">
         <a class="btn  btn-default center-block" href="{{url('/shop/address')}}">添加收货地址</a>
       </template>
       <template v-else>
@@ -85,45 +85,11 @@
     <h3 class="text-center">没有商品！</h3>
     <nav class="navbar-fixed-bottom">
 
-      <div class="nav-button">
+      <nav class="navbar-fixed-bottom">
         <a href="{{url('/shop/index')}}">
-          <img src="{{asset('/image/shop_nav/HOME.png')}}" alt=""><br>
-
-          <p>首页</p>
+          <p>商城首页</p>
         </a>
-      </div>
-
-      <div class="nav-button">
-        <a href="{{url('/shop/category')}}">
-          <img src="{{asset('/image/shop_nav/classification.png')}}" alt=""><br>
-
-          <p>分类</p>
-        </a>
-      </div>
-
-      <div class="nav-button">
-        <a href="{{url('/shop/cart')}}">
-          <img src="{{asset('/image/shop_nav/SHOPPING-1.png')}}" alt=""><br>
-
-          <p class="nav-active">购物车</p>
-        </a>
-      </div>
-
-      <div class="nav-button">
-        <a href="{{url('/shop/order')}}">
-          <img src="{{asset('/image/shop_nav/NOTEPAD.png')}}" alt=""><br>
-
-          <p>订单</p>
-        </a>
-      </div>
-
-      <div class="nav-button">
-        <a href="{{url('/shop/personal')}}">
-          <img src="{{asset('/image/shop_nav/USER.png')}}" alt=""><br>
-
-          <p>个人</p>
-        </a>
-      </div>
+      </nav>
 
     </nav>
   </template>

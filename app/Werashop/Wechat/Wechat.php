@@ -8,16 +8,19 @@ use App\Models\Customer;
 use App\Models\CustomerLocation;
 use App\Models\CustomerType;
 use App\Models\Order;
+use Overtrue\Wechat\AccessToken;
 use Overtrue\Wechat\Auth;
+use Overtrue\Wechat\Http;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
 use Overtrue\Wechat\Payment;
+use Overtrue\Wechat\Payment\Notify;
 use Overtrue\Wechat\Payment\Business;
 use Overtrue\Wechat\Payment\UnifiedOrder;
 use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
-use Overtrue\Wechat\Shop\Order as WechatOrder;
+use Overtrue\Wechat\Payment\Order as WechatOrder;
 
 /**
  * Class Wechat
@@ -260,10 +263,10 @@ class Wechat
         $business = new Business($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
 
         $wechat_order = new WechatOrder();
-        $wechat_order->body = 'test body';
-        $wechat_order->out_trade_no = md5(uniqid().microtime());
+        $wechat_order->body = $this->generatePaymentBody($order);
+        $wechat_order->out_trade_no = $order->wx_out_trade_no;
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
-        $wechat_order->open_id = $customer->openid;
+        $wechat_order->openid = $customer->openid;
         $wechat_order->notify_url = url('/wechat/payment/notify');
 
         $unified_order = new UnifiedOrder($business, $wechat_order);
@@ -272,4 +275,30 @@ class Wechat
 
         return $payment->getConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function paymentNotify()
+    {
+        $notify = new Notify($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
+
+        $transaction = $notify->verify();
+
+        if (!$transaction) {
+           return $notify->reply('FAIL', 'verify transaction error');
+        }
+
+        return $notify->reply();
+    }
+
+    /**
+     * @param Order $order
+     * @return string
+     */
+    protected function generatePaymentBody(Order $order)
+    {
+        return '' . $order->commodities()->first()->name . '等' . $order->commodities()->get()->count() . '件商品';
+    }
+
 }

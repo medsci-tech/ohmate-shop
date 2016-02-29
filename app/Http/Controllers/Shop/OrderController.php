@@ -47,12 +47,16 @@ class OrderController extends Controller
         $order->customer()->associate($customer);
         $order->address()->associate($address);
         $order->save();
+        $order->update([
+            'wx_out_trade_no' => md5($order->id . microtime())
+        ]);
 
         foreach ($items as $item) {
             $commodity = Commodity::find($item['id']);
-            $order->addCommodity($commodity);
+            $order->addCommodity($commodity, $item['num']);
+            $order->increasePrice(floatval($commodity->price * $item['num']));
         }
-        
+
         $result = \Wechat::generatePaymentConfig($order, $customer);
 
         return response()->json([

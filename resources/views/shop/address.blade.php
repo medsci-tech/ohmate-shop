@@ -11,7 +11,7 @@
 <div class="container" id="addresses">
   <h5 v-show=" addresses != '' ">选择收货地址
   </h5>
-  <div class="row" v-for="address in addresses">
+  <div class="row" v-for="address in addresses" v-cloak>
     <img v-bind:src=" address.is_default?chooseImg.imgtrue:chooseImg.imgfalse "
          alt="" @click="chooseAdd(address)"
     >
