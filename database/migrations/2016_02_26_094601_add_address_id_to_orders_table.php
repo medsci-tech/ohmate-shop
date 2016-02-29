@@ -13,7 +13,7 @@ class AddAddressIdToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-//            $table->unsignedInteger('address_id')->after('customer_id');
+            $table->unsignedInteger('address_id')->after('customer_id');
 
             $table->foreign('address_id')
                 ->references('id')->on('addresses');
