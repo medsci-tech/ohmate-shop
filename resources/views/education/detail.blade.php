@@ -6,6 +6,44 @@
     <title>文章详情</title>
     <link rel="stylesheet" href="/css/weui.min.css">
     <link rel="stylesheet" href="/css/bonus.css">
+    <script type="text/css">
+        body {
+            font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
+
+        .actionsheet .weui_actionsheet_menu, .actionsheet .weui_actionsheet_action, .actionsheet .weui_actionsheet {
+            background-color: transparent; }
+        .actionsheet #weui_actionsheet {
+            position: absolute;
+            top: 3%; }
+        .actionsheet .weui_actionsheet_menu {
+            text-align: center; }
+        .actionsheet .weui_actionsheet_menu img {
+            width: 90%; }
+        .actionsheet .weui_actionsheet_menu p {
+            position: absolute;
+            top: 0px;
+            margin-top: 60%;
+            width: 70%;
+            left: 15%;
+            font-size: 50px;
+            font-weight: bold;
+            color: #ffe034; }
+        .actionsheet .weui_actionsheet_action p {
+            position: absolute;
+            margin-top: -120px;
+            width: 70%;
+            left: 15%;
+            text-align: center;
+            color: #ffe034; }
+        .actionsheet .weui_actionsheet_action #gethongbao {
+            position: absolute;
+            margin-top: -80px;
+            width: 70%;
+            left: 15%;
+            background-color: #ffe034;
+            color: #df3121;
+            font-weight: bold; }
+    </script>
 </head>
 <body>
 <div>
