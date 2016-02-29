@@ -56,10 +56,10 @@ class PersonalController extends Controller
     {
         $customer       = \Helper::getCustomer();
         $total          = $customer->beans_total;
-        $beanThisYear   = $customer->beans->where('year(updated_at)', Carbon::now()->year);
+        $beanThisYear   = $customer->beans->where('year(updated_at)', Carbon::now()->year)->all();
 
         dd($beanThisYear);
-        
+
         $resultArray = null;
         foreach ($beanThisYear as $bean) {
             $item = $this->createBeanItem($bean);
