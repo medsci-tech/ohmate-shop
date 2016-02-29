@@ -11,6 +11,6 @@ class PaymentController extends Controller
 {
     public function notify(Request $request)
     {
-        \Log::debug('payment_notify'. var_dump($request->all()));
+        \Log::debug('payment_notify', ['request'=> $request]);
     }
 }
