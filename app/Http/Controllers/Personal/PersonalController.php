@@ -110,7 +110,7 @@ class PersonalController extends Controller
 //        }
 
         dd($resultArray);
-        
+
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
             'items' => $resultArray
