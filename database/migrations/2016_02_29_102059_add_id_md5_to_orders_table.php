@@ -13,7 +13,7 @@ class AddIdMd5ToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('wx_out_trade_no')->unique()->after('id')->comment('商家订单号');
+            $table->string('wx_out_trade_no')->nullable()->unique()->after('id')->comment('商家订单号');
             $table->string('wx_transaction_id')->nullable()->after('wx_out_trade_no')->comment('微信订单号');
 
             $table->index('wx_out_trade_no');
