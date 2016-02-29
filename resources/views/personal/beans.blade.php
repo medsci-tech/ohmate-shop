@@ -10,7 +10,7 @@
 <body>
 
 @foreach($items as $d1)
-  <div class="weui_cells_title">{{$d1['title']}}</div>
+  <div class="weui_cells_title">{{$year}}年</div>
 
   <div class="weui_cells">
     @foreach($d1['items'] as $index)
