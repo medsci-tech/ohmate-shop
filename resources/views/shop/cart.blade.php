@@ -82,16 +82,9 @@
   </template>
 
   <template v-if=" cart.length == 0 ">
-    <h3 class="text-center">没有商品！</h3>
-    <nav class="navbar-fixed-bottom">
-
-      <nav class="navbar-fixed-bottom">
-        <a href="{{url('/shop/index')}}">
-          <p>商城首页</p>
-        </a>
-      </nav>
-
-    </nav>
+      <a href="{{url('/shop/index')}}">
+          <h3 class="text-center">购物车中没有商品！</h3>
+      </a>
   </template>
 
 </div>
