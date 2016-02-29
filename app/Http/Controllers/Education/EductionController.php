@@ -23,51 +23,53 @@ class EductionController extends Controller
         return view('education.injection');
     }
 
-    public function injectionView(Request $request)
+    public function index(Request $request)
+    {
+        $topArticles = Article::where('top', true)->orderBy('updated_at','desc')->get();
+        if (!$topArticles) {
+            abort(404);
+        } /*if>*/
+        return view('education.article-index', ['articles' => $topArticles]);
+    }
+
+    public function category(Request $request)
+    {
+        $type = $request->input('type');
+        $typeArticles = Article::where('type_id', $type)->orderBy('updated_at','desc')->get();
+        if (!$typeArticles) {
+            abort(404);
+        } /*if>*/
+        return view('education.article-category', ['articles' => $typeArticles]);
+    }
+
+    public function view(Request $request)
+    {
+        $article = Article::where('id', $request->input('id'))->first();
+        if (!$article) {
+            abort(404);
+        } /*if>*/
+        return view('education.article-view', $article);
+    }
+
+    public function updateCount(Request $request)
+    {
+        $article = Article::where('id', $request->input('id'))->first();
+        if(!$article) {
+            return response()->json(['result' => '-1']);
+        } /*if>*/
+        $article->count += 1;
+        $article->save();
+        return response()->json(['result' => '1']);
+    }
+
+    public function updateBean(Request $request)
     {
         $customer = \Helper::getCustomer();
-    }
-
-    public function articles(Request $request)
-    {
-        $articles = Article::where('top', true)
-            ->orderBy('id','desc')
-            ->get();
-
-        return view('education.article', ['articles' => $articles]);
-    }
-
-    public function articleView(Request $request)
-    {
-        $articles = Article::where('id', $request->input('id'))->first();
-        if($articles) {
-            $articles->count += 1;
-            $articles->save();
-            return response()->json(['result' => '1']);
-        }
-        else {
+        if (!$customer != null) {
             return response()->json(['result' => '-1']);
-        }
-    }
-
-    public function addBean(Request $request)
-    {
-        \Log::info('EductionController:articleRead');
-        $articles = Article::where('id', $request->input('id'))->first();
-        $customer = \Helper::getCustomer();
-        if (($customer != null) && ($articles != null)) {
-            \Log::info('EductionController:articleRead:step');
-            \BeanRecharger::study($customer->id);
-            return response()->json(['result' => '1']);
-        }
-        else {
-            return response()->json(['result' => '-1']);
-        }
-    }
-
-    public function detailView(Request $request)
-    {
-        return view('education.detail');
+        } /*if>*/
+        \BeanRecharger::study($customer->id);
+        return response()->json(['result' => '1']);
     }
 
 } /*class*/

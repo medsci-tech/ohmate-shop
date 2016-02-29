@@ -12,7 +12,7 @@ class ArticleTypeSeeder extends Seeder
     public function run()
     {
         DB::table('article_types')->insert(
-            ['type_en' => 'disease',  'type_ch' => '糖尿病危害']
+            ['type_en' => 'knowledge',  'type_ch' => '教育知识']
         );
 
         DB::table('article_types')->insert(
