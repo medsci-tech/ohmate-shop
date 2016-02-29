@@ -12,7 +12,7 @@
 <!--按钮-->
 <div class="container">
     <div class="row icon">
-        <div class="small-3 columns" onclick="window.location.href = '/eduction/article/category?type=knowledge'">
+        <div class="small-3 columns" onclick="window.location.href = '/education/article/category?type=knowledge'">
             <img src="/image/education/knowledge.png">
             <p class="icon_p1">教育知识</p>
         </div>
