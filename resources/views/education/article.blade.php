@@ -14,15 +14,15 @@
 <div class="container">
     <div class="row icon">
         <div class="small-3 columns">
-            <img src="/image/education/icon1.png">
-            <p class="icon_p1">血糖检测</p>
+            <img src="/image/education/icon3.png">
+            <p class="icon_p1">糖尿病危害</p>
         </div>
         <div class="small-3 columns">
             <img src="/image/education/icon2.png">
             <p class="icon_p1">药物治疗</p>
         </div>
         <div class="small-3 columns">
-            <img src="/image/education/icon3.png">
+            <img src="/image/education/icon1.png">
             <p class="icon_p1">膳食营养</p>
         </div>
         <div class="small-3 columns">
