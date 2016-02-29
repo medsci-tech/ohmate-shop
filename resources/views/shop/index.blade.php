@@ -13,13 +13,16 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top1.webp')}}">
         </div>
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top2.webp')}}">
         </div>
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top3.webp')}}">
+        </div>
+        <div class="swiper-slide">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top4.webp')}}">
         </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -27,9 +30,9 @@
 
 <div class="container">
 
-    <nav class="navbar-fixed-bottom">
-        <a href="{{url('/shop/cart')}}">
-            <p>购物车</p>
+    <nav id="touch">
+        <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
+            <i class="fa fa-shopping-cart"></i>
         </a>
     </nav>
 
@@ -63,6 +66,18 @@
         autoplay: 4000,
         speed: 500,
     });
+</script>
+<script>
+    var div = document.getElementById('touch');
+    div.addEventListener('touchmove',function(event) {
+        event.preventDefault();
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            div.style.left = touch.clientX - 30 + 'px';
+            div.style.top = touch.clientY -30 + 'px';
+            div.style.background = "";
+        }
+    },false);
 </script>
 
 </body>

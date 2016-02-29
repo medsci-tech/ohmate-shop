@@ -20,6 +20,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Commodity[] $commodities
  * @property integer $address_id
  * @property-read \App\Models\Address $address
+ * @property string $wx_out_trade_no 商家订单号
+ * @property string $wx_transaction_id 微信订单号
+ * @property float $actual_payment 实付款,减去迈豆抵扣后的值
+ * @property-read \App\Models\Customer $customer
  */
 class Order extends Model
 {
@@ -42,10 +46,21 @@ class Order extends Model
     public function paid()
     {
         if ($this->status->name == 'paying' && $next = $this->status->next()) {
+            $customer = $this->customer;
+            \BeanRecharger::consume($customer->id, $this->total_price);
+
             $this->status()->associate($next);
             return $this->save();
         }
         return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function calculate()
+    {
+        return \BeanCalculator::calculate($this->total_price, $this->customer->beans_total);
     }
 
 
@@ -92,5 +107,12 @@ class Order extends Model
     {
         $this->total_price = $this->total_price + $price;
         return $this->save();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPaid() {
+        return $this->order_status_id >= 2;
     }
 }

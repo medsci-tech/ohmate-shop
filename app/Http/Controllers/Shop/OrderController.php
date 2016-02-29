@@ -66,9 +66,4 @@ class OrderController extends Controller
             ]
         ]);
     }
-
-    public function pay(Request $request)
-    {
-        //todo pay
-    }
 }
