@@ -33,16 +33,17 @@ class Order extends Model
      */
     public function status()
     {
-        return $this->belongsTo(OrderStatus::class);
+        return $this->belongsTo(OrderStatus::class, 'order_status_id');
     }
 
     /**
-     * @return bool|Model
+     * @return bool
      */
-    public function proceed()
+    public function paid()
     {
-        if ($next = $this->status()->get()->next()) {
-            return $this->status()->associate($next);
+        if ($this->status->name == 'paying' && $next = $this->status->next()) {
+            $this->status()->associate($next);
+            return $this->save();
         }
         return false;
     }
