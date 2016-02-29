@@ -37,7 +37,7 @@
     <div class="list">
         <div class="row" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
             <div class="small-5 columns">
-                <img src="{{$index['thumbnail']}}">
+                <img src="/image/education/titlle-1.png">
             </div>
             <div class="small-7 columns">
                 <p class="list_p">{{$index['title']}}</p>
