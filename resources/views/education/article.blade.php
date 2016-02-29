@@ -15,7 +15,7 @@
     <div class="row icon">
         <div class="small-3 columns">
             <img src="/image/education/icon3.png">
-            <p class="icon_p1">糖尿病危害</p>
+            <p class="icon_p1">教育知识</p>
         </div>
         <div class="small-3 columns">
             <img src="/image/education/icon2.png">
