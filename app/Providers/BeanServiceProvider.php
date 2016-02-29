@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Werashop\Bean\Calculator;
 use App\Werashop\Bean\BeanRecharger;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +27,10 @@ class BeanServiceProvider extends ServiceProvider
     {
         $this->app->singleton('bean_recharger', function ($app) {
             return new BeanRecharger();
+        });
+
+        $this->app->singleton('bean_calculator', function ($app) {
+            return new Calculator();
         });
     }
 }
