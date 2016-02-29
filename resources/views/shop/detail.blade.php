@@ -123,7 +123,9 @@
         $('.jumbotron .alert').show();
         $('.jumbotron .alert').delay(300).fadeOut(700);
         localStorage.cart = JSON.stringify(this.cart);
-        this.goods.num = 1;
+        setTimeout(function(){
+          this.goods.num = 1;
+        },900);
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
