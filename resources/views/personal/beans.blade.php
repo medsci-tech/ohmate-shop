@@ -9,11 +9,6 @@
 </head>
 <body>
 
-<div>
-  <img src="/image/bean/top.png" width="100%" height="60px" >
-</div>
-<span class="span_maidou">{{$total}}&nbsp;迈豆</span>
-
 @foreach($items as $d1)
   <div class="weui_cells_title">{{$d1['title']}}</div>
 

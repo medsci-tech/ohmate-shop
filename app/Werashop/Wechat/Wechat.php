@@ -214,7 +214,12 @@ class Wechat
             }
             $customer->save();
 
-            return Message::make('text')->content('感谢您关注!');
+            $content = '嗨！欢迎关注易康伴侣！'.
+                        '在此您能任性享用新鲜实用的糖尿病资讯，'.
+                        '您学习，我送礼；'.
+                        '您消费，我奖励。'.
+                        '一大波迈豆等您拿，注册立奖21.8元！';
+            return Message::make('text')->content($content);
         };
     }
 
