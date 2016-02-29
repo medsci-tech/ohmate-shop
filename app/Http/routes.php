@@ -31,19 +31,16 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/success', 'RegisterController@success');
     });
 
-    Route::group(['prefix' => 'eduction', 'namespace' => 'Education'], function () {
-        Route::get('/injection', 'EductionController@injections');
+    Route::group(['prefix' => 'education', 'namespace' => 'Education'], function () {
+        Route::get('/injection', 'EducationController@injections');
 
         Route::group(['prefix' => 'article'], function () {
-            Route::get('/', 'EductionController@index');
-            Route::get('/category', 'EductionController@category');
-            Route::get('/view', 'EductionController@view');
-            Route::get('/update-count', 'EductionController@updateCount');
-            Route::get('/update-bean', 'EductionController@updateBean');
+            Route::get('/', 'EducationController@index');
+            Route::get('/category', 'EducationController@category');
+            Route::get('/view', 'EducationController@view');
+            Route::get('/update-count', 'EducationController@updateCount');
+            Route::get('/update-bean', 'EducationController@updateBean');
         });
-        Route::get('/article/view', 'EductionController@articleView');
-        Route::get('/article/addBean', 'EductionController@addBean');
-        Route::get('/article/detail', 'EductionController@detailView');
     });
 
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {

@@ -113,8 +113,8 @@ class Wechat
     {
         return [
             (new MenuItem("教育学习"))->buttons([
-                new MenuItem('糖尿病知识', 'view', url('/eduction/article')),
-                new MenuItem('安全注射', 'view', url('/eduction/injection')),
+                new MenuItem('糖尿病知识', 'view', url('/education/article')),
+                new MenuItem('安全注射', 'view', url('/education/injection')),
             ]),
             (new MenuItem("易康商城"))->buttons([
                 new MenuItem('商城首页', 'view', url('/shop/index')),
