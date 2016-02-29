@@ -25,7 +25,7 @@ class OrderController extends Controller
     }
 
     public function index() {
-        return 'order.index';
+        return view('order.index');
     }
 
 
