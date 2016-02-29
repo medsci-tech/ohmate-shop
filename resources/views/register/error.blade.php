@@ -17,10 +17,35 @@
     </div>
     <div class="weui_opr_area">
         <p class="weui_btn_area">
-            <a href="" class="weui_btn weui_btn_warn">确定</a>
+            <a href="" class="weui_btn weui_btn_warn" id="closeWindow">确定</a>
         </p>
     </div>
 </div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    wx.config(<?php echo $js->config(array('checkJsApi','closeWindow'), true, true) ?>);
 
+
+    wx.ready(function () {
+
+        wx.checkJsApi({
+            jsApiList: [
+                'closeWindow'
+            ],
+            success: function (res) {
+//                alert(JSON.stringify(res));
+            }
+        });
+
+        document.querySelector('#closeWindow').onclick = function () {
+            wx.closeWindow();
+        };
+
+    });
+
+    wx.error(function (res) {
+        alert("error:" + res.errMsg);
+    });
+</script>
 </body>
 </html>
