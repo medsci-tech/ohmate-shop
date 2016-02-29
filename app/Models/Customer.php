@@ -83,6 +83,20 @@ class Customer extends Model
      */
     public function addresses()
     {
-        return $this->hasMany(\App\Models\Address::class);
+        return $this->hasMany(Address::class);
+    }
+
+    /**
+     * @param int $num
+     * @return bool
+     */
+    public function minusBean(int $num)
+    {
+        if ($this->beans_total > $num) {
+            $this->beans_total -= $num;
+            return $this->save();
+        } else {
+            return false;
+        }
     }
 }

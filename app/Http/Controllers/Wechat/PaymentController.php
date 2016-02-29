@@ -19,6 +19,9 @@ class PaymentController extends Controller
 
         if ($input['return_code'] == 'SUCCESS') {
             $order = Order::where('wx_out_trade_no', $input['out_trade_no'])->firstOrFail();
+            if ($order->isPaid()) {
+                return 'FAIL';
+            }
             $order->update(['wx_transaction_id' => $input['transaction_id']]);
             $order->paid();
 
