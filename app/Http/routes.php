@@ -40,7 +40,18 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/article/detail', 'EductionController@detailView');
     });
 
-    Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+        Route::get('/information', 'PersonalController@information');
+        Route::get('/beans', 'PersonalController@beans');
+        Route::get('/gifts', 'PersonalController@gifts');
+        Route::get('/friend', 'PersonalController@friend');
+
+        Route::get('/bean-rules', 'PersonalController@beanRules');
+        Route::get('/about-us', 'PersonalController@aboutUs');
+    });
+});
+
+Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/category', 'CategoryController@index');
 
@@ -66,16 +77,5 @@ Route::group(['middleware' => 'web'], function () {
         });
         Route::resource('/commodity', 'CommodityController');
     });
-
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
-        Route::get('/information', 'PersonalController@information');
-        Route::get('/beans', 'PersonalController@beans');
-        Route::get('/gifts', 'PersonalController@gifts');
-        Route::get('/friend', 'PersonalController@friend');
-
-        Route::get('/bean-rules', 'PersonalController@beanRules');
-        Route::get('/about-us', 'PersonalController@aboutUs');
-    });
-});
 
 Route::any('github', 'Github\GithubController@onEvent');
