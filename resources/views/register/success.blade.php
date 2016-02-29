@@ -30,7 +30,7 @@
 
         wx.checkJsApi({
             jsApiList: [
-                'closeWindow
+                'closeWindow'
             ],
             success: function (res) {
 //                alert(JSON.stringify(res));
