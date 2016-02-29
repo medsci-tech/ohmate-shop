@@ -33,7 +33,7 @@ class Order extends Model
      */
     public function status()
     {
-        return $this->belongsTo(OrderStatus::class);
+        return $this->belongsTo(OrderStatus::class, 'order_status_id');
     }
 
     /**
@@ -41,7 +41,7 @@ class Order extends Model
      */
     public function proceed()
     {
-        if ($next = $this->status()->get()->next()) {
+        if ($next = $this->status->next()) {
             return $this->status()->associate($next);
         }
         return false;

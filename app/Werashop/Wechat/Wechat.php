@@ -268,8 +268,8 @@ class Wechat
         $business = new Business($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
 
         $wechat_order = new WechatOrder();
-        $wechat_order->body = 'test body';
-        $wechat_order->out_trade_no = md5(uniqid().microtime());
+        $wechat_order->body = $this->generatePaymentBody($order);
+        $wechat_order->out_trade_no = $order->wx_out_trade_no;
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
         $wechat_order->openid = $customer->openid;
         $wechat_order->notify_url = url('/wechat/payment/notify');
@@ -295,6 +295,15 @@ class Wechat
         }
 
         return $notify->reply();
+    }
+
+    /**
+     * @param Order $order
+     * @return string
+     */
+    protected function generatePaymentBody(Order $order)
+    {
+        return '' . $order->commodities()->first()->name . '等' . $order->commodities()->get()->count() . '件商品';
     }
 
 }
