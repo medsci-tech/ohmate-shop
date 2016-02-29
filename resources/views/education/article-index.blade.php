@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>教育学习</title>
-    <link rel="stylesheet" href="/css/eduction.css">
+    <link rel="stylesheet" href="/css/education.css">
     <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-5.5.3/foundation.min.css">
 
 </head>
@@ -13,19 +13,19 @@
 <div class="container">
     <div class="row icon">
         <div class="small-3 columns">
-            <img src="/image/education/icon3.png">
+            <img src="/image/education/knowledge.png">
             <p class="icon_p1">教育知识</p>
         </div>
         <div class="small-3 columns">
-            <img src="/image/education/icon2.png">
+            <img src="/image/education/drug.png">
             <p class="icon_p1">药物治疗</p>
         </div>
         <div class="small-3 columns">
-            <img src="/image/education/icon1.png">
+            <img src="/image/education/food.png">
             <p class="icon_p1">膳食营养</p>
         </div>
         <div class="small-3 columns">
-            <img src="/image/education/icon4.png">
+            <img src="/image/education/sport.png">
             <p class="icon_p1">合理运动</p>
         </div>
     </div>
@@ -58,7 +58,7 @@
         document.getElementById('text_click').value ='1';
         document.getElementById('text_id').value = id;
         $(function () {
-            var requestUrl = '/eduction/article/update-count';
+            var requestUrl = '/education/article/update-count';
             $.ajax({
                 url : requestUrl,
                 data: {
@@ -74,7 +74,7 @@
                 }
             });
 
-            var requestUrls = '/eduction/article/update-bean';
+            var requestUrls = '/education/article/update-bean';
             $.ajax({
                 url: requestUrls,
                 data: {
