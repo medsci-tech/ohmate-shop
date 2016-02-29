@@ -58,6 +58,8 @@ class PersonalController extends Controller
         $total          = $customer->beans_total;
         $beanThisYear   = $customer->beans->where('year(updated_at)', Carbon::now()->year);
 
+        dd($beanThisYear);
+        
         $resultArray = null;
         foreach ($beanThisYear as $bean) {
             $item = $this->createBeanItem($bean);
@@ -108,7 +110,7 @@ class PersonalController extends Controller
 //            $items[$m_title]['items'][] = $item;
 //        }
 
-        dd($resultArray);
+
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
             'items' => $resultArray
