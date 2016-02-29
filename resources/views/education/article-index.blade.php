@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-5.5.3/foundation.min.css">
 
 </head>
-
 <body onload="reLoad();" style="background-color: #D8D6D6">
 <!--按钮-->
 <div class="container">
@@ -32,7 +31,9 @@
     </div>
 </div>
 <!--文章列表-->
+
 <div class="list_top">
+    <div class="first_row"></div><!--top列表上边距-->
     @foreach($articles as $index)
     <div class="list">
         <div class="row" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
@@ -48,6 +49,7 @@
     @endforeach
 
 </div>
+
 <input type="hidden" id="text_click" value="-1">
 <input type="hidden" id="text_id" value="-1">
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
@@ -56,7 +58,7 @@
         document.getElementById('text_click').value ='1';
         document.getElementById('text_id').value = id;
         $(function () {
-            var requestUrl = '/eduction/article/view';
+            var requestUrl = '/eduction/article/update-count';
             $.ajax({
                 url : requestUrl,
                 data: {
@@ -72,7 +74,7 @@
                 }
             });
 
-            var requestUrls = '/eduction/article/addBean';
+            var requestUrls = '/eduction/article/update-bean';
             $.ajax({
                 url: requestUrls,
                 data: {
@@ -98,24 +100,6 @@
         var flag = document.getElementById('text_click').value;
         var id = document.getElementById('text_id').value;
         if(flag=='1') {
-//            $(function () {
-//                var requestUrls = '/eduction/article/read';
-//                $.ajax({
-//                    url: requestUrls,
-//                    data: {
-//                        id: id
-//                    },
-//                    type: "get",
-//                    dataType: "json",
-//                    success: function (json) {
-//
-//                    },
-//                    error: function (xhr, status, errorThrown) {
-//                        alert("Sorry, there was a problem!");
-//                    }
-//                });
-//
-//            });
             window.location.href = '/eduction/article';
         }
     }
