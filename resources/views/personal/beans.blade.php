@@ -13,7 +13,7 @@
   <div class="weui_cells_title">{{$year}}年{{$key}}月账单</div>
 
   <div class="weui_cells">
-    @foreach($d1[$key] as $index)
+    @foreach($d1 as $index)
       <div class="weui_cell">
         <div class="weui_cell_hd"><img src="{{$index['icons']}}" alt="" class="image"></div>
         <div class="weui_cell_bd weui_cell_primary">
