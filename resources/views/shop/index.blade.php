@@ -65,7 +65,7 @@
     });
 </script>
 <script>
-    var div = $('#touch');
+    var div = document.getElementById('touch');
     div.addEventListener('touchmove',function(event) {
         event.preventDefault();
         if (event.targetTouches.length == 1) {
