@@ -41,7 +41,7 @@ class Order extends Model
      */
     public function proceed()
     {
-        if ($next = $this->status()->get()->next()) {
+        if ($next = $this->status()->next()) {
             return $this->status()->associate($next);
         }
         return false;
