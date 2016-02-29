@@ -44,8 +44,7 @@ class EductionController extends Controller
 
     public function view(Request $request)
     {
-        $id = $request->input('id');
-        $article = Article::where('id', $id)->first();
+        $article = Article::where('id', $request->input('id'))->first();
         if (!$article) {
             abort(404);
         } /*if>*/
@@ -54,30 +53,23 @@ class EductionController extends Controller
 
     public function updateCount(Request $request)
     {
-        $articles = Article::where('id', $request->input('id'))->first();
-        if($articles) {
-            $articles->count += 1;
-            $articles->save();
-            return response()->json(['result' => '1']);
-        }
-        else {
+        $article = Article::where('id', $request->input('id'))->first();
+        if(!$article) {
             return response()->json(['result' => '-1']);
-        }
+        } /*if>*/
+        $article->count += 1;
+        $article->save();
+        return response()->json(['result' => '1']);
     }
 
     public function updateBean(Request $request)
     {
-        \Log::info('EductionController:articleRead');
-        $articles = Article::where('id', $request->input('id'))->first();
         $customer = \Helper::getCustomer();
-        if (($customer != null) && ($articles != null)) {
-            \Log::info('EductionController:articleRead:step');
-            \BeanRecharger::study($customer->id);
-            return response()->json(['result' => '1']);
-        }
-        else {
+        if (!$customer != null) {
             return response()->json(['result' => '-1']);
-        }
+        } /*if>*/
+        \BeanRecharger::study($customer->id);
+        return response()->json(['result' => '1']);
     }
 
 } /*class*/
