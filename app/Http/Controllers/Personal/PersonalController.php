@@ -109,8 +109,6 @@ class PersonalController extends Controller
 //            $items[$m_title]['items'][] = $item;
 //        }
 
-        dd($resultArray);
-
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
             'items' => $resultArray
