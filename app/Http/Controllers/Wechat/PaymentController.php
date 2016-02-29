@@ -11,6 +11,10 @@ class PaymentController extends Controller
 {
     public function notify(Request $request)
     {
-        \Log::debug('payment_notify', ['request'=> $request]);
+        \Log::debug('payment_notify', ['request' => $request]);
+
+        $result = \Wechat::paymentNotify();
+
+        return $result;
     }
 }

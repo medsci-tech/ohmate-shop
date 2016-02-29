@@ -15,6 +15,7 @@ use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
 use Overtrue\Wechat\Payment;
+use Overtrue\Wechat\Payment\Notify;
 use Overtrue\Wechat\Payment\Business;
 use Overtrue\Wechat\Payment\UnifiedOrder;
 use Overtrue\Wechat\QRCode;
@@ -274,4 +275,21 @@ class Wechat
 
         return $payment->getConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function paymentNotify()
+    {
+        $notify = new Notify($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
+
+        $transaction = $notify->verify();
+
+        if (!$transaction) {
+           return $notify->reply('FAIL', 'verify transaction error');
+        }
+
+        return $notify->reply();
+    }
+
 }

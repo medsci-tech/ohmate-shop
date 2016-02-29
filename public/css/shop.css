@@ -392,8 +392,7 @@ a, a:focus, a:hover {
         background-color: #fff; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(3) a {
       width: 85px;
-      background-color: #f71212;
-      color: #fff; }
+      color: #f71212; }
   #goods .navbar-fixed-bottom span {
     padding: 8px 5px;
     display: inline-block; }

@@ -40,7 +40,7 @@
   <div class="navbar-fixed-bottom">
     <div class="col-xs-4">
       <span @click="numMinus()" class="glyphicon glyphicon-minus"></span>
-      <p v-cloak>@</p>
+      <p v-cloak>@{{ goods.num }}</p>
       <span @click="numAdd()" class="glyphicon glyphicon-plus"></span>
     </div>
     <div class="col-xs-4">
@@ -118,12 +118,12 @@
             num: this.goods.num
           });
         }
-        localStorage.cart = JSON.stringify(this.cart);
-        this.goods.num = 1;
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
         $('.jumbotron .alert').delay(300).fadeOut(700);
+        localStorage.cart = JSON.stringify(this.cart);
+        this.goods.num = 1;
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
