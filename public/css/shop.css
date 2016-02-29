@@ -370,12 +370,15 @@ a, a:focus, a:hover {
   #goods .row p {
     color: #a3a3a3; }
 #goods .navbar-fixed-bottom {
+  background-color: #fff;
   padding: 0; }
   #goods .navbar-fixed-bottom .col-xs-4 {
     padding: 8px 0;
     height: 50px; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) {
       border-right: 1px solid #a3a3a3; }
+      #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) p {
+        color: #000000; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) {
       border-right: 1px solid #a3a3a3; }
       #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) button {
