@@ -249,7 +249,8 @@ a, a:focus, a:hover {
         color: #000000; }
   #cart_form .cart-submit {
     padding: 0px;
-    margin: auto; }
+    margin: auto;
+    background-color: #fff; }
     #cart_form .cart-submit div {
       height: 4em;
       padding: 0px;
@@ -258,10 +259,10 @@ a, a:focus, a:hover {
       border-left: 1px solid #eeeeee; }
       #cart_form .cart-submit div P {
         float: left;
-        padding-left: 15px;
         margin-bottom: 0px;
-        padding-top: .5em;
-        font-size: 20px; }
+        padding-top: 5px;
+        font-size: 20px;
+        color: #000000; }
         #cart_form .cart-submit div P span {
           color: #f71212; }
       #cart_form .cart-submit div button {
