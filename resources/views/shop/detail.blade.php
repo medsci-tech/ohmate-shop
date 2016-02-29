@@ -40,7 +40,7 @@
   <div class="navbar-fixed-bottom">
     <div class="col-xs-4">
       <span @click="numMinus()" class="glyphicon glyphicon-minus"></span>
-      <p v-cloak>@{{ goods.num }}</p>
+      <p v-cloak>@</p>
       <span @click="numAdd()" class="glyphicon glyphicon-plus"></span>
     </div>
     <div class="col-xs-4">
@@ -53,7 +53,8 @@
 
   <div class="jumbotron">
     <div class="alert text-center" role="alert">
-      添加成功
+      <p>@{{ goods.num }}件商品</p>
+      <p>添加成功</p>
     </div>
   </div>
 
