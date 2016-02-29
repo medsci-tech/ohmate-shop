@@ -8,68 +8,44 @@
     <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-5.5.3/foundation.min.css">
 
 </head>
-<body onload="reLoad();">
-{{--<div class="container">--}}
-    {{--@foreach($articles as $index)--}}
-    {{--<div class="row">--}}
-        {{--<div class="media">--}}
-            {{--<div class="media-left media-middle">--}}
-                {{--<a href="#">--}}
-                    {{--<img class="media-object" src="{{$index['thumbnail']}}" alt="...">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="media-body">--}}
-                {{--<h4 class="media-heading">{{$index['title']}}</h4>--}}
-                {{--<a href="{{$index['uri']}}" onclick="updateView({{$index['id']}})"><p>{{$index['description']}}</p></a>--}}
-                {{--<span>阅读量&emsp;{{$index['count']}}</span>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--@endforeach--}}
-{{--</div>--}}
 
-<body style="background-color: #D8D6D6">
+<body onload="reLoad();" style="background-color: #D8D6D6">
+<!--按钮-->
 <div class="container">
     <div class="row icon">
-        <div class="medium-3 columns">
-            <img src="/image/education/icon1.png" class="icon_img">
-
-            <p class="icon_p">血糖检测</p>
+        <div class="small-3 columns">
+            <img src="/image/education/icon3.png">
+            <p class="icon_p1">教育知识</p>
         </div>
-        <div class="medium-3 columns">
-            <img src="/image/education/icon2.png" class="icon_img">
-
-            <p class="icon_p">药物治疗</p>
+        <div class="small-3 columns">
+            <img src="/image/education/icon2.png">
+            <p class="icon_p1">药物治疗</p>
         </div>
-        <div class="medium-3 columns">
-            <img src="/image/education/icon3.png" class="icon_img">
-
-            <p class="icon_p">膳食营养</p>
+        <div class="small-3 columns">
+            <img src="/image/education/icon1.png">
+            <p class="icon_p1">膳食营养</p>
         </div>
-        <div class="medium-3 columns">
-            <img src="/image/education/icon4.png" class="icon_img">
-
-            <p class="icon_p">合理运动</p>
+        <div class="small-3 columns">
+            <img src="/image/education/icon4.png">
+            <p class="icon_p1">合理运动</p>
         </div>
     </div>
-
-    <div class="list_top">
-        @foreach($articles as $index)
-        <div class="list">
-            <div class="row" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                <div class="small-5 columns">
-                    <img src="{{$index['thumbnail']}}">
-                </div>
-                <div class="small-7 columns">
-                    <p class="list_p">{{$index['title']}}</p>
-
-                    <p class="list_p_1">阅读量&emsp;{{$index['count']}}</p>
-                </div>
+</div>
+<!--文章列表-->
+<div class="list_top">
+    @foreach($articles as $index)
+    <div class="list">
+        <div class="row" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
+            <div class="small-5 columns">
+                <img src="{{$index['thumbnail']}}">
+            </div>
+            <div class="small-7 columns">
+                <p class="list_p">{{$index['title']}}</p>
+                <p class="list_p_1">阅读量&emsp;{{$index['count']}}</p>
             </div>
         </div>
-        @endforeach
-
     </div>
+    @endforeach
 
 </div>
 <input type="hidden" id="text_click" value="-1">
@@ -145,4 +121,5 @@
     }
 </script>
 </body>
+
 </html>
