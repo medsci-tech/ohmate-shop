@@ -53,7 +53,8 @@
 
   <div class="jumbotron">
     <div class="alert text-center" role="alert">
-      添加成功
+      <p>@{{ goods.num }}件商品</p>
+      <p>添加成功</p>
     </div>
   </div>
 
