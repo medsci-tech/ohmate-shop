@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Constants\AppConstant;
+use Overtrue\Wechat\Js;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,12 @@ class RegisterController extends Controller
 
     public function success()
     {
-        return view('register.success');
+        $appId = env('WX_APPID');
+        $secret = env('WX_SECRET');
+
+        $js = new Js($appId, $secret);
+
+        return view('register.success', ['js' => $js]);
     }
 
     public function create()
