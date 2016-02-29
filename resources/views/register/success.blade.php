@@ -17,7 +17,7 @@
     </div>
     <div class="weui_opr_area">
         <p class="weui_btn_area">
-            <input type="button" class="weui_btn weui_btn_primary" id="closeWindow">确定</input>
+            <input type="button" class="weui_btn weui_btn_primary" id="closeWindow" value="确定">
         </p>
     </div>
 </div>
