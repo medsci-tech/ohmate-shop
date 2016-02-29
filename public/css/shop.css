@@ -367,6 +367,7 @@ a, a:focus, a:hover {
   #goods .row p {
     color: #a3a3a3; }
 #goods .navbar-fixed-bottom {
+  max-width: 500px;
   padding: 0;
   background-color: #fff; }
   #goods .navbar-fixed-bottom .col-xs-4 {

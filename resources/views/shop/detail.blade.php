@@ -37,7 +37,7 @@
     <p>图文详情</p>
   </div>
 
-  <div class="navbar-fixed-bottom">
+  <div class="navbar-fixed-bottom center-block">
     <div class="col-xs-4">
       <span @click="numMinus()" class="fa fa-minus"></span>
       <p v-cloak>@{{ goods.num }}</p>
