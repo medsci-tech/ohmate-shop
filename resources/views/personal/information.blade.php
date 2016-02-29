@@ -28,13 +28,13 @@
         </div>
 
         <div class="weui_cells weui_cells_access">
-            <a href="" class="weui_cell">
+            <a href="/personal/beans" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>迈豆余额</p>
                 </div>
                 <div class="weui_cell_ft text_color">{{$data['beans_total']}}&nbsp;迈豆</div>
             </a>
-            <a href="" class="weui_cell">
+            <a href="/personal/gifts" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>礼品卡</p>
                 </div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="weui_cells weui_cells_access">
-            <a href="" class="weui_cell">
+            <a href="/personal/bean-rules" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>迈豆规则</p>
                 </div>
@@ -60,11 +60,6 @@
 </div>
 
 </body>
-<script type="text/javascript">
-    function goAbout() {
-        window.location.href = '/personal/about-us';
-    }
-</script>
 
 </html>
 
