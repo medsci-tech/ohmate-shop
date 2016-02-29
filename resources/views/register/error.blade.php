@@ -17,7 +17,7 @@
     </div>
     <div class="weui_opr_area">
         <p class="weui_btn_area">
-            <a href="" class="weui_btn weui_btn_warn" id="closeWindow">确定</a>
+            <input type="button" class="weui_btn weui_btn_warn" id="closeWindow" value="确定">
         </p>
     </div>
 </div>
