@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>文章详情</title>
     <link rel="stylesheet" href="/css/weui.min.css">
-    <link rel="stylesheet" href="/css/hongbao.css">
+    <link rel="stylesheet" href="/css/bonus.css">
 </head>
 <body>
 <div>
