@@ -11,7 +11,7 @@ use App\Constants\AppConstant;
 use App\Models\Customer;
 use App\Models\Article;
 
-class EductionController extends Controller
+class EducationController extends Controller
 {
     function __construct()
     {
