@@ -63,7 +63,7 @@ class PersonalController extends Controller
             $item = $this->createBeanItem($bean);
             $resultArray[$bean->updated_at->month][] = $item;
         } /*foreach>*/
-        
+
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
             'items' => $resultArray
