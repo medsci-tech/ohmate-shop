@@ -70,8 +70,8 @@
         event.preventDefault();
         if (event.targetTouches.length == 1) {
             var touch = event.targetTouches[0];
-            div.style.left = touch.pageX - 30 + 'px';
-            div.style.top = touch.pageY -30 + 'px';
+            div.style.left = touch.clientX - 30 + 'px';
+            div.style.top = touch.clientY -30 + 'px';
             div.style.background = "";
         }
     },false);
