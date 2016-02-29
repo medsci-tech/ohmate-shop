@@ -38,9 +38,4 @@ class WechatController extends Controller
             return '更新菜单失败';
         }
     }
-
-    public function notify(Request $request)
-    {
-         \Log::debug('notify'. var_dump($request->all()));
-    }
 }

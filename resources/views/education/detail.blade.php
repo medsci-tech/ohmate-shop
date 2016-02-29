@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>文章详情</title>
-    <link rel="stylesheet" href="../../css/weui.min.css">
-    <link rel="stylesheet" href="../../css/hongbao.css">
+    <link rel="stylesheet" href="/css/weui.min.css">
+    <link rel="stylesheet" href="/css/hongbao.css">
 </head>
 <body>
 <div>
-<img src="/image/education/450705577287905933.png" style="width: auto; height: auto">
+    <img src="/image/bean/1.jpg" style="width: 100%; height: 100%">
 </div>
-<div class="actionsheet" style="overflow: hidden">
     <!--BEGIN actionSheet-->
     <div id="actionSheet_wrap">
         <div class="weui_mask_transition" id="mask" style="display: none;"></div>
         <div class="weui_actionsheet" id="weui_actionsheet">
             <div class="weui_actionsheet_menu">
-                <img src="../../image/education/hongbao.png" alt="">
+                <img src="/image/education/hongbao.png" alt="">
                 <p>10迈豆</p>
             </div>
             <div class="weui_actionsheet_action">
@@ -27,7 +26,6 @@
         </div>
     </div>
     <!--END actionSheet-->
-</div>
 
 <script src="../../js/vendor/jquery-2.1.4.min.js"></script>
 <script>
