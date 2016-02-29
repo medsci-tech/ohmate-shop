@@ -27,9 +27,9 @@
 
 <div class="container">
 
-    <nav class="navbar-fixed-bottom">
-        <a href="{{url('/shop/cart')}}">
-            <p>购物车</p>
+    <nav id="touch">
+        <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
+            <i class="fa fa-shopping-cart"></i>
         </a>
     </nav>
 
@@ -63,6 +63,18 @@
         autoplay: 4000,
         speed: 500,
     });
+</script>
+<script>
+    var div = $('#touch');
+    div.addEventListener('touchmove',function(event) {
+        event.preventDefault();
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            div.style.left = touch.pageX - 30 + 'px';
+            div.style.top = touch.pageY -30 + 'px';
+            div.style.background = "";
+        }
+    },false);
 </script>
 
 </body>

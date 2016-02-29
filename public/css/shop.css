@@ -1,4 +1,6 @@
 @import url(bootstrap.min.css);
+@import url(buttons.css);
+@import url(font-awesome.min.css);
 [v-cloak] {
   display: none; }
 
@@ -17,16 +19,8 @@ a, a:focus, a:hover {
 
 .container {
   background-color: #EEEEEE;
-  max-width: 500px; }
-  .container .navbar-fixed-bottom {
-    max-width: 500px;
-    text-align: center;
-    background-color: #f71212; }
-    .container .navbar-fixed-bottom p {
-      width: 100%;
-      margin: 8px 0 8px 0;
-      font-size: 20px;
-      color: #FFFFFF; }
+  max-width: 500px;
+  position: relative; }
   .container .row {
     background-color: #ffffff; }
     .container .row .col-xs-6:first-child {
@@ -77,8 +71,13 @@ a, a:focus, a:hover {
         margin-bottom: 0px;
         font-size: 13px;
         color: #a3a3a3; }
-  .container .col-xs-6:last-child {
-    margin-bottom: 43px; }
+  .container #touch {
+    position: fixed;
+    z-index: 9999;
+    right: 20px;
+    bottom: 20px; }
+    .container #touch i {
+      color: #FFFFFF; }
 
 .category {
   padding: 0px; }
@@ -252,24 +251,22 @@ a, a:focus, a:hover {
     margin: auto;
     background-color: #fff; }
     #cart_form .cart-submit div {
-      height: 4em;
-      padding: 0px;
+      padding: 0;
+      height: 50px;
       display: inline-block;
       border-top: 1px solid #eeeeee;
       border-left: 1px solid #eeeeee; }
       #cart_form .cart-submit div P {
-        float: left;
-        margin-bottom: 0px;
-        padding-top: 5px;
+        padding-top: 10px;
+        padding-left: 15px;
         font-size: 20px;
         color: #000000; }
         #cart_form .cart-submit div P span {
           color: #f71212; }
       #cart_form .cart-submit div button {
-        width: 85px;
-        margin-top: 11px;
-        color: #FFFFFF;
-        background-color: #f71212; }
+        padding: 0;
+        width: 100%;
+        height: 100%; }
 
 .address {
   margin: 10px -15px 0px -15px;
@@ -354,7 +351,6 @@ a, a:focus, a:hover {
     margin-bottom: 20px;
     width: 70%;
     max-width: 320px;
-    background-color: #f71212;
     color: #fff; }
 
 #goods .row {
@@ -371,22 +367,22 @@ a, a:focus, a:hover {
   #goods .row p {
     color: #a3a3a3; }
 #goods .navbar-fixed-bottom {
-  background-color: #fff;
-  padding: 0; }
+  padding: 0;
+  background-color: #fff; }
   #goods .navbar-fixed-bottom .col-xs-4 {
-    padding: 8px 0;
-    height: 50px; }
+    padding: 0; }
+    #goods .navbar-fixed-bottom .col-xs-4 .button {
+      border-left: 1px solid #a3a3a3;
+      width: 100%;
+      height: 50px;
+      padding: 0; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) {
-      border-right: 1px solid #a3a3a3; }
-      #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) p {
-        color: #000000; }
-    #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) {
-      border-right: 1px solid #a3a3a3; }
-      #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) button {
-        background-color: #fff; }
+      text-align: center;
+      padding-top: 8px; }
+    #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) button {
+      background-color: #fff; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(3) a {
-      width: 85px;
-      color: #f71212; }
+      padding-top: 5px; }
   #goods .navbar-fixed-bottom span {
     padding: 8px 5px;
     display: inline-block; }
