@@ -19,24 +19,14 @@ a, a:focus, a:hover {
   background-color: #EEEEEE;
   max-width: 500px; }
   .container .navbar-fixed-bottom {
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    margin: auto;
     max-width: 500px;
     text-align: center;
-    border-top: 1px solid #EEEEEE;
-    background-color: #fff; }
-    .container .navbar-fixed-bottom .nav-button {
-      padding: 5px 0px 0px 0px;
-      display: inline-block;
-      width: 18.5%;
-      color: #a3a3a3; }
-      .container .navbar-fixed-bottom .nav-button p {
-        margin-bottom: 2px; }
-      .container .navbar-fixed-bottom .nav-button img {
-        width: 24px; }
-    .container .navbar-fixed-bottom .nav-active {
-      color: #f71212; }
+    background-color: #f71212; }
+    .container .navbar-fixed-bottom p {
+      width: 100%;
+      margin: 8px 0 8px 0;
+      font-size: 20px;
+      color: #FFFFFF; }
   .container .row {
     background-color: #ffffff; }
     .container .row .col-xs-6:first-child {
@@ -88,7 +78,7 @@ a, a:focus, a:hover {
         font-size: 13px;
         color: #a3a3a3; }
   .container .col-xs-6:last-child {
-    margin-bottom: 52px; }
+    margin-bottom: 43px; }
 
 .category {
   padding: 0px; }
@@ -380,12 +370,15 @@ a, a:focus, a:hover {
   #goods .row p {
     color: #a3a3a3; }
 #goods .navbar-fixed-bottom {
+  background-color: #fff;
   padding: 0; }
   #goods .navbar-fixed-bottom .col-xs-4 {
     padding: 8px 0;
     height: 50px; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) {
       border-right: 1px solid #a3a3a3; }
+      #goods .navbar-fixed-bottom .col-xs-4:nth-child(1) p {
+        color: #000000; }
     #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) {
       border-right: 1px solid #a3a3a3; }
       #goods .navbar-fixed-bottom .col-xs-4:nth-child(2) button {

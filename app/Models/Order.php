@@ -37,12 +37,13 @@ class Order extends Model
     }
 
     /**
-     * @return bool|Model
+     * @return bool
      */
     public function proceed()
     {
         if ($next = $this->status->next()) {
-            return $this->status()->associate($next);
+            $this->status()->associate($next);
+            return $this->save();
         }
         return false;
     }
