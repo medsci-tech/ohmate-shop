@@ -48,7 +48,7 @@ class OrderController extends Controller
         $order->address()->associate($address);
         $order->save();
         $order->update([
-            'out_trade_no' => md5($order->id . microtime())
+            'wx_out_trade_no' => md5($order->id . microtime())
         ]);
 
         foreach ($items as $item) {
