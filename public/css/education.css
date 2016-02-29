@@ -15,34 +15,14 @@ a, a:focus, a:hover {
   background-color: #fff;
 
 }
-
-.media {
-  position: relative;
-  padding: 10px;
+.first_row{
+  height: 0.9375rem;
+  background-color: white;
+  margin-bottom: -5px;
 }
 
-.media img {
-  width: 120px;
-}
 
-.media p {
-  margin: 0;
-  font-size: 13px;
-  color: #a3a3a3;
-}
-
-.media h4 {
-  font-size: 16px;
-}
-
-.media .media-body > span {
-  position: absolute;
-  bottom: 10px;
-  font-size: 10px;
-}
-
-/*# sourceMappingURL=eduction.css.map */
-
+/*# sourceMappingURL=education.css.map */
 .icon {
   text-align: center;
   padding-top: 1.25rem
@@ -71,7 +51,7 @@ a, a:focus, a:hover {
 }
 
 .list_top {
-  margin-top: 0.9375rem;
+  margin-top: 0.5375rem;
 }
 
 .small-7 {
@@ -79,15 +59,14 @@ a, a:focus, a:hover {
 }
 
 .list_p {
-  font-size: 14px;
+  font-size: 15px;
   color: #A59B9B;
   margin-bottom: 0;
   margin-left: -0.9375rem;
 }
 
 .list_p_1 {
-  font-size: 10px;
-  margin-top: 5px;
+  font-size: 13px;
   margin-bottom: 0px;
   color: #A59B9B;
   margin-left: -0.9375rem;

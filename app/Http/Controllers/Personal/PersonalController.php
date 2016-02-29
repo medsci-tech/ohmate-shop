@@ -58,56 +58,11 @@ class PersonalController extends Controller
         $total          = $customer->beans_total;
         $beanThisYear   = $customer->beans;
 
-
         $resultArray = null;
         foreach ($beanThisYear as $bean) {
             $item = $this->createBeanItem($bean);
             $resultArray[$bean->updated_at->month][] = $item;
         } /*foreach>*/
-
-//        $list = array();
-//        $lastTitle = null;
-//        foreach ($customerBeans as $customerBean) {
-//
-//            if ($customerBean->result > 0) {
-//                $result = '+' . (string)$customerBean->result;
-//            } else {
-//                $result = '-' . (string)$customerBean->result;
-//            }
-//
-//            $day = sprintf("%02d", $customerBean->updated_at->month) . '-' .
-//                sprintf("%02d", $customerBean->updated_at->day);
-//            $time = sprintf("%02d", $customerBean->updated_at->hour) . ':' .
-//                sprintf("%02d", $customerBean->updated_at->minute);
-//
-//            $title = (string)$customerBean->updated_at->year . '年'.
-//                (string)$customerBean->updated_at->month . '月账单';
-//
-//            $row = array(
-//                'result'    => $result,
-//                'action'    => $customerBean->rate->action_ch,
-//                'icons'     => $customerBean->rate->icon_url,
-//                'day'       => $day,
-//                'time'      => $time,
-//                'title'     => $title,
-//                'detail'    => $customerBean->detail
-//            );
-//
-//            array_push($list, $row);
-//        }
-
-//        //按月分组
-//        $items = array();
-//        foreach($list as $item) {
-//            $m_title = $item['title'];
-//            unset($item['title']);
-//
-//            if(!isset($items[$m_title])) {
-//                $items[$m_title] = array('title'=>$m_title, 'items'=>array());
-//            }
-//
-//            $items[$m_title]['items'][] = $item;
-//        }
 
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
