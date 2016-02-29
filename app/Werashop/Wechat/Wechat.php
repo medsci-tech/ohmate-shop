@@ -8,13 +8,18 @@ use App\Models\Customer;
 use App\Models\CustomerLocation;
 use App\Models\CustomerType;
 use App\Models\Order;
+use Overtrue\Wechat\AccessToken;
 use Overtrue\Wechat\Auth;
+use Overtrue\Wechat\Http;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
+use Overtrue\Wechat\Payment;
 use Overtrue\Wechat\Payment\Business;
+use Overtrue\Wechat\Payment\UnifiedOrder;
 use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
+use Overtrue\Wechat\Payment\Order as WechatOrder;
 
 /**
  * Class Wechat
@@ -42,6 +47,16 @@ class Wechat
      * @var mixed
      */
     private $_token;
+
+    /**
+     * @var mixed
+     */
+    private $_mchId;
+
+    /**
+     * @var mixed
+     */
+    private $_mchSecret;
 
     /**
      * @return mixed
@@ -84,6 +99,8 @@ class Wechat
         $this->_secret = env('WX_SECRET');
         $this->_aesKey = env('WX_ENCODING_AESKEY');
         $this->_token = env('WX_TOKEN');
+        $this->_mchId = env('WX_MCH_ID');
+        $this->_mchSecret= env('WX_MCH_SECRET');
     }
 
     /**
@@ -223,6 +240,10 @@ class Wechat
         return $user;
     }
 
+    /**
+     * @param $scene_id
+     * @return string
+     */
     public function getForeverQrCodeUrl($scene_id)
     {
         $qrCode = new QRCode($this->_appId, $this->_secret);
@@ -231,8 +252,26 @@ class Wechat
         return $qrCode->show($result->ticket);
     }
 
-    public function generatePaymentConfig(Order $order)
+    /**
+     * @param \App\Models\Order $order
+     * @param \App\Models\Customer $customer
+     * @return array|string
+     */
+    public function generatePaymentConfig(Order $order, Customer $customer)
     {
-//        $business = new Business($this->_appId, $this->_secret, $this)
+        $business = new Business($this->_appId, $this->_secret, $this->_mchId, $this->_mchSecret);
+
+        $wechat_order = new WechatOrder();
+        $wechat_order->body = 'test body';
+        $wechat_order->out_trade_no = md5(uniqid().microtime());
+        $wechat_order->total_fee = ''. floor($order->total_price * 100);
+        $wechat_order->openid = $customer->openid;
+        $wechat_order->notify_url = url('/wechat/payment/notify');
+
+        $unified_order = new UnifiedOrder($business, $wechat_order);
+
+        $payment = new Payment($unified_order);
+
+        return $payment->getConfig();
     }
 }

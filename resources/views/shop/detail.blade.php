@@ -24,7 +24,7 @@
   <div class="swiper-pagination"></div>
 </div>
 
-<div class="container" id="goods">
+<div class="container" id="goods" v-cloak>
   <div class="row">
     <div>
       <span>@{{ goods.price | currency '￥' }}</span><s>原价@{{ goods.priceBefore | currency '￥' }}</s>
@@ -40,7 +40,7 @@
   <div class="navbar-fixed-bottom">
     <div class="col-xs-4">
       <span @click="numMinus()" class="glyphicon glyphicon-minus"></span>
-      <p>@{{ goods.num }}</p>
+      <p v-cloak>@{{ goods.num }}</p>
       <span @click="numAdd()" class="glyphicon glyphicon-plus"></span>
     </div>
     <div class="col-xs-4">

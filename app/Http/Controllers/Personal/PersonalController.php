@@ -69,7 +69,20 @@ class PersonalController extends Controller
             array_push($list, $row);
         }
 
-        return view('personal.beans', ['total' => $total, 'list' => $list]);
+        //按月分组
+        $items = array();
+        foreach($list as $item) {
+            $m_title = $item['title'];
+            unset($item['title']);
+
+            if(!isset($items[$m_title])) {
+                $items[$m_title] = array('title'=>$m_title, 'items'=>array());
+            }
+
+            $items[$m_title]['items'][] = $item;
+        }
+
+        return view('personal.beans', ['total' => $total, 'items' => $items]);
     }
 
     public function friend()
