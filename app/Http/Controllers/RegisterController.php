@@ -26,7 +26,12 @@ class RegisterController extends Controller
 
     public function error()
     {
-        return view('register.error');
+        $appId = env('WX_APPID');
+        $secret = env('WX_SECRET');
+
+        $js = new Js($appId, $secret);
+
+        return view('register.error', ['js' => $js]);
     }
 
     public function success()
