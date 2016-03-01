@@ -66,7 +66,7 @@
 
         });
 
-        window.location.href = uri;
+        window.location.href = uri+'?id='+id;
     }
 
     function reLoad() {
