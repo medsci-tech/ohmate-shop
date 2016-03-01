@@ -19,8 +19,6 @@ class WechatMiddleware
      */
     public function handle($request, Closure $next)
     {
-        dd(\Helper::getSessionCachedUser());
-
         if (\Helper::hasSessionCachedUser()) {
             return $next($request);
         }
