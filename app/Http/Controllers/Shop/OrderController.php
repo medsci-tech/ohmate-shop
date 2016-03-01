@@ -55,6 +55,15 @@ class OrderController extends Controller
      */
     public function generateConfig(Request $request)
     {
+        $validator = \Validator::make($request->all(), [
+            'address_id' => 'required|exists:addresses',
+            'cart' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->getMessages());
+        }
+
+
         $customer = \Helper::getCustomer();
 
         $items = $request->input('cart');
