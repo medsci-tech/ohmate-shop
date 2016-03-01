@@ -140,10 +140,10 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = $this->dailyCeiling($user);
-        if (!$ret) {
-            return false;
-        } /*if>*/
+//        $ret = $this->dailyCeiling($user);
+//        if (!$ret) {
+//            return false;
+//        } /*if>*/
 
         $ret = $this->recharge($user, AppConstant::BEAN_ACTION_STUDY);
         return $ret;
