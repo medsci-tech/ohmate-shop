@@ -214,8 +214,7 @@ a, a:focus, a:hover {
             #cart_form .row .col-xs-9 > div > div p:nth-child(3) {
               width: 20px; }
           #cart_form .row .col-xs-9 > div > div span:nth-child(4) {
-            top: 5px;
-            font-size: 18px; }
+            top: 5px; }
       #cart_form .row .col-xs-9 img {
         position: absolute;
         width: 10px;
@@ -392,8 +391,6 @@ a, a:focus, a:hover {
   #goods .navbar-fixed-bottom span {
     padding: 8px 5px;
     display: inline-block; }
-    #goods .navbar-fixed-bottom span:last-child {
-      font-size: 18px; }
   #goods .navbar-fixed-bottom p {
     margin: 0;
     width: 2.5em;
