@@ -225,3 +225,12 @@ body, html {
     -webkit-animation: b .2s forwards;
     animation: b .2s forwards
 }
+
+.xq_line {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #E5E5E5;
+    color: #E5E5E5;
+    margin-top: 15px;
+    padding-bottom: 15px
+}
