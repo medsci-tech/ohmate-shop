@@ -52,9 +52,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/bean-rules', 'PersonalController@beanRules');
         Route::get('/about-us', 'PersonalController@aboutUs');
     });
-});
 
-Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
+    Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/category', 'CategoryController@index');
 
@@ -80,5 +79,6 @@ Route::group(['prefix' => 'shop', 'namespace' => 'Shop'], function () {
         });
         Route::resource('/commodity', 'CommodityController');
     });
+});
 
 Route::any('github', 'Github\GithubController@onEvent');

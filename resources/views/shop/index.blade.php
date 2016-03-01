@@ -13,16 +13,16 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top1.webp')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top1.jpg')}}">
         </div>
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top2.webp')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top2.jpg')}}">
         </div>
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top3.webp')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top3.jpg')}}">
         </div>
         <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top4.webp')}}">
+            <img class="img-responsive" src="{{url('/image/shop_goods/top4.jpg')}}">
         </div>
     </div>
     <div class="swiper-pagination"></div>
