@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-5.5.3/foundation.min.css">
 </head>
 <body style="background-color: #D8D6D6">
-<div class="first_row"></div>
 @foreach($articles as $index)
     <div class="list">
         <div class="row" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">

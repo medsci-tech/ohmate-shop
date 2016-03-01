@@ -33,7 +33,6 @@
 <!--文章列表-->
 
 <div class="list_top">
-    <div class="first_row"></div><!--top列表上边距-->
     @foreach($articles as $index)
     <div class="list">
         <div class="row" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
