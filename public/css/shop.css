@@ -26,15 +26,6 @@ a, a:focus, a:hover {
   position: relative; }
   .container .row {
     background-color: #ffffff; }
-    .container .row .col-xs-6:nth-child(2), .container .row .col-xs-6:nth-child(3) {
-      height: 100px; }
-      .container .row .col-xs-6:nth-child(2) a > h4, .container .row .col-xs-6:nth-child(2) a > p, .container .row .col-xs-6:nth-child(3) a > h4, .container .row .col-xs-6:nth-child(3) a > p {
-        width: 60%; }
-      .container .row .col-xs-6:nth-child(2) img, .container .row .col-xs-6:nth-child(3) img {
-        position: absolute;
-        right: 10px;
-        top: 0;
-        width: 40%; }
   .container .col-xs-6 {
     border-right: 2px solid #eeeeee;
     border-bottom: 2px solid #eeeeee;
@@ -63,8 +54,7 @@ a, a:focus, a:hover {
       bottom: 0px;
       left: 15px;
       right: 10px;
-      display: inline;
-      border-top: 1px solid #eee; }
+      display: inline; }
       .container .col-xs-6 div p {
         margin-right: 5px;
         margin-bottom: 4px;
