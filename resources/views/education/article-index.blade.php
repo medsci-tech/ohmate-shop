@@ -73,26 +73,26 @@
                 }
             });
 
-            var requestUrls = '/education/article/update-bean';
-            $.ajax({
-                url: requestUrls,
-                data: {
-                    id: id
-                },
-                type: "get",
-                dataType: "json",
-                success: function (json) {
-
-                },
-                error: function (xhr, status, errorThrown) {
-                    alert("Sorry, there was a problem!");
-                }
-            });
+//            var requestUrls = '/education/article/update-bean';
+//            $.ajax({
+//                url: requestUrls,
+//                data: {
+//                    id: id
+//                },
+//                type: "get",
+//                dataType: "json",
+//                success: function (json) {
+//
+//                },
+//                error: function (xhr, status, errorThrown) {
+//                    alert("Sorry, there was a problem!");
+//                }
+//            });
 
 
         });
 
-        window.location.href = uri;
+        window.location.href = uri+'?id='+id;
     }
 
     function reLoad() {
