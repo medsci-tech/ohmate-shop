@@ -11,7 +11,7 @@
 <body>
 <div class="weui_panel_bd">
     <div class="weui_media_box weui_media_text">
-        <h4 class="weui_media_title">{{$article->id}}</h4>
+        <h4 class="weui_media_title">{{$article->title}}</h4>
         <p class="weui_media_desc">时间：{{$article->updated_at->year}}年{{$article->updated_at->month}}月{{$article->updated_at->day}}日</p>
         <img src="/image/education/xq_1.jpg" width="100%">
         <img src="/image/education/xq_2.png" width="100%">
@@ -28,7 +28,7 @@
         </div>
         <div class="weui_actionsheet_action">
             <p>(每日学习迈豆奖励)</p>
-            <input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取">
+            <input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取" onclick="">
         </div>
     </div>
 </div>
@@ -74,6 +74,15 @@
             }
         }
     }
+
+
+    $(document).ready(function() {
+        $('#gethongbao').click(function () {
+            $('#mask').removeClass('weui_fade_toggle');
+            $('#mask').css('display', 'none')
+            $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
+        });
+    });
 
 
     setTimer(10);
