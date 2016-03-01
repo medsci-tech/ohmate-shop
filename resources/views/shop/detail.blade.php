@@ -37,17 +37,17 @@
     <p>图文详情</p>
   </div>
 
-  <div class="navbar-fixed-bottom">
+  <div class="navbar-fixed-bottom center-block">
     <div class="col-xs-4">
-      <span @click="numMinus()" class="glyphicon glyphicon-minus"></span>
+      <span @click="numMinus()" class="fa fa-minus"></span>
       <p v-cloak>@{{ goods.num }}</p>
-      <span @click="numAdd()" class="glyphicon glyphicon-plus"></span>
+      <span @click="numAdd()" class="fa fa-plus-circle"></span>
     </div>
     <div class="col-xs-4">
-      <button class="btn" @click="addGoods()">加入购物车</button>
+      <button class="button button-defualt" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a href="{{url('/shop/cart')}}" class="btn" @click="addGoods()">立即购买</a>
+      <a href="{{url('/shop/cart')}}" class="button button-caution" @click="addGoods()">立即购买</a>
     </div>
   </div>
 

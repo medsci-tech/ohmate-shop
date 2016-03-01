@@ -10,8 +10,9 @@ use App\Http\Controllers\Controller;
 use App\Constants\AppConstant;
 use App\Models\Customer;
 use App\Models\Article;
+use App\Models\ArticleType;
 
-class EductionController extends Controller
+class EducationController extends Controller
 {
     function __construct()
     {
@@ -34,12 +35,16 @@ class EductionController extends Controller
 
     public function category(Request $request)
     {
-        $type = $request->input('type');
-        $typeArticles = Article::where('type_id', $type)->orderBy('updated_at','desc')->get();
+        $type = ArticleType::where('type_en', $request->input('type'))->first();
+        if (!$type) {
+            abort(404);
+        }
+
+        $typeArticles = Article::where('type_id', $type->id)->orderBy('updated_at','desc')->get();
         if (!$typeArticles) {
             abort(404);
         } /*if>*/
-        return view('education.article-category', ['articles' => $typeArticles]);
+        return view('education.article-category', ['title' => $type->type_ch, 'articles' => $typeArticles]);
     }
 
     public function view(Request $request)

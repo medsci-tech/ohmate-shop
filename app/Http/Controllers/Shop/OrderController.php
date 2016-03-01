@@ -25,7 +25,7 @@ class OrderController extends Controller
     }
 
     public function index() {
-        return 'order.index';
+        return view('shop.order');
     }
 
 
@@ -65,10 +65,5 @@ class OrderController extends Controller
                 'result' => $result
             ]
         ]);
-    }
-
-    public function pay(Request $request)
-    {
-        //todo pay
     }
 }

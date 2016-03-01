@@ -215,6 +215,7 @@ return [
         'Wechat'        => App\Werashop\Wechat\Facades\Wechat::class,
         'Helper'        => App\Werashop\Helper\Facades\Helper::class,
         'BeanRecharger' => App\Werashop\Bean\Facades\BeanRecharger::class,
+        'BeanCalculator' => App\Werashop\Bean\Facades\Calculator::class,
     ],
 
 ];

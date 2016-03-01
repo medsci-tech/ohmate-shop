@@ -29,9 +29,9 @@
           <s>@{{ goods.priceBefore   | currency '￥'  }}</s>
           <div>
             <p>数量</p>
-            <span @click="numMinus(goods)" class="glyphicon glyphicon-minus"></span>
+            <span @click="numMinus(goods)" class="fa fa-minus"></span>
             <p>@{{ goods.num }}</p>
-            <span @click="numAdd(goods)" class="glyphicon glyphicon-plus"></span>
+            <span @click="numAdd(goods)" class="fa fa-plus-circle"></span>
           </div>
         </div>
         <img src="{{asset('/image/shop_icon/Delete.png')}}" alt="" @click="removeGoods(goods)">
@@ -58,7 +58,7 @@
         <p>合计 <span>@{{ priceCount | currency '￥' }}</span></p>
       </div>
       <div class="col-xs-4">
-        <button class="btn" @click="postCart()">付&emsp;款</button>
+        <button class="button button-caution button-block" @click="postCart()">付&emsp;款</button>
       </div>
     </div>
 
@@ -74,7 +74,7 @@
         <span class="col-xs-5">@{{ address.phone }}</span>
         <div class="clearfix visible-xs-block"></div>
         <p class="col-xs-4">收货地址</p>
-        <span class="col-xs-8">@{{ address.address }}</span>
+        <span class="col-xs-8">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</span>
         <div class="clearfix visible-xs-block"></div>
       </template>
     </div>
@@ -82,16 +82,9 @@
   </template>
 
   <template v-if=" cart.length == 0 ">
-    <h3 class="text-center">没有商品！</h3>
-    <nav class="navbar-fixed-bottom">
-
-      <nav class="navbar-fixed-bottom">
-        <a href="{{url('/shop/index')}}">
-          <p>商城首页</p>
-        </a>
-      </nav>
-
-    </nav>
+      <a href="{{url('/shop/index')}}">
+          <h3 class="text-center">购物车中没有商品！</h3>
+      </a>
   </template>
 
 </div>
