@@ -140,7 +140,7 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = dailyCeiling($user);
+        $ret = $this->dailyCeiling($user);
         if (!$ret) {
             return false;
         } /*if>*/
