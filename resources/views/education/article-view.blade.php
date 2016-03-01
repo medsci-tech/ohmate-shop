@@ -13,6 +13,7 @@
     <div class="weui_media_box weui_media_text">
         <h4 class="weui_media_title">{{$article->title}}</h4>
         <p class="weui_media_desc">时间：{{$article->updated_at->year}}年{{$article->updated_at->month}}月{{$article->updated_at->day}}日</p>
+        <div class="xq_line"></div>
         <img src="/image/education/xq_1.jpg" width="100%">
         <img src="/image/education/xq_2.png" width="100%">
     </div>
