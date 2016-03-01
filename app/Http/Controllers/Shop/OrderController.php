@@ -26,7 +26,7 @@ class OrderController extends Controller
         $this->middleware('auth.access');
     }
 
-    public function index() {
+    public function index(Request $request) {
         $access_token = \Wechat::getWebAuthAccessToken();
         $timestamp = Carbon::now()->getTimestamp();
         $addr_sign = [
@@ -34,17 +34,18 @@ class OrderController extends Controller
             'appid='.\Wechat::getAppId(),
             'noncestr=123456',
             'timestamp='. $timestamp,
-            'url=http://test.ohmate.com.cn/shop/order'
+            'url='.$request->fullUrl()
         ];
         sort($addr_sign);
 
         $addr_sign = implode('&', $addr_sign);
-        dd($addr_sign);
+        dd(\Helper::getSessionCachedUser());
 
         return view('shop.test')->with([
             'appId' => env('WX_APPID'),
             'timestamp' => $timestamp,
-            'addrSign' => sha1($addr_sign)
+            'addrSign' => sha1($addr_sign),
+            'url' => $request->fullUrl()
         ]);
     }
 
