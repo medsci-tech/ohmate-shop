@@ -6,10 +6,12 @@ use App\Models\Address;
 use App\Models\Commodity;
 use App\Models\Customer;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Overtrue\Wechat\Auth;
 
 class OrderController extends Controller
 {
@@ -25,7 +27,23 @@ class OrderController extends Controller
     }
 
     public function index() {
-        return view('shop.order');
+        $access_token = \Wechat::getWebAuthAccessToken();
+        $timestamp = Carbon::now()->getTimestamp();
+        $addr_sign = [
+            'accesstoken='. $access_token,
+            'appid='.\Wechat::getAppId(),
+            'nonstr=123456',
+            'timestamp='. $timestamp,
+            'url=http://test.ohmate.com.cn/shop/order'
+        ];
+
+        $addr_sign = implode('&', $addr_sign);
+
+        return view('shop.test')->with([
+            'appId' => env('WX_APPID'),
+            'timestamp' => $timestamp,
+            'addrSign' => sha1($addr_sign)
+        ]);
     }
 
 

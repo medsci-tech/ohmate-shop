@@ -307,4 +307,14 @@ class Wechat
         return '' . $order->commodities()->first()->name . '等' . $order->commodities()->get()->count() . '件商品';
     }
 
+    /**
+     * @return string
+     */
+    public function getWebAuthAccessToken()
+    {
+        $auth = new Auth($this->_appId, $this->_secret);
+
+        return $auth->access_token;
+    }
+
 }
