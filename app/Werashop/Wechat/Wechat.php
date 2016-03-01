@@ -275,7 +275,6 @@ class Wechat
         $wechat_order->notify_url = url('/wechat/payment/notify');
 
         $unified_order = new UnifiedOrder($business, $wechat_order);
-
         $payment = new Payment($unified_order);
 
         return $payment->getConfig();
@@ -306,4 +305,13 @@ class Wechat
         return '' . $order->commodities()->first()->name . '等' . $order->commodities()->get()->count() . '件商品';
     }
 
+    /**
+     * @return string
+     */
+    public function getWebAuthAccessToken()
+    {
+        $auth = new Auth($this->_appId, $this->_secret);
+
+        return $auth->access_token;
+    }
 }
