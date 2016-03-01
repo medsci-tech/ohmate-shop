@@ -70,7 +70,7 @@
     });
 </script>
 <script>
-  if(cart.length != 0){
+  if(document.getElementById('touch')){
     var div = document.getElementById('touch');
     div.addEventListener('touchmove',function(event) {
       event.preventDefault();
