@@ -75,7 +75,7 @@
       },
       chooseImg: {
         imgtrue: '/image/shop_icon/icon.png',
-        imgfalse: '/image/shop_icon/icon1.png'
+        imgfalse: '/image/shop_icon/food.png'
       },
     },
 

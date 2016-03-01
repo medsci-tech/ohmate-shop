@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
 
             $table->string('title')->comment('文章标题');
             $table->string('thumbnail')->comment('文章缩略图');
-            $table->string('uri')->comment('文章uri');
+            $table->string('uri')->comment('文章正文图片uri');
             $table->string('description')->comment('文章简述');
             $table->boolean('top')->default(false)->comment('top');
             $table->integer('weight')->unsigned()->default(0)->comment('权重');
