@@ -53,7 +53,7 @@ class EducationController extends Controller
         if (!$article) {
             abort(404);
         } /*if>*/
-        return view('education.article-view', $article);
+        return view('education.article-view', ['article' => $article]);
     }
 
     public function updateCount(Request $request)

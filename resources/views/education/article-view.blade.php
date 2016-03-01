@@ -4,50 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>文章详情</title>
-    <link rel="stylesheet" href="/css/weui.min.css">
+    <link rel="stylesheet" href="/css/weui.css">
+    <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/bonus.css">
-    <script type="text/css">
-        body {
-            font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
-
-        .actionsheet .weui_actionsheet_menu, .actionsheet .weui_actionsheet_action, .actionsheet .weui_actionsheet {
-            background-color: transparent; }
-        .actionsheet #weui_actionsheet {
-            position: absolute;
-            top: 3%; }
-        .actionsheet .weui_actionsheet_menu {
-            text-align: center; }
-        .actionsheet .weui_actionsheet_menu img {
-            width: 90%; }
-        .actionsheet .weui_actionsheet_menu p {
-            position: absolute;
-            top: 0px;
-            margin-top: 60%;
-            width: 70%;
-            left: 15%;
-            font-size: 50px;
-            font-weight: bold;
-            color: #ffe034; }
-        .actionsheet .weui_actionsheet_action p {
-            position: absolute;
-            margin-top: -120px;
-            width: 70%;
-            left: 15%;
-            text-align: center;
-            color: #ffe034; }
-        .actionsheet .weui_actionsheet_action #gethongbao {
-            position: absolute;
-            margin-top: -80px;
-            width: 70%;
-            left: 15%;
-            background-color: #ffe034;
-            color: #df3121;
-            font-weight: bold; }
-    </script>
 </head>
 <body>
-<div>
-    <p>文章详情</p>
+<div class="weui_panel_bd">
+    <div class="weui_media_box weui_media_text">
+        <h4 class="weui_media_title">{{$article->title}}</h4>
+        <p class="weui_media_desc">时间：{{$article->updated_at->year}}年{{$article->updated_at->month}}月{{$article->updated_at->day}}日</p>
+        <img src="/image/education/xq_1.jpg" width="100%">
+        <img src="/image/education/xq_2.png" width="100%">
+    </div>
 </div>
 <!--BEGIN actionSheet-->
 <div id="actionSheet_wrap">
@@ -60,11 +28,12 @@
         </div>
         <div class="weui_actionsheet_action">
             <p>(每日学习迈豆奖励)</p>
-            <a class="weui_btn weui_btn_default" id="gethongbao">确认领取</a>
+            <input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取" onclick="">
         </div>
     </div>
 </div>
 <!--END actionSheet-->
+<input id="text_id" type="hidden" value="{{$article->id}}">
 
 <script src="../../js/vendor/jquery-2.1.4.min.js"></script>
 <script>
@@ -79,11 +48,41 @@
                 $('#mask').addClass('weui_fade_toggle');
                 $('#mask').css('display','block')
                 $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
+
+                $(function () {
+                    var requestUrls = '/education/article/update-bean';
+                    var id = $('#text_id').val();
+                    $.ajax({
+                        url: requestUrls,
+                        data: {
+                            id: id
+                        },
+                        type: "get",
+                        dataType: "json",
+                        success: function (json) {
+
+                        },
+                        error: function (xhr, status, errorThrown) {
+                            alert("Sorry, there was a problem!");
+                        }
+                    });
+
+                });
+
             } else {
                 setTimeout(timer, 1000);
             }
         }
     }
+
+
+    $(document).ready(function() {
+        $('#gethongbao').click(function () {
+            $('#mask').removeClass('weui_fade_toggle');
+            $('#mask').css('display', 'none')
+            $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
+        });
+    });
 
 
     setTimer(10);
