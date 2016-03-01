@@ -45,7 +45,7 @@
                 <p>{{$item->remark}}</p>
                 <img class="img-responsive" src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
                 <div>
-                    <p>￥{{$item->price}}<span>{{intval($item->price * 100)}}</span>迈豆</p>
+                    <p>￥{{$item->price}}<span>{{intval($item->price * 100)}}迈豆</span></p>
                 </div>
             </a>
         </div>
