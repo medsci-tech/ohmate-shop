@@ -29,7 +29,7 @@
 </div>
 
 <div class="container">
-  
+
     <template v-if=" cart.length != 0 ">
         <nav id="touch">
             <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
@@ -70,16 +70,18 @@
     });
 </script>
 <script>
+  if(cart.length != 0){
     var div = document.getElementById('touch');
     div.addEventListener('touchmove',function(event) {
-        event.preventDefault();
-        if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            div.style.left = touch.clientX - 30 + 'px';
-            div.style.top = touch.clientY -30 + 'px';
-            div.style.background = "";
-        }
+      event.preventDefault();
+      if (event.targetTouches.length == 1) {
+        var touch = event.targetTouches[0];
+        div.style.left = touch.clientX - 30 + 'px';
+        div.style.top = touch.clientY -30 + 'px';
+        div.style.background = "";
+      }
     },false);
+  }
 </script>
 
 </body>
