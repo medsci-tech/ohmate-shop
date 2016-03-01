@@ -55,7 +55,7 @@ a, a:focus, a:hover {
       text-overflow: ellipsis; }
     .container .col-xs-6 img {
       width: 140px;
-      height: 70%;
+      height: 60%;
       float: right; }
     .container .col-xs-6 div {
       position: absolute;
