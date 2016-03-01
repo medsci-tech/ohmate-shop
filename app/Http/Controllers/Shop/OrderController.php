@@ -56,7 +56,7 @@ class OrderController extends Controller
     public function generateConfig(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-            'address_id' => 'required|exists:addresses',
+            'address_id' => 'required|exists:addresses,id',
             'cart' => 'required'
         ]);
         if ($validator->fails()) {
