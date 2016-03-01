@@ -30,11 +30,11 @@
 <script src="{{asset('/js/vendor/order.js')}}"></script>
 <script>
     WeixinJSBridge.invoke('editAddress', {
-            "appId": {{$appId}},
+            "appId": "{{$appId}}",
             "scope": "jsapi_address",
             "signType": "sha1",
-            "addrSign": {{$addrSign}},
-            "timeStamp": {{$timestamp}},
+            "addrSign": "{{$addrSign}}",
+            "timeStamp": "{{$timestamp}}",
             "nonceStr": "123456"
     }, function (res) {
 //若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。
