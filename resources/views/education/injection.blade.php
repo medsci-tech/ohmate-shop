@@ -6,18 +6,17 @@
     <title>注射指导</title>
 </head>
 <body>
-<div>
-    <a href="">
-        <div>
-            <img width="100%" src="../../image/education/pen.png" alt="">
-        </div>
+
+<div style="padding: 5px">
+    <a>
+        <img src="../../image/education/pen.png" width="100%">
     </a>
-    <a href="">
-        <div>
-            <img width="100%" src="../../image/education/pin.png" alt="">
-        </div>
+</div>
+<div style="padding: 5px">
+    <a>
+        <img src="../../image/education/pin.png" width="100%">
     </a>
 </div>
 
 </body>
-</html>
+<html>
