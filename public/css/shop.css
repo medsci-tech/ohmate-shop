@@ -23,18 +23,15 @@ a, a:focus, a:hover {
   position: relative; }
   .container .row {
     background-color: #ffffff; }
-    .container .row .col-xs-6:first-child {
-      height: 200px; }
-      .container .row .col-xs-6:first-child img {
-        width: 140px;
-        float: right; }
     .container .row .col-xs-6:nth-child(2), .container .row .col-xs-6:nth-child(3) {
       height: 100px; }
+      .container .row .col-xs-6:nth-child(2) a > h4, .container .row .col-xs-6:nth-child(2) a > p, .container .row .col-xs-6:nth-child(3) a > h4, .container .row .col-xs-6:nth-child(3) a > p {
+        width: 60%; }
       .container .row .col-xs-6:nth-child(2) img, .container .row .col-xs-6:nth-child(3) img {
         position: absolute;
         right: 10px;
-        top: 10px;
-        width: 60px; }
+        top: 0;
+        width: 40%; }
   .container .col-xs-6 {
     border-right: 2px solid #eeeeee;
     border-bottom: 2px solid #eeeeee;
@@ -54,6 +51,7 @@ a, a:focus, a:hover {
       overflow: hidden;
       text-overflow: ellipsis; }
     .container .col-xs-6 img {
+      margin-top: 10px;
       width: 140px;
       height: 50%;
       float: right; }
@@ -62,15 +60,18 @@ a, a:focus, a:hover {
       bottom: 0px;
       left: 15px;
       right: 10px;
-      display: inline; }
-      .container .col-xs-6 div span {
-        font-size: 17px;
-        color: #f71212;
-        margin-right: 5px; }
+      display: inline;
+      border-top: 1px solid #eee; }
       .container .col-xs-6 div p {
-        margin-top: 0px;
+        margin-right: 5px;
+        margin-bottom: 4px;
+        font-size: 17px;
+        color: #f71212; }
+      .container .col-xs-6 div span {
+        float: right;
+        margin-top: 6px;
         margin-bottom: 0px;
-        font-size: 13px;
+        font-size: 10px;
         color: #a3a3a3; }
   .container #touch {
     position: fixed;
