@@ -32,12 +32,14 @@ class OrderController extends Controller
         $addr_sign = [
             'accesstoken='. $access_token,
             'appid='.\Wechat::getAppId(),
-            'nonstr=123456',
+            'noncestr=123456',
             'timestamp='. $timestamp,
             'url=http://test.ohmate.com.cn/shop/order'
         ];
+        sort($addr_sign);
 
         $addr_sign = implode('&', $addr_sign);
+        dd($addr_sign);
 
         return view('shop.test')->with([
             'appId' => env('WX_APPID'),
