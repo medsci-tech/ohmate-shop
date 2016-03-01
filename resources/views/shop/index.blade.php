@@ -29,12 +29,14 @@
 </div>
 
 <div class="container">
-
-    <nav id="touch">
-        <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
-            <i class="fa fa-shopping-cart"></i>
-        </a>
-    </nav>
+  
+    <template v-if=" cart.length != 0 ">
+        <nav id="touch">
+            <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
+                <i class="fa fa-shopping-cart"></i>
+            </a>
+        </nav>
+    </template>
 
     <div class="row">
 
