@@ -273,7 +273,6 @@ class Wechat
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
         $wechat_order->openid = $customer->openid;
         $wechat_order->notify_url = url('/wechat/payment/notify');
-        $wechat_order->
 
         $unified_order = new UnifiedOrder($business, $wechat_order);
 
@@ -305,16 +304,6 @@ class Wechat
     protected function generatePaymentBody(Order $order)
     {
         return '' . $order->commodities()->first()->name . '等' . $order->commodities()->get()->count() . '件商品';
-    }
-
-    /**
-     * @return string
-     */
-    public function getWebAuthAccessToken()
-    {
-        $auth = new Auth($this->_appId, $this->_secret);
-
-        return $auth->access_token;
     }
 
 }
