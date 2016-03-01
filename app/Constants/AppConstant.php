@@ -12,13 +12,13 @@ namespace App\Constants;
 class AppConstant {
 
     /* session key */
-    const SESSION_USER_KEY          = 'logged_user';
+    const SESSION_USER_KEY = 'logged_user';
     /* wechat expire interval */
     const WECHAT_EXPIRE_INTERVAL        = 30;
     const AUTH_CODE_EXPIRE_INTERVAL     = 30;
 
     /* education daily ceiling */
-    const EDUCATION_DAILY_CEILING    = 200;
+    const EDUCATION_DAILY_CEILING = 200;
 
     /* customer type */
     const CUSTOMER_COMMON       = 'common';
@@ -32,7 +32,6 @@ class AppConstant {
     const BEAN_ACTION_SIGN_IN       = 'sign_in';
     const BEAN_ACTION_CONSUME       = 'consume';
     const BEAN_ACTION_INVITE        = 'invite';
-
     const BEAN_ACTION_STUDY         = 'study';
 
     const BEAN_ACTION_CONSUME_FEEDBACK              = 'consume_feedback';
