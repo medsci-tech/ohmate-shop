@@ -80,7 +80,8 @@ class OrderController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'result' => $result
+                'result' => $result,
+                'order_id' => $order->id
             ]
         ]);
     }
