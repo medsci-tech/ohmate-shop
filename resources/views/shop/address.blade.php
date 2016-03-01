@@ -49,7 +49,7 @@
       </label>
 
       <div class="clearfix"></div>
-      <button class="btn">添加并设为默认</button>
+      <button class="button button-caution button-rounded">添加并设为默认</button>
     </form>
   </div>
 </div>
