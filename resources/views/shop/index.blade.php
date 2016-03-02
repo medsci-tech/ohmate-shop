@@ -11,7 +11,7 @@
 <body>
 
 
-<div class="container">
+<div class="container shop-index">
     <div class="row">
         <div class="swiper-container">
             <div class="swiper-wrapper">
