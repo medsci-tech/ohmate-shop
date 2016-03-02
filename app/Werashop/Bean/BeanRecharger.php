@@ -100,15 +100,17 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $value = 0;
+        $action = null;
         if ($customer->type->type_en == AppConstant::CUSTOMER_DOCTOR) {
-            $value = AppConstant::DOCTOR_INVITE_RATE;
+            $action = AppConstant::BEAN_ACTION_DOCTOR_INVITE;
         } else if ($customer->type->type_en == AppConstant::CUSTOMER_NURSE) {
-            $value = AppConstant::NURSE_INVITE_RATE;
+            $action = AppConstant::BEAN_ACTION_NURSE_INVITE;
+        } else if ($customer->type->type_en == AppConstant::CUSTOMER_VOLUNTEER) {
+            $action = AppConstant::BEAN_ACTION_VOLUNTEER_INVITE;
         } else {
-            $value = AppConstant::VOLUNTEER_INVITE_RATE;
-        }
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_INVITE, $value);
+            $action = AppConstant::BEAN_ACTION_INVITE;
+        } /*else>*/
+        $ret = $this->recharge($customer, $action);
         return $ret;
     }
 
@@ -180,15 +182,11 @@ class BeanRecharger
         } /*if>*/
 
         $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
+        if ((!$customer) || ($customer->beans_total <= 0)) {
             return (-1);
         } /*if>*/
 
         $totalMoney = $customer->beans_total / AppConstant::MONEY_BEAN_RATE;
-        if ($totalMoney <= 0) {
-            return (-1);
-        } /*if>*/
-
         if ($totalMoney >= $money) {
             return (0);
         } /*if>*/

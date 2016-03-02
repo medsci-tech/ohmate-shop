@@ -20,7 +20,8 @@ class AppConstant {
     /* education daily ceiling */
     const EDUCATION_STUDY_BEAN      = 10;
     const EDUCATION_DAILY_CEILING   = 20;
-
+    const MONEY_BEAN_RATE           = 100;
+    
     /* customer type */
     const CUSTOMER_COMMON       = 'common';
     const CUSTOMER_VOLUNTEER    = 'volunteer';
@@ -28,15 +29,15 @@ class AppConstant {
     const CUSTOMER_DOCTOR       = 'doctor';
 
     /* Bean Actions */
-    const MONEY_BEAN_RATE           = 100;
-    const DOCTOR_INVITE_RATE        = 30;
-    const NURSE_INVITE_RATE         = 5;
-    const VOLUNTEER_INVITE_RATE     = 5;
     const BEAN_ACTION_REGISTER      = 'register';
     const BEAN_ACTION_SIGN_IN       = 'sign_in';
     const BEAN_ACTION_CONSUME       = 'consume';
     const BEAN_ACTION_INVITE        = 'invite';
     const BEAN_ACTION_STUDY         = 'study';
+
+    const BEAN_ACTION_DOCTOR_INVITE     = 'doctor_invite';
+    const BEAN_ACTION_NURSE_INVITE      = 'nurse_invite';
+    const BEAN_ACTION_VOLUNTEER_INVITE  = 'volunteer_invite';
 
     const BEAN_ACTION_CONSUME_FEEDBACK      = 'consume_feedback';
     const BEAN_ACTION_VOLUNTEER_FEEDBACK    = 'volunteer_feedback';
