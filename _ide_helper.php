@@ -10640,8 +10640,17 @@ namespace {
          *
          * @static 
          */
-        public static function calculateStudy($customer){
-            return \App\Werashop\Bean\BeanRecharger::calculateStudy($customer);
+        public static function executeConsume($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::executeConsume($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function calculateStudy($user){
+            return \App\Werashop\Bean\BeanRecharger::calculateStudy($user);
         }
         
     }
