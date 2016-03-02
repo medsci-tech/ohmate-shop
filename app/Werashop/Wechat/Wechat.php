@@ -316,4 +316,32 @@ class Wechat
 
         return $auth->access_token;
     }
+
+    /**
+     * @param $url
+     * @return bool
+     */
+    public function urlHasAuthParameters($url)
+    {
+        if (!strstr($url, 'code=')) {
+            return false;
+        }
+
+        $back = substr($url, strpos($url, 'code=') + 5);
+        $code = substr($back, 0, strpos($back, '&'));
+
+        if (strlen($code) == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param $url
+     * @return string
+     */
+    public function urlRemoveAuthParameters($url)
+    {
+        return preg_replace('/code=.*(&|\s)/U', '', $url);
+    }
 }
