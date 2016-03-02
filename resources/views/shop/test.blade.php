@@ -29,6 +29,7 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script src="{{asset('/js/vendor/order.js')}}"></script>
 <script>
+    alert('111');
     WeixinJSBridge.invoke('editAddress', {
             "appId": "{{$appId}}",
             "scope": "jsapi_address",
