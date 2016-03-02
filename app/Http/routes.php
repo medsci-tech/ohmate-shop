@@ -26,7 +26,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/create', 'RegisterController@create');
         Route::post('/store', 'RegisterController@store');
         Route::get('/sms', 'RegisterController@sms');
-        Route::get('/focus', 'RegisterController@focus');
         Route::get('/error', 'RegisterController@error');
         Route::get('/success', 'RegisterController@success');
     });
@@ -70,8 +69,6 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('update', 'AddressController@update');
             Route::post('list', 'AddressController@addressList');
         });
-
-        Route::get('/personal', 'PersonalController@index');
 
         Route::group(['prefix' => 'cart'], function () {
             Route::get('/', 'CartController@index');
