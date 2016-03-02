@@ -47,6 +47,7 @@
                     <img src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
                     <div class="caption">
                         <p>{{$item->name}}</p>
+                        <p class="small">{{$item->remark}}</p>
                         <strong>￥{{$item->price}}</strong><span>/<small>{{intval($item->price * 100)}}迈豆</small></span>
                     </div>
                 </div>
