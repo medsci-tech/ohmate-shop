@@ -10,7 +10,7 @@
 <body>
 
 @for($i = count($items); $i >= 0; $i--)
-  <div class="weui_cells_title">{{$year}}年{{string($i + 1)}}月账单</div>
+  <div class="weui_cells_title">{{$year}}年{{$i + 1}}月账单</div>
   <div class="weui_cells">
     @foreach($items[$i] as $index)
       <div class="weui_cell">
