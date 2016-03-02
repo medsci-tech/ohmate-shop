@@ -27,7 +27,6 @@
 </div>
 
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
-<script src="{{asset('/js/vendor/order.js')}}"></script>
 <script>
     alert('111');
 
