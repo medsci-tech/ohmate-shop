@@ -16,8 +16,18 @@ use \App\Models\CustomerBean;
 use \App\Models\CustomerType;
 use \App\Models\CustomerDailyArticle;
 
+/**
+ * Class BeanRecharger
+ * @package App\Werashop\Bean
+ */
 class BeanRecharger
 {
+    /**
+     * @param $customer
+     * @param $action
+     * @param int $value
+     * @return bool
+     */
     public function recharge($customer, $action, $value = 1)
     {
         $beanRate = BeanRate::where('action_en', $action)->first();
@@ -37,6 +47,11 @@ class BeanRecharger
         return ($ret);
     }
 
+    /**
+     * @param $customer
+     * @param $action
+     * @param $value
+     */
     public function update($customer, $action, $value)
     {
         if ($action == AppConstant::BEAN_ACTION_CONSUME) {
@@ -51,6 +66,10 @@ class BeanRecharger
         $customer->save();
     }
 
+    /**
+     * @param $user
+     * @return bool
+     */
     public function register($user)
     {
         \Log::info('BeanRecharger:register:user:' . $user);
@@ -63,6 +82,10 @@ class BeanRecharger
         return $ret;
     }
 
+    /**
+     * @param $user
+     * @return bool
+     */
     public function signIn($user)
     {
         \Log::info('BeanRecharger:signIn:user:' . $user);
@@ -75,6 +98,11 @@ class BeanRecharger
         return $ret;
     }
 
+    /**
+     * @param $user
+     * @param $value
+     * @return bool
+     */
     public function consume($user, $value)
     {
         \Log::info('BeanRecharger:consume:user:' . $user, ',value:' . $value);
@@ -88,6 +116,10 @@ class BeanRecharger
         return $ret;
     }
 
+    /**
+     * @param $referrer
+     * @return bool
+     */
     public function invite($referrer)
     {
         \Log::info('BeanRecharger:invite:referrer:' . $referrer);
@@ -114,6 +146,9 @@ class BeanRecharger
         return $ret;
     }
 
+    /**
+     * @param $customer
+     */
     private function sumDailyStudy($customer)
     {
         $daily = CustomerDailyArticle::where('customer_id', $customer->id)->first();
@@ -128,6 +163,10 @@ class BeanRecharger
         $daily->save();
     }
 
+    /**
+     * @param $user
+     * @return bool
+     */
     public function study($user)
     {
         \Log::info('BeanRecharger:study:user:' . $user);
@@ -145,6 +184,11 @@ class BeanRecharger
         return true;
     }
 
+    /**
+     * @param $user
+     * @param $value
+     * @return bool
+     */
     public function consumeFeedback($user, $value)
     {
         \Log::info('BeanRecharger:consumeFeedback:user:' . $user, ',value:' . $value);
@@ -158,6 +202,11 @@ class BeanRecharger
         return $ret;
     }
 
+    /**
+     * @param $user
+     * @param $value
+     * @return bool
+     */
     public function volunteerFeedback($user, $value) {
         \Log::info('BeanRecharger:volunteerFeedback:user:' . $user, ',value:' . $value);
         $customer = Customer::where('id', $user)->first();
@@ -175,6 +224,11 @@ class BeanRecharger
         return $ret;
     }
 
+    /**
+     * @param $user
+     * @param $money
+     * @return int
+     */
     public function calculateConsume($user, $money)
     {
         if ($money <= 0) {
@@ -194,6 +248,11 @@ class BeanRecharger
         return ($money - $totalMoney);
     }
 
+    /**
+     * @param $user
+     * @param $value
+     * @return bool
+     */
     public function executeConsume($user, $value)
     {
         $ret = consume($user, $value);
@@ -212,6 +271,10 @@ class BeanRecharger
         }
     }
 
+    /**
+     * @param $user
+     * @return bool
+     */
     public function calculateStudy($user) {
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
