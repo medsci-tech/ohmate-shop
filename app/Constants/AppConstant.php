@@ -21,7 +21,7 @@ class AppConstant {
     const EDUCATION_STUDY_BEAN      = 10;
     const EDUCATION_DAILY_CEILING   = 20;
     const MONEY_BEAN_RATE           = 100;
-    
+
     /* customer type */
     const CUSTOMER_COMMON       = 'common';
     const CUSTOMER_VOLUNTEER    = 'volunteer';
