@@ -194,6 +194,24 @@ class BeanRecharger
         return ($money - $totalMoney);
     }
 
+    public function executeConsume($user, $value)
+    {
+        $ret = consume($user, $value);
+        if (!$ret) {
+            return false;
+        }
+
+        $ret = consumeFeedback($user, $value);
+        if (!$ret) {
+            return false;
+        }
+
+        $ret = volunteerFeedback($user, $value);
+        if (!$ret) {
+            return false;
+        }
+    }
+
     public function calculateStudy($user) {
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
