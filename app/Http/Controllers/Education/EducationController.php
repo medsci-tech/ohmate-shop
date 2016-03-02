@@ -53,7 +53,10 @@ class EducationController extends Controller
         if (!$article) {
             abort(404);
         } /*if>*/
-        return view('education.article-view', ['article' => $article]);
+        $customer   = \Helper::getCustomer();
+        $show       = \BeanRecharger::calculateStudy($customer->id);
+
+        return view('education.article-view', ['article' => $article, 'show' => $show]);
     }
 
     public function updateCount(Request $request)
