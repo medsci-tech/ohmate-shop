@@ -243,6 +243,8 @@ class Wechat
         $secret = $this->_secret;
         $auth = new Auth($appId, $secret);
         $user = $auth->authorize(url($jump_url));
+
+        dd($auth->access_token);
         return $user;
     }
 
