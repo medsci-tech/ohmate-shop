@@ -56,9 +56,9 @@ class CommoditySeeder extends Seeder
             'price' => 18.00
         ]);
         DB::table('commodities')->insert([
-            'name' => '补邮，满79包邮(偏远地区除外)',
-            'remark' => '补邮费专拍',
-            'introduction' => '补邮费专拍',
+            'name' => '补邮',
+            'remark' => '偏远地区除外',
+            'introduction' => '偏远地区除外',
             'price' => 0.01
         ]);
     }
