@@ -70,8 +70,6 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('list', 'AddressController@addressList');
         });
 
-        Route::get('/personal', 'PersonalController@index');
-
         Route::group(['prefix' => 'cart'], function () {
             Route::get('/', 'CartController@index');
             Route::post('/customer-information', 'CartController@customerInformation');
