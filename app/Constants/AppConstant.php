@@ -29,6 +29,9 @@ class AppConstant {
 
     /* Bean Actions */
     const MONEY_BEAN_RATE           = 100;
+    const DOCTOR_INVITE_RATE        = 30;
+    const NURSE_INVITE_RATE         = 5;
+    const VOLUNTEER_INVITE_RATE     = 5;
     const BEAN_ACTION_REGISTER      = 'register';
     const BEAN_ACTION_SIGN_IN       = 'sign_in';
     const BEAN_ACTION_CONSUME       = 'consume';

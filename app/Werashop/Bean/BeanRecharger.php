@@ -99,7 +99,15 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_INVITE);
+        $value = 0;
+        if ($customer->type->type_en == AppConstant::CUSTOMER_DOCTOR) {
+            $value = AppConstant::DOCTOR_INVITE_RATE;
+        } else if ($customer->type->type_en == AppConstant::CUSTOMER_NURSE) {
+            $value = AppConstant::NURSE_INVITE_RATE;
+        } else {
+            $value = AppConstant::VOLUNTEER_INVITE_RATE;
+        }
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_INVITE, $value);
         return $ret;
     }
 
