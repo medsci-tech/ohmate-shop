@@ -9,7 +9,7 @@
 </head>
 <body>
 
-@for($i=count($items); $i<=0; $i--)
+@for($i = count($items); $i >= 0; $i--)
   <div class="weui_cells_title">{{$year}}年{{array_keys($items[$i])}}月账单</div>
   <div class="weui_cells">
     @foreach($items[$i] as $index)
