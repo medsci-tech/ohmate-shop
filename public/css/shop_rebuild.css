@@ -30,7 +30,7 @@ a, a:focus, a:hover {
   .shop-index .row .thumbnail .caption {
     padding: 5px; }
     .shop-index .row .thumbnail .caption p:first-child {
-      height: 2.5em;
+      margin: 0;
       font-weight: 700; }
     .shop-index .row .thumbnail .caption strong {
       color: #f71212; }
