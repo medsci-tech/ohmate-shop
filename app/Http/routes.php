@@ -26,7 +26,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/create', 'RegisterController@create');
         Route::post('/store', 'RegisterController@store');
         Route::get('/sms', 'RegisterController@sms');
-        Route::get('/focus', 'RegisterController@focus');
         Route::get('/error', 'RegisterController@error');
         Route::get('/success', 'RegisterController@success');
     });

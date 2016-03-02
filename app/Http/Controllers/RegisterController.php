@@ -19,16 +19,10 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function focus()
-    {
-        return view('register.focus');
-    }
-
     public function error()
     {
-        $appId = env('WX_APPID');
+        $appId  = env('WX_APPID');
         $secret = env('WX_SECRET');
-
         $js = new Js($appId, $secret);
 
         return view('register.error', ['js' => $js]);
@@ -36,9 +30,8 @@ class RegisterController extends Controller
 
     public function success()
     {
-        $appId = env('WX_APPID');
+        $appId  = env('WX_APPID');
         $secret = env('WX_SECRET');
-
         $js = new Js($appId, $secret);
 
         return view('register.success', ['js' => $js]);
@@ -53,7 +46,7 @@ class RegisterController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11',
-            'code' => 'required|digits:6'
+            'code'  => 'required|digits:6'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();

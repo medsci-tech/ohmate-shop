@@ -14,7 +14,7 @@ class BeanRatesSeeder extends Seeder
         DB::table('bean_rates')->insert([
             'action_en' => 'register',
             'action_ch' => '用户注册',
-            'rate' => 2000,
+            'rate' => 2180,
             'icon_url' => '/image/bean/register_icon.png'
         ]);
 
@@ -28,7 +28,7 @@ class BeanRatesSeeder extends Seeder
         DB::table('bean_rates')->insert([
             'action_en' => 'consume',
             'action_ch' => '消费抵扣',
-            'rate' => -1,
+            'rate' => 1,
             'icon_url' => '/image/bean/consume_icon.png'
         ]);
 
@@ -54,14 +54,7 @@ class BeanRatesSeeder extends Seeder
         ]);
 
         DB::table('bean_rates')->insert([
-            'action_en' => 'feedback_doctor_education',
-            'action_ch' => '患者学习',
-            'rate' => 0.1,
-            'icon_url' => '/image/bean/feedback_icon.png'
-        ]);
-
-        DB::table('bean_rates')->insert([
-            'action_en' => 'feedback_doctor_consume',
+            'action_en' => 'volunteer_feedback',
             'action_ch' => '患者消费',
             'rate' => 0.05,
             'icon_url' => '/image/bean/feedback_icon.png'

@@ -55,7 +55,6 @@ class PersonalController extends Controller
     public function beans()
     {
         $customer       = \Helper::getCustomer();
-        $total          = $customer->beans_total;
         $beanThisYear   = $customer->beans;
 
         $resultArray = null;

@@ -17,12 +17,7 @@ use \App\Models\CustomerType;
 
 class BeanRecharger
 {
-    public function test()
-    {
-        dd('bean test');
-    }
-
-    public function recharge($user, $action, $value = 1)
+    public function recharge($customer, $action, $value = 1)
     {
         $beanRate = BeanRate::where('action_en', $action)->first();
         if (!$beanRate) {
@@ -30,13 +25,10 @@ class BeanRecharger
         } /*if>*/
 
         $result = $beanRate->rate * $value;
-        $ret    = $this->update($user, $action, $result);
-        if (!$ret) {
-            return false;
-        } /*if>*/
+        $this->update($customer, $action, $result);
 
         $bean = new CustomerBean();
-        $bean->customer_id  = $user;
+        $bean->customer_id  = $customer->id;
         $bean->bean_rate_id = $beanRate->id;
         $bean->value        = $value;
         $bean->result       = $beanRate->rate * $value;
@@ -44,13 +36,8 @@ class BeanRecharger
         return ($ret);
     }
 
-    public function update($user, $action, $value)
+    public function update($customer, $action, $value)
     {
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
         if ($action == AppConstant::BEAN_ACTION_CONSUME) {
             if ($value >= $customer->beans_total) {
                 $customer->beans_total = 0;
@@ -59,9 +46,8 @@ class BeanRecharger
             }/*else>>*/
         } else {
             $customer->beans_total += $value;
-        } /*else*/
+        } /*else>*/
         $customer->save();
-        return true;
     }
 
     public function register($user)
@@ -72,7 +58,7 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_REGISTER);
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_REGISTER);
         return $ret;
     }
 
@@ -84,19 +70,20 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_SIGN_IN);
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_SIGN_IN);
         return $ret;
     }
 
     public function consume($user, $value)
     {
-        \Log::info('BeanRecharger:consume:user:' . $user);
+        \Log::info('BeanRecharger:consume:user:' . $user, ',value:' . $value);
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_CONSUME, $value);
+        $money = $value * AppConstant::MONEY_BEAN_RATE;
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME, $money);
         return $ret;
     }
 
@@ -112,24 +99,18 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_INVITE);
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_INVITE);
         return $ret;
     }
 
-    private function dailyCeiling($user)
+    private function sumDailyStudy($user)
     {
-        $beanRate = BeanRate::where('action_en', AppConstant::BEAN_ACTION_STUDY)->first();
-        if (!$beanRate) {
-            return false;
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer) {
+            return (-1);
         } /*if>*/
-        $today = Carbon::today();
 
-        $total = DB::select('select sum(result) from customer_beans where customer_id = ? and Date(updated_at) = ?',
-                $user, $today);
-        if (($total + $beanRate->rate) > AppConstant::EDUCATION_DAILY_CEILING) {
-            return false;
-        } /*if>*/
-        return true;
+
     }
 
     public function study($user)
@@ -140,12 +121,7 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-//        $ret = $this->dailyCeiling($user);
-//        if (!$ret) {
-//            return false;
-//        } /*if>*/
-
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_STUDY);
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
         return $ret;
     }
 
@@ -157,51 +133,61 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $ret = $this->recharge($user, AppConstant::BEAN_ACTION_CONSUME_FEEDBACK, $value);
+        $money = $value * AppConstant::MONEY_BEAN_RATE;
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME_FEEDBACK, $money);
         return $ret;
     }
 
-    public function doctorEducationFeedback($user)
+    public function volunteerFeedback($user, $value) {
+        \Log::info('BeanRecharger:volunteerFeedback:user:' . $user, ',value:' . $value);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer || (0 == $customer->referrer_id)) {
+            return false;
+        } /*if>*/
+
+        $referrer = Customer::where('id', $customer->referrer_id)->first();
+        if ($referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+            return false;
+        } /*if>*/
+
+        $money = $value * AppConstant::MONEY_BEAN_RATE;
+        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_VOLUNTEER_FEEDBACK, $money);
+        return $ret;
+    }
+
+    public function calculateConsume($user, $money)
     {
-        \Log::info('BeanRecharger:doctorEducationFeedback:user:' . $user);
+        if ($money <= 0) {
+            return (-1);
+        } /*if>*/
+
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
-            return false;
+            return (-1);
         } /*if>*/
 
-        $doctorType = CustomerType::where('type_en', 'doctor')->first();
-
-        if (0 == $customer->referrer_id) {
-            return false;
-        } /*if>*/
-        $referrer = Customer::where('id', $customer->referrer_id)->first();
-        if (!$referrer || ($referrer->type_id != $doctorType->id)) {
-            return false;
+        $totalMoney = $customer->beans_total / AppConstant::MONEY_BEAN_RATE;
+        if ($totalMoney <= 0) {
+            return (-1);
         } /*if>*/
 
-        $ret = $this->recharge($referrer->id, AppConstant::BEAN_ACTION_EDUCATION_FEEDBACK_DOCTOR);
-        return $ret;
+        if ($totalMoney >= $money) {
+            return (0);
+        } /*if>*/
+
+        return ($money - $totalMoney);
     }
 
-    public function doctorConsumeFeedback($user, $value) {
-        \Log::info('BeanRecharger:doctorConsumeFeedback:user:' . $user);
+    public function calculateStudy($user) {
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
             return false;
         } /*if>*/
-
-        $doctorType = CustomerType::where('type_en', 'doctor')->first();
-
-        if (0 == $customer->referrer_id) {
+        $value = $customer->dailyArticles->where('date', Carbon::now()->toDateString())->value;
+        if (($value + EDUCATION_STUDY_BEAN) > AppConstant::EDUCATION_DAILY_CEILING) {
             return false;
         } /*if>*/
-        $referrer = Customer::where('id', $customer->referrer_id)->first();
-        if (!$referrer || ($referrer->type_id != $doctorType->id)) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($referrer->id, AppConstant::BEAN_ACTION_CONSUME_FEEDBACK_DOCTOR, $value);
-        return $ret;
+        return true;
     }
 
 } /*class*/
