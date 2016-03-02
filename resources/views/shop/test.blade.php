@@ -31,12 +31,12 @@
 <script>
     alert('111');
     WeixinJSBridge.invoke('editAddress', {
-            "appId": "{{$appId}}",
-            "scope": "jsapi_address",
-            "signType": "sha1",
-            "addrSign": "{{$addrSign}}",
-            "timeStamp": "{{$timestamp}}",
-            "nonceStr": "123456"
+            appId: "{{$appId}}",
+            scope: "jsapi_address",
+            signType: "sha1",
+            addrSign: "{{$addrSign}}",
+            timeStamp: "{{$timestamp}}",
+            nonceStr: "123456"
     }, function (res) {
         alert('123');
         alert(res);
