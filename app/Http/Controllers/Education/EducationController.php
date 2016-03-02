@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Constants\AppConstant;
-use App\Models\Customer;
 use App\Models\Article;
 use App\Models\ArticleType;
 
@@ -38,12 +36,13 @@ class EducationController extends Controller
         $type = ArticleType::where('type_en', $request->input('type'))->first();
         if (!$type) {
             abort(404);
-        }
+        } /*if>*/
 
         $typeArticles = Article::where('type_id', $type->id)->orderBy('updated_at','desc')->get();
         if (!$typeArticles) {
             abort(404);
         } /*if>*/
+
         return view('education.article-category', ['title' => $type->type_ch, 'articles' => $typeArticles]);
     }
 
@@ -53,7 +52,10 @@ class EducationController extends Controller
         if (!$article) {
             abort(404);
         } /*if>*/
-        return view('education.article-view', ['article' => $article]);
+        $customer   = \Helper::getCustomer();
+        $show       = \BeanRecharger::calculateStudy($customer->id);
+
+        return view('education.article-view', ['article' => $article, 'show' => $show]);
     }
 
     public function updateCount(Request $request)

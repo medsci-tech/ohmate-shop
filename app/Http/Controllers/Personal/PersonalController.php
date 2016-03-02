@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
-use App\Models\CustomerBean;
-use App\Constants\AppConstant;
 use Carbon\Carbon;
 
 class PersonalController extends Controller
@@ -55,7 +52,6 @@ class PersonalController extends Controller
     public function beans()
     {
         $customer       = \Helper::getCustomer();
-        $total          = $customer->beans_total;
         $beanThisYear   = $customer->beans;
 
         $resultArray = null;

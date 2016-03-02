@@ -6,7 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>购物车</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
 
 </head>
 <body>
@@ -15,79 +15,113 @@
 
   <template v-if=" cart.length != 0 ">
 
-    <div class="row" v-for="goods in cart">
-      <div class="col-xs-3">
-        <img class="img-responsive" :src="'/image/shop_goods/' + goods.id + '.png'" alt="">
-      </div>
-      <div class="col-xs-9">
-        <h4>@{{ goods.name }}</h4>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">商品清单</div>
+        <ul class="list-unstyled list-group">
+          <li class="list-group-item" v-for="goods in cart">
+            <div class="media">
+              <div class="media-left media-middle">
+                <img class="media-object" src="../../image/shop_goods/2.png" alt="...">
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">@{{ goods.name }}</h4>
 
-        <p>@{{ goods.tag }}</p>
-        <br>
-        <div>
-          <span>@{{ goods.price | currency '￥'  }}</span>
-          <s>@{{ goods.priceBefore   | currency '￥'  }}</s>
-          <div>
-            <p>数量</p>
-            <span @click="numMinus(goods)" class="fa fa-minus"></span>
-            <p>@{{ goods.num }}</p>
-            <span @click="numAdd(goods)" class="fa fa-plus"></span>
-          </div>
+                <p>
+                  <strong>@{{ goods.price | currency '￥' }}</strong>
+            <span>数量
+              <span @click="numMinus(goods)" class="fa fa-minus"></span>
+                  <span>@{{ goods.num }}</span>
+                  <span @click="numAdd(goods)" class="fa fa-plus"></span>
+                  </span>
+                </p>
+                <span class="fa fa-close" @click="removeGoods(goods)"></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">消费明细</div>
+        <table class="table table-condensed table1">
+          <tbody>
+          <tr v-for="goods in cart">
+            <td>@{{ goods.name }}</td>
+            <td>x@{{ goods.num }}</td>
+            <td>@{{ priceGoods(goods) | currency '￥' }}</td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td>运费</td>
+            <td></td>
+            <td>@{{ address.postage | currency '￥' }}</td>
+          </tr>
+          <tr>
+            <td>迈豆折扣</td>
+            <td>－@{{ priceDiscount | currency '￥' }}</td>
+            <td>@{{ priceDiscount*100 }}迈豆</td>
+          </tr>
+          <tr>
+            <td>合计</td>
+            <td></td>
+            <td>@{{ priceCount | currency '￥' }}</td>
+          </tr>
+          </tfoot>
+
+
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <template v-if=" address == null ">
+        <div class="col-xs-12">
+          <br>
+          <a class="button button-block button-border button-rounded" href="">添加收货地址</a>
         </div>
-        <img src="{{asset('/image/shop_icon/Delete.png')}}" alt="" @click="removeGoods(goods)">
-      </div>
-    </div>
-    <h5>消费明细></h5>
-    <div class="cart-detail">
-      <ul class="list-unstyled">
-        <li v-for="goods in cart">
-          <span>@{{ goods.name }}</span>
-          <span>x@{{ goods.num }}</span>
-          <span>@{{ priceGoods(goods) | currency '￥' }}</span>
-        </li>
-      </ul>
-      <p>商品价格<span>@{{ priceAll | currency '￥' }}</span></p>
-      <p>运费 <span>@{{ postage | currency '￥' }}</span></p>
-      <p>迈豆折扣
-        <span>－@{{ priceDiscount | currency '￥' }}</span>
-        <span>@{{ priceDiscount*100 }}迈豆</span>
-      </p>
-    </div>
-    <div class="navbar-fixed-bottom cart-submit">
-      <div class="col-xs-8">
-        <p>合计 <span>@{{ priceCount | currency '￥' }}</span></p>
-      </div>
-      <div class="col-xs-4">
-        <button class="button button-caution button-block" @click="postCart()">付&emsp;款</button>
-      </div>
-    </div>
-
-
-    <div class="address">
-      <template v-if=" address == ''">
-        <a class="btn  btn-default center-block" href="{{url('/shop/address')}}">添加收货地址</a>
       </template>
       <template v-else>
-        <p>默认收货地址 <a href="{{url('/shop/address')}}"><span>管理地址</span></a></p>
-        <p class="col-xs-4">收货人</p>
-        <span class="col-xs-3">@{{ address.name }}</span>
-        <span class="col-xs-5">@{{ address.phone }}</span>
-        <div class="clearfix visible-xs-block"></div>
-        <p class="col-xs-4">收货地址</p>
-        <span class="col-xs-8">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</span>
-        <div class="clearfix visible-xs-block"></div>
+        <div class="panel panel-default">
+          <div class="panel-heading">默认收货地址<a href=""><span class="small">管理收货地址</span></a></div>
+          <table class="table table-condensed table2">
+            <tr>
+              <th>收货人</th>
+              <td>@{{ address.name }}</td>
+              <td>@{{ address.phone }}</td>
+            </tr>
+            <tr>
+              <th>收货地址</th>
+              <td colspan="2">@{{ address.address }}</td>
+            </tr>
+          </table>
+        </div>
       </template>
+    </div>
+    <br><br><br><br>
+
+    <div class="navbar-fixed-bottom">
+      <div class="col-xs-7">
+        <p>合计 <span>@{{ priceCount | currency '￥' }}</span></p>
+      </div>
+      <div class="col-xs-5">
+        <button class="button button-caution button-rounded" @click="postCart()">付&emsp;款</button>
+      </div>
     </div>
 
   </template>
 
   <template v-if=" cart.length == 0 ">
-      <a href="{{url('/shop/index')}}">
-          <h3 class="text-center">购物车中没有商品！</h3>
-      </a>
+    <a href="{{url('/shop/index')}}">
+      <h3 class="text-center">购物车中没有商品！</h3>
+    </a>
   </template>
 
 </div>
+
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
