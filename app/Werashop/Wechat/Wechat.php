@@ -313,6 +313,7 @@ class Wechat
     {
         $auth = new Auth($this->_appId, $this->_secret);
         $auth->authorize($url, 'snsapi_base,snsapi_userinfo');
+        dd($auth->user());
 
         return $auth->access_token;
     }
