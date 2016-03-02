@@ -242,9 +242,10 @@ class Wechat
         $appId = $this->_appId;
         $secret = $this->_secret;
         $auth = new Auth($appId, $secret);
-        $user = $auth->authorize(url($jump_url), 'snsapi_userinfo');
-        \Session::put('web_token', $auth->access_token);
-        return $user;
+        $result = $auth->authorize(url($jump_url), 'snsapi_base');
+
+        \Session::put('web_token', $result->get('access_token'));
+        return $auth->getUser($result->get('openid'), $result->get('access_token'));
     }
 
     /**
@@ -313,9 +314,8 @@ class Wechat
     {
         $auth = new Auth($this->_appId, $this->_secret);
         $result = $auth->authorize($url, 'snsapi_base');
-        dd($auth->getUser($result->get('openid'), $result->get('access_token')));
 
-        return $auth->access_token;
+        return $result->get('access_token');
     }
 
     /**
