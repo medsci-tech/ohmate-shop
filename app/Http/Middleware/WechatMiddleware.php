@@ -23,7 +23,7 @@ class WechatMiddleware
             return $next($request);
         }
 
-        $user = \Wechat::authorizeUser($request->fullUrl());
+        $user = \Wechat::authorizeUser($request->url());
         /*
          * if auth failed, this user maybe not a subscribed account,
          * but we allow this man go on to education page.
