@@ -9,35 +9,21 @@
 </head>
 <body>
 
-@for($i = count($items); $i >= 0; $i--)
-  <div class="weui_cells_title">{{$year}}年{{$i + 1}}月账单</div>
+@foreach($beans as $key => $month)
+  <div class="weui_cells_title">{{$year}}年{{$key}}月账单</div>
+
   <div class="weui_cells">
-    @foreach($items[$i] as $index)
+    @foreach($month as $item)
       <div class="weui_cell">
-        <div class="weui_cell_hd"><img src="{{$index['icons']}}" alt="" class="image"></div>
+        <div class="weui_cell_hd"><img src="{{$item['icons']}}" alt="" class="image"></div>
         <div class="weui_cell_bd weui_cell_primary">
-          <p class="time">{{$index['day']}}<br>{{$index['time']}}</p>
+          <p class="time">{{$item['day']}}<br>{{$item['time']}}</p>
         </div>
-        <div class="weui_cell_ft">{{$index['result']}}&nbsp;丨{{$index['action']}}</div>
+        <div class="weui_cell_ft">{{$item['result']}}&nbsp;丨{{$item['action']}}</div>
       </div>
     @endforeach
   </div>
-@endfor
-{{--@foreach($items as $key => $d1)--}}
-  {{--<div class="weui_cells_title">{{$year}}年{{$key}}月账单</div>--}}
-
-  {{--<div class="weui_cells">--}}
-    {{--@foreach($d1 as $index)--}}
-      {{--<div class="weui_cell">--}}
-        {{--<div class="weui_cell_hd"><img src="{{$index['icons']}}" alt="" class="image"></div>--}}
-        {{--<div class="weui_cell_bd weui_cell_primary">--}}
-          {{--<p class="time">{{$index['day']}}<br>{{$index['time']}}</p>--}}
-        {{--</div>--}}
-        {{--<div class="weui_cell_ft">{{$index['result']}}&nbsp;丨{{$index['action']}}</div>--}}
-      {{--</div>--}}
-    {{--@endforeach--}}
-  {{--</div>--}}
-{{--@endforeach--}}
+@endforeach
 
 </body>
 </html>
