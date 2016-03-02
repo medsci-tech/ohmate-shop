@@ -39,7 +39,7 @@ class OrderController extends Controller
         sort($addr_sign);
 
         $addr_sign = implode('&', $addr_sign);
-        dd(\Helper::getSessionCachedUser());
+        dd($addr_sign);
 
         return view('shop.test')->with([
             'appId' => env('WX_APPID'),
