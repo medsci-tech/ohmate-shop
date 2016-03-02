@@ -66,7 +66,7 @@ class PersonalController extends Controller
 
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
-            'items' => $resultArray
+            'beans' => array_reverse($resultArray)
         ]);
     }
 
