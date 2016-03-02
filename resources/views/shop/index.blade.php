@@ -30,11 +30,13 @@
 
 <div class="container">
 
-    <nav id="touch">
-        <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
-            <i class="fa fa-shopping-cart"></i>
-        </a>
-    </nav>
+    <template v-if=" cart.length != 0 ">
+        <nav id="touch">
+            <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
+                <i class="fa fa-shopping-cart"></i>
+            </a>
+        </nav>
+    </template>
 
     <div class="row">
 
@@ -45,7 +47,7 @@
                 <p>{{$item->remark}}</p>
                 <img class="img-responsive" src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
                 <div>
-                    <p> <span>￥{{$item->price}}</span>{{intval($item->price * 100)}}迈豆</p>
+                    <p>￥{{$item->price}}<span>/{{intval($item->price * 100)}}迈豆</span></p>
                 </div>
             </a>
         </div>
@@ -68,16 +70,18 @@
     });
 </script>
 <script>
+  if(document.getElementById('touch')){
     var div = document.getElementById('touch');
     div.addEventListener('touchmove',function(event) {
-        event.preventDefault();
-        if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            div.style.left = touch.clientX - 30 + 'px';
-            div.style.top = touch.clientY -30 + 'px';
-            div.style.background = "";
-        }
+      event.preventDefault();
+      if (event.targetTouches.length == 1) {
+        var touch = event.targetTouches[0];
+        div.style.left = touch.clientX - 30 + 'px';
+        div.style.top = touch.clientY -30 + 'px';
+        div.style.background = "";
+      }
     },false);
+  }
 </script>
 
 </body>

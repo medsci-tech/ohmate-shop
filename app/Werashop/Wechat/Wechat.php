@@ -243,6 +243,7 @@ class Wechat
         $secret = $this->_secret;
         $auth = new Auth($appId, $secret);
         $user = $auth->authorize(url($jump_url));
+        \Session::put('web_token', $auth->access_token);
         return $user;
     }
 
@@ -273,10 +274,8 @@ class Wechat
         $wechat_order->total_fee = ''. floor($order->total_price * 100);
         $wechat_order->openid = $customer->openid;
         $wechat_order->notify_url = url('/wechat/payment/notify');
-        $wechat_order->
 
         $unified_order = new UnifiedOrder($business, $wechat_order);
-
         $payment = new Payment($unified_order);
 
         return $payment->getConfig();
@@ -307,4 +306,11 @@ class Wechat
         return '' . $order->commodities()->first()->name . '等' . $order->commodities()->get()->count() . '件商品';
     }
 
+    /**
+     * @return string
+     */
+    public function getWebAuthAccessToken()
+    {
+        return \Session::get('web_token');
+    }
 }

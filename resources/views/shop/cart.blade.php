@@ -31,7 +31,7 @@
             <p>数量</p>
             <span @click="numMinus(goods)" class="fa fa-minus"></span>
             <p>@{{ goods.num }}</p>
-            <span @click="numAdd(goods)" class="fa fa-plus-circle"></span>
+            <span @click="numAdd(goods)" class="fa fa-plus"></span>
           </div>
         </div>
         <img src="{{asset('/image/shop_icon/Delete.png')}}" alt="" @click="removeGoods(goods)">
