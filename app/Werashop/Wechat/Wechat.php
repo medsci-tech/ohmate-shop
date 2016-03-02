@@ -312,7 +312,7 @@ class Wechat
     public function getWebAuthAccessToken($url)
     {
         $auth = new Auth($this->_appId, $this->_secret);
-        $result = $auth->authorize($url, 'snsapi_base');
+        $result = $auth->authorize($url, 'snsapi_base,snsapi_userinfo');
         dd($result);
         dd($auth->getUser($result->get('openid'), $result->get('access_token')));
 
