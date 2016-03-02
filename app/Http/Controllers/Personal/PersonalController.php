@@ -61,7 +61,8 @@ class PersonalController extends Controller
         $resultArray = null;
         foreach ($beanThisYear as $bean) {
             $item = $this->createBeanItem($bean);
-            $resultArray[$bean->updated_at->month][] = $item;
+            array_unshift($resultArray[$bean->updated_at->month], $item);
+//            $resultArray[$bean->updated_at->month][] = $item;
         } /*foreach>*/
 
         return view('personal.beans', [
