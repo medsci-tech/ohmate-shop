@@ -14,6 +14,7 @@ use \App\Models\Customer;
 use \App\Models\BeanRate;
 use \App\Models\CustomerBean;
 use \App\Models\CustomerType;
+use \App\Models\CustomerDailyArticle;
 
 class BeanRecharger
 {
@@ -111,14 +112,18 @@ class BeanRecharger
         return $ret;
     }
 
-    private function sumDailyStudy($user)
+    private function sumDailyStudy($customer)
     {
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return (-1);
-        } /*if>*/
-
-
+        $daily = CustomerDailyArticle::where('customer_id', $customer->id)->first();
+        if (!$daily) {
+            $daily = new CustomerDailyArticle();
+            $daily->customer_id = $customer->id;
+            $daily->date    = Carbon::now()->toDateString();
+            $daily->value   = AppConstant::EDUCATION_STUDY_BEAN;
+        } else {
+            $daily->value += AppConstant::EDUCATION_STUDY_BEAN
+        } /*else>*/
+        $daily->save();
     }
 
     public function study($user)
@@ -130,7 +135,12 @@ class BeanRecharger
         } /*if>*/
 
         $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
-        return $ret;
+        if (!ret) {
+            return false;
+        } /*if>*/
+
+        $this->sumDailyStudy($customer);
+        return true;
     }
 
     public function consumeFeedback($user, $value)
