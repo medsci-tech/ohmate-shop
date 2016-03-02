@@ -309,8 +309,11 @@ class Wechat
     /**
      * @return string
      */
-    public function getWebAuthAccessToken()
+    public function getWebAuthAccessToken($url)
     {
-        return \Session::get('web_token');
+        $auth = new Auth($this->_appId, $this->_secret);
+        $auth->authorize($url, 'snsapi_base');
+
+        return $auth->access_token;
     }
 }

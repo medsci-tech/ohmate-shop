@@ -55,7 +55,8 @@ class PersonalController extends Controller
     public function beans()
     {
         $customer       = \Helper::getCustomer();
-        $beanThisYear   = $customer->beans->orderBy('updated_at', 'desc');
+        $total          = $customer->beans_total;
+        $beanThisYear   = $customer->beans;
 
         $resultArray = null;
         foreach ($beanThisYear as $bean) {
@@ -65,7 +66,7 @@ class PersonalController extends Controller
 
         return view('personal.beans', [
             'year'  => Carbon::now()->year,
-            'items' => $resultArray
+            'beans' => array_reverse($resultArray, true)
         ]);
     }
 
