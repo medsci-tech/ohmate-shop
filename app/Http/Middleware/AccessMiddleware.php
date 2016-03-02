@@ -24,7 +24,6 @@ class AccessMiddleware
     {
         try {
             $user       = \Helper::getSessionCachedUser();
-            dd($user);
             $customer   = Customer::where('openid', $user['openid'])->firstOrFail();
 
             if (!$customer->is_registered) {
