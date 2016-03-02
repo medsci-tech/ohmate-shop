@@ -242,10 +242,8 @@ class Wechat
         $appId = $this->_appId;
         $secret = $this->_secret;
         $auth = new Auth($appId, $secret);
-        echo $auth->access_token;
         $user = $auth->authorize(url($jump_url));
-
-        dd($auth->access_token);
+        \Session::put('web_token', $auth->access_token);
         return $user;
     }
 
@@ -313,8 +311,6 @@ class Wechat
      */
     public function getWebAuthAccessToken()
     {
-        $auth = new Auth($this->_appId, $this->_secret);
-
-        return $auth->access_token;
+        return \Session::get('web_token');
     }
 }
