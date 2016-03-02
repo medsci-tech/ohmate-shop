@@ -242,7 +242,7 @@ class Wechat
         $appId = $this->_appId;
         $secret = $this->_secret;
         $auth = new Auth($appId, $secret);
-        $user = $auth->authorize(url($jump_url));
+        $user = $auth->authorize(url($jump_url), 'snsapi_userinfo');
         \Session::put('web_token', $auth->access_token);
         return $user;
     }
@@ -312,7 +312,8 @@ class Wechat
     public function getWebAuthAccessToken($url)
     {
         $auth = new Auth($this->_appId, $this->_secret);
-        $auth->authorize($url, 'snsapi_base');
+        $result = $auth->authorize($url, 'snsapi_base');
+        dd($auth->getUser($result->get('openid'), $result->get('access_token')));
 
         return $auth->access_token;
     }
