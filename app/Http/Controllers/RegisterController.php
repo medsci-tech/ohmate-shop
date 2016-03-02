@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Werashop\Exceptions\UserNotCachedException;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
