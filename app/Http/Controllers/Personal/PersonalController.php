@@ -56,7 +56,7 @@ class PersonalController extends Controller
     {
         $customer       = \Helper::getCustomer();
         $total          = $customer->beans_total;
-        $beanThisYear   = $customer->beans;
+        $beanThisYear   = $customer->beans->orderBy('updated_at','desc')->get();
 
         $resultArray = null;
         foreach ($beanThisYear as $bean) {
