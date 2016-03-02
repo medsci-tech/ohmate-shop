@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>易康商城</title>
     <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
 
 </head>
 <body>
 
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top1.jpg')}}">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top2.jpg')}}">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top3.jpg')}}">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-responsive" src="{{url('/image/shop_goods/top4.jpg')}}">
-        </div>
-    </div>
-    <div class="swiper-pagination"></div>
-</div>
 
-<div class="container">
+<div class="container shop-index">
+    <div class="row">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="{{url('/image/shop_goods/top1.jpg')}}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="{{url('/image/shop_goods/top2.jpg')}}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="{{url('/image/shop_goods/top3.jpg')}}">
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="{{url('/image/shop_goods/top4.jpg')}}">
+                </div>
+            </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    </div>
 
     <nav id="touch">
         <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
@@ -41,15 +43,17 @@
         @foreach($items as $item)
         <div class="col-xs-6">
             <a href="{{url('/shop/commodity/') .'/'. $item->id}}">
-                <h4>{{$item->name}}</h4>
-                <p>{{$item->remark}}</p>
-                <img class="img-responsive" src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
-                <div>
-                    <p> <span>￥{{$item->price}}</span>{{intval($item->price * 100)}}迈豆</p>
+                <div class="thumbnail">
+                    <img src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
+                    <div class="caption">
+                        <p>{{$item->name}}</p>
+                        <strong>￥{{$item->price}}</strong><span>/<small>{{intval($item->price * 100)}}迈豆</small></span>
+                    </div>
                 </div>
             </a>
         </div>
         @endforeach
+
     </div>
 
 </div>
@@ -68,16 +72,18 @@
     });
 </script>
 <script>
+  if(document.getElementById('touch')){
     var div = document.getElementById('touch');
     div.addEventListener('touchmove',function(event) {
-        event.preventDefault();
-        if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            div.style.left = touch.clientX - 30 + 'px';
-            div.style.top = touch.clientY -30 + 'px';
-            div.style.background = "";
-        }
+      event.preventDefault();
+      if (event.targetTouches.length == 1) {
+        var touch = event.targetTouches[0];
+        div.style.left = touch.clientX - 30 + 'px';
+        div.style.top = touch.clientY -30 + 'px';
+        div.style.background = "";
+      }
     },false);
+  }
 </script>
 
 </body>

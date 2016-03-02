@@ -99,4 +99,9 @@ class Customer extends Model
             return false;
         }
     }
+
+    public function dailyArticles()
+    {
+        return $this->hasMany(CustomerDailyArticle::class, 'customer_id');
+    }
 }

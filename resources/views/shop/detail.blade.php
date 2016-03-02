@@ -41,7 +41,7 @@
     <div class="col-xs-4">
       <span @click="numMinus()" class="fa fa-minus"></span>
       <p v-cloak>@{{ goods.num }}</p>
-      <span @click="numAdd()" class="fa fa-plus-circle"></span>
+      <span @click="numAdd()" class="fa fa-plus"></span>
     </div>
     <div class="col-xs-4">
       <button class="button button-defualt" @click="addGoods()">加入购物车</button>

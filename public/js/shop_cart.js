@@ -89,42 +89,54 @@ var shop_cart = new Vue({
       )
     },
     postCart: function () {
-      console.log(JSON.stringify(shop_cart.$data));
-      $.post('/shop/order/generate-config',
-        {
-          cart: this.cartList,
-          address_id: this.address.id
-        },
-        function (data) {
-          if (data.success) {
-            function onBridgeReady() {
-              WeixinJSBridge.invoke(
-                'getBrandWCPayRequest', JSON.parse(data.data.result),
-                function (res) {
-                  if (res.err_msg == "get_brand_wcpay_request：ok") {
-                    shop_cart.cart = [];
-                    localStorage.cart.clear();
-                  }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
-                }
-              );
-            }
-
-            if (typeof WeixinJSBridge == "undefined") {
-              if (document.addEventListener) {
-                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-              } else if (document.attachEvent) {
-                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+      if(shop_cart.address.length != 0){
+        console.log(JSON.stringify(shop_cart.$data));
+        $.post('/shop/order/generate-config',
+          {
+            cart: this.cartList,
+            address_id: this.address.id,
+          },
+          function (data) {
+            if (data.success) {
+              function onBridgeReady() {
+                WeixinJSBridge.invoke(
+                  'getBrandWCPayRequest', JSON.parse(data.data.result),
+                  function (res) {
+                    if (res.err_msg == "get_brand_wcpay_request：ok") {
+                      $.post('shop/payment/ok',
+                        {
+                          order_id: data.data.order_id,
+                          success:true
+                        },
+                        function(data){
+                          if (data.success) {
+                            shop_cart.cart = [];
+                            localStorage.cart.clear();
+                          }
+                        },"json")
+                    }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                  }
+                );
               }
-            } else {
-              onBridgeReady();
-            }
 
-          } else {
-            alert('服务器异常!');
-          }
-        }, "json"
-      );
+              if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                  document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                } else if (document.attachEvent) {
+                  document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                  document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+              } else {
+                onBridgeReady();
+              }
+
+            } else {
+              alert('服务器异常!');
+            }
+          }, "json"
+        );
+      }
+
     }
   }
 });
