@@ -14,8 +14,8 @@ class BeanRatesSeeder extends Seeder
         DB::table('bean_rates')->insert([
             'action_en' => 'register',
             'action_ch' => '用户注册',
-            'rate' => 2000,
-            'icon_url' => '/image/bean/register_icon.png'
+            'rate' => 2180,
+            'icon_url' => '/image/bean/new_icon.png'
         ]);
 
         DB::table('bean_rates')->insert([
@@ -28,7 +28,7 @@ class BeanRatesSeeder extends Seeder
         DB::table('bean_rates')->insert([
             'action_en' => 'consume',
             'action_ch' => '消费抵扣',
-            'rate' => -1,
+            'rate' => 1,
             'icon_url' => '/image/bean/consume_icon.png'
         ]);
 
@@ -54,18 +54,33 @@ class BeanRatesSeeder extends Seeder
         ]);
 
         DB::table('bean_rates')->insert([
-            'action_en' => 'feedback_doctor_education',
-            'action_ch' => '患者学习',
-            'rate' => 0.1,
-            'icon_url' => '/image/bean/feedback_icon.png'
+            'action_en' => 'volunteer_feedback',
+            'action_ch' => '患者消费',
+            'rate' => 0.05,
+            'icon_url' => '/image/bean/volunteer_feedback_icon.png'
         ]);
 
         DB::table('bean_rates')->insert([
-            'action_en' => 'feedback_doctor_consume',
-            'action_ch' => '患者消费',
-            'rate' => 0.05,
-            'icon_url' => '/image/bean/feedback_icon.png'
+            'action_en' => 'doctor_invite',
+            'action_ch' => '邀请糖友',
+            'rate' => 3000,
+            'icon_url' => '/image/bean/invite_icon.png'
         ]);
+
+        DB::table('bean_rates')->insert([
+            'action_en' => 'nurse_invite',
+            'action_ch' => '邀请糖友',
+            'rate' => 500,
+            'icon_url' => '/image/bean/invite_icon.png'
+        ]);
+
+        DB::table('bean_rates')->insert([
+            'action_en' => 'volunteer_invite',
+            'action_ch' => '邀请糖友',
+            'rate' => 500,
+            'icon_url' => '/image/bean/invite_icon.png'
+        ]);
+
     }
 
 } /*class*/

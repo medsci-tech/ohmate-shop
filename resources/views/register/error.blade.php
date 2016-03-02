@@ -13,7 +13,7 @@
     </div>
     <div class="weui_text_area">
         <h2 class="weui_msg_title">注册失败</h2>
-        <p class="weui_msg_desc">说点什么吧，说点什么吧！</p>
+        <p class="weui_msg_desc">非常抱歉，注册出错了！请稍后再来。</p>
     </div>
     <div class="weui_opr_area">
         <p class="weui_btn_area">
@@ -25,22 +25,18 @@
 <script type="text/javascript" charset="utf-8">
     wx.config(<?php echo $js->config(array('checkJsApi','closeWindow'), false, false) ?>);
 
-
     wx.ready(function () {
-
         wx.checkJsApi({
             jsApiList: [
                 'closeWindow'
             ],
             success: function (res) {
-//                alert(JSON.stringify(res));
             }
         });
 
         document.querySelector('#closeWindow').onclick = function () {
             wx.closeWindow();
         };
-
     });
 
     wx.error(function (res) {
