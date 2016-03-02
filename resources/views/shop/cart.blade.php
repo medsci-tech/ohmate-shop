@@ -6,7 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>购物车</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
 
 </head>
 <body>
