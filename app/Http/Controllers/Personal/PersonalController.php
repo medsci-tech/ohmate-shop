@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Personal;
 
+use App\Constants\AppConstant;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,10 +34,11 @@ class PersonalController extends Controller
         $time   = sprintf("%02d", $customerBean->updated_at->hour) . ':' .
             sprintf("%02d", $customerBean->updated_at->minute);
 
-        if ($customerBean->result > 0) {
-            $result = '+' . (string)$customerBean->result;
-        } else {
+        $type = $customerBean->rate->action_en;
+        if ($type == AppConstant::BEAN_ACTION_CONSUME) {
             $result = '-' . (string)$customerBean->result;
+        } else {
+            $result = '+' . (string)$customerBean->result;
         } /*else>*/
 
         $item = array(
