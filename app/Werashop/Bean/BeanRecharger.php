@@ -177,7 +177,7 @@ class BeanRecharger
         } /*if>*/
 
         $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
-        if (!ret) {
+        if (!$ret) {
             return false;
         } /*if>*/
 
