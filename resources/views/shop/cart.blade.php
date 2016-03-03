@@ -57,7 +57,7 @@
           <tr>
             <td>运费</td>
             <td></td>
-            <td>@{{ goods.post_fee | currency '￥' }}</td>
+            <td>@{{ post_fee | currency '￥' }}</td>
           </tr>
           <tr>
             <td>迈豆折扣</td>
