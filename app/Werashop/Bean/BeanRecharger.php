@@ -185,6 +185,18 @@ class BeanRecharger
         return true;
     }
 
+    public function share($user)
+    {
+        \Log::info('BeanRecharger:share:user:' . $user);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer) {
+            return false;
+        } /*if>*/
+
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_SHARE);
+        return $ret;
+    }
+
     /**
      * @param $user
      * @param $value
