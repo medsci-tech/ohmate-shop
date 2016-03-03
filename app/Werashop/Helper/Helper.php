@@ -5,6 +5,7 @@ namespace App\Werashop\Helper;
 
 
 use App\Constants\AppConstant;
+use App\Models\Address;
 use App\Models\Customer;
 use App\Werashop\Exceptions\UserNotCachedException;
 use App\Werashop\Exceptions\UserNotSubscribedException;
@@ -73,11 +74,14 @@ class Helper
     }
 
     /**
-     * @param string $province
+     * @param string|Address $province
      * @return int
      */
     public function getPostFee($province)
     {
+        if ($province instanceof Address) {
+            $province = $province->province;
+        }
         if (in_array($province, ['新疆', '西藏', '新疆省', '西藏省'])) {
             return 12;
         }

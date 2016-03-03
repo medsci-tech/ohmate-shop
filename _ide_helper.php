@@ -10470,7 +10470,7 @@ namespace {
         /**
          * 
          *
-         * @param string $province
+         * @param string  | Address $province
          * @return int 
          * @static 
          */
