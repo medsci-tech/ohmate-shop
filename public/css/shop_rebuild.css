@@ -26,16 +26,80 @@ a, a:focus, a:hover {
 .shop-index .row .thumbnail {
   margin: 0;
   border: .5px solid #eee;
-  box-shadow: 0px 1px 1px #a3a3a3; }
-  .shop-index .row .thumbnail img {
-    width: 100%;
-    height: 120px; }
+  border-radius: 0px;
+  box-shadow: .5px .5px .5px #a3a3a3; }
   .shop-index .row .thumbnail .caption {
     padding: 5px; }
     .shop-index .row .thumbnail .caption p:first-child {
-      height: 2.5em;
+      margin: 0;
       font-weight: 700; }
     .shop-index .row .thumbnail .caption strong {
       color: #f71212; }
+
+#cart_form .row {
+  margin: 5px -10px 0 -10px; }
+#cart_form .panel {
+  margin: 0; }
+  #cart_form .panel .panel-heading {
+    padding-bottom: 5px;
+    color: #a3a3a3; }
+    #cart_form .panel .panel-heading span {
+      float: right; }
+#cart_form .media {
+  position: relative; }
+  #cart_form .media .media-object {
+    width: 80px; }
+  #cart_form .media .media-body p {
+    width: 100%;
+    margin-top: 3em; }
+    #cart_form .media .media-body p strong {
+      float: left;
+      color: #f71212; }
+    #cart_form .media .media-body p > span {
+      float: right; }
+      #cart_form .media .media-body p > span span {
+        width: 2em;
+        text-align: center; }
+  #cart_form .media .media-body > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 18px;
+    color: #a3a3a3; }
+#cart_form .table1 tr td:nth-child(1), #cart_form .table1 tr th:nth-child(1) {
+  padding-left: 15px; }
+#cart_form .table1 tr td:nth-child(2), #cart_form .table1 tr th:nth-child(2) {
+  text-align: right; }
+#cart_form .table1 tr td:nth-child(3), #cart_form .table1 tr th:nth-child(3) {
+  text-align: right;
+  padding-right: 15px; }
+#cart_form .table1 tfoot tr:first-child, #cart_form .table1 tfoot tr:last-child {
+  border-top: 1px solid #ddd; }
+#cart_form .table1 tfoot td {
+  border: none; }
+#cart_form .table2 tr :first-child {
+  width: 30%; }
+#cart_form .table2 tr th, #cart_form .table2 tr td {
+  border: none; }
+#cart_form .table2 tr td:nth-child(1), #cart_form .table2 tr th:nth-child(1) {
+  padding-left: 15px; }
+#cart_form .table2 tr td:last-child {
+  padding-right: 15px; }
+#cart_form .navbar-fixed-bottom {
+  background-color: #fff;
+  border-top: 1px solid #eee; }
+  #cart_form .navbar-fixed-bottom p {
+    margin-top: 12px;
+    margin-bottom: 10px;
+    font-size: 22px; }
+    #cart_form .navbar-fixed-bottom p span {
+      color: #f71212; }
+  #cart_form .navbar-fixed-bottom button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 0; }
+  #cart_form .navbar-fixed-bottom .col-xs-5 {
+    border-left: 1px solid #eee; }
 
 /*# sourceMappingURL=shop_rebuild.css.map */

@@ -242,9 +242,10 @@ class Wechat
         $appId = $this->_appId;
         $secret = $this->_secret;
         $auth = new Auth($appId, $secret);
-        $user = $auth->authorize(url($jump_url));
-        \Session::put('web_token', $auth->access_token);
-        return $user;
+        $result = $auth->authorize(url($jump_url), 'snsapi_base');
+
+        \Session::put('web_token', $result->get('access_token'));
+        return $auth->getUser($result->get('openid'), $result->get('access_token'));
     }
 
     /**
@@ -312,8 +313,36 @@ class Wechat
     public function getWebAuthAccessToken($url)
     {
         $auth = new Auth($this->_appId, $this->_secret);
-        $auth->authorize($url, 'snsapi_base');
+        $result = $auth->authorize($url, 'snsapi_base');
 
-        return $auth->access_token;
+        return $result->get('access_token');
+    }
+
+    /**
+     * @param $url
+     * @return bool
+     */
+    public function urlHasAuthParameters($url)
+    {
+        if (!strstr($url, 'code=')) {
+            return false;
+        }
+
+        $back = substr($url, strpos($url, 'code=') + 5);
+        $code = substr($back, 0, strpos($back, '&'));
+
+        if (strlen($code) == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param $url
+     * @return string
+     */
+    public function urlRemoveAuthParameters($url)
+    {
+        return preg_replace('/code=.*(&|\s)/U', '', $url);
     }
 }

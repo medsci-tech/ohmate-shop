@@ -20,10 +20,14 @@ class WechatMiddleware
     public function handle($request, Closure $next)
     {
         if (\Helper::hasSessionCachedUser()) {
+//            //如果请求中含有code,需要重定向至不带code的页面.
+//            if (\Wechat::urlHasAuthParameters($request->fullUrl())) {
+//                return redirect(\Wechat::urlRemoveAuthParameters($request->fullUrl()));
+//            }
             return $next($request);
         }
 
-        $user = \Wechat::authorizeUser($request->fullUrl());
+        $user = \Wechat::authorizeUser($request->url());
         /*
          * if auth failed, this user maybe not a subscribed account,
          * but we allow this man go on to education page.
