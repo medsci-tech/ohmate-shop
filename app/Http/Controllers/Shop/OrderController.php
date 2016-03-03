@@ -75,8 +75,10 @@ class OrderController extends Controller
         $address = Address::findOrFail($request->input('address_id'));
 
         $order->initWithCustomerAndAddress($customer, $address);
+        $order->save();
         $order->addCommodities($items);
         $order->calculate();
+        $order->save();
 
         $result = \Wechat::generatePaymentConfig($order, $customer);
 

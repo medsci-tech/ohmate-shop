@@ -66,10 +66,8 @@ class Order extends Model
     {
         $cash_payment_calculated_without_post_fee = \BeanRecharger::calculateConsume($this->customer_id, $this->total_price - $this->post_fee);
 
-        $this->update([
-            'cash_payment_calculated' => $cash_payment_calculated_without_post_fee + $this->post_fee,
-            'beans_payment_calculated' => $this->total_price - $cash_payment_calculated_without_post_fee - $this->post_fee
-        ]);
+        $this->cash_payment_calculated = $cash_payment_calculated_without_post_fee + $this->post_fee;
+        $this->beans_payment_calculated = $this->total_price - $cash_payment_calculated_without_post_fee - $this->post_fee;
 
         return $this;
     }
@@ -90,9 +88,8 @@ class Order extends Model
     {
         $address = $this->address;
         $post_fee = floatval(\Helper::getPostFee($address));
-        $this->update([
-            'post_fee' => $post_fee
-        ]);
+        $this->post_fee = $post_fee;
+
         $this->increasePrice($post_fee);
         return $this;
     }
@@ -181,11 +178,7 @@ class Order extends Model
      */
     public function addWechatOuttradeno()
     {
-        $this->save();
-        $this->update([
-            'wx_out_trade_no' => md5($this->id . microtime())
-        ]);
-
+        $this->wx_out_trade_no = md5($this->id . microtime());
         return $this;
     }
 
@@ -195,9 +188,7 @@ class Order extends Model
      * @return $this
      */
     public function initWithCustomerAndAddress(Customer $customer, Address $address){
-        $this->save();
         $this->bindCustomer($customer)->bindAddress($address)->addWechatOuttradeno();
-        $this->save();
 
         return $this;
     }
