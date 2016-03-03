@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Article;
 use App\Models\ArticleType;
+use Overtrue\Wechat\Js;
 
 class EducationController extends Controller
 {
@@ -55,7 +56,11 @@ class EducationController extends Controller
         $customer   = \Helper::getCustomer();
         $show       = \BeanRecharger::calculateStudy($customer->id);
 
-        return view('education.article-view', ['article' => $article, 'show' => $show]);
+        $appId  = env('WX_APPID');
+        $secret = env('WX_SECRET');
+        $js = new Js($appId, $secret);
+
+        return view('education.article-view', ['article' => $article, 'show' => $show, 'js' => $js]);
     }
 
     public function updateCount(Request $request)
