@@ -29,9 +29,10 @@ class OrderController extends Controller
     public function index()
     {
         $customer = \Helper::getCustomer();
-        $orders = $customer->paidOrders();
+        $orders = $customer->paidOrders()->get();
+
         return view('shop.order')->with([
-            'orders' => $customer->orders()
+            'orders' => $orders
         ]);
     }
 

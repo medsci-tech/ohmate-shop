@@ -88,6 +88,16 @@ class Customer extends Model
     }
 
     /**
+     * @return mixed
+     */
+    public function paidOrdersWithCommodities()
+    {
+        return $this->orders()->where('order_status_id', '>', 1)->with(['commodities' => function ($query) {
+            $query->take(4);
+        }]);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function addresses()
