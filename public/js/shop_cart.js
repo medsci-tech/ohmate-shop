@@ -94,17 +94,18 @@ var shop_cart = new Vue({
         $.post('/shop/order/generate-config',
           {
             cart: this.cartList,
-            address_id: this.address.id,
+            address_id: this.address.id
           },
           function (data) {
             if (data.success) {
+              shop_cart.cart = [];
+              localStorage.cart.clear();
               function onBridgeReady() {
                 WeixinJSBridge.invoke(
                   'getBrandWCPayRequest', JSON.parse(data.data.result),
                   function (res) {
                     if (res.err_msg == "get_brand_wcpay_request：ok") {
-                      shop_cart.cart = [];
-                      localStorage.cart.clear();
+
                       $.post('shop/payment/ok',
                         {
                           order_id: data.data.order_id,
