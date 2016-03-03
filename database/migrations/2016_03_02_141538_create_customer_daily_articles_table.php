@@ -16,7 +16,7 @@ class CreateCustomerDailyArticlesTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->date('date')->comment('日期');
+            $table->string('date')->comment('日期');
             $table->double('value', 15, 2)->comment('单日学习获得迈豆总额');
 
             $table->timestamps();

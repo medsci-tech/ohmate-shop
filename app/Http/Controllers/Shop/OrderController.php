@@ -22,11 +22,21 @@ class OrderController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth.wechat');
-//        $this->middleware('auth.access');
+        $this->middleware('auth.wechat');
+        $this->middleware('auth.access');
     }
 
-    public function index(Request $request) {
+    public function index()
+    {
+        $customer = \Helper::getCustomer();
+        $orders = $customer->paidOrders()->get();
+
+        return view('shop.order')->with([
+            'orders' => $orders
+        ]);
+    }
+
+    public function test(Request $request) {
         $access_token = \Wechat::getWebAuthAccessToken($request->url());
         $timestamp = Carbon::now()->getTimestamp();
         $addr_sign = [
@@ -72,19 +82,13 @@ class OrderController extends Controller
 
         $order = new Order();
 
-        $address = Address::find($request->input('address_id'));
-        $order->customer()->associate($customer);
-        $order->address()->associate($address);
-        $order->save();
-        $order->update([
-            'wx_out_trade_no' => md5($order->id . microtime())
-        ]);
+        $address = Address::findOrFail($request->input('address_id'));
 
-        foreach ($items as $item) {
-            $commodity = Commodity::find($item['id']);
-            $order->addCommodity($commodity, $item['num']);
-            $order->increasePrice(floatval($commodity->price * $item['num']));
-        }
+        $order->initWithCustomerAndAddress($customer, $address);
+        $order->save();
+        $order->addCommodities($items);
+        $order->calculate();
+        $order->save();
 
         $result = \Wechat::generatePaymentConfig($order, $customer);
 

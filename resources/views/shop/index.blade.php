@@ -38,7 +38,7 @@
         <div class="col-xs-6">
             <a href="{{url('/shop/commodity/') .'/'. $item->id}}">
                 <div class="thumbnail">
-                    <img src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
+                    <img src="{{$item->portrait}}" alt="">
                     <div class="caption">
                         <p>{{$item->name}}</p>
                         <p class="small">{{$item->remark}}</p>
