@@ -223,7 +223,7 @@ body, html {
 }
 
 .text_color {
-    color: #FFBE00;
+    color: #de5145;
 }
 
 /*钱包*/
@@ -258,4 +258,8 @@ body, html {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical
+}
+
+.tab_bg{
+    background-color: #D0D0D0;;
 }

@@ -15,7 +15,7 @@
         </p>
         <ul class="weui_media_info">
             <li class="weui_media_info_meta">联系我们</li>
-            <li class="weui_media_info_meta weui_media_info_meta_extra">电话：400-XXXX-XXXX</li>
+            <li class="weui_media_info_meta weui_media_info_meta_extra">电话：400-1199-802</li>
         </ul>
     </div>
 </div>

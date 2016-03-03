@@ -22,7 +22,11 @@ class PaymentController extends Controller
             if ($order->isPaid()) {
                 return 'FAIL';
             }
-            $order->update(['wx_transaction_id' => $input['transaction_id']]);
+            $order->update([
+                'wx_transaction_id' => $input['transaction_id'],
+                'cash_payment' => floatval($input['total_fee']) / 100.00
+            ]);
+
             $order->paid();
 
             $result = \Wechat::paymentNotify();

@@ -52,6 +52,7 @@ class Order extends Model
     {
         if ($this->status->name == 'paying' && $next = $this->status->next()) {
             \BeanRecharger::executeConsume($this->customer_id, $this->total_price - $this->post_fee);
+            $this->beans_payment = $this->beans_payment_calculated;
 
             $this->status()->associate($next);
             return $this->save();
