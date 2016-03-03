@@ -99,7 +99,7 @@ var shop_cart = new Vue({
           function (data) {
             if (data.success) {
               shop_cart.cart = [];
-              localStorage.cart.clear();
+              localStorage.clear();
               function onBridgeReady() {
                 WeixinJSBridge.invoke(
                   'getBrandWCPayRequest', JSON.parse(data.data.result),
