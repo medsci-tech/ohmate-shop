@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Article;
 use App\Models\ArticleType;
+use Overtrue\Wechat\Js;
 
 class EducationController extends Controller
 {
@@ -53,13 +54,17 @@ class EducationController extends Controller
             abort(404);
         } /*if>*/
 
+        $appId  = env('WX_APPID');
+        $secret = env('WX_SECRET');
+        $js = new Js($appId, $secret);
+
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!is_null($user)) {
             $customer   = \Helper::getCustomer();
             $show       = \BeanRecharger::calculateStudy($customer->id);
-            return view('education.article-view', ['article' => $article, 'show' => $show]);
+            return view('education.article-view', ['article' => $article, 'show' => $show, 'js' => $js]);
         } else {
-            return view('education.article-view', ['article' => $article, 'show' => false]);
+            return view('education.article-view', ['article' => $article, 'show' => false, 'js' => $js]);
         }
 
     }
