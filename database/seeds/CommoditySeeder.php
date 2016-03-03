@@ -12,7 +12,7 @@ class CommoditySeeder extends Seeder
     public function run()
     {
         DB::table('commodities')->insert([
-            'name' => '诺和针®32G Tip ETW',
+            'name' => '诺和针',
             'remark' => '一次性使用无菌注射针',
             'introduction' => '诺和针®32G Tip ETW位一次性使用无菌注射针，与诺和诺德胰岛素注射系统配合使用。',
             'price' => 22.00
@@ -35,13 +35,13 @@ class CommoditySeeder extends Seeder
             'name' => '易折清洁消毒棒',
             'remark' => '一次性使用无菌',
             'introduction' => '糖尿病患者血糖浓度高，血糖浓度含量更高，高糖环境是细菌良好的培养基。',
-            'price' => 22.00
+            'price' => 23.80
         ]);
         DB::table('commodities')->insert([
             'name' => '清呤卫士',
             'remark' => '碱性泡腾片',
             'introduction' => '碱性泡腾片',
-            'price' => 22.00
+            'price' => 58.00
         ]);
         DB::table('commodities')->insert([
             'name' => '低糖卫士',
@@ -50,7 +50,15 @@ class CommoditySeeder extends Seeder
             'price' => 29.00
         ]);
         DB::table('commodities')->insert([
-            'name' => '补邮，满79包邮(偏远地区除外)',
+            'name' => '易足康',
+            'remark' => '易足康',
+            'introduction' => '易足康',
+            'price' => 18.00
+        ]);
+        DB::table('commodities')->insert([
+            'name' => '补邮',
+            'remark' => '偏远地区除外',
+            'introduction' => '偏远地区除外',
             'price' => 0.01
         ]);
     }

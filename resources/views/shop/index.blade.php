@@ -32,12 +32,6 @@
     </div>
     </div>
 
-    <nav id="touch">
-        <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
-            <i class="fa fa-shopping-cart"></i>
-        </a>
-    </nav>
-
     <div class="row">
 
         @foreach($items as $item)
@@ -47,6 +41,7 @@
                     <img src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
                     <div class="caption">
                         <p>{{$item->name}}</p>
+                        <p class="small">{{$item->remark}}</p>
                         <strong>￥{{$item->price}}</strong><span>/<small>{{intval($item->price * 100)}}迈豆</small></span>
                     </div>
                 </div>
@@ -72,19 +67,31 @@
     });
 </script>
 <script>
-  if(document.getElementById('touch')){
-    var div = document.getElementById('touch');
-    div.addEventListener('touchmove',function(event) {
-      event.preventDefault();
-      if (event.targetTouches.length == 1) {
-        var touch = event.targetTouches[0];
-        div.style.left = touch.clientX - 30 + 'px';
-        div.style.top = touch.clientY -30 + 'px';
-        div.style.background = "";
-      }
-    },false);
-  }
+    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> </a> </nav>')
+    var touch1 = document.getElementById('touch1');
+    touch1.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            touch1.style.left = touch.clientX - 30 + 'px';
+            touch1.style.top = touch.clientY - 30 + 'px';
+            touch1.style.background = "";
+        }
+    }, false);
 </script>
 
+<script>
+    $('body').append('<nav id="touch2" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 90px;"><a href="{{url('/shop/category')}}" class="button button-large button-glow button-highlight button-circle"> <i class="fa fa-list"></i> </a> </nav>')
+    var touch2 = document.getElementById('touch2');
+    touch2.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            touch2.style.left = touch.clientX - 30 + 'px';
+            touch2.style.top = touch.clientY - 30 + 'px';
+            touch2.style.background = "";
+        }
+    }, false);
+</script>
 </body>
 </html>

@@ -14,7 +14,7 @@ var list = new Vue({
     },
     chooseImg: {
       imgtrue: '/image/shop_icon/icon.png',
-      imgfalse: '/image/shop_icon/food.png'
+      imgfalse: '/image/shop_icon/icon1.png'
     },
   },
 

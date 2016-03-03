@@ -10482,6 +10482,28 @@ namespace {
             return \App\Werashop\Wechat\Wechat::getWebAuthAccessToken($url);
         }
         
+        /**
+         * 
+         *
+         * @param $url
+         * @return bool 
+         * @static 
+         */
+        public static function urlHasAuthParameters($url){
+            return \App\Werashop\Wechat\Wechat::urlHasAuthParameters($url);
+        }
+        
+        /**
+         * 
+         *
+         * @param $url
+         * @return string 
+         * @static 
+         */
+        public static function urlRemoveAuthParameters($url){
+            return \App\Werashop\Wechat\Wechat::urlRemoveAuthParameters($url);
+        }
+        
     }
 
 
