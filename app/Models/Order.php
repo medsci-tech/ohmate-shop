@@ -90,9 +90,9 @@ class Order extends Model
     {
         $address = $this->address;
         $post_fee = floatval(\Helper::getPostFee($address));
-        dd($this->update([
+        $this->update([
             'post_fee' => $post_fee
-        ]));
+        ]);
         $this->increasePrice($post_fee);
         return $this;
     }
@@ -195,7 +195,9 @@ class Order extends Model
      * @return $this
      */
     public function initWithCustomerAndAddress(Customer $customer, Address $address){
+        $this->save();
         $this->bindCustomer($customer)->bindAddress($address)->addWechatOuttradeno();
+        $this->save();
 
         return $this;
     }
