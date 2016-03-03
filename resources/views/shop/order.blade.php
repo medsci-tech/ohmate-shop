@@ -17,7 +17,7 @@
         <div class="col-xs-3"><img class="" src="{{$commodity->portrait}}" alt=""></div>
       @endforeach
     </div>
-    <div class="arrow"></div>
+    <span class="arrow"><i class="fa fa-chevron-right"></i></span>
     <p>&emsp;实际支付：￥{{$order->cash_payment}}<small>(含运费￥{{$order->post_fee}})</small></p>
   </div>
 @endforeach

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container" id="order-details">
-  
+
   <div class="row address">
     <p>订单信息</p>
     <p></p>
