@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\CustomerLocation $location
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Address[] $addresses
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CustomerDailyArticle[] $dailyArticles
  */
 class Customer extends Model
 {
