@@ -22,11 +22,20 @@ class OrderController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth.wechat');
-//        $this->middleware('auth.access');
+        $this->middleware('auth.wechat');
+        $this->middleware('auth.access');
     }
 
-    public function index(Request $request) {
+    public function index()
+    {
+        $customer = \Helper::getCustomer();
+        $orders = $customer->orders();
+        return view('shop.order')->with([
+            'orders' => $customer->orders()
+        ]);
+    }
+
+    public function test(Request $request) {
         $access_token = \Wechat::getWebAuthAccessToken($request->url());
         $timestamp = Carbon::now()->getTimestamp();
         $addr_sign = [
