@@ -89,7 +89,7 @@ var list = new Vue({
               is_default: false
             };
           } else {
-            alert('服务器异常4!');
+            alert('请输入正确的手机号!');
           }
         }, "json"
       );
