@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Education;
 
 use Illuminate\Http\Request;
-
+use App\Constants\AppConstant;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Article;
 use App\Models\ArticleType;
-use Overtrue\Wechat\Js;
 
 class EducationController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth.wechat');
+        $this->middleware('auth.wechat', ['except' => ['view']]);
     }
 
     public function injections()
@@ -53,14 +52,16 @@ class EducationController extends Controller
         if (!$article) {
             abort(404);
         } /*if>*/
-        $customer   = \Helper::getCustomer();
-        $show       = \BeanRecharger::calculateStudy($customer->id);
 
-        $appId  = env('WX_APPID');
-        $secret = env('WX_SECRET');
-        $js = new Js($appId, $secret);
+        $user = \Session::get(AppConstant::SESSION_USER_KEY);
+        if (!is_null($user)) {
+            $customer   = \Helper::getCustomer();
+            $show       = \BeanRecharger::calculateStudy($customer->id);
+            return view('education.article-view', ['article' => $article, 'show' => $show]);
+        } else {
+            return view('education.article-view', ['article' => $article, 'show' => false]);
+        }
 
-        return view('education.article-view', ['article' => $article, 'show' => $show, 'js' => $js]);
     }
 
     public function updateCount(Request $request)

@@ -21,7 +21,7 @@
 <!--BEGIN actionSheet-->
 <div id="actionSheet_wrap">
     <div class="weui_mask_transition" id="mask" style="display: none;"></div>
-    <div class="weui_actionsheet" id="weui_actionsheet">
+    <div class="weui_actionsheet" style="display: none;" id="weui_actionsheet">
         <div class="weui_actionsheet_menu">
             <img src="/image/education/hongbao.png" alt="">
 
@@ -69,8 +69,9 @@
             if (i == 0) {
                 clearTimeout(timer);
                 $('#mask').addClass('weui_fade_toggle');
-                $('#mask').css('display','block')
+                $('#mask').css('display','block');
                 $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
+                $('#weui_actionsheet').css('display','block');
 
                 $(function () {
                     var requestUrls = '/education/article/update-bean';
@@ -102,8 +103,9 @@
     $(document).ready(function() {
         $('#gethongbao').click(function () {
             $('#mask').removeClass('weui_fade_toggle');
-            $('#mask').css('display', 'none')
+            $('#mask').css('display', 'none');
             $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
+            $('#weui_actionsheet').css('display','block');
         });
     });
 
