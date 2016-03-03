@@ -322,7 +322,7 @@
             });
         });
 
-        window.location.href = uri+'?id='+id;
+        window.location.href = uri+'?type=1&id='+id;
     }
 
     function reLoad() {
