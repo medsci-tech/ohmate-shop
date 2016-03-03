@@ -32,12 +32,6 @@
     </div>
     </div>
 
-    <nav id="touch">
-        <a href="{{url('/shop/cart')}}" class="button button-glow button-raised button-caution button-circle button-jumbo">
-            <i class="fa fa-shopping-cart"></i>
-        </a>
-    </nav>
-
     <div class="row">
 
         @foreach($items as $item)
@@ -73,19 +67,17 @@
     });
 </script>
 <script>
-  if(document.getElementById('touch')){
+    $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a href="http://www.baidu.com" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> </a> </nav>')
     var div = document.getElementById('touch');
-    div.addEventListener('touchmove',function(event) {
-      event.preventDefault();
-      if (event.targetTouches.length == 1) {
-        var touch = event.targetTouches[0];
-        div.style.left = touch.clientX - 30 + 'px';
-        div.style.top = touch.clientY -30 + 'px';
-        div.style.background = "";
-      }
-    },false);
-  }
+    div.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            div.style.left = touch.clientX - 30 + 'px';
+            div.style.top = touch.clientY - 30 + 'px';
+            div.style.background = "";
+        }
+    }, false);
 </script>
-
 </body>
 </html>
