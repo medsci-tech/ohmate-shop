@@ -41,7 +41,7 @@
 
         <div class="weui_media_box weui_media_text">
             <h4 class="weui_media_title">Q：你知道的可真多，你叫什么啊？</h4>
-            <p class="desc">A：我叫Dr.小易，有什么问题都可以直接问哦！<br>这是我的联系方式：400-XXXX-XXXX
+            <p class="desc">A：我叫Dr.小易，有什么问题都可以直接问哦！<br>这是我的联系方式：400-1199-802
             </p>
         </div>
     </div>
