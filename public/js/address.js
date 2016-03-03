@@ -61,37 +61,35 @@ var list = new Vue({
     },
 
     addFun: function () {
-      if ($('#province').val() && $('#city').val() && $('#area').val()) {
-        $.post('/shop/address/create',
-          {
-            name: this.newAdd.name,
-            phone: this.newAdd.phone,
-            province: this.newAdd.province,
-            city: this.newAdd.city,
-            district: this.newAdd.district,
-            address: this.newAdd.address,
-            is_default: true
-          },
-          function (data) {
-            if (data.success) {
-              list.addReload();
-              list.newAdd = {
-                id: -1,
-                name: '',
-                phone: '',
-                province: '',
-                city: '',
-                district: '',
-                address: '',
-                is_default: false
-              };
-            } else {
-              alert('服务器异常4!');
-            }
-          }, "json"
-        );
-      }
-    },
+      $.post('/shop/address/create',
+        {
+          name: this.newAdd.name,
+          phone: this.newAdd.phone,
+          province: this.newAdd.province,
+          city: this.newAdd.city,
+          district: this.newAdd.district,
+          address: this.newAdd.address,
+          is_default: true
+        },
+        function (data) {
+          if (data.success) {
+            list.addReload();
+            list.newAdd = {
+              id: -1,
+              name: '',
+              phone: '',
+              province: '',
+              city: '',
+              district: '',
+              address: '',
+              is_default: false
+            };
+          } else {
+            alert('服务器异常4!');
+          }
+        }, "json"
+      );
+    }
 
 //      submitAdd: function () {
 //        if (this.newAdd.id == '-1'){
