@@ -114,7 +114,7 @@ a, a:focus, a:hover {
   .order-form p:last-child {
     border-top: 1px solid #dddddd; }
   .order-form .img-group {
-    margin-right: 10%;
+    margin-right: 40px;
     white-space: nowrap;
     overflow: auto;
     text-overflow: clip; }
