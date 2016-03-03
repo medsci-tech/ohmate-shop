@@ -153,7 +153,7 @@
   });
 </script>
 <script>
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="http://www.baidu.com" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> </a> </nav>')
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> </a> </nav>')
   var div = document.getElementById('touch');
   div.addEventListener('touchmove', function (event) {
     event.preventDefault();

@@ -80,6 +80,24 @@ class Customer extends Model
     }
 
     /**
+     * @return mixed
+     */
+    public function paidOrders()
+    {
+        return $this->orders()->where('order_status_id', '>', 1);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function paidOrdersWithCommodities()
+    {
+        return $this->orders()->where('order_status_id', '>', 1)->with(['commodities' => function ($query) {
+            $query->take(4);
+        }]);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function addresses()
@@ -101,6 +119,9 @@ class Customer extends Model
         }
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function dailyArticles()
     {
         return $this->hasMany(CustomerDailyArticle::class, 'customer_id');

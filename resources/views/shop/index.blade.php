@@ -38,7 +38,7 @@
         <div class="col-xs-6">
             <a href="{{url('/shop/commodity/') .'/'. $item->id}}">
                 <div class="thumbnail">
-                    <img src="{{url('/image/shop_goods/' . $item->id . '.png')}}" alt="">
+                    <img src="{{$item->portrait}}" alt="">
                     <div class="caption">
                         <p>{{$item->name}}</p>
                         <p class="small">{{$item->remark}}</p>
@@ -81,7 +81,7 @@
 </script>
 
 <script>
-    $('body').append('<nav id="touch2" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 90px;"><a href="{{url('/shop/category')}}" class="button button-large button-glow button-highlight button-circle"> <i class="fa fa-list"></i> </a> </nav>')
+    $('body').append('<nav id="touch2" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 90px;"><a href="{{url('/shop/index')}}" class="button button-large button-glow button-highlight button-circle"> <i class="fa fa-list"></i> </a> </nav>')
     var touch2 = document.getElementById('touch2');
     touch2.addEventListener('touchmove', function (event) {
         event.preventDefault();
