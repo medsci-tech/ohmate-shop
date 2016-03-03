@@ -18,7 +18,7 @@
             <table class="table table-condensed" @click="chooseAdd(address)">
             <tr>
               <td rowspan="2">
-                <img v-bind:src=" address.default?chooseImg.imgtrue:chooseImg.imgfalse " alt="">
+                <img v-bind:src=" address.is_default?chooseImg.imgtrue:chooseImg.imgfalse " alt="">
               </td>
               <th>收货人</th>
               <td>@{{ address.name }}</td>
@@ -29,7 +29,7 @@
               <td colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
             </tr>
             </table>
-            <span v-if=" address.default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
+            <span v-if=" address.is_default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
           </li>
         </ul>
       </div>
