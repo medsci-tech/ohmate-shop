@@ -57,7 +57,7 @@
           <tr>
             <td>运费</td>
             <td></td>
-            <td>@{{ address.postage | currency '￥' }}</td>
+            <td>@{{ goods.post_fee | currency '￥' }}</td>
           </tr>
           <tr>
             <td>迈豆折扣</td>
@@ -94,7 +94,7 @@
             </tr>
             <tr>
               <th>收货地址</th>
-              <td colspan="2">@{{ address.address }}</td>
+              <td colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
             </tr>
           </table>
         </div>

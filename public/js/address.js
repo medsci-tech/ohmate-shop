@@ -37,7 +37,7 @@ var list = new Vue({
           if (data.success) {
             list.addReload();
           } else {
-            alert('服务器异常2!');
+            alert('Oops!');
           }
         }, "json"
       );
