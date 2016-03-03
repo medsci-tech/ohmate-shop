@@ -123,6 +123,7 @@ class BeanRecharger
             $daily->date    = Carbon::now()->toDateString();
             $daily->value   = AppConstant::EDUCATION_STUDY_BEAN;
         } else {
+            $daily->date    = Carbon::now()->toDateString();
             $daily->value += AppConstant::EDUCATION_STUDY_BEAN;
         } /*else>*/
         $daily->save();
