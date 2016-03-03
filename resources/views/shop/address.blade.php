@@ -10,7 +10,7 @@
 <body>
 <div class="container" id="addresses">
   <div class="row">
-    <template v-if=" address != null ">
+    <template v-if=" addresses != null ">
       <div class="panel panel-default">
         <div class="panel-heading">地址列表</div>
         <ul class="list-group">
