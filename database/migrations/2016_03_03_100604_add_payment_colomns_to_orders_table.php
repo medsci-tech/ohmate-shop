@@ -17,10 +17,10 @@ class AddPaymentColomnsToOrdersTable extends Migration
         });
 
         Schema::table('orders', function (Blueprint $table) {
-            $table->decimal('cash_payment_calculated')->after('cash_payment');
-            $table->decimal('beans_payment')->after('cash_payment_calculated');
-            $table->decimal('beans_payment_calculated')->after('beans_payment');
-            $table->decimal('post_fee')->after('beans_payment_calculated');
+            $table->decimal('cash_payment_calculated')->after('cash_payment')->default(0.00);
+            $table->decimal('beans_payment')->after('cash_payment_calculated')->default(0.00);
+            $table->decimal('beans_payment_calculated')->after('beans_payment')->default(0.00);
+            $table->decimal('post_fee')->after('beans_payment_calculated')->default(0.00);
         });
     }
 
