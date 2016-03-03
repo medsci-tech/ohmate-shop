@@ -256,17 +256,17 @@ class BeanRecharger
      */
     public function executeConsume($user, $value)
     {
-        $ret = consume($user, $value);
+        $ret = $this->consume($user, $value);
         if (!$ret) {
             return false;
         }
 
-        $ret = consumeFeedback($user, $value);
+        $ret = $this->consumeFeedback($user, $value);
         if (!$ret) {
             return false;
         }
 
-        $ret = volunteerFeedback($user, $value);
+        $ret = $this->volunteerFeedback($user, $value);
         if (!$ret) {
             return false;
         }
