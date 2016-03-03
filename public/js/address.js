@@ -37,13 +37,17 @@ var list = new Vue({
           if (data.success) {
             list.addReload();
           } else {
-            alert('服务器异常2!');
+            alert('Oops!');
           }
         }, "json"
       );
     },
     chooseAdd: function (e) {
       if (!e.is_default) {
+        for( i=0 ; i<list.addresses.length ; i++){
+          list.addresses[i].is_default = false;
+        }
+        e.is_default = true;
         $.post('/shop/address/update',
           {
             id: e.id,
@@ -61,37 +65,35 @@ var list = new Vue({
     },
 
     addFun: function () {
-      if ($('#province').val() && $('#city').val() && $('#area').val()) {
-        $.post('/shop/address/create',
-          {
-            name: this.newAdd.name,
-            phone: this.newAdd.phone,
-            province: this.newAdd.province,
-            city: this.newAdd.city,
-            district: this.newAdd.district,
-            address: this.newAdd.address,
-            is_default: true
-          },
-          function (data) {
-            if (data.success) {
-              list.addReload();
-              list.newAdd = {
-                id: -1,
-                name: '',
-                phone: '',
-                province: '',
-                city: '',
-                district: '',
-                address: '',
-                is_default: false
-              };
-            } else {
-              alert('服务器异常4!');
-            }
-          }, "json"
-        );
-      }
-    },
+      $.post('/shop/address/create',
+        {
+          name: this.newAdd.name,
+          phone: this.newAdd.phone,
+          province: this.newAdd.province,
+          city: this.newAdd.city,
+          district: this.newAdd.district,
+          address: this.newAdd.address,
+          is_default: true
+        },
+        function (data) {
+          if (data.success) {
+            list.addReload();
+            list.newAdd = {
+              id: -1,
+              name: '',
+              phone: '',
+              province: '',
+              city: '',
+              district: '',
+              address: '',
+              is_default: false
+            };
+          } else {
+            alert('请输入正确的手机号!');
+          }
+        }, "json"
+      );
+    }
 
 //      submitAdd: function () {
 //        if (this.newAdd.id == '-1'){

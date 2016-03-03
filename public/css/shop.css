@@ -60,7 +60,9 @@ a, a:focus, a:hover {
         margin-bottom: 4px;
         font-size: 17px;
         color: #f71212; }
-      .container .col-xs-6 div span {
+      .container .col-xs-6 div span:nth-child(1) {
+        color: #a3a3a3; }
+      .container .col-xs-6 div span:last-child {
         margin-top: 6px;
         margin-bottom: 0px;
         font-size: 10px;
@@ -110,23 +112,22 @@ a, a:focus, a:hover {
     .order-form p small {
       color: #a3a3a3; }
   .order-form p:last-child {
-    margin-top: 64px;
     border-top: 1px solid #dddddd; }
   .order-form .img-group {
-    margin-right: 15%; }
+    margin-right: 40px;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: clip; }
     .order-form .img-group div {
-      padding-right: 0px; }
+      margin-left: 15px;
+      display: inline-block; }
       .order-form .img-group div img {
         width: 64px; }
   .order-form .arrow {
     position: absolute;
-    margin-top: 24px;
+    margin-top: -40px;
     right: 18px;
-    width: 15px;
-    height: 15px;
-    border-right: 2px solid #a3a3a3;
-    border-bottom: 2px solid #a3a3a3;
-    transform: rotate(-45deg); }
+    color: #a3a3a3; }
 
 #order-details {
   margin-bottom: 5em; }

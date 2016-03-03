@@ -11,48 +11,6 @@
 
 <div class="container category">
 
-  <nav class="navbar-fixed-bottom">
-    <div class="nav-button">
-      <a href="{{url('/shop/index')}}">
-        <img src="{{url('/image/shop_nav/HOME.png')}}" alt=""><br>
-
-        <p>首页</p>
-      </a>
-    </div>
-
-    <div class="nav-button">
-      <a href="{{url('/shop/category')}}">
-        <img src="{{url('/image/shop_nav/classification-1.png')}}" alt=""><br>
-
-        <p class="nav-active">分类</p>
-      </a>
-    </div>
-
-    <div class="nav-button">
-      <a href="{{url('/shop/cart')}}">
-        <img src="{{url('/image/shop_nav/SHOPPING.png')}}" alt=""><br>
-
-        <p>购物车</p>
-      </a>
-    </div>
-
-    <div class="nav-button">
-      <a href="{{url('/shop/order')}}">
-        <img src="{{url('/image/shop_nav/NOTEPAD.png')}}" alt=""><br>
-
-        <p>订单</p>
-      </a>
-    </div>
-
-    <div class="nav-button">
-      <a href="{{url('/shop/personal')}}">
-        <img src="{{url('/image/shop_nav/USER.png')}}" alt=""><br>
-
-        <p>个人</p>
-      </a>
-    </div>
-  </nav>
-
   <div class="col-xs-3">
     <ul class="list-unstyled">
       <li class="li-active">分类1</li>

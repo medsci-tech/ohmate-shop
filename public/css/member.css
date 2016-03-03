@@ -223,7 +223,7 @@ body, html {
 }
 
 .text_color {
-    color: #FFBE00;
+    color: #de5145;
 }
 
 /*钱包*/
@@ -260,6 +260,17 @@ body, html {
     -webkit-box-orient: vertical
 }
 
+/*文章列表*/
 .tab_bg{
     background-color: #D0D0D0;;
+}
+
+.tab_font-size{
+    font-size: 12px;
+}
+.tab_bd{
+    overflow: hidden;
+}
+.tab_top{
+    margin-top: 50px;
 }

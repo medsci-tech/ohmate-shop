@@ -177,7 +177,7 @@ class BeanRecharger
         } /*if>*/
 
         $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
-        if (!ret) {
+        if (!$ret) {
             return false;
         } /*if>*/
 
@@ -281,8 +281,15 @@ class BeanRecharger
         if (!$customer) {
             return false;
         } /*if>*/
-        $value = $customer->dailyArticles->where('date', Carbon::now()->toDateString())->value;
-        if (($value + AppConstant::EDUCATION_STUDY_BEAN) > AppConstant::EDUCATION_DAILY_CEILING) {
+
+        $article = CustomerDailyArticle::where('customer_id', $customer->id)
+            ->where('date', Carbon::now()->toDateString())->first();
+        if (!$article) {
+            return true;
+        }
+
+        if (($article->value + AppConstant::EDUCATION_STUDY_BEAN)
+            > AppConstant::EDUCATION_DAILY_CEILING) {
             return false;
         } /*if>*/
         return true;
