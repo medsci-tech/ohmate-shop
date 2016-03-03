@@ -44,6 +44,7 @@ var list = new Vue({
     },
     chooseAdd: function (e) {
       if (!e.is_default) {
+        e.is_default = true;
         $.post('/shop/address/update',
           {
             id: e.id,
