@@ -90,7 +90,7 @@ class Order extends Model
     {
         $address = $this->address;
         $post_fee = \Helper::getPostFee($address);
-        $this->update(['post_fee' => $post_fee]);
+        dd($this->update(['post_fee' => $post_fee]));
         $this->increasePrice($post_fee);
         return $this;
     }
