@@ -282,7 +282,7 @@ class BeanRecharger
             return false;
         } /*if>*/
         $value = $customer->dailyArticles->where('date', Carbon::now()->toDateString())->value;
-        if (($value + EDUCATION_STUDY_BEAN) > AppConstant::EDUCATION_DAILY_CEILING) {
+        if (($value + AppConstant::EDUCATION_STUDY_BEAN) > AppConstant::EDUCATION_DAILY_CEILING) {
             return false;
         } /*if>*/
         return true;
