@@ -14,7 +14,7 @@
     <p>&emsp;下单时间：{{$order->created_at->toDateString()}}<span class="order-finished">待收货&emsp;</span></p>
     <div class="img-group">
       @foreach($order['commodities'] as $commodity)
-        <div class="col-xs-3"><img class="" src="{{$commodity->portrait}}" alt=""></div>
+        <div><img class="" src="{{$commodity->portrait}}" alt=""></div>
       @endforeach
     </div>
     <span class="arrow"><i class="fa fa-chevron-right"></i></span>
@@ -25,6 +25,5 @@
 </div>
 
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
-<script src="{{asset('/js/vendor/order.js')}}"></script>
 </body>
 </html>

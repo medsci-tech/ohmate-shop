@@ -112,17 +112,20 @@ a, a:focus, a:hover {
     .order-form p small {
       color: #a3a3a3; }
   .order-form p:last-child {
-    margin-top: 64px;
     border-top: 1px solid #dddddd; }
   .order-form .img-group {
-    margin-right: 15%; }
+    margin-right: 10%;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: clip; }
     .order-form .img-group div {
-      padding-right: 0px; }
+      margin-left: 15px;
+      display: inline-block; }
       .order-form .img-group div img {
         width: 64px; }
   .order-form .arrow {
     position: absolute;
-    margin-top: 22px;
+    margin-top: -40px;
     right: 18px;
     color: #a3a3a3; }
 
