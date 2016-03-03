@@ -105,7 +105,7 @@ class BeanRecharger
      */
     public function consume($user, $value)
     {
-        \Log::info('BeanRecharger:consume:user:' . $user, ',value:' . $value);
+        \Log::info('BeanRecharger:consume:user:' . $user . ',value:' . $value);
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
             return false;
@@ -192,7 +192,7 @@ class BeanRecharger
      */
     public function consumeFeedback($user, $value)
     {
-        \Log::info('BeanRecharger:consumeFeedback:user:' . $user, ',value:' . $value);
+        \Log::info('BeanRecharger:consumeFeedback:user:' . $user . ',value:' . $value);
         $customer = Customer::where('id', $user)->first();
         if (!$customer) {
             return false;
@@ -209,7 +209,7 @@ class BeanRecharger
      * @return bool
      */
     public function volunteerFeedback($user, $value) {
-        \Log::info('BeanRecharger:volunteerFeedback:user:' . $user, ',value:' . $value);
+        \Log::info('BeanRecharger:volunteerFeedback:user:' . $user . ',value:' . $value);
         $customer = Customer::where('id', $user)->first();
         if (!$customer || (0 == $customer->referrer_id)) {
             return false;
@@ -256,17 +256,17 @@ class BeanRecharger
      */
     public function executeConsume($user, $value)
     {
-        $ret = consume($user, $value);
+        $ret = $this->consume($user, $value);
         if (!$ret) {
             return false;
         }
 
-        $ret = consumeFeedback($user, $value);
+        $ret = $this->consumeFeedback($user, $value);
         if (!$ret) {
             return false;
         }
 
-        $ret = volunteerFeedback($user, $value);
+        $ret = $this->volunteerFeedback($user, $value);
         if (!$ret) {
             return false;
         }
