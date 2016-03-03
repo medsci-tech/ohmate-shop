@@ -21,7 +21,7 @@
           <li class="list-group-item" v-for="goods in cart">
             <div class="media">
               <div class="media-left media-middle">
-                <img class="media-object" src="../../image/shop_goods/2.png" alt="...">
+                <img class="media-object" :src="'/image/shop_goods/' + goods.id + '.png'" alt="...">
               </div>
               <div class="media-body">
                 <strong class="media-heading">@{{ goods.name }}</strong>
