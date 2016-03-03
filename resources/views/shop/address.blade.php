@@ -26,8 +26,7 @@
             </tr>
             <tr>
               <th>收货地址</th>
-              <td
-                colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
+              <td colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
             </tr>
             </table>
             <span v-if=" address.default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
@@ -39,45 +38,39 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">添加收货地址</div>
-      <form class="form-horizontal" @submit.prevent="addAdd">
+      <form class="form-horizontal" @submit.prevent="addFun">
         <div class="form-group">
           <label class="col-xs-3 control-label" for="name">收货人</label>
-
           <div class="col-xs-9">
             <input required type="text" class="form-control" id="name" placeholder="收货人姓名" v-model="newAdd.name">
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="phone">手机号</label>
-
           <div class="col-xs-9">
             <input required type="text" class="form-control" id="phone" placeholder="收货人号码" v-model="newAdd.phone">
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="province">详细地址</label>
-
           <div class="col-xs-9">
             <select class="form-control" name="province" id="province" v-model="newAdd.province"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="city"></label>
-
           <div class="col-xs-9">
             <select class="form-control" name="city" id="city" v-model="newAdd.city"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="area"></label>
-
           <div class="col-xs-9">
             <select class="form-control" name="area" id="area" v-model="newAdd.district"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="address"></label>
-
           <div class="col-xs-9">
             <input required type="text" class="form-control" id="address" placeholder="街道地址" v-model="newAdd.address">
           </div>
