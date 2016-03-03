@@ -89,8 +89,10 @@ class Order extends Model
     public function addPostFee()
     {
         $address = $this->address;
-        $post_fee = \Helper::getPostFee($address);
-        dd($this->update(['post_fee' => $post_fee]));
+        $post_fee = floatval(\Helper::getPostFee($address));
+        dd($this->update([
+            'post_fee' => $post_fee
+        ]));
         $this->increasePrice($post_fee);
         return $this;
     }
