@@ -57,7 +57,7 @@ class BeanRatesSeeder extends Seeder
             'action_en' => 'share',
             'action_ch' => '转发文章',
             'rate' => 10,
-            'icon_url' => '/image/bean/study_icon.png'
+            'icon_url' => '/image/bean/share_icon.png'
         ]);
 
         DB::table('bean_rates')->insert([
