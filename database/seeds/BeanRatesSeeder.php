@@ -64,21 +64,21 @@ class BeanRatesSeeder extends Seeder
             'action_en' => 'doctor_invite',
             'action_ch' => '邀请糖友',
             'rate' => 3000,
-            'icon_url' => '/image/bean/invite_icon.png'
+            'icon_url' => '/image/bean/new_invite_icon.png'
         ]);
 
         DB::table('bean_rates')->insert([
             'action_en' => 'nurse_invite',
             'action_ch' => '邀请糖友',
             'rate' => 500,
-            'icon_url' => '/image/bean/invite_icon.png'
+            'icon_url' => '/image/bean/new_invite_icon.png'
         ]);
 
         DB::table('bean_rates')->insert([
             'action_en' => 'volunteer_invite',
             'action_ch' => '邀请糖友',
             'rate' => 500,
-            'icon_url' => '/image/bean/invite_icon.png'
+            'icon_url' => '/image/bean/new_invite_icon.png'
         ]);
 
     }
