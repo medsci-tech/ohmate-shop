@@ -206,20 +206,24 @@ body, html {
     -webkit-animation: b .2s forwards;
     animation: b .2s forwards
 }
+
 /*个人信息*/
-.img_t{
-    margin:0 40%;
+.img_t {
+    margin: 0 40%;
 }
-.img_tx{
+
+.img_tx {
     width: 80px;
     height: 80px;
     border-radius: 50%;
 }
-.bd_1{
+
+.bd_1 {
     margin-top: -2rem;
 }
-.text_color{
-    color: #de5145;
+
+.text_color {
+    color: #FFBE00;
 }
 
 /*钱包*/
@@ -231,8 +235,27 @@ body, html {
     height: 42px
 }
 
+.span_maidou {
+    font-size: 31px;
+    color: #FFFFFF;
+    top: 6px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
 .time {
     color: #888;
     font-size: 15px;
 }
-
+/*
+迈豆规则*/
+.desc{
+    color: #999999;
+    font-size: 13px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}

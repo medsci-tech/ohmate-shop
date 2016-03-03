@@ -72,19 +72,13 @@ class OrderController extends Controller
 
         $order = new Order();
 
-        $address = Address::find($request->input('address_id'));
-        $order->customer()->associate($customer);
-        $order->address()->associate($address);
-        $order->save();
-        $order->update([
-            'wx_out_trade_no' => md5($order->id . microtime())
-        ]);
+        $address = Address::findOrFail($request->input('address_id'));
 
-        foreach ($items as $item) {
-            $commodity = Commodity::find($item['id']);
-            $order->addCommodity($commodity, $item['num']);
-            $order->increasePrice(floatval($commodity->price * $item['num']));
-        }
+        $order->initWithCustomerAndAddress($customer, $address);
+        $order->save();
+        $order->addCommodities($items);
+        $order->calculate();
+        $order->save();
 
         $result = \Wechat::generatePaymentConfig($order, $customer);
 
