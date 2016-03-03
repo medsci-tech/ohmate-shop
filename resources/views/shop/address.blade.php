@@ -26,7 +26,8 @@
             </tr>
             <tr>
               <th>收货地址</th>
-              <td colspan="2">@{{ address.address }}</td>
+              <td
+                colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
             </tr>
             </table>
             <span v-if=" address.default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
@@ -57,21 +58,21 @@
           <label class="col-xs-3 control-label" for="province">详细地址</label>
 
           <div class="col-xs-9">
-            <select class="form-control" name="province" id="province"></select>
+            <select class="form-control" name="province" id="province" v-model="newAdd.province"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="city"></label>
 
           <div class="col-xs-9">
-            <select class="form-control" name="city" id="city"></select>
+            <select class="form-control" name="city" id="city" v-model="newAdd.city"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="area"></label>
 
           <div class="col-xs-9">
-            <select class="form-control" name="area" id="area"></select>
+            <select class="form-control" name="area" id="area" v-model="newAdd.district"></select>
           </div>
         </div>
         <div class="form-group">
