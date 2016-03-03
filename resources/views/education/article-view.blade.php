@@ -40,6 +40,24 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
 
+    var request = function (paras) {
+        var url = location.href;
+        var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+        var paraObj = {}
+        for (i = 0; j = paraString[i]; i++) {
+            paraObj[j.substring(0, j.indexOf("=")).
+                    toLowerCase()] = j
+                    .substring(j.indexOf("=") + 1, j.length);
+
+        }
+        var returnValue = paraObj[paras.toLowerCase()];
+        if (typeof(returnValue) == "undefined") {
+            return "";
+        } else {
+            return returnValue;
+        }
+    }
+    
     function setTimer(i){
         var type = request("type");
         if (type == '2')
@@ -127,23 +145,7 @@
         alert("error:" + res.errMsg);
     });
 
-    var request = function (paras) {
-        var url = location.href;
-        var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
-        var paraObj = {}
-        for (i = 0; j = paraString[i]; i++) {
-            paraObj[j.substring(0, j.indexOf("=")).
-                    toLowerCase()] = j
-                    .substring(j.indexOf("=") + 1, j.length);
 
-        }
-        var returnValue = paraObj[paras.toLowerCase()];
-        if (typeof(returnValue) == "undefined") {
-            return "";
-        } else {
-            return returnValue;
-        }
-    }
 </script>
 </body>
 </html>
