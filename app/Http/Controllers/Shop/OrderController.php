@@ -44,6 +44,8 @@ class OrderController extends Controller
             abort(404);
         }
 
+        dd($order->queryForDetailPage());
+
         return view('shop.order-details')->with([
             'json' => $order->queryForDetailPage()
         ]);
