@@ -205,7 +205,7 @@ class Order extends Model
      */
     public function queryForDetailPage()
     {
-        return jsonSerialize(static::where('id', 119)->with(['commodities', 'address' => function ($query) {
+        return json_encode(static::where('id', 119)->with(['commodities', 'address' => function ($query) {
             $query->withTrashed();
         }])->first()->toArray());
     }
