@@ -185,7 +185,7 @@
             }
 
             $("#text_view").val('2');
-            changeArticleType('2','detail_2', 'article_drug.png');
+            changeArticleType('2','detail_2', '/image/education/article_drug.png');
         });
 
         $("#tab_3").on('click', function () {
@@ -316,15 +316,8 @@
                         $("#" + type).empty();
                         var strHtml = "";
                         $(json.articles).each(function () {
-                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"','\"" + this.uri + "\"')'>";
-                                +"<div class='weui_media_hd'>";
-                                +"<img class='weui_media_appmsg_thumb' src='/image/education/\"" + pic + "\"' alt=''>";
-                                +"</div>";
-                                +"<div class='weui_media_bd'>";
-                                +"<h4 class='weui_media_title'>" + this.title + "</h4>";
-                                +"<p class='weui_media_desc'>" + this.description + "</p>";
-                                +"</div>";
-                                +"</a>";
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"')'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>" + this.description + "</p></div></a> ";
+                            console.log(strHtml);
                         });
                         $("#" + type).html(strHtml);
                     }
@@ -340,7 +333,7 @@
     }
 
 
-    function updateView(id, uri) {
+    function updateView(id) {
         document.getElementById('text_click').value ='1';
         document.getElementById('text_id').value = id;
 //        $(function () {

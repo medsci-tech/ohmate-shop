@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-  <title>我的订单</title>
+  <title>订单详情</title>
   <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
 </head>
 <body>
@@ -15,7 +15,7 @@
       <table v-cloak class="table table-condensed table2">
         <tr>
           <th>订单号</th>
-          <td>@{{ wx_out_trade_no }}</td>
+          <td>@{{ (wx_out_trade_no).substring(0,16) + '-' + (wx_out_trade_no).substring(16,32)  }}</td>
         </tr>
         <tr>
           <th>物流编号</th>
