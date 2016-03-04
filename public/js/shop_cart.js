@@ -101,14 +101,14 @@ var shop_cart = new Vue({
           function (data) {
             if (data.success) {
               function onBridgeReady() {
-                alert("1");
+                alert("11");
                 console.log(shop_cart.cart);
                 WeixinJSBridge.invoke(
                   'getBrandWCPayRequest', JSON.parse(data.data.result),
                   function (res) {
                     alert("2");
                     console.log(shop_cart.cart);
-                    if (res.err_msg == "get_brand_wcpay_request：ok") {
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
                       alert("3");
                       console.log(shop_cart.cart);
                       shop_cart.cart = [];
