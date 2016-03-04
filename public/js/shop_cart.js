@@ -69,11 +69,13 @@ var shop_cart = new Vue({
     numMinus: function (e) {
       if (e.num >= 2) {
         e.num--;
+        localStorage.cart = JSON.stringify(this.cart);
       }
     },
     numAdd: function (e) {
       if (e.num <= 98) {
         e.num++;
+        localStorage.cart = JSON.stringify(this.cart);
       }
     },
     getPersonal: function () {
@@ -99,16 +101,10 @@ var shop_cart = new Vue({
           function (data) {
             if (data.success) {
               function onBridgeReady() {
-                alert("1");
-                console.log(shop_cart.cart);
                 WeixinJSBridge.invoke(
                   'getBrandWCPayRequest', JSON.parse(data.data.result),
                   function (res) {
-                    alert("2");
-                    console.log(shop_cart.cart);
-                    if (res.err_msg == "get_brand_wcpay_request：ok") {
-                      alert("3");
-                      console.log(shop_cart.cart);
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
                       shop_cart.cart = [];
                       localStorage.clear();
                       $.post('shop/payment/ok',
