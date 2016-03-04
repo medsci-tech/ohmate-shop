@@ -9,81 +9,89 @@
 <body>
 <div class="container" id="order-details">
 
-  <div class="row address">
-    <p>订单信息</p>
-    <p></p>
-    <p class="col-xs-4" @click="chooseAdd(address)">订单号</p>
-    <span class="col-xs-8" @click="editAdd(address)">@{{ order.id }}</span>
-    <div class="clearfix"></div>
-    <p class="col-xs-4" @click="chooseAdd(address)">物流编号</p>
-    <span class="col-xs-8" @click="editAdd(address)">@{{ order.logistics }}</span>
-    <div class="clearfix"></div>
-    <p class="col-xs-4" @click="chooseAdd(address)">下单时间</p>
-    <span class="col-xs-8" @click="editAdd(address)">@{{ order.time }}</span>
-    <div class="clearfix"></div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">订单信息</div>
+      <table v-cloak class="table table-condensed table2">
+        <tr>
+          <th>订单号</th>
+          <td>@{{ wx_out_trade_no }}</td>
+        </tr>
+        <tr>
+          <th>物流编号</th>
+          <td>@{{ post_no }}</td>
+        </tr>
+        <tr>
+          <th>下单时间</th>
+          <td>@{{ created_at }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="row address">
-    <p>收货地址</p>
-    <p class="col-xs-4" @click="chooseAdd(address)">收货人</p>
-    <span class="col-xs-3" @click="editAdd(address)">@{{ order.name }}</span>
-    <span class="col-xs-5" @click="editAdd(address)">@{{ order.phone }}</span>
-    <div class="clearfix"></div>
-    <p class="col-xs-4" @click="chooseAdd(address)">收货地址</p>
-    <span class="col-xs-8" @click="editAdd(address)">@{{ order.address }}</span>
-    <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">收货地址</div>
+      <table v-cloak class="table table-condensed table2">
+        <tr>
+          <th>收货人</th>
+          <td>@{{ address.name }}</td>
+          <td>@{{ address.phone }}</td>
+        </tr>
+        <tr>
+          <th>收货地址</th>
+          <td colspan="2">@{{ address.address }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <h5>消费明细></h5>
-  <div class="cart-detail">
-    <ul class="list-unstyled">
-      <li v-for="goods in cart">
-        <span>@{{ goods.name }}</span>
-        <span>x@{{ goods.num }}</span>
-        <span>@{{ goods.priceGoods | currency '￥' }}</span>
-      </li>
-    </ul>
-    <p>商品价格<span>@{{ priceAll | currency '￥' }}</span></p>
-    <p>运费 <span>@{{ address.postage | currency '￥' }}</span></p>
-    <p>迈豆折扣
-      <span>－@{{ priceDiscount | currency '￥' }}</span>
-      <span>@{{ priceDiscount*100 }}迈豆</span>
-    </p>
-    <p>合计<span>@{{ order.priceAll | currency '￥' }}</span></p>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">消费明细</div>
+      <table v-cloak class="table table-condensed table1">
+        <tbody>
+        <tr v-for=" item in commodities">
+          <td>@{{ item.name }}</td>
+          <td>x@{{ item.pivot.amount }}</td>
+          <td>@{{ item.price*item.pivot.amount | currency '￥' }}</td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr>
+          <td>运费</td>
+          <td></td>
+          <td>@{{ post_fee | currency '￥' }}</td>
+        </tr>
+        <tr>
+          <td>迈豆折扣</td>
+          <td>@{{ beans_payment*100 | currency '￥' }}迈豆</td>
+          <td>－@{{ beans_payment | currency '￥' }}</td>
+        </tr>
+        <tr>
+          <td>合计</td>
+          <td></td>
+          <th>@{{ total_price | currency '￥' }}</th>
+        </tr>
+        </tfoot>
+
+
+      </table>
+    </div>
   </div>
+
+
+  <br><br><br><br>
+
 </div>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
   var list = new Vue({
-    el: '#order-details',
-    data: {
-      cart: [{
-        id: 01,
-        name: '易折消毒棒1',
-        priceGoods: 20,
-        num: 1
-      }, {
-        id: 01,
-        name: '易折消毒棒1',
-        priceGoods: 20,
-        num: 1
-      }, {
-        id: 01,
-        name: '易折消毒棒1',
-        priceGoods: 20,
-        num: 1
-      }],
-      order: {
-        id: 2016100451002,
-        logistics: 'EMSS989430820804900',
-        time: '2016-01-02',
-        name: '杨先生',
-        phone: '18311561869',
-        address: '湖北省武汉市东湖高新大道3234号',
-        priceAll: 60
-      },
-    },
-
+    el: '#order_details',
+    data: JSON.stringify(data)
   });
 </script>
 </body>

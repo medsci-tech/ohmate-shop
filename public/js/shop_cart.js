@@ -35,7 +35,7 @@ var shop_cart = new Vue({
       for (i = 0; i < this.cart.length; i++) {
         all += this.cart[i].price * this.cart[i].num;
       }
-      return all;
+      return all.toFixed(2);
     },
     priceDiscount: function () {
       var consume =
