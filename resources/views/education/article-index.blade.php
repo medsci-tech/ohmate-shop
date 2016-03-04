@@ -30,7 +30,7 @@
             @foreach($articles as $index)
             <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                 <div class="weui_media_hd">
-                    <img class="weui_media_appmsg_thumb" src="/image/education/article_knowledge" alt="">
+                    <img class="weui_media_appmsg_thumb" src="/image/education/article_knowledge.png" alt="">
                 </div>
                 <div class="weui_media_bd">
                     <h4 class="weui_media_title">1{{$index['title']}}</h4>
@@ -45,7 +45,7 @@
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_drug" alt="">
+                        <img class="weui_media_appmsg_thumb" src="/image/education/article_drug.png" alt="">
                     </div>
                     <div class="weui_media_bd">
                         <h4 class="weui_media_title">2{{$index['title']}}</h4>
@@ -60,7 +60,7 @@
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_food" alt="">
+                        <img class="weui_media_appmsg_thumb" src="/image/education/article_food.png" alt="">
                     </div>
                     <div class="weui_media_bd">
                         <h4 class="weui_media_title">3{{$index['title']}}</h4>
