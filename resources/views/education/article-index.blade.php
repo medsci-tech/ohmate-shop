@@ -91,6 +91,7 @@
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
                         <img class="weui_media_appmsg_thumb" src="/image/education/article_glycemia.png" alt="">
+                    </div>
                     <div class="weui_media_bd">
                         <h4 class="weui_media_title">5{{$index['title']}}</h4>
                         <p class="weui_media_desc">{{$index['description']}}</p>
@@ -299,27 +300,67 @@
 
     });
 
-
-    function updateView(id, uri) {
-        document.getElementById('text_click').value ='1';
-        document.getElementById('text_id').value = id;
+    var changeArticleType = function (id, type) {
         $(function () {
-            var requestUrl = '/education/article/update-count';
+//            var branchId = $('#' + id).attr('value');
+//            var location = document.getElementById(id).innerText;
+//            $('#text_location').val('');
+//            $('#text_location').val(location);
+//            $('#text_province').val(branchId);
+//            $('#text_province_view').val(location);
+//            console.log("ready" + branchId + location);
+            var requestCity = '/kzkt/city';
             $.ajax({
-                url : requestUrl,
+                url: requestCity,
                 data: {
-                    id: id
+                    id: branchId
                 },
-                type : "get",
-                dataType : "json",
+                type: "get",
+                dataType: "json",
                 success: function (json) {
+                    $("#select_city").empty();
+                    var strHtml = "";
+                    $(json.list).each(function () {
+                        var id = "ss_" + this.city_id;
+                        strHtml += "<div id='ss_" + this.city_id + "' class='weui_actionsheet_cell nextActionSheet' " +
+                        "value='" + this.city_id + "' onclick='changeCountry(\"" + id + "\")'>" + this.city + "</div>";
+                    });
+                    $("#select_city").html(strHtml);
+
+                    $("#select_province").parents('.actionSheet_wrap').next().children(0).addClass('weui_fade_toggle');
+                    $("#select_province").parents('.actionSheet_wrap').next().children(0).css("display", "block");
+                    $("#select_province").parents('.actionSheet_wrap').next().children(1).addClass('weui_actionsheet_toggle');
 
                 },
                 error: function (xhr, status, errorThrown) {
                     alert("Sorry, there was a problem!");
                 }
             });
+
         });
+    }
+
+
+    function updateView(id, uri) {
+        document.getElementById('text_click').value ='1';
+        document.getElementById('text_id').value = id;
+//        $(function () {
+//            var requestUrl = '/education/article/update-count';
+//            $.ajax({
+//                url : requestUrl,
+//                data: {
+//                    id: id
+//                },
+//                type : "get",
+//                dataType : "json",
+//                success: function (json) {
+//
+//                },
+//                error: function (xhr, status, errorThrown) {
+//                    alert("Sorry, there was a problem!");
+//                }
+//            });
+//        });
 
         window.location.href = uri+'?type=1&id='+id;
     }

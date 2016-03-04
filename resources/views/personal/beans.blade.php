@@ -9,20 +9,22 @@
 </head>
 <body>
 
-@foreach($beans as $key => $month)
-  <div class="weui_cells_title">{{$year}}年{{$key}}月账单</div>
-
-  <div class="weui_cells">
-    @foreach($month as $item)
-      <div class="weui_cell">
-        <div class="weui_cell_hd"><img src="{{$item['icons']}}" alt="" class="image"></div>
-        <div class="weui_cell_bd weui_cell_primary">
-          <p class="time">{{$item['day']}}<br>{{$item['time']}}</p>
+@foreach($months as $month)
+  <div class="weui_cells_title"><a href="/personal/beans/?month={{$month}}">{{$month}}月账单</a></div>
+  @if($date == $month)
+    <div class="weui_cells">
+      @foreach($beans as $item)
+        <div class="weui_cell">
+          <div class="weui_cell_hd"><img src="{{$item['icons']}}" alt="" class="image"></div>
+          <div class="weui_cell_bd weui_cell_primary">
+            <p class="time">{{$item['day']}}<br>{{$item['time']}}</p>
+          </div>
+          <div class="weui_cell_ft">{{$item['result']}}&nbsp;丨{{$item['action']}}</div>
         </div>
-        <div class="weui_cell_ft">{{$item['result']}}&nbsp;丨{{$item['action']}}</div>
-      </div>
-    @endforeach
-  </div>
+      @endforeach
+    </div>
+  @endif
+
 @endforeach
 
 </body>
