@@ -28,6 +28,10 @@ class CustomerTypesSeeder extends Seeder
             ['type_en' => 'doctor',  'type_ch' => '医生' ]
         );
 
+        DB::table('customer_types')->insert(
+            ['type_en' => 'enterprise',  'type_ch' => '企业' ]
+        );
+
     }
 
 }

@@ -160,6 +160,7 @@ return [
         App\Providers\WechatServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         App\Providers\BeanServiceProvider::class,
+        App\Providers\StatisticServiceProvider::class,
 
         /*
          * IDE Helper
@@ -215,7 +216,7 @@ return [
         'Wechat'        => App\Werashop\Wechat\Facades\Wechat::class,
         'Helper'        => App\Werashop\Helper\Facades\Helper::class,
         'BeanRecharger' => App\Werashop\Bean\Facades\BeanRecharger::class,
-        'BeanCalculator' => App\Werashop\Bean\Facades\Calculator::class,
+        'Analyzer'      => App\Werashop\Statistics\Facades\Analyzer::class,
     ],
 
 ];

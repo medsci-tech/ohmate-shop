@@ -147,24 +147,6 @@ class BeanRecharger
     }
 
     /**
-     * @param $customer
-     */
-    private function sumDailyStudy($customer)
-    {
-        $daily = CustomerDailyArticle::where('customer_id', $customer->id)->first();
-        if (!$daily) {
-            $daily = new CustomerDailyArticle();
-            $daily->customer_id = $customer->id;
-            $daily->date    = Carbon::now()->toDateString();
-            $daily->value   = AppConstant::EDUCATION_STUDY_BEAN;
-        } else {
-            $daily->date    = Carbon::now()->toDateString();
-            $daily->value   += AppConstant::EDUCATION_STUDY_BEAN;
-        } /*else>*/
-        $daily->save();
-    }
-
-    /**
      * @param $user
      * @return bool
      */
@@ -181,7 +163,6 @@ class BeanRecharger
             return false;
         } /*if>*/
 
-        $this->sumDailyStudy($customer);
         return true;
     }
 

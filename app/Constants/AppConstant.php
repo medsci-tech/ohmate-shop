@@ -13,20 +13,24 @@ class AppConstant {
 
     /* session key */
     const SESSION_USER_KEY = 'logged_user';
+
     /* wechat expire interval */
     const WECHAT_EXPIRE_INTERVAL        = 30;
     const AUTH_CODE_EXPIRE_INTERVAL     = 30;
 
+    /* bean translate to money */
+    const MONEY_BEAN_RATE               = 100;
+
     /* education daily ceiling */
-    const EDUCATION_STUDY_BEAN      = 10;
-    const EDUCATION_DAILY_CEILING   = 20;
-    const MONEY_BEAN_RATE           = 100;
+    const EDUCATION_STUDY_BEAN      = 20;
+    const EDUCATION_DAILY_CEILING   = 5;
 
     /* customer type */
     const CUSTOMER_COMMON       = 'common';
     const CUSTOMER_VOLUNTEER    = 'volunteer';
     const CUSTOMER_NURSE        = 'nurse';
     const CUSTOMER_DOCTOR       = 'doctor';
+    const CUSTOMER_ENTERPRISE   = 'enterprise';
 
     /* Bean Actions */
     const BEAN_ACTION_REGISTER      = 'register';
