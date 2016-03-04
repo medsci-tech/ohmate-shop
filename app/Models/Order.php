@@ -151,8 +151,7 @@ class Order extends Model
     /**
      * @return bool
      */
-    public function isPaid()
-    {
+    public function isPaid() {
         return $this->order_status_id >= 2;
     }
 
@@ -193,8 +192,7 @@ class Order extends Model
      * @param Address $address
      * @return $this
      */
-    public function initWithCustomerAndAddress(Customer $customer, Address $address)
-    {
+    public function initWithCustomerAndAddress(Customer $customer, Address $address){
         $this->bindCustomer($customer)->bindAddress($address)->addWechatOuttradeno();
 
         return $this;
@@ -205,8 +203,8 @@ class Order extends Model
      */
     public function queryForDetailPage()
     {
-        return json_encode(static::where('id', 119)->with(['commodities', 'address' => function ($query) {
+        return static::where('id',119)->with(['commodities','address'=> function ($query) {
             $query->withTrashed();
-        }])->first()->toArray());
+        }])->first()->toJson();
     }
 }
