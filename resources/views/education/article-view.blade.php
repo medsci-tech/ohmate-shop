@@ -36,10 +36,8 @@
 <!--END actionSheet-->
 <input id="text_id" type="hidden" value="{{$article->id}}">
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/vendor/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" charset="utf-8">
-
+<script type="text/javascript">
     var request = function (paras) {
         var url = location.href;
         var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
@@ -57,8 +55,12 @@
             return returnValue;
         }
     }
-
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    
     wx.config(<?php echo $js->config(array('checkJsApi','onMenuShareAppMessage'), false, false) ?>);
+
     wx.ready(function () {
 
         wx.checkJsApi({
