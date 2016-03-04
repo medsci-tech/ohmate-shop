@@ -19,20 +19,20 @@
     </div>
 </div>
 <!--BEGIN actionSheet-->
-<div id="actionSheet_wrap">
-    <div class="weui_mask_transition" id="mask" style="display: none;"></div>
-    <div class="weui_actionsheet" style="display: none;" id="weui_actionsheet">
-        <div class="weui_actionsheet_menu">
-            <img src="/image/education/hongbao.png" alt="">
+{{--<div id="actionSheet_wrap">--}}
+    {{--<div class="weui_mask_transition" id="mask" style="display: none;"></div>--}}
+    {{--<div class="weui_actionsheet" style="display: none;" id="weui_actionsheet">--}}
+        {{--<div class="weui_actionsheet_menu">--}}
+            {{--<img src="/image/education/hongbao.png" alt="">--}}
 
-            <p>10迈豆</p>
-        </div>
-        <div class="weui_actionsheet_action">
-            <p>(每日学习迈豆奖励)</p>
-            <input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取" onclick="">
-        </div>
-    </div>
-</div>
+            {{--<p>10迈豆</p>--}}
+        {{--</div>--}}
+        {{--<div class="weui_actionsheet_action">--}}
+            {{--<p>(每日学习迈豆奖励)</p>--}}
+            {{--<input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取" onclick="">--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!--END actionSheet-->
 <input id="text_id" type="hidden" value="{{$article->id}}">
 
@@ -58,7 +58,7 @@
 </script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
-    
+
     wx.config(<?php echo $js->config(array('checkJsApi','onMenuShareAppMessage'), false, false) ?>);
 
     wx.ready(function () {
