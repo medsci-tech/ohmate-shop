@@ -32,6 +32,16 @@ class EducationController extends Controller
         return view('education.article-index', ['articles' => $topArticles]);
     }
 
+    public function find(Request $request)
+    {
+        $type = $request->input('type');
+        $articles = Article::where('type_id', $type)->orderBy('updated_at', 'desc')->get();
+        if (!$articles) {
+            return response()->json(['result' => '-1']);
+        } /*if>*/
+        return response()->json(['result' => '-1', 'articles' => $articles]);
+    }
+
     public function category(Request $request)
     {
         $type = ArticleType::where('type_en', $request->input('type'))->first();
