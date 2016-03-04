@@ -8,16 +8,35 @@ use App\Models\Address;
 use App\Models\Order;
 use Curl\Curl;
 
+/**
+ * Class EmsPost
+ * @package App\Werashop\Post
+ */
 class EmsPost implements PostInterface
 {
+    /**
+     * @var string
+     */
     private $_getBillnumUrl;
 
+    /**
+     * @var string
+     */
     private $_printDatasUrl;
 
+    /**
+     * @var mixed
+     */
     private $_sysAccount;
 
+    /**
+     * @var mixed
+     */
     private $_password;
 
+    /**
+     * @var mixed
+     */
     private $_appKey;
 
     /**
@@ -34,17 +53,25 @@ class EmsPost implements PostInterface
     }
 
 
+    /**
+     * @return string
+     */
     public function getMailNo()
     {
         $curl = new Curl();
 
-        $curl->get($this->_getBillnumUrl, $this->generateBillNumRequestData());
+        $curl->get($this->_getBillnumUrl, ['xml' => $this->generateBillNumRequestData()]);
         $xml_str = $curl->response;
-        //TODO
+
+        $xml = simplexml_load_string($xml_str);
+        return (string) $xml->assignIds->assignId->billno;
     }
 
+    /**
+     * @return string
+     */
     protected function generateBillNumRequestData()
     {
-        return base64_encode('<?xml version="1.0" encoding="UTF-8"?><XMLInfo><sysAccount>42010670114000</sysAccount><passWord>595600830807d207332c36fcd7a5c3e5</passWord><appKey>S51f85dA8892165c7</appKey><businessType>4</businessType><billNoAmount>1</billNoAmount></XMLInfo>');
+        return base64_encode('<?xml version="1.0" encoding="UTF-8"?><XMLInfo><sysAccount>'.$this->_sysAccount.'</sysAccount><passWord>'.$this->_password.'</passWord><appKey>'.$this->_appKey.'/appKey><businessType>4</businessType><billNoAmount>1</billNoAmount></XMLInfo>');
     }
 }

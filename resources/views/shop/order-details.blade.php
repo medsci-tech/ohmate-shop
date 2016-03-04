@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
 </head>
 <body>
-<div class="container" id="order-details">
+<div class="container" id="order_details">
 
   <div class="row">
     <div class="panel panel-default">
@@ -91,7 +91,7 @@
 <script>
   var list = new Vue({
     el: '#order_details',
-    data: JSON.stringify(data)
+    data: JSON.stringify("{{$json}}")
   });
 </script>
 </body>
