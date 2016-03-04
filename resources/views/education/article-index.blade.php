@@ -307,7 +307,7 @@
             $.ajax({
                 url: requestUrl,
                 data: {
-                    id: id
+                    type: id
                 },
                 type: "get",
                 dataType: "json",
