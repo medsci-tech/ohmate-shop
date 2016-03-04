@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerArticleStatistics extends Model
+class CustomerDailyStatistics extends Model
 {
     protected $table = 'customer_article_statistics';
 

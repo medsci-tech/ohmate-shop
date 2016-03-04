@@ -32,6 +32,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['prefix' => 'education', 'namespace' => 'Education'], function () {
         Route::get('/injection', 'EducationController@injections');
+        Route::get('/sign-in', 'EducationController@signIn');
 
         Route::group(['prefix' => 'article'], function () {
             Route::get('/', 'EducationController@index');
