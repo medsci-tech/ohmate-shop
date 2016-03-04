@@ -57,32 +57,32 @@
     </div>
     <div id="view_3" class="tab_bd">
         <div id="detail_3" class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_food.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">3{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_food.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">3{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_4" class="tab_bd">
         <div id="detail_4" class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_sport.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">4{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_sport.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">4{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_5" class="tab_bd">
