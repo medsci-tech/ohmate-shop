@@ -361,7 +361,7 @@
 //            });
 //        });
 
-        window.location.href = uri+'?type=1&id='+id;
+        window.location.href = '/education/article/view?type=1&id='+id;
     }
 
     function reLoad() {
