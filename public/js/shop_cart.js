@@ -103,6 +103,7 @@ var shop_cart = new Vue({
                   'getBrandWCPayRequest', JSON.parse(data.data.result),
                   function (res) {
                     if (res.err_msg == "get_brand_wcpay_request：ok") {
+                      alert(shop_cart.cart);
                       shop_cart.cart = [];
                       localStorage.clear();
                       $.post('shop/payment/ok',
