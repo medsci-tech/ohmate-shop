@@ -119,6 +119,26 @@ class Customer extends Model
         }
     }
 
+    public function statistics()
+    {
+        return $this->hasMany(CustomerStatistics::class, 'customer_id');
+    }
+
+    public function articleStatistics()
+    {
+        return $this->hasMany(CustomerArticleStatistics::class, 'customer_id');
+    }
+
+    public function commodityStatistics()
+    {
+        return $this->hasMany(CustomerCommodityStatistics::class, 'customer_id');
+    }
+
+    public function dailyStatistics()
+    {
+        return $this->hasMany(CustomerDailyStatistics::class, 'customer_id');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

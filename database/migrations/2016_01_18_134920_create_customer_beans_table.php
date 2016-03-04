@@ -21,8 +21,8 @@ class CreateCustomerBeansTable extends Migration
             $table->integer('bean_rate_id')->unsigned()->comment('积分兑换规则');
             $table->foreign('bean_rate_id')->references('id')->on('bean_rates');
 
-            $table->double('value', 15, 2)->comment('积分原始值');
-            $table->double('result', 15, 2)->comment('result = rate * value');
+            $table->decimal('value', 15, 2)->comment('积分原始值');
+            $table->decimal('result', 15, 2)->comment('result = rate * value');
             $table->string('detail')->default('')->comment('积分备注');
 
             $table->index('customer_id');

@@ -107,7 +107,7 @@ a, a:focus, a:hover {
   #addresses .list-group table tr td:first-child {
     vertical-align: middle; }
   #addresses .list-group table tr th {
-    width: 25%; }
+    width: 70px; }
   #addresses .list-group table tr th, #addresses .list-group table tr td {
     border: none; }
   #addresses .list-group table tr img {
