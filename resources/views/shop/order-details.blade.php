@@ -15,7 +15,7 @@
       <table v-cloak class="table table-condensed table2">
         <tr>
           <th>订单号</th>
-          <td>@{{ (wx_out_trade_no).substring(0,16) }}-@{{ (wx_out_trade_no).substring(16,32)  }}</td>
+          <td>@{{ (wx_out_trade_no).substring(0,16) + '-' + (wx_out_trade_no).substring(16,32)  }}</td>
         </tr>
         <tr>
           <th>物流编号</th>
