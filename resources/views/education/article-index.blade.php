@@ -325,6 +325,7 @@
                                 +"<p class='weui_media_desc'>" + this.description + "</p>"+
                                 +"</div>"+
                                 +"</a>";
+                            console.log(strHtml);
                         });
                         $("#" + type).html(strHtml);
                     }
