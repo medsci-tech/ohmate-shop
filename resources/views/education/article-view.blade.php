@@ -58,58 +58,58 @@
         }
     }
     
-    function setTimer(i){
-        var type = request("type");
-        if (type == '2')
-            return;
-        i +=1;
-        timer();
-        function timer() {
-            i--;
-            if (i == 0) {
-                clearTimeout(timer);
-                $('#mask').addClass('weui_fade_toggle');
-                $('#mask').css('display','block');
-                $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
-                $('#weui_actionsheet').css('display','block');
+//    function setTimer(i){
+//        var type = request("type");
+//        if (type == '2')
+//            return;
+//        i +=1;
+//        timer();
+//        function timer() {
+//            i--;
+//            if (i == 0) {
+//                clearTimeout(timer);
+//                $('#mask').addClass('weui_fade_toggle');
+//                $('#mask').css('display','block');
+//                $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
+//                $('#weui_actionsheet').css('display','block');
+//
+//                $(function () {
+//                    var requestUrls = '/education/article/update-bean';
+//                    var id = $('#text_id').val();
+//                    $.ajax({
+//                        url: requestUrls,
+//                        data: {
+//                            id: id
+//                        },
+//                        type: "get",
+//                        dataType: "json",
+//                        success: function (json) {
+//
+//                        },
+//                        error: function (xhr, status, errorThrown) {
+//                            alert("Sorry, there was a problem!");
+//                        }
+//                    });
+//
+//                });
+//
+//            } else {
+//                setTimeout(timer, 1000);
+//            }
+//        }
+//    }
 
-                $(function () {
-                    var requestUrls = '/education/article/update-bean';
-                    var id = $('#text_id').val();
-                    $.ajax({
-                        url: requestUrls,
-                        data: {
-                            id: id
-                        },
-                        type: "get",
-                        dataType: "json",
-                        success: function (json) {
 
-                        },
-                        error: function (xhr, status, errorThrown) {
-                            alert("Sorry, there was a problem!");
-                        }
-                    });
+//    $(document).ready(function() {
+//        $('#gethongbao').click(function () {
+//            $('#mask').removeClass('weui_fade_toggle');
+//            $('#mask').css('display', 'none');
+//            $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
+//            $('#weui_actionsheet').css('display','block');
+//        });
+//    });
 
-                });
-
-            } else {
-                setTimeout(timer, 1000);
-            }
-        }
-    }
-
-
-    $(document).ready(function() {
-        $('#gethongbao').click(function () {
-            $('#mask').removeClass('weui_fade_toggle');
-            $('#mask').css('display', 'none');
-            $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
-            $('#weui_actionsheet').css('display','block');
-        });
-    });
-
-    setTimer(10);
+//    setTimer(10);
 
     wx.config(<?php echo $js->config(array('checkJsApi','onMenuShareAppMessage'), false, false) ?>);
     wx.ready(function () {
