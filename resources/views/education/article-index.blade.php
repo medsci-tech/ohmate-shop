@@ -318,7 +318,7 @@
                         $(json.articles).each(function () {
                             strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"','\"" + this.uri + "\"')'>"+
                                 +"<div class='weui_media_hd'>"+
-                                +"<img class='weui_media_appmsg_thumb' src='/image/education/\"" + pic + "\"' alt=''>"+
+                                +"<img class='weui_media_appmsg_thumb' src='/image/education/article_drug.png' alt=''>"+
                                 +"</div>"+
                                 +"<div class='weui_media_bd'>"+
                                 +"<h4 class='weui_media_title'>" + this.title + "</h4>"+
