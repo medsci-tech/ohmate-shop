@@ -91,7 +91,7 @@
 <script>
   var list = new Vue({
     el: '#order_details',
-    data: JSON.stringify("{{$json}}").replace('&quot;','"')
+    data: JSON.stringify(escape("{{$json}}"))
   });
 </script>
 </body>
