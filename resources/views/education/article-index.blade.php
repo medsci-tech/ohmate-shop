@@ -26,7 +26,7 @@
         </div>
     </div>
     <div id="view_1" class="tab_bd">
-        <div id="" class="weui_panel_bd tab_top">
+        <div id="detail_1" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
             <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                 <div class="weui_media_hd">
@@ -41,22 +41,22 @@
         </div>
     </div>
     <div id="view_2" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_drug.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">2{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+        <div id="detail_2" class="weui_panel_bd tab_top">
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_drug.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">2{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_3" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
+        <div id="detail_3" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div id="view_4" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
+        <div id="detail_4" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
@@ -86,7 +86,7 @@
         </div>
     </div>
     <div id="view_5" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
+        <div id="detail_5" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
@@ -185,6 +185,7 @@
             }
 
             $("#text_view").val('2');
+            changeArticleType('2','detail_2', 'article_drug.png');
         });
 
         $("#tab_3").on('click', function () {
@@ -300,36 +301,34 @@
 
     });
 
-    var changeArticleType = function (id, type) {
+    var changeArticleType = function (id, type, pic) {
         $(function () {
-//            var branchId = $('#' + id).attr('value');
-//            var location = document.getElementById(id).innerText;
-//            $('#text_location').val('');
-//            $('#text_location').val(location);
-//            $('#text_province').val(branchId);
-//            $('#text_province_view').val(location);
-//            console.log("ready" + branchId + location);
-            var requestCity = '/kzkt/city';
+            var requestUrl = '/education/article/find';
             $.ajax({
-                url: requestCity,
+                url: requestUrl,
                 data: {
-                    id: branchId
+                    id: id
                 },
                 type: "get",
                 dataType: "json",
                 success: function (json) {
-                    $("#select_city").empty();
-                    var strHtml = "";
-                    $(json.list).each(function () {
-                        var id = "ss_" + this.city_id;
-                        strHtml += "<div id='ss_" + this.city_id + "' class='weui_actionsheet_cell nextActionSheet' " +
-                        "value='" + this.city_id + "' onclick='changeCountry(\"" + id + "\")'>" + this.city + "</div>";
-                    });
-                    $("#select_city").html(strHtml);
+                    if(json.result == '1') {
+                        $("#" + type).empty();
+                        var strHtml = "";
+                        $(json.articles).each(function () {
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"','\"" + this.uri + "\"')'>";
+                                +"<div class='weui_media_hd'>";
+                                +"<img class='weui_media_appmsg_thumb' src='/image/education/\"" + pic + "\"' alt=''>";
+                                +"</div>";
+                                +"<div class='weui_media_bd'>";
+                                +"<h4 class='weui_media_title'>" + this.title + "</h4>";
+                                +"<p class='weui_media_desc'>" + this.description + "</p>";
+                                +"</div>";
+                                +"</a>";
+                        });
+                        $("#" + type).html(strHtml);
+                    }
 
-                    $("#select_province").parents('.actionSheet_wrap').next().children(0).addClass('weui_fade_toggle');
-                    $("#select_province").parents('.actionSheet_wrap').next().children(0).css("display", "block");
-                    $("#select_province").parents('.actionSheet_wrap').next().children(1).addClass('weui_actionsheet_toggle');
 
                 },
                 error: function (xhr, status, errorThrown) {
