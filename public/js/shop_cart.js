@@ -69,11 +69,13 @@ var shop_cart = new Vue({
     numMinus: function (e) {
       if (e.num >= 2) {
         e.num--;
+        localStorage.cart = JSON.stringify(this.cart);
       }
     },
     numAdd: function (e) {
       if (e.num <= 98) {
         e.num++;
+        localStorage.cart = JSON.stringify(this.cart);
       }
     },
     getPersonal: function () {
