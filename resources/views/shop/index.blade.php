@@ -79,19 +79,5 @@
         }
     }, false);
 </script>
-
-<script>
-    $('body').append('<nav id="touch2" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 90px;"><a href="{{url('/shop/index')}}" class="button button-large button-glow button-highlight button-circle"> <i class="fa fa-list"></i> </a> </nav>')
-    var touch2 = document.getElementById('touch2');
-    touch2.addEventListener('touchmove', function (event) {
-        event.preventDefault();
-        if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            touch2.style.left = touch.clientX - 30 + 'px';
-            touch2.style.top = touch.clientY - 30 + 'px';
-            touch2.style.background = "";
-        }
-    }, false);
-</script>
 </body>
 </html>

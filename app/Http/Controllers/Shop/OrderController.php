@@ -36,6 +36,19 @@ class OrderController extends Controller
         ]);
     }
 
+    public function detail($id)
+    {
+        $customer = \Helper::getCustomer();
+        $order = Order::find($id);
+        if (!$order || $order->customer_id != $customer->id) {
+            abort(404);
+        }
+
+        return view('shop.order-details')->with([
+            'json' => $order->queryForDetailPage()
+        ]);
+    }
+
     public function test(Request $request) {
         $access_token = \Wechat::getWebAuthAccessToken($request->url());
         $timestamp = Carbon::now()->getTimestamp();
