@@ -18,9 +18,9 @@ class CreateDoctorStatisticsTable extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->string('year')->comment('年份');
-            $table->integer('friend_count')->unsigned()->default(0)->comment('好友数');
-            $table->integer('article_count')->unsigned()->default(0)->comment('阅读数');
-            $table->integer('article_bean')->unsigned()->default(0)->comment('迈豆数');
+            $table->integer('patient_count')->unsigned()->default(0)->comment('患者数');
+            $table->integer('study_count')->unsigned()->default(0)->comment('患者学习数');
+            $table->decimal('study_bean', 8, 2)->unsigned()->default(0)->comment('通过患者学习得到迈豆数');
 
             $table->index('customer_id');
             $table->timestamps();
