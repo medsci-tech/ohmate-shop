@@ -146,4 +146,15 @@ class Customer extends Model
     {
         return $this->hasMany(CustomerDailyArticle::class, 'customer_id');
     }
+
+    /**
+     * @param string $month
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function monthBeans($month)
+    {
+        $date = explode('-', $month);
+        $nextMonth = $date[0].'-0'.++$date[1];
+        return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->get();
+    }
 }
