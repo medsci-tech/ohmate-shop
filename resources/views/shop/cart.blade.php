@@ -85,7 +85,7 @@
       </template>
       <template v-else>
         <div class="panel panel-default">
-          <div class="panel-heading">默认收货地址<a href="{{url('/shop/address')}}"><span class="small">选择收货地址</span></a></div>
+          <div class="panel-heading">收货地址<a href="{{url('/shop/address')}}"><span class="small">选择收货地址</span></a></div>
           <table class="table table-condensed table2">
             <tr>
               <th>收货人</th>
