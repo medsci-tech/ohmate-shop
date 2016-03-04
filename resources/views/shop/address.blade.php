@@ -27,7 +27,7 @@
             <tr>
               <th>收货地址</th>
               <td
-                colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
+                colspan="2">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
             </tr>
             </table>
             <span v-if=" address.is_default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
