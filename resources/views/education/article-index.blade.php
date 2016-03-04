@@ -316,7 +316,7 @@
                         $("#" + type).empty();
                         var strHtml = "";
                         $(json.articles).each(function () {
-                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"','\"" + this.uri + "\"')'>"+
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"')'>"+
                                 +"<div class='weui_media_hd'>"+
                                 +"<img class='weui_media_appmsg_thumb' src='/image/education/article_drug.png' alt=''>"+
                                 +"</div>"+
@@ -340,7 +340,7 @@
     }
 
 
-    function updateView(id, uri) {
+    function updateView(id) {
         document.getElementById('text_click').value ='1';
         document.getElementById('text_id').value = id;
 //        $(function () {
