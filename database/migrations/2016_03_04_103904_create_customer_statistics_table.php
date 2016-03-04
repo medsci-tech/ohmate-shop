@@ -17,6 +17,7 @@ class CreateCustomerStatisticsTable extends Migration
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
 
+            $table->string('year')->comment('年份');
             $table->integer('friend_count')->unsigned()->default(0)->comment('好友数');
             $table->integer('article_count')->unsigned()->default(0)->comment('阅读数');
             $table->integer('commodity_count')->unsigned()->default(0)->comment('购买商品数');

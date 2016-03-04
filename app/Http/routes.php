@@ -48,6 +48,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/gifts', 'PersonalController@gifts');
         Route::get('/friend', 'PersonalController@friend');
 
+        Route::get('/statistics', 'PersonalController@statistics');
         Route::get('/bean-rules', 'PersonalController@beanRules');
         Route::get('/about-us', 'PersonalController@aboutUs');
     });
