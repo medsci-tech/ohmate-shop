@@ -203,7 +203,7 @@ class Order extends Model
      */
     public function queryForDetailPage()
     {
-        return static::where('id',119)->with(['commodities','address'=> function ($query) {
+        return static::where('id', $this->id)->with(['commodities', 'address'=> function ($query) {
             $query->withTrashed();
         }])->first()->toJson();
     }

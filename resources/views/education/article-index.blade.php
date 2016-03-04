@@ -26,7 +26,7 @@
         </div>
     </div>
     <div id="view_1" class="tab_bd">
-        <div id="" class="weui_panel_bd tab_top">
+        <div id="detail_1" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
             <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                 <div class="weui_media_hd">
@@ -41,22 +41,22 @@
         </div>
     </div>
     <div id="view_2" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_drug.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">2{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+        <div id="detail_2" class="weui_panel_bd tab_top">
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_drug.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">2{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_3" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
+        <div id="detail_3" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div id="view_4" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
+        <div id="detail_4" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
@@ -86,11 +86,12 @@
         </div>
     </div>
     <div id="view_5" class="tab_bd">
-        <div class="weui_panel_bd tab_top">
+        <div id="detail_5" class="weui_panel_bd tab_top">
             @foreach($articles as $index)
                 <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
                     <div class="weui_media_hd">
                         <img class="weui_media_appmsg_thumb" src="/image/education/article_glycemia.png" alt="">
+                    </div>
                     <div class="weui_media_bd">
                         <h4 class="weui_media_title">5{{$index['title']}}</h4>
                         <p class="weui_media_desc">{{$index['description']}}</p>
@@ -184,6 +185,7 @@
             }
 
             $("#text_view").val('2');
+            changeArticleType('2','detail_2', 'article_drug.png');
         });
 
         $("#tab_3").on('click', function () {
@@ -299,29 +301,67 @@
 
     });
 
-
-    function updateView(id, uri) {
-        document.getElementById('text_click').value ='1';
-        document.getElementById('text_id').value = id;
+    var changeArticleType = function (id, type, pic) {
         $(function () {
-            var requestUrl = '/education/article/update-count';
+            var requestUrl = '/education/article/find';
             $.ajax({
-                url : requestUrl,
+                url: requestUrl,
                 data: {
-                    id: id
+                    type: id
                 },
-                type : "get",
-                dataType : "json",
+                type: "get",
+                dataType: "json",
                 success: function (json) {
+                    if(json.result == '1') {
+                        $("#" + type).empty();
+                        var strHtml = "";
+                        $(json.articles).each(function () {
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"','\"" + this.uri + "\"')'>";
+                                +"<div class='weui_media_hd'>";
+                                +"<img class='weui_media_appmsg_thumb' src='/image/education/\"" + pic + "\"' alt=''>";
+                                +"</div>";
+                                +"<div class='weui_media_bd'>";
+                                +"<h4 class='weui_media_title'>" + this.title + "</h4>";
+                                +"<p class='weui_media_desc'>" + this.description + "</p>";
+                                +"</div>";
+                                +"</a>";
+                        });
+                        $("#" + type).html(strHtml);
+                    }
+
 
                 },
                 error: function (xhr, status, errorThrown) {
                     alert("Sorry, there was a problem!");
                 }
             });
-        });
 
-        window.location.href = uri+'?type=1&id='+id;
+        });
+    }
+
+
+    function updateView(id, uri) {
+        document.getElementById('text_click').value ='1';
+        document.getElementById('text_id').value = id;
+//        $(function () {
+//            var requestUrl = '/education/article/update-count';
+//            $.ajax({
+//                url : requestUrl,
+//                data: {
+//                    id: id
+//                },
+//                type : "get",
+//                dataType : "json",
+//                success: function (json) {
+//
+//                },
+//                error: function (xhr, status, errorThrown) {
+//                    alert("Sorry, there was a problem!");
+//                }
+//            });
+//        });
+
+        window.location.href = '/education/article/view?type=1&id='+id;
     }
 
     function reLoad() {

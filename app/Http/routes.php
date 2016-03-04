@@ -38,6 +38,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/', 'EducationController@index');
             Route::get('/category', 'EducationController@category');
             Route::get('/view', 'EducationController@view');
+            Route::get('/find', 'EducationController@find');
             Route::get('/update-count', 'EducationController@updateCount');
             Route::get('/update-bean', 'EducationController@updateBean');
         });
