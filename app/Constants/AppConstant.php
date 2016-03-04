@@ -34,6 +34,7 @@ class AppConstant {
     const BEAN_ACTION_CONSUME       = 'consume';
     const BEAN_ACTION_INVITE        = 'invite';
     const BEAN_ACTION_STUDY         = 'study';
+    const BEAN_ACTION_SHARE         = 'share';
 
     const BEAN_ACTION_DOCTOR_INVITE     = 'doctor_invite';
     const BEAN_ACTION_NURSE_INVITE      = 'nurse_invite';

@@ -18,7 +18,7 @@
             <table class="table table-condensed" @click="chooseAdd(address)">
             <tr>
               <td rowspan="2" class="text-center">
-                <img v-bind:src=" address.is_default?chooseImg.imgtrue:chooseImg.imgfalse " alt="">
+                <i v-bind:class="['fa', address.default?'fa-check-circle-o':'fa-circle-o']"></i>
               </td>
               <th>收货人</th>
               <td>@{{ address.name }}</td>
