@@ -91,7 +91,7 @@
 <script>
   var list = new Vue({
     el: '#order_details',
-    data: JSON.stringify(data)
+    data: JSON.stringify({{$json}})
   });
 </script>
 </body>
