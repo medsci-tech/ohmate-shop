@@ -71,7 +71,7 @@ a, a:focus, a:hover {
 #cart_form .table1 tfoot td, #order_details .table1 tfoot td {
   border: none; }
 #cart_form .table2 tr :first-child, #order_details .table2 tr :first-child {
-  width: 30%; }
+  width: 92px; }
 #cart_form .table2 tr th, #cart_form .table2 tr td, #order_details .table2 tr th, #order_details .table2 tr td {
   border: none; }
 #cart_form .table2 tr td:nth-child(1), #cart_form .table2 tr th:nth-child(1), #order_details .table2 tr td:nth-child(1), #order_details .table2 tr th:nth-child(1) {
