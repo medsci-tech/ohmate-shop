@@ -9,10 +9,19 @@
 </head>
 <body>
 
+
 @foreach($months as $month)
-  <div class="weui_cells_title"><a href="/personal/beans/?month={{$month}}">{{$month}}月账单</a></div>
+  <div class="weui_cells weui_cells_access">
+    <a class="weui_cell" href="/personal/beans/?month={{$month}}">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>{{$month}}月账单</p>
+      </div>
+      <div class="weui_cell_ft">
+      </div>
+    </a>
+  </div>
   @if($date == $month)
-    <div class="weui_cells">
+    <div class="weui_cells"  style="margin-top: -1px">
       @foreach($beans as $item)
         <div class="weui_cell">
           <div class="weui_cell_hd"><img src="{{$item['icons']}}" alt="" class="image"></div>
