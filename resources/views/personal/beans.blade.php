@@ -12,7 +12,7 @@
 
 @foreach($months as $month)
   <div class="weui_cells weui_cells_access">
-    <a href="/personal/beans/?month={{$month}}">
+    <a class="weui_cell" href="/personal/beans/?month={{$month}}">
       <div class="weui_cell_bd weui_cell_primary">
         <p>{{$month}}月账单</p>
       </div>
