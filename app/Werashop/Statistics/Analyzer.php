@@ -9,6 +9,7 @@
 namespace App\Werashop\Statistics;
 
 
-class Analyzer {
+class Analyzer
+{
 
 }

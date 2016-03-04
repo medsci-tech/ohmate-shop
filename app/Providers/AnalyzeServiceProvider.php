@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Werashop\Statistics\Analyzer;
+use App\Werashop\Statistics\DailyAnalyzer;
 
 class AnalyzeServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,10 @@ class AnalyzeServiceProvider extends ServiceProvider
     {
         $this->app->singleton('analyzer', function ($app) {
             return new Analyzer();
+        });
+
+        $this->app->singleton('daily_analyzer', function ($app) {
+            return new DailyAnalyzer();
         });
     }
 }
