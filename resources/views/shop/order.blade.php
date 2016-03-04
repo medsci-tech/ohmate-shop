@@ -8,19 +8,23 @@
 </head>
 <body>
 <div class="container">
-@foreach($orders as $order)
-  <div class="row order-form">
-    <a href="{{url('/shop/order/') .'/'. $order->id}}"></a>
-    <p>&emsp;下单时间：{{$order->created_at->toDateString()}}<span class="order-finished">待收货&emsp;</span></p>
-    <div class="img-group">
-      @foreach($order['commodities'] as $commodity)
-        <div><img class="" src="{{$commodity->portrait}}" alt=""></div>
-      @endforeach
+  @foreach($orders as $order)
+    <div class="row order-form">
+      <a href="{{url('/shop/order/') .'/'. $order->id}}">
+        <p>&emsp;下单时间：{{$order->created_at->toDateString()}}<span class="order-finished">待收货&emsp;</span></p>
+        <div class="img-group">
+          @foreach($order['commodities'] as $commodity)
+            <div><img class="" src="{{$commodity->portrait}}" alt=""></div>
+          @endforeach
+        </div>
+        <span class="arrow"><i class="fa fa-chevron-right"></i></span>
+
+        <p>&emsp;实际支付：￥{{$order->cash_payment}}
+          <small>(含运费￥{{$order->post_fee}})</small>
+        </p>
+      </a>
     </div>
-    <span class="arrow"><i class="fa fa-chevron-right"></i></span>
-    <p>&emsp;实际支付：￥{{$order->cash_payment}}<small>(含运费￥{{$order->post_fee}})</small></p>
-  </div>
-@endforeach
+  @endforeach
 
 </div>
 
