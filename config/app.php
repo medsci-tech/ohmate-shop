@@ -160,7 +160,7 @@ return [
         App\Providers\WechatServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         App\Providers\BeanServiceProvider::class,
-        App\Providers\StatisticServiceProvider::class,
+        App\Providers\AnalyzeServiceProvider::class,
 
         /*
          * IDE Helper

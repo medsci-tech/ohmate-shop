@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Werashop\Statistics\Analyzer;
 
-class StatisticServiceProvider extends ServiceProvider
+class AnalyzeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -27,6 +27,5 @@ class StatisticServiceProvider extends ServiceProvider
         $this->app->singleton('analyzer', function ($app) {
             return new Analyzer();
         });
-
     }
 }
