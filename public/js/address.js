@@ -11,11 +11,7 @@ var list = new Vue({
       district: '',
       address: '',
       is_default: false
-    },
-    chooseImg: {
-      imgtrue: '/image/shop_icon/icon.png',
-      imgfalse: '/image/shop_icon/icon1.png'
-    },
+    }
   },
 
   methods: {
