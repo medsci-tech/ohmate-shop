@@ -108,6 +108,10 @@ class Order extends Model
         return $this;
     }
 
+    /**
+     * @param array $items
+     * @return $this
+     */
     public function addCommodities(array $items)
     {
         foreach ($items as $item) {
@@ -194,5 +198,13 @@ class Order extends Model
         return $this;
     }
 
-
+    /**
+     * @return string
+     */
+    public function queryForDetailPage()
+    {
+        return static::where('id',119)->with(['address'=> function ($query) {
+            $query->withTrashed();
+        }])->first()->toJson();
+    }
 }
