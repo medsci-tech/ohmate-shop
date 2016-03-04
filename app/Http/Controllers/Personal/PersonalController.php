@@ -51,21 +51,30 @@ class PersonalController extends Controller
         return $item;
     }
 
-    public function beans()
+    public function beans(Request $request)
     {
-        $customer       = \Helper::getCustomer();
-        $beanThisYear   = $customer->beans;
-
-        $resultArray = null;
-        foreach ($beanThisYear as $bean) {
+        $customer = \Helper::getCustomer();
+        // beans
+        if($request->has('month')) {
+            $beans = $customer->monthBeans($request->input('month'));
+            $result['date'] =  $request->input('month');
+        } else {
+            $beans = $customer->monthBeans(Carbon::now()->format('Y-m'));
+            $result['date'] =  Carbon::now()->format('Y-m');
+        }
+        $arrayBeans = [];
+        foreach($beans as $bean) {
             $item = $this->createBeanItem($bean);
-            $resultArray[$bean->updated_at->month][] = $item;
-        } /*foreach>*/
+            array_push($arrayBeans, $item);
+        }
+        $result['beans'] = $arrayBeans;
+        // months
+        $end = new \DateTime(Carbon::now()->format('Y-m'));
+        $begin = new \DateTime($customer->created_at->format('Y-m'));
+        $months =  \Helper::getMonthPeriod($begin, $end);
+        $result['months'] = $months;
 
-        return view('personal.beans', [
-            'year'  => Carbon::now()->year,
-            'beans' => array_reverse($resultArray, true)
-        ]);
+        return view('personal.beans', $result);
     }
 
     public function gifts()

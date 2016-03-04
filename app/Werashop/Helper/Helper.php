@@ -88,4 +88,20 @@ class Helper
 
         return 8;
     }
+
+    /**
+     * @param \DateTime $begin
+     * @param \DateTime $end
+     * @return array
+     */
+    public function getMonthPeriod($begin, $end) {
+        $end = $end->modify( '+1 day' );
+        $interval = new \DateInterval('P1M');
+        $daterange = new \DatePeriod($begin, $interval ,$end);
+        $months = [];
+        foreach($daterange as $date){
+            array_push($months,  $date->format('Y-m'));
+        }
+        return $months;
+    }
 }
