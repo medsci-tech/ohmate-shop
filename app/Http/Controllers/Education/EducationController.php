@@ -35,11 +35,11 @@ class EducationController extends Controller
     public function find(Request $request)
     {
         $type = $request->input('type');
-        $articles = Article::where('type_id', $type)->orderBy('updated_at', 'desc')->get();
+        $articles = Article::where('type_id', $type)->orderBy('id', 'desc')->get();
         if (!$articles) {
             return response()->json(['result' => '-1']);
         } /*if>*/
-        return response()->json(['result' => '-1', 'articles' => $articles]);
+        return response()->json(['result' => '1', 'articles' => $articles]);
     }
 
     public function category(Request $request)
