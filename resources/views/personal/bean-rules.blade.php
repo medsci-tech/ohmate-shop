@@ -29,10 +29,10 @@
             <p class="desc">A：当然有更多的优惠啊，不仅有5%的超值返现，还有会员尊享全场9折哦！</p>
         </div>
 
-        <div class="weui_media_box weui_media_text">
-            <h4 class="weui_media_title">Q：什么？还有会员？是不是要花钱购买啊？</h4>
-            <p class="desc">A：小易告诉您一个秘密，现在活动期间注册的用户都将免费成为易康伴侣的会员。拥有尊贵会员标识，红色昵称特权显示，简直太酷了。</p>
-        </div>
+        {{--<div class="weui_media_box weui_media_text">--}}
+            {{--<h4 class="weui_media_title">Q：什么？还有会员？是不是要花钱购买啊？</h4>--}}
+            {{--<p class="desc">A：小易告诉您一个秘密，现在活动期间注册的用户都将免费成为易康伴侣的会员。拥有尊贵会员标识，红色昵称特权显示，简直太酷了。</p>--}}
+        {{--</div>--}}
 
         <div class="weui_media_box weui_media_text">
             <h4 class="weui_media_title">Q：我的迈豆可以送给别人用吗?</h4>
