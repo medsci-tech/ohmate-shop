@@ -23,7 +23,6 @@ class CreateCustomerStatisticsTable extends Migration
             $table->integer('commodity_count')->unsigned()->default(0)->comment('购买商品数');
             $table->integer('order_count')->unsigned()->default(0)->comment('订单数');
             $table->decimal('money_cost', 15, 2)->default(0)->comment('消费金额');
-            $table->decimal('money_feedback', 15, 2)->default(0)->comment('返利金额');
 
             $table->index('customer_id');
             $table->timestamps();
