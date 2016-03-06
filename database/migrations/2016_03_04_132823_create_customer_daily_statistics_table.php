@@ -19,6 +19,7 @@ class CreateCustomerDailyStatisticsTable extends Migration
 
             $table->date('date')->comment('日期');
             $table->integer('article_count')->unsigned()->default(0)->comment('阅读文章数');
+            $table->integer('sign_in_activity_count')->unsigned()->default(0)->comment('参与签到活动数');
 
             $table->timestamps();
         });

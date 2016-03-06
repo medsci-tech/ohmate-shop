@@ -281,7 +281,7 @@ class BeanRecharger
             return true;
         }
 
-        if (($article->value + AppConstant::EDUCATION_STUDY_BEAN)
+        if (($article->value + AppConstant::STUDY_BEAN)
             > AppConstant::EDUCATION_DAILY_CEILING) {
             return false;
         } /*if>*/

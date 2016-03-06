@@ -26,6 +26,20 @@ class BeanRatesSeeder extends Seeder
         ]);
 
         DB::table('bean_rates')->insert([
+            'action_en' => 'study',
+            'action_ch' => '每日学习',
+            'rate' => 20,
+            'icon_url' => '/image/bean/study_icon.png'
+        ]);
+
+        DB::table('bean_rates')->insert([
+            'action_en' => 'share',
+            'action_ch' => '每日转发',
+            'rate' => 20,
+            'icon_url' => '/image/bean/share_icon.png'
+        ]);
+
+        DB::table('bean_rates')->insert([
             'action_en' => 'consume',
             'action_ch' => '消费抵扣',
             'rate' => 1,
@@ -47,22 +61,15 @@ class BeanRatesSeeder extends Seeder
         ]);
 
         DB::table('bean_rates')->insert([
-            'action_en' => 'study',
-            'action_ch' => '学习奖励',
-            'rate' => 20,
-            'icon_url' => '/image/bean/study_icon.png'
+            'action_en' => 'education_volunteer_feedback',
+            'action_ch' => '患教奖励',
+            'rate' => 2,
+            'icon_url' => '/image/bean/volunteer_feedback_icon.png'
         ]);
 
         DB::table('bean_rates')->insert([
-            'action_en' => 'share',
-            'action_ch' => '转发文章',
-            'rate' => 10,
-            'icon_url' => '/image/bean/share_icon.png'
-        ]);
-
-        DB::table('bean_rates')->insert([
-            'action_en' => 'volunteer_feedback',
-            'action_ch' => '患者消费',
+            'action_en' => 'consume_volunteer_feedback',
+            'action_ch' => '患教奖励',
             'rate' => 0.05,
             'icon_url' => '/image/bean/volunteer_feedback_icon.png'
         ]);
