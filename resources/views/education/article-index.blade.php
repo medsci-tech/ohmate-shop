@@ -6,7 +6,7 @@
     <title>教育学习</title>
     <link rel="stylesheet" href="/css/weui.min.css">
     <link rel="stylesheet" href="/css/member.css">
-<body>
+<body onload="reLoad();">
 <div class="weui_tab">
     <div class="weui_navbar">
         <div id="tab_1" class="weui_navbar_item tab_bg tab_font-size">
@@ -27,17 +27,17 @@
     </div>
     <div id="view_1" class="tab_bd">
         <div id="detail_1" class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-            <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                <div class="weui_media_hd">
-                    <img class="weui_media_appmsg_thumb" src="/image/education/article_knowledge.png" alt="">
-                </div>
-                <div class="weui_media_bd">
-                    <h4 class="weui_media_title">1{{$index['title']}}</h4>
-                    <p class="weui_media_desc">{{$index['description']}}</p>
-                </div>
-            </a>
-            @endforeach
+            {{--@foreach($articles as $index)--}}
+            {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                {{--<div class="weui_media_hd">--}}
+                    {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_knowledge.png" alt="">--}}
+                {{--</div>--}}
+                {{--<div class="weui_media_bd">--}}
+                    {{--<h4 class="weui_media_title">1{{$index['title']}}</h4>--}}
+                    {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                {{--</div>--}}
+            {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_2" class="tab_bd">
@@ -57,47 +57,47 @@
     </div>
     <div id="view_3" class="tab_bd">
         <div id="detail_3" class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_food.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">3{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_food.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">3{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_4" class="tab_bd">
         <div id="detail_4" class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_sport.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">4{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_sport.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">4{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
     <div id="view_5" class="tab_bd">
         <div id="detail_5" class="weui_panel_bd tab_top">
-            @foreach($articles as $index)
-                <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">
-                    <div class="weui_media_hd">
-                        <img class="weui_media_appmsg_thumb" src="/image/education/article_glycemia.png" alt="">
-                    </div>
-                    <div class="weui_media_bd">
-                        <h4 class="weui_media_title">5{{$index['title']}}</h4>
-                        <p class="weui_media_desc">{{$index['description']}}</p>
-                    </div>
-                </a>
-            @endforeach
+            {{--@foreach($articles as $index)--}}
+                {{--<a href="javascript:void(0);" class="weui_media_box weui_media_appmsg" onclick="updateView('{{$index['id']}}','{{$index['uri']}}')">--}}
+                    {{--<div class="weui_media_hd">--}}
+                        {{--<img class="weui_media_appmsg_thumb" src="/image/education/article_glycemia.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<div class="weui_media_bd">--}}
+                        {{--<h4 class="weui_media_title">5{{$index['title']}}</h4>--}}
+                        {{--<p class="weui_media_desc">{{$index['description']}}</p>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--@endforeach--}}
         </div>
     </div>
 </div>
@@ -113,6 +113,8 @@
         $("#view_4").hide();
         $("#view_5").hide();
 
+        changeArticleType('1','detail_1', '/image/education/article_knowledge.png');
+        
         $("#tab_1").on('click', function () {
             var view = $("#text_view").val();
             if (view == '2') {
@@ -148,6 +150,7 @@
             }
 
             $("#text_view").val('1');
+            changeArticleType('1','detail_1', '/image/education/article_knowledge.png');
         });
 
         $("#tab_2").on('click', function () {
@@ -223,6 +226,7 @@
             }
 
             $("#text_view").val('3');
+            changeArticleType('3','detail_3', '/image/education/article_food.png');
         });
 
         $("#tab_4").on('click', function () {
@@ -260,6 +264,7 @@
             }
 
             $("#text_view").val('4');
+            changeArticleType('4','detail_4', '/image/education/article_sport.png');
         });
 
         $("#tab_5").on('click', function () {
@@ -297,6 +302,7 @@
             }
 
             $("#text_view").val('5');
+            changeArticleType('5','detail_5', '/image/education/article_glycemia.png');
         });
 
     });
@@ -316,7 +322,7 @@
                         $("#" + type).empty();
                         var strHtml = "";
                         $(json.articles).each(function () {
-                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView('\"" + this.id + "\"')'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>" + this.description + "</p></div></a> ";
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView(\"" + this.id + "\")'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>" + this.description + "</p></div></a> ";
                             console.log(strHtml);
                         });
                         $("#" + type).html(strHtml);
