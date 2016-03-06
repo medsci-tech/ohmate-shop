@@ -34,7 +34,7 @@
                 </div>
                 <div class="weui_cell_ft text_color">{{$data['beans_total']}}&nbsp;迈豆</div>
             </a>
-            <a href="/personal/gifts" class="weui_cell">
+            <a href="/activity/coupon" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>礼品卡</p>
                 </div>

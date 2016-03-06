@@ -44,10 +44,14 @@ Route::group(['middleware' => 'web'], function () {
         });
     });
 
+    Route::group(['prefix' => 'activity', 'namespace' => 'Activity'], function () {
+        Route::get('/daily', 'ActivityController@daily');
+        Route::get('/coupon', 'ActivityController@coupon');
+    });
+
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
-        Route::get('/gifts', 'PersonalController@gifts');
         Route::get('/friend', 'PersonalController@friend');
 
         Route::get('/statistics', 'PersonalController@statistics');
