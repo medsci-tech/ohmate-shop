@@ -12,9 +12,9 @@ namespace App\Constants;
 class AnalyzerConstant
 {
     /*customer daily statistics*/
-    const CUSTOMER_DAILY_SIGN_IN    = 'sign_in_count';
-    const CUSTOMER_DAILY_SHARE      = 'share_count';
     const CUSTOMER_DAILY_ARTICLE    = 'article_count';
+    const CUSTOMER_DAILY_SHARE      = 'share_count';
+    const CUSTOMER_DAILY_SIGN_IN    = 'sign_in_count';
 
     /*customer statistics*/
     const CUSTOMER_FRIEND            = 'friend_count';
