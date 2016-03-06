@@ -17,6 +17,8 @@ class CreateEnterpriseDailyStatisticsTable extends Migration
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
 
+            $table->date('date')->comment('日期');
+
             $table->integer('focus_count')->unsigned()->default(0)->comment('关注用户数');
             $table->integer('register_count')->unsigned()->default(0)->comment('注册用户数');
             $table->integer('doctor_count')->unsigned()->default(0)->comment('医师数');

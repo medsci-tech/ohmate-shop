@@ -40,4 +40,54 @@ class DailyAnalyzer
         return $daily->article_count;
     }
 
+    public function updateDailySignInCount($user)
+    {
+        $daily = CustomerDailyStatistics::where('customer_id', $user)
+            ->where('date', Carbon::now()->toDateString())->first();
+        if (!$daily) {
+            $daily = new CustomerDailyStatistics();
+            $daily->customer_id     = $user;
+            $daily->sign_in_count   = 0;
+            $daily->date = Carbon::now()->toDateString();
+        } else {
+            $daily->sign_in_count += 1;
+        }
+        $daily->save();
+    }
+
+    public function getDailySignInCount($user)
+    {
+        $daily = CustomerDailyStatistics::where('customer_id', $user)
+            ->where('date', Carbon::now()->toDateString())->first();
+        if (!$daily) {
+            return 0;
+        } /*if>*/
+        return $daily->sign_in_count;
+    }
+
+    public function updateDailyShareCount($user)
+    {
+        $daily = CustomerDailyStatistics::where('customer_id', $user)
+            ->where('date', Carbon::now()->toDateString())->first();
+        if (!$daily) {
+            $daily = new CustomerDailyStatistics();
+            $daily->customer_id     = $user;
+            $daily->share_count     = 0;
+            $daily->date = Carbon::now()->toDateString();
+        } else {
+            $daily->share_count += 1;
+        }
+        $daily->save();
+    }
+
+    public function getDailyShareCount($user)
+    {
+        $daily = CustomerDailyStatistics::where('customer_id', $user)
+            ->where('date', Carbon::now()->toDateString())->first();
+        if (!$daily) {
+            return 0;
+        } /*if>*/
+        return $daily->share_count;
+    }
+
 }
