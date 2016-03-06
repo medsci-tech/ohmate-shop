@@ -12,13 +12,15 @@ namespace App\Constants;
 class AnalyzerConstant
 {
     /*customer year statistics*/
-    const FRIEND            = 'friend_count';
-    const ARTICLE           = 'article_count';
-    const COMMODITY         = 'commodity_count';
-    const ORDER             = 'order_count';
-    const MONEY_COST        = 'money_cost';
+    const CUSTOMER_FRIEND            = 'friend_count';
+    const CUSTOMER_ARTICLE           = 'article_count';
+    const CUSTOMER_COMMODITY         = 'commodity_count';
+    const CUSTOMER_ORDER             = 'order_count';
+    const CUSTOMER_MONEY_COST        = 'money_cost';
 
     /*docotor year statistics*/
-    const PATIENT   = 'patient_count';
-    const STUDY     = 'study_count';
+    const DOCTOR_PATIENT   = 'patient_count';
+    const DOCTOR_STUDY     = 'study_count';
+
+    /*enterprise statistics*/
 }

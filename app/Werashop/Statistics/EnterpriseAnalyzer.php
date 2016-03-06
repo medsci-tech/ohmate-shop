@@ -8,9 +8,17 @@
 
 namespace App\Werashop\Statistics;
 
-use App\Models\EnterpriseDailyStatistics;
+use Carbon\Carbon;
+use App\Models\EnterpriseBasicStatistics;
 
 class EnterpriseAnalyzer
 {
+    public function updateBasic() {
+        $daily = EnterpriseBasicStatistics::where('date', Carbon::now()->toDateString())->first();
+        if (!$daily) {
 
-}
+        }
+
+    }
+
+} /*class*/
