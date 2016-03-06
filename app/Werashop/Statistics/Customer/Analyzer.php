@@ -6,7 +6,7 @@
  * Time: 15:19
  */
 
-namespace App\Werashop\Statistics;
+namespace App\Werashop\Statistics\Customer;
 
 use Carbon\Carbon;
 use App\Models\DoctorStatistics;

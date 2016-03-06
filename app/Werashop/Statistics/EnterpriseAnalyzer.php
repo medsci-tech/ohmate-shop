@@ -6,7 +6,7 @@
  * Time: 17:47
  */
 
-namespace App\Werashop\Statistics;
+namespace App\Werashop\Statistics\Enterprise;
 
 use Carbon\Carbon;
 use App\Models\EnterpriseBasicStatistics;

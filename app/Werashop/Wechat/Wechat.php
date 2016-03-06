@@ -22,6 +22,8 @@ use Overtrue\Wechat\QRCode;
 use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Payment\Order as WechatOrder;
 
+use App\Constants\AnalyzerConstant;
+
 /**
  * Class Wechat
  * @package App\Werashop\Wechat

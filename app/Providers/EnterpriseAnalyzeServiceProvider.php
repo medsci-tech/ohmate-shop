@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Werashop\Statistics\Customer\Analyzer;
+use App\Werashop\Statistics\Enterprise\EnterpriseAnalyzer;
 
-class AnalyzeServiceProvider extends ServiceProvider
+class EnterpriseAnalyzeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -24,8 +24,9 @@ class AnalyzeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('analyzer', function ($app) {
-            return new Analyzer();
+        //
+        $this->app->singleton('enterprise_analyzer', function ($app) {
+            return new EnterpriseAnalyzer();
         });
     }
 }

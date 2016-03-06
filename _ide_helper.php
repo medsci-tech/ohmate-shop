@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-03-03.
+ * Generated for Laravel 5.2.22 on 2016-03-06.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1291,6 +1291,317 @@ namespace {
          */
         public static function createUserProvider($provider){
             return \Illuminate\Auth\AuthManager::createUserProvider($provider);
+        }
+        
+        /**
+         * Get the currently authenticated user.
+         *
+         * @return \App\User|null 
+         * @static 
+         */
+        public static function user(){
+            return \Illuminate\Auth\SessionGuard::user();
+        }
+        
+        /**
+         * Get the ID for the currently authenticated user.
+         *
+         * @return int|null 
+         * @static 
+         */
+        public static function id(){
+            return \Illuminate\Auth\SessionGuard::id();
+        }
+        
+        /**
+         * Log a user into the application without sessions or cookies.
+         *
+         * @param array $credentials
+         * @return bool 
+         * @static 
+         */
+        public static function once($credentials = array()){
+            return \Illuminate\Auth\SessionGuard::once($credentials);
+        }
+        
+        /**
+         * Validate a user's credentials.
+         *
+         * @param array $credentials
+         * @return bool 
+         * @static 
+         */
+        public static function validate($credentials = array()){
+            return \Illuminate\Auth\SessionGuard::validate($credentials);
+        }
+        
+        /**
+         * Attempt to authenticate using HTTP Basic Auth.
+         *
+         * @param string $field
+         * @param array $extraConditions
+         * @return \Symfony\Component\HttpFoundation\Response|null 
+         * @static 
+         */
+        public static function basic($field = 'email', $extraConditions = array()){
+            return \Illuminate\Auth\SessionGuard::basic($field, $extraConditions);
+        }
+        
+        /**
+         * Perform a stateless HTTP Basic login attempt.
+         *
+         * @param string $field
+         * @param array $extraConditions
+         * @return \Symfony\Component\HttpFoundation\Response|null 
+         * @static 
+         */
+        public static function onceBasic($field = 'email', $extraConditions = array()){
+            return \Illuminate\Auth\SessionGuard::onceBasic($field, $extraConditions);
+        }
+        
+        /**
+         * Attempt to authenticate a user using the given credentials.
+         *
+         * @param array $credentials
+         * @param bool $remember
+         * @param bool $login
+         * @return bool 
+         * @static 
+         */
+        public static function attempt($credentials = array(), $remember = false, $login = true){
+            return \Illuminate\Auth\SessionGuard::attempt($credentials, $remember, $login);
+        }
+        
+        /**
+         * Register an authentication attempt event listener.
+         *
+         * @param mixed $callback
+         * @return void 
+         * @static 
+         */
+        public static function attempting($callback){
+            \Illuminate\Auth\SessionGuard::attempting($callback);
+        }
+        
+        /**
+         * Log a user into the application.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param bool $remember
+         * @return void 
+         * @static 
+         */
+        public static function login($user, $remember = false){
+            \Illuminate\Auth\SessionGuard::login($user, $remember);
+        }
+        
+        /**
+         * Log the given user ID into the application.
+         *
+         * @param mixed $id
+         * @param bool $remember
+         * @return \App\User 
+         * @static 
+         */
+        public static function loginUsingId($id, $remember = false){
+            return \Illuminate\Auth\SessionGuard::loginUsingId($id, $remember);
+        }
+        
+        /**
+         * Log the given user ID into the application without sessions or cookies.
+         *
+         * @param mixed $id
+         * @return bool 
+         * @static 
+         */
+        public static function onceUsingId($id){
+            return \Illuminate\Auth\SessionGuard::onceUsingId($id);
+        }
+        
+        /**
+         * Log the user out of the application.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function logout(){
+            \Illuminate\Auth\SessionGuard::logout();
+        }
+        
+        /**
+         * Get the cookie creator instance used by the guard.
+         *
+         * @return \Illuminate\Contracts\Cookie\QueueingFactory 
+         * @throws \RuntimeException
+         * @static 
+         */
+        public static function getCookieJar(){
+            return \Illuminate\Auth\SessionGuard::getCookieJar();
+        }
+        
+        /**
+         * Set the cookie creator instance used by the guard.
+         *
+         * @param \Illuminate\Contracts\Cookie\QueueingFactory $cookie
+         * @return void 
+         * @static 
+         */
+        public static function setCookieJar($cookie){
+            \Illuminate\Auth\SessionGuard::setCookieJar($cookie);
+        }
+        
+        /**
+         * Get the event dispatcher instance.
+         *
+         * @return \Illuminate\Contracts\Events\Dispatcher 
+         * @static 
+         */
+        public static function getDispatcher(){
+            return \Illuminate\Auth\SessionGuard::getDispatcher();
+        }
+        
+        /**
+         * Set the event dispatcher instance.
+         *
+         * @param \Illuminate\Contracts\Events\Dispatcher $events
+         * @return void 
+         * @static 
+         */
+        public static function setDispatcher($events){
+            \Illuminate\Auth\SessionGuard::setDispatcher($events);
+        }
+        
+        /**
+         * Get the session store used by the guard.
+         *
+         * @return \Illuminate\Session\Store 
+         * @static 
+         */
+        public static function getSession(){
+            return \Illuminate\Auth\SessionGuard::getSession();
+        }
+        
+        /**
+         * Get the user provider used by the guard.
+         *
+         * @return \Illuminate\Contracts\Auth\UserProvider 
+         * @static 
+         */
+        public static function getProvider(){
+            return \Illuminate\Auth\SessionGuard::getProvider();
+        }
+        
+        /**
+         * Set the user provider used by the guard.
+         *
+         * @param \Illuminate\Contracts\Auth\UserProvider $provider
+         * @return void 
+         * @static 
+         */
+        public static function setProvider($provider){
+            \Illuminate\Auth\SessionGuard::setProvider($provider);
+        }
+        
+        /**
+         * Return the currently cached user.
+         *
+         * @return \App\User|null 
+         * @static 
+         */
+        public static function getUser(){
+            return \Illuminate\Auth\SessionGuard::getUser();
+        }
+        
+        /**
+         * Set the current user.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @return void 
+         * @static 
+         */
+        public static function setUser($user){
+            \Illuminate\Auth\SessionGuard::setUser($user);
+        }
+        
+        /**
+         * Get the current request instance.
+         *
+         * @return \Symfony\Component\HttpFoundation\Request 
+         * @static 
+         */
+        public static function getRequest(){
+            return \Illuminate\Auth\SessionGuard::getRequest();
+        }
+        
+        /**
+         * Set the current request instance.
+         *
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return $this 
+         * @static 
+         */
+        public static function setRequest($request){
+            return \Illuminate\Auth\SessionGuard::setRequest($request);
+        }
+        
+        /**
+         * Get the last user we attempted to authenticate.
+         *
+         * @return \App\User 
+         * @static 
+         */
+        public static function getLastAttempted(){
+            return \Illuminate\Auth\SessionGuard::getLastAttempted();
+        }
+        
+        /**
+         * Get a unique identifier for the auth session value.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getName(){
+            return \Illuminate\Auth\SessionGuard::getName();
+        }
+        
+        /**
+         * Get the name of the cookie used to store the "recaller".
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getRecallerName(){
+            return \Illuminate\Auth\SessionGuard::getRecallerName();
+        }
+        
+        /**
+         * Determine if the user was authenticated via "remember me" cookie.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function viaRemember(){
+            return \Illuminate\Auth\SessionGuard::viaRemember();
+        }
+        
+        /**
+         * Determine if the current user is authenticated.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function check(){
+            return \Illuminate\Auth\SessionGuard::check();
+        }
+        
+        /**
+         * Determine if the current user is a guest.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function guest(){
+            return \Illuminate\Auth\SessionGuard::guest();
         }
         
     }
@@ -10562,6 +10873,18 @@ namespace {
             return \App\Werashop\Helper\Helper::getPostFee($province);
         }
         
+        /**
+         * 
+         *
+         * @param \DateTime $begin
+         * @param \DateTime $end
+         * @return array 
+         * @static 
+         */
+        public static function getMonthPeriod($begin, $end){
+            return \App\Werashop\Helper\Helper::getMonthPeriod($begin, $end);
+        }
+        
     }
 
 
@@ -10618,29 +10941,6 @@ namespace {
          * 
          *
          * @param $user
-         * @param $value
-         * @return bool 
-         * @static 
-         */
-        public static function consume($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param $referrer
-         * @return bool 
-         * @static 
-         */
-        public static function invite($referrer){
-            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
          * @return bool 
          * @static 
          */
@@ -10665,6 +10965,29 @@ namespace {
          * @return bool 
          * @static 
          */
+        public static function consume($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param $referrer
+         * @return bool 
+         * @static 
+         */
+        public static function invite($referrer){
+            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
+        }
+        
+        /**
+         * 
+         *
+         * @param $user
+         * @param $value
+         * @return bool 
+         * @static 
+         */
         public static function consumeFeedback($user, $value){
             return \App\Werashop\Bean\BeanRecharger::consumeFeedback($user, $value);
         }
@@ -10677,8 +11000,17 @@ namespace {
          * @return bool 
          * @static 
          */
-        public static function volunteerFeedback($user, $value){
+        public static function consumeVolunteerFeedback($user, $value){
             return \App\Werashop\Bean\BeanRecharger::consumeVolunteerFeedback($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function educationVolunteerFeedback($user){
+            return \App\Werashop\Bean\BeanRecharger::educationVolunteerFeedback($user);
         }
         
         /**
@@ -10708,27 +11040,62 @@ namespace {
         /**
          * 
          *
-         * @param $user
-         * @return bool 
          * @static 
          */
-        public static function calculateStudy($user){
-            return \App\Werashop\Bean\BeanRecharger::calculateStudy($user);
+        public static function excuteEducation($user){
+            return \App\Werashop\Bean\BeanRecharger::excuteEducation($user);
         }
         
     }
 
 
-    class BeanCalculator extends \App\Werashop\Bean\Facades\Calculator{
+    class Analyzer extends \App\Werashop\Statistics\Customer\Facades\Analyzer{
         
         /**
          * 
          *
          * @static 
          */
-        public static function calculate($total_price, $beans){
-            return \App\Werashop\Bean\Calculator::calculate($total_price, $beans);
+        public static function updateBasicStatistics($user, $item, $value = 1){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateBasicStatistics($user, $item, $value);
         }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateArticleStatistics($user, $articleType){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateArticleStatistics($user, $articleType);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateCommodityStatistics($user, $commodity){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateCommodityStatistics($user, $commodity);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateDoctorStatistics($user, $item){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateDoctorStatistics($user, $item);
+        }
+        
+    }
+
+
+    class DailyAnalyzer extends \App\Werashop\Statistics\Daily\Facades\DailyAnalyzer{
+        
+    }
+
+
+    class EnterpriseAnalyzer extends \App\Werashop\Statistics\Enterprise\Facades\EnterpriseAnalyzer{
         
     }
 

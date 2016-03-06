@@ -6,7 +6,7 @@
  * Time: 15:16
  */
 
-namespace App\Werashop\Statistics\Facades;
+namespace App\Werashop\Statistics\Customer\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

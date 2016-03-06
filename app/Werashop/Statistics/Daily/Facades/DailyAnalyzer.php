@@ -6,7 +6,7 @@
  * Time: 15:33
  */
 
-namespace App\Werashop\Statistics\Facades;
+namespace App\Werashop\Statistics\Daily\Facades;
 
 
 class DailyAnalyzer

@@ -6,7 +6,7 @@
  * Time: 17:46
  */
 
-namespace App\Werashop\Statistics\Facades;
+namespace App\Werashop\Statistics\Enterprise\Facades;
 
 
 class EnterpriseAnalyzer
