@@ -10678,7 +10678,7 @@ namespace {
          * @static 
          */
         public static function volunteerFeedback($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::volunteerFeedback($user, $value);
+            return \App\Werashop\Bean\BeanRecharger::consumeVolunteerFeedback($user, $value);
         }
         
         /**
