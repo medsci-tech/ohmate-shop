@@ -19,14 +19,10 @@ class Analyzer
 
     public function updateBasicStatistics($user, $item, $value = 1)
     {
-        $year = Carbon::now()->year;
-
-        $statistics = CustomerStatistics::where('customer_id', $user)
-                    ->where('year', $year)->first();
+        $statistics = CustomerStatistics::where('customer_id', $user)->first();
         if (!$statistics) {
             $statistics = new CustomerStatistics();
-            $statistics->customer_id    = $user;
-            $statistics->year           = $year;
+            $statistics->customer_id = $user;
         } /*if>*/
         $statistics->$item += $value;
         $statistics->save();
@@ -34,15 +30,12 @@ class Analyzer
 
     public function updateArticleStatistics($user, $articleType)
     {
-        $year = Carbon::now()->year;
-
         $statistics = CustomerArticleStatistics::where('customer_id', $user)
-            ->where('year', $year)->where('article_type_id', $articleType->id)->first();
+                    ->where('article_type_id', $articleType->id)->first();
         if (!$statistics) {
             $statistics = new CustomerArticleStatistics();
             $statistics->customer_id        = $user;
             $statistics->article_type_id    = $articleType->id;
-            $statistics->year   = $year;
             $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;
@@ -51,15 +44,12 @@ class Analyzer
 
     public function updateCommodityStatistics($user, $commodity)
     {
-        $year = Carbon::now()->year;
-
         $statistics = CustomerCommodityStatistics::where('customer_id', $user)
-            ->where('year', $year)->where('article_type_id', $commodity->id)->first();
+                    ->where('commodity_id', $commodity->id)->first();
         if (!$statistics) {
             $statistics = new CustomerCommodityStatistics();
             $statistics->customer_id        = $user;
             $statistics->commodity_id       = $commodity->id;
-            $statistics->year   = $year;
             $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;
@@ -68,13 +58,10 @@ class Analyzer
 
     public function updateDoctorStatistics($user, $item)
     {
-        $year = Carbon::now()->year;
-        $statistics = DoctorStatistics::where('customer_id', $user)
-            ->where('year', $year)->first();
+        $statistics = DoctorStatistics::where('customer_id', $user)->first();
         if (!$statistics) {
             $statistics = new DoctorStatistics();
             $statistics->customer_id    = $user;
-            $statistics->year           = $year;
         } /*if>*/
         $statistics->$item += 1;
         $statistics->save();

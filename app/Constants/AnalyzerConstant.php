@@ -11,16 +11,29 @@ namespace App\Constants;
 
 class AnalyzerConstant
 {
-    /*customer year statistics*/
+    /*customer daily statistics*/
+    const CUSTOMER_DAILY_SIGN_IN    = 'sign_in_count';
+    const CUSTOMER_DAILY_SHARE      = 'share_count';
+    const CUSTOMER_DAILY_ARTICLE    = 'article_count';
+
+    /*customer statistics*/
     const CUSTOMER_FRIEND            = 'friend_count';
     const CUSTOMER_ARTICLE           = 'article_count';
     const CUSTOMER_COMMODITY         = 'commodity_count';
     const CUSTOMER_ORDER             = 'order_count';
     const CUSTOMER_MONEY_COST        = 'money_cost';
 
-    /*docotor year statistics*/
-    const DOCTOR_PATIENT   = 'patient_count';
-    const DOCTOR_STUDY     = 'study_count';
+    /*docotor statistics*/
+    const DOCTOR_PATIENT    = 'patient_count';
+    const DOCTOR_ARTICLE    = 'article_count';
 
-    /*enterprise statistics*/
+    /*enterprise daily statistics*/
+    const ENTERPRISE_FOCUS      = 'focus_count';
+    const ENTERPRISE_REGISTER   = 'register_count';
+    const ENTERPRISE_DOCTOR     = 'doctor_count';
+    const ENTERPRISE_BEAN       = 'bean_count';
+    const ENTERPRISE_INCOME     = 'income_count';
+    const ENTERPRISE_ARTICLE    = 'article_count';
+    const ENTERPRISE_ORDER      = 'order_count';
+    const ENTERPRISE_COMMODITY  = 'commodity_count';
 }

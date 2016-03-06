@@ -24,7 +24,7 @@ class CreateEnterpriseBasicStatisticsTable extends Migration
             $table->decimal('bean_count', 15, 4)->unsigned()->default(0)->comment('迈豆输出量');
             $table->decimal('income_count', 15, 4)->unsigned()->default(0)->comment('营业额/无运费');
 
-            $table->integer('study_count')->unsigned()->default(0)->comment('文章阅读量');
+            $table->integer('article_count')->unsigned()->default(0)->comment('文章阅读量');
             $table->integer('order_count')->unsigned()->default(0)->comment('订单量');
             $table->integer('commodity_count')->unsigned()->default(0)->comment('卖出商品量');
             $table->timestamps();
