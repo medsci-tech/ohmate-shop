@@ -218,6 +218,7 @@ return [
         'BeanRecharger' => App\Werashop\Bean\Facades\BeanRecharger::class,
         'Analyzer'      => App\Werashop\Statistics\Facades\Analyzer::class,
         'DailyAnalyzer' => App\Werashop\Statistics\Facades\DailyAnalyzer::class,
+        'EnterpriseAnalyzer' => App\Werashop\Statistics\Facades\EnterpriseAnalyzer::class,
     ],
 
 ];
