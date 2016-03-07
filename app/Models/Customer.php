@@ -160,6 +160,6 @@ class Customer extends Model
     {
         $date = explode('-', $month);
         $nextMonth = $date[0].'-0'.++$date[1];
-        return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->get();
+        return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->orderBy('created_at', 'desc')->get();
     }
 }
