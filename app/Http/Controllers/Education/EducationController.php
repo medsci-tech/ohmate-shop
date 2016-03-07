@@ -71,7 +71,7 @@ class EducationController extends Controller
         $user = \Session::get(AppConstant::SESSION_USER_KEY);
         if (!is_null($user)) {
             $customer   = \Helper::getCustomer();
-            $show       = \BeanRecharger::calculateStudy($customer->id);
+            $show       = \DailyAnalyzer::getDailyItemCount($customer->id, 'value');
             return view('education.article-view', ['article' => $article, 'show' => $show, 'js' => $js]);
         } else {
             return view('education.article-view', ['article' => $article, 'show' => false, 'js' => $js]);

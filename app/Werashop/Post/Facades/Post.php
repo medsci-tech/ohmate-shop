@@ -1,15 +1,15 @@
 <?php
 
 
-namespace App\Werashop\Bean\Facades;
+namespace App\Werashop\Post\Facades;
 
 
 use Illuminate\Support\Facades\Facade;
 
-class Calculator extends Facade
+class Post extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'bean_calculator';
+        return 'post';
     }
 }

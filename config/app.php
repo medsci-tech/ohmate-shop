@@ -160,7 +160,10 @@ return [
         App\Providers\WechatServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         App\Providers\BeanServiceProvider::class,
-
+        App\Providers\AnalyzeServiceProvider::class,
+        App\Providers\DailyAnalyzeServiceProvider::class,
+        App\Providers\EnterpriseAnalyzeServiceProvider::class,
+//        App\Providers\PostServiceProvider::class,
         /*
          * IDE Helper
          */
@@ -215,7 +218,10 @@ return [
         'Wechat'        => App\Werashop\Wechat\Facades\Wechat::class,
         'Helper'        => App\Werashop\Helper\Facades\Helper::class,
         'BeanRecharger' => App\Werashop\Bean\Facades\BeanRecharger::class,
-        'BeanCalculator' => App\Werashop\Bean\Facades\Calculator::class,
+        'Analyzer'      => App\Werashop\Statistics\Customer\Facades\Analyzer::class,
+        'DailyAnalyzer' => App\Werashop\Statistics\Daily\Facades\DailyAnalyzer::class,
+        'EnterpriseAnalyzer' => App\Werashop\Statistics\Enterprise\Facades\EnterpriseAnalyzer::class,
+//        'Post'          => App\Providers\PostServiceProvider::class,
     ],
 
 ];

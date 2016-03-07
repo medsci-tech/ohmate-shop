@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Werashop\Bean\BeanRecharger;
+use App\Werashop\Post\EmsPost;
 use Illuminate\Support\ServiceProvider;
 
-class BeanServiceProvider extends ServiceProvider
+class PostServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -24,9 +24,8 @@ class BeanServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('bean_recharger', function ($app) {
-            return new BeanRecharger();
+        $this->app->singleton('post', function ($app) {
+            return new EmsPost();
         });
-
     }
 }

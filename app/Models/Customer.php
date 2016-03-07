@@ -140,14 +140,6 @@ class Customer extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function dailyArticles()
-    {
-        return $this->hasMany(CustomerDailyArticle::class, 'customer_id');
-    }
-
-    /**
      * @param string $month
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

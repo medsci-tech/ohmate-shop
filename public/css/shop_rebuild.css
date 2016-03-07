@@ -11,6 +11,9 @@ body {
 a, a:focus, a:hover {
   text-decoration: none; }
 
+.button-caution {
+  background-color: #f71212; }
+
 .shop-index .row:nth-child(3) {
   margin-left: -11px;
   margin-right: -11px; }

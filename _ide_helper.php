@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-03-03.
+ * Generated for Laravel 5.2.22 on 2016-03-07.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2149,6 +2149,47 @@ namespace {
          */
         public static function getQueuedCookies(){
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
+        }
+        
+    }
+
+
+    class Crypt extends \Illuminate\Support\Facades\Crypt{
+        
+        /**
+         * Determine if the given key and cipher combination is valid.
+         *
+         * @param string $key
+         * @param string $cipher
+         * @return bool 
+         * @static 
+         */
+        public static function supported($key, $cipher){
+            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
+        }
+        
+        /**
+         * Encrypt the given value.
+         *
+         * @param string $value
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static 
+         */
+        public static function encrypt($value){
+            return \Illuminate\Encryption\Encrypter::encrypt($value);
+        }
+        
+        /**
+         * Decrypt the given value.
+         *
+         * @param string $payload
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static 
+         */
+        public static function decrypt($payload){
+            return \Illuminate\Encryption\Encrypter::decrypt($payload);
         }
         
     }
@@ -6012,6 +6053,125 @@ namespace {
          */
         public static function isDownForMaintenance(){
             return \Illuminate\Queue\QueueManager::isDownForMaintenance();
+        }
+        
+        /**
+         * Push a new job onto the queue.
+         *
+         * @param string $job
+         * @param mixed $data
+         * @param string $queue
+         * @return mixed 
+         * @throws \Exception|\Throwable
+         * @static 
+         */
+        public static function push($job, $data = '', $queue = null){
+            return \Illuminate\Queue\SyncQueue::push($job, $data, $queue);
+        }
+        
+        /**
+         * Push a raw payload onto the queue.
+         *
+         * @param string $payload
+         * @param string $queue
+         * @param array $options
+         * @return mixed 
+         * @static 
+         */
+        public static function pushRaw($payload, $queue = null, $options = array()){
+            return \Illuminate\Queue\SyncQueue::pushRaw($payload, $queue, $options);
+        }
+        
+        /**
+         * Push a new job onto the queue after a delay.
+         *
+         * @param \DateTime|int $delay
+         * @param string $job
+         * @param mixed $data
+         * @param string $queue
+         * @return mixed 
+         * @static 
+         */
+        public static function later($delay, $job, $data = '', $queue = null){
+            return \Illuminate\Queue\SyncQueue::later($delay, $job, $data, $queue);
+        }
+        
+        /**
+         * Pop the next job off of the queue.
+         *
+         * @param string $queue
+         * @return \Illuminate\Contracts\Queue\Job|null 
+         * @static 
+         */
+        public static function pop($queue = null){
+            return \Illuminate\Queue\SyncQueue::pop($queue);
+        }
+        
+        /**
+         * Push a new job onto the queue.
+         *
+         * @param string $queue
+         * @param string $job
+         * @param mixed $data
+         * @return mixed 
+         * @static 
+         */
+        public static function pushOn($queue, $job, $data = ''){
+            //Method inherited from \Illuminate\Queue\Queue            
+            return \Illuminate\Queue\SyncQueue::pushOn($queue, $job, $data);
+        }
+        
+        /**
+         * Push a new job onto the queue after a delay.
+         *
+         * @param string $queue
+         * @param \DateTime|int $delay
+         * @param string $job
+         * @param mixed $data
+         * @return mixed 
+         * @static 
+         */
+        public static function laterOn($queue, $delay, $job, $data = ''){
+            //Method inherited from \Illuminate\Queue\Queue            
+            return \Illuminate\Queue\SyncQueue::laterOn($queue, $delay, $job, $data);
+        }
+        
+        /**
+         * Push an array of jobs onto the queue.
+         *
+         * @param array $jobs
+         * @param mixed $data
+         * @param string $queue
+         * @return mixed 
+         * @static 
+         */
+        public static function bulk($jobs, $data = '', $queue = null){
+            //Method inherited from \Illuminate\Queue\Queue            
+            return \Illuminate\Queue\SyncQueue::bulk($jobs, $data, $queue);
+        }
+        
+        /**
+         * Set the IoC container instance.
+         *
+         * @param \Illuminate\Container\Container $container
+         * @return void 
+         * @static 
+         */
+        public static function setContainer($container){
+            //Method inherited from \Illuminate\Queue\Queue            
+            \Illuminate\Queue\SyncQueue::setContainer($container);
+        }
+        
+        /**
+         * Set the encrypter instance.
+         *
+         * @param \Illuminate\Contracts\Encryption\Encrypter $crypt
+         * @return void 
+         * @static 
+         */
+        public static function setEncrypter($crypt){
+            //Method inherited from \Illuminate\Queue\Queue            
+            \Illuminate\Queue\SyncQueue::setEncrypter($crypt);
         }
         
     }
@@ -10562,6 +10722,18 @@ namespace {
             return \App\Werashop\Helper\Helper::getPostFee($province);
         }
         
+        /**
+         * 
+         *
+         * @param \DateTime $begin
+         * @param \DateTime $end
+         * @return array 
+         * @static 
+         */
+        public static function getMonthPeriod($begin, $end){
+            return \App\Werashop\Helper\Helper::getMonthPeriod($begin, $end);
+        }
+        
     }
 
 
@@ -10618,29 +10790,6 @@ namespace {
          * 
          *
          * @param $user
-         * @param $value
-         * @return bool 
-         * @static 
-         */
-        public static function consume($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param $referrer
-         * @return bool 
-         * @static 
-         */
-        public static function invite($referrer){
-            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
          * @return bool 
          * @static 
          */
@@ -10665,6 +10814,29 @@ namespace {
          * @return bool 
          * @static 
          */
+        public static function consume($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param $referrer
+         * @return bool 
+         * @static 
+         */
+        public static function invite($referrer){
+            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
+        }
+        
+        /**
+         * 
+         *
+         * @param $user
+         * @param $value
+         * @return bool 
+         * @static 
+         */
         public static function consumeFeedback($user, $value){
             return \App\Werashop\Bean\BeanRecharger::consumeFeedback($user, $value);
         }
@@ -10677,8 +10849,17 @@ namespace {
          * @return bool 
          * @static 
          */
-        public static function volunteerFeedback($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::volunteerFeedback($user, $value);
+        public static function consumeVolunteerFeedback($user, $value){
+            return \App\Werashop\Bean\BeanRecharger::consumeVolunteerFeedback($user, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function educationVolunteerFeedback($user){
+            return \App\Werashop\Bean\BeanRecharger::educationVolunteerFeedback($user);
         }
         
         /**
@@ -10708,26 +10889,110 @@ namespace {
         /**
          * 
          *
-         * @param $user
-         * @return bool 
          * @static 
          */
-        public static function calculateStudy($user){
-            return \App\Werashop\Bean\BeanRecharger::calculateStudy($user);
+        public static function excuteEducation($user){
+            return \App\Werashop\Bean\BeanRecharger::excuteEducation($user);
         }
         
     }
 
 
-    class BeanCalculator extends \App\Werashop\Bean\Facades\Calculator{
+    class Analyzer extends \App\Werashop\Statistics\Customer\Facades\Analyzer{
         
         /**
          * 
          *
          * @static 
          */
-        public static function calculate($total_price, $beans){
-            return \App\Werashop\Bean\Calculator::calculate($total_price, $beans);
+        public static function updateBasicStatistics($user, $item, $value = 1){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateBasicStatistics($user, $item, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateArticleStatistics($user, $articleType){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateArticleStatistics($user, $articleType);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateCommodityStatistics($user, $commodity){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateCommodityStatistics($user, $commodity);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateDoctorStatistics($user, $item){
+            return \App\Werashop\Statistics\Customer\Analyzer::updateDoctorStatistics($user, $item);
+        }
+        
+    }
+
+
+    class DailyAnalyzer extends \App\Werashop\Statistics\Daily\Facades\DailyAnalyzer{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function updateDailyItemCount($user, $item){
+            return \App\Werashop\Statistics\Daily\DailyAnalyzer::updateDailyItemCount($user, $item);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getDailyItemCount($user, $item){
+            return \App\Werashop\Statistics\Daily\DailyAnalyzer::getDailyItemCount($user, $item);
+        }
+        
+    }
+
+
+    class EnterpriseAnalyzer extends \App\Werashop\Statistics\Enterprise\Facades\EnterpriseAnalyzer{
+        
+        /**
+         * 
+         *
+         * @param $item
+         * @param int $value
+         * @static 
+         */
+        public static function updateBasic($item, $value = 1){
+            return \App\Werashop\Statistics\Enterprise\EnterpriseAnalyzer::updateBasic($item, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param $articleType
+         * @static 
+         */
+        public static function updateArticleStatistics($articleType){
+            return \App\Werashop\Statistics\Enterprise\EnterpriseAnalyzer::updateArticleStatistics($articleType);
+        }
+        
+        /**
+         * 
+         *
+         * @param $commodity
+         * @static 
+         */
+        public static function updateCommodityStatistics($commodity){
+            return \App\Werashop\Statistics\Enterprise\EnterpriseAnalyzer::updateCommodityStatistics($commodity);
         }
         
     }

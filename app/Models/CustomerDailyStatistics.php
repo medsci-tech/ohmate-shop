@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomerDailyStatistics extends Model
 {
-    protected $table = 'customer_article_statistics';
+    protected $table = 'customer_daily_statistics';
 
     protected function customer()
     {

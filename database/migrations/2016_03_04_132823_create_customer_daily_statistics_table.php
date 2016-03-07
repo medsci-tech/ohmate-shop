@@ -17,8 +17,10 @@ class CreateCustomerDailyStatisticsTable extends Migration
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
 
-            $table->string('date')->comment('日期');
-            $table->integer('article_count')->unsigned()->comment('阅读文章数');
+            $table->date('date')->comment('日期');
+            $table->integer('article_count')->unsigned()->default(0)->comment('阅读文章数');
+            $table->integer('share_count')->unsigned()->default(0)->comment('转发文章数');
+            $table->integer('sign_in_count')->unsigned()->default(0)->comment('签到数');
 
             $table->timestamps();
         });

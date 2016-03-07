@@ -17,10 +17,8 @@ class CreateCustomerCommodityStatisticsTable extends Migration
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
 
-            $table->integer('article_type_id')->unsigned()->comment('商品类型');
+            $table->integer('commodity_id')->unsigned()->comment('商品类型');
             $table->foreign('commodity_id')->references('id')->on('commodities');
-
-            $table->string('year')->comment('年份');
             $table->integer('count')->unsigned()->default(0)->comment('计数');
 
             $table->index('customer_id');

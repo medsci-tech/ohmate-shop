@@ -7,6 +7,7 @@ namespace App\Werashop\Post;
 use App\Models\Address;
 use App\Models\Order;
 use Curl\Curl;
+use Overtrue\Wechat\Utils\XML;
 
 /**
  * Class EmsPost
@@ -73,5 +74,18 @@ class EmsPost implements PostInterface
     protected function generateBillNumRequestData()
     {
         return base64_encode('<?xml version="1.0" encoding="UTF-8"?><XMLInfo><sysAccount>'.$this->_sysAccount.'</sysAccount><passWord>'.$this->_password.'</passWord><appKey>'.$this->_appKey.'/appKey><businessType>4</businessType><billNoAmount>1</billNoAmount></XMLInfo>');
+    }
+
+    protected function generateUpdatePrintDatasRequestData()
+    {
+//        $xml = XML::build([
+//            'sysAccount' => $this->_sysAccount,
+//            'passWord' => $this->_password,
+//            'appKey' => $this->_appKey,
+//            'printKind' => ,
+//            'printDatas' => [
+//                'printData' =>
+//            ]
+//        ], 'XMLInfo');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Werashop\Post\EmsPost;
 
 /**
  * App\Models\Order
@@ -53,7 +54,7 @@ class Order extends Model
         if ($this->status->name == 'paying' && $next = $this->status->next()) {
             \BeanRecharger::executeConsume($this->customer_id, $this->total_price - $this->post_fee);
             $this->beans_payment = $this->beans_payment_calculated;
-
+            $this->setPostNo();
             $this->status()->associate($next);
             return $this->save();
         }
@@ -206,5 +207,12 @@ class Order extends Model
         return static::where('id', $this->id)->with(['commodities', 'address'=> function ($query) {
             $query->withTrashed();
         }])->first()->toJson();
+    }
+
+    public function setPostNo() {
+        $post = new EmsPost();
+
+        $this->update(['post_no' => $post->getMailNo()]);
+        return $this;
     }
 }

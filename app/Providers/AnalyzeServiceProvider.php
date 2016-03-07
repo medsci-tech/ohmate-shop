@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Werashop\Bean\BeanRecharger;
 use Illuminate\Support\ServiceProvider;
+use App\Werashop\Statistics\Customer\Analyzer;
 
-class BeanServiceProvider extends ServiceProvider
+class AnalyzeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -24,9 +24,8 @@ class BeanServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('bean_recharger', function ($app) {
-            return new BeanRecharger();
+        $this->app->singleton('analyzer', function ($app) {
+            return new Analyzer();
         });
-
     }
 }

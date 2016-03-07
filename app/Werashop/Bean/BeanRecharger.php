@@ -100,6 +100,38 @@ class BeanRecharger
 
     /**
      * @param $user
+     * @return bool
+     */
+    public function study($user)
+    {
+        \Log::info('BeanRecharger:study:user:' . $user);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer) {
+            return false;
+        } /*if>*/
+
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
+        if (!$ret) {
+            return false;
+        } /*if>*/
+
+        return true;
+    }
+
+    public function share($user)
+    {
+        \Log::info('BeanRecharger:share:user:' . $user);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer) {
+            return false;
+        } /*if>*/
+
+        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_SHARE);
+        return $ret;
+    }
+
+    /**
+     * @param $user
      * @param $value
      * @return bool
      */
@@ -133,69 +165,23 @@ class BeanRecharger
         } /*if>*/
 
         $action = null;
-        if ($customer->type->type_en == AppConstant::CUSTOMER_DOCTOR) {
+        if ($customer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+            $action = AppConstant::BEAN_ACTION_INVITE;
+        } else if ($customer->type->type_en == AppConstant::CUSTOMER_DOCTOR) {
             $action = AppConstant::BEAN_ACTION_DOCTOR_INVITE;
         } else if ($customer->type->type_en == AppConstant::CUSTOMER_NURSE) {
             $action = AppConstant::BEAN_ACTION_NURSE_INVITE;
         } else if ($customer->type->type_en == AppConstant::CUSTOMER_VOLUNTEER) {
             $action = AppConstant::BEAN_ACTION_VOLUNTEER_INVITE;
-        } else {
+        } else if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
             $action = AppConstant::BEAN_ACTION_INVITE;
-        } /*else>*/
+        } else {
+            return false;
+        }/*else>*/
         $ret = $this->recharge($customer, $action);
         return $ret;
     }
 
-    /**
-     * @param $customer
-     */
-    private function sumDailyStudy($customer)
-    {
-        $daily = CustomerDailyArticle::where('customer_id', $customer->id)->first();
-        if (!$daily) {
-            $daily = new CustomerDailyArticle();
-            $daily->customer_id = $customer->id;
-            $daily->date    = Carbon::now()->toDateString();
-            $daily->value   = AppConstant::EDUCATION_STUDY_BEAN;
-        } else {
-            $daily->date    = Carbon::now()->toDateString();
-            $daily->value   += AppConstant::EDUCATION_STUDY_BEAN;
-        } /*else>*/
-        $daily->save();
-    }
-
-    /**
-     * @param $user
-     * @return bool
-     */
-    public function study($user)
-    {
-        \Log::info('BeanRecharger:study:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
-        if (!$ret) {
-            return false;
-        } /*if>*/
-
-        $this->sumDailyStudy($customer);
-        return true;
-    }
-
-    public function share($user)
-    {
-        \Log::info('BeanRecharger:share:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_SHARE);
-        return $ret;
-    }
 
     /**
      * @param $user
@@ -220,8 +206,8 @@ class BeanRecharger
      * @param $value
      * @return bool
      */
-    public function volunteerFeedback($user, $value) {
-        \Log::info('BeanRecharger:volunteerFeedback:user:' . $user . ',value:' . $value);
+    public function consumeVolunteerFeedback($user, $value) {
+        \Log::info('BeanRecharger:consumeVolunteerFeedback:user:' . $user . ',value:' . $value);
         $customer = Customer::where('id', $user)->first();
         if (!$customer || (0 == $customer->referrer_id)) {
             return false;
@@ -233,7 +219,23 @@ class BeanRecharger
         } /*if>*/
 
         $money = $value * AppConstant::MONEY_BEAN_RATE;
-        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_VOLUNTEER_FEEDBACK, $money);
+        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_CONSUME_VOLUNTEER_FEEDBACK, $money);
+        return $ret;
+    }
+
+    public function educationVolunteerFeedback($user) {
+        \Log::info('BeanRecharger:educationVolunteerFeedback:user:' . $user . ',value:' . $value);
+        $customer = Customer::where('id', $user)->first();
+        if (!$customer || (0 == $customer->referrer_id)) {
+            return false;
+        } /*if>*/
+
+        $referrer = Customer::where('id', $customer->referrer_id)->first();
+        if ($referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+            return false;
+        } /*if>*/
+
+        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_EDUCATION_VOLUNTEER_FEEDBACK);
         return $ret;
     }
 
@@ -278,33 +280,27 @@ class BeanRecharger
             return false;
         }
 
-        $ret = $this->volunteerFeedback($user, $value);
+        $ret = $this->consumeVolunteerFeedback($user, $value);
         if (!$ret) {
             return false;
         }
+
+        return $ret;
     }
 
-    /**
-     * @param $user
-     * @return bool
-     */
-    public function calculateStudy($user) {
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
+    public function excuteEducation($user)
+    {
+        $ret = $this->study($user);
+        if (!$ret) {
             return false;
-        } /*if>*/
-
-        $article = CustomerDailyArticle::where('customer_id', $customer->id)
-            ->where('date', Carbon::now()->toDateString())->first();
-        if (!$article) {
-            return true;
         }
 
-        if (($article->value + AppConstant::EDUCATION_STUDY_BEAN)
-            > AppConstant::EDUCATION_DAILY_CEILING) {
+        $ret = $this->educationVolunteerFeedback($user);
+        if (!$ret) {
             return false;
-        } /*if>*/
-        return true;
+        }
+
+        return $ret;
     }
 
 } /*class*/

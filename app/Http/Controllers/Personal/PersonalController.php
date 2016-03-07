@@ -77,11 +77,6 @@ class PersonalController extends Controller
         return view('personal.beans', $result);
     }
 
-    public function gifts()
-    {
-        return view('personal.gifts');
-    }
-
     public function friend()
     {
         $customer       = \Helper::getCustomer();
@@ -97,6 +92,19 @@ class PersonalController extends Controller
     public function aboutUs()
     {
         return view('personal.about-us');
+    }
+
+    public function statistics()
+    {
+        $customer = \Helper::getCustomer();
+        if ($customer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+
+        } else if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
+
+        } else {
+
+        } /*else>*/
+
     }
 
 }
