@@ -55,10 +55,19 @@ class Order extends Model
             \BeanRecharger::executeConsume($this->customer_id, $this->total_price - $this->post_fee);
             $this->beans_payment = $this->beans_payment_calculated;
             $this->setPostNo();
+            $this->updateStatistics();
             $this->status()->associate($next);
             return $this->save();
         }
         return false;
+    }
+
+    protected function updateStatistics()
+    {
+        foreach ($this->commodities()->get(['id'])->toArray() as $commodity_id) {
+            \Analyzer::updateCommodityStatistics($this->customer_id, $commodity_id);
+
+        }
     }
 
     /**

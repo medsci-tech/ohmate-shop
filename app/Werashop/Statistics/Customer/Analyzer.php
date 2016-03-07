@@ -17,7 +17,7 @@ use App\Models\CustomerCommodityStatistics;
 class Analyzer
 {
 
-    public function updateBasicStatistics($user, $item, $value = 1)
+    public function updateBasicStatistics(int $user, string $item, int $value = 1)
     {
         $statistics = CustomerStatistics::where('customer_id', $user)->first();
         if (!$statistics) {
@@ -28,7 +28,7 @@ class Analyzer
         $statistics->save();
     }
 
-    public function updateArticleStatistics($user, $articleType)
+    public function updateArticleStatistics(int $user, $articleType)
     {
         $statistics = CustomerArticleStatistics::where('customer_id', $user)
                     ->where('article_type_id', $articleType->id)->first();
@@ -42,7 +42,7 @@ class Analyzer
         $statistics->save();
     }
 
-    public function updateCommodityStatistics($user, $commodity)
+    public function updateCommodityStatistics(int $user, $commodity)
     {
         $statistics = CustomerCommodityStatistics::where('customer_id', $user)
                     ->where('commodity_id', $commodity->id)->first();
@@ -56,7 +56,7 @@ class Analyzer
         $statistics->save();
     }
 
-    public function updateDoctorStatistics($user, $item)
+    public function updateDoctorStatistics(int $user, string $item)
     {
         $statistics = DoctorStatistics::where('customer_id', $user)->first();
         if (!$statistics) {
