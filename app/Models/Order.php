@@ -32,6 +32,8 @@ use App\Werashop\Post\EmsPost;
  * @property float $beans_payment
  * @property float $beans_payment_calculated
  * @property float $post_fee
+ * @property string $post_type
+ * @property string $post_no
  */
 class Order extends Model
 {
@@ -73,7 +75,7 @@ class Order extends Model
         }
 
         \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_ORDER);
-        \Analyzer::updateBasicStatistics($this->actual_payment, AnalyzerConstant::CUSTOMER_MONEY_COST);
+        \Analyzer::updateBasicStatistics($this->cash_payment, AnalyzerConstant::CUSTOMER_MONEY_COST);
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_ORDER);
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_COMMODITY, $this->commodities()->count());
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_INCOME, $this->actual_payment);

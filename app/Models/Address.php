@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $name
  * @property string $phone
  * @property string $postcode
+ * @property \Carbon\Carbon $deleted_at
  */
 class Address extends Model
 {
