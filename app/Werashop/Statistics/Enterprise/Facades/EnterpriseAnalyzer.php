@@ -9,7 +9,9 @@
 namespace App\Werashop\Statistics\Enterprise\Facades;
 
 
-class EnterpriseAnalyzer
+use Illuminate\Support\Facades\Facade;
+
+class EnterpriseAnalyzer extends Facade
 {
     protected static function getFacadeAccessor()
     {

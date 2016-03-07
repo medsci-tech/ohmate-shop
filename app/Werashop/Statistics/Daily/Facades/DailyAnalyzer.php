@@ -9,7 +9,9 @@
 namespace App\Werashop\Statistics\Daily\Facades;
 
 
-class DailyAnalyzer
+use Illuminate\Support\Facades\Facade;
+
+class DailyAnalyzer extends Facade
 {
     protected static function getFacadeAccessor()
     {

@@ -13,8 +13,16 @@ use App\Models\EnterpriseBasicStatistics;
 use App\Models\EnterpriseArticleStatistics;
 use App\Models\EnterpriseCommodityStatistics;
 
+/**
+ * Class EnterpriseAnalyzer
+ * @package App\Werashop\Statistics\Enterprise
+ */
 class EnterpriseAnalyzer
 {
+    /**
+     * @param $item
+     * @param int $value
+     */
     public function updateBasic($item, $value = 1)
     {
         $daily = EnterpriseBasicStatistics::where('date', Carbon::now()->toDateString())->first();
@@ -26,6 +34,9 @@ class EnterpriseAnalyzer
         $daily->save();
     }
 
+    /**
+     * @param $articleType
+     */
     public function updateArticleStatistics($articleType)
     {
         $date = Carbon::now()->toDateString();
@@ -42,6 +53,9 @@ class EnterpriseAnalyzer
         $statistics->save();
     }
 
+    /**
+     * @param $commodity
+     */
     public function updateCommodityStatistics($commodity)
     {
         $date = Carbon::now()->toDateString();
