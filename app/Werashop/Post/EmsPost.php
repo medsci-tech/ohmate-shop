@@ -66,7 +66,7 @@ class EmsPost implements PostInterface
             'xml' => $this->generateBillNumRequestData()
         ]);
         $xml_str = $curl->response;
-        dd(base64_decode($xml_str));
+        dd($curl);
 
         $xml = simplexml_load_string(base64_decode($xml_str));
         return (string) $xml->assignIds->assignId->billno;
