@@ -19,7 +19,7 @@
     <div class="weui_cell">
         <div class="weui_cell_bd weui_cell_primary">
             <p class="desc">
-                联系我们丨电话：400-1199-802
+                联系我们 ：400-1199-802
             </p>
         </div>
     </div>
