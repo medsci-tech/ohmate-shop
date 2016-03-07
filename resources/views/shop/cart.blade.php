@@ -62,7 +62,7 @@
           <tr>
             <td>迈豆折扣</td>
             <td>－@{{ priceDiscount | currency '￥' }}</td>
-            <td>@{{ priceDiscount*100 }}迈豆</td>
+            <td>@{{ Math.round(priceDiscount*100)/100 }}迈豆</td>
           </tr>
           <tr>
             <td>合计</td>

@@ -163,7 +163,7 @@ return [
         App\Providers\AnalyzeServiceProvider::class,
         App\Providers\DailyAnalyzeServiceProvider::class,
         App\Providers\EnterpriseAnalyzeServiceProvider::class,
-
+//        App\Providers\PostServiceProvider::class,
         /*
          * IDE Helper
          */
@@ -221,6 +221,7 @@ return [
         'Analyzer'      => App\Werashop\Statistics\Customer\Facades\Analyzer::class,
         'DailyAnalyzer' => App\Werashop\Statistics\Daily\Facades\DailyAnalyzer::class,
         'EnterpriseAnalyzer' => App\Werashop\Statistics\Enterprise\Facades\EnterpriseAnalyzer::class,
+//        'Post'          => App\Providers\PostServiceProvider::class,
     ],
 
 ];
