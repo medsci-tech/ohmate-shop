@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Constants\AppConstant;
 use Overtrue\Wechat\Js;
 
+use App\Constants\AnalyzerConstant;
+
 class RegisterController extends Controller
 {
     function __construct()
@@ -78,8 +80,10 @@ class RegisterController extends Controller
         $ret = \BeanRecharger::register($customer->id);
         if ($ret) {
             \BeanRecharger::invite($customer->referrer_id);
+            \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
         } /*if>*/
 
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
         return redirect('register/success');
     }
 

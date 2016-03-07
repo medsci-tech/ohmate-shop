@@ -98,11 +98,9 @@ class PersonalController extends Controller
     {
         $customer = \Helper::getCustomer();
         if ($customer->type->type_en == AppConstant::CUSTOMER_COMMON) {
-
+            return view('personal.customer');
         } else if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
-
-        } else {
-
+            return view('personal.enterprise');
         } /*else>*/
 
     }

@@ -22,7 +22,7 @@ class DailyAnalyzer
         if (!$daily) {
             $daily = new CustomerDailyStatistics();
             $daily->customer_id     = $user;
-            $daily->date = Carbon::now()->toDateString();
+            $daily->date    = Carbon::now()->toDateString();
             $daily->$item   = 0;
         } else {
             $daily->$item += 1;
