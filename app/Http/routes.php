@@ -90,7 +90,7 @@ Route::any('github', 'Github\GithubController@onEvent');
 use App\Werashop\Post\EmsPost;
 
 Route::any('test', function () {
-
-    $a = (new EmsPost())->getMailNo();
-    dd($a);
+//
+//    $a = (new EmsPost())->getMailNo();
+//    dd($a);
 });
