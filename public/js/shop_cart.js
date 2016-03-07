@@ -35,13 +35,13 @@ var shop_cart = new Vue({
       for (i = 0; i < this.cart.length; i++) {
         all += this.cart[i].price * this.cart[i].num;
       }
-      return all.toFixed(2);
+      return all.round(2);
     },
     priceDiscount: function () {
       var consume =
         this.beans < this.priceAll * 100 ? this.beans : this.priceAll * 100;
       consume = consume/100;
-      return consume.toFixed(2);
+      return consume.round(2);
     },
     priceCount: function () {
       if (this.address == null) {
