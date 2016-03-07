@@ -45,7 +45,7 @@ class EmsPost implements PostInterface
      */
     public function __construct()
     {
-        $this->_getBillnumUrl = "http://os.ems.com.cn:8081/zkweb/bigaccount/getBigAccountDataAction.do?method=getBillNumBySys";
+        $this->_getBillnumUrl = "http://os.ems.com.cn:8081/zkweb/bigaccount/getBigAccountDataAction.do";
         $this->_printDatasUrl = "http://os.ems.com.cn:8081/zkweb/bigaccount/getBigAccountDataAction.do?method=updatePrintDatas";
 
         $this->_sysAccount = env('EMS_SYS_ACCOUNT');
@@ -61,10 +61,11 @@ class EmsPost implements PostInterface
     {
         $curl = new Curl();
 
-        $curl->get($this->_getBillnumUrl, ['xml' => $this->generateBillNumRequestData()]);
+        $curl->get($this->_getBillnumUrl, [
+            'method' => 'getBillNumBySys',
+            'xml' => $this->generateBillNumRequestData()
+        ]);
         $xml_str = $curl->response;
-
-        dd($curl);
 
         $xml = simplexml_load_string(base64_decode($xml_str));
         return (string) $xml->assignIds->assignId->billno;
