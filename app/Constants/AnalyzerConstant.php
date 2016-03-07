@@ -24,8 +24,6 @@ class AnalyzerConstant
     const CUSTOMER_MONEY_COST        = 'money_cost';
 
     /*docotor statistics*/
-    const DOCTOR_PATIENT    = 'patient_count';
-    const DOCTOR_ARTICLE    = 'article_count';
 
     /*enterprise daily statistics*/
     const ENTERPRISE_FOCUS      = 'focus_count';

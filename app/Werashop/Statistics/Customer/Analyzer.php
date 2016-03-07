@@ -58,13 +58,7 @@ class Analyzer
 
     public function updateDoctorStatistics($user, $item)
     {
-        $statistics = DoctorStatistics::where('customer_id', $user)->first();
-        if (!$statistics) {
-            $statistics = new DoctorStatistics();
-            $statistics->customer_id    = $user;
-        } /*if>*/
-        $statistics->$item += 1;
-        $statistics->save();
+        // todo
     }
 
 } /*class>*/
