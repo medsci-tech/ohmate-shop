@@ -77,9 +77,8 @@ class EmsPost implements PostInterface
      */
     protected function generateBillNumRequestData()
     {
-        $str = '<?xml version="1.0" encoding="UTF-8"?><XMLInfo><sysAccount>' . $this->_sysAccount . '</sysAccount><passWord>' . $this->_password . '</passWord><appKey>' . $this->_appKey . '/appKey><businessType>4</businessType><billNoAmount>1</billNoAmount></XMLInfo>';
+        $str = '<?xml version="1.0" encoding="UTF-8"?><XMLInfo><sysAccount>' . $this->_sysAccount . '</sysAccount><passWord>' . $this->_password . '</passWord><appKey>' . $this->_appKey . '</appKey><businessType>4</businessType><billNoAmount>1</billNoAmount></XMLInfo>';
 
-        dd($str);
         return base64_encode($str);
     }
 
