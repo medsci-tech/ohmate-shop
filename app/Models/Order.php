@@ -66,7 +66,7 @@ class Order extends Model
 
     protected function updateStatistics()
     {
-        foreach ($this->commodities()->get(['id'])->toArray() as $commodity_id) {
+        foreach ($this->commodities()->get(['id'])->pluck('id') as $commodity_id) {
             \Analyzer::updateCommodityStatistics($this->customer_id, $commodity_id);
             \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_COMMODITY);
             \EnterpriseAnalyzer::updateCommodityStatistics($commodity_id);
