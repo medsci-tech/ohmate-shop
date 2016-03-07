@@ -17,39 +17,39 @@ use App\Models\CustomerCommodityStatistics;
 class Analyzer
 {
 
-    public function updateBasicStatistics($user, $item, $value = 1)
+    public function updateBasicStatistics($userId, $item, $value = 1)
     {
-        $statistics = CustomerStatistics::where('customer_id', $user)->first();
+        $statistics = CustomerStatistics::where('customer_id', $userId)->first();
         if (!$statistics) {
             $statistics = new CustomerStatistics();
-            $statistics->customer_id = $user;
+            $statistics->customer_id = $userId;
         } /*if>*/
         $statistics->$item += $value;
         $statistics->save();
     }
 
-    public function updateArticleStatistics($user, $articleType)
+    public function updateArticleStatistics($userId, $articleTypeId)
     {
-        $statistics = CustomerArticleStatistics::where('customer_id', $user)
-                    ->where('article_type_id', $articleType->id)->first();
+        $statistics = CustomerArticleStatistics::where('customer_id', $userId)
+                    ->where('article_type_id', $articleTypeId)->first();
         if (!$statistics) {
             $statistics = new CustomerArticleStatistics();
-            $statistics->customer_id        = $user;
-            $statistics->article_type_id    = $articleType->id;
+            $statistics->customer_id        = $userId;
+            $statistics->article_type_id    = $articleTypeId;
             $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;
         $statistics->save();
     }
 
-    public function updateCommodityStatistics($user, $commodity)
+    public function updateCommodityStatistics($userId, $commodityId)
     {
-        $statistics = CustomerCommodityStatistics::where('customer_id', $user)
-                    ->where('commodity_id', $commodity->id)->first();
+        $statistics = CustomerCommodityStatistics::where('customer_id', $userId)
+                    ->where('commodity_id', $commodityId)->first();
         if (!$statistics) {
             $statistics = new CustomerCommodityStatistics();
-            $statistics->customer_id        = $user;
-            $statistics->commodity_id       = $commodity->id;
+            $statistics->customer_id        = $userId;
+            $statistics->commodity_id       = $commodityId;
             $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;

@@ -37,15 +37,15 @@ class EnterpriseAnalyzer
     /**
      * @param $articleType
      */
-    public function updateArticleStatistics($articleType)
+    public function updateArticleStatistics($articleTypeId)
     {
         $date = Carbon::now()->toDateString();
 
         $statistics = EnterpriseArticleStatistics::where('date', $date)
-            ->where('article_type_id', $articleType->id)->first();
+            ->where('article_type_id', $articleTypeId)->first();
         if (!$statistics) {
             $statistics = new EnterpriseArticleStatistics();
-            $statistics->article_type_id    = $articleType->id;
+            $statistics->article_type_id    = $articleTypeId;
             $statistics->date   = $date;
             $statistics->count  = 0;
         } /*if>*/
@@ -56,15 +56,15 @@ class EnterpriseAnalyzer
     /**
      * @param $commodity
      */
-    public function updateCommodityStatistics($commodity)
+    public function updateCommodityStatistics($commodityId)
     {
         $date = Carbon::now()->toDateString();
 
         $statistics = EnterpriseCommodityStatistics::where('date', $date)
-                    ->where('commodity_id', $commodity->id)->first();
+                    ->where('commodity_id', $commodityId)->first();
         if (!$statistics) {
             $statistics = new EnterpriseCommodityStatistics();
-            $statistics->commodity_id       = $commodity->id;
+            $statistics->commodity_id       = $commodityId;
             $statistics->date   = $date;
             $statistics->count  = 0;
         } /*if>*/
