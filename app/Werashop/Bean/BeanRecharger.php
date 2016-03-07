@@ -15,6 +15,7 @@ use \App\Models\BeanRate;
 use \App\Models\CustomerBean;
 use \App\Models\CustomerType;
 use \App\Models\CustomerDailyArticle;
+use \App\Constants\AnalyzerConstant;
 
 /**
  * Class BeanRecharger
@@ -56,11 +57,14 @@ class BeanRecharger
     {
         if ($action == AppConstant::BEAN_ACTION_CONSUME) {
             if ($value >= $customer->beans_total) {
+                \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($customer->beans_total));
                 $customer->beans_total = 0;
             } else {
+                \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($value));
                 $customer->beans_total -= $value;
             }/*else>>*/
         } else {
+            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, $value);
             $customer->beans_total += $value;
         } /*else>*/
         $customer->save();

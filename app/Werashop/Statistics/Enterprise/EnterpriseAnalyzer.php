@@ -30,7 +30,7 @@ class EnterpriseAnalyzer
             $daily = new EnterpriseBasicStatistics();
             $daily->date = Carbon::now()->toDateString();
         } /*if>*/
-        $daily->$item = $value;
+        $daily->$item += $value;
         $daily->save();
     }
 

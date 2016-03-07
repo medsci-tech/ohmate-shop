@@ -56,9 +56,4 @@ class Analyzer
         $statistics->save();
     }
 
-    public function updateDoctorStatistics($user, $item)
-    {
-        // todo
-    }
-
 } /*class>*/
