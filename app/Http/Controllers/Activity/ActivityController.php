@@ -17,12 +17,12 @@ class ActivityController extends Controller
 
     public function daily(Request $request)
     {
-
+        return view('activity.daily');
     }
 
     public function coupon(Request $request)
     {
-
+        return view('activity.coupon');
     }
 
 }
