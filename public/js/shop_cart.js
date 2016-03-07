@@ -40,7 +40,8 @@ var shop_cart = new Vue({
     priceDiscount: function () {
       var consume =
         this.beans < this.priceAll * 100 ? this.beans : this.priceAll * 100;
-      return consume / 100;
+      consume = consume/100;
+      return consume.toFixed(2);
     },
     priceCount: function () {
       if (this.address == null) {
