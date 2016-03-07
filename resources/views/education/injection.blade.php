@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div style="padding: 5px; padding-bottom: 56.25%;">
+<div style="padding: 5px;">
     <video controls="controls"
            poster="/image/education/pen.png"
            src="http://7xrlyr.com1.z0.glb.clouddn.com/anquanzhushe%E8%AF%BA%E5%92%8C%E7%AC%945.mp4"
@@ -15,10 +15,10 @@
     >
     </video>
 </div>
-<div style="padding: 5px; padding-bottom: 56.25%;">
+<div style="padding: 5px;">
     <video controls="controls"
            poster="/image/education/pin.png"
-           src="" width="100%" height="100%"
+           src="http://7xrlyr.com1.z0.glb.clouddn.com/anquanzhushe%E8%AF%BA%E5%92%8C%E7%AC%945.mp4" width="100%" height="100%"
     >
     </video>
 </div>
