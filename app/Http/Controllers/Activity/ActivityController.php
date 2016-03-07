@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Activity;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 class ActivityController extends Controller
@@ -17,12 +17,12 @@ class ActivityController extends Controller
 
     public function daily(Request $request)
     {
-
+        return view('activity.daily');
     }
 
     public function coupon(Request $request)
     {
-
+        return view('activity.coupon');
     }
 
 }
