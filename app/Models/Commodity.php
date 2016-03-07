@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CommodityImage[] $images
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property string $portrait
  */
 class Commodity extends Model implements Buyable
 {
