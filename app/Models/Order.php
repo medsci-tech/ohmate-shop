@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Constants\AnalyzerConstant;
+use App\Constants\AppConstant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Werashop\Post\EmsPost;
@@ -66,8 +68,16 @@ class Order extends Model
     {
         foreach ($this->commodities()->get(['id'])->toArray() as $commodity_id) {
             \Analyzer::updateCommodityStatistics($this->customer_id, $commodity_id);
-
+            \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_COMMODITY);
+            \EnterpriseAnalyzer::updateCommodityStatistics($commodity_id);
         }
+
+        \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_ORDER);
+        \Analyzer::updateBasicStatistics($this->actual_payment, AnalyzerConstant::CUSTOMER_MONEY_COST);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_ORDER);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_COMMODITY, $this->commodities()->count());
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_INCOME, $this->actual_payment);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, $this->beans_payment);
     }
 
     /**
