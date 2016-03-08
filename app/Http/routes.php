@@ -101,4 +101,5 @@ Route::any('test', function () {
 //            $commodity->addImageUrl(url('/image/shop_goods/'.$i.'/body/'.$j.'.png'));
 //        }
 //    }
+
 });
