@@ -11,10 +11,11 @@
 
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    @foreach($item->)
+    @foreach($item['slideImages'] as $slideImage)
     <div class="swiper-slide">
-      <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
+      <img class="img-responsive" src="{{$slideImage['image_url']}}">
     </div>
+    @endforeach
   </div>
   <div class="swiper-pagination"></div>
 </div>
@@ -29,13 +30,9 @@
     <p>@{{ goods.tag }}</p>
   </div>
   <div class="row">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/1.png" alt="">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/2.png" alt="">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/3.png" alt="">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/4.png" alt="">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/5.png" alt="">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/6.png" alt="">
-    <img class="img-responsive" src="../../image/shop_goods/1/body/7.png" alt="">
+    @foreach($item['images'] as $image)
+    <img class="img-responsive" src="{{$image['image_url']}}" alt="">
+    @endforeach
   </div>
   <br><br><br>
 
@@ -67,11 +64,11 @@
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
   var goods = {
-    id: '{{$item->id}}',
-    name: '{{$item->name}}'.replace("&reg;", "®"),
-    tag: '{{$item->remark}}',
-    price: {{$item->price}},
-    priceBefore: {{$item->price * 1.25}},
+    id: '{{$item["id"]}}',
+    name: '{{$item["name"]}}'.replace("&reg;", "®"),
+    tag: '{{$item["remark"]}}',
+    price: {{$item["price"]}},
+    priceBefore: {{$item["price"] * 1.25}},
     num: 1
   };
 
