@@ -12,7 +12,7 @@
   <br>
   <div class="panel panel-success">
     <div class="panel-heading">今日统计</div>
-    <ul class="list-group">
+    <ul class="list-group" v-cloak>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
         关注用户数
@@ -49,7 +49,7 @@
   </div>
   <div class="panel panel-info">
     <div class="panel-heading">学习统计</div>
-    <div class="panel-body">
+    <div class="panel-body" v-cloak>
       <div>
         <canvas id="study"></canvas>
       </div>
@@ -67,7 +67,7 @@
   </div>
   <div class="panel panel-warning">
     <div class="panel-heading">消费统计</div>
-    <div class="panel-body">
+    <div class="panel-body" v-cloak>
       <div>
         <canvas id="consume"></canvas>
       </div>
@@ -75,7 +75,7 @@
       <div>
         <ul class="list-unstyled data2">
           <li v-for=" item in enterprise_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            商品id:@{{ item.commodity_id }}
+            @{{ item.commodity.name }}：@{{ item.count }}件
           </li>
         </ul>
       </div>
