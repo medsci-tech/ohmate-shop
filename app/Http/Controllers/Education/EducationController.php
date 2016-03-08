@@ -25,7 +25,7 @@ class EducationController extends Controller
 
     public function index(Request $request)
     {
-        $topArticles = Article::where('top', true)->orderBy('updated_at','desc')->get();
+        $topArticles = Article::where('top', true)->orderBy('created_at','desc')->get();
         if (!$topArticles) {
             abort(404);
         } /*if>*/
