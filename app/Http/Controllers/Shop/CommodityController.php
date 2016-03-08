@@ -49,8 +49,10 @@ class CommodityController extends Controller
      */
     public function show($id)
     {
+        $item = Commodity::with(['images', 'slideImages'])->find($id);
+        dd($item->toArray());
         return view('shop.detail')->with([
-            'item' => Commodity::find($id)
+            'item' => $item
         ]);
     }
 
