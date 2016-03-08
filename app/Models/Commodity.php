@@ -19,6 +19,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CommodityImage[] $images
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
  * @property string $portrait
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CommoditySlideImage[] $slideImages
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity wherePortrait($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity whereRemark($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity whereIntroduction($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity wherePrice($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Commodity whereUpdatedAt($value)
  */
 class Commodity extends Model implements Buyable
 {
@@ -29,6 +38,14 @@ class Commodity extends Model implements Buyable
     public function images()
     {
         return $this->hasMany(CommodityImage::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function slideImages()
+    {
+        return $this->hasMany(CommoditySlideImage::class);
     }
 
     /**

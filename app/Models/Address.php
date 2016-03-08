@@ -24,6 +24,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $phone
  * @property string $postcode
  * @property \Carbon\Carbon $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereIsDefault($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address wherePriority($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereCustomerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address wherePhone($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address wherePostcode($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereAddress($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereProvince($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereCity($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereDistrict($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Address whereDeletedAt($value)
  */
 class Address extends Model
 {

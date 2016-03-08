@@ -16,6 +16,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $precision 精度
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation whereCustomerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation whereLatitude($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation whereLongitude($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation wherePrecision($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerLocation whereUpdatedAt($value)
  */
 class CustomerLocation extends Model
 {

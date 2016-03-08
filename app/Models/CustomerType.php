@@ -15,6 +15,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Customer[] $customers
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerType whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerType whereTypeEn($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerType whereTypeCh($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerType whereUpdatedAt($value)
  */
 class CustomerType extends Model
 {

@@ -7,6 +7,19 @@ use Carbon\Carbon;
 /**
  * App\Models\EnterpriseArticleStatistics
  *
+ * @property integer $id
+ * @property string $date ����
+ * @property integer $article_type_id ��������
+ * @property integer $count ����
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseArticleStatistics whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseArticleStatistics whereDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseArticleStatistics whereArticleTypeId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseArticleStatistics whereCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseArticleStatistics whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseArticleStatistics whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class EnterpriseArticleStatistics extends Model
 {

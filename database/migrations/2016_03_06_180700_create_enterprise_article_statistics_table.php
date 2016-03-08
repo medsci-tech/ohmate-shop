@@ -21,7 +21,6 @@ class CreateEnterpriseArticleStatisticsTable extends Migration
             $table->foreign('article_type_id')->references('id')->on('article_types');
             $table->integer('count')->unsigned()->default(0)->comment('����');
 
-            $table->index('article_type_id');
             $table->timestamps();
         });
 
@@ -36,7 +35,6 @@ class CreateEnterpriseArticleStatisticsTable extends Migration
     {
         Schema::table('enterprise_article_statistics', function (Blueprint $table) {
             $table->dropForeign('enterprise_article_statistics_article_type_id_foreign');
-            $table->dropIndex('article_type_id');
         });
         Schema::drop('enterprise_article_statistics');
     }

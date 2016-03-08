@@ -14,6 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Commodity $commodity
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CommodityImage whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CommodityImage whereCommodityId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CommodityImage whereImageUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CommodityImage wherePriority($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CommodityImage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CommodityImage whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class CommodityImage extends Model
 {

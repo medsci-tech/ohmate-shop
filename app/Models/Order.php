@@ -34,6 +34,22 @@ use App\Werashop\Post\EmsPost;
  * @property float $post_fee
  * @property string $post_type
  * @property string $post_no
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereWxOutTradeNo($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereWxTransactionId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereCustomerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereAddressId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereTotalPrice($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereCashPayment($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereCashPaymentCalculated($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereBeansPayment($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereBeansPaymentCalculated($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order wherePostFee($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order wherePostType($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order wherePostNo($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereOrderStatusId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Order whereUpdatedAt($value)
  */
 class Order extends Model
 {

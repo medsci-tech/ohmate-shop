@@ -18,6 +18,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\ArticleType $type
+ * @property boolean $top top
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereTypeId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereThumbnail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereUri($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereTop($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereWeight($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Article whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Article extends Model
 {

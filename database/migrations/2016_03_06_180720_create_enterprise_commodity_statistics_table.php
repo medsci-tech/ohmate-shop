@@ -21,7 +21,6 @@ class CreateEnterpriseCommodityStatisticsTable extends Migration
             $table->foreign('commodity_id')->references('id')->on('commodities');
             $table->integer('count')->unsigned()->default(0)->comment('����');
 
-            $table->index('commodity_id');
             $table->timestamps();
         });
 
@@ -36,7 +35,6 @@ class CreateEnterpriseCommodityStatisticsTable extends Migration
     {
         Schema::table('enterprise_commodity_statistics', function (Blueprint $table) {
             $table->dropForeign('enterprise_commodity_statistics_commodity_id_foreign');
-            $table->dropIndex('commodity_id');
         });
         Schema::drop('enterprise_commodity_statistics');
 

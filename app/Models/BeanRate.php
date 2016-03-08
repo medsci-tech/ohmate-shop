@@ -14,6 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CustomerBean[] $beans
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BeanRate whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BeanRate whereActionEn($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BeanRate whereActionCh($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BeanRate whereRate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BeanRate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\BeanRate whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class BeanRate extends Model
 {
