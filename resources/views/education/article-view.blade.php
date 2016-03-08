@@ -93,7 +93,7 @@
     });
 
     wx.error(function (res) {
-        alert("error:" + res.errMsg);
+        //alert("error:" + res.errMsg);
     });
 
         function setTimer(i){
@@ -112,7 +112,7 @@
                         $.ajax({
                             url: requestUrls,
                             data: {
-                                id: id,
+                                id: id
                             },
                             type: "get",
                             dataType: "json",
@@ -122,7 +122,7 @@
                                 }
                             },
                             error: function (xhr, status, errorThrown) {
-                                alert("Sorry, there was a problem!");
+                                //alert("Sorry, there was a problem!");
                             }
                         });
 
@@ -144,7 +144,7 @@
             });
         });
 
-        setTimer(3);
+    setTimer(3);
     function showActionSheet() {
         $('#mask').addClass('weui_fade_toggle');
         $('#mask').css('display','block');
