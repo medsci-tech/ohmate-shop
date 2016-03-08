@@ -11,7 +11,7 @@
 <div class="container" id="enterprise_count">
   <br>
   <div class="panel panel-success">
-    <div class="panel-heading"  v-cloak>今日统计（截至&emsp;@{{ enterprise_basic_statistics[].updated_at }}&emsp;）</div>
+    <div class="panel-heading"  v-cloak>数据统计</div>
     <ul class="list-group" v-cloak>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
