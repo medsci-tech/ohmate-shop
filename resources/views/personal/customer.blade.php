@@ -10,42 +10,44 @@
 <body>
 <div class="container" id="costomer_count">
   <br>
+
   <div class="panel panel-success">
     <div class="panel-heading">基本统计</div>
-    <ul class="list-group">
+    <ul class="list-group" v-cloak>
       <li class="list-group-item">
-        <span class="badge">{{ customerStatistics.friend_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].friend_count }}</span>
         好友数
       </li>
       <li class="list-group-item">
-        <span class="badge">{{ customerStatistics.artcle_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].article_count }}</span>
         阅读文章数
       </li>
       <li class="list-group-item">
-        <span class="badge">{{ customerStatistics.order_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].order_count }}</span>
         交易订单数
       </li>
       <li class="list-group-item">
-        <span class="badge">{{ customerStatistics.commodity_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].commodity_count }}</span>
         购买商品数
       </li>
       <li class="list-group-item">
-        <span class="badge">{{ customerStatistics.money_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].money_cost | currency '￥'  }}</span>
         总消费金额
       </li>
     </ul>
   </div>
   <div class="panel panel-info">
     <div class="panel-heading">学习统计</div>
-    <div class="panel-body">
+    <div class="panel-body" v-cloak>
       <div>
         <canvas id="study"></canvas>
       </div>
       <br>
+
       <div>
         <ul class="list-unstyled data1">
-          <li v-for=" article in customerArticleStatistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            文章id:@{{ article.article_type_id }}
+          <li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
+            @{{ article.article_type.type_ch }}：@{{ article.count }}篇
           </li>
         </ul>
       </div>
@@ -55,15 +57,16 @@
   </div>
   <div class="panel panel-warning">
     <div class="panel-heading">消费统计</div>
-    <div class="panel-body">
+    <div class="panel-body" v-cloak>
       <div>
         <canvas id="consume"></canvas>
       </div>
       <br>
+
       <div>
         <ul class="list-unstyled data2">
-          <li v-for=" item in customerCommodityStatistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            商品id:@{{ item.commodity_id }}
+          <li v-for=" item in customer_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
+            @{{ item.commodity.name }}：@{{ item.count }}件
           </li>
         </ul>
       </div>
@@ -74,7 +77,61 @@
 <script src="/js/vendor/jquery-2.1.4.min.js"></script>
 <script src="/js/vendor/Chart.min.js"></script>
 <script src="/js/vendor/vue.js"></script>
-<script src="/js/personal_count.js"></script>
+<script>
+  var count = new Vue({
+    el: '#costomer_count',
+    data: JSON.parse('{!! json_encode($data) !!}')
+  });
+
+
+  var data1 = [];
+  var data2 = [];
+  var color_list = ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"];
+  var highlight_list = ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"];
+
+  for (i = 0; i < count.customer_article_statistics.length; i++) {
+    data1.push({
+      value: count.customer_article_statistics[i].count,
+      color: color_list[i % 5],
+      highlight: highlight_list[i % 5],
+      label: count.customer_article_statistics[i].article_type.type_ch
+    });
+    $('.data1').children().eq(i).children('span').css("background-color", color_list[i % 5]);
+  }
+
+  for (i = 0; i < count.customer_commodity_statistics.length; i++) {
+    data2.push({
+      value: count.customer_commodity_statistics[i].count,
+      color: color_list[i % 5],
+      highlight: highlight_list[i % 5],
+      label: count.customer_commodity_statistics[i].commodity.name
+    });
+    $('.data2').children().eq(i).children('span').css("background-color", color_list[i % 5]);
+  }
+
+  if (data1.length == 1) {
+    data1.push({
+      value: .00001,
+      color: "#fff"
+    });
+  }
+
+  if (data2.length == 1) {
+    data2.push({
+      value: .00001,
+      color: "#fff"
+    });
+  }
+
+
+  Chart.defaults.global.responsive = true;
+  var ctx = document.getElementById("study").getContext("2d");
+  var myStudy = new Chart(ctx).Pie(data1);
+  var ct2 = document.getElementById("consume").getContext("2d");
+  var myConsume = new Chart(ct2).Pie(data2);
+
+
+</script>
 
 
 </body>

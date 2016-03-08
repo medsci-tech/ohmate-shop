@@ -25,7 +25,7 @@ class EducationController extends Controller
 
     public function index(Request $request)
     {
-        $topArticles = Article::where('top', true)->orderBy('updated_at','desc')->get();
+        $topArticles = Article::where('top', true)->orderBy('created_at','desc')->get();
         if (!$topArticles) {
             abort(404);
         } /*if>*/
@@ -99,14 +99,13 @@ class EducationController extends Controller
 
         $article = Article::where('id' ,$request->input('id'))->first();
         \Analyzer::updateArticleStatistics($customer->id, $article->type_id);
+        \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
         \EnterpriseAnalyzer::updateArticleStatistics($article->type_id);
-
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_ARTICLE);
         if(\DailyAnalyzer::getDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE)) {
             return response()->json(['result' => '-1']);
         }
-
         \BeanRecharger::excuteEducation($customer->id);
-        \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
 
         return response()->json(['result' => '1']);
     }

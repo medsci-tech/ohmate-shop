@@ -117,7 +117,7 @@ class PersonalController extends Controller
         if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
             $enterpriseCommodityStatistics = EnterpriseCommodityStatistics::getTodayStatistics();
             $enterpriseArticleStatistics = EnterpriseArticleStatistics::getTodayStatistics();
-            $enterpriseBasicStatistics = EnterpriseBasicStatistics::where('date', Carbon::yesterday()->format('Y-m-d'))->get()->toArray();
+            $enterpriseBasicStatistics = EnterpriseBasicStatistics::where('date', Carbon::now()->format('Y-m-d'))->get()->toArray();
             return view(
                 'personal.enterprise', [
                 'data' => [
