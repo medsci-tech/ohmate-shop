@@ -13,7 +13,7 @@ class EnterpriseArticleStatistics extends Model
     protected $table = 'enterprise_article_statistics';
 
     public static function getTodayStatistics() {
-        $statisticsDetals = EnterpriseArticleStatistics::where('date', Carbon::yesterday()->format('Y-m-d'))->get();
+        $statisticsDetals = EnterpriseArticleStatistics::where('date', Carbon::now()->format('Y-m-d'))->get();
         if($statisticsDetals) {
             $statisticsDetals = $statisticsDetals->toArray();
         } else {
