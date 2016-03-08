@@ -35,7 +35,7 @@ class EducationController extends Controller
     public function find(Request $request)
     {
         $typeId = $request->input('type');
-        $articles = Article::where('type_id', $typeId)->orderBy('updated_at', 'desc')->get();
+        $articles = Article::where('type_id', $typeId)->orderBy('created_at', 'desc')->get();
         if (!$articles) {
             return response()->json(['result' => '-1']);
         } /*if>*/
@@ -49,7 +49,7 @@ class EducationController extends Controller
             abort(404);
         } /*if>*/
 
-        $typeArticles = Article::where('type_id', $type->id)->orderBy('updated_at','desc')->get();
+        $typeArticles = Article::where('type_id', $type->id)->orderBy('created_at','desc')->get();
         if (!$typeArticles) {
             abort(404);
         } /*if>*/
