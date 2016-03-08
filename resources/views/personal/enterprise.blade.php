@@ -26,7 +26,7 @@
         注册医生数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].bean_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].bean_count | currency '' }}</span>
         支出迈豆总数
       </li>
       <li class="list-group-item">
