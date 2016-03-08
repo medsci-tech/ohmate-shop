@@ -11,7 +11,7 @@
 <div class="container" id="enterprise_count">
   <br>
   <div class="panel panel-success">
-    <div class="panel-heading">今日统计（截至&emsp;@{{ enterprise_basic_statistics.updated_at }}&emsp;）</div>
+    <div class="panel-heading"  v-cloak>今日统计（截至&emsp;@{{ enterprise_basic_statistics[].updated_at }}&emsp;）</div>
     <ul class="list-group" v-cloak>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
@@ -42,8 +42,8 @@
         订单总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].commodity_count }}</span>
-        消费次数
+        <span class="badge">@{{ enterprise_basic_statistics[0].commodity_count | currency '￥' }}</span>
+        消费金额
       </li>
     </ul>
   </div>
