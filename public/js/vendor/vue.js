@@ -6342,7 +6342,7 @@
   /**
    * Compile a template and return a reusable composite link
    * function, which recursively contains more link functions
-   * inside. This top level compile function would normally
+   * inside. This head level compile function would normally
    * be called on instance root nodes, but can also be used
    * for partial compilation if the partial argument is true.
    *
