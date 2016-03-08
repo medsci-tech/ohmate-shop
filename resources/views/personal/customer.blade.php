@@ -44,7 +44,7 @@
       <br>
       <div>
         <ul class="list-unstyled data1">
-          <li v-for=" article in customerArticleStatistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
+          <li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
             文章id:@{{ article.article_type_id }}
           </li>
         </ul>
@@ -62,7 +62,7 @@
       <br>
       <div>
         <ul class="list-unstyled data2">
-          <li v-for=" item in customerCommodityStatistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
+          <li v-for=" item in customer_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
             商品id:@{{ item.commodity_id }}
           </li>
         </ul>
@@ -86,12 +86,12 @@
   var color_list = ["#F7464A","#46BFBD","#FDB45C","#949FB1","#4D5360"];
   var highlight_list = ["#FF5A5E","#5AD3D1","#FFC870","#A8B3C5","#616774"];
 
-  for ( i = 1 ; i < count.customer_commodity_statistics.length ; i++ ){
+  for ( i = 1 ; i < count.customer_article_statistics.length ; i++ ){
     data1.push({
-      value: count.customer_commodity_statistics[i].count,
+      value: count.customer_article_statistics[i].count,
       color: color_list[i%5],
       highlight: highlight_list[i%5],
-      label: count.customer_commodity_statistics[i].article_type_id
+      label: count.customer_article_statistics[i].article_type_id
     });
     $('.data1').children().eq(i).child().css("background-color",color_list[i%5]);
   }
