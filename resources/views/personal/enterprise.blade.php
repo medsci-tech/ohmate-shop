@@ -115,7 +115,7 @@
       highlight: highlight_list[i%5],
       label: count.enterprise_commodity_statistics[i].commodity_id
     });
-    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
+    $('.data2').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
   Chart.defaults.global.responsive = true;
