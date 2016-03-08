@@ -11,7 +11,7 @@
 <div class="container" id="enterprise_count">
   <br>
   <div class="panel panel-success">
-    <div class="panel-heading">今日统计</div>
+    <div class="panel-heading">今日统计（截至&emsp;@{{ enterprise_basic_statistics.updated_at }}&emsp;）</div>
     <ul class="list-group" v-cloak>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
@@ -42,7 +42,7 @@
         订单总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_statistics[0].commodity_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].commodity_count }}</span>
         消费次数
       </li>
     </ul>
@@ -98,7 +98,7 @@
   var color_list = ["#F7464A","#46BFBD","#FDB45C","#949FB1","#4D5360"];
   var highlight_list = ["#FF5A5E","#5AD3D1","#FFC870","#A8B3C5","#616774"];
 
-  for ( i = 1 ; i < count.enterprise_basic_statistics.length ; i++ ){
+  for ( i = 0 ; i < count.enterprise_basic_statistics.length ; i++ ){
     data1.push({
       value: count.enterprise_basic_statistics[i].count,
       color: color_list[i%5],
@@ -108,7 +108,7 @@
     $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
-  for ( i = 1 ; i < count.enterprise_commodity_statistics.length ; i++ ){
+  for ( i = 0 ; i < count.enterprise_commodity_statistics.length ; i++ ){
     data2.push({
       value: count.enterprise_commodity_statistics[i].count,
       color: color_list[i%5],
