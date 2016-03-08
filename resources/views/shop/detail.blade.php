@@ -11,9 +11,9 @@
 
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    @foreach($item['slideImages'] as $slideImage)
+    @foreach($item['slide_images'] as $slide_image)
     <div class="swiper-slide">
-      <img class="img-responsive" src="{{$slideImage['image_url']}}">
+      <img class="img-responsive" src="{{$slide_image['image_url']}}">
     </div>
     @endforeach
   </div>
