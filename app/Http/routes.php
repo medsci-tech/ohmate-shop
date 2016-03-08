@@ -52,6 +52,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
+        Route::get('/get-beans-by-month', 'PersonalController@getBeansByMonth');
         Route::get('/friend', 'PersonalController@friend');
 
         Route::get('/statistics', 'PersonalController@statistics');
