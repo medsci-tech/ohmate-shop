@@ -93,7 +93,7 @@ class EducationController extends Controller
     public function updateBean(Request $request)
     {
         $customer = \Helper::getCustomer();
-        if (!$customer != null) {
+        if (!$customer) {
             return response()->json(['result' => '-1']);
         } /*if>*/
 
