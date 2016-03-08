@@ -87,4 +87,24 @@ class Commodity extends Model implements Buyable
     {
         return $this->images()->get()->toArray();
     }
+
+    /**
+     * @param string $url
+     */
+    public function addImageUrl(string $url)
+    {
+        $image = new CommodityImage();
+        $image->image_url = $url;
+        $this->images()->save($image);
+    }
+
+    /**
+     * @param $url
+     */
+    public function addSlideImageUrl($url)
+    {
+        $image = new CommoditySlideImage();
+        $image->image_url = $url;
+        $this->images()->save($image);
+    }
 }
