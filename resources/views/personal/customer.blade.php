@@ -18,7 +18,7 @@
         好友数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics[0].artcle_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].article_count }}</span>
         阅读文章数
       </li>
       <li class="list-group-item">
@@ -30,7 +30,7 @@
         购买商品数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics[0].money_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].money_cost }}</span>
         总消费金额
       </li>
     </ul>
@@ -86,7 +86,7 @@
   var color_list = ["#F7464A","#46BFBD","#FDB45C","#949FB1","#4D5360"];
   var highlight_list = ["#FF5A5E","#5AD3D1","#FFC870","#A8B3C5","#616774"];
 
-  for ( i = 1 ; i < count.customer_article_statistics.length ; i++ ){
+  for ( i = 0 ; i < count.customer_article_statistics.length ; i++ ){
     data1.push({
       value: count.customer_article_statistics[i].count,
       color: color_list[i%5],
@@ -96,7 +96,7 @@
     $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
-  for ( i = 1 ; i < count.customer_commodity_statistics.length ; i++ ){
+  for ( i = 0 ; i < count.customer_commodity_statistics.length ; i++ ){
     data2.push({
       value: count.customer_commodity_statistics[i].count,
       color: color_list[i%5],
