@@ -93,17 +93,17 @@
       highlight: highlight_list[i%5],
       label: count.customer_article_statistics[i].article_type_id
     });
-    $('.data1 :nth-child(i+1) span').css("background-color",color_list[i%5]);
+    $('.data1:nth-child(i+1) span').css("background-color",color_list[i%5]);
   }
 
   for ( i = 1 ; i < count.customer_commodity_statistics.length ; i++ ){
     data2.push({
       value: count.customer_commodity_statistics[i].count,
-      color: color_list[i],
-      highlight: highlight_list[i],
+      color: color_list[i%5],
+      highlight: highlight_list[i%5],
       label: count.customer_commodity_statistics[i].commodity_id
     });
-    $('.data2 :nth-child(i+1) span').css("background-color",color_list[i%5]);
+    $('.data2:nth-child(i+1) span').css("background-color",color_list[i%5]);
   }
 
   Chart.defaults.global.responsive = true;
