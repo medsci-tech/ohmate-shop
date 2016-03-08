@@ -228,7 +228,7 @@ class BeanRecharger
     }
 
     public function educationVolunteerFeedback($user) {
-        \Log::info('BeanRecharger:educationVolunteerFeedback:user:' . $user . ',value:' . $value);
+        \Log::info('BeanRecharger:educationVolunteerFeedback:user:' . $user);
         $customer = Customer::where('id', $user)->first();
         if (!$customer || (0 == $customer->referrer_id)) {
             return false;
@@ -292,6 +292,9 @@ class BeanRecharger
         return $ret;
     }
 
+    /*
+     *
+     */
     public function excuteEducation($user)
     {
         $ret = $this->study($user);

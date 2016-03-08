@@ -13,12 +13,13 @@ class CreateEnterpriseCommodityStatisticsTable extends Migration
     public function up()
     {
         Schema::create('enterprise_commodity_statistics', function (Blueprint $table) {
+            $table->increments('id');
 
-            $table->date('date')->comment('ÈÕÆÚ');
+            $table->date('date')->comment('ï¿½ï¿½ï¿½ï¿½');
 
-            $table->integer('commodity_id')->unsigned()->comment('ÉÌÆ·ÀàÐÍ');
+            $table->integer('commodity_id')->unsigned()->comment('ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½');
             $table->foreign('commodity_id')->references('id')->on('commodities');
-            $table->integer('count')->unsigned()->default(0)->comment('¼ÆÊý');
+            $table->integer('count')->unsigned()->default(0)->comment('ï¿½ï¿½ï¿½ï¿½');
 
             $table->index('commodity_id');
             $table->timestamps();

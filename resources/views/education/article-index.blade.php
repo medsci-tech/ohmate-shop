@@ -322,7 +322,7 @@
                         $("#" + type).empty();
                         var strHtml = "";
                         $(json.articles).each(function () {
-                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView(\"" + this.id + "\")'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>" + this.description + "</p></div></a> ";
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView(\"" + this.id + "\")'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>阅读量：" + this.count+"</p></div></a> ";
                             console.log(strHtml);
                         });
                         $("#" + type).html(strHtml);
@@ -342,23 +342,23 @@
     function updateView(id) {
         document.getElementById('text_click').value ='1';
         document.getElementById('text_id').value = id;
-//        $(function () {
-//            var requestUrl = '/education/article/update-count';
-//            $.ajax({
-//                url : requestUrl,
-//                data: {
-//                    id: id
-//                },
-//                type : "get",
-//                dataType : "json",
-//                success: function (json) {
-//
-//                },
-//                error: function (xhr, status, errorThrown) {
-//                    alert("Sorry, there was a problem!");
-//                }
-//            });
-//        });
+        $(function () {
+            var requestUrl = '/education/article/update-count';
+            $.ajax({
+                url : requestUrl,
+                data: {
+                    id: id
+                },
+                type : "get",
+                dataType : "json",
+                success: function (json) {
+
+                },
+                error: function (xhr, status, errorThrown) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
+        });
 
         window.location.href = '/education/article/view?type=1&id='+id;
     }
