@@ -117,7 +117,6 @@
                             type: "get",
                             dataType: "json",
                             success: function (json) {
-                                alert(json.result);
                                 if(json.result == 1) {
                                     showActionSheet();
                                 }
