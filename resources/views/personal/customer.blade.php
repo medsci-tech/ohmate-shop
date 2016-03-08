@@ -93,7 +93,7 @@
       highlight: highlight_list[i%5],
       label: count.customer_article_statistics[i].article_type_id
     });
-    $('.data1:eq('+i+') span').css("background-color",color_list[i%5]);
+    $('ul:eq('+i+') span').css("background-color",color_list[i%5]);
   }
 
   for ( i = 1 ; i < count.customer_commodity_statistics.length ; i++ ){
