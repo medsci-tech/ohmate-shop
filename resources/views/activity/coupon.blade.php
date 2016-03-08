@@ -9,10 +9,10 @@
 
 <body>
 <div class="container">
-  <div class="panel panel-default" style="margin-top: 2em;">
+  <div class="panel panel-success" style="margin-top: 2em;">
     <div class="panel-heading text-center">礼品卡</div>
     <div class="panel-body">
-      <div class="alert alert-danger" style="margin: 0;">
+      <div class="alert alert-success" style="margin: 0;">
         更多礼品卡上线中,敬请期待...
       </div>
     </div>
