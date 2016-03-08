@@ -31,7 +31,7 @@
       </li>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].income_count | currency '￥' }}</span>
-        收入金额数
+        收入金额
       </li>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].article_count }}</span>
@@ -42,8 +42,8 @@
         订单总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].commodity_count | currency '￥' }}</span>
-        消费金额
+        <span class="badge">@{{ enterprise_basic_statistics[0].commodity_count }}</span>
+        交易商品数量
       </li>
     </ul>
   </div>
