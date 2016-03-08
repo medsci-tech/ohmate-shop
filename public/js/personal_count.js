@@ -2,7 +2,7 @@ var count = new Vue({
   el: 'costomer_count',
   methods: {
     getter: function() {
-      $.post('/personal/statistics',{ log: 'show me the money' },
+      $.get('/personal/statistics',{ log: 'show me the money' },
         function(data){
           if(data.success){
             count.data = JSON.parse(data);
