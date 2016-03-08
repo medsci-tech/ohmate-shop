@@ -10,6 +10,7 @@
 <body>
 <div class="container" id="costomer_count">
   <br>
+
   <div class="panel panel-success">
     <div class="panel-heading">基本统计</div>
     <ul class="list-group" v-cloak>
@@ -42,6 +43,7 @@
         <canvas id="study"></canvas>
       </div>
       <br>
+
       <div>
         <ul class="list-unstyled data1">
           <li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
@@ -60,6 +62,7 @@
         <canvas id="consume"></canvas>
       </div>
       <br>
+
       <div>
         <ul class="list-unstyled data2">
           <li v-for=" item in customer_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
@@ -83,31 +86,43 @@
 
   var data1 = [];
   var data2 = [];
-  var color_list = ["#F7464A","#46BFBD","#FDB45C","#949FB1","#4D5360"];
-  var highlight_list = ["#FF5A5E","#5AD3D1","#FFC870","#A8B3C5","#616774"];
+  var color_list = ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"];
+  var highlight_list = ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"];
 
-  for ( i = 0 ; i < count.customer_article_statistics.length ; i++ ){
+  for (i = 0; i < count.customer_article_statistics.length; i++) {
     data1.push({
       value: count.customer_article_statistics[i].count,
-      color: color_list[i%5],
-      highlight: highlight_list[i%5],
+      color: color_list[i % 5],
+      highlight: highlight_list[i % 5],
       label: count.customer_article_statistics[i].article_type.type_ch
     });
-    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
+    $('.data1').children().eq(i).children('span').css("background-color", color_list[i % 5]);
   }
 
-  for ( i = 0 ; i < count.customer_commodity_statistics.length ; i++ ){
+  for (i = 0; i < count.customer_commodity_statistics.length; i++) {
     data2.push({
       value: count.customer_commodity_statistics[i].count,
-      color: color_list[i%5],
-      highlight: highlight_list[i%5],
+      color: color_list[i % 5],
+      highlight: highlight_list[i % 5],
       label: count.customer_commodity_statistics[i].commodity.name
     });
-    $('.data2').children().eq(i).children('span').css("background-color",color_list[i%5]);
+    $('.data2').children().eq(i).children('span').css("background-color", color_list[i % 5]);
+  }
+  
+  if (data1.length == 1) {
+    data1.push({
+      value: .00001,
+      color: "#fff"
+    });
   }
 
-  data1.push({ value: .0000001 });
-  data2.push({ value: .1 });
+  if (data1.length == 1) {
+    data2.push({
+      value: .00001,
+      color: "#fff"
+    });
+  }
+
 
   Chart.defaults.global.responsive = true;
   var ctx = document.getElementById("study").getContext("2d");
