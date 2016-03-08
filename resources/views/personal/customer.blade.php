@@ -77,7 +77,7 @@
 <script>
   var count = new Vue({
     el: 'costomer_count',
-    data: JSON.parse({{ json_encode($data) }})
+    data: JSON.parse('{{ json_encode($data) }}')
   });
 </script>
 <script src="/js/personal_count.js"></script>
