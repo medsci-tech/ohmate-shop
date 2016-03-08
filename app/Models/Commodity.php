@@ -89,9 +89,9 @@ class Commodity extends Model implements Buyable
     }
 
     /**
-     * @param string $url
+     * @param $url
      */
-    public function addImageUrl(string $url)
+    public function addImageUrl($url)
     {
         $image = new CommodityImage();
         $image->image_url = $url;
