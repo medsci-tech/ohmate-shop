@@ -25,7 +25,7 @@
         <div class="weui_actionsheet_menu">
             <img src="/image/education/hongbao.png" alt="">
 
-            <p>10迈豆</p>
+            <p>20迈豆</p>
         </div>
         <div class="weui_actionsheet_action">
             <p>(每日学习迈豆奖励)</p>
