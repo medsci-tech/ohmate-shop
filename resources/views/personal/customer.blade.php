@@ -108,7 +108,7 @@
     });
     $('.data2').children().eq(i).children('span').css("background-color", color_list[i % 5]);
   }
-  
+
   if (data1.length == 1) {
     data1.push({
       value: .00001,
@@ -116,7 +116,7 @@
     });
   }
 
-  if (data1.length == 1) {
+  if (data2.length == 1) {
     data2.push({
       value: .00001,
       color: "#fff"
