@@ -101,12 +101,11 @@ class EducationController extends Controller
         \Analyzer::updateArticleStatistics($customer->id, $article->type_id);
         \EnterpriseAnalyzer::updateArticleStatistics($article->type_id);
 
+        \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
         if(\DailyAnalyzer::getDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE)) {
             return response()->json(['result' => '-1']);
         }
-
         \BeanRecharger::excuteEducation($customer->id);
-        \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
 
         return response()->json(['result' => '1']);
     }
