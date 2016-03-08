@@ -114,7 +114,7 @@ class PersonalController extends Controller
     public function statistics()
     {
         $customer = \Helper::getCustomer();
-        if ($customer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+        if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
             $EnterpriseCommodityStatistics = new EnterpriseCommodityStatistics();
             $EnterpriseArticleStatistics = new EnterpriseArticleStatistics();
             $enterpriseCommodityStatistics = $EnterpriseCommodityStatistics->getTodayStatistics();
