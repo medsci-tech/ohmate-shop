@@ -17,4 +17,12 @@ class CustomerArticleStatistics extends Model
         return $this->belongsTo('App\Models\Customer', 'customer_id');
     }
 
+    function getStatisticsByCustomerID($customerID)
+    {
+        $details = CustomerArticleStatistics::where('customer_id', $customerID)->get()->toArray();
+        foreach($details as &$detail) {
+            $detail['article_type'] = ArticleType::find($detail['article_type_id'])->toArray();
+        }
+        return $details;
+    }
 }
