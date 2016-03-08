@@ -59,7 +59,7 @@
             $("#" + month).html(strHtml);
         },
         error: function (xhr, status, errorThrown) {
-          alert("Sorry, there was a problem!");
+        //console.log("Sorry, there was a problem!");
         }
       });
 

@@ -16,4 +16,18 @@ class CustomerCommodityStatistics extends Model
     {
         return $this->belongsTo('App\Models\Customer', 'customer_id');
     }
+
+    public static function getStatisticsByCustomerID($customerID)
+    {
+        $details = CustomerCommodityStatistics::where('customer_id', $customerID)->get();
+        if($details) {
+            $details = $details->toArray();
+        } else {
+            $details = [];
+        }
+        foreach($details as &$detail) {
+            $detail['commodity'] = Commodity::find($detail['commodity_id'])->toArray();
+        }
+        return $details;
+    }
 }

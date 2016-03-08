@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0f7e57a5b0adaf2d74bd0bcb645f42fb",
-    "content-hash": "7bba06a5afbbbe6670735f2144ceac43",
+    "hash": "83d962190ceaa2669371cff71bf397cb",
+    "content-hash": "4e38050aad0f06b07af31f176a3b5d45",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -152,7 +152,7 @@
                     "Curl": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -936,7 +936,7 @@
                     "Illuminate\\": "src/Illuminate/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -956,16 +956,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.17",
+            "version": "1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca"
+                "reference": "b334d6c5f95364948e06d2f620ab93d084074c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/thephpleague/flysystem/02f5b6c9a8b9278c8381e3361e7bd9d641c740ca.zip",
-                "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
+                "url": "https://packagist.phpcomposer.com/files/thephpleague/flysystem/b334d6c5f95364948e06d2f620ab93d084074c6e.zip",
+                "reference": "b334d6c5f95364948e06d2f620ab93d084074c6e",
                 "shasum": ""
             },
             "require": {
@@ -1035,7 +1035,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-02-19 15:35:38"
+            "time": "2016-03-07 21:01:43"
         },
         {
             "name": "monolog/monolog",
@@ -1141,7 +1141,7 @@
                     "Cron": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1216,7 +1216,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/nikic/PHP-Parser/ce5be709d59b32dd8a88c80259028759991a4206.zip",
+                "url": "http://packagist.phpcomposer.com/files/nikic/PHP-Parser/ce5be709d59b32dd8a88c80259028759991a4206.zip",
                 "reference": "ce5be709d59b32dd8a88c80259028759991a4206",
                 "shasum": ""
             },
@@ -1241,7 +1241,7 @@
                     "PhpParser\\": "lib/PhpParser"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1259,16 +1259,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "2.1.34",
+            "version": "2.1.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "1ee99929e6a0d2bb9520ccc4900cc3258bedcc77"
+                "reference": "d0534ec5c02b694fec8fa608916193cfa4d9142c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/overtrue/wechat/1ee99929e6a0d2bb9520ccc4900cc3258bedcc77.zip",
-                "reference": "1ee99929e6a0d2bb9520ccc4900cc3258bedcc77",
+                "url": "https://packagist.phpcomposer.com/files/overtrue/wechat/d0534ec5c02b694fec8fa608916193cfa4d9142c.zip",
+                "reference": "d0534ec5c02b694fec8fa608916193cfa4d9142c",
                 "shasum": ""
             },
             "require": {
@@ -1301,7 +1301,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2016-03-05 06:23:03"
+            "time": "2016-03-08 02:19:31"
         },
         {
             "name": "paragonie/random_compat",
@@ -1332,7 +1332,7 @@
                     "lib/random.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1489,7 +1489,7 @@
                     "Psy\\": "src/Psy/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1512,16 +1512,16 @@
         },
         {
             "name": "sabre/uri",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruux/sabre-uri.git",
-                "reference": "6bae7efdd9dfcfdb3edfc4362741e59ce4b64f42"
+                "reference": "9012116434d84ef6e5e37a89dfdbfbe2204a8704"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/fruux/sabre-uri/6bae7efdd9dfcfdb3edfc4362741e59ce4b64f42.zip",
-                "reference": "6bae7efdd9dfcfdb3edfc4362741e59ce4b64f42",
+                "url": "https://packagist.phpcomposer.com/files/fruux/sabre-uri/9012116434d84ef6e5e37a89dfdbfbe2204a8704.zip",
+                "reference": "9012116434d84ef6e5e37a89dfdbfbe2204a8704",
                 "shasum": ""
             },
             "require": {
@@ -1559,7 +1559,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2015-04-29 03:47:26"
+            "time": "2016-03-08 02:29:27"
         },
         {
             "name": "sabre/xml",
@@ -1597,7 +1597,7 @@
                     "lib/Serializer/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1743,7 +1743,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/console/2ed5e2706ce92313d120b8fe50d1063bcfd12e04.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/console/2ed5e2706ce92313d120b8fe50d1063bcfd12e04.zip",
                 "reference": "2ed5e2706ce92313d120b8fe50d1063bcfd12e04",
                 "shasum": ""
             },
@@ -1775,7 +1775,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1803,7 +1803,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/debug/29606049ced1ec715475f88d1bbe587252a3476e.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/debug/29606049ced1ec715475f88d1bbe587252a3476e.zip",
                 "reference": "29606049ced1ec715475f88d1bbe587252a3476e",
                 "shasum": ""
             },
@@ -1832,7 +1832,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1860,7 +1860,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/event-dispatcher/4dd5df31a28c0f82b41cb1e1599b74b5dcdbdafa.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/event-dispatcher/4dd5df31a28c0f82b41cb1e1599b74b5dcdbdafa.zip",
                 "reference": "4dd5df31a28c0f82b41cb1e1599b74b5dcdbdafa",
                 "shasum": ""
             },
@@ -1892,7 +1892,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1920,7 +1920,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/finder/623bda0abd9aa29e529c8e9c08b3b84171914723.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/finder/623bda0abd9aa29e529c8e9c08b3b84171914723.zip",
                 "reference": "623bda0abd9aa29e529c8e9c08b3b84171914723",
                 "shasum": ""
             },
@@ -1941,7 +1941,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1969,7 +1969,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/http-foundation/52065702c71743c05d415a8facfcad6d4257e8d7.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/http-foundation/52065702c71743c05d415a8facfcad6d4257e8d7.zip",
                 "reference": "52065702c71743c05d415a8facfcad6d4257e8d7",
                 "shasum": ""
             },
@@ -1993,7 +1993,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2021,7 +2021,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/http-kernel/59c0a1972e9aad87b7a56bbe1ccee26b7535a0db.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/http-kernel/59c0a1972e9aad87b7a56bbe1ccee26b7535a0db.zip",
                 "reference": "59c0a1972e9aad87b7a56bbe1ccee26b7535a0db",
                 "shasum": ""
             },
@@ -2075,7 +2075,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2103,7 +2103,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/polyfill-mbstring/1289d16209491b584839022f29257ad859b8532d.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/polyfill-mbstring/1289d16209491b584839022f29257ad859b8532d.zip",
                 "reference": "1289d16209491b584839022f29257ad859b8532d",
                 "shasum": ""
             },
@@ -2127,7 +2127,7 @@
                     "bootstrap.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2162,7 +2162,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/polyfill-php56/4d891fff050101a53a4caabb03277284942d1ad9.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/polyfill-php56/4d891fff050101a53a4caabb03277284942d1ad9.zip",
                 "reference": "4d891fff050101a53a4caabb03277284942d1ad9",
                 "shasum": ""
             },
@@ -2184,7 +2184,7 @@
                     "bootstrap.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2218,7 +2218,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/polyfill-util/8de62801aa12bc4dfcf85eef5d21981ae7bb3cc4.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/polyfill-util/8de62801aa12bc4dfcf85eef5d21981ae7bb3cc4.zip",
                 "reference": "8de62801aa12bc4dfcf85eef5d21981ae7bb3cc4",
                 "shasum": ""
             },
@@ -2236,7 +2236,7 @@
                     "Symfony\\Polyfill\\Util\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2270,7 +2270,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/process/dfecef47506179db2501430e732adbf3793099c8.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/process/dfecef47506179db2501430e732adbf3793099c8.zip",
                 "reference": "dfecef47506179db2501430e732adbf3793099c8",
                 "shasum": ""
             },
@@ -2291,7 +2291,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2319,7 +2319,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/routing/fa1e9a8173cf0077dd995205da453eacd758fdf6.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/routing/fa1e9a8173cf0077dd995205da453eacd758fdf6.zip",
                 "reference": "fa1e9a8173cf0077dd995205da453eacd758fdf6",
                 "shasum": ""
             },
@@ -2360,7 +2360,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2394,7 +2394,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/translation/2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/translation/2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91.zip",
                 "reference": "2de0b6f7ebe43cffd8a06996ebec6aab79ea9e91",
                 "shasum": ""
             },
@@ -2430,7 +2430,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2458,7 +2458,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/var-dumper/9a6a883c48acb215d4825ce9de61dccf93d62074.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/var-dumper/9a6a883c48acb215d4825ce9de61dccf93d62074.zip",
                 "reference": "9a6a883c48acb215d4825ce9de61dccf93d62074",
                 "shasum": ""
             },
@@ -2489,7 +2489,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2628,7 +2628,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/fzaninotto/Faker/d0190b156bcca848d401fb80f31f504f37141c8d.zip",
+                "url": "http://packagist.phpcomposer.com/files/fzaninotto/Faker/d0190b156bcca848d401fb80f31f504f37141c8d.zip",
                 "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
                 "shasum": ""
             },
@@ -2716,205 +2716,6 @@
             "time": "2015-05-11 14:41:42"
         },
         {
-            "name": "illuminate/console",
-            "version": "v5.2.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/console.git",
-                "reference": "a58e77d91c949eed906d3b8c67e0f0ad9246ee96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/illuminate/console/a58e77d91c949eed906d3b8c67e0f0ad9246ee96.zip",
-                "reference": "a58e77d91c949eed906d3b8c67e0f0ad9246ee96",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "5.2.*",
-                "illuminate/support": "5.2.*",
-                "nesbot/carbon": "~1.20",
-                "php": ">=5.5.9",
-                "symfony/console": "2.8.*|3.0.*"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Required to use the ping methods on schedules (~5.3|~6.0).",
-                "mtdowling/cron-expression": "Required to use scheduling component (~1.0).",
-                "symfony/process": "Required to use scheduling component (2.8.*|3.0.*)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Console\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Console package.",
-            "homepage": "http://laravel.com",
-            "time": "2016-02-22 14:14:58"
-        },
-        {
-            "name": "illuminate/contracts",
-            "version": "v5.2.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "eea3cf7ce90651e067a914d16383b019da45fcb5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/illuminate/contracts/eea3cf7ce90651e067a914d16383b019da45fcb5.zip",
-                "reference": "eea3cf7ce90651e067a914d16383b019da45fcb5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Contracts package.",
-            "homepage": "http://laravel.com",
-            "time": "2016-02-22 09:18:57"
-        },
-        {
-            "name": "illuminate/filesystem",
-            "version": "v5.2.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "ec2df9bb97fbc08776ed1df399a323440e6db563"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/illuminate/filesystem/ec2df9bb97fbc08776ed1df399a323440e6db563.zip",
-                "reference": "ec2df9bb97fbc08776ed1df399a323440e6db563",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "5.2.*",
-                "illuminate/support": "5.2.*",
-                "php": ">=5.5.9",
-                "symfony/finder": "2.8.*|3.0.*"
-            },
-            "suggest": {
-                "league/flysystem": "Required to use the Flysystem local and FTP drivers (~1.0).",
-                "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
-                "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Filesystem\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Filesystem package.",
-            "homepage": "http://laravel.com",
-            "time": "2016-02-24 03:13:07"
-        },
-        {
-            "name": "illuminate/support",
-            "version": "v5.2.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/support.git",
-                "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/illuminate/support/6749fab3f3d38d8b15427536a8e7bbdc57497c9e.zip",
-                "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "~1.0",
-                "ext-mbstring": "*",
-                "illuminate/contracts": "5.2.*",
-                "php": ">=5.5.9"
-            },
-            "suggest": {
-                "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
-                "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (~1.1).",
-                "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
-                "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
-                "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Support package.",
-            "homepage": "http://laravel.com",
-            "time": "2016-02-22 20:29:02"
-        },
-        {
             "name": "mockery/mockery",
             "version": "0.9.4",
             "source": {
@@ -2924,7 +2725,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/padraic/mockery/70bba85e4aabc9449626651f48b9018ede04f86b.zip",
+                "url": "http://packagist.phpcomposer.com/files/padraic/mockery/70bba85e4aabc9449626651f48b9018ede04f86b.zip",
                 "reference": "70bba85e4aabc9449626651f48b9018ede04f86b",
                 "shasum": ""
             },
@@ -3014,7 +2815,7 @@
                     "Prophecy\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3051,7 +2852,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/php-code-coverage/eabf68b476ac7d0f73793aada060f1c1a9bf8979.zip",
+                "url": "http://packagist.phpcomposer.com/files/sebastianbergmann/php-code-coverage/eabf68b476ac7d0f73793aada060f1c1a9bf8979.zip",
                 "reference": "eabf68b476ac7d0f73793aada060f1c1a9bf8979",
                 "shasum": ""
             },
@@ -3291,7 +3092,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/6e351261f9cd33daf205a131a1ba61c6d33bd483.zip",
+                "url": "http://packagist.phpcomposer.com/files/sebastianbergmann/phpunit/6e351261f9cd33daf205a131a1ba61c6d33bd483.zip",
                 "reference": "6e351261f9cd33daf205a131a1ba61c6d33bd483",
                 "shasum": ""
             },
@@ -3333,7 +3134,7 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -3363,7 +3164,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/phpunit-mock-objects/ac8e7a3db35738d56ee9a76e78a4e03d97628983.zip",
+                "url": "http://packagist.phpcomposer.com/files/sebastianbergmann/phpunit-mock-objects/ac8e7a3db35738d56ee9a76e78a4e03d97628983.zip",
                 "reference": "ac8e7a3db35738d56ee9a76e78a4e03d97628983",
                 "shasum": ""
             },
@@ -3556,7 +3357,7 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -3790,7 +3591,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/css-selector/6605602690578496091ac20ec7a5cbd160d4dff4.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/css-selector/6605602690578496091ac20ec7a5cbd160d4dff4.zip",
                 "reference": "6605602690578496091ac20ec7a5cbd160d4dff4",
                 "shasum": ""
             },
@@ -3811,7 +3612,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3843,7 +3644,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/dom-crawler/981c8edb4538f88ba976ed44bdcaa683fce3d6c6.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/dom-crawler/981c8edb4538f88ba976ed44bdcaa683fce3d6c6.zip",
                 "reference": "981c8edb4538f88ba976ed44bdcaa683fce3d6c6",
                 "shasum": ""
             },
@@ -3871,7 +3672,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3899,7 +3700,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/yaml/b5ba64cd67ecd6887f63868fa781ca094bd1377c.zip",
+                "url": "http://packagist.phpcomposer.com/files/symfony/yaml/b5ba64cd67ecd6887f63868fa781ca094bd1377c.zip",
                 "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c",
                 "shasum": ""
             },
@@ -3920,7 +3721,7 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
