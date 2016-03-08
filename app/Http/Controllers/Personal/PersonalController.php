@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Personal;
 
 use App\Constants\AppConstant;
+use App\Models\CustomerArticleStatistics;
+use App\Models\CustomerCommodityStatistics;
+use App\Models\CustomerStatistics;
+use App\Models\EnterpriseArticleStatistics;
+use App\Models\EnterpriseBasicStatistics;
+use App\Models\EnterpriseCommodityStatistics;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -109,11 +115,23 @@ class PersonalController extends Controller
     {
         $customer = \Helper::getCustomer();
         if ($customer->type->type_en == AppConstant::CUSTOMER_COMMON) {
-            return view('personal.customer');
-        } else if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
-            return view('personal.enterprise');
-        } /*else>*/
-
+            $enterpriseCommodityStatistics = EnterpriseCommodityStatistics::where('date', Carbon::yesterday()->format('Y-m-d'))->get()->toArray();
+            $enterpriseArticleStatistics = EnterpriseArticleStatistics::where('date',  Carbon::yesterday()->format('Y-m-d'))->get()->toArray();
+            $enterpriseBasicStatistics = EnterpriseBasicStatistics::where('date',  Carbon::yesterday()->format('Y-m-d'))->get()->toArray();
+            return response()->json([
+                'enterprise_commodity_statistics' => $enterpriseCommodityStatistics,
+                'enterprise_article_statistics'   => $enterpriseArticleStatistics,
+                'enterprise_basic_statistics'     => $enterpriseBasicStatistics,
+            ]);
+        } else {
+            $customerCommodityStatistics = CustomerCommodityStatistics::where('customer_id', $customer->id)->get()->toArray();
+            $customerArticleStatistics   =  CustomerArticleStatistics::where('customer_id', $customer->id)->get()->toArray();
+            $customerStatistics   =  CustomerStatistics::where('customer_id', $customer->id)->get()->toArray();
+            return response()->json([
+                'customer_commodity_statistics' => $customerCommodityStatistics,
+                'customer_article_statistics' => $customerArticleStatistics,
+                'customer_statistics' => $customerStatistics,
+            ]);
+        }
     }
-
 }

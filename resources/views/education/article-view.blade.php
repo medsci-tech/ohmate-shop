@@ -14,7 +14,7 @@
         <h4 class="weui_media_title">{{$article->title}}</h4>
         <p class="weui_media_desc">时间：{{$article->updated_at->year}}年{{$article->updated_at->month}}月{{$article->updated_at->day}}日</p>
         <div class="xq_line"></div>
-        <img src="{{$article->thumbnail}}" width="100%">
+        <img src="{{$article->uri}}" width="100%">
         {{--<img src="/image/education/xq_2.png" width="100%">--}}
     </div>
 </div>
@@ -25,7 +25,7 @@
         <div class="weui_actionsheet_menu">
             <img src="/image/education/hongbao.png" alt="">
 
-            <p>10迈豆</p>
+            <p>20迈豆</p>
         </div>
         <div class="weui_actionsheet_action">
             <p>(每日学习迈豆奖励)</p>
