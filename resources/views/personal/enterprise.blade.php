@@ -14,35 +14,35 @@
     <div class="panel-heading">今日统计</div>
     <ul class="list-group">
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.focus_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
         关注用户数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.register_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].register_count }}</span>
         注册用户数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.doctor_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].doctor_count }}</span>
         注册医生数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.bean_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].bean_count }}</span>
         支出迈豆总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.income_count | currency '￥' }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].income_count | currency '￥' }}</span>
         收入金额数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.article_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].article_count }}</span>
         文章总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics.order_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics[0].order_count }}</span>
         订单总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_statistics.commodity_count }}</span>
+        <span class="badge">@{{ enterprise_statistics[0].commodity_count }}</span>
         消费次数
       </li>
     </ul>
@@ -57,7 +57,7 @@
       <div>
         <ul class="list-unstyled data1">
           <li v-for=" article in enterprise_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            文章id:@{{ article.article_type_id }}
+            @{{ article.article_type.type_ch }}：@{{ article.article_type.count }}篇
           </li>
         </ul>
       </div>
@@ -105,17 +105,17 @@
       highlight: highlight_list[i%5],
       label: count.enterprise_basic_statistics[i].article_type_id
     });
-    $('.data1').children().eq(i).child().css("background-color",color_list[i%5]);
+    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
   for ( i = 1 ; i < count.enterprise_commodity_statistics.length ; i++ ){
     data2.push({
       value: count.enterprise_commodity_statistics[i].count,
-      color: color_list[i],
-      highlight: highlight_list[i],
+      color: color_list[i%5],
+      highlight: highlight_list[i%5],
       label: count.enterprise_commodity_statistics[i].commodity_id
     });
-    $('.data2').children().eq(i).child().css("background-color",color_list[i%5]);
+    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
   Chart.defaults.global.responsive = true;

@@ -14,23 +14,23 @@
     <div class="panel-heading">基本统计</div>
     <ul class="list-group">
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics.friend_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].friend_count }}</span>
         好友数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics.artcle_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].artcle_count }}</span>
         阅读文章数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics.order_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].order_count }}</span>
         交易订单数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics.commodity_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].commodity_count }}</span>
         购买商品数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics.money_count }}</span>
+        <span class="badge">@{{ customer_statistics[0].money_count }}</span>
         总消费金额
       </li>
     </ul>
@@ -45,7 +45,7 @@
       <div>
         <ul class="list-unstyled data1">
           <li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            文章id:@{{ article.article_type_id }}
+            @{{ article.article_type.type_ch }}：@{{ article.article_type.count }}篇
           </li>
         </ul>
       </div>
@@ -63,7 +63,7 @@
       <div>
         <ul class="list-unstyled data2">
           <li v-for=" item in customer_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            商品id:@{{ item.commodity_id }}
+            商品id：@{{ item.commodity_id }}：@{{ item.count }}
           </li>
         </ul>
       </div>
@@ -103,7 +103,7 @@
       highlight: highlight_list[i%5],
       label: count.customer_commodity_statistics[i].commodity_id
     });
-    $('.data1').find('li:eq('+i+') span').css("background-color",color_list[i%5]);
+    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
   Chart.defaults.global.responsive = true;
