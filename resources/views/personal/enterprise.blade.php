@@ -118,8 +118,8 @@
     $('.data2').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
-  data1.push({ value: 0 });
-  data2.push({ value: 0 });
+  data1.push({ value: .0000001 });
+  data2.push({ value: .0000001 });
 
   Chart.defaults.global.responsive = true;
   var ctx = document.getElementById("study").getContext("2d");
