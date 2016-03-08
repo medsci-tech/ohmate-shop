@@ -115,10 +115,8 @@ class PersonalController extends Controller
     {
         $customer = \Helper::getCustomer();
         if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
-            $EnterpriseCommodityStatistics = new EnterpriseCommodityStatistics();
-            $EnterpriseArticleStatistics = new EnterpriseArticleStatistics();
-            $enterpriseCommodityStatistics = $EnterpriseCommodityStatistics->getTodayStatistics();
-            $enterpriseArticleStatistics = $EnterpriseArticleStatistics->getTodayStatistics();
+            $enterpriseCommodityStatistics = EnterpriseCommodityStatistics::getTodayStatistics();
+            $enterpriseArticleStatistics = EnterpriseArticleStatistics::getTodayStatistics();
             $enterpriseBasicStatistics = EnterpriseBasicStatistics::where('date', Carbon::yesterday()->format('Y-m-d'))->get()->toArray();
             return view(
                 'personal.enterprise', [
@@ -129,10 +127,8 @@ class PersonalController extends Controller
                 ]
             ]);
         } else {
-            $CustomerCommodityStatistics = new CustomerCommodityStatistics();
-            $CustomerArticleStatistics = new CustomerArticleStatistics();
-            $customerCommodityStatistics = $CustomerCommodityStatistics->getStatisticsByCustomerID($customer->id);
-            $customerArticleStatistics = $CustomerArticleStatistics->getStatisticsByCustomerID($customer->id);
+            $customerCommodityStatistics = CustomerCommodityStatistics::getStatisticsByCustomerID($customer->id);
+            $customerArticleStatistics = CustomerArticleStatistics::getStatisticsByCustomerID($customer->id);
             $customerStatistics   =  CustomerStatistics::where('customer_id', $customer->id)->get()->toArray();
             return view(
                 'personal.customer', [

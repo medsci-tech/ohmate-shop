@@ -13,8 +13,13 @@ class EnterpriseCommodityStatistics extends Model
 {
     protected $table = 'enterprise_commodity_statistics';
 
-    public function getTodayStatistics() {
-        $statisticsDetals = $this::where('date', Carbon::yesterday()->format('Y-m-d'))->get()->toArray();
+    public static function getTodayStatistics() {
+        $statisticsDetals = EnterpriseCommodityStatistics::where('date', Carbon::yesterday()->format('Y-m-d'))->get();
+        if($statisticsDetals) {
+            $statisticsDetals = $statisticsDetals->toArray();
+        } else {
+            $statisticsDetals = [];
+        }
         foreach($statisticsDetals as &$details) {
             $details['commodity'] = Commodity::find($details['commodity_id'])->toArray();
         }
