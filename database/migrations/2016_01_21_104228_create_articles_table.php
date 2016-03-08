@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('carousel')->nullable()->comment('文章轮播图');
             $table->string('description')->comment('文章简述');
             $table->string('uri')->comment('文章uri');
-            $table->boolean('head')->default(false)->comment('head');
+            $table->boolean('top')->default(false)->comment('head');
             $table->integer('weight')->unsigned()->default(0)->comment('权重');
             $table->integer('count')->unsigned()->default(0)->comment('阅读量');
             $table->timestamps();
