@@ -114,7 +114,6 @@
 
 
 </script>
-<script src="/js/personal_count.js"></script>
 
 
 </body>
