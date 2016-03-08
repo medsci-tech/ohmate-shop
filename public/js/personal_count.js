@@ -6,6 +6,8 @@ var count = new Vue({
         function(data){
           if(data.success){
             count.data = JSON.parse(data);
+          } else {
+            alert('服务器被扫地大妈抱走了, 追回中...')
           }
         },'json')
     }
