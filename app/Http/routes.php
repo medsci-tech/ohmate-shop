@@ -88,18 +88,17 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 Route::any('github', 'Github\GithubController@onEvent');
-use App\Werashop\Post\EmsPost;
 
 Route::any('test', function () {
-
-    $array = [8, 8, 7, 7, 6, 7, 5];
-    for ($i = 1; $i < 8; $i++) {
-        $commodity = \App\Models\Commodity::find($i);
-        $commodity->addSlideImageUrl(url('/image/shop_goods/'.$i.'/head/0.png'));
-        $commodity->addSlideImageUrl(url('/image/shop_goods/'.$i.'/head/1.png'));
-
-        for ($j = 0; $j < $array[$i - 1]; $j++) {
-            $commodity->addImageUrl(url('/image/shop_goods/'.$i.'/body/'.$j.'.png'));
-        }
-    }
+//
+//    $array = [8, 8, 7, 7, 6, 7, 5];
+//    for ($i = 1; $i < 8; $i++) {
+//        $commodity = \App\Models\Commodity::find($i);
+//        $commodity->addSlideImageUrl(url('/image/shop_goods/'.$i.'/head/0.png'));
+//        $commodity->addSlideImageUrl(url('/image/shop_goods/'.$i.'/head/1.png'));
+//
+//        for ($j = 0; $j < $array[$i - 1]; $j++) {
+//            $commodity->addImageUrl(url('/image/shop_goods/'.$i.'/body/'.$j.'.png'));
+//        }
+//    }
 });

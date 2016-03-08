@@ -11,12 +11,7 @@
 
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
-    </div>
-    <div class="swiper-slide">
-      <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
-    </div>
+    @foreach($item->)
     <div class="swiper-slide">
       <img class="img-responsive" src="{{url('/image/test04.jpg')}}">
     </div>
