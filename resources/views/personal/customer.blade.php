@@ -30,7 +30,7 @@
         购买商品数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics[0].money_cost }}</span>
+        <span class="badge">@{{ customer_statistics[0].money_cost | currency '￥'  }}</span>
         总消费金额
       </li>
     </ul>
