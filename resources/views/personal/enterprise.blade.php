@@ -57,7 +57,7 @@
       <div>
         <ul class="list-unstyled data1">
           <li v-for=" article in enterprise_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            @{{ article.article_type.type_ch }}：@{{ article.article_type.count }}篇
+            @{{ article.article_type.type_ch }}：@{{ article.count }}篇
           </li>
         </ul>
       </div>
@@ -103,7 +103,7 @@
       value: count.enterprise_basic_statistics[i].count,
       color: color_list[i%5],
       highlight: highlight_list[i%5],
-      label: count.enterprise_basic_statistics[i].article_type_id
+      label: count.enterprise_basic_statistics[i].article_type.type_ch
     });
     $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
@@ -113,7 +113,7 @@
       value: count.enterprise_commodity_statistics[i].count,
       color: color_list[i%5],
       highlight: highlight_list[i%5],
-      label: count.enterprise_commodity_statistics[i].commodity_id
+      label: count.enterprise_commodity_statistics[i].commodity.name
     });
     $('.data2').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
