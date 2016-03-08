@@ -36,7 +36,7 @@
       </li>
     </ul>
   </div>
-  <div class="panel panel-info">
+  <div class="panel panel-info" v-if=" customer_article_statistics.length != 0">
     <div class="panel-heading">学习统计</div>
     <div class="panel-body" v-cloak>
       <div>
@@ -55,7 +55,7 @@
     </div>
 
   </div>
-  <div class="panel panel-warning">
+  <div class="panel panel-warning" v-if=" customer_commodity_statistics.length != 0">
     <div class="panel-heading">消费统计</div>
     <div class="panel-body" v-cloak>
       <div>
