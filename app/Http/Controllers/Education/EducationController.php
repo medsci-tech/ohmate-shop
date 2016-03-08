@@ -99,8 +99,8 @@ class EducationController extends Controller
 
         $article = Article::where('id' ,$request->input('id'))->first();
         \Analyzer::updateArticleStatistics($customer->id, $article->type_id);
+        \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
         \EnterpriseAnalyzer::updateArticleStatistics($article->type_id);
-
         \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
         if(\DailyAnalyzer::getDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE)) {
             return response()->json(['result' => '-1']);
