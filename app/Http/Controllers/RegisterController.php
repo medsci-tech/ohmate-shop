@@ -78,7 +78,7 @@ class RegisterController extends Controller
         ]);
 
         $ret = \BeanRecharger::register($customer->id);
-        if ($ret) {
+        if ($ret && $customer->referrer_id) {
             \BeanRecharger::invite($customer->referrer_id);
             \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
         } /*if>*/
