@@ -54,7 +54,7 @@
             $("#"+month).css({display: 'block'});
             strHtml = '';
             $(json.beans).each(function () {
-              strHtml +=  "<div class='weui_cell'><div class='weui_cell_hd'><img src='"+ this.icons +"' class='image'></div><div class='weui_cell_bd weui_cell_primary'><p class='time'>"+ this.day +"<br>"+ this.time + "</p></div><div class='weui_cell_ft'>"+ this.time+"&nbsp;丨"+ this.action+"</div></div>";
+              strHtml +=  "<div class='weui_cell'><div class='weui_cell_hd'><img src='"+ this.icons +"' class='image'></div><div class='weui_cell_bd weui_cell_primary'><p class='time'>"+ this.day +"<br>"+ this.time + "</p></div><div class='weui_cell_ft'>"+ this.result+"&nbsp;丨"+ this.action+"</div></div>";
             });
             $("#" + month).html(strHtml);
         },
