@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Constants\AnalyzerConstant;
+use App\Constants\AppConstant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Werashop\Post\EmsPost;
@@ -30,6 +32,8 @@ use App\Werashop\Post\EmsPost;
  * @property float $beans_payment
  * @property float $beans_payment_calculated
  * @property float $post_fee
+ * @property string $post_type
+ * @property string $post_no
  */
 class Order extends Model
 {
@@ -55,10 +59,27 @@ class Order extends Model
             \BeanRecharger::executeConsume($this->customer_id, $this->total_price - $this->post_fee);
             $this->beans_payment = $this->beans_payment_calculated;
             $this->setPostNo();
+            $this->updateStatistics();
             $this->status()->associate($next);
             return $this->save();
         }
         return false;
+    }
+
+    protected function updateStatistics()
+    {
+        foreach ($this->commodities()->get(['id'])->pluck('id') as $commodity_id) {
+            \Analyzer::updateCommodityStatistics($this->customer_id, $commodity_id);
+            \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_COMMODITY);
+            \EnterpriseAnalyzer::updateCommodityStatistics($commodity_id);
+        }
+
+        \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_ORDER);
+        \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_MONEY_COST, $this->cash_payment);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_ORDER);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_COMMODITY, $this->commodities()->count());
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_INCOME, $this->actual_payment);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, $this->beans_payment);
     }
 
     /**

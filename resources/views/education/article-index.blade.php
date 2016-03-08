@@ -113,7 +113,7 @@
         $("#view_4").hide();
         $("#view_5").hide();
 
-        changeArticleType('1','detail_1', '/image/education/article_knowledge.png');
+        changeArticleType('1','detail_1');
         
         $("#tab_1").on('click', function () {
             var view = $("#text_view").val();
@@ -150,7 +150,7 @@
             }
 
             $("#text_view").val('1');
-            changeArticleType('1','detail_1', '/image/education/article_knowledge.png');
+            changeArticleType('1','detail_1');
         });
 
         $("#tab_2").on('click', function () {
@@ -188,7 +188,7 @@
             }
 
             $("#text_view").val('2');
-            changeArticleType('2','detail_2', '/image/education/article_drug.png');
+            changeArticleType('2','detail_2');
         });
 
         $("#tab_3").on('click', function () {
@@ -226,7 +226,7 @@
             }
 
             $("#text_view").val('3');
-            changeArticleType('3','detail_3', '/image/education/article_food.png');
+            changeArticleType('3','detail_3');
         });
 
         $("#tab_4").on('click', function () {
@@ -264,7 +264,7 @@
             }
 
             $("#text_view").val('4');
-            changeArticleType('4','detail_4', '/image/education/article_sport.png');
+            changeArticleType('4','detail_4');
         });
 
         $("#tab_5").on('click', function () {
@@ -302,12 +302,12 @@
             }
 
             $("#text_view").val('5');
-            changeArticleType('5','detail_5', '/image/education/article_glycemia.png');
+            changeArticleType('5','detail_5');
         });
 
     });
 
-    var changeArticleType = function (id, type, pic) {
+    var changeArticleType = function (id, type) {
         $(function () {
             var requestUrl = '/education/article/find';
             $.ajax({
@@ -322,7 +322,8 @@
                         $("#" + type).empty();
                         var strHtml = "";
                         $(json.articles).each(function () {
-                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView(\"" + this.id + "\")'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>" + this.description + "</p></div></a> ";
+                            var pic = this.thumbnail;
+                            strHtml += "<a href='javascript:void(0);' class='weui_media_box weui_media_appmsg' onclick='updateView(\"" + this.id + "\")'><div class='weui_media_hd'><img class='weui_media_appmsg_thumb' src='"+pic+"' alt=''></div><div class='weui_media_bd'><h4 class='weui_media_title'>" + this.title + "</h4><p class='weui_media_desc'>阅读量：" + this.count+"</p></div></a> ";
                             console.log(strHtml);
                         });
                         $("#" + type).html(strHtml);
@@ -342,23 +343,23 @@
     function updateView(id) {
         document.getElementById('text_click').value ='1';
         document.getElementById('text_id').value = id;
-//        $(function () {
-//            var requestUrl = '/education/article/update-count';
-//            $.ajax({
-//                url : requestUrl,
-//                data: {
-//                    id: id
-//                },
-//                type : "get",
-//                dataType : "json",
-//                success: function (json) {
-//
-//                },
-//                error: function (xhr, status, errorThrown) {
-//                    alert("Sorry, there was a problem!");
-//                }
-//            });
-//        });
+        $(function () {
+            var requestUrl = '/education/article/update-count';
+            $.ajax({
+                url : requestUrl,
+                data: {
+                    id: id
+                },
+                type : "get",
+                dataType : "json",
+                success: function (json) {
+
+                },
+                error: function (xhr, status, errorThrown) {
+                    alert("Sorry, there was a problem!");
+                }
+            });
+        });
 
         window.location.href = '/education/article/view?type=1&id='+id;
     }

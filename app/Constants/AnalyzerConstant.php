@@ -19,9 +19,9 @@ class AnalyzerConstant
     /*customer statistics*/
     const CUSTOMER_FRIEND            = 'friend_count';
     const CUSTOMER_ARTICLE           = 'article_count';
-    const CUSTOMER_COMMODITY         = 'commodity_count';
-    const CUSTOMER_ORDER             = 'order_count';
-    const CUSTOMER_MONEY_COST        = 'money_cost';
+    const CUSTOMER_COMMODITY         = 'commodity_count';///
+    const CUSTOMER_ORDER             = 'order_count';//
+    const CUSTOMER_MONEY_COST        = 'money_cost';//
 
     /*docotor statistics*/
 

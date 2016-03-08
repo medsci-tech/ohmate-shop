@@ -13,12 +13,13 @@ class CreateEnterpriseArticleStatisticsTable extends Migration
     public function up()
     {
         Schema::create('enterprise_article_statistics', function (Blueprint $table) {
+            $table->increments('id');
 
-            $table->date('date')->comment('ÈÕÆÚ');
+            $table->date('date')->comment('ï¿½ï¿½ï¿½ï¿½');
 
-            $table->integer('article_type_id')->unsigned()->comment('ÎÄÕÂÀàÐÍ');
+            $table->integer('article_type_id')->unsigned()->comment('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
             $table->foreign('article_type_id')->references('id')->on('article_types');
-            $table->integer('count')->unsigned()->default(0)->comment('¼ÆÊý');
+            $table->integer('count')->unsigned()->default(0)->comment('ï¿½ï¿½ï¿½ï¿½');
 
             $table->index('article_type_id');
             $table->timestamps();

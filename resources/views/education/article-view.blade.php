@@ -19,20 +19,20 @@
     </div>
 </div>
 <!--BEGIN actionSheet-->
-{{--<div id="actionSheet_wrap">--}}
-    {{--<div class="weui_mask_transition" id="mask" style="display: none;"></div>--}}
-    {{--<div class="weui_actionsheet" style="display: none;" id="weui_actionsheet">--}}
-        {{--<div class="weui_actionsheet_menu">--}}
-            {{--<img src="/image/education/hongbao.png" alt="">--}}
+<div id="actionSheet_wrap">
+    <div class="weui_mask_transition" id="mask" style="display: none;"></div>
+    <div class="weui_actionsheet" style="display: none;" id="weui_actionsheet">
+        <div class="weui_actionsheet_menu">
+            <img src="/image/education/hongbao.png" alt="">
 
-            {{--<p>10迈豆</p>--}}
-        {{--</div>--}}
-        {{--<div class="weui_actionsheet_action">--}}
-            {{--<p>(每日学习迈豆奖励)</p>--}}
-            {{--<input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取" onclick="">--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
+            <p>10迈豆</p>
+        </div>
+        <div class="weui_actionsheet_action">
+            <p>(每日学习迈豆奖励)</p>
+            <input type="button" class="weui_btn weui_btn_default" id="gethongbao" value="确认领取" onclick="">
+        </div>
+    </div>
+</div>
 <!--END actionSheet-->
 <input id="text_id" type="hidden" value="{{$article->id}}">
 
@@ -96,58 +96,61 @@
         alert("error:" + res.errMsg);
     });
 
-    //    function setTimer(i){
-    //        var type = request("type");
-    //        if (type == '2')
-    //            return;
-    //        i +=1;
-    //        timer();
-    //        function timer() {
-    //            i--;
-    //            if (i == 0) {
-    //                clearTimeout(timer);
-    //                $('#mask').addClass('weui_fade_toggle');
-    //                $('#mask').css('display','block');
-    //                $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
-    //                $('#weui_actionsheet').css('display','block');
-    //
-    //                $(function () {
-    //                    var requestUrls = '/education/article/update-bean';
-    //                    var id = $('#text_id').val();
-    //                    $.ajax({
-    //                        url: requestUrls,
-    //                        data: {
-    //                            id: id
-    //                        },
-    //                        type: "get",
-    //                        dataType: "json",
-    //                        success: function (json) {
-    //
-    //                        },
-    //                        error: function (xhr, status, errorThrown) {
-    //                            alert("Sorry, there was a problem!");
-    //                        }
-    //                    });
-    //
-    //                });
-    //
-    //            } else {
-    //                setTimeout(timer, 1000);
-    //            }
-    //        }
-    //    }
+        function setTimer(i){
+            var type = request("type");
+            if (type == '2')
+                return;
+            i +=1;
+            timer();
+            function timer() {
+                i--;
+                if (i == 0) {
+                    clearTimeout(timer);
+                    $(function () {
+                        var requestUrls = '/education/article/update-bean';
+                        var id = $('#text_id').val();
+                        $.ajax({
+                            url: requestUrls,
+                            data: {
+                                id: id,
+                            },
+                            type: "get",
+                            dataType: "json",
+                            success: function (json) {
+                                if(json.result == 1) {
+                                    showActionSheet();
+                                }
+                            },
+                            error: function (xhr, status, errorThrown) {
+                                alert("Sorry, there was a problem!");
+                            }
+                        });
+
+                    });
+
+                } else {
+                    setTimeout(timer, 1000);
+                }
+            }
+        }
 
 
-    //    $(document).ready(function() {
-    //        $('#gethongbao').click(function () {
-    //            $('#mask').removeClass('weui_fade_toggle');
-    //            $('#mask').css('display', 'none');
-    //            $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
-    //            $('#weui_actionsheet').css('display','block');
-    //        });
-    //    });
+        $(document).ready(function() {
+            $('#gethongbao').click(function () {
+                $('#mask').removeClass('weui_fade_toggle');
+                $('#mask').css('display', 'none');
+                $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
+                $('#weui_actionsheet').css('display','block');
+            });
+        });
 
-    //    setTimer(10);
+        setTimer(3);
+    function showActionSheet() {
+        $('#mask').addClass('weui_fade_toggle');
+        $('#mask').css('display','block');
+        $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
+        $('#weui_actionsheet').css('display','block');
+    }
 </script>
 </body>
 </html>

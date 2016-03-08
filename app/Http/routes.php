@@ -52,6 +52,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
         Route::get('/information', 'PersonalController@information');
         Route::get('/beans', 'PersonalController@beans');
+        Route::get('/get-beans-by-month', 'PersonalController@getBeansByMonth');
         Route::get('/friend', 'PersonalController@friend');
 
         Route::get('/statistics', 'PersonalController@statistics');
@@ -87,3 +88,10 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 Route::any('github', 'Github\GithubController@onEvent');
+use App\Werashop\Post\EmsPost;
+
+Route::any('test', function () {
+//
+//    $a = (new EmsPost())->getMailNo();
+//    dd($a);
+});

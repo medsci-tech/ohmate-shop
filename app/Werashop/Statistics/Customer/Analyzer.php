@@ -28,6 +28,7 @@ class Analyzer
         $statistics->save();
     }
 
+
     public function updateArticleStatistics($userId, $articleTypeId)
     {
         $statistics = CustomerArticleStatistics::where('customer_id', $userId)
@@ -42,6 +43,7 @@ class Analyzer
         $statistics->save();
     }
 
+
     public function updateCommodityStatistics($userId, $commodityId)
     {
         $statistics = CustomerCommodityStatistics::where('customer_id', $userId)
@@ -53,6 +55,17 @@ class Analyzer
             $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;
+        $statistics->save();
+    }
+
+    public function updateDoctorStatistics(int $user, string $item)
+    {
+        $statistics = DoctorStatistics::where('customer_id', $user)->first();
+        if (!$statistics) {
+            $statistics = new DoctorStatistics();
+            $statistics->customer_id    = $user;
+        } /*if>*/
+        $statistics->$item += 1;
         $statistics->save();
     }
 

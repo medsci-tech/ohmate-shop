@@ -34,8 +34,15 @@
     <p>@{{ goods.tag }}</p>
   </div>
   <div class="row">
-    <p>图文详情</p>
+    <img class="img-responsive" src="../../image/shop_goods/1/body/1.png" alt="">
+    <img class="img-responsive" src="../../image/shop_goods/1/body/2.png" alt="">
+    <img class="img-responsive" src="../../image/shop_goods/1/body/3.png" alt="">
+    <img class="img-responsive" src="../../image/shop_goods/1/body/4.png" alt="">
+    <img class="img-responsive" src="../../image/shop_goods/1/body/5.png" alt="">
+    <img class="img-responsive" src="../../image/shop_goods/1/body/6.png" alt="">
+    <img class="img-responsive" src="../../image/shop_goods/1/body/7.png" alt="">
   </div>
+  <br><br><br>
 
   <div class="navbar-fixed-bottom center-block">
     <div class="col-xs-4">

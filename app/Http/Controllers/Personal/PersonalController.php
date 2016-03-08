@@ -77,6 +77,17 @@ class PersonalController extends Controller
         return view('personal.beans', $result);
     }
 
+    public function getBeansByMonth(Request $request) {
+        $customer = \Helper::getCustomer();
+        $beans = $customer->monthBeans($request->input('month'));
+        $arrayBeans = [];
+        foreach($beans as $bean) {
+            $item = $this->createBeanItem($bean);
+            array_push($arrayBeans, $item);
+        }
+        return response()->json(['beans' => $arrayBeans]);
+    }
+
     public function friend()
     {
         $customer       = \Helper::getCustomer();

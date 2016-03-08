@@ -119,34 +119,47 @@ class Customer extends Model
         }
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function statistics()
     {
         return $this->hasMany(CustomerStatistics::class, 'customer_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articleStatistics()
     {
         return $this->hasMany(CustomerArticleStatistics::class, 'customer_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function commodityStatistics()
     {
         return $this->hasMany(CustomerCommodityStatistics::class, 'customer_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function dailyStatistics()
     {
         return $this->hasMany(CustomerDailyStatistics::class, 'customer_id');
     }
 
+
     /**
-     * @param string $month
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @param $month
+     * @return mixed
      */
     public function monthBeans($month)
     {
         $date = explode('-', $month);
         $nextMonth = $date[0].'-0'.++$date[1];
-        return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->get();
+        return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->orderBy('created_at', 'desc')->get();
     }
 }

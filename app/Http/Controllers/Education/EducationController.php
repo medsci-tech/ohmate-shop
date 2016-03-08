@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Education;
 
 use Illuminate\Http\Request;
 use App\Constants\AppConstant;
+use App\Constants\AnalyzerConstant;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\Article;
 use App\Models\ArticleType;
 use Overtrue\Wechat\Js;
@@ -25,7 +25,7 @@ class EducationController extends Controller
 
     public function index(Request $request)
     {
-        $topArticles = Article::where('top', true)->orderBy('updated_at','desc')->get();
+        $topArticles = Article::where('head', true)->orderBy('updated_at','desc')->get();
         if (!$topArticles) {
             abort(404);
         } /*if>*/
@@ -96,7 +96,18 @@ class EducationController extends Controller
         if (!$customer != null) {
             return response()->json(['result' => '-1']);
         } /*if>*/
-        \BeanRecharger::study($customer->id);
+
+        $article = Article::where('id' ,$request->input('id'))->first();
+        \Analyzer::updateArticleStatistics($customer->id, $article->type_id);
+        \EnterpriseAnalyzer::updateArticleStatistics($article->type_id);
+
+        if(\DailyAnalyzer::getDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE)) {
+            return response()->json(['result' => '-1']);
+        }
+
+        \BeanRecharger::excuteEducation($customer->id);
+        \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
+
         return response()->json(['result' => '1']);
     }
 
