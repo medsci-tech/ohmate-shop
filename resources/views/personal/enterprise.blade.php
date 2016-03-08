@@ -35,7 +35,7 @@
       </li>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].article_count }}</span>
-        文章总数
+        文章阅读量
       </li>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].order_count }}</span>
@@ -98,12 +98,12 @@
   var color_list = ["#F7464A","#46BFBD","#FDB45C","#949FB1","#4D5360"];
   var highlight_list = ["#FF5A5E","#5AD3D1","#FFC870","#A8B3C5","#616774"];
 
-  for ( i = 0 ; i < count.enterprise_basic_statistics.length ; i++ ){
+  for ( i = 0 ; i < count.enterprise_article_statistics.length ; i++ ){
     data1.push({
-      value: count.enterprise_basic_statistics[i].count,
+      value: count.enterprise_article_statistics[i].count,
       color: color_list[i%5],
       highlight: highlight_list[i%5],
-      label: count.enterprise_basic_statistics[i].article_type.type_ch
+      label: count.enterprise_article_statistics[i].article_type.type_ch
     });
     $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
