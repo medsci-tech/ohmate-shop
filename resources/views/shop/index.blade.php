@@ -16,7 +16,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img class="img-responsive" src="{{url('/image/shop_goods/top1.png)}}">
+                    <img class="img-responsive" src="{{url('/image/shop_goods/top1.png')}}">
                 </div>
                 <div class="swiper-slide">
                     <img class="img-responsive" src="{{url('/image/shop_goods/top2.png')}}">

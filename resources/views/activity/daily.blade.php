@@ -9,7 +9,7 @@
 
 <body>
 <div class="container">
-  <div class="panel panel-default" style="margin-top: 2em;">
+  <div class="panel panel-success" style="margin-top: 2em;">
     <div class="panel-heading text-center">每日签到</div>
     <div class="panel-body">
       <div class="alert alert-success" style="margin: 0;">
