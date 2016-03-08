@@ -14,6 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\OrderStatus whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\OrderStatus whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\OrderStatus whereLabel($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\OrderStatus whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\OrderStatus whereUpdatedAt($value)
  */
 class OrderStatus extends Model
 {

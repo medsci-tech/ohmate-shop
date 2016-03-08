@@ -7,6 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\CustomerArticleStatistics
  *
+ * @property integer $id
+ * @property integer $customer_id 用户
+ * @property integer $article_type_id 文章类型
+ * @property integer $count 计数
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArticleStatistics whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArticleStatistics whereCustomerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArticleStatistics whereArticleTypeId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArticleStatistics whereCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArticleStatistics whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArticleStatistics whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class CustomerArticleStatistics extends Model
 {

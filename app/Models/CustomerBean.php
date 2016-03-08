@@ -15,6 +15,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $detail 积分备注
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereCustomerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereBeanRateId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereValue($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereResult($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereDetail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerBean whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class CustomerBean extends Model
 {

@@ -14,6 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $label
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Role whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Role whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Role whereLabel($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Role whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Role whereUpdatedAt($value)
  */
 class Role extends Model
 {

@@ -26,6 +26,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereOuterId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePhone($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereOpenid($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereNickname($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePortraitUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereQrCodeUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereLatitude($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereLongitude($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePrecision($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
  */
 class User extends Authenticatable
 {

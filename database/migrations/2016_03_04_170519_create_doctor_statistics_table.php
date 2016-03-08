@@ -16,8 +16,6 @@ class CreateDoctorStatisticsTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned()->comment('用户');
             $table->foreign('customer_id')->references('id')->on('customers');
-
-            $table->index('customer_id');
             $table->timestamps();
         });
 
@@ -32,7 +30,6 @@ class CreateDoctorStatisticsTable extends Migration
     {
         Schema::table('doctor_statistics', function (Blueprint $table) {
             $table->dropForeign('doctor_statistics_customer_id_foreign');
-            $table->dropIndex('customer_id');
         });
         Schema::drop('doctor_statistics');
 

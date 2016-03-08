@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\EnterpriseCommodityStatistics
  *
+ * @property integer $id
+ * @property string $date ����
+ * @property integer $commodity_id ��Ʒ����
+ * @property integer $count ����
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseCommodityStatistics whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseCommodityStatistics whereDate($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseCommodityStatistics whereCommodityId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseCommodityStatistics whereCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseCommodityStatistics whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\EnterpriseCommodityStatistics whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class EnterpriseCommodityStatistics extends Model
 {

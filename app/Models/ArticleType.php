@@ -13,6 +13,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ArticleType whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ArticleType whereTypeEn($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ArticleType whereTypeCh($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ArticleType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ArticleType whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class ArticleType extends Model
 {
