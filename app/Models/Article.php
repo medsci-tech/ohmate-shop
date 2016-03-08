@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title 文章标题
  * @property string $thumbnail 文章缩略图
  * @property string $uri 文章uri
- * @property boolean $top top
+ * @property boolean $head head
  * @property integer $weight 权重
  * @property integer $count 阅读量
  * @property \Carbon\Carbon $created_at
