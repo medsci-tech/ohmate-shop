@@ -107,7 +107,7 @@
         <p>合计 <span>@{{ priceCount | currency '￥' }}</span></p>
       </div>
       <div class="col-xs-5">
-        <button class="button button-caution button-rounded" @click="postCart()">付&emsp;款</button>
+        <button class="button button-caution button-rounded" @click="postCart() | debounce 1000">付&emsp;款</button>
       </div>
     </div>
 
