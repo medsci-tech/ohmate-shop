@@ -93,7 +93,7 @@
       highlight: highlight_list[i%5],
       label: count.customer_article_statistics[i].article_type_id
     });
-    $('.data1').find('li:eq(i) span').css("background-color",color_list[i%5]);
+    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
   }
 
   for ( i = 1 ; i < count.customer_commodity_statistics.length ; i++ ){
