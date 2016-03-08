@@ -25,7 +25,7 @@ class EducationController extends Controller
 
     public function index(Request $request)
     {
-        $topArticles = Article::where('head', true)->orderBy('updated_at','desc')->get();
+        $topArticles = Article::where('top', true)->orderBy('updated_at','desc')->get();
         if (!$topArticles) {
             abort(404);
         } /*if>*/
@@ -34,8 +34,8 @@ class EducationController extends Controller
 
     public function find(Request $request)
     {
-        $type = $request->input('type');
-        $articles = Article::where('type_id', $type)->orderBy('id', 'desc')->get();
+        $typeId = $request->input('type');
+        $articles = Article::where('type_id', $typeId)->orderBy('updated_at', 'desc')->get();
         if (!$articles) {
             return response()->json(['result' => '-1']);
         } /*if>*/
@@ -93,7 +93,7 @@ class EducationController extends Controller
     public function updateBean(Request $request)
     {
         $customer = \Helper::getCustomer();
-        if (!$customer != null) {
+        if (!$customer) {
             return response()->json(['result' => '-1']);
         } /*if>*/
 
