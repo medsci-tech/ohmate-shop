@@ -23,7 +23,7 @@
 <div class="container" id="goods" v-cloak>
   <div class="row">
     <div>
-      <span>@{{ goods.price | currency '￥' }}</span><s>原价@{{ goods.priceBefore | currency '￥' }}</s>
+      <span>@{{ goods.price | currency '￥' }}</span>
     </div>
     <h4>@{{ goods.name }}</h4>
 
@@ -68,7 +68,6 @@
     name: '{{$item["name"]}}',
     tag: '{{$item["remark"]}}',
     price: {{$item["price"]}},
-    priceBefore: {{$item["price"] * 1.25}},
     num: 1
   };
 
@@ -82,16 +81,8 @@
   var list = new Vue({
     el: '#goods',
     data: {
-      //goods: {
-      //  id: '2',
-      //  name: '易折清洁消毒棒',
-      //  tag: '一次性使用无菌注射针',
-      //  price: 22.00,
-      //  priceBefore: 30.00,
-      //  num: 1
-      //},
       goods: goods,
-      cart: cart,
+      cart: cart
     },
     computed: {
       alreadyHave: function () {
@@ -101,17 +92,6 @@
           }
         }
         return -1;
-      },
-      cart_num: function () {
-        if (list.cart.length != 0) {
-          var i = 0;
-          for (item in list.cart) {
-            i += list.cart[item].num;
-            return i;
-          }
-        } else {
-          return '';
-        }
       }
     },
     methods: {
@@ -127,7 +107,9 @@
             priceBefore: this.goods.priceBefore,
             num: this.goods.num
           });
-        }
+        };
+        cart_num += this.goods.num;
+        $('#touch span').text( cart_num );
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
@@ -164,9 +146,16 @@
 </script>
 <script>
 
+  var cart_num = '';
+  if (list.cart.length != 0) {
+    var i = 0;
+    for (item in list.cart) {
+      i += list.cart[item].num;
+    }
+    cart_num = i;
+  }
 
-
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+@{{list.cart_num}}+'</span> </a> </nav>')
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
   var div = document.getElementById('touch');
   div.addEventListener('touchmove', function (event) {
     event.preventDefault();

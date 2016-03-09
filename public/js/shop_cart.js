@@ -44,14 +44,14 @@ var shop_cart = new Vue({
     },
     priceCount: function () {
       if (this.address == null) {
-        return this.priceAll + 8 - this.priceDiscount;
+        return this.priceAll + 0 - this.priceDiscount;
       } else {
         return this.priceAll + this.post_fee - this.priceDiscount;
       }
     },
     postage: function () {
       if (this.address == null) {
-        return 8;
+        return 0;
       } else {
         return this.post_fee;
       }

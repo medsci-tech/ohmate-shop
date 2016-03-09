@@ -71,7 +71,9 @@
         for ( k in j) {
             i += j[k].num;
         }
-        cart_num = i;
+        if (i != 0){
+            cart_num = i;
+        }
     }
     $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
     var touch1 = document.getElementById('touch1');
