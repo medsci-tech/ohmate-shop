@@ -82,36 +82,24 @@
   var list = new Vue({
     el: '#goods',
     data: {
-      //goods: {
-      //  id: '2',
-      //  name: '易折清洁消毒棒',
-      //  tag: '一次性使用无菌注射针',
-      //  price: 22.00,
-      //  priceBefore: 30.00,
-      //  num: 1
-      //},
       goods: goods,
       cart: cart,
+      cart_num: '',
     },
     computed: {
       alreadyHave: function () {
+        var j = -1;
+        var k = 0;
         for (i = 0; i < this.cart.length; i++) {
           if (this.cart[i].id == this.goods.id) {
-            return i;
+            var j = i;
           }
+          k += this.cart[i].num;
         }
-        return -1;
-      },
-      cart_num: function () {
-        if (list.cart.length != 0) {
-          var i = 0;
-          for (item in list.cart) {
-            i += list.cart[item].num;
-            return i;
-          }
-        } else {
-          return '';
+        if (k != 0){
+          this.cart.cart_num = k;
         }
+        return j;
       }
     },
     methods: {
@@ -128,6 +116,7 @@
             num: this.goods.num
           });
         }
+        this.cart_num += this.goods.num;
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
@@ -163,10 +152,7 @@
   });
 </script>
 <script>
-
-
-
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+@{{list.cart_num}}+'</span> </a> </nav>')
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+ list.cart_num+'</span> </a> </nav>');
   var div = document.getElementById('touch');
   div.addEventListener('touchmove', function (event) {
     event.preventDefault();

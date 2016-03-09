@@ -40,18 +40,18 @@ var shop_cart = new Vue({
     priceDiscount: function () {
       var consume =
         this.beans < this.priceAll * 100 ? this.beans : this.priceAll * 100;
-      return consume/100;
+      return consume;
     },
     priceCount: function () {
       if (this.address == null) {
-        return this.priceAll + 8 - this.priceDiscount;
+        return this.priceAll + 0 - this.priceDiscount;
       } else {
         return this.priceAll + this.post_fee - this.priceDiscount;
       }
     },
     postage: function () {
       if (this.address == null) {
-        return 8;
+        return 0;
       } else {
         return this.post_fee;
       }
