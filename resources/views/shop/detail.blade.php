@@ -23,7 +23,7 @@
 <div class="container" id="goods" v-cloak>
   <div class="row">
     <div>
-      <span>@{{ goods.price | currency '￥' }}</span><s>原价@{{ goods.priceBefore | currency '￥' }}</s>
+      <span>@{{ goods.price | currency '￥' }}</span>
     </div>
     <h4>@{{ goods.name }}</h4>
 
@@ -68,7 +68,6 @@
     name: '{{$item["name"]}}',
     tag: '{{$item["remark"]}}',
     price: {{$item["price"]}},
-    priceBefore: {{$item["price"] * 1.25}},
     num: 1
   };
 
