@@ -93,7 +93,7 @@ class EducationController extends Controller
     public function updateBean(Request $request)
     {
         $customer = \Helper::getCustomer();
-        if (!$customer && $customer->is_registered) {
+        if (!$customer && !$customer->is_registered) {
             return response()->json(['result' => '-1']);
         } /*if>*/
 
@@ -103,6 +103,7 @@ class EducationController extends Controller
         \EnterpriseAnalyzer::updateArticleStatistics($article->type_id);
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_ARTICLE);
         if(\DailyAnalyzer::getDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE)) {
+            \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
             return response()->json(['result' => '-1']);
         }
         \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
