@@ -67,8 +67,9 @@
     var cart_num = '';
     if (typeof localStorage.cart != 'undefined') {
         var i = 0;
-        for ( item in JSON.parse(localStorage.cart)) {
-            i += item.num;
+        var j = JSON.parse(localStorage.cart);
+        for ( k in j) {
+            i += j[k].num;
         }
         cart_num = i;
     }

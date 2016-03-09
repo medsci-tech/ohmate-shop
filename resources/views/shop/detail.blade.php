@@ -157,7 +157,7 @@
   if (list.cart.length != 0) {
     var i = 0;
     for (item in list.cart) {
-      i += item.num;
+      i += list.cart[item].num;
     }
     cart_num = i;
   }
