@@ -109,7 +109,8 @@
             num: this.goods.num
           });
         };
-        $('#touch span').text( cart_num + this.goods.num);
+        cart_num += this.goods.num;
+        $('#touch span').text( cart_num );
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
