@@ -164,24 +164,24 @@ class Wechat
     public function locationEventCallback()
     {
         return function ($event) {
-            \Log::info('location' . $event);
-            $openId = $event['FromUserName'];
-
-            $customer = Customer::where('openid', $openId)->first();
-            if ((!$customer) || (!$customer->is_registered)) {
-                return;
-            }
-
-            $customerLocation = CustomerLocation::where('customer_id', $customer->id)->first();
-            if (!$customerLocation) {
-                $customerLocation = new CustomerLocation();
-                $customerLocation->customer_id = $customer->id;
-            }
-
-            $customerLocation->latitude = $event['Latitude'];
-            $customerLocation->longitude = $event['Longitude'];
-            $customerLocation->precision = $event['Precision'];
-            $customerLocation->save();
+//            \Log::info('location' . $event);
+//            $openId = $event['FromUserName'];
+//
+//            $customer = Customer::where('openid', $openId)->first();
+//            if ((!$customer) || (!$customer->is_registered)) {
+//                return;
+//            }
+//
+//            $customerLocation = CustomerLocation::where('customer_id', $customer->id)->first();
+//            if (!$customerLocation) {
+//                $customerLocation = new CustomerLocation();
+//                $customerLocation->customer_id = $customer->id;
+//            }
+//
+//            $customerLocation->latitude = $event['Latitude'];
+//            $customerLocation->longitude = $event['Longitude'];
+//            $customerLocation->precision = $event['Precision'];
+//            $customerLocation->save();
         };
     }
 
