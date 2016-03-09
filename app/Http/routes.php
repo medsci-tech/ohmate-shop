@@ -101,5 +101,5 @@ Route::any('test', function () {
 //            $commodity->addImageUrl(url('/image/shop_goods/'.$i.'/body/'.$j.'.png'));
 //        }
 //    }
-    echo (exec('whoami'));
+//    echo (exec('whoami'));
 });
