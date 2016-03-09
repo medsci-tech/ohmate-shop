@@ -21,9 +21,9 @@ a, a:focus, a:hover {
   padding: 4px; }
 .shop-index .row .thumbnail {
   margin: 0;
-  border: .5px solid #eee;
+  border: 1px solid #eee;
   border-radius: 0px;
-  box-shadow: .5px .5px .5px #a3a3a3; }
+  box-shadow: 1px 1px 1px #a3a3a3; }
   .shop-index .row .thumbnail .caption {
     padding: 5px; }
     .shop-index .row .thumbnail .caption p:first-child {
