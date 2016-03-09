@@ -12,9 +12,9 @@
 <div class="swiper-container">
   <div class="swiper-wrapper">
     @foreach($item['slide_images'] as $slide_image)
-    <div class="swiper-slide">
-      <img class="img-responsive" src="{{$slide_image['image_url']}}">
-    </div>
+      <div class="swiper-slide">
+        <img class="img-responsive" src="{{$slide_image['image_url']}}">
+      </div>
     @endforeach
   </div>
   <div class="swiper-pagination"></div>
@@ -31,7 +31,7 @@
   </div>
   <div class="row">
     @foreach($item['images'] as $image)
-    <img class="img-responsive" src="{{$image['image_url']}}" alt="">
+      <img class="img-responsive" src="{{$image['image_url']}}" alt="">
     @endforeach
   </div>
   <br><br><br>
@@ -122,9 +122,9 @@
         $('.jumbotron .alert').show();
         $('.jumbotron .alert').delay(300).fadeOut(700);
         localStorage.cart = JSON.stringify(this.cart);
-        setTimeout(function(){
+        setTimeout(function () {
           this.goods.num = 1;
-        },900);
+        }, 900);
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
@@ -152,7 +152,17 @@
   });
 </script>
 <script>
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> </a> </nav>')
+
+  var cart_num = '';
+  if (list.cart.length != 0) {
+    var i = 0;
+    for (item in list.cart) {
+      i += item.num;
+    }
+    cart_num = i;
+  }
+
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
   var div = document.getElementById('touch');
   div.addEventListener('touchmove', function (event) {
     event.preventDefault();
