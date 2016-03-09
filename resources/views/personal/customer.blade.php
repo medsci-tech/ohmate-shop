@@ -36,7 +36,7 @@
       </li>
     </ul>
   </div>
-  <div class="panel panel-info" v-if=" customer_article_statistics.length != 0">
+  <div class="panel panel-info" v-show=" customer_article_statistics.length != 0">
     <div class="panel-heading">学习统计</div>
     <div class="panel-body" v-cloak>
       <div>
@@ -47,7 +47,7 @@
       <div>
         <ul class="list-unstyled data1">
           <li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            @{{ article.article_type.type_ch }}：@{{ article.count }}篇
+            @{{ article.article_type.type_ch }}：阅读@{{ article.count }}次
           </li>
         </ul>
       </div>
@@ -55,7 +55,7 @@
     </div>
 
   </div>
-  <div class="panel panel-warning" v-if=" customer_commodity_statistics.length != 0">
+  <div class="panel panel-warning" v-show=" customer_commodity_statistics.length != 0">
     <div class="panel-heading">消费统计</div>
     <div class="panel-body" v-cloak>
       <div>
