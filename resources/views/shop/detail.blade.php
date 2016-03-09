@@ -65,7 +65,7 @@
 <script>
   var goods = {
     id: '{{$item["id"]}}',
-    name: '{{$item["name"]}}'.replace("&reg;", "®"),
+    name: '{{$item["name"]}}',
     tag: '{{$item["remark"]}}',
     price: {{$item["price"]}},
     priceBefore: {{$item["price"] * 1.25}},
@@ -101,6 +101,17 @@
           }
         }
         return -1;
+      },
+      cart_num: function () {
+        if (list.cart.length != 0) {
+          var i = 0;
+          for (item in list.cart) {
+            i += list.cart[item].num;
+            return i;
+          }
+        } else {
+          return '';
+        }
       }
     },
     methods: {
@@ -153,16 +164,9 @@
 </script>
 <script>
 
-  var cart_num = '';
-  if (list.cart.length != 0) {
-    var i = 0;
-    for (item in list.cart) {
-      i += list.cart[item].num;
-    }
-    cart_num = i;
-  }
 
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
+
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+@{{list.cart_num}}+'</span> </a> </nav>')
   var div = document.getElementById('touch');
   div.addEventListener('touchmove', function (event) {
     event.preventDefault();
