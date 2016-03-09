@@ -46,7 +46,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-            'phone' => 'required|digits:11',
+            'phone' => 'required|digits:11|unique:customers,phone',
             'code'  => 'required|digits:6'
         ]);
         if ($validator->fails()) {
@@ -104,7 +104,7 @@ class RegisterController extends Controller
 
         $customer = \Helper::getCustomer();
         $customer->update([
-            'phone'     => $phone,
+//            'phone'     => $phone,
             'auth_code' => $code,
             'auth_code_expired' => Carbon::now()->addMinute(AppConstant::AUTH_CODE_EXPIRE_INTERVAL)
         ]);
