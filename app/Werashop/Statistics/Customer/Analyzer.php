@@ -37,7 +37,7 @@ class Analyzer
             $statistics = new CustomerArticleStatistics();
             $statistics->customer_id        = $userId;
             $statistics->article_type_id    = $articleTypeId;
-            $statistics->count  = 0;
+            $statistics->count  = 1;
         } /*if>*/
         $statistics->count += 1;
         $statistics->save();
@@ -52,7 +52,7 @@ class Analyzer
             $statistics = new CustomerCommodityStatistics();
             $statistics->customer_id        = $userId;
             $statistics->commodity_id       = $commodityId;
-            $statistics->count  = 0;
+            $statistics->count  = 1;
         } /*if>*/
         $statistics->count += 1;
         $statistics->save();
