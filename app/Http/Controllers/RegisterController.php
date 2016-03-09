@@ -56,9 +56,9 @@ class RegisterController extends Controller
         $user       = \Helper::getUser();
         $customer   = \Helper::getCustomer();
 
-        if ($request->input('phone') != $customer->phone) {
-            return redirect()->back()->with('error_message', '电话号码不匹配!')->withInput();
-        } /*if>*/
+//        if ($request->input('phone') != $customer->phone) {
+//            return redirect()->back()->with('error_message', '电话号码不匹配!')->withInput();
+//        } /*if>*/
 
         if ($request->input('code') != $customer->auth_code) {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
