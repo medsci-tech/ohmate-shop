@@ -83,23 +83,16 @@
     el: '#goods',
     data: {
       goods: goods,
-      cart: cart,
-      cart_num: '',
+      cart: cart
     },
     computed: {
       alreadyHave: function () {
-        var j = -1;
-        var k = 0;
         for (i = 0; i < this.cart.length; i++) {
           if (this.cart[i].id == this.goods.id) {
-            var j = i;
+            return i;
           }
-          k += this.cart[i].num;
         }
-        if (k != 0){
-          this.cart.cart_num = k;
-        }
-        return j;
+        return -1;
       }
     },
     methods: {
@@ -115,8 +108,8 @@
             priceBefore: this.goods.priceBefore,
             num: this.goods.num
           });
-        }
-        this.cart_num += this.goods.num;
+        };
+        $('#touch span').text( cart_num + this.goods.num);
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
@@ -152,7 +145,17 @@
   });
 </script>
 <script>
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+ list.cart_num+'</span> </a> </nav>');
+
+  var cart_num = '';
+  if (list.cart.length != 0) {
+    var i = 0;
+    for (item in list.cart) {
+      i += list.cart[item].num;
+    }
+    cart_num = i;
+  }
+
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
   var div = document.getElementById('touch');
   div.addEventListener('touchmove', function (event) {
     event.preventDefault();
