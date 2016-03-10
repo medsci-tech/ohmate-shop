@@ -24,9 +24,8 @@ class DailyAnalyzer
             $daily->customer_id     = $user;
             $daily->date   = Carbon::now()->toDateString();
             $daily->$item  = 0;
-        } else {
-            $daily->$item += 1;
-        } /*else*/
+        }
+        $daily->$item += 1;
         $daily->save();
     }
 
