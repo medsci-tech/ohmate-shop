@@ -208,8 +208,16 @@ class Wechat
             if (is_array($eventKey) && (0 == count($eventKey))) {
                 $customer->referrer_id = 0;
             } else {
-                $referrerId = (int)substr($eventKey, strlen('qrscene_'));
-                $referrer = Customer::where('id', $referrerId)->first();
+
+                $referrer_str = substr($eventKey, 8);
+
+                if (strlen($referrer_str) > 10) {
+                    //假如是32位随机数,则为瞬联的旧版用户
+                    $referrer = Customer::where('old_id', $referrer_str)->first();
+                } else {
+                    $referrerId = (int)$referrer_str;
+                    $referrer = Customer::where('id', $referrerId)->first();
+                }
                 if ((!$referrer) || (!$referrer->is_registered)) {
                     $customer->referrer_id = 0;
                 } else {
