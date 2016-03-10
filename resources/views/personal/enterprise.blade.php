@@ -95,27 +95,27 @@
 
   var data1 = [];
   var data2 = [];
-  var color_list = ["#F7464A","#46BFBD","#FDB45C","#949FB1","#4D5360"];
-  var highlight_list = ["#FF5A5E","#5AD3D1","#FFC870","#A8B3C5","#616774"];
+  var color_list = ["#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#B4B482", "#B15928"];
+  var highlight_list = ["#CEF6FF", "#47A0DC", "#DAFFB2", "#5BC854", "#FFC2C1", "#FF4244", "#FFE797", "#FFA728", "#F2DAFE", "#9265C2", "#DCDCAA", "#D98150"];
 
   for ( i = 0 ; i < count.enterprise_article_statistics.length ; i++ ){
     data1.push({
       value: count.enterprise_article_statistics[i].count,
-      color: color_list[i%5],
-      highlight: highlight_list[i%5],
+      color: color_list[i%12],
+      highlight: highlight_list[i%12],
       label: count.enterprise_article_statistics[i].article_type.type_ch
     });
-    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%5]);
+    $('.data1').children().eq(i).children('span').css("background-color",color_list[i%12]);
   }
 
   for ( i = 0 ; i < count.enterprise_commodity_statistics.length ; i++ ){
     data2.push({
       value: count.enterprise_commodity_statistics[i].count,
-      color: color_list[i%5],
-      highlight: highlight_list[i%5],
+      color: color_list[i%12],
+      highlight: highlight_list[i%12],
       label: count.enterprise_commodity_statistics[i].commodity.name
     });
-    $('.data2').children().eq(i).children('span').css("background-color",color_list[i%5]);
+    $('.data2').children().eq(i).children('span').css("background-color",color_list[i%12]);
   }
 
   if (data1.length == 1) {
