@@ -15,7 +15,7 @@ class EducationController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth.wechat', ['except' => ['view']]);
+        //$this->middleware('auth.wechat', ['except' => ['view']]);
     }
 
     public function injections()

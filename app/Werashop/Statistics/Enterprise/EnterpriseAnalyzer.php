@@ -47,7 +47,7 @@ class EnterpriseAnalyzer
             $statistics = new EnterpriseArticleStatistics();
             $statistics->article_type_id    = $articleTypeId;
             $statistics->date   = $date;
-            $statistics->count  = 1;
+            $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;
         $statistics->save();
@@ -66,7 +66,7 @@ class EnterpriseAnalyzer
             $statistics = new EnterpriseCommodityStatistics();
             $statistics->commodity_id       = $commodityId;
             $statistics->date   = $date;
-            $statistics->count  = 1;
+            $statistics->count  = 0;
         } /*if>*/
         $statistics->count += 1;
         $statistics->save();
