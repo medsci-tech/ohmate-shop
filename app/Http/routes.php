@@ -91,5 +91,4 @@ Route::any('github', 'Github\GithubController@onEvent');
 
 Route::any('test', function () {
 
-
 });
