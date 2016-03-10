@@ -90,5 +90,4 @@ Route::group(['middleware' => 'web'], function () {
 Route::any('github', 'Github\GithubController@onEvent');
 
 Route::any('test', function () {
-
 });
