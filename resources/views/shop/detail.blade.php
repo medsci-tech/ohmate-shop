@@ -107,7 +107,10 @@
             priceBefore: this.goods.priceBefore,
             num: this.goods.num
           });
-        };
+        }
+        if (cart_num == ''){
+          cart_num = 0;
+        }
         cart_num += this.goods.num;
         $('#touch span').text( cart_num );
         $('.jumbotron').show();
