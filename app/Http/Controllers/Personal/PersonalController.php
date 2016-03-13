@@ -97,6 +97,11 @@ class PersonalController extends Controller
     public function friend()
     {
         $customer       = \Helper::getCustomer();
+        if (!$customer->qr_code) {
+            $customer->qr_code = \Wechat::getForeverQrCodeUrl($customer->id);
+            $customer->save();
+        }
+
         $data['qrCode'] = $customer->qr_code;
         return view('personal.friend', ['data' => $data]);
     }
