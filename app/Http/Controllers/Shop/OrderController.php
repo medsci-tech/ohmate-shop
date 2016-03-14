@@ -50,7 +50,7 @@ class OrderController extends Controller
     }
 
     public function test(Request $request) {
-        $access_token = \Wechat::getWebAuthAccessToken($request->url());
+        $access_token = \Wechat::getWebAuthAccessToken();
         $timestamp = Carbon::now()->getTimestamp();
         $addr_sign = [
             'accesstoken='. $access_token,
