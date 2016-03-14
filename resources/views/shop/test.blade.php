@@ -33,25 +33,28 @@
     wx.config({!! $js !!});
     alert(wx);
 
-    wx.checkJsApi({
-        jsApiList: [
-            'checkJsApi',
-            'editAddress',
-            'chooseWXPay',
-            'getLatestAddress',
-            'openCard',
-            'getLocation'
-        ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-        success: function(res) {
-            alert('1234');
-            alert(res);
-            // 以键值对的形式返回，可用的api值true，不可用为false
-            // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-        },
-        fail: function(res) {
-            alert('fail');
-            alert(res);
-        }
+    wx.ready(function(){
+        alert('ready');
+        wx.checkJsApi({
+            jsApiList: [
+                'checkJsApi',
+                'editAddress',
+                'chooseWXPay',
+                'getLatestAddress',
+                'openCard',
+                'getLocation'
+            ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function(res) {
+                alert('1234');
+                alert(res);
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            },
+            fail: function(res) {
+                alert('fail');
+                alert(res);
+            }
+        });
     });
     {{--WeixinJSBridge.invoke('editAddress', {--}}
         {{--appId: "{{$appId}}",--}}
