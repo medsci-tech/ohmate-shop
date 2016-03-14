@@ -51,6 +51,7 @@ class OrderController extends Controller
 
     public function test(Request $request) {
         $access_token = \Wechat::getWebAuthAccessToken();
+
         $timestamp = Carbon::now()->getTimestamp();
         $addr_sign = [
             'accesstoken='. $access_token,
@@ -67,7 +68,15 @@ class OrderController extends Controller
             'appId' => env('WX_APPID'),
             'timestamp' => $timestamp,
             'addrSign' => sha1($addr_sign),
-            'url' => $request->fullUrl()
+            'url' => $request->fullUrl(),
+            'js' => \Wechat::getJssdkConfig([
+                'checkJsApi',
+                'editAddress',
+                'chooseWXPay',
+                'getLatestAddress',
+                'openCard',
+                'getLocation'
+            ])
         ]);
     }
 

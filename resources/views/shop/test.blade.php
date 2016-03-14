@@ -27,40 +27,43 @@
 </div>
 
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
+<script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
+    wx.config({{$js}});
     alert('111');
-
-
-    function onBridgeReady(){
-        WeixinJSBridge.invoke('editAddress', {
-            appId: "{{$appId}}",
-            scope: "jsapi_address",
-            signType: "sha1",
-            addrSign: "{{$addrSign}}",
-            timeStamp: "{{$timestamp}}",
-            nonceStr: "123456"
-        }, function (res) {
-            alert('123');
-            alert(res.err_msg);
+    WeixinJSBridge.invoke('editAddress', {
+        appId: "{{$appId}}",
+        scope: "jsapi_address",
+        signType: "sha1",
+        addrSign: "{{$addrSign}}",
+        timeStamp: "{{$timestamp}}",
+        nonceStr: "123456"
+    }, function (res) {
+        alert('123');
+        alert(res.err_msg);
 //若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。
 //否则若返回空，则表示用户取消了这一次编辑收货地址。
-            document.form1.address1.value = res.proviceFirstStageName;
-            document.form1.address2.value = res.addressCitySecondStageName;
-            document.form1.address3.value = res.addressCountiesThirdStageName;
-            document.form1.detail.value = res.addressDetailInfo;
-            document.form1.phone.value = res.telNumber;
-        });
-    }
-    if (typeof WeixinJSBridge == "undefined"){
-        if( document.addEventListener ){
-            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-        }else if (document.attachEvent){
-            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-        }
-    }else{
-        onBridgeReady();
-    }
+        document.form1.address1.value = res.proviceFirstStageName;
+        document.form1.address2.value = res.addressCitySecondStageName;
+        document.form1.address3.value = res.addressCountiesThirdStageName;
+        document.form1.detail.value = res.addressDetailInfo;
+        document.form1.phone.value = res.telNumber;
+    });
+
+//    function onBridgeReady(){
+//
+//    }
+//    if (typeof WeixinJSBridge == "undefined"){
+//        if( document.addEventListener ){
+//            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+//        }else if (document.attachEvent){
+//            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+//            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+//        }
+//    }else{
+//        onBridgeReady();
+//    }
 </script>
 </body>
 </html>

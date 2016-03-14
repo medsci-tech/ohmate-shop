@@ -11,6 +11,7 @@ use App\Models\Order;
 use Overtrue\Wechat\AccessToken;
 use Overtrue\Wechat\Auth;
 use Overtrue\Wechat\Http;
+use Overtrue\Wechat\Js;
 use Overtrue\Wechat\Menu;
 use Overtrue\Wechat\MenuItem;
 use Overtrue\Wechat\Message;
@@ -327,6 +328,17 @@ class Wechat
     public function getWebAuthAccessToken()
     {
         return \Session::get('web_token');
+    }
+
+
+    /**
+     * @param $array
+     * @return array|string
+     */
+    public function getJssdkConfig($array)
+    {
+        $js = new Js($this->_appId, $this->_secret);
+        return $js->config($array);
     }
 
     /**
