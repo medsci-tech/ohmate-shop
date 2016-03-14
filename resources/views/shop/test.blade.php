@@ -22,7 +22,7 @@
         <div class="arrow"></div>
         <p>&emsp;实际支付：￥88.00<small>(含运费￥8.00)</small></p>
     </div>
-    <button id="a">点击我</button>
+    <button id="a" type="button">点击我</button>
     {{--end_example--}}
 
 </div>
@@ -67,8 +67,6 @@
             timeStamp: "{{$timestamp}}",
             nonceStr: "123456"
         }, function (res) {
-            alert('123');
-            alert(res.err_msg);
 //若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。
 //否则若返回空，则表示用户取消了这一次编辑收货地址。
             document.form1.address1.value = res.proviceFirstStageName;
