@@ -55,6 +55,15 @@
                 alert(res);
             }
         });
+
+        wx.editAddress({
+            appId: "{{$appId}}",
+            scope: "jsapi_address",
+            signType: "sha1",
+            addrSign: "{{$addrSign}}",
+            timeStamp: "{{$timestamp}}",
+            nonceStr: "123456"
+        });
         WeixinJSBridge.invoke('editAddress', {
             appId: "{{$appId}}",
             scope: "jsapi_address",
