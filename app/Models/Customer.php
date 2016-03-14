@@ -55,6 +55,11 @@ class Customer extends Model
         return $this->belongsTo(CustomerType::class, 'type_id');
     }
 
+    public function information()
+    {
+        return $this->hasOne(CustomerInformation::class);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
