@@ -47,26 +47,30 @@
             alert(res);
             // 以键值对的形式返回，可用的api值true，不可用为false
             // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+        },
+        fail: function(res) {
+            alert('fail');
+            alert(res);
         }
     });
-    WeixinJSBridge.invoke('editAddress', {
-        appId: "{{$appId}}",
-        scope: "jsapi_address",
-        signType: "sha1",
-        addrSign: "{{$addrSign}}",
-        timeStamp: "{{$timestamp}}",
-        nonceStr: "123456"
-    }, function (res) {
-        alert('123');
-        alert(res.err_msg);
-//若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。
-//否则若返回空，则表示用户取消了这一次编辑收货地址。
-        document.form1.address1.value = res.proviceFirstStageName;
-        document.form1.address2.value = res.addressCitySecondStageName;
-        document.form1.address3.value = res.addressCountiesThirdStageName;
-        document.form1.detail.value = res.addressDetailInfo;
-        document.form1.phone.value = res.telNumber;
-    });
+    {{--WeixinJSBridge.invoke('editAddress', {--}}
+        {{--appId: "{{$appId}}",--}}
+        {{--scope: "jsapi_address",--}}
+        {{--signType: "sha1",--}}
+        {{--addrSign: "{{$addrSign}}",--}}
+        {{--timeStamp: "{{$timestamp}}",--}}
+        {{--nonceStr: "123456"--}}
+    {{--}, function (res) {--}}
+        {{--alert('123');--}}
+        {{--alert(res.err_msg);--}}
+{{--//若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。--}}
+{{--//否则若返回空，则表示用户取消了这一次编辑收货地址。--}}
+        {{--document.form1.address1.value = res.proviceFirstStageName;--}}
+        {{--document.form1.address2.value = res.addressCitySecondStageName;--}}
+        {{--document.form1.address3.value = res.addressCountiesThirdStageName;--}}
+        {{--document.form1.detail.value = res.addressDetailInfo;--}}
+        {{--document.form1.phone.value = res.telNumber;--}}
+    {{--});--}}
 
 //    function onBridgeReady(){
 //
