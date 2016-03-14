@@ -22,6 +22,7 @@
         <div class="arrow"></div>
         <p>&emsp;实际支付：￥88.00<small>(含运费￥8.00)</small></p>
     </div>
+    <button id="a">点击我</button>
     {{--end_example--}}
 
 </div>
@@ -45,10 +46,9 @@
                 'getLocation'
             ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
             success: function(res) {
-                alert('1234');
-                alert(res);
-                // 以键值对的形式返回，可用的api值true，不可用为false
-                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                $("#a").click(function () {
+                    editAddressCallback();
+                });
             },
             fail: function(res) {
                 alert('fail');
@@ -56,14 +56,9 @@
             }
         });
 
-        wx.editAddress({
-            appId: "{{$appId}}",
-            scope: "jsapi_address",
-            signType: "sha1",
-            addrSign: "{{$addrSign}}",
-            timeStamp: "{{$timestamp}}",
-            nonceStr: "123456"
-        });
+    });
+
+    function editAddressCallback() {
         WeixinJSBridge.invoke('editAddress', {
             appId: "{{$appId}}",
             scope: "jsapi_address",
@@ -82,7 +77,7 @@
             document.form1.detail.value = res.addressDetailInfo;
             document.form1.phone.value = res.telNumber;
         });
-    });
+    }
 
 //    function onBridgeReady(){
 //
