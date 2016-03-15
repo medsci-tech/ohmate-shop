@@ -12,7 +12,7 @@
 <div class="weui_panel_bd">
     <div class="weui_media_box weui_media_text">
         <h4 class="weui_media_title">{{$article->title}}</h4>
-        <p class="weui_media_desc">时间：{{$article->updated_at->year}}年{{$article->updated_at->month}}月{{$article->updated_at->day}}日</p>
+        <p class="weui_media_desc">时间：{{$article->created_at->year}}年{{$article->created_at->month}}月{{$article->created_at->day}}日</p>
         <div class="xq_line"></div>
         @if($article->uri)
             <img src="{{$article->uri}}" width="100%">
@@ -20,7 +20,7 @@
 
         @if($article->video_url)
             <video controls="controls"
-                   src="{{$item->video_url}}"
+                   src="{{$article->video_url}}"
                    width="100%" height="100%"
             >
             </video>
