@@ -25,9 +25,21 @@
             <img src="/image/education/index/4.png" alt=""><br>
             合理运动
         </div>
+    </div>
+    <div class="weui_navbar" style="margin-top: 85px">
         <div id="tab_5" class="weui_navbar_item tab_font-size">
             <img src="/image/education/index/5.png" alt=""><br>
             血糖监测
+        </div>
+        <div id="tab_2" class="weui_navbar_item tab_font-size">
+            <img src="/image/education/index/99.png" alt=""><br>
+            积分兑换
+        </div>
+        <div id="tab_3" class="weui_navbar_item tab_font-size">
+
+        </div>
+        <div id="tab_4" class="weui_navbar_item tab_font-size">
+
         </div>
     </div>
     <div id="view_1" class="tab_bd">
