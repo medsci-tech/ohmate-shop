@@ -1,0 +1,72 @@
+@import url(bootstrap.min.css);
+@import url(buttons.css);
+@import url(font-awesome.min.css);
+[v-cloak] {
+  display: none; }
+
+body {
+  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  background-color: #EEEEEE; }
+
+.button {
+  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
+
+.button-caution {
+  background-color: #f71212; }
+
+#signin form {
+  padding: 5px 15px 15px 15px;
+  background-color: #fff;
+  border-radius: 15px; }
+#signin h2 {
+  margin: 20px; }
+#signin .form-signin {
+  max-width: 330px; }
+#signin input {
+  height: 40px; }
+#signin .button {
+  width: 100%; }
+
+#index {
+  background-color: #fff; }
+  #index > .container-fluid {
+    margin-top: 52px; }
+  #index .navbar .active {
+    color: #fff; }
+  #index .navbar form .form-control-feedback {
+    pointer-events: all; }
+  #index .navbar form .btn-link:hover {
+    color: #9d9d9d;
+    text-decoration: none; }
+  #index .navbar form .btn-link:focus {
+    color: #9d9d9d;
+    text-decoration: none;
+    outline: none; }
+  #index .navbar form .btn-link:active {
+    color: #101010; }
+  #index .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 60px 0 0 0;
+    background-color: #eee; }
+    #index .sidebar .active a, #index .sidebar .active a:hover {
+      background-color: #337ab7;
+      color: #fff; }
+    #index .sidebar a:hover {
+      background-color: #5bc0de;
+      color: #fff; }
+  #index .main {
+    background-color: #fff; }
+    #index .main .popover-content {
+      padding: 0; }
+    #index .main .pagination span {
+      pointer-events: no; }
+  @media (max-width: 767px) {
+    #index .sidebar {
+      position: inherit;
+      padding-top: 0px; }
+      #index .sidebar li {
+        display: inline-block; } }
+
+/*# sourceMappingURL=admin.css.map */
