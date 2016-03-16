@@ -56,6 +56,14 @@ class Customer extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function information()
+    {
+        return $this->hasOne(CustomerInformation::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function beans()
