@@ -10949,8 +10949,19 @@ namespace {
          * @return string 
          * @static 
          */
-        public static function getWebAuthAccessToken($url){
-            return \App\Werashop\Wechat\Wechat::getWebAuthAccessToken($url);
+        public static function getWebAuthAccessToken(){
+            return \App\Werashop\Wechat\Wechat::getWebAuthAccessToken();
+        }
+        
+        /**
+         * 
+         *
+         * @param $array
+         * @return array|string 
+         * @static 
+         */
+        public static function getJssdkConfig($array){
+            return \App\Werashop\Wechat\Wechat::getJssdkConfig($array);
         }
         
         /**
@@ -11075,51 +11086,6 @@ namespace {
         }
         
         /**
-         * 
-         *
-         * @param \App\Models\Customer
-         * @return bool 
-         * @static 
-         */
-        public static function signIn($customer){
-            return \App\Werashop\Bean\BeanRecharger::signIn($customer);
-        }
-        
-        /**
-         * 
-         *
-         * @param \App\Models\Customer $customer
-         * @return bool 
-         * @static 
-         */
-        public static function study($customer){
-            return \App\Werashop\Bean\BeanRecharger::study($customer);
-        }
-        
-        /**
-         * 分享返积分
-         *
-         * @param \App\Models\Customer $customer
-         * @return bool 
-         * @static 
-         */
-        public static function share($customer){
-            return \App\Werashop\Bean\BeanRecharger::share($customer);
-        }
-        
-        /**
-         * 消费返积分
-         *
-         * @param \App\Models\Customer $customer
-         * @param int $value
-         * @return bool 
-         * @static 
-         */
-        public static function consume($customer, $value){
-            return \App\Werashop\Bean\BeanRecharger::consume($customer, $value);
-        }
-        
-        /**
          * 推广返积分
          *
          * @param \App\Models\Customer $inviter
@@ -11128,41 +11094,6 @@ namespace {
          */
         public static function invite($inviter){
             return \App\Werashop\Bean\BeanRecharger::invite($inviter);
-        }
-        
-        /**
-         * 
-         *
-         * @param \App\Models\Customer $customer
-         * @param int $value
-         * @return bool 
-         * @static 
-         */
-        public static function consumeFeedback($customer, $value){
-            return \App\Werashop\Bean\BeanRecharger::consumeFeedback($customer, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param \App\Models\Customer $customer
-         * @param int $value
-         * @return bool 
-         * @static 
-         */
-        public static function consumeVolunteerFeedback($customer, $value){
-            return \App\Werashop\Bean\BeanRecharger::consumeVolunteerFeedback($customer, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param \App\Models\Customer $customer
-         * @return bool 
-         * @static 
-         */
-        public static function educationVolunteerFeedback($customer){
-            return \App\Werashop\Bean\BeanRecharger::educationVolunteerFeedback($customer);
         }
         
         /**

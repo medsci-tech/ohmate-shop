@@ -77,6 +77,8 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('delete', 'AddressController@delete');
             Route::post('update', 'AddressController@update');
             Route::post('list', 'AddressController@addressList');
+
+            Route::get('test', 'OrderController@test');
         });
 
         Route::group(['prefix' => 'cart'], function () {
