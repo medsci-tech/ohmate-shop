@@ -96,6 +96,9 @@
     },
     methods: {
       addGoods: function () {
+        if (cart_num == ''){
+          cart_num = 0;
+        }
         if (this.alreadyHave != -1) {
           this.cart[this.alreadyHave].num += this.goods.num;
         } else {
@@ -107,11 +110,8 @@
             priceBefore: this.goods.priceBefore,
             num: this.goods.num
           });
+          cart_num++;
         }
-        if (cart_num == ''){
-          cart_num = 0;
-        }
-        cart_num += this.goods.num;
         $('#touch span').text( cart_num );
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
