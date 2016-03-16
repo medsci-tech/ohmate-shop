@@ -274,6 +274,7 @@ a, a:focus, a:hover {
 .tab_font-size {
   font-size: 12px;
   padding: 5px 0;
+  width: 25%;
 }
 
 .tab_font-size img {
