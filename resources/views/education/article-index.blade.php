@@ -10,18 +10,23 @@
 <div class="weui_tab">
     <div class="weui_navbar">
         <div id="tab_1" class="weui_navbar_item tab_bg tab_font-size">
+            <img src="/image/education/index/1.png" alt=""><br>
             糖友科普
         </div>
         <div id="tab_2" class="weui_navbar_item tab_font-size">
+            <img src="/image/education/index/2.png" alt=""><br>
             药物治疗
         </div>
         <div id="tab_3" class="weui_navbar_item tab_font-size">
+            <img src="/image/education/index/3.png" alt=""><br>
             膳食营养
         </div>
         <div id="tab_4" class="weui_navbar_item tab_font-size">
+            <img src="/image/education/index/4.png" alt=""><br>
             合理运动
         </div>
         <div id="tab_5" class="weui_navbar_item tab_font-size">
+            <img src="/image/education/index/5.png" alt=""><br>
             血糖监测
         </div>
     </div>

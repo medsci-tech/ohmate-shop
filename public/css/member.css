@@ -273,6 +273,11 @@ a, a:focus, a:hover {
 
 .tab_font-size {
   font-size: 12px;
+  padding: 5px 0;
+}
+
+.tab_font-size img {
+  width: 50px;
 }
 
 .tab_bd {
@@ -280,5 +285,5 @@ a, a:focus, a:hover {
 }
 
 .tab_top {
-  margin-top: 50px;
+  margin-top: 90px;
 }
