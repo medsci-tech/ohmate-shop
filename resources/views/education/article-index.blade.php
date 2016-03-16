@@ -32,8 +32,10 @@
             血糖监测
         </div>
         <div id="tab_2" class="weui_navbar_item tab_font-size">
-            <img src="/image/education/index/99.png" alt=""><br>
-            积分兑换
+            <a href="{{url('/shop/index')}}">
+                <img src="/image/education/index/99.png" alt=""><br>
+                积分换礼
+            </a>
         </div>
         <div id="tab_3" class="weui_navbar_item tab_font-size">
 
