@@ -51,22 +51,18 @@ class RegisterController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
-        } /*if>*/
+        }
 
         $user       = \Helper::getUser();
         $customer   = \Helper::getCustomer();
 
-//        if ($request->input('phone') != $customer->phone) {
-//            return redirect()->back()->with('error_message', '电话号码不匹配!')->withInput();
-//        } /*if>*/
-
         if ($request->input('code') != $customer->auth_code) {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
-        } /*if>*/
+        }
 
         if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
             return redirect()->back()->with('error_message', '验证码过期!')->withInput();
-        } /*if>*/
+        }
 
         $customer->update([
             'phone'             => $request->input('phone'),
@@ -77,9 +73,9 @@ class RegisterController extends Controller
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
         ]);
 
-        $ret = \BeanRecharger::register($customer->id);
+        $ret = $customer->register();
         if ($ret && $customer->referrer_id) {
-            \BeanRecharger::invite($customer->referrer_id);
+            \BeanRecharger::invite($customer->getReferrer());
             \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
         } /*if>*/
 

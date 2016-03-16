@@ -72,7 +72,7 @@ class Order extends Model
     public function paid()
     {
         if ($this->status->name == 'paying' && $next = $this->status->next()) {
-            \BeanRecharger::executeConsume($this->customer_id, $this->total_price - $this->post_fee);
+            \BeanRecharger::executeConsume($this->customer, $this->total_price - $this->post_fee);
             $this->beans_payment = $this->beans_payment_calculated;
             $this->setPostNo();
             $this->updateStatistics();
@@ -103,7 +103,7 @@ class Order extends Model
      */
     public function calculate()
     {
-        $cash_payment_calculated_without_post_fee = \BeanRecharger::calculateConsume($this->customer_id, $this->total_price - $this->post_fee);
+        $cash_payment_calculated_without_post_fee = \BeanRecharger::calculateConsume($this->customer, $this->total_price - $this->post_fee);
 
         $this->cash_payment_calculated = $cash_payment_calculated_without_post_fee + $this->post_fee;
         $this->beans_payment_calculated = $this->total_price - $cash_payment_calculated_without_post_fee - $this->post_fee;
