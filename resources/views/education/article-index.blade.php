@@ -391,7 +391,7 @@
             }
     }
     reLoad();
-    $('#tab_1').trigger('click');
+    $("#text_view").val('1');
 
 </script>
 </body>
