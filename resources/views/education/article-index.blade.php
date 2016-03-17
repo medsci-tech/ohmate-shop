@@ -382,6 +382,7 @@
     }
 
     function reLoad() {
+        var thisId = window.location.hash;
         if (thisId != "" && thisId != undefine) {
             $(thisId).cilck();
         } else {
