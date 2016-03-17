@@ -31,7 +31,7 @@ class BeanRecharger
      * @param int $value
      * @return bool
      */
-    protected function recharge(Customer $customer, string $action, int $value = 1)
+    protected function recharge(Customer $customer, $action, $value = 1)
     {
         $beanRate = BeanRate::where('action_en', $action)->firstOrFail();
 
@@ -52,7 +52,7 @@ class BeanRecharger
      * @param string $action
      * @param int $beans_changed
      */
-    protected function update(Customer $customer, string $action, int $beans_changed)
+    protected function update(Customer $customer, $action, $beans_changed)
     {
         if ($action == AppConstant::BEAN_ACTION_CONSUME) {
             if ($beans_changed >= $customer->beans_total) {
@@ -120,7 +120,7 @@ class BeanRecharger
      * @param int $value
      * @return bool
      */
-    protected function consume(Customer $customer, int $value)
+    protected function consume(Customer $customer, $value)
     {
         return $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME, $value * AppConstant::MONEY_BEAN_RATE);
     }
@@ -154,7 +154,7 @@ class BeanRecharger
      * @param int $value
      * @return bool
      */
-    protected function consumeFeedback(Customer $customer, int $value)
+    protected function consumeFeedback(Customer $customer, $value)
     {
         return $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME_FEEDBACK, $value * AppConstant::MONEY_BEAN_RATE);
     }
@@ -164,7 +164,7 @@ class BeanRecharger
      * @param int $value
      * @return bool
      */
-    protected function consumeVolunteerFeedback(Customer $customer, int $value)
+    protected function consumeVolunteerFeedback(Customer $customer, $value)
     {
         $referrer = $customer->getReferrer();
         if (!$referrer || $referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
