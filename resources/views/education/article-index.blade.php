@@ -6,7 +6,7 @@
     <title>教育学习</title>
     <link rel="stylesheet" href="/css/weui.min.css">
     <link rel="stylesheet" href="/css/member.css">
-<body onload="reLoad();">
+<body>
 <div class="weui_tab">
     <div class="weui_navbar">
         <div id="tab_1" class="weui_navbar_item tab_bg tab_font-size">
@@ -25,9 +25,23 @@
             <img src="/image/education/index/4.png" alt=""><br>
             合理运动
         </div>
+    </div>
+    <div class="weui_navbar" style="margin-top: 95px">
         <div id="tab_5" class="weui_navbar_item tab_font-size">
             <img src="/image/education/index/5.png" alt=""><br>
             血糖监测
+        </div>
+        <div id="tab_6" class="weui_navbar_item tab_font-size">
+            <a href="{{url('/shop/index')}}">
+            <img src="/image/education/index/99.png" alt=""><br>
+            积分换礼
+            </a>
+        </div>
+        <div id="tab_7" class="weui_navbar_item tab_font-size">
+
+        </div>
+        <div id="tab_8" class="weui_navbar_item tab_font-size">
+
         </div>
     </div>
     <div id="view_1" class="tab_bd">
@@ -370,12 +384,15 @@
     }
 
     function reLoad() {
-        var flag = document.getElementById('text_click').value;
-        var id = document.getElementById('text_id').value;
-        if(flag=='1') {
-            window.location.href = '/education/article';
-        }
+            var flag = document.getElementById('text_click').value;
+            var id = document.getElementById('text_id').value;
+            if(flag=='1') {
+                window.location.href = '/education/article';
+            }
     }
+    reLoad();
+    $("#text_view").val('1');
+
 </script>
 </body>
 </html>

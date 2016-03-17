@@ -75,7 +75,7 @@
         var i = 0;
         var j = JSON.parse(localStorage.cart);
         for ( k in j) {
-            i += j[k].num;
+            i++;
         }
         if (i != 0){
             cart_num = i;
