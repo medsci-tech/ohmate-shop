@@ -23,7 +23,7 @@ class AnalyzerConstant
     const CUSTOMER_ORDER             = 'order_count';//
     const CUSTOMER_MONEY_COST        = 'money_cost';//
 
-    /*docotor statistics*/
+    /*doctor statistics*/
 
     /*enterprise daily statistics*/
     const ENTERPRISE_FOCUS      = 'focus_count';

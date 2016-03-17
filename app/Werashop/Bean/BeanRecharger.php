@@ -203,7 +203,7 @@ class BeanRecharger
 
         if ($customer->beans_total <= 0) {
             return -1;
-        }
+    }
 
         $totalMoney = $customer->beans_total / AppConstant::MONEY_BEAN_RATE;
         if ($totalMoney >= $money) {
@@ -238,5 +238,4 @@ class BeanRecharger
             $this->educationVolunteerFeedback($customer)
         );
     }
-
 }
