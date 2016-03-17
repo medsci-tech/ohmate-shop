@@ -274,11 +274,25 @@ a, a:focus, a:hover {
 .tab_font-size {
   font-size: 12px;
   padding: 5px 0;
+  margin-right: -5px;
   width: 25%;
+  background-color: #fafafa;
 }
 
 .tab_font-size img {
   width: 50px;
+}
+
+.weui_navbar_item:after {
+  border-right: none;
+}
+
+.weui_navbar:after {
+  border-bottom: none;
+}
+
+.weui_navbar_item {
+  display: inline-table;
 }
 
 .tab_bd {
