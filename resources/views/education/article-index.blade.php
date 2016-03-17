@@ -383,7 +383,7 @@
 
     function reLoad() {
         var thisId = window.location.hash;
-        if (thisId != "" && thisId != undefine) {
+        if (thisId != "" && thisId != 'undefine') {
             $(thisId).cilck();
         } else {
             var flag = document.getElementById('text_click').value;
