@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,15 @@ class RegisterController extends Controller
         }
 
         $user       = \Helper::getUser();
-        $customer   = \Helper::getCustomer();
+
+        try {
+            $customer   = \Helper::getCustomerOrFail();
+        } catch (\Exception $e) {
+            $customer = Customer::create([
+                'openid' => $user['openid'],
+                'type_id' => 1,
+            ]);
+        }
 
         if ($request->input('code') != $customer->auth_code) {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
@@ -77,7 +86,7 @@ class RegisterController extends Controller
         if ($ret && $customer->referrer_id) {
             \BeanRecharger::invite($customer->getReferrer());
             \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
-        } /*if>*/
+        }
 
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
         return redirect('register/success');
