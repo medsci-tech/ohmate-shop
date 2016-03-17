@@ -274,7 +274,6 @@ a, a:focus, a:hover {
 .tab_font-size {
   font-size: 12px;
   padding: 5px 0;
-  margin-right: -5px;
   width: 25%;
   background-color: #fafafa;
 }

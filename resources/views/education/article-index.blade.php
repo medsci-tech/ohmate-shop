@@ -32,10 +32,8 @@
             血糖监测
         </a>
         <a href="{{url('/shop/index')}}" id="tab_6" class="weui_navbar_item tab_font-size">
-            <a >
-                <img src="/image/education/index/99.png" alt=""><br>
-                积分换礼
-            </a>
+            <img src="/image/education/index/99.png" alt=""><br>
+            积分换礼
         </a>
         <a id="tab_7" class="weui_navbar_item tab_font-size">
 
