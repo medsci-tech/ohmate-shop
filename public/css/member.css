@@ -281,6 +281,10 @@ a, a:focus, a:hover {
   width: 50px;
 }
 
+.weui_navbar {
+  background-color: #fff;
+}
+
 .weui_navbar_item:after {
   border-right: none;
 }

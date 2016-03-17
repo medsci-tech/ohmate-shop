@@ -391,6 +391,8 @@
             }
     }
 
+    $('#tab_1').trigger('click');
+
 </script>
 </body>
 </html>
