@@ -383,9 +383,10 @@
 
     function reLoad() {
         var thisId = window.location.hash;
-        if (thisId != "" && thisId != 'undefine') {
-            $(thisId).trigger("click");
-        } else {
+            if (thisId != "" && thisId != 'undefine') {
+                thisId.offset().top -= 85;
+                $(thisId).trigger("click");
+            } else {
             var flag = document.getElementById('text_click').value;
             var id = document.getElementById('text_id').value;
             if(flag=='1') {
