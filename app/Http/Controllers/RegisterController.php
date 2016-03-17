@@ -56,14 +56,7 @@ class RegisterController extends Controller
 
         $user       = \Helper::getUser();
 
-        try {
-            $customer   = \Helper::getCustomerOrFail();
-        } catch (\Exception $e) {
-            $customer = Customer::create([
-                'openid' => $user['openid'],
-                'type_id' => 1,
-            ]);
-        }
+        $customer   = \Helper::getCustomer();
 
         if ($request->input('code') != $customer->auth_code) {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
@@ -107,7 +100,16 @@ class RegisterController extends Controller
         $code   = \MessageSender::generateMessageVerify();
         \MessageSender::sendMessageVerify($phone, $code);
 
-        $customer = \Helper::getCustomer();
+        $user = \Helper::getUser();
+        try {
+            $customer   = \Helper::getCustomerOrFail();
+        } catch (\Exception $e) {
+            $customer = Customer::create([
+                'openid' => $user['openid'],
+                'type_id' => 1,
+                'phone' => $request->input('phone'),
+            ]);
+        }
         $customer->update([
 //            'phone'     => $phone,
             'auth_code' => $code,
