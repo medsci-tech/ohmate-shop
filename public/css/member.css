@@ -273,7 +273,7 @@ a, a:focus, a:hover {
 
 .tab_font-size {
   font-size: 12px;
-  padding: 5px 0;
+  padding: 15px 0 5px 0;
   width: 25%;
 }
 
@@ -290,11 +290,7 @@ a, a:focus, a:hover {
 }
 
 .weui_navbar:nth-child(2) {
-  border-bottom: 1px solid #BCBAB6;
-}
-
-.weui_navbar_item {
-  display: inline-table;
+  border-bottom: 10px solid #eee;
 }
 
 .tab_bd {

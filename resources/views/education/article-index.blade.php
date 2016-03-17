@@ -9,38 +9,40 @@
 <body onload="reLoad();">
 <div class="weui_tab">
     <div class="weui_navbar">
-        <a href="#tab_1" id="tab_1" class="weui_navbar_item tab_bg tab_font-size">
+        <div id="tab_1" class="weui_navbar_item tab_bg tab_font-size">
             <img src="/image/education/index/1.png" alt=""><br>
             糖友科普
-        </a>
-        <a href="#tab_2" id="tab_2" class="weui_navbar_item tab_font-size">
+        </div>
+        <div id="tab_2" class="weui_navbar_item tab_font-size">
             <img src="/image/education/index/2.png" alt=""><br>
             药物治疗
-        </a>
-        <a href="#tab_3" id="tab_3" class="weui_navbar_item tab_font-size">
+        </div>
+        <div id="tab_3" class="weui_navbar_item tab_font-size">
             <img src="/image/education/index/3.png" alt=""><br>
             膳食营养
-        </a>
-        <a href="#tab_4" id="tab_4" class="weui_navbar_item tab_font-size">
+        </div>
+        <div id="tab_4" class="weui_navbar_item tab_font-size">
             <img src="/image/education/index/4.png" alt=""><br>
             合理运动
-        </a>
+        </div>
     </div>
-    <div class="weui_navbar" style="margin-top: 85px">
-        <a href="#tab_5" id="tab_5" class="weui_navbar_item tab_font-size">
+    <div class="weui_navbar" style="margin-top: 95px">
+        <div id="tab_5" class="weui_navbar_item tab_font-size">
             <img src="/image/education/index/5.png" alt=""><br>
             血糖监测
-        </a>
-        <a href="{{url('/shop/index')}}" id="tab_6" class="weui_navbar_item tab_font-size">
+        </div>
+        <div id="tab_6" class="weui_navbar_item tab_font-size">
+            <a href="{{url('/shop/index')}}">
             <img src="/image/education/index/99.png" alt=""><br>
             积分换礼
-        </a>
-        <a id="tab_7" class="weui_navbar_item tab_font-size">
+            </a>
+        </div>
+        <div id="tab_7" class="weui_navbar_item tab_font-size">
 
-        </a>
-        <a id="tab_8" class="weui_navbar_item tab_font-size">
+        </div>
+        <div id="tab_8" class="weui_navbar_item tab_font-size">
 
-        </a>
+        </div>
     </div>
     <div id="view_1" class="tab_bd">
         <div id="detail_1" class="weui_panel_bd tab_top">
@@ -285,7 +287,6 @@
         });
 
         $("#tab_5").on('click', function () {
-            $("#tab_5").offset().top -= 85;
             var view = $("#text_view").val();
             if (view == '1') {
                 $("#tab_1").removeClass("tab_bg");
@@ -383,17 +384,11 @@
     }
 
     function reLoad() {
-        var thisId = window.location.hash;
-            if (thisId != "" && thisId != 'undefine') {
-                $(thisId).offset().top -= 85;
-                $(thisId).trigger("click");
-            } else {
             var flag = document.getElementById('text_click').value;
             var id = document.getElementById('text_id').value;
             if(flag=='1') {
                 window.location.href = '/education/article';
             }
-        }
     }
 
 </script>
