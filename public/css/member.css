@@ -290,6 +290,10 @@ a, a:focus, a:hover {
   border-bottom: none;
 }
 
+.weui_navbar:nth-child(2) {
+  border-bottom: 1px solid #BCBAB6;
+}
+
 .weui_navbar_item {
   display: inline-table;
 }
