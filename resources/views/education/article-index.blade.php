@@ -285,6 +285,7 @@
         });
 
         $("#tab_5").on('click', function () {
+            $("#tab_5").offset().top -= 85;
             var view = $("#text_view").val();
             if (view == '1') {
                 $("#tab_1").removeClass("tab_bg");
@@ -394,6 +395,7 @@
             }
         }
     }
+
 </script>
 </body>
 </html>
