@@ -46,17 +46,16 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $user       = \Helper::getUser();
+        $customer   = \Helper::getCustomer();
+
         $validator = \Validator::make($request->all(), [
-            'phone' => 'required|digits:11|unique:customers,phone',
+            'phone' => 'required|digits:11|unique:customers,phone,'.$customer->id,
             'code'  => 'required|digits:6'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        $user       = \Helper::getUser();
-
-        $customer   = \Helper::getCustomer();
 
         if ($request->input('code') != $customer->auth_code) {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
@@ -94,7 +93,7 @@ class RegisterController extends Controller
                 'success' => false,
                 'error_message' => $validator->errors()->getMessages()
             ]);
-        } /*if>*/
+        }
 
         $phone  = $request->input(['phone']);
         $code   = \MessageSender::generateMessageVerify();
@@ -107,7 +106,7 @@ class RegisterController extends Controller
             $customer = Customer::create([
                 'openid' => $user['openid'],
                 'type_id' => 1,
-                'phone' => $request->input('phone'),
+                'phone' => $phone,
             ]);
         }
         $customer->update([
