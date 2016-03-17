@@ -6,7 +6,7 @@
     <title>教育学习</title>
     <link rel="stylesheet" href="/css/weui.min.css">
     <link rel="stylesheet" href="/css/member.css">
-<body onload="reLoad();">
+<body>
 <div class="weui_tab">
     <div class="weui_navbar">
         <div id="tab_1" class="weui_navbar_item tab_bg tab_font-size">
@@ -390,7 +390,7 @@
                 window.location.href = '/education/article';
             }
     }
-
+    reLoad();
     $('#tab_1').trigger('click');
 
 </script>
