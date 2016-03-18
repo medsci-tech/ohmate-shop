@@ -105,6 +105,12 @@ a, a:focus, a:hover {
   #addresses .panel .panel-heading {
     padding-bottom: 5px;
     color: #a3a3a3; }
+    #addresses .panel .panel-heading button {
+      position: relative;
+      top: -4px;
+      right: -6px;
+      padding: 0 5px;
+      float: right; }
 #addresses table {
   margin-bottom: 0; }
   #addresses table tr td:first-child {

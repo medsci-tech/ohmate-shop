@@ -12,7 +12,9 @@
   <div class="row">
     <template v-if=" addresses != null ">
       <div class="panel panel-default">
-        <div class="panel-heading">地址列表</div>
+        <div class="panel-heading">地址列表
+          <button id="btn1" class="button button-rounded button-tiny button-caution">确定</button>
+        </div>
         <ul class="list-group">
           <li class="list-group-item" v-for="address in addresses">
             <table class="table table-condensed" @click="chooseAdd(address)">
@@ -101,5 +103,7 @@
   $(function () {
     city_selector();
   });
+
+  $('btn1').onclick($history.go(-1))
 </script>
 </html>
