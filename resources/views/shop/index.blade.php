@@ -77,7 +77,6 @@
         alert(localStorage.cart);
         for ( k in j) {
             i++;
-            alert(i+JSON.stringify(k));
         }
         if (i != 0){
             cart_num = i;

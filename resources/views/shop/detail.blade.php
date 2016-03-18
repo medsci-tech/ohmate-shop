@@ -152,10 +152,10 @@
   var cart_num = '';
   if (list.cart.length != 0) {
     var i = 0;
-    var j = JSON.stringify(list.cart);
+    alert(JSON.stringify(list.cart));
+    alert(localStorage.cart);
     for (item in list.cart) {
       i++;
-      alert(i+JSON.stringify(item));
     }
     cart_num = i;
   }
