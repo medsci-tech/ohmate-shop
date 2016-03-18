@@ -125,6 +125,8 @@
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script src="{{asset('/js/shop_cart.js')}}"></script>
-
+<script>
+  history.go(0);
+</script>
 </body>
 </html>
