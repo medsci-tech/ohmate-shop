@@ -9,6 +9,7 @@ use App\Models\Address;
 use App\Models\Customer;
 use App\Werashop\Exceptions\UserNotCachedException;
 use App\Werashop\Exceptions\UserNotSubscribedException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
  * Class Helper
@@ -64,13 +65,27 @@ class Helper
     public function getCustomer()
     {
         try {
-            $user = \Helper::getSessionCachedUser();
+            $user = self::getSessionCachedUser();
             $customer = Customer::where('openid', $user['openid'])->firstOrFail();
 
             return $customer;
         } catch (\Exception $e) {
             abort('404');
         }
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Model|static
+     * @throws UserNotCachedException
+     * @throws UserNotSubscribedException
+     * @throws ModelNotFoundException
+     */
+    public function getCustomerOrFail()
+    {
+        $user = self::getSessionCachedUser();
+        $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+
+        return $customer;
     }
 
     /**

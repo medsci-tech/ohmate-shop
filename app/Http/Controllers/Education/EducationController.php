@@ -110,7 +110,7 @@ class EducationController extends Controller
             return response()->json(['result' => '-1']);
         }
         \DailyAnalyzer::updateDailyItemCount($customer->id, AnalyzerConstant::CUSTOMER_DAILY_ARTICLE);
-        \BeanRecharger::excuteEducation($customer->id);
+        \BeanRecharger::executeEducation($customer);
 
         return response()->json(['result' => '1']);
     }

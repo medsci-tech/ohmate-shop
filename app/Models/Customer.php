@@ -170,4 +170,23 @@ class Customer extends Model
         $nextMonth = $date[0].'-0'.++$date[1];
         return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->orderBy('created_at', 'desc')->get();
     }
+
+    /**
+     * 处理注册逻辑, 调用积分计算方法
+     *
+     * @return $this
+     */
+    public function register()
+    {
+        \BeanRecharger::register($this);
+        return $this;
+    }
+
+    /**
+     * @return \App\Models\Customer | null
+     */
+    public function getReferrer()
+    {
+        return self::find('referrer_id');
+    }
 }

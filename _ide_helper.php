@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-03-14.
+ * Generated for Laravel 5.2.22 on 2016-03-16.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11036,6 +11036,19 @@ namespace {
         /**
          * 
          *
+         * @return \Illuminate\Database\Eloquent\Model|static 
+         * @throws UserNotCachedException
+         * @throws UserNotSubscribedException
+         * @throws ModelNotFoundException
+         * @static 
+         */
+        public static function getCustomerOrFail(){
+            return \App\Werashop\Helper\Helper::getCustomerOrFail();
+        }
+        
+        /**
+         * 
+         *
          * @param string|\App\Werashop\Helper\Address $province
          * @return int 
          * @static 
@@ -11062,159 +11075,60 @@ namespace {
     class BeanRecharger extends \App\Werashop\Bean\Facades\BeanRecharger{
         
         /**
-         * 
+         * 用户注册时调用,计算迈豆
          *
-         * @param $customer
-         * @param $action
-         * @param int $value
+         * @param \App\Models\Customer $customer
          * @return bool 
          * @static 
          */
-        public static function recharge($customer, $action, $value = 1){
-            return \App\Werashop\Bean\BeanRecharger::recharge($customer, $action, $value);
+        public static function register($customer){
+            return \App\Werashop\Bean\BeanRecharger::register($customer);
         }
         
         /**
-         * 
+         * 推广返积分
          *
-         * @param $customer
-         * @param $action
-         * @param $value
-         * @static 
-         */
-        public static function update($customer, $action, $value){
-            return \App\Werashop\Bean\BeanRecharger::update($customer, $action, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
+         * @param \App\Models\Customer $inviter
          * @return bool 
          * @static 
          */
-        public static function register($user){
-            return \App\Werashop\Bean\BeanRecharger::register($user);
+        public static function invite($inviter){
+            return \App\Werashop\Bean\BeanRecharger::invite($inviter);
         }
         
         /**
-         * 
+         * 计算花费
          *
-         * @param $user
-         * @return bool 
-         * @static 
-         */
-        public static function signIn($user){
-            return \App\Werashop\Bean\BeanRecharger::signIn($user);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
-         * @return bool 
-         * @static 
-         */
-        public static function study($user){
-            return \App\Werashop\Bean\BeanRecharger::study($user);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function share($user){
-            return \App\Werashop\Bean\BeanRecharger::share($user);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
-         * @param $value
-         * @return bool 
-         * @static 
-         */
-        public static function consume($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::consume($user, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param $referrer
-         * @return bool 
-         * @static 
-         */
-        public static function invite($referrer){
-            return \App\Werashop\Bean\BeanRecharger::invite($referrer);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
-         * @param $value
-         * @return bool 
-         * @static 
-         */
-        public static function consumeFeedback($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::consumeFeedback($user, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
-         * @param $value
-         * @return bool 
-         * @static 
-         */
-        public static function consumeVolunteerFeedback($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::consumeVolunteerFeedback($user, $value);
-        }
-        
-        /**
-         * 
-         *
-         * @static 
-         */
-        public static function educationVolunteerFeedback($user){
-            return \App\Werashop\Bean\BeanRecharger::educationVolunteerFeedback($user);
-        }
-        
-        /**
-         * 
-         *
-         * @param $user
+         * @param \App\Models\Customer $customer
          * @param $money
          * @return int 
          * @static 
          */
-        public static function calculateConsume($user, $money){
-            return \App\Werashop\Bean\BeanRecharger::calculateConsume($user, $money);
+        public static function calculateConsume($customer, $money){
+            return \App\Werashop\Bean\BeanRecharger::calculateConsume($customer, $money);
         }
         
         /**
          * 
          *
-         * @param $user
+         * @param \App\Models\Customer $customer
          * @param $value
          * @return bool 
          * @static 
          */
-        public static function executeConsume($user, $value){
-            return \App\Werashop\Bean\BeanRecharger::executeConsume($user, $value);
+        public static function executeConsume($customer, $value){
+            return \App\Werashop\Bean\BeanRecharger::executeConsume($customer, $value);
         }
         
         /**
          * 
          *
+         * @param \App\Models\Customer $customer
+         * @return bool 
          * @static 
          */
-        public static function excuteEducation($user){
-            return \App\Werashop\Bean\BeanRecharger::excuteEducation($user);
+        public static function executeEducation($customer){
+            return \App\Werashop\Bean\BeanRecharger::executeEducation($customer);
         }
         
     }

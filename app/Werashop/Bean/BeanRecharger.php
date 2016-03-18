@@ -24,290 +24,218 @@ use \App\Constants\AnalyzerConstant;
 class BeanRecharger
 {
     /**
-     * @param $customer
-     * @param $action
+     * 迈豆充值
+     *
+     * @param \App\Models\Customer $customer
+     * @param string $action
      * @param int $value
      * @return bool
      */
-    public function recharge($customer, $action, $value = 1)
+    protected function recharge(Customer $customer, $action, $value = 1)
     {
-        $beanRate = BeanRate::where('action_en', $action)->first();
-        if (!$beanRate) {
-            return false;
-        } /*if>*/
+        $beanRate = BeanRate::where('action_en', $action)->firstOrFail();
 
         $result = $beanRate->rate * $value;
         $this->update($customer, $action, $result);
 
         $bean = new CustomerBean();
-        $bean->customer_id  = $customer->id;
+        $bean->customer_id = $customer->id;
         $bean->bean_rate_id = $beanRate->id;
-        $bean->value        = $value;
-        $bean->result       = $beanRate->rate * $value;
-        $ret = $bean->save();
-        return ($ret);
+        $bean->value = $value;
+        $bean->result = $beanRate->rate * $value;
+        return $bean->save();
     }
 
+
     /**
-     * @param $customer
-     * @param $action
-     * @param $value
+     * @param \App\Models\Customer $customer
+     * @param string $action
+     * @param int $beans_changed
      */
-    public function update($customer, $action, $value)
+    protected function update(Customer $customer, $action, $beans_changed)
     {
         if ($action == AppConstant::BEAN_ACTION_CONSUME) {
-            if ($value >= $customer->beans_total) {
+            if ($beans_changed >= $customer->beans_total) {
                 \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($customer->beans_total));
                 $customer->beans_total = 0;
             } else {
-                \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($value));
-                $customer->beans_total -= $value;
-            }/*else>>*/
+                \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($beans_changed));
+                $customer->beans_total -= $beans_changed;
+            }
         } else {
-            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, $value);
-            $customer->beans_total += $value;
-        } /*else>*/
+            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, $beans_changed);
+            $customer->beans_total += $beans_changed;
+        }
+
         $customer->save();
     }
 
+
     /**
-     * @param $user
+     * 用户注册时调用,计算迈豆
+     *
+     * @param \App\Models\Customer $customer
      * @return bool
      */
-    public function register($user)
+    public function register(Customer $customer)
     {
-        \Log::info('BeanRecharger:register:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_REGISTER);
-        return $ret;
+        return $this->recharge($customer, AppConstant::BEAN_ACTION_REGISTER);
     }
 
     /**
-     * @param $user
+     * @param \App\Models\Customer
      * @return bool
      */
-    public function signIn($user)
+    protected function signIn(Customer $customer)
     {
-        \Log::info('BeanRecharger:signIn:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
+         return $this->recharge($customer, AppConstant::BEAN_ACTION_SIGN_IN);
+    }
 
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_SIGN_IN);
-        return $ret;
+
+    /**
+     * @param \App\Models\Customer $customer
+     * @return bool
+     */
+    protected function study(Customer $customer)
+    {
+        return $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
+    }
+
+
+    /**
+     * 分享返积分
+     *
+     * @param \App\Models\Customer $customer
+     * @return bool
+     */
+    protected function share(Customer $customer)
+    {
+        return $this->recharge($customer, AppConstant::BEAN_ACTION_SHARE);
     }
 
     /**
-     * @param $user
+     * 消费返积分
+     *
+     * @param \App\Models\Customer $customer
+     * @param int $value
      * @return bool
      */
-    public function study($user)
+    protected function consume(Customer $customer, $value)
     {
-        \Log::info('BeanRecharger:study:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_STUDY);
-        if (!$ret) {
-            return false;
-        } /*if>*/
-
-        return true;
-    }
-
-    public function share($user)
-    {
-        \Log::info('BeanRecharger:share:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_SHARE);
-        return $ret;
+        return $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME, $value * AppConstant::MONEY_BEAN_RATE);
     }
 
     /**
-     * @param $user
-     * @param $value
+     * 推广返积分
+     *
+     * @param \App\Models\Customer $inviter
      * @return bool
      */
-    public function consume($user, $value)
+    public function invite(Customer $inviter)
     {
-        \Log::info('BeanRecharger:consume:user:' . $user . ',value:' . $value);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $money = $value * AppConstant::MONEY_BEAN_RATE;
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME, $money);
-        return $ret;
-    }
-
-    /**
-     * @param $referrer
-     * @return bool
-     */
-    public function invite($referrer)
-    {
-        \Log::info('BeanRecharger:invite:referrer:' . $referrer);
-        if (0 == $referrer) {
-            return false;
-        } /*if>*/
-
-        $customer = Customer::where('id', $referrer)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $action = null;
-        if ($customer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+        if ($inviter->type->type_en == AppConstant::CUSTOMER_COMMON) {
             $action = AppConstant::BEAN_ACTION_INVITE;
-        } else if ($customer->type->type_en == AppConstant::CUSTOMER_DOCTOR) {
+        } else if ($inviter->type->type_en == AppConstant::CUSTOMER_DOCTOR) {
             $action = AppConstant::BEAN_ACTION_DOCTOR_INVITE;
-        } else if ($customer->type->type_en == AppConstant::CUSTOMER_NURSE) {
+        } else if ($inviter->type->type_en == AppConstant::CUSTOMER_NURSE) {
             $action = AppConstant::BEAN_ACTION_NURSE_INVITE;
-        } else if ($customer->type->type_en == AppConstant::CUSTOMER_VOLUNTEER) {
+        } else if ($inviter->type->type_en == AppConstant::CUSTOMER_VOLUNTEER) {
             $action = AppConstant::BEAN_ACTION_VOLUNTEER_INVITE;
-        } else if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
+        } else if ($inviter->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
             $action = AppConstant::BEAN_ACTION_INVITE;
-        } else {
-            return false;
-        }/*else>*/
-        $ret = $this->recharge($customer, $action);
-        return $ret;
+        }
+
+        return $this->recharge($inviter, $action);
     }
 
 
     /**
-     * @param $user
-     * @param $value
+     * @param \App\Models\Customer $customer
+     * @param int $value
      * @return bool
      */
-    public function consumeFeedback($user, $value)
+    protected function consumeFeedback(Customer $customer, $value)
     {
-        \Log::info('BeanRecharger:consumeFeedback:user:' . $user . ',value:' . $value);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer) {
-            return false;
-        } /*if>*/
-
-        $money = $value * AppConstant::MONEY_BEAN_RATE;
-        $ret = $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME_FEEDBACK, $money);
-        return $ret;
+        return $this->recharge($customer, AppConstant::BEAN_ACTION_CONSUME_FEEDBACK, $value * AppConstant::MONEY_BEAN_RATE);
     }
 
     /**
-     * @param $user
-     * @param $value
+     * @param \App\Models\Customer $customer
+     * @param int $value
      * @return bool
      */
-    public function consumeVolunteerFeedback($user, $value) {
-        \Log::info('BeanRecharger:consumeVolunteerFeedback:user:' . $user . ',value:' . $value);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer || (0 == $customer->referrer_id)) {
+    protected function consumeVolunteerFeedback(Customer $customer, $value)
+    {
+        $referrer = $customer->getReferrer();
+        if (!$referrer || $referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
             return false;
-        } /*if>*/
-
-        $referrer = Customer::where('id', $customer->referrer_id)->first();
-        if ($referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
-            return false;
-        } /*if>*/
-
-        $money = $value * AppConstant::MONEY_BEAN_RATE;
-        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_CONSUME_VOLUNTEER_FEEDBACK, $money);
-        return $ret;
-    }
-
-    public function educationVolunteerFeedback($user) {
-        \Log::info('BeanRecharger:educationVolunteerFeedback:user:' . $user);
-        $customer = Customer::where('id', $user)->first();
-        if (!$customer || (0 == $customer->referrer_id)) {
-            return false;
-        } /*if>*/
-
-        $referrer = Customer::where('id', $customer->referrer_id)->first();
-        if ($referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
-            return false;
-        } /*if>*/
-
-        $ret = $this->recharge($referrer, AppConstant::BEAN_ACTION_EDUCATION_VOLUNTEER_FEEDBACK);
-        return $ret;
+        }
+        return $this->recharge($referrer, AppConstant::BEAN_ACTION_CONSUME_VOLUNTEER_FEEDBACK, $money = $value * AppConstant::MONEY_BEAN_RATE);
     }
 
     /**
-     * @param $user
+     * @param \App\Models\Customer $customer
+     * @return bool
+     */
+    protected function educationVolunteerFeedback(Customer $customer)
+    {
+
+        $referrer = $customer->getReferrer();
+        if (!$referrer || $referrer->type->type_en == AppConstant::CUSTOMER_COMMON) {
+            return false;
+        }
+
+        return $this->recharge($referrer, AppConstant::BEAN_ACTION_EDUCATION_VOLUNTEER_FEEDBACK);
+    }
+
+    /**
+     * 计算花费
+     *
+     * @param \App\Models\Customer $customer
      * @param $money
      * @return int
      */
-    public function calculateConsume($user, $money)
+    public function calculateConsume(Customer $customer, $money)
     {
         if ($money <= 0) {
-            return (-1);
-        } /*if>*/
+            return -1;
+        }
 
-        $customer = Customer::where('id', $user)->first();
-        if ((!$customer) || ($customer->beans_total <= 0)) {
-            return (-1);
-        } /*if>*/
+        if ($customer->beans_total <= 0) {
+            return -1;
+    }
 
         $totalMoney = $customer->beans_total / AppConstant::MONEY_BEAN_RATE;
         if ($totalMoney >= $money) {
-            return (0);
-        } /*if>*/
+            return 0;
+        }
 
         return ($money - $totalMoney);
     }
 
     /**
-     * @param $user
+     * @param \App\Models\Customer $customer
      * @param $value
      * @return bool
      */
-    public function executeConsume($user, $value)
+    public function executeConsume(Customer $customer, $value)
     {
-        $ret = $this->consume($user, $value);
-        if (!$ret) {
-            return false;
-        }
-
-        $ret = $this->consumeFeedback($user, $value);
-        if (!$ret) {
-            return false;
-        }
-
-        $ret = $this->consumeVolunteerFeedback($user, $value);
-        if (!$ret) {
-            return false;
-        }
-
-        return $ret;
+        return (
+            $this->consume($customer, $value) ||
+            $this->consumeFeedback($customer, $value) ||
+            $this->consumeVolunteerFeedback($customer, $value)
+        );
     }
 
-    /*
-     *
+    /**
+     * @param \App\Models\Customer $customer
+     * @return bool
      */
-    public function excuteEducation($user)
+    public function executeEducation(Customer $customer)
     {
-        $ret = $this->study($user);
-        if (!$ret) {
-            return false;
-        }
-
-        $ret = $this->educationVolunteerFeedback($user);
-        if (!$ret) {
-            return false;
-        }
-
-        return $ret;
+        return (
+            $this->study($customer) ||
+            $this->educationVolunteerFeedback($customer)
+        );
     }
-
-} /*class*/
+}
