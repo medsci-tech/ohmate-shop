@@ -32,7 +32,6 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     wx.config({!! $js !!});
-    alert(wx);
 
     wx.ready(function(){
         alert('ready');
@@ -59,6 +58,7 @@
     });
 
     function editAddressCallback() {
+        alert('callback called');
         WeixinJSBridge.invoke('editAddress', {
             appId: "{{$appId}}",
             scope: "jsapi_address",
@@ -76,20 +76,6 @@
             document.form1.phone.value = res.telNumber;
         });
     }
-
-//    function onBridgeReady(){
-//
-//    }
-//    if (typeof WeixinJSBridge == "undefined"){
-//        if( document.addEventListener ){
-//            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-//        }else if (document.attachEvent){
-//            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-//            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-//        }
-//    }else{
-//        onBridgeReady();
-//    }
 </script>
 </body>
 </html>
