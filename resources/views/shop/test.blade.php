@@ -87,7 +87,7 @@
         for (var p in o) {
             out += p + ': ' + o[p] + '\n';
         }
-        $("#o").innerText = out;
+        $("#o").text(out);
         alert(out);
     }
 </script>
