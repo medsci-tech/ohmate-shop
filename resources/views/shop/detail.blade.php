@@ -153,7 +153,6 @@
   if (list.cart.length != 0) {
     var i = 0;
     alert(JSON.stringify(list.cart));
-    alert(localStorage.cart);
     for (item in list.cart) {
       i++;
       alert(i + '' + JSON.stringify(list.cart[item]));
