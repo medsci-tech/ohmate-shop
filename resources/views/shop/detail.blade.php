@@ -160,7 +160,7 @@
     }
     for (item in [1,2,3,4]) {
       j++;
-      alert(j+''+item);
+      alert(j+':'+item);
     }
     cart_num = i;
   }
