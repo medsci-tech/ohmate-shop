@@ -154,7 +154,20 @@
     var i = 0;
     var j = 0;
     alert(JSON.stringify(list.cart));
-    for (k in list.cart) {
+    for (k in [{
+      id: 1,
+      name: '测试1',
+      tag: '测试1',
+      price: 30,
+      num: 5
+    },{
+      id: 2,
+      name: '测试2',
+      tag: '测试2',
+      price: 30,
+      num: 5
+    }])
+    {
       i++;
       alert(i + '' + JSON.stringify(list.cart[k]));
     }
