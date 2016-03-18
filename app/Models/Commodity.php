@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Werashop\Cart\Buyable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Commodity
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Commodity extends Model implements Buyable
 {
+    use SoftDeletes;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
