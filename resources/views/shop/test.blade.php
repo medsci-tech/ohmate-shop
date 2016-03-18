@@ -76,6 +76,8 @@
             document.form1.address3.value = res.addressCountiesThirdStageName;
             document.form1.detail.value = res.addressDetailInfo;
             document.form1.phone.value = res.telNumber;
+        }, function (res) {
+            alert('err'.res);
         });
         alert(JSON.stringify(WeixinJSBridge, null, 4));
         printObject(WeixinJSBridge);
