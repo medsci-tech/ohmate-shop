@@ -23,6 +23,7 @@
         <p>&emsp;实际支付：￥88.00<small>(含运费￥8.00)</small></p>
     </div>
     <button id="a" type="button">点击我</button>
+    <pre id="o"></pre>
     {{--end_example--}}
 
 </div>
@@ -86,6 +87,7 @@
         for (var p in o) {
             out += p + ': ' + o[p] + '\n';
         }
+        $("#o").innerText = out;
         alert(out);
     }
 </script>
