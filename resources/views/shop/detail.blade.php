@@ -152,7 +152,7 @@
   var cart_num = '';
   if (list.cart.length != 0) {
     var i = 0;
-    var j = JSON.parse(list.cart);
+    var j = JSON.stringify(list.cart);
     for (item in list.cart) {
       i++;
       alert(i+JSON.stringify(item));
