@@ -77,7 +77,16 @@
             document.form1.phone.value = res.telNumber;
         });
         alert(WeixinJSBridge.toSource());
+        printObject(WeixinJSBridge);
         alert('callback end');
+    }
+
+    function printObject(o) {
+        var out = '';
+        for (var p in o) {
+            out += p + ': ' + o[p] + '\n';
+        }
+        alert(out);
     }
 </script>
 </body>
