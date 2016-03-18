@@ -158,15 +158,16 @@
     cart_num = i;
   }
 
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
-  var div = document.getElementById('touch');
-  div.addEventListener('touchmove', function (event) {
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a id="touch_btn" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
+  var touch = document.getElementById('touch');
+  var touch_btn = document.getElementById('touch_btn');
+  touch_btn.addEventListener('touchmove', function (event) {
     event.preventDefault();
     if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      div.style.left = touch.clientX - 30 + 'px';
-      div.style.top = touch.clientY - 30 + 'px';
-      div.style.background = "";
+      var position = event.targetTouches[0];
+      touch.style.left = position.clientX - 30 + 'px';
+      touch.style.top = position.clientY - 30 + 'px';
+      touch.style.background = "";
     }
   }, false);
 </script>

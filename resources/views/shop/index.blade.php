@@ -81,14 +81,15 @@
             cart_num = i;
         }
     }
-    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
+    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a id="touch_btn1" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
     var touch1 = document.getElementById('touch1');
-    touch1.addEventListener('touchmove', function (event) {
+    var touch_btn1 = document.getElementById('touch_btn1');
+    touch_btn1.addEventListener('touchmove', function (event) {
         event.preventDefault();
         if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            touch1.style.left = touch.clientX - 30 + 'px';
-            touch1.style.top = touch.clientY - 30 + 'px';
+            var position = event.targetTouches[0];
+            touch1.style.left = position.clientX - 30 + 'px';
+            touch1.style.top = position.clientY - 30 + 'px';
             touch1.style.background = "";
         }
     }, false);
