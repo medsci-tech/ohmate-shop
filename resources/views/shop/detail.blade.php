@@ -107,7 +107,6 @@
             name: this.goods.name,
             tag: this.goods.tag,
             price: this.goods.price,
-            priceBefore: this.goods.priceBefore,
             num: this.goods.num
           });
           cart_num++;
@@ -154,35 +153,10 @@
     var i = 0;
     var j = 0;
     alert(JSON.stringify(list.cart));
-    var test = [{
-      id: 1,
-      name: '测试1',
-      tag: '测试1',
-      price: 30,
-      num: 5
-    },{
-      id: 2,
-      name: '测试2',
-      tag: '测试2',
-      price: 30,
-      num: 5
-    }];
-    for (k in [{
-      id: 1,
-      name: '测试1',
-      tag: '测试1',
-      price: 30,
-      num: 5
-    },{
-      id: 2,
-      name: '测试2',
-      tag: '测试2',
-      price: 30,
-      num: 5
-    }])
+    for (k in list.cart)
     {
       i++;
-      alert(i + '' + JSON.stringify(test[k]));
+      alert(i + '' + JSON.stringify(list.cart[k]));
     }
     for (item in [1, 2, 3, 4]) {
       j++;
