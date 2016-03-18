@@ -76,7 +76,7 @@
             document.form1.detail.value = res.addressDetailInfo;
             document.form1.phone.value = res.telNumber;
         });
-        alert(WeixinJSBridge.toSource());
+        alert(JSON.stringify(YOUR_OBJECT_HERE, null, 4));
         printObject(WeixinJSBridge);
         alert('callback end');
     }
