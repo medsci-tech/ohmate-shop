@@ -96,7 +96,7 @@
     },
     methods: {
       addGoods: function () {
-        if (cart_num == ''){
+        if (cart_num == '') {
           cart_num = 0;
         }
         if (this.alreadyHave != -1) {
@@ -112,7 +112,7 @@
           });
           cart_num++;
         }
-        $('#touch span').text( cart_num );
+        $('#touch span').text(cart_num);
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);
         $('.jumbotron .alert').show();
@@ -154,18 +154,18 @@
     var i = 0;
     var j = 0;
     alert(JSON.stringify(list.cart));
-    for (item in list.cart) {
+    for (k in list.cart) {
       i++;
       alert(i + '' + JSON.stringify(list.cart[item]));
     }
-    for (item in [1,2,3,4]) {
+    for (item in [1, 2, 3, 4]) {
       j++;
-      alert(j+':'+item);
+      alert(j + ':' + item);
     }
     cart_num = i;
   }
 
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a id="touch_btn" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a id="touch_btn" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">' + cart_num + '</span> </a> </nav>')
   var touch = document.getElementById('touch');
   var touch_btn = document.getElementById('touch_btn');
   touch_btn.addEventListener('touchmove', function (event) {
