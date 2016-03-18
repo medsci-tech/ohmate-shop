@@ -59,6 +59,7 @@
 
     function editAddressCallback() {
         alert('callback called');
+        WeixinJSBridge.refresh();
         WeixinJSBridge.invoke('editAddress', {
             appId: "{{$appId}}",
             scope: "jsapi_address",
