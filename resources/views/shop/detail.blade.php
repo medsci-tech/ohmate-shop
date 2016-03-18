@@ -156,6 +156,7 @@
     alert(localStorage.cart);
     for (item in list.cart) {
       i++;
+      alert(i + '' + list.cart[item]);
     }
     cart_num = i;
   }
