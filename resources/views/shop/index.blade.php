@@ -72,12 +72,8 @@
 <script>
     var cart_num = '';
     if (typeof localStorage.cart != 'undefined') {
-        var i = 0;
         var j = JSON.parse(localStorage.cart);
-        alert(localStorage.cart);
-        for ( k in j) {
-            i++;
-        }
+        for (i=0; i < j.length; i++) ;
         if (i != 0){
             cart_num = i;
         }

@@ -150,18 +150,7 @@
 
   var cart_num = '';
   if (list.cart.length != 0) {
-    var i = 0;
-    var j = 0;
-    alert(JSON.stringify(list.cart));
-    for (k in list.cart)
-    {
-      i++;
-      alert(i + '' + JSON.stringify(list.cart[k]));
-    }
-    for (item in [1, 2, 3, 4]) {
-      j++;
-      alert(j + ':' + item);
-    }
+    for (i = 0; i < list.cart.length; i++) ;
     cart_num = i;
   }
 
