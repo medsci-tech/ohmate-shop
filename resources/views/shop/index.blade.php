@@ -74,8 +74,10 @@
     if (typeof localStorage.cart != 'undefined') {
         var i = 0;
         var j = JSON.parse(localStorage.cart);
+        alert(localStorage.cart);
         for ( k in j) {
             i++;
+            alert(i+JSON.stringify(k));
         }
         if (i != 0){
             cart_num = i;
