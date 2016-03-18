@@ -40,10 +40,10 @@ var list = new Vue({
     },
     chooseAdd: function (e) {
       if (!e.is_default) {
-        for( i=0 ; i<list.addresses.length ; i++){
-          list.addresses[i].is_default = false;
-        }
-        e.is_default = true;
+        //for( i=0 ; i<list.addresses.length ; i++){
+        //  list.addresses[i].is_default = false;
+        //}
+        //e.is_default = true;
         $.post('/shop/address/update',
           {
             id: e.id,
