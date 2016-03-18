@@ -156,7 +156,7 @@
     alert(JSON.stringify(list.cart));
     for (k in list.cart) {
       i++;
-      alert(i + '' + JSON.stringify(list.cart[item]));
+      alert(i + '' + JSON.stringify(list.cart[k]));
     }
     for (item in [1, 2, 3, 4]) {
       j++;
