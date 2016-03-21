@@ -100,12 +100,12 @@ var list = new Vue({
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;
       this.newAdd.province = e.province;
+      $('#province').trigger('change');
       this.newAdd.city = e.city;
+      $('#city').trigger('change');
       this.newAdd.district = e.district;
+      $('#area').trigger('change');
       this.newAdd.address = e.address;
-      $('#province').change();
-      $('#city').change();
-      $('#area').change();
     },
 
     editFun: function () {
