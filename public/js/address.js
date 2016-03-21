@@ -100,11 +100,11 @@ var list = new Vue({
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;
       this.newAdd.province = e.province;
-      $('#province').change(e.province);
+      $('#province').change();
       this.newAdd.city = e.city;
-      $('#city').change(e.city);
+      $('#city').change();
       this.newAdd.district = e.district;
-      $('#area').change(e.district);
+      $('#area').change();
       this.newAdd.address = e.address;
     },
 
