@@ -14,6 +14,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">地址列表</div>
         <ul class="list-group">
+          <div class="clearfix"></div>
           <li class="list-group-item" v-bind:class=" address.is_default?'default-address':'' " v-for="address in addresses">
             <table class="table table-condensed">
             <tr>
@@ -86,7 +87,7 @@
             <input type="checkbox" value="" v-model="newAdd.is_default">设为默认
           </label>
         </div>
-        
+
         <div class="form-group text-center" id="button">
           <button class="button button-caution button-rounded" id="button_add" type="button" @click="addFun | debounce 1000">添&emsp;加</button>
           <button class="hide button button-primary button-border button-rounded" type="button" @click="editCancel">取消</button>

@@ -69,7 +69,7 @@ var list = new Vue({
           city: this.newAdd.city,
           district: this.newAdd.district,
           address: this.newAdd.address,
-          is_default: true
+          is_default: this.newAdd.is_default
         },
         function (data) {
           if (data.success) {
@@ -103,6 +103,7 @@ var list = new Vue({
       this.newAdd.city = e.city;
       this.newAdd.district = e.district;
       this.newAdd.address = e.address;
+      this.newAdd.is_default = e.is_default;
       $('#province').val(e.province);
       $('#province').trigger('change');
       $('#city').val(e.city);
