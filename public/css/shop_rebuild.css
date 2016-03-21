@@ -106,11 +106,11 @@ a, a:focus, a:hover {
     padding-bottom: 5px;
     color: #a3a3a3; }
     #addresses .panel .panel-heading a {
-      position: relative;
-      top: -4px;
-      right: -6px;
-      padding: 0 5px;
       float: right; }
+#addresses .default-address {
+  padding: 6px 10px 5px 10px;
+  border: 2px dashed #f71212;
+  margin: 3px; }
 #addresses table {
   margin-bottom: 0; }
   #addresses table tr td:first-child {
@@ -121,17 +121,8 @@ a, a:focus, a:hover {
     border: none; }
   #addresses table tr .fa-check-circle-o {
     color: #f71212; }
-  #addresses table tr i {
-    width: 20px;
-    font-size: 20px; }
-#addresses .list-group li {
-  padding-left: 10px; }
-  #addresses .list-group li span {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 18px;
-    color: #a3a3a3; }
+#addresses .list-group li td:last-child {
+  color: #a3a3a3; }
 #addresses select {
   -webkit-appearance: menulist; }
 #addresses form {

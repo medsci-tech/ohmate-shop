@@ -12,26 +12,22 @@
   <div class="row">
     <template v-if=" addresses != null ">
       <div class="panel panel-default">
-        <div class="panel-heading">地址列表 <small>(点击编辑)</small>
-          <a href="{{url('/shop/cart')}}" class="button button-rounded button-tiny button-caution">确定</a>
-        </div>
+        <div class="panel-heading">地址列表</div>
         <ul class="list-group">
-          <li class="list-group-item" v-for="address in addresses">
+          <li class="list-group-item" v-bind:class=" address.default?'default-address':'' " v-for="address in addresses">
             <table class="table table-condensed">
             <tr>
-              <td rowspan="2" class="text-center" @click="chooseAdd(address) | debounce 1000">
-                <i v-bind:class="['fa', address.is_default?'fa-check-circle-o':'fa-circle-o']"></i>
-              </td>
-              <th @click="editAdd(address)">收货人</th>
-              <td @click="editAdd(address)">@{{ address.name }}</td>
-              <td @click="editAdd(address)">@{{ address.phone }}</td>
+              <th @click="chooseAdd(address)">收货人</th>
+              <td @click="chooseAdd(address)">@{{ address.name }}</td>
+              <td @click="chooseAdd(address)">@{{ address.phone }}</td>
+              <td class="edit-icon"><i class="fa fa-close" @click="removeAdd(address)"></i></td>
             </tr>
             <tr>
-              <th @click="editAdd(address)">收货地址</th>
-              <td colspan="2" @click="editAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
+              <th @click="chooseAdd(address)">收货地址<small v-bind:class=" address.default?'':'hide' "><br>(默认)</small></th>
+              <td colspan="2" @click="chooseAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
+              <td class="hide edit-icon"><i class="fa fa-edit" @click="editAdd(address)"></i></td>
             </tr>
             </table>
-            <span v-if=" address.is_default == false " class="fa fa-close" alt="" @click="removeAdd(address) | debounce 1000"></span>
           </li>
         </ul>
       </div>
@@ -85,7 +81,7 @@
           </div>
         </div>
         <div class="form-group text-center" id="button">
-          <button class="button button-caution button-rounded" id="button_add" type="button" @click="addFun | debounce 1000">添加并选择</button>
+          <button class="button button-caution button-rounded" id="button_add" type="button" @click="addFun | debounce 1000">添&emsp;加</button>
           <button class="hide button button-primary button-border button-rounded" type="button" @click="editCancel">取消</button>
           <button class="hide button button-caution button-rounded" type="button" @click="editFun | debounce 1000">确认修改</button>
         </div>
