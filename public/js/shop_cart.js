@@ -10,13 +10,18 @@ if (typeof localStorage.cart != 'undefined') {
   var cart = [];
 }
 
+if (typeof sessionStorage.address != 'undefined') {
+  var address = JSON.parse(sessionStorage.address);
+} else {
+  var address = [];
+}
+
 var shop_cart = new Vue({
   el: '#cart_form',
   data: {
     cart: cart,
     beans: 0,
-    address: [],
-    post_fee: 0
+    address: address,
   },
 
   computed: {
@@ -46,14 +51,14 @@ var shop_cart = new Vue({
       if (this.address == null) {
         return this.priceAll + 0 - this.priceDiscount;
       } else {
-        return this.priceAll + this.post_fee - this.priceDiscount;
+        return this.priceAll + this.address.post_fee - this.priceDiscount;
       }
     },
     postage: function () {
       if (this.address == null) {
         return 0;
       } else {
-        return this.post_fee;
+        return this.address.post_fee;
       }
     }
   },
@@ -84,8 +89,9 @@ var shop_cart = new Vue({
         function (data) {
           if (data.success) {
             shop_cart.beans = data.data.beans;
-            shop_cart.address = data.data.default_address;
-            shop_cart.post_fee = data.data.post_fee;
+            if (typeof sessionStorage.address == 'undefined') {
+              shop_cart.address = data.data.default_address;
+            }
           }
         }, "json"
       )
@@ -106,7 +112,9 @@ var shop_cart = new Vue({
                   function (res) {
                     if (res.err_msg == "get_brand_wcpay_request:ok") {
                       shop_cart.cart = [];
+                      shop_cart.address = [];
                       localStorage.clear();
+                      sessionStorage.clear();
                       $.post('shop/payment/ok',
                         {
                           order_id: data.data.order_id,

@@ -14,23 +14,21 @@
       <div class="panel panel-default">
         <div class="panel-heading">地址列表</div>
         <ul class="list-group">
-          <li class="list-group-item" v-for="address in addresses">
-            <table class="table table-condensed" @click="chooseAdd(address)">
+          <div class="clearfix"></div>
+          <li class="list-group-item" v-bind:class=" address.is_default?'default-address':'' " v-for="address in addresses">
+            <table class="table table-condensed">
             <tr>
-              <td rowspan="2" class="text-center">
-                <i v-bind:class="['fa', address.is_default?'fa-check-circle-o':'fa-circle-o']"></i>
-              </td>
-              <th>收货人</th>
-              <td>@{{ address.name }}</td>
-              <td>@{{ address.phone }}</td>
+              <th @click="chooseAdd(address)">收货人</th>
+              <td @click="chooseAdd(address)">@{{ address.name }}</td>
+              <td @click="chooseAdd(address)">@{{ address.phone }}</td>
+              <td class="edit-icon"><i class="fa fa-close" @click="removeAdd(address)"></i></td>
             </tr>
             <tr>
-              <th>收货地址</th>
-              <td
-                colspan="2">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
+              <th @click="chooseAdd(address)">收货地址<small v-bind:class=" address.is_default?'':'hide' "><br>(默认)</small></th>
+              <td colspan="2" @click="chooseAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
+              <td class="edit-icon"><i class="fa fa-edit" @click="editAdd(address)"></i></td>
             </tr>
             </table>
-            <span v-if=" address.is_default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
           </li>
         </ul>
       </div>
@@ -38,8 +36,9 @@
   </div>
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel-heading">添加收货地址</div>
-      <form class="form-horizontal" @submit.prevent="addFun">
+      <div class="panel-heading heading-toggle" id="heading_add">添加收货地址</div>
+      <div class="hide panel-heading heading-toggle">修改收货地址</div>
+      <form class="form-horizontal">
         <div class="form-group">
           <label class="col-xs-3 control-label" for="name">收货人</label>
 
@@ -82,9 +81,17 @@
             <input required type="text" class="form-control" id="address" placeholder="街道地址" v-model="newAdd.address">
           </div>
         </div>
-        <div class="form-group text-center">
-          <br>
-          <button class="button button-caution button-rounded">添加并选择</button>
+
+        <div class="checkbox col-xs-offset-4">
+          <label>
+            <input type="checkbox" value="" v-model="newAdd.is_default">设为默认
+          </label>
+        </div>
+
+        <div class="form-group text-center" id="button">
+          <button class="button button-caution button-rounded" id="button_add" type="button" @click="addFun | debounce 1000">添&emsp;加</button>
+          <button class="hide button button-primary button-border button-rounded" type="button" @click="editCancel">取消</button>
+          <button class="hide button button-caution button-rounded" type="button" @click="editFun | debounce 1000">确认修改</button>
         </div>
       </form>
     </div>
