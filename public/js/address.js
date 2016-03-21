@@ -104,7 +104,8 @@ var list = new Vue({
           province: this.newAdd.province,
           city: this.newAdd.city,
           district: this.newAdd.district,
-          address: this.newAdd.address
+          address: this.newAdd.address,
+          is_default: this.newAdd.is_default,
         },
         function (data) {
           if (data.success) {
