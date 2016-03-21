@@ -80,6 +80,13 @@
             <input required type="text" class="form-control" id="address" placeholder="街道地址" v-model="newAdd.address">
           </div>
         </div>
+
+        <div class="checkbox col-xs-offset-4">
+          <label>
+            <input type="checkbox" value="" v-model="newAdd.is_default">设为默认
+          </label>
+        </div>
+        
         <div class="form-group text-center" id="button">
           <button class="button button-caution button-rounded" id="button_add" type="button" @click="addFun | debounce 1000">添&emsp;加</button>
           <button class="hide button button-primary button-border button-rounded" type="button" @click="editCancel">取消</button>
