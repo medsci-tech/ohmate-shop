@@ -101,10 +101,13 @@ var list = new Vue({
       this.newAdd.phone = e.phone;
       this.newAdd.province = e.province;
       $('#province').trigger('change');
+      alert($('#province').val());
       this.newAdd.city = e.city;
       //$('#city').trigger('change');
+      alert($('#city').val());
       this.newAdd.district = e.district;
       //$('#area').trigger('change');
+      alert($('#area').val());
       this.newAdd.address = e.address;
     },
 
