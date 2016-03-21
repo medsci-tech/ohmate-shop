@@ -117,6 +117,53 @@ var list = new Vue({
       )
     },
 
+=======
+
+    editAdd: function (e) {
+      $('.heading-toggle').removeClass('hide');
+      $('#heading_add').addClass('hide');
+      $('#button button').removeClass('hide');
+      $('#button_add').addClass('hide');
+      this.newAdd.id = e.id;
+      this.newAdd.name = e.name;
+      this.newAdd.phone = e.phone;
+      this.newAdd.province = e.province;
+      this.newAdd.city = e.city;
+      this.newAdd.district = e.district;
+      this.newAdd.address = e.address;
+      this.newAdd.is_default = e.is_default;
+      $('#province').val(e.province);
+      $('#province').trigger('change');
+      $('#city').val(e.city);
+      $('#city').trigger('change');
+      $('#area').val(e.district);
+      $('#area').trigger('change');
+    },
+
+    editFun: function () {
+      $.post('/shop/address/update',
+        {
+          id: this.newAdd.id,
+          name: this.newAdd.name,
+          phone: this.newAdd.phone,
+          province: this.newAdd.province,
+          city: this.newAdd.city,
+          district: this.newAdd.district,
+          address: this.newAdd.address,
+          is_default: this.newAdd.is_default,
+        },
+        function (data) {
+          if (data.success) {
+            list.addReload();
+            list.editCancel();
+          } else {
+            alert('服务器异常5!');
+          }
+        }, "json"
+      )
+    },
+
+>>>>>>> master
     editCancel: function () {
       list.newAdd = {
         id: -1,
