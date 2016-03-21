@@ -102,9 +102,9 @@ var list = new Vue({
       this.newAdd.province = e.province;
       $('#province').trigger('change');
       this.newAdd.city = e.city;
-      $('#city').trigger('change');
+      //$('#city').trigger('change');
       this.newAdd.district = e.district;
-      $('#area').trigger('change');
+      //$('#area').trigger('change');
       this.newAdd.address = e.address;
     },
 
