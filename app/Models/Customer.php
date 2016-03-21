@@ -187,6 +187,6 @@ class Customer extends Model
      */
     public function getReferrer()
     {
-        return self::find('referrer_id');
+        return self::find($this->referrer_id);
     }
 }
