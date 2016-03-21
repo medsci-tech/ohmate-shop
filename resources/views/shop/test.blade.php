@@ -23,6 +23,7 @@
         <p>&emsp;实际支付：￥88.00<small>(含运费￥8.00)</small></p>
     </div>
     <button id="a" type="button">点击我</button>
+    <pre id="o"></pre>
     {{--end_example--}}
 
 </div>
@@ -59,7 +60,7 @@
 
     function editAddressCallback() {
         alert('callback called');
-        WeixinJSBridge.invoke('editAddress', {
+        WeixinJSBridge.call('editAddress', {
             appId: "{{$appId}}",
             scope: "jsapi_address",
             signType: "sha1",
@@ -69,14 +70,27 @@
         }, function (res) {
 //若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。
 //否则若返回空，则表示用户取消了这一次编辑收货地址。
+            alert('res'+ res);
             document.form1.address1.value = res.proviceFirstStageName;
             document.form1.address2.value = res.addressCitySecondStageName;
             document.form1.address3.value = res.addressCountiesThirdStageName;
             document.form1.detail.value = res.addressDetailInfo;
             document.form1.phone.value = res.telNumber;
+        }, function (res) {
+            alert('err'.res);
         });
-        alert(WeixinJSBridge);
+        alert(JSON.stringify(WeixinJSBridge, null, 4));
+        printObject(WeixinJSBridge);
         alert('callback end');
+    }
+
+    function printObject(o) {
+        var out = '';
+        for (var p in o) {
+            out += p + ': ' + o[p] + '\n';
+        }
+        $("#o").text(out);
+        alert(out);
     }
 </script>
 </body>
