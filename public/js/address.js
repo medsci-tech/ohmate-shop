@@ -99,8 +99,11 @@ var list = new Vue({
       this.newAdd.id = e.id;
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;
+      $('#province').change();
       this.newAdd.province = e.province;
+      $('#city').change();
       this.newAdd.city = e.city;
+      $('#area').change();
       this.newAdd.district = e.district;
       this.newAdd.address = e.address;
     },
