@@ -39,9 +39,14 @@ class AddressController extends Controller
     {
         $customer = \Helper::getCustomer();
 
+        $data = $customer->addresses()->get()->toArray();
+
+        foreach ($data as $d) {
+            $d['post_fee'] = \Helper::getPostFee($d['province']);
+        }
         return response()->json([
             'success' => true,
-            'data' => $customer->addresses()->get()->toArray()
+            'data' => $data
         ]);
     }
 
