@@ -99,15 +99,12 @@ var list = new Vue({
       this.newAdd.id = e.id;
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;
-      this.newAdd.province = e.province;
+      $('#province').val(e.province);
       $('#province').trigger('change');
-      alert($('#province').val());
-      this.newAdd.city = e.city;
-      //$('#city').trigger('change');
-      alert($('#city').val());
-      this.newAdd.district = e.district;
-      //$('#area').trigger('change');
-      alert($('#area').val());
+      $('#city').val(e.city);
+      $('#city').trigger('change');
+      $('#area').val(e.district);
+      $('#area').trigger('change');
       this.newAdd.address = e.address;
     },
 
