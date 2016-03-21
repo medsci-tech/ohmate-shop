@@ -99,13 +99,16 @@ var list = new Vue({
       this.newAdd.id = e.id;
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;
+      this.newAdd.province = e.province;
+      this.newAdd.city = e.city;
+      this.newAdd.district = e.district;
+      this.newAdd.address = e.address;
       $('#province').val(e.province);
       $('#province').trigger('change');
       $('#city').val(e.city);
       $('#city').trigger('change');
       $('#area').val(e.district);
       $('#area').trigger('change');
-      this.newAdd.address = e.address;
     },
 
     editFun: function () {
