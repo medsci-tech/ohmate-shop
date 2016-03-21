@@ -92,8 +92,10 @@ var list = new Vue({
     },
 
     editAdd: function (e) {
-      $('.heading-toggle').toggleClass('hide');
-      $('#button button').toggleClass('hide');
+      $('.heading-toggle').removeClass('hide');
+      $('#heading_add').addClass('hide');
+      $('#button button').removeClass('hide');
+      $('#button_add').addClass('hide');
       this.newAdd.id = e.id;
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;

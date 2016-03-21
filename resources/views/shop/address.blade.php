@@ -19,7 +19,7 @@
           <li class="list-group-item" v-for="address in addresses">
             <table class="table table-condensed">
             <tr>
-              <td rowspan="2" class="text-center" @click="chooseAdd(address)">
+              <td rowspan="2" class="text-center" @click="chooseAdd(address) | debounce 1000">
                 <i v-bind:class="['fa', address.is_default?'fa-check-circle-o':'fa-circle-o']"></i>
               </td>
               <th @click="editAdd(address)">收货人</th>
@@ -31,7 +31,7 @@
               <td colspan="2" @click="editAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
             </tr>
             </table>
-            <span v-if=" address.is_default == false " class="fa fa-close" alt="" @click="removeAdd(address)"></span>
+            <span v-if=" address.is_default == false " class="fa fa-close" alt="" @click="removeAdd(address) | debounce 1000"></span>
           </li>
         </ul>
       </div>
@@ -39,7 +39,7 @@
   </div>
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel-heading heading-toggle">添加收货地址</div>
+      <div class="panel-heading heading-toggle" id="heading_add">添加收货地址</div>
       <div class="hide panel-heading heading-toggle">修改收货地址</div>
       <form class="form-horizontal">
         <div class="form-group">
@@ -85,9 +85,9 @@
           </div>
         </div>
         <div class="form-group text-center" id="button">
-          <button class="button button-caution button-rounded" type="button" @click="addFun">添加并选择</button>
+          <button class="button button-caution button-rounded" id="button_add" type="button" @click="addFun | debounce 1000">添加并选择</button>
           <button class="hide button button-primary button-border button-rounded" type="button" @click="editCancel">取消</button>
-          <button class="hide button button-caution button-rounded type="button" @click="editFun">确认修改</button>
+          <button class="hide button button-caution button-rounded" type="button" @click="editFun | debounce 1000">确认修改</button>
         </div>
       </form>
     </div>
