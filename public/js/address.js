@@ -83,67 +83,62 @@ var list = new Vue({
               district: '',
               address: '',
               is_default: false
-            };
+            }
           } else {
             alert('请输入正确的手机号!');
           }
         }, "json"
       );
+    },
+
+    editAdd: function (e) {
+      $('.heading-toggle').toggleClass('hide');
+      $('#button button').toggleClass('hide');
+      this.newAdd.id = e.id;
+      this.newAdd.name = e.name;
+      this.newAdd.phone = e.phone;
+      this.newAdd.province = e.province;
+      this.newAdd.city = e.city;
+      this.newAdd.district = e.district;
+      this.newAdd.address = e.address;
+    },
+
+    editFun: function () {
+      $.post('/shop/address/update',
+        {
+          id: this.newAdd.id,
+          name: this.newAdd.name,
+          phone: this.newAdd.phone,
+          province: this.newAdd.province,
+          city: this.newAdd.city,
+          district: this.newAdd.district,
+          address: this.newAdd.address
+        },
+        function (data) {
+          if (data.success) {
+            list.addReload();
+            list.editCancel();
+          } else {
+            alert('服务器异常5!');
+          }
+        }, "json"
+      )
+    },
+
+    editCancel: function () {
+      list.newAdd = {
+        id: -1,
+        name: '',
+        phone: '',
+        province: '',
+        city: '',
+        district: '',
+        address: '',
+        is_default: false
+      }
+      $('.heading-toggle').toggleClass('hide');
+      $('#button button').toggleClass('hide');
     }
-
-//      submitAdd: function () {
-//        if (this.newAdd.id == '-1'){
-//          list.addFun();
-//        } else {
-//          list.editFun();
-//        }
-//      },
-
-//      editAdd: function (e) {
-//        $('#title').text('修改收货地址');
-//        $('#button button').text('完'+' '+'成');
-//        this.newAdd.id = e.id;
-//        this.newAdd.name = e.name;
-//        this.newAdd.phone = e.phone;
-//        this.newAdd.province = e.province;
-//        this.newAdd.city = e.city;
-//        this.newAdd.district = e.district;
-//        this.newAdd.address = e.address;
-//      },
-//      editFun: function () {
-//        if ($('#province').val() && $('#city').val() && $('#area').val()) {
-//          $.post('/shop/address/update',
-//            {
-//              id: this.newAdd.id,
-//              name: this.newAdd.name,
-//              phone: this.newAdd.phone,
-//              province: this.newAdd.province,
-//              city: this.newAdd.city,
-//              district: this.newAdd.district,
-//              address: this.newAdd.address
-//            },
-//            function (data) {
-//              if (data.success) {
-//                list.addReload();
-//                list.newAdd = {
-//                  id: -1,
-//                  name: '',
-//                  phone: '',
-//                  province: '选择省',
-//                  city: '选择市',
-//                  district: '选择区',
-//                  address: '',
-//                  is_default: false
-//                };
-//                $('#title').text('添加收货地址');
-//                $('#button button').text('添加并设为默认');
-//              } else {
-//                alert('服务器异常5!');
-//              }
-//            }, "json"
-//          )
-//        }
-//      }
   }
 });
 

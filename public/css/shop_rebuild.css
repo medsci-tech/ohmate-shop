@@ -139,6 +139,8 @@ a, a:focus, a:hover {
   #addresses form .form-group label {
     padding-right: 0; }
   #addresses form button {
-    width: 80%; }
+    margin: 20px 15px 0 15px; }
+    #addresses form button:nth-child(1) {
+      width: 80%; }
 
 /*# sourceMappingURL=shop_rebuild.css.map */
