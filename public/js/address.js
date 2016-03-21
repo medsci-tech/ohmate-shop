@@ -99,12 +99,12 @@ var list = new Vue({
       this.newAdd.id = e.id;
       this.newAdd.name = e.name;
       this.newAdd.phone = e.phone;
-      $('#province').change();
       this.newAdd.province = e.province;
-      $('#city').change();
+      $('#province').change();
       this.newAdd.city = e.city;
-      $('#area').change();
+      $('#city').change();
       this.newAdd.district = e.district;
+      $('#area').change();
       this.newAdd.address = e.address;
     },
 
