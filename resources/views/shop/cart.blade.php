@@ -57,7 +57,7 @@
           <tr>
             <td>运费</td>
             <td></td>
-            <td>@{{ post_fee | currency '￥' }}</td>
+            <td>@{{ address.post_fee | currency '￥' }}</td>
           </tr>
           <tr>
             <td>迈豆折扣</td>
@@ -125,6 +125,5 @@
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script src="{{asset('/js/shop_cart.js')}}"></script>
-
 </body>
 </html>
