@@ -15,7 +15,7 @@
         <div class="panel-heading">地址列表</div>
         <ul class="list-group">
           <div class="clearfix"></div>
-          <li class="list-group-item" v-bind:class=" address.is_default?'default-address':'' " v-for="address in addresses | orderBy 'is_default' -1">
+          <li class="list-group-item" v-bind:class=" address.is_default?'default-address':'' " v-for="address in addresses">
             <table class="table table-condensed">
             <tr>
               <th @click="chooseAdd(address)">收货人</th>
@@ -26,7 +26,7 @@
             <tr>
               <th @click="chooseAdd(address)">收货地址<small v-bind:class=" address.is_default?'':'hide' "><br>(默认)</small></th>
               <td colspan="2" @click="chooseAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
-              <td class="edit-icon"><a href="#edit_panel"><i class="fa fa-edit" @click="editAdd(address)"></i></a></td>
+              <td class="edit-icon"><i class="fa fa-edit" @click="editAdd(address)"></i></td>
             </tr>
             </table>
           </li>
@@ -35,7 +35,7 @@
     </template>
   </div>
   <div class="row">
-    <div class="panel panel-default" id="edit_panel">
+    <div class="panel panel-default">
       <div class="panel-heading heading-toggle" id="heading_add">添加收货地址</div>
       <div class="hide panel-heading heading-toggle">修改收货地址</div>
       <form class="form-horizontal">
