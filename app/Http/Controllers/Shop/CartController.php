@@ -30,7 +30,7 @@ class CartController extends Controller
             'success' => true,
             'data' => [
                 'beans' => $customer->beans_total,
-                'default_address' => $default_address,
+                'default_address' => $default_address_array,
                 'post_fee' => $default_address? $post_fee:0
             ]
         ]);
