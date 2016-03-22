@@ -41,42 +41,36 @@
       <form class="form-horizontal">
         <div class="form-group">
           <label class="col-xs-3 control-label" for="name">收货人</label>
-
           <div class="col-xs-9">
             <input required type="text" class="form-control" id="name" placeholder="收货人姓名" v-model="newAdd.name">
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="phone">手机号</label>
-
           <div class="col-xs-9">
             <input required type="text" class="form-control" id="phone" placeholder="收货人号码" v-model="newAdd.phone">
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="province">详细地址</label>
-
           <div class="col-xs-9">
             <select required class="form-control" name="province" id="province" v-model="newAdd.province"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="city"></label>
-
           <div class="col-xs-9">
             <select required class="form-control" name="city" id="city" v-model="newAdd.city"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="area"></label>
-
           <div class="col-xs-9">
             <select required class="form-control" name="area" id="area" v-model="newAdd.district"></select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-3 control-label" for="address"></label>
-
           <div class="col-xs-9">
             <input required type="text" class="form-control" id="address" placeholder="街道地址" v-model="newAdd.address">
           </div>
