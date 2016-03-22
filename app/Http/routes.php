@@ -96,12 +96,15 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::any('github', 'Github\GithubController@onEvent');
 
-Route::any('test', function () {
-
-});
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+});
+
+Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function () {
+
+    Route::resource('user', 'UserController');
+
+    Route::resource('article', 'ArticleController');
 });
