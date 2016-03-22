@@ -119,12 +119,13 @@ class Wechat
                 new MenuItem('糖尿病知识', 'view', url('/education/article')),
                 new MenuItem('安全注射', 'view', url('/education/injection')),
                 new MenuItem('每日活动', 'view', url('/activity/daily')),
+                neW MenuItem('注册', 'view', url('/register/create'))
             ]),
             (new MenuItem("易康商城"))->buttons([
                 new MenuItem('商城首页', 'view', url('/shop/index')),
                 new MenuItem('我的订单', 'view', url('/shop/order')),
                 new MenuItem('我的地址', 'view', url('/shop/address')),
-                new MenuItem('地址测试', 'view', url('/shop/address/test')),
+//                new MenuItem('地址测试', 'view', url('/shop/address/test')),
             ]),
             (new MenuItem("个人中心"))->buttons([
                 new MenuItem('会员信息', 'view', url('/personal/information')),

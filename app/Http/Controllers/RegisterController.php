@@ -41,6 +41,11 @@ class RegisterController extends Controller
 
     public function create()
     {
+        $customer = \Helper::getCustomer();
+
+        if ($customer->is_registered) {
+            return '您已经注册, 无需重复注册!';
+        }
         return view('register.create');
     }
 
