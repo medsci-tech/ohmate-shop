@@ -94,7 +94,7 @@ class Order extends Model
         \Analyzer::updateBasicStatistics($this->customer_id, AnalyzerConstant::CUSTOMER_MONEY_COST, $this->cash_payment);
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_ORDER);
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_COMMODITY, $this->commodities()->count());
-        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_INCOME, $this->actual_payment);
+        \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_INCOME, $this->cash_payment);
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, $this->beans_payment);
     }
 
