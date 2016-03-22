@@ -49,7 +49,7 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->title}}</td>
-                            <td><a class="uk-button{{($item->portrait)?'':' uk-text-danger'}}" href="{{$item->portrait}}" data-uk-lightbox="{group:'group-{{$item->id}}'}"  data-lightbox-type="image" title="缩略图">身份证-正面</a></td>
+                            <td><a class="uk-button{{($item->thumbnail)?'':' uk-text-danger'}}" href="{{$item->thumbnail}}" data-uk-lightbox="{group:'group-{{$item->id}}'}"  data-lightbox-type="image" title="缩略图">身份证-正面</a></td>
                             <td>{{$item->created_at}}</td>
                             <td>
                                 @if($item->type_id == 1)
