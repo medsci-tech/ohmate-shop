@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="uk-grid uk-grid-collapse">
-        <div class="uk-width-small-3-3 uk-container-center">
+        <div class="uk-width-small-2-3 uk-container-center">
             <div class="uk-panel">
                 <a href="{{url('/article/create')}}" class="uk-button uk-button-primary"><i class="uk-icon uk-icon-plus"></i> 新增项目</a>
                 <div style="display: inline-block;" id="search">
@@ -49,7 +49,7 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->title}}</td>
-                            <td><a class="uk-button{{($item->thumbnail)?'':' uk-text-danger'}}" href="{{$item->thumbnail}}" data-uk-lightbox="{group:'group-{{$item->id}}'}"  data-lightbox-type="image" title="缩略图">身份证-正面</a></td>
+                            <td><a class="uk-button{{($item->thumbnail)?'':' uk-text-danger'}}" href="{{$item->thumbnail}}" data-uk-lightbox="{group:'group-{{$item->id}}'}"  data-lightbox-type="image" title="缩略图">缩略图</a></td>
                             <td>{{$item->created_at}}</td>
                             <td>
                                 @if($item->type_id == 1)
@@ -79,7 +79,7 @@
                                     <div class="uk-dropdown">
                                         <ul class="uk-nav uk-nav-dropdown">
                                             <li><a class="uk-text-info" href="{{url('article/'. $item->id . '/edit')}}">编辑资料</a></li>
-                                            <li><a class="uk-text-danger" href="{{url('admin/walkers/'. $item->id . '/')}}">编辑资料</a></li>
+                                            <li><a class="uk-text-danger" href="{{url('admin/walkers/'. $item->id . '/')}}">删除</a></li>
                                         </ul>
                                     </div>
                                 </div>
