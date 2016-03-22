@@ -21,8 +21,9 @@ class CartController extends Controller
         $default_address = $customer->addresses()->where('is_default', true)->first();
 
         if ($default_address) {
-            $default_address = $default_address->toArray();
-            $default_address['post_fee'] = \Helper::getPostFee($default_address->province);
+            $default_address_array = $default_address->toArray();
+            $post_fee = \Helper::getPostFee($default_address->province);
+            $default_address_array['post_fee'] = $post_fee;
         }
 
         return response()->json([
@@ -30,7 +31,7 @@ class CartController extends Controller
             'data' => [
                 'beans' => $customer->beans_total,
                 'default_address' => $default_address,
-                'post_fee' => $default_address? \Helper::getPostFee($default_address->province):0
+                'post_fee' => $default_address? $post_fee:0
             ]
         ]);
     }
