@@ -20,13 +20,13 @@
                     </div>
                 @endif
 
-                <form class="uk-form uk-container-center" role="form" method="POST" action="{{ url('/auth/register') }}">
+                <form class="uk-form uk-container-center" role="form" method="POST" action="{{ url('/register') }}">
                     <fieldset data-uk-margin>
-                        <legend>请登录</legend>
+                        <legend>请填写信息</legend>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="uk-form-row uk-form-icon">
                             <i class="uk-icon-user"></i>
-                            <input type="text" class="form-control" name="name" placeholder="请输入用户名" value="{{ old('name') }}">
+                            <input type="text" class="form-control" name="name" placeholder="请输入真实姓名" value="{{ old('name') }}">
                         </div>
                         <br>
                         <div class="uk-form-row uk-form-icon">

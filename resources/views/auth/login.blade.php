@@ -20,7 +20,7 @@
                 </div>
             @endif
 
-            <form class="uk-form uk-container-center" role="form" method="POST" action="{{ url('/auth/login') }}">
+            <form class="uk-form uk-container-center" role="form" method="POST" action="{{ url('/login') }}">
                 <fieldset data-uk-margin>
                     <legend>请登录</legend>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
