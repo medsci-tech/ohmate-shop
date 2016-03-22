@@ -68,7 +68,7 @@
                                     </div>
                                 @endif
                             </td>
-                            <td>{{$item->user->name}}</td>
+                            <td>{{$item->user? $item->user->name: '未知'}}</td>
                             <td>{{$item->created_at}}</td>
                             <td>
                                 <div style="display: inline-block; position: relative;" data-uk-dropdown="{mode:'click'}">
