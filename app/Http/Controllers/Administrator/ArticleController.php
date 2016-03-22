@@ -29,7 +29,12 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        //TODO
+    }
+
+    public function delete($id)
+    {
+        //TODO
     }
 
     /**

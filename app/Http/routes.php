@@ -106,5 +106,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
 
     Route::resource('user', 'UserController');
 
+    Route::get('article/{id}/delete', 'ArticleController@delete');
+    Route::post('article/search', 'ArticleController@search');
     Route::resource('article', 'ArticleController');
 });
