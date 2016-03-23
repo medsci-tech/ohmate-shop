@@ -12,7 +12,7 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<ul class="uk-subnav uk-subnav-line">
+<ul class="uk-subnav uk-subnav-pill">
     <li class="uk-active"><a href="/article/category/0">全部分类</a></li>
     <li><a href="/article/category/1">糖友科普</a></li>
     <li><a href="/article/category/2">药物治疗</a></li>
