@@ -56,9 +56,9 @@ class ArticleController extends Controller
         ]);
 
         $thumbnail = $request->file('thumbnail');
-        $path = 'image/thumbnail/' . $article->id . '.' . $thumbnail->getClientOriginalExtension();
-        dd($path);
-        $thumbnail->move(public_path($path));
+        $file_name = $article->id . '.' . $thumbnail->getClientOriginalExtension();
+        $path = 'image/thumbnail/' . $file_name;
+        $thumbnail->move(public_path('image/thumbnail'), $file_name);
         $article->update([
             'thumbnail' => url($path)
         ]);
