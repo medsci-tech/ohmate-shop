@@ -29,6 +29,7 @@
             <div class="uk-panel uk-panel-box-primary uk-panel-divider">
                 <div class="uk-panel-badge uk-badge">{{$item->type->type_ch}}</div>
                 <h3 class="uk-panel-title">{{$item->title}}</h3>
+                这里是摘要
             </div>
         </div>
     @endforeach
