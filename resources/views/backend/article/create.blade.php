@@ -23,13 +23,14 @@
                         </div>
                         <div class="uk-form-row">
                             <label class="uk-form-label">缩略图</label>
-                            <input type="text" class="form-control" name="recommend_by" required>
+                            <div class="uk-form-file">点击上传<input type="file"></div>
                         </div>
                         <div class="uk-form-row">
                             <label class="uk-form-label">文章类别</label>
                             <div class="uk-button uk-form-select" data-uk-form-select>
-                                <span></span>
-                                <select name="article_type">
+                                <span>请选择类别</span>
+                                <i class="uk-icon-caret-down"></i>
+                                <select name="article_type" required>
                                     @foreach($types as $type)
                                         <option value="{{$type->id}}">{{$type->type_ch}}</option>
                                     @endforeach
