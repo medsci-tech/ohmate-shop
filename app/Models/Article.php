@@ -39,6 +39,8 @@ class Article extends Model
 
     protected $table = 'articles';
 
+    protected $guarded = [];
+
     public function type()
     {
         return $this->belongsTo('App\Models\ArticleType', 'type_id');
