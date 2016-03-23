@@ -11,7 +11,7 @@
             <div class="uk-panel">
                 <form class="uk-form uk-container-center uk-form-horizontal" role="form" method="POST" action="{{ url('article') }}">
                     <fieldset data-uk-margin>
-                        <legend>文章信息</legend>
+                        <legend>新建文章</legend>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="uk-form-row">
                             <label class="uk-form-label">标题</label>
@@ -38,7 +38,6 @@
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>附加信息</legend>
                         <div class="uk-form-row">
                             <button type="submit" class="uk-button uk-button-primary">提交</button>
                         </div>
