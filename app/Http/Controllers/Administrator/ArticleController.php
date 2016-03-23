@@ -91,7 +91,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.article.edit')->with([
+            'item' => Article::find($id)
+        ]);
     }
 
     /**
