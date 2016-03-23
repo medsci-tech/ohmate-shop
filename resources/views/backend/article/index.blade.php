@@ -69,7 +69,6 @@
                                 @endif
                             </td>
                             <td>{{$item->user? $item->user->name: '未知'}}</td>
-                            <td>{{$item->created_at}}</td>
                             <td>
                                 <div style="display: inline-block; position: relative;" data-uk-dropdown="{mode:'click'}">
                                     <button class="uk-button">
@@ -78,7 +77,7 @@
                                     </button>
                                     <div class="uk-dropdown">
                                         <ul class="uk-nav uk-nav-dropdown">
-                                            <li><a class="uk-text-info" href="{{url('article/'. $item->id . '/edit')}}">编辑资料</a></li>
+                                            <li><a class="uk-text-info" href="{{url('article/'. $item->id . '/edit')}}">编辑</a></li>
                                             <li><a class="uk-text-danger" href="{{url('article/'. $item->id . '/delete')}}">删除</a></li>
                                         </ul>
                                     </div>
