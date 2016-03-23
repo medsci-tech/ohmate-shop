@@ -32,7 +32,7 @@
                                     后台权限管理
                                 </li>
                                 <li>
-                                    <a href="{{ url('/users/index') }}">
+                                    <a href="{{ url('/users') }}">
                                         后台权限管理
                                     </a>
                                 </li>
@@ -41,7 +41,7 @@
                                     用户管理
                                 </li>
                                 <li>
-                                    <a href="{{ url('/customer/index') }}">
+                                    <a href="{{ url('/customer') }}">
                                         用户列表
                                     </a>
                                 </li>
@@ -62,7 +62,7 @@
                                     教育频道管理
                                 </li>
                                 <li>
-                                    <a href="{{ url('/article/index') }}">
+                                    <a href="{{ url('/article') }}">
                                         文章管理
                                     </a>
                                 </li>

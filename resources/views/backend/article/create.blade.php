@@ -9,21 +9,32 @@
     <div class="uk-grid uk-grid-collapse">
         <div class="uk-width-small-1-3 uk-container-center">
             <div class="uk-panel">
-                <form class="uk-form uk-container-center uk-form-horizontal" role="form" method="POST" action="{{ url('admin/walkers') }}">
+                <form class="uk-form uk-container-center uk-form-horizontal" role="form" method="POST" action="{{ url('article') }}">
                     <fieldset data-uk-margin>
-                        <legend>基本信息</legend>
+                        <legend>文章信息</legend>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="uk-form-row">
-                            <label  class="uk-form-label">姓名</label>
-                            <input type="text" class="form-control" name="name" required>
+                            <label class="uk-form-label">标题</label>
+                            <input type="text" class="form-control" name="title" required>
                         </div>
                         <div class="uk-form-row">
-                            <label  class="uk-form-label">电话号码</label>
-                            <input type="text" class="form-control" name="phone" required>
+                            <label class="uk-form-label">摘要</label>
+                            <input type="text" class="form-control" name="description" required>
                         </div>
                         <div class="uk-form-row">
-                            <label  class="uk-form-label">推荐人</label>
+                            <label class="uk-form-label">缩略图</label>
                             <input type="text" class="form-control" name="recommend_by" required>
+                        </div>
+                        <div class="uk-form-row">
+                            <label class="uk-form-label">文章类别</label>
+                            <div class="uk-button uk-form-select" data-uk-form-select>
+                                <span></span>
+                                <select name="article_type">
+                                    @foreach($types as $type)
+                                        <option value="{{$type->id}}">{{$type->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </fieldset>
                     <fieldset>

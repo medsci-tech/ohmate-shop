@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Models\Article;
+use App\Models\ArticleType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,7 +30,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //TODO
+        return view('backend.article.create')->with([
+            'types' => ArticleType::all()
+        ]);
     }
 
     public function delete($id)
