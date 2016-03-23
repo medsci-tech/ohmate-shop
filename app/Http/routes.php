@@ -109,4 +109,10 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
     Route::get('article/{id}/delete', 'ArticleController@delete');
     Route::post('article/search', 'ArticleController@search');
     Route::resource('article', 'ArticleController');
+
+    Route::group(['prefix' => 'customer'], function () {
+        Route::get('list', 'CustomerController@list');
+        Route::get('search', 'CustomerController@search');
+        Route::get('/{id}/detail', 'CustomerController@detail');
+    });
 });
