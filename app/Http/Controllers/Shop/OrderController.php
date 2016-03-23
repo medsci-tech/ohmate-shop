@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Models\Address;
+use App\Models\Article;
 use App\Models\Commodity;
 use App\Models\Customer;
 use App\Models\Order;
@@ -79,7 +80,9 @@ class OrderController extends Controller
 //            ])
 //        ]);
 
-        return view('backend.article.customer_index');
+        return view('backend.article.customer_index')->with([
+            'items' => Article::paginate(10)
+        ]);
     }
 
 

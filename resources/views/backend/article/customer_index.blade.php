@@ -21,6 +21,14 @@
     <li><a href="/article/category/5">血糖监测</a></li>
 </ul>
 
+
+@foreach($items as $item)
+    <div class="uk-panel">
+        <div class="uk-panel-badge uk-badge">{{$item->type->type_ch}}</div>
+        <h3 class="uk-panel-title">{{$item->title}}</h3>
+    </div>
+@endforeach
+
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 <script src="{{ asset('/js/uikit.min.js') }}"></script>
 <script src="{{ asset('/js/components/accordion.min.js') }}"></script>
