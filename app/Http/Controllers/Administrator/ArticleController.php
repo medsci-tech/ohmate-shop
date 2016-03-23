@@ -48,7 +48,20 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->file('thumbnail'));
+        $article = Article::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'uri' => $request->input('uri')
+        ]);
+
+        $request->file('thumbnail')->move(public_path('image/thumbnail/'.$article->id));
+        $article->update([
+            'thumbnail' => url('image/thumbnail/'.$article->id)
+        ]);
+
+        return redirect('article')->with([
+            'success' => true
+        ]);
     }
 
     /**

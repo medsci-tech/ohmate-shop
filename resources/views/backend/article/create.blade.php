@@ -27,6 +27,10 @@
                             <div class="uk-form-file">点击选择<input name="thumbnail" type="file"></div>
                         </div>
                         <div class="uk-form-row">
+                            <label class="uk-form-label">文章链接</label>
+                            <input type="text" class="form-control" name="uri" required>
+                        </div>
+                        <div class="uk-form-row">
                             <label class="uk-form-label">文章类别</label>
                             <div class="uk-button uk-form-select" data-uk-form-select>
                                 <span>请选择类别</span>
