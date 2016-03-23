@@ -48,8 +48,6 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        echo ('ex'.$request->file('thumbnail')->getExtension());
-        echo ('ori'.$request->file('thumbnail')->getClientOriginalExtension());
         dd($request->file('thumbnail'));
         $article = Article::create([
             'title' => $request->input('title'),
@@ -59,7 +57,8 @@ class ArticleController extends Controller
         ]);
 
         $thumbnail = $request->file('thumbnail');
-        $path = 'image/thumbnail/' . $article->id . '.' . $thumbnail->getExtension();
+        $path = 'image/thumbnail/' . $article->id . '.' . $thumbnail->getClientOriginalExtension();
+        dd($path);
         $thumbnail->move(public_path($path));
         $article->update([
             'thumbnail' => url($path)
