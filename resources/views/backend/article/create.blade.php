@@ -24,7 +24,7 @@
                         </div>
                         <div class="uk-form-row">
                             <label class="uk-form-label">缩略图</label>
-                            <div class="uk-form-file">点击选择<input type="file"></div>
+                            <div class="uk-form-file">点击选择<input name="thumbnail" type="file"></div>
                         </div>
                         <div class="uk-form-row">
                             <label class="uk-form-label">文章类别</label>
