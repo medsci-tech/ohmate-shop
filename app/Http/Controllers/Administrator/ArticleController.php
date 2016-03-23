@@ -48,8 +48,8 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        echo ($request->file('thumbnail')->getExtension());
-        echo ($request->file('thumbnail')->getClientOriginalExtension());
+        echo ('ex'.$request->file('thumbnail')->getExtension());
+        echo ('ori'.$request->file('thumbnail')->getClientOriginalExtension());
         dd($request->file('thumbnail'));
         $article = Article::create([
             'title' => $request->input('title'),
