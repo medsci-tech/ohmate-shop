@@ -19,7 +19,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('backend.article.index')->with([
-            'items' => Article::paginate(20)
+            'items' => Article::orderBy('updated_at', 'desc')->paginate(20)
         ]);
     }
 
@@ -37,7 +37,11 @@ class ArticleController extends Controller
 
     public function delete($id)
     {
-        //TODO
+        Article::find($id)->delete();
+
+        return redirect('article')->with([
+            'success' => true
+        ]);
     }
 
     /**
