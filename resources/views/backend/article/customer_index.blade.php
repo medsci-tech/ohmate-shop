@@ -26,8 +26,11 @@
 <div class="uk-grid">
     <div class="uk-width-medium-1-2 uk-grid-margin">
     @foreach($items as $item)
-        <div class="uk-panel uk-panel-box uk-panel-divider">
+        <div class="uk-panel uk-panel-box uk-panel-space">
             <div class="uk-panel-badge uk-badge">{{$item->type->type_ch}}</div>
+            <div class="uk-panel-teaser">
+                <img src="{{$item->thumbnail}}" alt="">
+            </div>
             <h3 class="uk-panel-title">{{$item->title}}</h3>
             这里是摘要
         </div>
