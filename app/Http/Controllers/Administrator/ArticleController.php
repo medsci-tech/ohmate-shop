@@ -48,7 +48,6 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->file('thumbnail'));
         $article = Article::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
