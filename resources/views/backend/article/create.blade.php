@@ -10,7 +10,7 @@
     <div class="uk-grid uk-grid-collapse">
         <div class="uk-width-small-1-3 uk-container-center">
             <div class="uk-panel">
-                <form class="uk-form uk-container-center uk-form-horizontal" role="form" method="POST" action="{{ url('article') }}">
+                <form class="uk-form uk-container-center uk-form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="{{ url('article') }}">
                     <fieldset data-uk-margin>
                         <legend>新建文章</legend>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
