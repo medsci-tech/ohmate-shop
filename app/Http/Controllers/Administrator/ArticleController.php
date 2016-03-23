@@ -51,7 +51,8 @@ class ArticleController extends Controller
         $article = Article::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'uri' => $request->input('uri')
+            'uri' => $request->input('uri'),
+            'type_id' => $request->input('article_type')
         ]);
 
         $request->file('thumbnail')->move(public_path('image/thumbnail/'.$article->id));
