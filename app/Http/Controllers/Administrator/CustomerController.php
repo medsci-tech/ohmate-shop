@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class CustomerController extends Controller
 {
-    public function list()
+    public function customerList()
     {
         return response()->json([
             'success' => true,
