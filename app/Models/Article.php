@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Article
@@ -33,10 +35,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'articles';
 
     public function type()
     {
         return $this->belongsTo('App\Models\ArticleType', 'type_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -13,6 +13,10 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    Route::get('/', function () {
+        return redirect('/home');
+    });
+
     Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {
         Route::any('/', 'WechatController@serve');
         Route::get('/menu', 'WechatController@menu');
@@ -87,10 +91,22 @@ Route::group(['middleware' => 'web'], function () {
         });
         Route::resource('/commodity', 'CommodityController');
     });
+
 });
 
 Route::any('github', 'Github\GithubController@onEvent');
 
-Route::any('test', function () {
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
 
+    Route::get('/home', 'HomeController@index');
+});
+
+Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function () {
+
+    Route::resource('user', 'UserController');
+
+    Route::get('article/{id}/delete', 'ArticleController@delete');
+    Route::post('article/search', 'ArticleController@search');
+    Route::resource('article', 'ArticleController');
 });
