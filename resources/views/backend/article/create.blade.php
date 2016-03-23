@@ -3,6 +3,7 @@
 @section('css')
     <link href="{{ asset('/css/components/form-advanced.almost-flat.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/components/form-select.almost-flat.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/components/form-file.almost-flat.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -23,7 +24,7 @@
                         </div>
                         <div class="uk-form-row">
                             <label class="uk-form-label">缩略图</label>
-                            <div class="uk-form-file">点击上传<input type="file"></div>
+                            <div class="uk-form-file">点击选择<input type="file"></div>
                         </div>
                         <div class="uk-form-row">
                             <label class="uk-form-label">文章类别</label>
