@@ -55,9 +55,11 @@ class ArticleController extends Controller
             'type_id' => $request->input('article_type')
         ]);
 
-        $request->file('thumbnail')->move(public_path('image/thumbnail/'.$article->id));
+        $thumbnail = $request->file('thumbnail');
+        $path = 'image/thumbnail/' . $article->id . '.' . $thumbnail->getClientOriginalExtension();
+        $thumbnail->move(public_path($path));
         $article->update([
-            'thumbnail' => url('image/thumbnail/'.$article->id)
+            'thumbnail' => url($path)
         ]);
 
         return redirect('article')->with([
