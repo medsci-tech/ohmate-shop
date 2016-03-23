@@ -50,6 +50,7 @@ class ArticleController extends Controller
     {
         echo ($request->file('thumbnail')->getExtension());
         echo ($request->file('thumbnail')->getClientOriginalExtension());
+        dd($request->file('thumbnail'));
         $article = Article::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
