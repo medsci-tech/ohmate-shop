@@ -31,7 +31,7 @@
                                 <span></span>
                                 <select name="article_type">
                                     @foreach($types as $type)
-                                        <option value="{{$type->id}}">{{$type->name}}</option>
+                                        <option value="{{$type->id}}">{{$type->type_ch}}</option>
                                     @endforeach
                                 </select>
                             </div>
