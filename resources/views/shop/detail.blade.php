@@ -93,11 +93,16 @@
           }
         }
         return -1;
+      },
+      noStorage: function () {
+        if (!this.goods.storage) {
+          $('.navbar-fixed-bottom .button').attr('disabled','disabled')
+        }
       }
     },
     methods: {
       addGoods: function () {
-        if (this.goods.storage) {
+//        if (this.goods.storage) {
           if (cart_num == '') {
             cart_num = 0;
           }
@@ -122,13 +127,13 @@
           setTimeout(function () {
             this.goods.num = 1;
           }, 900);
-        } else {
-          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
-          $('.jumbotron').show();
-          $('.jumbotron').delay(1000).hide(0);
-          $('.jumbotron .alert').show();
-          $('.jumbotron .alert').delay(300).fadeOut(700);
-        }
+//        } else {
+//          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
+//          $('.jumbotron').show();
+//          $('.jumbotron').delay(1000).hide(0);
+//          $('.jumbotron .alert').show();
+//          $('.jumbotron .alert').delay(300).fadeOut(700);
+//        }
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
