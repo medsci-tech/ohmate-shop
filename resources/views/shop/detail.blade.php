@@ -46,7 +46,7 @@
       <button class="button button-defualt" :class="goods.storage?'':'disabled'" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a href="{{url('/shop/cart')}}" class="button button-caution button-rounded" :class="goods.storage?'':'disabled' @click="addGoods()">立即购买</a>
+      <a href="{{url('/shop/cart')}}" class="button button-caution button-rounded" :class="goods.storage?'':'disabled'" @click="addGoods()">立即购买</a>
     </div>
   </div>
 
