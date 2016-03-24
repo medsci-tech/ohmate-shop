@@ -13,5 +13,7 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/components/slideshow.min.js')}}"></script>
+    <script src="{{asset('/js/vendor/vue.js')}}"></script>
+    <script src="{{asset('/js/vendor/city.js')}}"></script>
+    <script src="{{asset('/js/admin.js')}}"></script>
 @endsection
