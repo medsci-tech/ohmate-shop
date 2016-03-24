@@ -43,10 +43,10 @@
       <span @click="numAdd()" class="fa fa-plus"></span>
     </div>
     <div class="col-xs-4">
-      <button class="button button-defualt" @click="addGoods()">加入购物车</button>
+      <button class="button button-defualt" :class="goods.storage?'':'disabled'" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a href="{{url('/shop/cart')}}" class="button button-caution button-rounded" @click="addGoods()">立即购买</a>
+      <a href="{{url('/shop/cart')}}" class="button button-caution button-rounded" :class="goods.storage?'':'disabled' @click="addGoods()">立即购买</a>
     </div>
   </div>
 
@@ -68,6 +68,7 @@
     name: '{{$item["name"]}}',
     tag: '{{$item["remark"]}}',
     price: {{$item["price"]}},
+    storage: {{$item["storage"]}},
     num: 1
   };
 
@@ -96,30 +97,38 @@
     },
     methods: {
       addGoods: function () {
-        if (cart_num == '') {
-          cart_num = 0;
-        }
-        if (this.alreadyHave != -1) {
-          this.cart[this.alreadyHave].num += this.goods.num;
+        if (this.goods.storage) {
+          if (cart_num == '') {
+            cart_num = 0;
+          }
+          if (this.alreadyHave != -1) {
+            this.cart[this.alreadyHave].num += this.goods.num;
+          } else {
+            this.cart.push({
+              id: this.goods.id,
+              name: this.goods.name,
+              tag: this.goods.tag,
+              price: this.goods.price,
+              num: this.goods.num
+            });
+            cart_num++;
+          }
+          $('#touch span').text(cart_num);
+          $('.jumbotron').show();
+          $('.jumbotron').delay(1000).hide(0);
+          $('.jumbotron .alert').show();
+          $('.jumbotron .alert').delay(300).fadeOut(700);
+          localStorage.cart = JSON.stringify(this.cart);
+          setTimeout(function () {
+            this.goods.num = 1;
+          }, 900);
         } else {
-          this.cart.push({
-            id: this.goods.id,
-            name: this.goods.name,
-            tag: this.goods.tag,
-            price: this.goods.price,
-            num: this.goods.num
-          });
-          cart_num++;
+          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
+          $('.jumbotron').show();
+          $('.jumbotron').delay(1000).hide(0);
+          $('.jumbotron .alert').show();
+          $('.jumbotron .alert').delay(300).fadeOut(700);
         }
-        $('#touch span').text(cart_num);
-        $('.jumbotron').show();
-        $('.jumbotron').delay(1000).hide(0);
-        $('.jumbotron .alert').show();
-        $('.jumbotron .alert').delay(300).fadeOut(700);
-        localStorage.cart = JSON.stringify(this.cart);
-        setTimeout(function () {
-          this.goods.num = 1;
-        }, 900);
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
