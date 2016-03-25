@@ -35,9 +35,8 @@
               </div>
             </li>
           {{--@endcan--}}
-          @endif
 
-      </ul>
+        </ul>
       <form class="navbar-form navbar-right" @submit.prevent="search">
         <div class="has-feedback">
           <input @keyup.enter="submit" type="text" class="form-control" placeholder="Search..."
@@ -45,6 +44,7 @@
           <button type="submit" class="btn btn-link form-control-feedback fa fa-search"></button>
         </div>
       </form>
+      @endif
     </div>
   </div>
 </nav>
