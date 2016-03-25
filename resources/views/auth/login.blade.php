@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-  <div class="container">
+  <div class="container" id="signin">
     <br><br><br>
 
     @if (count($errors) > 0)
@@ -23,16 +23,16 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class="form-group">
-        <label for="inputID" class="sr-only">请输入账号</label>
-        <input type="text" id="inputID" class="form-control" placeholder="请输入账号" v-model="email" required autofocus>
+        <label for="email" class="sr-only">请输入账号</label>
+        <input type="text" id="email" class="form-control" placeholder="请输入账号" name="email" required autofocus>
       </div>
       <div class="form-group">
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" v-model="password" required>
+        <label for="password" class="sr-only">密码</label>
+        <input type="password" id="password" class="form-control" placeholder="请输入密码" name="password" required>
       </div>
       <div class="checkbox">
-        <label for="">
-          <input type="checkbox" name="remember" v-model="remember"> 记住此账号
+        <label for="remember">
+          <input type="checkbox" name="remember" id="remember"> 记住此账号
         </label>
       </div>
       <p>&emsp;</p>
