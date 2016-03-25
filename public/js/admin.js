@@ -65,7 +65,7 @@ var index = new Vue({
             time: '2016-03-03'
           }]
         },
-        qrcode: '/image/test04.png'
+        qrcode: '/image/test04.jpg'
       },
     ],
 
@@ -124,7 +124,7 @@ var index = new Vue({
           time: '2016-03-03'
         }]
       },
-      qrcode: '/image/test04.png'
+      qrcode: '/image/test04.jpg'
     }
   },
   computed: {
@@ -195,10 +195,10 @@ var index = new Vue({
                 qrcode: '二维码'
               };
               this.searched = '';
+              this.searching.user_type = '所有用户';
               this.page_all = data.data.customers.last_page;
               this.page_active = data.data.customers.current_page;
               this.page_data = data.data.customers.data;
-              dom.className = 'active';
             }
           },
           'json'
