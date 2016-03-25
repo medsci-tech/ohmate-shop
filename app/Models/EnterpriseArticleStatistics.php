@@ -40,7 +40,7 @@ class EnterpriseArticleStatistics extends Model
 
     public static function getAllStatistics()
     {
-        return self::select(\DB::raw('article_type, sum(count) as count'))->groupBy('article_type_id')->with('articleType')->get()->toArray();
+        return self::select(\DB::raw('article_type_id, sum(count) as count'))->groupBy('article_type_id')->with('articleType')->get()->toArray();
     }
     
     /**

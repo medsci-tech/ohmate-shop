@@ -41,7 +41,7 @@ class EnterpriseCommodityStatistics extends Model
 
     public static function getAllStatistics()
     {
-        return self::with('commodity')->all();
+        return self::select(\DB::raw('commodity_id, sum(count) as count'))->groupBy('article_type_id')->with('articleType')->get()->toArray();
     }
 
     /**
