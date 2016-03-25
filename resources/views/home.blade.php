@@ -10,7 +10,7 @@
                 <ul class="nav nav-sidebar">
                     <li :class="(searching.user_type == '医生')?'active':''" @click="choose_data" id="doctor"><a href="#doctor">医生</a></li>
                     <li :class="(searching.user_type == '志愿者')?'active':''" @click="choose_data" id="volunteer"><a href="#volunteer">志愿者</a></li>
-                    <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="users"><a href="#users">所有用户</a></li>
+                    <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="customer"><a href="#users">所有用户</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
