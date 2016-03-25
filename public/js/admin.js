@@ -204,8 +204,7 @@ var index = new Vue({
       var dom = e.currentTarget;
       var name = e.target.innerHTML;
       if (dom.className != 'active') {
-        $.get(
-          url('/customer/list'),
+        $.get('/customer/list',
           {
 /*            user_type: name,
             detail: '',
@@ -244,7 +243,7 @@ var index = new Vue({
             //    qrcode: '二维码'
             //  };
             //}
-            console.log(JSON.parse(data));
+            console.log(data);
           },
           'json'
         );
