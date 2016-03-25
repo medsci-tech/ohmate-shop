@@ -1,5 +1,6 @@
 $(function () {
-  $('[data-toggle="popover"]').popover({html: true})
+  $('[data-toggle="popover"]').popover({html: true});
+  $('.dropdown-toggle').dropdown();
 });
 
 $(function () {
