@@ -243,7 +243,7 @@ var index = new Vue({
             //    qrcode: '二维码'
             //  };
             //}
-            console.log(JSON.parse(data));
+            console.log(data);
           },
           'json'
         );
