@@ -195,7 +195,7 @@ var index = new Vue({
                 qrcode: '二维码'
               };
               index.searched = '';
-              index.searching.user_type = 'customer';
+              index.searching.user_type = '所有用户';
               index.page_all = data.data.customers.last_page;
               index.page_active = data.data.customers.current_page;
               index.page_data = data.data.customers.data;
