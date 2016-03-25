@@ -40,7 +40,7 @@ class EnterpriseBasicStatistics extends Model
     public static function getAllStatistics()
     {
         return self::select(\DB::raw('
-            sum(focus_count) as friend_count,
+            sum(focus_count) as focus_count,
             sum(register_count) as register_count,
             sum(doctor_count) as doctor_count,
             sum(bean_count) as bean_count,
