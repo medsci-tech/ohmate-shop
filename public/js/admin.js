@@ -307,6 +307,7 @@ $('[data-toggle="popover"]').mouseover(function () {
   });
 });
 
+index.choose_data();
 
 
 
