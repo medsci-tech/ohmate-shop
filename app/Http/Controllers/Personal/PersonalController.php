@@ -120,10 +120,12 @@ class PersonalController extends Controller
     {
         $customer = \Helper::getCustomer();
 
-        if ($customer->id != 17) {
-            return '企业用户目前维护中,请稍等.';
-        }
         if ($customer->type->type_en == AppConstant::CUSTOMER_ENTERPRISE) {
+
+            if ($customer->id != 17) {
+                return '企业用户目前维护中,请稍等.';
+            }
+
             $enterpriseCommodityStatistics = EnterpriseCommodityStatistics::getAllStatistics();
             $enterpriseArticleStatistics = EnterpriseArticleStatistics::getAllStatistics();
 //            $enterpriseBasicStatistics = EnterpriseBasicStatistics::where('date', Carbon::now()->format('Y-m-d'))->get()->toArray();
