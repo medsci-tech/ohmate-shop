@@ -197,11 +197,11 @@ var index = new Vue({
                 beans: '迈豆数',
                 qrcode: '二维码'
               };
-              this.searched = '';
-              this.searching.user_type = 'customer';
-              this.page_all = data.data.customers.last_page;
-              this.page_active = data.data.customers.current_page;
-              this.page_data = data.data.customers.data;
+              index.searched = '';
+              index.searching.user_type = 'customer';
+              index.page_all = data.data.customers.last_page;
+              index.page_active = data.data.customers.current_page;
+              index.page_data = data.data.customers.data;
             }
           },
           'json'
