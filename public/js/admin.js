@@ -22,7 +22,7 @@ var index = new Vue({
       {
         id: 1,
         name: '张三',
-        user_type: '医生',
+        user_type: 'doctor',
         phone: '13232323232',
         email: '123123@123123.com',
         nickname: 'zhangsan',
@@ -198,7 +198,7 @@ var index = new Vue({
                 qrcode: '二维码'
               };
               this.searched = '';
-              this.searching.user_type = '所有用户';
+              this.searching.user_type = 'customer';
               this.page_all = data.data.customers.last_page;
               this.page_active = data.data.customers.current_page;
               this.page_data = data.data.customers.data;
