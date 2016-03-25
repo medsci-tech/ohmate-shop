@@ -197,7 +197,7 @@ var index = new Vue({
               this.searched = '';
               this.page_all = data.data.customers.last_page;
               this.page_active = data.data.customers.current_page;
-              page_data = data.data.customers.data;
+              this.page_data = data.data.customers.data;
               dom.className = 'active';
             }
           },
