@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-  <div class="container" id="signin">
+  <div class="container">
     <br><br><br>
 
     @if (count($errors) > 0)
@@ -18,7 +18,7 @@
       </div>
     @endif
 
-    <form class="form-signin center-block" @submit.prevent="submitSign | debounce 1000">
+    <form class="form-signin center-block" role="form" method="POST" action="{{ url('/login') }}">
       <h2 class="form-signin-heading text-center">请登录</h2>
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -30,8 +30,10 @@
         <label for="inputPassword" class="sr-only">密码</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" v-model="password" required>
       </div>
-      <div class="form-group">
-        <input type="checkbox" name="remember" v-model="remember"> 记住此账号
+      <div class="checkbox">
+        <label for="">
+          <input type="checkbox" name="remember" v-model="remember"> 记住此账号
+        </label>
       </div>
       <p>&emsp;</p>
       <button class="button button-block button-rounded button-primary button-glow" type="submit">登录</button>
@@ -45,23 +47,5 @@
 @endsection
 
 @section('js')
-  <script>
-    new Vue({
-      el: '#signin',
-      data: {
-        email: '{{ old('email') }}',
-        password: '',
-        remember: 0
-      },
-      methods: {
-        submitSign: function () {
-          $.post(url('/login'), {
-            email: this.email,
-            password: this.password,
-            remember: this.remember
-          })
-        }
-      }
-    });
-  </script>
+
 @endsection
