@@ -166,39 +166,6 @@ var index = new Vue({
              page: 1*/
           },
           function (data) {
-            //if (data.success) {
-            //  if (name = '医生') index.data_head = {
-            //    id: '#',
-            //    name: '姓名',
-            //    phone: '手机号',
-            //    address: '地址',
-            //    hospital: '医院',
-            //    invited: '邀请糖友数',
-            //    beans: '迈豆数',
-            //    qrcode: '二维码'
-            //  };
-            //  if (name = '志愿者') index.data_head = {
-            //    id: '#',
-            //    name: '姓名',
-            //    phone: '手机号',
-            //    address: '地址',
-            //    hospital: '医院',
-            //    invited: '邀请糖友数',
-            //    beans: '迈豆数',
-            //    qrcode: '二维码'
-            //  };
-            //  if (name = '所有用户') index.data_head = {
-            //    id: '#',
-            //    name: '姓名',
-            //    phone: '手机号',
-            //    address: '地址',
-            //    hospital: '医院',
-            //    invited: '邀请糖友数',
-            //    beans: '迈豆数',
-            //    qrcode: '二维码'
-            //  };
-            //}
-            console.log(data);
             if (data.success) {
               if (name = '医生') index.data_head = {
                 id: '#',
