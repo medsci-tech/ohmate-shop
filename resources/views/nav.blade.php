@@ -128,6 +128,7 @@
               </div>
             </li>
           {{--@endcan--}}
+          @endif
 
       </ul>
       <form class="navbar-form navbar-right" @submit.prevent="search">
