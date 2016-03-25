@@ -11,13 +11,13 @@ var index = new Vue({
   el: '#index',
   data: {
     searching: {
-      user_type:'医生',
-      detail:''
+      user_type: '医生',
+      detail: ''
     },
     searched: '张三',
     page_all: 3,
     page_active: 2,
-    page_num: 50,
+    page_num: 20,
     page_data: [
       {
         id: 1,
@@ -59,7 +59,7 @@ var index = new Vue({
             action: '注册新用户',
             result: '+2180',
             time: '2016-03-03'
-          },{
+          }, {
             action: '管理员操作',
             result: '+6820',
             time: '2016-03-03'
@@ -67,54 +67,6 @@ var index = new Vue({
         },
         qrcode: '../../image/test03.png'
       },
-      {
-        id: 2,
-        name: '张三',
-        user_type: '医生',
-        phone: '13232323232',
-        email: '123123@123123.com',
-        nickname: 'zhangsan',
-        hospital: {
-          name: '光谷同济医院',
-          province: '湖北',
-          city: '武汉',
-          area: '洪山区',
-          location: '生物城666号',
-        },
-        invited: {
-          count: 90,
-          this_month: 30,
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          page_data: [{
-            id: 2,
-            phone: '13232323232',
-            time: '2016-03-03'
-          }, {
-            id: 3,
-            phone: '13232323232',
-            time: '2016-03-03'
-          }]
-        },
-        beans: {
-          count: 9000,
-          this_month: '+9000',
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          page_data: [{
-            action: '注册新用户',
-            result: '+2180',
-            time: '2016-03-03'
-          },{
-            action: '管理员操作',
-            result: '+6820',
-            time: '2016-03-03'
-          }]
-        },
-        qrcode: '../../image/test03.png'
-      }
     ],
 
     data_head: {
@@ -166,7 +118,7 @@ var index = new Vue({
           action: '注册新用户',
           result: '+2180',
           time: '2016-03-03'
-        },{
+        }, {
           action: '管理员操作',
           result: '+6820',
           time: '2016-03-03'
@@ -209,6 +161,9 @@ var index = new Vue({
 /*            user_type: name,
             detail: '',
             page: 1*/
+            /*            user_type: name,
+             detail: '',
+             page: 1*/
           },
           function (data) {
             //if (data.success) {
@@ -244,6 +199,43 @@ var index = new Vue({
             //  };
             //}
             console.log(data);
+            if (data.success) {
+              if (name = '医生') index.data_head = {
+                id: '#',
+                name: '姓名',
+                phone: '手机号',
+                address: '地址',
+                hospital: '医院',
+                invited: '邀请糖友数',
+                beans: '迈豆数',
+                qrcode: '二维码'
+              };
+              if (name = '志愿者') index.data_head = {
+                id: '#',
+                name: '姓名',
+                phone: '手机号',
+                address: '地址',
+                hospital: '医院',
+                invited: '邀请糖友数',
+                beans: '迈豆数',
+                qrcode: '二维码'
+              };
+              if (name = '所有用户') index.data_head = {
+                id: '#',
+                name: '姓名',
+                phone: '手机号',
+                address: '地址',
+                hospital: '医院',
+                invited: '邀请糖友数',
+                beans: '迈豆数',
+                qrcode: '二维码'
+              };
+              this.searched = '';
+              this.page_all = data.customers.last_page;
+              this.page_active = data.customers.current_page;
+              page_data = data.customers.data;
+              dom.className = 'active';
+            }
           },
           'json'
         );
@@ -295,7 +287,7 @@ var index = new Vue({
       $.post(
         url(),
         {
-          user_type:  this.searching.user_type,
+          user_type: this.searching.user_type,
           detail: this.searching.detail,
           page: 1
         },
