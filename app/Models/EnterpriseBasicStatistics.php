@@ -47,7 +47,7 @@ class EnterpriseBasicStatistics extends Model
             sum(income_count) as income_count,
             sum(article_count) as article_count,
             sum(order_count) as order_count,
-            sum(commodity_count) as commodity_count,
+            sum(commodity_count) as commodity_count
         '))->get()->toArray();
     }
 }
