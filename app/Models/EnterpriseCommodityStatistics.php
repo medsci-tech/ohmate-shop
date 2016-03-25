@@ -27,15 +27,28 @@ class EnterpriseCommodityStatistics extends Model
     protected $table = 'enterprise_commodity_statistics';
 
     public static function getTodayStatistics() {
-        $statisticsDetals = EnterpriseCommodityStatistics::where('date', Carbon::now()->format('Y-m-d'))->get();
-        if($statisticsDetals) {
-            $statisticsDetals = $statisticsDetals->toArray();
+        $statisticsDetails = self::where('date', Carbon::now()->format('Y-m-d'))->get();
+        if($statisticsDetails) {
+            $statisticsDetails = $statisticsDetails->toArray();
         } else {
-            $statisticsDetals = [];
+            $statisticsDetails = [];
         }
-        foreach($statisticsDetals as &$details) {
+        foreach($statisticsDetails as &$details) {
             $details['commodity'] = Commodity::find($details['commodity_id'])->toArray();
         }
-        return $statisticsDetals;
+        return $statisticsDetails;
+    }
+
+    public static function getAllStatistics()
+    {
+        return self::with('commodity')->all();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function commodity()
+    {
+        return $this->belongsTo(Commodity::class);
     }
 }

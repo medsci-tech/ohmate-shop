@@ -36,4 +36,18 @@ use Illuminate\Database\Eloquent\Model;
 class EnterpriseBasicStatistics extends Model
 {
     protected $table = 'enterprise_basic_statistics';
+
+    public static function getAllStatistics()
+    {
+        return self::select(\DB::raw('
+            sum(focus_count) as friend_count,
+            sum(register_count) as register_count,
+            sum(doctor_count) as doctor_count,
+            sum(bean_count) as bean_count,
+            sum(income_count) as income_count,
+            sum(article_count) as article_count,
+            sum(order_count) as order_count,
+            sum(commodity_count) as commodity_count,
+        '))->get()->toArray();
+    }
 }
