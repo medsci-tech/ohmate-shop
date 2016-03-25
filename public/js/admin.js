@@ -266,23 +266,13 @@ var index = new Vue({
     },
     person_detail: function (e) {
       $('#myModal').modal('show');
-      $.post(
-        url(),
-        {
-          id: e.id,
-        },
-        function (data) {
-          if (data.success) {
-            this.this_person = data.data;
-            $('#province').val(index.this_person.hospital.province);
-            $('#province').trigger('change');
-            $('#city').val(index.this_person.hospital.city);
-            $('#city').trigger('change');
-            $('#area').val(index.this_person.hospital.district);
-            $('#area').trigger('change');
-          }
-        }
-      )
+      this.this_person = e;
+      $('#province').val(index.this_person.hospital.province);
+      $('#province').trigger('change');
+      $('#city').val(index.this_person.hospital.city);
+      $('#city').trigger('change');
+      $('#area').val(index.this_person.hospital.district);
+      $('#area').trigger('change');
     },
     edit_btn: function () {
       $('#user_card p').toggleClass('hide');
