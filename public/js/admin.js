@@ -232,16 +232,14 @@ var index = new Vue({
           page_num = e.target.innerHTML;
           break;
       }
-      $.post(
-        url(),
+      $.get('/customer/list',
         {
-          user_type: this.searching.user_type,
-          detail: this.searching.detail,
           page: page_num
         },
         function (data) {
           if (data.success) {
-
+            index.page_active = data.data.customers.current_page;
+            index.page_data = data.data.customers.data;
           }
         },
         'json'
