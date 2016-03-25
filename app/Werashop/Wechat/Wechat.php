@@ -128,7 +128,7 @@ class Wechat
 //                new MenuItem('地址测试', 'view', url('/shop/address/test')),
             ]),
             (new MenuItem("个人中心"))->buttons([
-                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
+//                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
                 new MenuItem('个人统计', 'view', url('/personal/statistics')),
                 new MenuItem('糖友推广', 'view', url('/personal/friend')),
                 new MenuItem('会员信息', 'view', url('/personal/information')),
