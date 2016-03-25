@@ -12,7 +12,6 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       @if (Auth::guest())
-
       @else
         <ul class="nav navbar-nav navbar-right">
           {{--<?php $user = Auth::user();?>--}}
