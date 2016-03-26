@@ -1,6 +1,10 @@
 $(function () {
   $('[data-toggle="popover"]').popover({html: true});
   $('.dropdown-toggle').dropdown();
+  $('#myModal').modal({
+    backdrop: false,
+    keyboard: false
+  })
 });
 
 $(function () {
@@ -125,7 +129,9 @@ var index = new Vue({
         }]
       },
       qrcode: '/image/test04.jpg'
-    }
+    },
+
+    this_person_cache: ''
   },
   computed: {
     page_show: function () {
@@ -263,6 +269,7 @@ var index = new Vue({
     },
     person_detail: function (e) {
       $('#myModal').modal('show');
+      this.this_person_cache = JSON.parse(JSON.stringify(e));
       this.this_person = e;
       $('#province').val(index.this_person.hospital.province);
       $('#province').trigger('change');
@@ -271,7 +278,18 @@ var index = new Vue({
       $('#area').val(index.this_person.hospital.district);
       $('#area').trigger('change');
     },
+    cancel_edit: function () {
+      this.this_person = this.this_person_cache;
+      $('#user_card p').toggleClass('hide');
+      $('#user_card button').toggleClass('hide');
+      $('#user_card .form-control').toggleClass('sr-only');
+    },
     edit_btn: function () {
+      $('#user_card p').toggleClass('hide');
+      $('#user_card button').toggleClass('hide');
+      $('#user_card .form-control').toggleClass('sr-only');
+    },
+    submit_edit: function () {
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
