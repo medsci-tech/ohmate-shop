@@ -230,8 +230,6 @@
             <div class="col-sm-4">
                 <div class="modal-content col-xs-6 col-sm-12">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                              aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.invited.count }}</h4>
                     </div>
                     <div class="modal-body">
@@ -284,8 +282,6 @@
                 </div>
                 <div class="modal-content col-xs-6 col-sm-12">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                              aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans.count }}</h4>
                     </div>
                     <div class="modal-body">
