@@ -33,11 +33,6 @@
       </div>
 
       <div class="form-group">
-        <label for="email" class="sr-only">请输入账号</label>
-        <input type="text" id="email" class="form-control" placeholder="请输入账号" name="email" required autofocus>
-      </div>
-
-      <div class="form-group">
         <label for="password" class="sr-only">请输入密码</label>
         <input type="password" id="password" class="form-control" placeholder="请输入密码" name="password" required>
       </div>
