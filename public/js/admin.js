@@ -1,11 +1,3 @@
-$(function () {
-  $('[data-toggle="popover"]').popover({html: true});
-});
-$(function () {
-  $('.dropdown-toggle').dropdown();
-  city_selector();
-});
-
 var index = new Vue({
     el: '#index',
     data: {
@@ -270,7 +262,15 @@ $('[data-toggle="popover"]').mouseover(function () {
   });
 });
 
+$(function () {
+  $('[data-toggle="popover"]').popover({html: true});
+});
+$(function () {
+  $('.dropdown-toggle').dropdown();
+  city_selector();
+});
 $('#customer').trigger('click');
+
 
 
 
