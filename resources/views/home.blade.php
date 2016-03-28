@@ -26,11 +26,11 @@
                             <th v-if="data_head.address">@{{data_head.address}}</th>
                             <th v-if="data_head.invited">@{{data_head.invited}}</th>
                             <th v-if="data_head.beans">@{{data_head.beans}}</th>
-                            <th v-if="data_head.qrcode">@{{data_head.qrcode}}</th>
+                            <th v-if="data_head.qr_code">@{{data_head.qr_code}}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-cloak v-for="person in page_data" @click="person_detail(person)">
+                        <tr v-cloak v-for="person in page_data">
                         <td v-if="data_head.id">@{{person.id}}</td>
                         <td v-if="data_head.name">@{{person.name}}</td>
                         <td v-if="data_head.phone">@{{person.phone}}</td>
@@ -42,15 +42,16 @@
                         <td v-if="data_head.beans">
                             @{{person.beans.count}}(@{{person.beans.this_month}})
                         </td>
-                        <td v-if="data_head.qrcode">
-                            <a id="qrcode_btn" class="disabled"
+                        <td v-if="data_head.qr_code">
+                            <a id="qr_code_btn" class="disabled"
                                tabindex="0" role="button"
                                data-container="body"
                                data-toggle="popover"
                                data-placement="bottom"
-                               data-content="<img class='img-responsive' src='@{{person.qrcode}}'>"
+                               data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
+                            @click="person_detail(person)"
                             >
-                                显示
+                                显示用户详情
                             </a>
                         </td>
                         </tr>
@@ -212,7 +213,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">二维码</label>
                                     <div class="col-sm-8">
-                                        <img class="form-control-static img-responsive" :src="this_person.qrcode">
+                                        <img class="form-control-static img-responsive" :src="this_person.qr_code">
                                     </div>
                                 </div>
                             </div>

@@ -66,7 +66,7 @@ var index = new Vue({
             time: '2016-03-03'
           }]
         },
-        qrcode: '/image/test04.jpg'
+        qr_code: '/image/test04.jpg'
       },
     ],
 
