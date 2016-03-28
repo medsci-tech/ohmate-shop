@@ -159,7 +159,7 @@ var index = new Vue({
                 index.page_all = data.data.customers.last_page;
                 index.page_active = data.data.customers.current_page;
                 index.page_data = data.data.customers.data;
-                index.$nextTick(initialize_popover());
+                index.$nextTick(initialize_popover);
               }
             },
             'json'
@@ -202,7 +202,7 @@ var index = new Vue({
             if (data.success) {
               index.page_active = data.data.customers.current_page;
               index.page_data = data.data.customers.data;
-              index.$nextTick(initialize_popover());
+              index.$nextTick(initialize_popover);
             }
           },
           'json'
