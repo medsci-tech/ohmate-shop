@@ -78,7 +78,7 @@ var index = new Vue({
       hospital: '医院',
       invited: '邀请糖友数',
       beans: '迈豆数',
-      qrcode: '二维码'
+      qr_code: '二维码'
     },
 
     this_person: {
