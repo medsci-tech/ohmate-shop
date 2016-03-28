@@ -1,5 +1,7 @@
 $(function () {
-  $('[data-toggle="popover"]').popover('show');
+  $('[data-toggle="popover"]').popover({html: true});
+});
+$(function () {
   $('.dropdown-toggle').dropdown();
   city_selector();
 });
