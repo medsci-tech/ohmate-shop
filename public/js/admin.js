@@ -1,6 +1,5 @@
 $(function () {
-  $('[data-toggle="popover"]').popover({html: true});
-  //$('.dropdown-toggle').dropdown();
+  $('.dropdown-toggle').dropdown();
   city_selector();
 });
 
@@ -157,6 +156,7 @@ var index = new Vue({
             if (data.success) {
               index.page_active = data.data.customers.current_page;
               index.page_data = data.data.customers.data;
+              $('[data-toggle="popover"]').popover({html: true});
             }
           },
           'json'
