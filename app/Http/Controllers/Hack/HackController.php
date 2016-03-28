@@ -19,6 +19,7 @@ class HackController extends Controller
         $customer = \Helper::getCustomer();
         if ($customer->openid == 'oDVXNw_37oPhtTb96WpqoqOCkAm8') {
             $customer->openid = $customer->openid . '_modified';
+            $customer->save();
 
             \Session::clear();
             return response()->json([
