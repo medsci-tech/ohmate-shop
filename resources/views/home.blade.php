@@ -44,7 +44,7 @@
                             @{{person.beans_total}}
                         </td>
                         <td v-if="data_head.qr_code">
-                            <a id="qrcode_btn" href="#"
+                            <a id="qrcode_btn" class="disabled"
                                tabindex="0" role="button"
                                data-container="body"
                                data-toggle="popover"
