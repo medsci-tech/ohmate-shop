@@ -10,11 +10,11 @@
                 <ul class="nav nav-sidebar">
                     <li :class="(searching.user_type == '医生')?'active':''" @click="choose_data" id="doctor"><a href="#doctor">医生</a></li>
                     <li :class="(searching.user_type == '志愿者')?'active':''" @click="choose_data" id="volunteer"><a href="#volunteer">志愿者</a></li>
-                    <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="users"><a href="#users">所有用户</a></li>
+                    <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="customer"><a href="#users">所有用户</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-                <h2 class="sub-header">@{{searching.user_type}}<span v-if="search" class="small">(@{{searched}})</span></h2>
+                <h2 class="sub-header">@{{searching.user_type}}<span v-if="searched" class="small">(@{{searched}})</span></h2>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -230,8 +230,6 @@
             <div class="col-sm-4">
                 <div class="modal-content col-xs-6 col-sm-12">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                              aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.invited.count }}</h4>
                     </div>
                     <div class="modal-body">
@@ -284,8 +282,6 @@
                 </div>
                 <div class="modal-content col-xs-6 col-sm-12">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                              aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans.count }}</h4>
                     </div>
                     <div class="modal-body">

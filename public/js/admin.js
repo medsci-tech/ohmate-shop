@@ -1,6 +1,10 @@
 $(function () {
   $('[data-toggle="popover"]').popover({html: true});
   $('.dropdown-toggle').dropdown();
+  $('#myModal').modal({
+    backdrop: false,
+    keyboard: false
+  })
 });
 
 $(function () {
@@ -11,18 +15,18 @@ var index = new Vue({
   el: '#index',
   data: {
     searching: {
-      user_type:'医生',
-      detail:''
+      user_type: '医生',
+      detail: ''
     },
     searched: '张三',
     page_all: 3,
     page_active: 2,
-    page_num: 50,
+    page_num: 20,
     page_data: [
       {
         id: 1,
         name: '张三',
-        user_type: '医生',
+        user_type: 'doctor',
         phone: '13232323232',
         email: '123123@123123.com',
         nickname: 'zhangsan',
@@ -59,62 +63,14 @@ var index = new Vue({
             action: '注册新用户',
             result: '+2180',
             time: '2016-03-03'
-          },{
+          }, {
             action: '管理员操作',
             result: '+6820',
             time: '2016-03-03'
           }]
         },
-        qrcode: '../../image/test03.png'
+        qrcode: '/image/test04.jpg'
       },
-      {
-        id: 2,
-        name: '张三',
-        user_type: '医生',
-        phone: '13232323232',
-        email: '123123@123123.com',
-        nickname: 'zhangsan',
-        hospital: {
-          name: '光谷同济医院',
-          province: '湖北',
-          city: '武汉',
-          area: '洪山区',
-          location: '生物城666号',
-        },
-        invited: {
-          count: 90,
-          this_month: 30,
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          page_data: [{
-            id: 2,
-            phone: '13232323232',
-            time: '2016-03-03'
-          }, {
-            id: 3,
-            phone: '13232323232',
-            time: '2016-03-03'
-          }]
-        },
-        beans: {
-          count: 9000,
-          this_month: '+9000',
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          page_data: [{
-            action: '注册新用户',
-            result: '+2180',
-            time: '2016-03-03'
-          },{
-            action: '管理员操作',
-            result: '+6820',
-            time: '2016-03-03'
-          }]
-        },
-        qrcode: '../../image/test03.png'
-      }
     ],
 
     data_head: {
@@ -166,14 +122,16 @@ var index = new Vue({
           action: '注册新用户',
           result: '+2180',
           time: '2016-03-03'
-        },{
+        }, {
           action: '管理员操作',
           result: '+6820',
           time: '2016-03-03'
         }]
       },
-      qrcode: '../../image/test03.png'
-    }
+      qrcode: '/image/test04.jpg'
+    },
+
+    this_person_cache: ''
   },
   computed: {
     page_show: function () {
@@ -204,47 +162,53 @@ var index = new Vue({
       var dom = e.currentTarget;
       var name = e.target.innerHTML;
       if (dom.className != 'active') {
-        $.get(
-          url('/customer/list'),
+        $.get('/customer/list',
           {
 /*            user_type: name,
             detail: '',
             page: 1*/
+            /*            user_type: name,
+             detail: '',
+             page: 1*/
           },
           function (data) {
-            //if (data.success) {
-            //  if (name = '医生') index.data_head = {
-            //    id: '#',
-            //    name: '姓名',
-            //    phone: '手机号',
-            //    address: '地址',
-            //    hospital: '医院',
-            //    invited: '邀请糖友数',
-            //    beans: '迈豆数',
-            //    qrcode: '二维码'
-            //  };
-            //  if (name = '志愿者') index.data_head = {
-            //    id: '#',
-            //    name: '姓名',
-            //    phone: '手机号',
-            //    address: '地址',
-            //    hospital: '医院',
-            //    invited: '邀请糖友数',
-            //    beans: '迈豆数',
-            //    qrcode: '二维码'
-            //  };
-            //  if (name = '所有用户') index.data_head = {
-            //    id: '#',
-            //    name: '姓名',
-            //    phone: '手机号',
-            //    address: '地址',
-            //    hospital: '医院',
-            //    invited: '邀请糖友数',
-            //    beans: '迈豆数',
-            //    qrcode: '二维码'
-            //  };
-            //}
-            console.log(JSON.parse(data));
+            if (data.success) {
+              if (name = '医生') index.data_head = {
+                id: '#',
+                name: '姓名',
+                phone: '手机号',
+                address: '地址',
+                hospital: '医院',
+                invited: '邀请糖友数',
+                beans: '迈豆数',
+                qrcode: '二维码'
+              };
+              if (name = '志愿者') index.data_head = {
+                id: '#',
+                name: '姓名',
+                phone: '手机号',
+                address: '地址',
+                hospital: '医院',
+                invited: '邀请糖友数',
+                beans: '迈豆数',
+                qrcode: '二维码'
+              };
+              if (name = '所有用户') index.data_head = {
+                id: '#',
+                name: '姓名',
+                phone: '手机号',
+                address: '地址',
+                hospital: '医院',
+                invited: '邀请糖友数',
+                beans: '迈豆数',
+                qrcode: '二维码'
+              };
+              index.searched = '';
+              index.searching.user_type = '所有用户';
+              index.page_all = data.data.customers.last_page;
+              index.page_active = data.data.customers.current_page;
+              index.page_data = data.data.customers.data;
+            }
           },
           'json'
         );
@@ -277,16 +241,14 @@ var index = new Vue({
           page_num = e.target.innerHTML;
           break;
       }
-      $.post(
-        url(),
+      $.get('/customer/list',
         {
-          user_type:  this.searching.user_type,
-          detail: this.searching.detail,
           page: page_num
         },
         function (data) {
           if (data.success) {
-
+            index.page_active = data.data.customers.current_page;
+            index.page_data = data.data.customers.data;
           }
         },
         'json'
@@ -296,7 +258,7 @@ var index = new Vue({
       $.post(
         url(),
         {
-          user_type:  this.searching.user_type,
+          user_type: this.searching.user_type,
           detail: this.searching.detail,
           page: 1
         },
@@ -310,25 +272,27 @@ var index = new Vue({
     },
     person_detail: function (e) {
       $('#myModal').modal('show');
-      $.post(
-        url(),
-        {
-          id: e.id,
-        },
-        function (data) {
-          if (data.success) {
-            this.this_person = data.data;
-            $('#province').val(index.this_person.hospital.province);
-            $('#province').trigger('change');
-            $('#city').val(index.this_person.hospital.city);
-            $('#city').trigger('change');
-            $('#area').val(index.this_person.hospital.district);
-            $('#area').trigger('change');
-          }
-        }
-      )
+      this.this_person_cache = JSON.parse(JSON.stringify(e));
+      this.this_person = e;
+      $('#province').val(index.this_person.hospital.province);
+      $('#province').trigger('change');
+      $('#city').val(index.this_person.hospital.city);
+      $('#city').trigger('change');
+      $('#area').val(index.this_person.hospital.district);
+      $('#area').trigger('change');
+    },
+    cancel_edit: function () {
+      this.this_person = this.this_person_cache;
+      $('#user_card p').toggleClass('hide');
+      $('#user_card button').toggleClass('hide');
+      $('#user_card .form-control').toggleClass('sr-only');
     },
     edit_btn: function () {
+      $('#user_card p').toggleClass('hide');
+      $('#user_card button').toggleClass('hide');
+      $('#user_card .form-control').toggleClass('sr-only');
+    },
+    submit_edit: function () {
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
@@ -351,6 +315,7 @@ $('[data-toggle="popover"]').mouseover(function () {
   });
 });
 
+$('#customer').trigger('click');
 
 
 

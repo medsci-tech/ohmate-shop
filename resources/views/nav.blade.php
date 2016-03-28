@@ -11,12 +11,9 @@
       <a class="navbar-brand active" href="#">易康伴侣</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        @if (Auth::guest())
-          <li><a href="{{ url('/login') }}">登录</a></li>
-          <li><a href="{{ url('/register') }}">注册</a></li>
-        @else
-
+      @if (Auth::guest())
+      @else
+        <ul class="nav navbar-nav navbar-right">
           {{--<?php $user = Auth::user();?>--}}
           {{--@can('user_administration')--}}
 
@@ -38,9 +35,8 @@
               </div>
             </li>
           {{--@endcan--}}
-          @endif
 
-      </ul>
+        </ul>
       <form class="navbar-form navbar-right" @submit.prevent="search">
         <div class="has-feedback">
           <input @keyup.enter="submit" type="text" class="form-control" placeholder="Search..."
@@ -48,6 +44,7 @@
           <button type="submit" class="btn btn-link form-control-feedback fa fa-search"></button>
         </div>
       </form>
+      @endif
     </div>
   </div>
 </nav>

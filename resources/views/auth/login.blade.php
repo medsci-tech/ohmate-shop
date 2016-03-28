@@ -32,10 +32,9 @@
       </div>
       <div class="checkbox">
         <label for="remember">
-          <input type="checkbox" name="remember" id="remember"> 记住此账号
+          <input type="checkbox" name="remember" id="remember">记住此账号
         </label>
       </div>
-      <p>&emsp;</p>
       <button class="button button-block button-rounded button-primary button-glow" type="submit">登录</button>
       <br>
       <a href="{{ url('/register') }}" class="button button-block button-rounded button-primary button-border button-glow"

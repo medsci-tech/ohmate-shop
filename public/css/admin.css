@@ -22,8 +22,6 @@ body {
   margin: 20px; }
 #signin .form-signin {
   max-width: 330px; }
-#signin input {
-  height: 40px; }
 #signin .button {
   width: 100%; }
 
