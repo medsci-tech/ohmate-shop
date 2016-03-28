@@ -31,7 +31,7 @@ class CustomerBean extends Model
 
     public function rate()
     {
-        return $this->belongsTo(BeanRate::class);
+        return $this->belongsTo(BeanRate::class, 'bean_rate_id');
     }
 
     public function customer()
