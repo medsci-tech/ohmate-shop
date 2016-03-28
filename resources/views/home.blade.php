@@ -27,6 +27,7 @@
                             <th v-if="data_head.invited">@{{data_head.invited}}</th>
                             <th v-if="data_head.beans">@{{data_head.beans}}</th>
                             <th v-if="data_head.qr_code">@{{data_head.qr_code}}</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -49,10 +50,12 @@
                                data-toggle="popover"
                                data-placement="bottom"
                                data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
-                            @click="person_detail(person)"
                             >
-                                显示用户详情
+                                显示
                             </a>
+                        </td>
+                        <td>
+                            <a href="#" @click="person_detail(person)">详情</a>
                         </td>
                         </tr>
                         </tbody>
