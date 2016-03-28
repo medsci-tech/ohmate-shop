@@ -44,14 +44,13 @@
                             @{{person.beans_total}}
                         </td>
                         <td v-if="data_head.qr_code">
-                            <a id="qrcode_btn" class="disabled"
+                            <a class="disabled"
                                tabindex="0" role="button"
                                data-container="body"
                                data-toggle="popover"
                                data-placement="bottom"
                                data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
-                            >
-                                显示
+                            >显示
                             </a>
                         </td>
                         <td>
