@@ -26,31 +26,32 @@
                             <th v-if="data_head.address">@{{data_head.address}}</th>
                             <th v-if="data_head.invited">@{{data_head.invited}}</th>
                             <th v-if="data_head.beans">@{{data_head.beans}}</th>
-                            <th v-if="data_head.qrcode">@{{data_head.qrcode}}</th>
+                            <th v-if="data_head.qr_code">@{{data_head.qr_code}}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-cloak v-for="person in page_data" @click="person_detail(person)">
+                        <tr v-cloak v-for="person in page_data">
                         <td v-if="data_head.id">@{{person.id}}</td>
                         <td v-if="data_head.name">@{{person.name}}</td>
                         <td v-if="data_head.phone">@{{person.phone}}</td>
                         <td v-if="data_head.hospital">@{{person.hospital.name}}</td>
                         <td v-if="data_head.address">@{{person.hospital.province}}-@{{person.hospital.city}}-@{{person.hospital.area}}-@{{person.hospital.location}}</td>
                         <td v-if="data_head.invited">
-                            @{{person.invited.count}}(@{{person.invited.this_month}})
+                            @{{person.statistics.friend_count}}
                         </td>
                         <td v-if="data_head.beans">
-                            @{{person.beans.count}}(@{{person.beans.this_month}})
+                            @{{person.beans_total}}
                         </td>
-                        <td v-if="data_head.qrcode">
-                            <a id="qrcode_btn" class="disabled"
+                        <td v-if="data_head.qr_code">
+                            <a id="qr_code_btn" class="disabled"
                                tabindex="0" role="button"
                                data-container="body"
                                data-toggle="popover"
                                data-placement="bottom"
-                               data-content="<img class='img-responsive' src='@{{person.qrcode}}'>"
+                               data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
+                            @click="person_detail(person)"
                             >
-                                显示
+                                显示用户详情
                             </a>
                         </td>
                         </tr>
@@ -195,24 +196,24 @@
                                     <label for="invited" class="col-sm-3 control-label">糖友数</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
-                                               v-model="this_person.invited.count">
+                                               v-model="this_person.statistics.friend_count">
 
-                                        <p class="form-control-static">@{{ this_person.invited.count }}</p>
+                                        <p class="form-control-static">@{{ this_person.statistics.friend_count }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="beans" class="col-sm-3 control-label">迈豆数</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数"
-                                               v-model="this_person.beans.count">
+                                               v-model="this_person.beans_total">
 
-                                        <p class="form-control-static">@{{ this_person.beans.count }}</p>
+                                        <p class="form-control-static">@{{ this_person.beans_total }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">二维码</label>
                                     <div class="col-sm-8">
-                                        <img class="form-control-static img-responsive" :src="this_person.qrcode">
+                                        <img class="form-control-static img-responsive" :src="this_person.qr_code">
                                     </div>
                                 </div>
                             </div>
@@ -230,7 +231,7 @@
             <div class="col-sm-4">
                 <div class="modal-content col-xs-12 ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.invited.count }}</h4>
+                        <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.statistics.friend_count }}</h4>
                     </div>
                     <div class="modal-body">
                         <table class="table">
@@ -282,7 +283,7 @@
                 </div>
                 <div class="modal-content col-xs-12 ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans.count }}</h4>
+                        <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans_total }}</h4>
                     </div>
                     <div class="modal-body">
                         <table class="table">
