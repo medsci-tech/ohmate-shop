@@ -70,16 +70,7 @@ var index = new Vue({
       },
     ],
 
-    data_head: {
-      id: '#',
-      name: '姓名',
-      phone: '手机号',
-      address: '地址',
-      hospital: '医院',
-      invited: '邀请糖友数',
-      beans: '迈豆数',
-      qr_code: '二维码'
-    },
+    data_head: '',
 
     this_person: {
       id: 1,
@@ -175,7 +166,7 @@ var index = new Vue({
                 hospital: '医院',
                 invited: '邀请糖友数',
                 beans: '迈豆数',
-                qrcode: '二维码'
+                qr_code: '二维码'
               };
               if (name = '志愿者') index.data_head = {
                 id: '#',
@@ -185,7 +176,7 @@ var index = new Vue({
                 hospital: '医院',
                 invited: '邀请糖友数',
                 beans: '迈豆数',
-                qrcode: '二维码'
+                qr_code: '二维码'
               };
               if (name = '所有用户') index.data_head = {
                 id: '#',
@@ -195,7 +186,7 @@ var index = new Vue({
                 hospital: '医院',
                 invited: '邀请糖友数',
                 beans: '迈豆数',
-                qrcode: '二维码'
+                qr_code: '二维码'
               };
               index.searched = '';
               index.searching.user_type = '所有用户';
