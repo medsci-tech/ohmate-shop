@@ -35,7 +35,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function bean($id)
+    public function beans($id)
     {
         $customer = Customer::findOrFail($id);
 
