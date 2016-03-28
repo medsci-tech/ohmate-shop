@@ -37,10 +37,10 @@
                         <td v-if="data_head.hospital">@{{person.hospital.name}}</td>
                         <td v-if="data_head.address">@{{person.hospital.province}}-@{{person.hospital.city}}-@{{person.hospital.area}}-@{{person.hospital.location}}</td>
                         <td v-if="data_head.invited">
-                            @{{person.invited.count}}(@{{person.invited.this_month}})
+                            @{{person.statistics.friend_count}}
                         </td>
                         <td v-if="data_head.beans">
-                            @{{person.beans.count}}(@{{person.beans.this_month}})
+                            @{{person.beans_total}}
                         </td>
                         <td v-if="data_head.qr_code">
                             <a id="qr_code_btn" class="disabled"
@@ -196,18 +196,18 @@
                                     <label for="invited" class="col-sm-3 control-label">糖友数</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
-                                               v-model="this_person.invited.count">
+                                               v-model="this_person.statistics.friend_count">
 
-                                        <p class="form-control-static">@{{ this_person.invited.count }}</p>
+                                        <p class="form-control-static">@{{ this_person.statistics.friend_count }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="beans" class="col-sm-3 control-label">迈豆数</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数"
-                                               v-model="this_person.beans.count">
+                                               v-model="this_person.beans_total">
 
-                                        <p class="form-control-static">@{{ this_person.beans.count }}</p>
+                                        <p class="form-control-static">@{{ this_person.beans_total }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -231,7 +231,7 @@
             <div class="col-sm-4">
                 <div class="modal-content col-xs-12 ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.invited.count }}</h4>
+                        <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.statistics.friend_count }}</h4>
                     </div>
                     <div class="modal-body">
                         <table class="table">
@@ -283,7 +283,7 @@
                 </div>
                 <div class="modal-content col-xs-12 ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans.count }}</h4>
+                        <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans_total }}</h4>
                     </div>
                     <div class="modal-body">
                         <table class="table">

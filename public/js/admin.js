@@ -19,104 +19,21 @@ var index = new Vue({
     page_all: 3,
     page_active: 2,
     page_num: 20,
-    page_data: [
-      {
-        id: 1,
-        name: '张三',
-        user_type: 'doctor',
-        phone: '13232323232',
-        email: '123123@123123.com',
-        nickname: 'zhangsan',
-        hospital: {
-          name: '光谷同济医院',
-          province: '湖北',
-          city: '武汉',
-          area: '洪山区',
-          location: '生物城666号'
-        },
-        invited: {
-          count: 90,
-          this_month: 30,
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          pagedata: [{
-            id: 2,
-            phone: '13232323232',
-            time: '2016-03-03'
-          }, {
-            id: 3,
-            phone: '13232323232',
-            time: '2016-03-03'
-          }]
-        },
-        beans: {
-          count: 9000,
-          this_month: '+9000',
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          pagedata: [{
-            action: '注册新用户',
-            result: '+2180',
-            time: '2016-03-03'
-          }, {
-            action: '管理员操作',
-            result: '+6820',
-            time: '2016-03-03'
-          }]
-        },
-        qr_code: '/image/test04.jpg'
-      },
-    ],
+    page_data: '',
 
     data_head: '',
 
     this_person: {
       id: 1,
-      name: '张三',
-      user_type: '医生',
-      phone: '13232323232',
-      email: '123123@123123.com',
-      nickname: 'zhangsan',
-      hospital: {
-        name: '光谷同济医院',
-        province: '湖北',
-        city: '武汉',
-        area: '洪山区',
-        location: '生物城666号',
-      },
-      invited: {
-        count: 90,
-        page_all: 3,
-        page_active: 2,
-        page_num: 20,
-        page_data: [{
-          id: 2,
-          phone: '13232323232',
-          time: '2016-03-03'
-        }, {
-          id: 3,
-          phone: '13232323232',
-          time: '2016-03-03'
-        }]
-      },
-      beans: {
-        count: 9000,
-        page_all: 3,
-        page_active: 2,
-        page_num: 20,
-        page_data: [{
-          action: '注册新用户',
-          result: '+2180',
-          time: '2016-03-03'
-        }, {
-          action: '管理员操作',
-          result: '+6820',
-          time: '2016-03-03'
-        }]
-      },
-      qrcode: '/image/test04.jpg'
+      name: '',
+      user_type: '',
+      phone: '',
+      email: '',
+      nickname: '',
+      hospital: '',
+      invited: '',
+      statistics: {friend_count: ''},
+      beans_total: ''
     },
 
     this_person_cache: ''
@@ -267,7 +184,7 @@ var index = new Vue({
         user_type = e.user_type;
         phone = e.phone;
         email = e.email;
-        if (e.hospital){
+        if (e.hospital) {
           hospital.name = e.hospital.name;
           hospital.province = e.hospital.province;
           hospital.city = e.hospital.city;
@@ -280,7 +197,8 @@ var index = new Vue({
           hospital.area = '';
           hospital.location = '';
         }
-        beans.count = e.beans_total;
+        statistics.friend_count = e.statistics.friend_count;
+        beans_total = e.beans_total;
       }
       this.this_person_cache = e;
       $('#province').val(index.this_person.hospital.province);
@@ -308,7 +226,7 @@ var index = new Vue({
     submit_edit: function () {
       $.post('customer/' + this.this_person.id + '/update', this.this_person,
         function (data) {
-          if (data.success){
+          if (data.success) {
             this.page_data[this.this_person_cache] = JSON.parse(JSON.stringify(this.this_person));
             $('#user_card p').toggleClass('hide');
             $('#user_card button').toggleClass('hide');
