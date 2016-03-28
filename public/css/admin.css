@@ -65,6 +65,7 @@ body {
     #index .main .pagination span {
       pointer-events: none; }
   #index .popover-content {
+    width: 270px;
     padding: 0; }
     #index .popover-content .table {
       margin: 0; }
