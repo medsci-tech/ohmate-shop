@@ -156,7 +156,6 @@ var index = new Vue({
             if (data.success) {
               index.page_active = data.data.customers.current_page;
               index.page_data = data.data.customers.data;
-              $('[data-toggle="popover"]').popover({html: true});
             }
           },
           'json'
@@ -187,6 +186,7 @@ var index = new Vue({
       }
       ,
       person_detail: function (e) {
+        $('[data-toggle="popover"]').popover({html: true});
         $('#myModal').modal('show');
         with (this.this_person) {
           id = e.id;
