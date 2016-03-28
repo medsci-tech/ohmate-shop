@@ -278,6 +278,12 @@ var index = new Vue({
   })
   ;
 
+$('#customer').trigger('click');
+
+$(function () {
+  $('[data-toggle="popover"]').popover({html: true});
+});
+
 $('[data-toggle="popover"]').mouseover(function () {
   $(this).popover('show');
   $('[data-toggle="popover"]').mouseout(function () {
@@ -292,9 +298,3 @@ $('[data-toggle="popover"]').mouseover(function () {
     $('[data-toggle="popover"]').popover('hide');
   });
 });
-
-$('#customer').trigger('click');
-$(function () {
-  $('[data-toggle="popover"]').popover({html: true});
-});
-
