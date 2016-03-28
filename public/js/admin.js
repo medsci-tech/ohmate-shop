@@ -66,7 +66,7 @@ var index = new Vue({
             time: '2016-03-03'
           }]
         },
-        qrcode: '/image/test04.jpg'
+        qr_code: '/image/test04.jpg'
       },
     ],
 
@@ -248,8 +248,10 @@ var index = new Vue({
         'json'
       )
     },
-    choose_page_invited: function (e) {},
-    choose_page_beans: function (e) {},
+    choose_page_invited: function (e) {
+    },
+    choose_page_beans: function (e) {
+    },
     search: function () {
       $.post(
         url(),
@@ -268,7 +270,19 @@ var index = new Vue({
     },
     person_detail: function (e) {
       $('#myModal').modal('show');
-      this.this_person = JSON.parse(JSON.stringify(e));
+      with (this.this_person) {
+        id = e.id;
+        name = e.name;
+        user_type = e.user_type;
+        phone = e.phone;
+        email = e.email;
+        hospital.name = e.hospital.name;
+        hospital.province = e.hospital.province;
+        hospital.city = e.hospital.city;
+        hospital.area = e.hospital.area;
+        hospital.location = e.hospital.location;
+        beans.count = e.beans.count;
+      }
       this.this_person_cache = e;
       $('#province').val(index.this_person.hospital.province);
       $('#province').trigger('change');
@@ -293,10 +307,17 @@ var index = new Vue({
       $('#user_card .form-control').toggleClass('sr-only');
     },
     submit_edit: function () {
-      this.page_data[this.this_person_cache] = JSON.parse(JSON.stringify(this.this_person));
-      $('#user_card p').toggleClass('hide');
-      $('#user_card button').toggleClass('hide');
-      $('#user_card .form-control').toggleClass('sr-only');
+      $.post('customer/' + this.this_person.id + '/update', this.this_person,
+        function (data) {
+          if (data.success){
+            this.page_data[this.this_person_cache] = JSON.parse(JSON.stringify(this.this_person));
+            $('#user_card p').toggleClass('hide');
+            $('#user_card button').toggleClass('hide');
+            $('#user_card .form-control').toggleClass('sr-only');
+            $('#myModal').modal('hide');
+          }
+        }
+      );
     }
   }
 });
