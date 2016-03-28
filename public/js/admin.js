@@ -267,12 +267,20 @@ var index = new Vue({
         user_type = e.user_type;
         phone = e.phone;
         email = e.email;
-        hospital.name = e.hospital.name;
-        hospital.province = e.hospital.province;
-        hospital.city = e.hospital.city;
-        hospital.area = e.hospital.area;
-        hospital.location = e.hospital.location;
-        beans.count = e.beans.count;
+        if (e.hospital){
+          hospital.name = e.hospital.name;
+          hospital.province = e.hospital.province;
+          hospital.city = e.hospital.city;
+          hospital.area = e.hospital.area;
+          hospital.location = e.hospital.location;
+        } else {
+          hospital.name = '';
+          hospital.province = '';
+          hospital.city = '';
+          hospital.area = '';
+          hospital.location = '';
+        }
+        beans.count = e.beans_total;
       }
       this.this_person_cache = e;
       $('#province').val(index.this_person.hospital.province);
