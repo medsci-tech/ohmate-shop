@@ -1,3 +1,9 @@
+$(function () {
+  $('[data-toggle="popover"]').popover({html: true});
+  $('.dropdown-toggle').dropdown();
+  city_selector();
+});
+
 var index = new Vue({
     el: '#index',
     data: {
@@ -246,10 +252,6 @@ var index = new Vue({
     }
   })
   ;
-$(function () {
-  $('[data-toggle="popover"]').popover();
-  $('[data-toggle="popover"]').popover({html: true});
-});
 
 $('[data-toggle="popover"]').mouseover(function () {
   $(this).popover('show');
@@ -265,12 +267,8 @@ $('[data-toggle="popover"]').mouseover(function () {
     $('[data-toggle="popover"]').popover('hide');
   });
 });
-$(function () {
-  $('.dropdown-toggle').dropdown();
-  city_selector();
-});
-$('#customer').trigger('click');
 
+$('#customer').trigger('click');
 
 
 
