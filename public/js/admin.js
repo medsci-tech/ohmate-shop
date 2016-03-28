@@ -269,8 +269,8 @@ var index = new Vue({
     },
     person_detail: function (e) {
       $('#myModal').modal('show');
-      this.this_person_cache = JSON.parse(JSON.stringify(e));
-      this.this_person = e;
+      this.this_person = JSON.parse(JSON.stringify(e));
+      this.this_person_cache = e;
       $('#province').val(index.this_person.hospital.province);
       $('#province').trigger('change');
       $('#city').val(index.this_person.hospital.city);
@@ -279,7 +279,7 @@ var index = new Vue({
       $('#area').trigger('change');
     },
     cancel_edit: function () {
-      this.this_person = this.this_person_cache;
+      this.this_person = this.this_person_cache
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
@@ -290,6 +290,7 @@ var index = new Vue({
       $('#user_card .form-control').toggleClass('sr-only');
     },
     submit_edit: function () {
+      this.page_data[this.this_person_cache] = JSON.prase(JSON.stringify(this.this_person));
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
