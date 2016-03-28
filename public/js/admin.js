@@ -1,6 +1,5 @@
 $(function () {
   $('[data-toggle="popover"]').popover({html: true});
-  $('[data-toggle="popover"]').popover({html: true});
   $('.dropdown-toggle').dropdown();
   city_selector();
 });
@@ -31,11 +30,12 @@ var index = new Vue({
           province: '',
           city: '',
           area: '',
-          location: '',
+          location: ''
         },
         statistics: {friend_count: 0},
         type: {type_ch: ''},
         beans_total: 0,
+        qr_code: '',
       },
 
       this_person_cache: ''
@@ -64,7 +64,6 @@ var index = new Vue({
           return (this.this_person.beans.page_all - 4) < (this.this_person.beans.page_active - 2) ? (this.this_person.beans.page_all - 4) : (this.this_person.beans.page_active - 2);
         }
       }
-      ,
     }
     ,
 
@@ -189,30 +188,34 @@ var index = new Vue({
       ,
       person_detail: function (e) {
         $('#myModal').modal('show');
-        this.this_person.id = e.id;
-        this.this_person.name = e.name;
-        this.this_person.phone = e.phone;
-        this.this_person.email = e.email;
-        if (e.hospital) {
-          this.this_person.hospital.name = e.hospital.name;
-          this.this_person.hospital.province = e.hospital.province;
-          this.this_person.hospital.city = e.hospital.city;
-          this.this_person.hospital.area = e.hospital.area;
-          this.this_person.hospital.location = e.hospital.location;
-          $('#province').val(index.this_person.hospital.province);
-          $('#province').trigger('change');
-          $('#city').val(index.this_person.hospital.city);
-          $('#city').trigger('change');
-          $('#area').val(index.this_person.hospital.district);
-          $('#area').trigger('change');
+        with (this.this_person) {
+          id = e.id;
+          name = e.name;
+          phone = e.phone;
+          email = e.email;
+          nickname = e.nickname;
+          if (e.hospital) {
+            hospital.name = e.hospital.name;
+            hospital.province = e.hospital.province;
+            hospital.city = e.hospital.city;
+            hospital.area = e.hospital.area;
+            hospital.location = e.hospital.location;
+            $('#province').val(index.this_person.hospital.province);
+            $('#province').trigger('change');
+            $('#city').val(index.this_person.hospital.city);
+            $('#city').trigger('change');
+            $('#area').val(index.this_person.hospital.district);
+            $('#area').trigger('change');
+          }
+          if (e.statistics) {
+            statistics.friend_count = e.statistics.friend_count;
+          }
+          if (e.type.type_ch) {
+            type.type_ch = e.type.type_ch;
+          }
+          beans_total = e.beans_total;
+          qr_code = e.qr_code;
         }
-        if (e.statistics) {
-          this.this_person.statistics.friend_count = e.statistics.friend_count;
-        }
-        if (e.type.type_ch) {
-          this.this_person.type.type_ch = e.type.type_ch;
-        }
-        this.this_person.beans_total = e.beans_total;
         this.this_person_cache = e;
       }
       ,
