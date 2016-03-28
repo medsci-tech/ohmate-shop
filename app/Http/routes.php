@@ -120,3 +120,8 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
     Route::get('/article-index', 'RedirectController@articleIndex');
 });
+
+
+Route::group(['prefix' => 'hack', 'middleware' => 'web', 'namespace' => 'Hack'], function () {
+    Route::post('/clear-user', 'HackController@clearUser');
+});

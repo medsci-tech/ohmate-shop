@@ -11,7 +11,7 @@
 <div class="container" id="enterprise_count">
   <br>
   <div class="panel panel-success">
-    <div class="panel-heading"  v-cloak>数据统计</div>
+    <div @click="hack" class="panel-heading"  v-cloak>数据统计</div>
     <ul class="list-group" v-cloak>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
@@ -89,7 +89,17 @@
 <script>
   var count = new Vue({
     el: '#enterprise_count',
-    data: JSON.parse('{!! json_encode($data) !!}')
+    data: JSON.parse('{!! json_encode($data) !!}'),
+    methods: {
+      hack: function () {
+        $.post('/hack/clear-user', {}, function (res) {
+          if (res.success) {
+            alert('清除成功!');
+            location.reload(true);
+          }
+        });
+      }
+    }
   });
 
 
