@@ -1,10 +1,7 @@
 $(function () {
   $('[data-toggle="popover"]').popover({html: true});
   $('.dropdown-toggle').dropdown();
-  $('#myModal').modal({
-    backdrop: false,
-    keyboard: false
-  })
+
 });
 
 $(function () {
@@ -35,7 +32,7 @@ var index = new Vue({
           province: '湖北',
           city: '武汉',
           area: '洪山区',
-          location: '生物城666号',
+          location: '生物城666号'
         },
         invited: {
           count: 90,
@@ -251,6 +248,8 @@ var index = new Vue({
         'json'
       )
     },
+    choose_page_invited: function (e) {},
+    choose_page_beans: function (e) {},
     search: function () {
       $.post(
         url(),
@@ -279,18 +278,22 @@ var index = new Vue({
       $('#area').trigger('change');
     },
     cancel_edit: function () {
-      this.this_person = this.this_person_cache
+      this.this_person = this.this_person_cache;
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
     },
     edit_btn: function () {
+      $('#myModal').modal({
+        backdrop: false,
+        keyboard: false
+      });
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
     },
     submit_edit: function () {
-      this.page_data[this.this_person_cache] = JSON.prase(JSON.stringify(this.this_person));
+      this.page_data[this.this_person_cache] = JSON.parse(JSON.stringify(this.this_person));
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
