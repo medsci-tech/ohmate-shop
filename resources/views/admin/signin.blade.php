@@ -10,7 +10,7 @@
 <div class="container" id="signin">
   <br><br><br>
   <form class="form-signin center-block" @submit.prevent="submitSign | debounce 1000">
-    <h2 class="form-signin-heading text-center">登&emsp;录</h2>
+    <h2 class="form-signin-heading text-center">欢&emsp;迎</h2>
     <div class="form-group">
       <label for="inputID" class="sr-only">请输入账号</label>
       <input type="text" id="inputID" class="form-control" placeholder="请输入账号" v-model="userID" required autofocus>
