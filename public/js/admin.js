@@ -246,6 +246,10 @@ var index = new Vue({
     }
   })
   ;
+$(function () {
+  $('[data-toggle="popover"]').popover();
+  $('[data-toggle="popover"]').popover({html: true});
+});
 
 $('[data-toggle="popover"]').mouseover(function () {
   $(this).popover('show');
@@ -260,10 +264,6 @@ $('[data-toggle="popover"]').mouseover(function () {
   $('.popover-content').mouseout(function () {
     $('[data-toggle="popover"]').popover('hide');
   });
-});
-
-$(function () {
-  $('[data-toggle="popover"]').popover({html: true});
 });
 $(function () {
   $('.dropdown-toggle').dropdown();
