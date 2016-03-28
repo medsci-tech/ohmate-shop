@@ -1,5 +1,4 @@
 $(function () {
-  $('[data-toggle="popover"]').popover({html: true});
   $('.dropdown-toggle').dropdown();
   city_selector();
 });
@@ -15,7 +14,7 @@ var index = new Vue({
       page_all: 3,
       page_active: 2,
       page_num: 20,
-      page_data:  [{
+      page_data: [{
         id: 1,
         name: '',
         phone: '',
@@ -295,6 +294,7 @@ $('[data-toggle="popover"]').mouseover(function () {
 });
 
 $('#customer').trigger('click');
-
-
+$(function () {
+  $('[data-toggle="popover"]').popover({html: true});
+});
 
