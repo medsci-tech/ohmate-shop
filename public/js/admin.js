@@ -140,6 +140,7 @@ var index = new Vue({
                 index.page_all = data.data.customers.last_page;
                 index.page_active = data.data.customers.current_page;
                 index.page_data = data.data.customers.data;
+                this.$nextTick(initialize_popover());
               }
             },
             'json'
@@ -182,6 +183,7 @@ var index = new Vue({
             if (data.success) {
               index.page_active = data.data.customers.current_page;
               index.page_data = data.data.customers.data;
+              this.$nextTick(initialize_popover());
             }
           },
           'json'
@@ -280,19 +282,23 @@ var index = new Vue({
 
 $('#customer').trigger('click');
 
-$('[data-toggle="popover"]').popover({html: true});
+var initialize_popover = function() {
+  $('[data-toggle="popover"]').popover({html: true});
 
-$('[data-toggle="popover"]').mouseover(function () {
-  $(this).popover('show');
-  $('[data-toggle="popover"]').mouseout(function () {
-    var set = setTimeout(function () {
-      $('[data-toggle="popover"]').popover('hide')
-    }, 300);
-    $('.popover-content').mouseover(function () {
-      clearTimeout(set);
+  $('[data-toggle="popover"]').mouseover(function () {
+    $(this).popover('show');
+    $('[data-toggle="popover"]').mouseout(function () {
+      var set = setTimeout(function () {
+        $('[data-toggle="popover"]').popover('hide')
+      }, 300);
+      $('.popover-content').mouseover(function () {
+        clearTimeout(set);
+      });
+    });
+    $('.popover-content').mouseout(function () {
+      $('[data-toggle="popover"]').popover('hide');
     });
   });
-  $('.popover-content').mouseout(function () {
-    $('[data-toggle="popover"]').popover('hide');
-  });
-});
+};
+
+
