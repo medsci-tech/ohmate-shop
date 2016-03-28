@@ -26,15 +26,28 @@ class EnterpriseArticleStatistics extends Model
     protected $table = 'enterprise_article_statistics';
 
     public static function getTodayStatistics() {
-        $statisticsDetals = EnterpriseArticleStatistics::where('date', Carbon::now()->format('Y-m-d'))->get();
-        if($statisticsDetals) {
-            $statisticsDetals = $statisticsDetals->toArray();
+        $statisticsDetails = EnterpriseArticleStatistics::where('date', Carbon::now()->format('Y-m-d'))->get();
+        if($statisticsDetails) {
+            $statisticsDetails = $statisticsDetails->toArray();
         } else {
-            $statisticsDetals = [];
+            $statisticsDetails = [];
         }
-        foreach($statisticsDetals as &$details) {
+        foreach($statisticsDetails as &$details) {
             $details['article_type'] = ArticleType::find($details['article_type_id'])->toArray();
         }
-        return $statisticsDetals;
+        return $statisticsDetails;
+    }
+
+    public static function getAllStatistics()
+    {
+        return self::select(\DB::raw('article_type_id, sum(count) as count'))->groupBy('article_type_id')->with('articleType')->get()->toArray();
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function articleType()
+    {
+        return $this->belongsTo(ArticleType::class);
     }
 }

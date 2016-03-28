@@ -46,7 +46,7 @@
       <button class="button button-defualt" :class="goods.storage?'':'disabled'" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a href="{{url('/shop/cart')}}" class="button button-caution button-rounded" :class="goods.storage?'':'disabled' @click="addGoods()">立即购买</a>
+      <a href="{{url('/shop/cart')}}" class="button button-caution button-rounded" :class="goods.storage?'':'disabled'" @click="addGoods()">立即购买</a>
     </div>
   </div>
 
@@ -93,11 +93,11 @@
           }
         }
         return -1;
-      }
+      },
     },
     methods: {
       addGoods: function () {
-        if (this.goods.storage) {
+//        if (this.goods.storage) {
           if (cart_num == '') {
             cart_num = 0;
           }
@@ -122,13 +122,13 @@
           setTimeout(function () {
             this.goods.num = 1;
           }, 900);
-        } else {
-          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
-          $('.jumbotron').show();
-          $('.jumbotron').delay(1000).hide(0);
-          $('.jumbotron .alert').show();
-          $('.jumbotron .alert').delay(300).fadeOut(700);
-        }
+//        } else {
+//          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
+//          $('.jumbotron').show();
+//          $('.jumbotron').delay(1000).hide(0);
+//          $('.jumbotron .alert').show();
+//          $('.jumbotron .alert').delay(300).fadeOut(700);
+//        }
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
@@ -139,9 +139,16 @@
         if (this.goods.num <= 98) {
           this.goods.num++;
         }
+      },
+      noStorage: function () {
+        if (!list.goods.storage) {
+          $('.navbar-fixed-bottom .button').attr('disabled','disabled');
+        }
       }
     }
   });
+
+  list.noStorage();
 
 </script>
 <script>

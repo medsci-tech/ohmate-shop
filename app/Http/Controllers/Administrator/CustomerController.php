@@ -15,7 +15,7 @@ class CustomerController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'customers' => Customer::paginate(20, ['*'])
+                'customers' => Customer::with(['statistics', 'information'])->paginate(20, ['*'])
             ]
         ]);
     }
