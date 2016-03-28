@@ -1,4 +1,5 @@
 $(function () {
+  $('[data-toggle="popover"]').popover({html: true});
   $('.dropdown-toggle').dropdown();
   city_selector();
 });
@@ -14,9 +15,35 @@ var index = new Vue({
       page_all: 3,
       page_active: 2,
       page_num: 20,
-      page_data: '',
+      page_data:  [{
+        id: 1,
+        name: '',
+        phone: '',
+        email: '',
+        nickname: '',
+        hospital: {
+          name: '',
+          province: '',
+          city: '',
+          area: '',
+          location: ''
+        },
+        statistics: {friend_count: 0},
+        type: {type_ch: ''},
+        beans_total: 0,
+        qr_code: '',
+      }],
 
-      data_head: '',
+      data_head: {
+        id: '#',
+        name: '姓名',
+        phone: '手机号',
+        address: '地址',
+        hospital: '医院',
+        invited: '邀请糖友数',
+        beans: '迈豆数',
+        qr_code: '二维码'
+      },
 
       this_person: {
         id: 1,
@@ -186,7 +213,6 @@ var index = new Vue({
       }
       ,
       person_detail: function (e) {
-        $('[data-toggle="popover"]').popover({html: true});
         $('#myModal').modal('show');
         with (this.this_person) {
           id = e.id;
