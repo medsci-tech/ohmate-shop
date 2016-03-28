@@ -203,6 +203,12 @@ var index = new Vue({
             hospital.city = e.hospital.city;
             hospital.area = e.hospital.area;
             hospital.location = e.hospital.location;
+            $('#province').val(index.this_person.hospital.province);
+            $('#province').trigger('change');
+            $('#city').val(index.this_person.hospital.city);
+            $('#city').trigger('change');
+            $('#area').val(index.this_person.hospital.district);
+            $('#area').trigger('change');
           }
           if (e.statistics) {
             statistics.friend_count = e.statistics.friend_count;
@@ -213,12 +219,6 @@ var index = new Vue({
           beans_total = e.beans_total;
         }
         this.this_person_cache = e;
-        $('#province').val(index.this_person.hospital.province);
-        $('#province').trigger('change');
-        $('#city').val(index.this_person.hospital.city);
-        $('#city').trigger('change');
-        $('#area').val(index.this_person.hospital.district);
-        $('#area').trigger('change');
       }
       ,
       cancel_edit: function () {
