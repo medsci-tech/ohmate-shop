@@ -184,9 +184,8 @@
                                     </div>
                                     <label class="col-sm-3 control-label" for="address"></label>
                                     <div class="col-sm-8">
-                                        <textarea type="text" class="form-control sr-only" id="address" placeholder="街道地址"
+                                        <input type="text" class="form-control sr-only" id="address" placeholder="街道地址"
                                                   v-model="this_person.department">@{{ this_person.department }}
-                                        </textarea>
                                     </div>
 
                                 </div>
@@ -194,7 +193,7 @@
                                     <label for="remark" class="col-sm-3 control-label">备注</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control sr-only" id="remark" placeholder="请输入备注"
-                                               v-model="this_person.hospital.name">
+                                               v-model="this_person.remark">
 
                                         <p class="form-control-static">@{{ this_person.remark }}</p>
                                     </div>
