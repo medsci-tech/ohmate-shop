@@ -376,15 +376,19 @@ var index = new Vue({
           id = e.id;
           name = e.name;
           type_id = e.type_id;
-          phone = e.phone;
           hospital = e.hospital;
           province = e.province;
           city = e.city;
           district = e.district;
-          department = e.department;
           remark = e.remark;
         }
+        if (e.department) {
+          this.this_person.department = e.department;
+        } else {
+          this.this_person.department = '';
+        }
         with (this.other_info) {
+          phone = e.phone;
           nickname = e.nickname;
           beans_total = e.beans_total;
           qr_code = e.qr_code;
@@ -403,9 +407,7 @@ var index = new Vue({
         if (e.type) {
           index.other_info.type.type_ch = e.type.type_ch;
         }
-
-
-        this.this_person_cache = e;
+        this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
         $.get('/customer/invited',
           {
             id: this.this_person.id,

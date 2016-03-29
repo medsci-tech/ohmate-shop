@@ -27,6 +27,7 @@ class CustomerController extends Controller
 
     public function search(Request $request)
     {
+        $type_id = $request->input('type_id');
         $key = $request->input('key');
         $key_phrase = '%'.$key.'%';
 
