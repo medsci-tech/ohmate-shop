@@ -135,12 +135,13 @@ var index = new Vue({
         }
       },
       get_url: function () {
-        if (index.searching.user_type == '医生') return '/customer/search?user_type=医生';
-        if (index.searching.user_type == '志愿者') return '/customer/search?user_type=志愿者';
-        if (index.searching.user_type == '普通用户') return '/customer/search?user_type=普通用户';
-        if (index.searching.user_type == '企业用户') return '/customer/search?user_type=企业用户';
+        if (index.searching.user_type == '医生') return '/customer/search?type_id=4';
+        if (index.searching.user_type == '护士') return '/customer/search?type_id=3';
+        if (index.searching.user_type == '志愿者') return '/customer/search?type_id=2';
+        if (index.searching.user_type == '普通用户') return '/customer/search?type_id=1';
+        if (index.searching.user_type == '企业用户') return '/customer/search?type_id=5';
         if (index.searching.user_type == '所有用户') return '/customer/list';
-      }
+      },
     }
     ,
 
@@ -354,12 +355,9 @@ var index = new Vue({
       }
       ,
       search: function () {
-        $.post(
-          url(),
+        $.get(index.get_url,
           {
-            user_type: this.searching.user_type,
-            detail: this.searching.detail,
-            page: 1
+            key: this.searching.detail
           },
           function (data) {
             if (data.success) {

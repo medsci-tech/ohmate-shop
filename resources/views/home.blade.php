@@ -141,7 +141,7 @@
                                 <div class="form-group">
                                     <label for="phone" class="col-sm-3 control-label">电话</label>
                                     <div class="col-sm-8">
-                                        <input type="number" class="form-control sr-only" id="phone" placeholder="请输入电话"
+                                        <input type="number" class="form-control sr-only" id="phone" placeholder="请输入电话" disabled
                                                v-model="other_info.phone">
 
                                         <p class="form-control-static">@{{ other_info.phone }}</p>
