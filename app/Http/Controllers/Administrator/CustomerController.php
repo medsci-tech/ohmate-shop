@@ -17,7 +17,10 @@ class CustomerController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'customers' => Customer::where('phone', '!=', 'NULL')->with(['statistics', 'information', 'type'])->orderBy('id', 'desc')->paginate(20, ['*'])
+                'customers' => Customer::where('phone', '!=', 'NULL')
+                    ->with(['statistics', 'information', 'type'])
+                    ->orderBy('id', 'desc')
+                    ->paginate(20, ['*'])
             ]
         ]);
     }
@@ -31,7 +34,10 @@ class CustomerController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'customers' => Customer::where('phone', 'like', $key_phrase)->paginate(20, ['*'])
+                'customers' => Customer::where('phone', 'like', $key_phrase)
+                    ->with(['statistics', 'information', 'type'])
+                    ->orderBy('id', 'desc')
+                    ->paginate(20, ['*'])
             ]
         ]);
     }
