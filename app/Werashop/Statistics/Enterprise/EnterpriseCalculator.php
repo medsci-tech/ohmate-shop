@@ -58,7 +58,7 @@ class EnterpriseCalculator
     protected static function getRegisterCount()
     {
         return \Cache::remember('enterprise_register_count', 60, function() {
-            return Customer::where('is_registered')->count();
+            return Customer::where('is_registered', 1)->count();
         });
     }
 
