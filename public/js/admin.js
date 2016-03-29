@@ -31,7 +31,7 @@ var index = new Vue({
   el: '#index',
   data: {
     searching: {
-      user_type: '医生',
+      user_type: '',
       detail: ''
     },
     searched: '',
