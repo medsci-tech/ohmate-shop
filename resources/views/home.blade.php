@@ -11,6 +11,7 @@
                     <li :class="(searching.user_type == '医生')?'active':''" @click="choose_data" id="doctor"><a href="#doctor">医生</a></li>
                     <li :class="(searching.user_type == '志愿者')?'active':''" @click="choose_data" id="volunteer"><a href="#volunteer">志愿者</a></li>
                     <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="customer"><a href="#customer">普通用户</a></li>
+                    <li :class="(searching.user_type == '企业用户')?'active':''" @click="choose_data" id="enterprise"><a href="#enterprise">企业用户</a></li>
                     <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="all"><a href="#all">所有用户</a></li>
                 </ul>
             </div>
@@ -128,6 +129,7 @@
                                             <option value="医生">医生</option>
                                             <option value="志愿者">志愿者</option>
                                             <option value="普通用户">普通用户</option>
+                                            <option value="企业用户">企业用户</option>
                                         </select>
 
                                         <p class="form-control-static">@{{ this_person.type.type_ch }}</p>
