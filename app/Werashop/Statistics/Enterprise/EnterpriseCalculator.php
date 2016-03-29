@@ -4,6 +4,7 @@
 namespace App\Werashop\Statistics\Enterprise;
 
 
+use App\Models\Commodity;
 use App\Models\Customer;
 use Overtrue\Wechat\Shop\Order;
 
@@ -11,7 +12,15 @@ class EnterpriseCalculator
 {
     public static function commodity()
     {
+        $result = [];
 
+        foreach (Commodity::all() as $commodity) {
+            $result []= [
+                'id' => $commodity->id,
+                'name' => $commodity->name,
+                'count' => self::getCommoditySoldSum($commodity)
+            ];
+        }
     }
 
     public static function basic()
@@ -24,6 +33,17 @@ class EnterpriseCalculator
             'cash_payment_sum' => self::getCashPaymentSum(),
             'order_count' => self::getOrderCount(),
         ];
+    }
+
+    protected function getCommoditySoldSum($commodity)
+    {
+        return \Cache::remember('commodity_sold_count_'. $commodity->id, 60, function() use ($commodity) {
+            return \DB::table('commodity_order')
+                ->join('orders', 'commodity_order.order_id', '=', 'orders.id')
+                ->where('orders.order_status_id', '>', 1)
+                ->where('commodity_order.commodity_id', $commodity->id)
+                ->sum('commodity_order.amount');
+        });
     }
 
     protected function getFocusCount()
