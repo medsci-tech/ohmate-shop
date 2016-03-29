@@ -111,6 +111,7 @@
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <br>
                             <div class="col-sm-6">
                                 <div class="form-group">
