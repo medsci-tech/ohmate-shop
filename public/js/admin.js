@@ -488,8 +488,8 @@ var index = new Vue({
   }
 });
 
-if (location.hash != 'home' && location.hash != 'home#') {
-  $(location.hash.substring(3)).trigger('click');
+if (location.hash != '' && location.hash != '#') {
+  $(location.hash).trigger('click');
 } else {
   $('#all').trigger('click');
 }
