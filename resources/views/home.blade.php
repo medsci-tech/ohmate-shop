@@ -57,7 +57,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="#" @click="person_detail(person)">详情</a>
+                            <a @click="person_detail(person)">详情</a>
                         </td>
                         </tr>
                         </tbody>
@@ -66,31 +66,31 @@
                 <nav class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
                     <ul class="pagination" @click="choose_page">
                     <li v-if="page_active > 1">
-                        <a href="#" aria-label="Previous" name="pre">
+                        <a aria-label="Previous" name="pre">
                             &laquo;
                         </a>
                     </li>
                     <li v-if="page_show > 1">
-                        <a href="#" aria-label="Previous5" name="pre5">
+                        <a aria-label="Previous5" name="pre5">
                             &hellip;
                         </a>
                     </li>
-                    <li :class="(page_active == page_show)?'active':''"><a href="#">@{{page_show}}</a></li>
+                    <li :class="(page_active == page_show)?'active':''"><a>@{{page_show}}</a></li>
                     <li :class="(page_active == page_show+1)?'active':''" v-if="(page_show+1)<=page_all"><a
-                          href="#">@{{ page_show+1 }}</a></li>
+                        >@{{ page_show+1 }}</a></li>
                     <li :class="(page_active == page_show+2)?'active':''" v-if="(page_show+2)<=page_all"><a
-                          href="#">@{{ page_show+2 }}</a></li>
+                        >@{{ page_show+2 }}</a></li>
                     <li :class="(page_active == page_show+3)?'active':''" v-if="(page_show+3)<=page_all"><a
-                          href="#">@{{ page_show+3 }}</a></li>
+                        >@{{ page_show+3 }}</a></li>
                     <li :class="(page_active == page_show+4)?'active':''" v-if="(page_show+4)<=page_all"><a
-                          href="#">@{{ page_show+4 }}</a></li>
+                        >@{{ page_show+4 }}</a></li>
                     <li v-if="(page_show+5)<=page_all">
-                        <a href="#" name="next5" aria-label="Next5">
+                        <a name="next5" aria-label="Next5">
                             &hellip;
                         </a>
                     </li>
                     <li v-if="page_active < page_all">
-                        <a href="#" aria-label="Next" name="next">
+                        <a aria-label="Next" name="next">
                             &raquo;
                         </a>
                     </li>
@@ -263,31 +263,31 @@
                     <div class="modal-footer">
                         <ul class="pagination" @click="choose_page">
                         <li v-if="this_person.invited.page_active > 1">
-                            <a href="#" aria-label="Previous" name="pre">
+                            <a aria-label="Previous" name="pre">
                                 &laquo;
                             </a>
                         </li>
                         <li v-if="this_person.invited.page_show > 1">
-                            <a href="#" aria-label="Previous5" name="pre5">
+                            <a aria-label="Previous5" name="pre5">
                                 &hellip;
                             </a>
                         </li>
-                        <li :class="(this_person.invited.page_active == this_person.invited.page_show)?'active':''"><a href="#">@{{this_person.invited.page_show}}</a></li>
+                        <li :class="(this_person.invited.page_active == this_person.invited.page_show)?'active':''"><a>@{{this_person.invited.page_show}}</a></li>
                         <li :class="(this_person.invited.page_active == this_person.invited.page_show+1)?'active':''" v-if="(this_person.invited.page_show+1)<=this_person.invited.page_all"><a
-                              href="#">@{{ this_person.invited.page_show+1 }}</a></li>
+                            >@{{ this_person.invited.page_show+1 }}</a></li>
                         <li :class="(this_person.invited.page_active == this_person.invited.page_show+2)?'active':''" v-if="(this_person.invited.page_show+2)<=this_person.invited.page_all"><a
-                              href="#">@{{ this_person.invited.page_show+2 }}</a></li>
+                            >@{{ this_person.invited.page_show+2 }}</a></li>
                         <li :class="(this_person.invited.page_active == this_person.invited.page_show+3)?'active':''" v-if="(this_person.invited.page_show+3)<=this_person.invited.page_all"><a
-                              href="#">@{{ this_person.invited.page_show+3 }}</a></li>
+                            >@{{ this_person.invited.page_show+3 }}</a></li>
                         <li :class="(this_person.invited.page_active == this_person.invited.page_show+4)?'active':''" v-if="(this_person.invited.page_show+4)<=this_person.invited.page_all"><a
-                              href="#">@{{ this_person.invited.page_show+4 }}</a></li>
+                            >@{{ this_person.invited.page_show+4 }}</a></li>
                         <li v-if="(this_person.invited.page_show+5)<=this_person.invited.page_all">
-                            <a href="#" name="next5" aria-label="Next5">
+                            <a name="next5" aria-label="Next5">
                                 &hellip;
                             </a>
                         </li>
                         <li v-if="this_person.invited.page_active < this_person.invited.page_all">
-                            <a href="#" aria-label="Next" name="next">
+                            <a aria-label="Next" name="next">
                                 &raquo;
                             </a>
                         </li>
@@ -315,31 +315,27 @@
                     <div class="modal-footer">
                         <ul class="pagination" @click="choose_page">
                         <li v-if="this_person.beans.page_active > 1">
-                            <a href="#" aria-label="Previous" name="pre">
+                            <a aria-label="Previous" name="pre">
                                 &laquo;
                             </a>
                         </li>
                         <li v-if="this_person.beans.page_show > 1">
-                            <a href="#" aria-label="Previous5" name="pre5">
+                            <a aria-label="Previous5" name="pre5">
                                 &hellip;
                             </a>
                         </li>
-                        <li :class="(this_person.beans.page_active == this_person.beans.page_show)?'active':''"><a href="#">@{{this_person.beans.page_show}}</a></li>
-                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+1)?'active':''" v-if="(this_person.beans.page_show+1)<=this_person.beans.page_all"><a
-                              href="#">@{{ this_person.beans.page_show+1 }}</a></li>
-                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+2)?'active':''" v-if="(this_person.beans.page_show+2)<=this_person.beans.page_all"><a
-                              href="#">@{{ this_person.beans.page_show+2 }}</a></li>
-                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+3)?'active':''" v-if="(this_person.beans.page_show+3)<=this_person.beans.page_all"><a
-                              href="#">@{{ this_person.beans.page_show+3 }}</a></li>
-                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+4)?'active':''" v-if="(this_person.beans.page_show+4)<=this_person.beans.page_all"><a
-                              href="#">@{{ this_person.beans.page_show+4 }}</a></li>
+                        <li :class="(this_person.beans.page_active == this_person.beans.page_show)?'active':''"><a>@{{this_person.beans.page_show}}</a></li>
+                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+1)?'active':''" v-if="(this_person.beans.page_show+1)<=this_person.beans.page_all"><a>@{{ this_person.beans.page_show+1 }}</a></li>
+                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+2)?'active':''" v-if="(this_person.beans.page_show+2)<=this_person.beans.page_all"><a>@{{ this_person.beans.page_show+2 }}</a></li>
+                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+3)?'active':''" v-if="(this_person.beans.page_show+3)<=this_person.beans.page_all"><a>@{{ this_person.beans.page_show+3 }}</a></li>
+                        <li :class="(this_person.beans.page_active == this_person.beans.page_show+4)?'active':''" v-if="(this_person.beans.page_show+4)<=this_person.beans.page_all"><a>@{{ this_person.beans.page_show+4 }}</a></li>
                         <li v-if="(this_person.beans.page_show+5)<=this_person.beans.page_all">
-                            <a href="#" name="next5" aria-label="Next5">
+                            <a name="next5" aria-label="Next5">
                                 &hellip;
                             </a>
                         </li>
                         <li v-if="this_person.beans.page_active < this_person.beans.page_all">
-                            <a href="#" aria-label="Next" name="next">
+                            <a aria-label="Next" name="next">
                                 &raquo;
                             </a>
                         </li>
