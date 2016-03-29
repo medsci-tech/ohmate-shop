@@ -27,16 +27,24 @@ class CustomerController extends Controller
 
     public function search(Request $request)
     {
-        $type_id = $request->input('type_id');
-        $key = $request->input('key');
-        $key_phrase = '%'.$key.'%';
+        $type_id = $request->input('type_id', null);
+        $key = $request->input('key', null);
 
+        $customers = Customer::select();
+
+        if ($type_id) {
+            $customers = $customers->where('type_id', $type_id);
+        }
+
+        if ($key) {
+            $key_phrase = '%'.$key.'%';
+            $customers = $customers->where('phone', 'like', $key_phrase);
+        }
 
         return response()->json([
             'success' => true,
             'data' => [
-                'customers' => Customer::where('phone', 'like', $key_phrase)
-                    ->with(['statistics', 'information', 'type'])
+                'customers' => $customers->with(['statistics', 'information', 'type'])
                     ->orderBy('id', 'desc')
                     ->paginate(20, ['*'])
             ]
