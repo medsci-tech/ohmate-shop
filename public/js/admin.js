@@ -507,11 +507,10 @@ switch (click_btn) {
     index.searching.user_type = '企业用户';
     break;
   default :
-    index.searching.user_type = '所有用户';
-    click_btn = '#all';
+    index.searching.user_type = '医生';
+    click_btn = '#doctor';
     break;
 }
-
 $(click_btn).trigger('click');
 
 
