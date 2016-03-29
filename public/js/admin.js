@@ -401,7 +401,7 @@ var index = new Vue({
           index.other_info.statistics.friend_count = e.statistics.friend_count;
         }
         if (e.type) {
-          index.other_info.type.type_ch = e.statistics.type.type_ch;
+          index.other_info.type.type_ch = e.type.type_ch;
         }
 
 
