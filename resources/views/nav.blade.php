@@ -14,12 +14,13 @@
       @if (Auth::guest())
       @else
         <ul class="nav navbar-nav navbar-right">
-          {{--<?php $user = Auth::user();?>--}}
-          {{--@can('user_administration')--}}
-          <li class="active"><a href="#">用户管理</a></li>
+          <?php $user = Auth::user();?>
+          @can('user_administration')
+          <li class="active"><a href="{{ url('/index') }}">用户管理</a></li>
           <li><a href="#">商城管理</a></li>
           <li><a href="#">文章管理</a></li>
           <li><a href="#">系统管理</a></li>
+          @endcan
           <li>
             <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">
@@ -33,7 +34,6 @@
               </ul>
             </div>
           </li>
-          {{--@endcan--}}
 
         </ul>
         <form class="navbar-form navbar-right" @submit.prevent="search">
