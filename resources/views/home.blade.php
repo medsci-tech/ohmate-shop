@@ -10,7 +10,8 @@
                 <ul class="nav nav-sidebar">
                     <li :class="(searching.user_type == '医生')?'active':''" @click="choose_data" id="doctor"><a href="#doctor">医生</a></li>
                     <li :class="(searching.user_type == '志愿者')?'active':''" @click="choose_data" id="volunteer"><a href="#volunteer">志愿者</a></li>
-                    <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="customer"><a href="#customer">普通用户</a></li>
+                    <li :class="(searching.user_type == '护士')?'active':''" @click="choose_data" id="nurse"><a href="#nurse">志愿者</a></li>
+                    <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="common"><a href="#common">普通用户</a></li>
                     <li :class="(searching.user_type == '企业用户')?'active':''" @click="choose_data" id="enterprise"><a href="#enterprise">企业用户</a></li>
                     <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="all"><a href="#all">所有用户</a></li>
                 </ul>
@@ -126,75 +127,77 @@
                                 <div class="form-group">
                                     <label for="user_type" class="col-sm-3 control-label">用户类型</label>
                                     <div class="col-sm-8">
-                                        <select id="user_type" class="form-control sr-only" v-model="this_person.type.type_ch">
-                                            <option value="医生">医生</option>
-                                            <option value="志愿者">志愿者</option>
-                                            <option value="普通用户">普通用户</option>
-                                            <option value="企业用户">企业用户</option>
+                                        <select id="user_type" class="form-control sr-only" v-model="this_person.type_id">
+                                            <option value="4">医生</option>
+                                            <option value="3">护士</option>
+                                            <option value="2">志愿者</option>
+                                            <option value="1">普通用户</option>
+                                            <option value="5">企业用户</option>
                                         </select>
 
-                                        <p class="form-control-static">@{{ this_person.type.type_ch }}</p>
+                                        <p class="form-control-static">@{{ other_info.type.type_ch }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="col-sm-3 control-label">电话</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only" id="phone" placeholder="请输入电话"
-                                               v-model="this_person.phone">
+                                               v-model="other_info.phone">
 
-                                        <p class="form-control-static">@{{ this_person.phone }}</p>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-sm-3 control-label">邮箱</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control sr-only" id="email" placeholder="请输入邮箱"
-                                               v-model="this_person.email">
-
-                                        <p class="form-control-static">@{{ this_person.email }}</p>
+                                        <p class="form-control-static">@{{ other_info.phone }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="nickname" class="col-sm-3 control-label">微信昵称</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control sr-only" id="nickname" placeholder="请输入微信昵称" disabled
-                                               v-model="this_person.nickname">
+                                               v-model="other_info.nickname">
 
-                                        <p class="form-control-static">@{{ this_person.nickname }}</p>
+                                        <p class="form-control-static">@{{ other_info.nickname }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="hospital" class="col-sm-3 control-label">医院名称</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control sr-only" id="hospital" placeholder="请输入医院名称"
-                                               v-model="this_person.hospital.name">
+                                               v-model="this_person.hospital">
 
-                                        <p class="form-control-static">@{{ this_person.hospital.name }}</p>
+                                        <p class="form-control-static">@{{ this_person.hospital }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="province">医院地址</label>
                                     <div class="col-sm-8">
-                                        <p class="form-control-static">@{{ this_person.hospital.province }}-@{{ this_person.hospital.city }}-@{{ this_person.hospital.area }}-@{{ this_person.hospital.location}}</p>
+                                        <p class="form-control-static">@{{ this_person.province }}-@{{ this_person.city }}-@{{ this_person.district }}-@{{ this_person.hospital.location}}</p>
                                         <select class="form-control sr-only" name="province" id="province"
-                                                v-model="this_person.hospital.province"></select>
+                                                v-model="this_person.province"></select>
                                     </div>
                                     <label class="col-sm-3 control-label" for="city"></label>
                                     <div class="col-sm-8">
                                         <select class="form-control sr-only" name="city" id="city"
-                                                v-model="this_person.hospital.city"></select>
+                                                v-model="this_person.city"></select>
                                     </div>
                                     <label class="col-sm-3 control-label" for="area"></label>
                                     <div class="col-sm-8">
                                         <select class="form-control sr-only" name="area" id="area"
-                                                v-model="this_person.hospital.area"></select>
+                                                v-model="this_person.district"></select>
                                     </div>
                                     <label class="col-sm-3 control-label" for="address"></label>
                                     <div class="col-sm-8">
-                  <textarea type="text" class="form-control sr-only" id="address" placeholder="街道地址"
-                            v-model="this_person.hospital.location"></textarea>
+                                        <textarea type="text" class="form-control sr-only" id="address" placeholder="街道地址"
+                                                  v-model="this_person.department">@{{ this_person.department }}
+                                        </textarea>
                                     </div>
 
+                                </div>
+                                <div class="form-group">
+                                    <label for="remark" class="col-sm-3 control-label">备注</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control sr-only" id="remark" placeholder="请输入备注"
+                                               v-model="this_person.hospital.name">
+
+                                        <p class="form-control-static">@{{ this_person.remark }}</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -202,24 +205,24 @@
                                     <label for="invited" class="col-sm-3 control-label">糖友数</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
-                                               v-model="this_person.statistics.friend_count">
+                                               v-model="other_info.statistics.friend_count">
 
-                                        <p class="form-control-static">@{{ this_person.statistics.friend_count }}</p>
+                                        <p class="form-control-static">@{{ other_info.statistics.friend_count }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="beans" class="col-sm-3 control-label">迈豆数</label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数"
-                                               v-model="this_person.beans_total">
+                                               v-model="other_info.beans_total">
 
-                                        <p class="form-control-static">@{{ this_person.beans_total }}</p>
+                                        <p class="form-control-static">@{{ other_info.beans_total }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">二维码</label>
                                     <div class="col-sm-8">
-                                        <img class="form-control-static img-responsive" :src="this_person.qr_code">
+                                        <img class="form-control-static img-responsive" :src="other_info.qr_code">
                                     </div>
                                 </div>
                             </div>
