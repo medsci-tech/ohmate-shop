@@ -20,6 +20,7 @@ class CartController extends Controller
 
         $default_address = $customer->addresses()->where('is_default', true)->first();
 
+        $default_address_array = null;
         if ($default_address) {
             $default_address_array = $default_address->toArray();
             $post_fee = \Helper::getPostFee($default_address->province);

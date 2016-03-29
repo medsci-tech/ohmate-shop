@@ -22,8 +22,6 @@ body {
   margin: 20px; }
 #signin .form-signin {
   max-width: 330px; }
-#signin input {
-  height: 40px; }
 #signin .button {
   width: 100%; }
 
@@ -57,11 +55,32 @@ body {
       background-color: #5bc0de;
       color: #fff; }
   #index .main {
+    margin-bottom: 60px;
     background-color: #fff; }
-    #index .main .popover-content {
-      padding: 0; }
+    #index .main #pagination {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      text-align: center; }
     #index .main .pagination span {
-      pointer-events: no; }
+      pointer-events: none; }
+  #index .popover-content {
+    width: 270px;
+    padding: 0; }
+    #index .popover-content .table {
+      margin: 0; }
+  #index #myModal {
+    padding: 0; }
+  #index .modal-dialog {
+    width: 95%; }
+  #index .modal-content {
+    margin-bottom: 20px; }
+  #index .modal-body {
+    padding: 0; }
+    #index .modal-body .form-group #province, #index .modal-body .form-group #city, #index .modal-body .form-group #area {
+      margin-bottom: 5px; }
+    #index .modal-body .table {
+      margin-bottom: 0; }
   @media (max-width: 767px) {
     #index .sidebar {
       position: inherit;

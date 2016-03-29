@@ -128,27 +128,27 @@ class Customer extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function statistics()
     {
-        return $this->hasMany(CustomerStatistics::class, 'customer_id');
+        return $this->hasOne(CustomerStatistics::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function articleStatistics()
     {
-        return $this->hasMany(CustomerArticleStatistics::class, 'customer_id');
+        return $this->hasOne(CustomerArticleStatistics::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function commodityStatistics()
     {
-        return $this->hasMany(CustomerCommodityStatistics::class, 'customer_id');
+        return $this->hasOne(CustomerCommodityStatistics::class);
     }
 
     /**

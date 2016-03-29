@@ -113,6 +113,17 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
     Route::group(['prefix' => 'customer'], function () {
         Route::get('list', 'CustomerController@customerList');
         Route::get('search', 'CustomerController@search');
-        Route::get('/{id}/detail', 'CustomerController@detail');
+        Route::get('/{id}/beans', 'CustomerController@beans');
+        Route::get('/{id}/friends', 'CustomerController@friends');
+        Route::post('/{id}/update', 'CustomerController@update');
     });
+});
+
+Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
+    Route::get('/article-index', 'RedirectController@articleIndex');
+});
+
+
+Route::group(['prefix' => 'hack', 'middleware' => 'web', 'namespace' => 'Hack'], function () {
+    Route::post('/clear-user', 'HackController@clearUser');
 });

@@ -29,13 +29,13 @@ class CustomerBean extends Model
 {
     protected $table = 'customer_beans';
 
-    protected function rate()
+    public function rate()
     {
-        return $this->belongsTo('App\Models\BeanRate', 'bean_rate_id');
+        return $this->belongsTo(BeanRate::class, 'bean_rate_id');
     }
 
-    protected function customer()
+    public function customer()
     {
-        return $this->belongsTo('App\Models\Customer', 'customer_id');
+        return $this->belongsTo(Customer::class);
     }
 }
