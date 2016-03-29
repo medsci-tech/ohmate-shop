@@ -168,7 +168,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="province">医院地址</label>
                                     <div class="col-sm-8">
-                                        <p class="form-control-static">@{{ this_person.province }}-@{{ this_person.city }}-@{{ this_person.district }}-@{{ this_person.hospital.location}}</p>
+                                        <p class="form-control-static">@{{ this_person.province }}-@{{ this_person.city }}-@{{ this_person.district }}-@{{ this_person.department}}</p>
                                         <select class="form-control sr-only" name="province" id="province"
                                                 v-model="this_person.province"></select>
                                     </div>
