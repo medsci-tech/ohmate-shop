@@ -266,13 +266,11 @@ var index = new Vue({
           email = e.email;
           nickname = e.nickname;
           if (e.hospital) {
-            with (index.this_person) {
-              hospital.name = e.hospital.name;
-              hospital.province = e.hospital.province;
-              hospital.city = e.hospital.city;
-              hospital.area = e.hospital.area;
-              hospital.location = e.hospital.location;
-            }
+            index.this_person.hospital.name = e.hospital.name;
+            index.this_person.hospital.province = e.hospital.province;
+            index.this_person.hospital.city = e.hospital.city;
+            index.this_person.hospital.area = e.hospital.area;
+            index.this_person.hospital.location = e.hospital.location;
             $('#province').val(index.this_person.hospital.province);
             $('#province').trigger('change');
             $('#city').val(index.this_person.hospital.city);
