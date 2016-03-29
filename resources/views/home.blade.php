@@ -182,13 +182,18 @@
                                         <select class="form-control sr-only" name="area" id="area"
                                                 v-model="this_person.district"></select>
                                     </div>
-                                    <label class="col-sm-3 control-label" for="address"></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control sr-only" id="address" placeholder="街道地址"
-                                                  v-model="this_person.department">@{{ this_person.department }}
-                                    </div>
-
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="department" class="col-sm-3 control-label">备注</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control sr-only" id="department" placeholder="街道地址"
+                                               v-model="this_person.department">
+
+                                        <p class="form-control-static">@{{ this_person.department }}</p>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="remark" class="col-sm-3 control-label">备注</label>
                                     <div class="col-sm-8">
