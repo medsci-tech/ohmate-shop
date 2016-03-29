@@ -481,7 +481,7 @@ var index = new Vue({
           }, 'json'
         );
       },
-      cilck_trigger: function (e) {
+      click_trigger: function (e) {
         if (location.hash != 'home' && location.hash != 'home#') {
           e = location.hash.substring(4);
         }
@@ -490,7 +490,7 @@ var index = new Vue({
     }
   });
 
-index.click_trigger('#all')
+index.click_trigger('#all');
 
 
 
