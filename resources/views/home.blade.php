@@ -240,7 +240,7 @@
             <div class="col-sm-4">
                 <div class="modal-content col-xs-12 ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ this_person.statistics.friend_count }}</h4>
+                        <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ other_info.statistics.friend_count }}</h4>
                     </div>
                     <div class="modal-body">
                         <table class="table">
@@ -292,7 +292,7 @@
                 </div>
                 <div class="modal-content col-xs-12 ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ this_person.beans_total }}</h4>
+                        <h4 class="modal-title" id="myModalLabel3">总迈豆&emsp;@{{ other_info.beans_total }}</h4>
                     </div>
                     <div class="modal-body">
                         <table class="table">
