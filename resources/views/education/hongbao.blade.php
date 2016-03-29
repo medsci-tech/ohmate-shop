@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-  <title>gongbao</title>
+  <title>迈豆红包</title>
   <link rel="stylesheet" href="{{asset('/css/weui.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/hongbao.css')}}">
 </head>

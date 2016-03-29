@@ -67,7 +67,7 @@
       <div>
         <ul class="list-unstyled data2">
           <li v-for=" item in enterprise_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            @{{ item.commodity.name }}：@{{ item.count }}件
+            @{{ item.name }}：@{{ item.count }}件
           </li>
         </ul>
       </div>
