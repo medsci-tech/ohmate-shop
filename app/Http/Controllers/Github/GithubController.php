@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 class GithubController extends Controller
 {
     public function onEvent() {
+        $d = '';
         exec('sudo git pull origin '.env('GITHUB_WEBHOOK_BRANCH'), $d);
         dd($d);
     }
