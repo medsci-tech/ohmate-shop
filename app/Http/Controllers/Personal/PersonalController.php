@@ -9,6 +9,7 @@ use App\Models\CustomerStatistics;
 use App\Models\EnterpriseArticleStatistics;
 use App\Models\EnterpriseBasicStatistics;
 use App\Models\EnterpriseCommodityStatistics;
+use App\Werashop\Statistics\Enterprise\EnterpriseCalculator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -129,9 +130,9 @@ class PersonalController extends Controller
             return view(
                 'personal.enterprise', [
                 'data' => [
-                    'enterprise_commodity_statistics' => $enterpriseCommodityStatistics,
+                    'enterprise_commodity_statistics' => EnterpriseCalculator::commodity(),
                     'enterprise_article_statistics'   => $enterpriseArticleStatistics,
-                    'enterprise_basic_statistics'     => $enterpriseBasicStatistics,
+                    'enterprise_basic_statistics'     => EnterpriseCalculator::basic(),
                 ]
             ]);
         } else {
