@@ -21,6 +21,8 @@ class EnterpriseCalculator
                 'count' => self::getCommoditySoldSum($commodity)
             ];
         }
+
+        return $result;
     }
 
     public static function basic()
