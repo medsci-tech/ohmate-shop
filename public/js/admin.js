@@ -403,9 +403,7 @@ var index = new Vue({
         if (e.type) {
           index.other_info.type.type_ch = e.type.type_ch;
         }
-
-
-        this.this_person_cache = e;
+        this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
         $.get('/customer/invited',
           {
             id: this.this_person.id,
