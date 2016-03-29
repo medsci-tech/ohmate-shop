@@ -89,6 +89,21 @@ class Helper
     }
 
     /**
+     * @return \App\Models\Customer|null|static
+     */
+    public function getCustomerOrNull()
+    {
+        try {
+            $user = self::getSessionCachedUser();
+            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+
+            return $customer;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
      * @param string|Address $province
      * @return int
      */
