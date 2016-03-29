@@ -17,7 +17,11 @@
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/bootstrap.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
-
+<script>
+  $('.nav li a').onclick(function(){
+      $(this).addClass('active');
+  })
+</script>
 @yield('js')
 </body>
 </html>
