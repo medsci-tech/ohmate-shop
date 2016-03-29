@@ -75,7 +75,7 @@ var index = new Vue({
         province: '',
         city: '',
         district: '',
-        department: null,
+        department: '',
         type_id: '',
         remark: '',
       },
@@ -381,8 +381,12 @@ var index = new Vue({
           province = e.province;
           city = e.city;
           district = e.district;
-          department = e.department;
           remark = e.remark;
+        }
+        if (e.department) {
+          this.this_person.department = e.department;
+        } else {
+          this.this_person.department = '';
         }
         with (this.other_info) {
           nickname = e.nickname;
