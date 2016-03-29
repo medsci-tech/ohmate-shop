@@ -72,7 +72,7 @@ class EnterpriseCalculator
     protected static function getBeanPaymentSum()
     {
         return \Cache::remember('enterprise_bean_payment_sum', 60, function() {
-            return \App\Models\Order::sum('beans_payment');
+            return \App\Models\Order::sum('beans_payment') * 100;
         });
     }
 

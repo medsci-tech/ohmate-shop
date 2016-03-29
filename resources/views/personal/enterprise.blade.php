@@ -27,7 +27,7 @@
       </li>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics.bean_payment_sum | currency '' }}</span>
-        支出迈豆总数
+        已使用迈豆总数
       </li>
       <li class="list-group-item">
         <span class="badge">@{{ enterprise_basic_statistics.cash_payment_sum | currency '￥' }}</span>
