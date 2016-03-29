@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrator;
 
 use App\Models\Customer;
 use App\Models\CustomerBean;
+use App\Models\CustomerInformation;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -64,14 +65,35 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $customer = Customer::findOrFail($id);
+        $customerInformation = CustomerInformation::where('customer_id', $customer->id)->first();
+
+        if (!$customerInformation) {
+            $customerInformation = CustomerInformation::create([
+                'customer_id' => $customer->id
+            ]);
+        }
+        $customerInformation->update([
+            'name' => $request->input('name'),
+            'hospital' => $request->input('hospital'),
+            'province' => $request->input('province'),
+            'city' => $request->input('city'),
+            'district' => $request->input('district'),
+            'department' => $request->input('department'),
+            'remark' => $request->input('remark'),
+        ]);
+
+        $customer->update([
+            'beans_total' => $request->input('beans_total'),
+            'type_id' => $request->input('type_id'),
+        ]);
 
         return response()->json([
             'success' => true,
             'data' => [
-                'customer' => $customer
+                'customer' => $customer->with('information')
             ]
         ]);
     }
