@@ -135,12 +135,13 @@ var index = new Vue({
         }
       },
       get_url: function () {
-        if (index.searching.user_type == '医生') return '/customer/search?user_type=医生';
-        if (index.searching.user_type == '志愿者') return '/customer/search?user_type=志愿者';
-        if (index.searching.user_type == '普通用户') return '/customer/search?user_type=普通用户';
-        if (index.searching.user_type == '企业用户') return '/customer/search?user_type=企业用户';
+        if (index.searching.user_type == '医生') return '/customer/search?type_id=4';
+        if (index.searching.user_type == '护士') return '/customer/search?type_id=3';
+        if (index.searching.user_type == '志愿者') return '/customer/search?type_id=2';
+        if (index.searching.user_type == '普通用户') return '/customer/search?type_id=1';
+        if (index.searching.user_type == '企业用户') return '/customer/search?type_id=5';
         if (index.searching.user_type == '所有用户') return '/customer/list';
-      }
+      },
     }
     ,
 
@@ -161,6 +162,19 @@ var index = new Vue({
               qr_code: '二维码'
             };
             index.searching.user_type = '医生';
+          }
+          if (name == '护士') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '护士';
           }
           if (name == '志愿者') {
             index.data_head = {
@@ -354,12 +368,9 @@ var index = new Vue({
       }
       ,
       search: function () {
-        $.post(
-          url(),
+        $.get(index.get_url,
           {
-            user_type: this.searching.user_type,
-            detail: this.searching.detail,
-            page: 1
+            key: this.searching.detail
           },
           function (data) {
             if (data.success) {
@@ -376,15 +387,19 @@ var index = new Vue({
           id = e.id;
           name = e.name;
           type_id = e.type_id;
-          phone = e.phone;
           hospital = e.hospital;
           province = e.province;
           city = e.city;
           district = e.district;
-          department = e.department;
           remark = e.remark;
         }
+        if (e.department) {
+          this.this_person.department = e.department;
+        } else {
+          this.this_person.department = '';
+        }
         with (this.other_info) {
+          phone = e.phone;
           nickname = e.nickname;
           beans_total = e.beans_total;
           qr_code = e.qr_code;
@@ -403,9 +418,7 @@ var index = new Vue({
         if (e.type) {
           index.other_info.type.type_ch = e.type.type_ch;
         }
-
-
-        this.this_person_cache = e;
+        this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
         $.get('/customer/invited',
           {
             id: this.this_person.id,

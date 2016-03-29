@@ -141,7 +141,7 @@
                                 <div class="form-group">
                                     <label for="phone" class="col-sm-3 control-label">电话</label>
                                     <div class="col-sm-8">
-                                        <input type="number" class="form-control sr-only" id="phone" placeholder="请输入电话"
+                                        <input type="number" class="form-control sr-only" id="phone" placeholder="请输入电话" disabled
                                                v-model="other_info.phone">
 
                                         <p class="form-control-static">@{{ other_info.phone }}</p>
@@ -168,7 +168,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="province">医院地址</label>
                                     <div class="col-sm-8">
-                                        <p class="form-control-static">@{{ this_person.province }}-@{{ this_person.city }}-@{{ this_person.district }}-@{{ this_person.hospital.location}}</p>
+                                        <p class="form-control-static">@{{ this_person.province }}-@{{ this_person.city }}-@{{ this_person.district }}-@{{ this_person.department}}</p>
                                         <select class="form-control sr-only" name="province" id="province"
                                                 v-model="this_person.province"></select>
                                     </div>
@@ -182,19 +182,23 @@
                                         <select class="form-control sr-only" name="area" id="area"
                                                 v-model="this_person.district"></select>
                                     </div>
-                                    <label class="col-sm-3 control-label" for="address"></label>
-                                    <div class="col-sm-8">
-                                        <textarea type="text" class="form-control sr-only" id="address" placeholder="街道地址"
-                                                  v-model="this_person.department">@{{ this_person.department }}
-                                        </textarea>
-                                    </div>
-
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="department" class="col-sm-3 control-label">科室</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control sr-only" id="department" placeholder="请输入科室"
+                                               v-model="this_person.department">
+
+                                        <p class="form-control-static">@{{ this_person.department }}</p>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="remark" class="col-sm-3 control-label">备注</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control sr-only" id="remark" placeholder="请输入备注"
-                                               v-model="this_person.hospital.name">
+                                               v-model="this_person.remark">
 
                                         <p class="form-control-static">@{{ this_person.remark }}</p>
                                     </div>
