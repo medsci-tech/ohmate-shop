@@ -20,6 +20,7 @@ var initialize_popover = function () {
 $(function () {
   $('.dropdown-toggle').dropdown();
   $('#myModal').modal({
+    show: false,
     backdrop: false,
     keyboard: false
   });
