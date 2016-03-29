@@ -19,6 +19,10 @@ var initialize_popover = function () {
 
 $(function () {
   $('.dropdown-toggle').dropdown();
+  $('#myModal').modal({
+    backdrop: false,
+    keyboard: false
+  });
   city_selector();
 });
 
@@ -80,26 +84,27 @@ var index = new Vue({
         type: {type_ch: ''},
         beans_total: 0,
         qr_code: '',
-        invited: {
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          page_data: [{
-            id: 1,
-            phone: '',
-            time: ''
-          }],
-        },
-        beans: {
-          page_all: 3,
-          page_active: 2,
-          page_num: 20,
-          page_data: [{
-            time: '',
-            action: '',
-            result: ''
-          }],
-        }
+      },
+
+      invited: {
+        page_all: 3,
+        page_active: 2,
+        page_num: 20,
+        page_data: [{
+          id: 1,
+          phone: '',
+          time: ''
+        }],
+      },
+      beans: {
+        page_all: 3,
+        page_active: 2,
+        page_num: 20,
+        page_data: [{
+          time: '',
+          action: '',
+          result: ''
+        }],
       },
 
       this_person_cache: ''
@@ -399,22 +404,22 @@ var index = new Vue({
         $.get('/customer/invited',
           {
             id: this.this_person.id,
-            page: this.this_person.invited.page_num
+            page: this.invited.page_num
           },
           function (data) {
             if (data.success) {
-              this.this_person.invited.page_data = data.data
+              this.invited.page_data = data.data
             }
           }
         );
         $.get('/customer/beans',
           {
             id: this.this_person.id,
-            page: this.this_person.beans.page_num
+            page: this.beans.page_num
           },
           function (data) {
             if (data.success) {
-              this.this_person.beans.page_data = data.data
+              this.beans.page_data = data.data
             }
           }
         );
@@ -428,10 +433,6 @@ var index = new Vue({
       }
       ,
       edit_btn: function () {
-        $('#myModal').modal({
-          backdrop: false,
-          keyboard: false
-        });
         $('#user_card p').toggleClass('hide');
         $('#user_card button').toggleClass('hide');
         $('#user_card .form-control').toggleClass('sr-only');
