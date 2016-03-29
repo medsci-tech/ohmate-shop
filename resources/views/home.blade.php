@@ -123,13 +123,13 @@
                                 <div class="form-group">
                                     <label for="user_type" class="col-sm-3 control-label">用户类型</label>
                                     <div class="col-sm-8">
-                                        <select id="user_type" class="form-control sr-only" v-model="this_person.user_type">
+                                        <select id="user_type" class="form-control sr-only" v-model="this_person.type.type_ch">
                                             <option value="医生">医生</option>
                                             <option value="志愿者">志愿者</option>
                                             <option value="普通用户">普通用户</option>
                                         </select>
 
-                                        <p class="form-control-static">@{{ this_person.user_type }}</p>
+                                        <p class="form-control-static">@{{ this_person.type.type_ch }}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
