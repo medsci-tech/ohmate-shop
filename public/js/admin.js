@@ -75,7 +75,7 @@ var index = new Vue({
         province: '',
         city: '',
         district: '',
-        department: '',
+        department: null,
         type_id: '',
         remark: '',
       },
