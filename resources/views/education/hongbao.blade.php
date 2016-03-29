@@ -15,7 +15,7 @@
     <div class="weui_actionsheet" id="weui_actionsheet">
       <div class="weui_actionsheet_menu">
         <img src="{{url('/image/education/hongbao.png')}}" alt="">
-        <p>50迈豆</p>
+        <p>20迈豆</p>
       </div>
       <div class="weui_actionsheet_action">
         <a href="{{url('/shop/index')}}" class="weui_btn weui_btn_default" id="getedu">立刻使用</a>
