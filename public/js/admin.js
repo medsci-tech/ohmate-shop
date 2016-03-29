@@ -19,6 +19,11 @@ var initialize_popover = function () {
 
 $(function () {
   $('.dropdown-toggle').dropdown();
+  $('#myModal').modal({
+    show: false,
+    backdrop: false,
+    keyboard: false
+  });
   city_selector();
 });
 
@@ -66,18 +71,19 @@ var index = new Vue({
       this_person: {
         id: 1,
         name: '',
-        phone: '',
-        email: '',
-        nickname: '',
-        hospital: {
-          name: '',
-          province: '',
-          city: '',
-          area: '',
-          location: ''
-        },
+        hospital: '',
+        province: '',
+        city: '',
+        district: '',
+        department: '',
+        type_id: '',
+        remark: '',
+      },
+      other_info: {
         statistics: {friend_count: 0},
         type: {type_ch: ''},
+        phone: '',
+        nickname: '',
         beans_total: 0,
         qr_code: '',
         invited: {
@@ -88,7 +94,7 @@ var index = new Vue({
             id: 1,
             phone: '',
             time: ''
-          }],
+          }]
         },
         beans: {
           page_all: 3,
@@ -98,7 +104,7 @@ var index = new Vue({
             time: '',
             action: '',
             result: ''
-          }],
+          }]
         }
       },
 
@@ -142,7 +148,6 @@ var index = new Vue({
       choose_data: function (e) {
         var dom = e.currentTarget;
         var name = e.target.innerHTML;
-        var get_url = '';
         if (dom.className != 'active') {
           if (name == '医生') {
             index.data_head = {
@@ -370,51 +375,56 @@ var index = new Vue({
         with (this.this_person) {
           id = e.id;
           name = e.name;
+          type_id = e.type_id;
           phone = e.phone;
-          email = e.email;
+          hospital = e.hospital;
+          province = e.province;
+          city = e.city;
+          district = e.district;
+          department = e.department;
+          remark = e.remark;
+        }
+        with (this.other_info) {
           nickname = e.nickname;
-          if (e.hospital) {
-            index.this_person.hospital.name = e.hospital.name;
-            index.this_person.hospital.province = e.hospital.province;
-            index.this_person.hospital.city = e.hospital.city;
-            index.this_person.hospital.area = e.hospital.area;
-            index.this_person.hospital.location = e.hospital.location;
-            $('#province').val(index.this_person.hospital.province);
-            $('#province').trigger('change');
-            $('#city').val(index.this_person.hospital.city);
-            $('#city').trigger('change');
-            $('#area').val(index.this_person.hospital.district);
-            $('#area').trigger('change');
-          }
-          if (e.statistics) {
-            index.this_person.statistics.friend_count = e.statistics.friend_count;
-          }
-          if (e.type) {
-            index.this_person.type.type_ch = e.type.type_ch;
-          }
           beans_total = e.beans_total;
           qr_code = e.qr_code;
         }
+        if (e.hospital) {
+          $('#province').val(index.this_person.hospital.province);
+          $('#province').trigger('change');
+          $('#city').val(index.this_person.hospital.city);
+          $('#city').trigger('change');
+          $('#area').val(index.this_person.hospital.district);
+          $('#area').trigger('change');
+        }
+        if (e.statistics) {
+          index.other_info.statistics.friend_count = e.statistics.friend_count;
+        }
+        if (e.type) {
+          index.other_info.type.type_ch = e.type.type_ch;
+        }
+
+
         this.this_person_cache = e;
         $.get('/customer/invited',
           {
             id: this.this_person.id,
-            page: this.this_person.invited.page_num
+            page: this.other_info.invited.page_num
           },
           function (data) {
             if (data.success) {
-              this.this_person.invited.page_data = data.data
+              this.other_info.invited.page_data = data.data
             }
           }
         );
         $.get('/customer/beans',
           {
             id: this.this_person.id,
-            page: this.this_person.beans.page_num
+            page: this.other_info.beans.page_num
           },
           function (data) {
             if (data.success) {
-              this.this_person.beans.page_data = data.data
+              this.other_info.beans.page_data = data.data
             }
           }
         );
@@ -428,10 +438,6 @@ var index = new Vue({
       }
       ,
       edit_btn: function () {
-        $('#myModal').modal({
-          backdrop: false,
-          keyboard: false
-        });
         $('#user_card p').toggleClass('hide');
         $('#user_card button').toggleClass('hide');
         $('#user_card .form-control').toggleClass('sr-only');
@@ -441,7 +447,19 @@ var index = new Vue({
         $.post('customer/' + this.this_person.id + '/update', this.this_person,
           function (data) {
             if (data.success) {
-              this.page_data[this.this_person_cache] = JSON.parse(JSON.stringify(this.this_person));
+              $.get(index.get_url,
+                {
+                  page: index.page_active,
+                  key: index.searching.detail
+                },
+                function (data) {
+                  if (data.success) {
+                    index.page_data = data.data.customers.data;
+                    index.$nextTick(initialize_popover);
+                  }
+                },
+                'json'
+              )
               $('#user_card p').toggleClass('hide');
               $('#user_card button').toggleClass('hide');
               $('#user_card .form-control').toggleClass('sr-only');
@@ -454,7 +472,9 @@ var index = new Vue({
   })
   ;
 
-$('#doctor').trigger('click');
+index.$nextTick(function () {
+  $('#all').trigger('click');
+});
 
 
 
