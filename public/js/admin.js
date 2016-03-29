@@ -1,4 +1,4 @@
-var initialize_popover = function() {
+var initialize_popover = function () {
   $('[data-toggle="popover"]').popover({html: true});
 
   $('[data-toggle="popover"]').mouseover(function () {
@@ -107,6 +107,12 @@ var index = new Vue({
         } else {
           return (this.this_person.beans.page_all - 4) < (this.this_person.beans.page_active - 2) ? (this.this_person.beans.page_all - 4) : (this.this_person.beans.page_active - 2);
         }
+      },
+      get_url: function () {
+        if (index.searching.user_type == '医生') return '/customer/search?user_type=医生';
+        if (index.searching.user_type == '志愿者') return '/customer/search?user_type=志愿者';
+        if (index.searching.user_type == '普通用户') return '/customer/search?user_type=普通用户';
+        if (index.searching.user_type == '所有用户') return '/customer/list';
       }
     }
     ,
@@ -115,47 +121,65 @@ var index = new Vue({
       choose_data: function (e) {
         var dom = e.currentTarget;
         var name = e.target.innerHTML;
+        var get_url = '';
         if (dom.className != 'active') {
-          $.get('/customer/list',
-            {
-              /*            user_type: name,
-               detail: '',
-               page: 1*/
-            },
+          if (name == '医生') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '医生';
+          }
+          if (name == '志愿者') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '志愿者';
+          }
+          if (name == '普通用户') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '普通用户';
+          }
+          if (name == '所有用户') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '所有用户';
+          }
+          $.get(index.get_url,
+            {},
             function (data) {
               if (data.success) {
-                if (name = '医生') index.data_head = {
-                  id: '#',
-                  name: '姓名',
-                  phone: '手机号',
-                  address: '地址',
-                  hospital: '医院',
-                  invited: '邀请糖友数',
-                  beans: '迈豆数',
-                  qr_code: '二维码'
-                };
-                if (name = '志愿者') index.data_head = {
-                  id: '#',
-                  name: '姓名',
-                  phone: '手机号',
-                  address: '地址',
-                  hospital: '医院',
-                  invited: '邀请糖友数',
-                  beans: '迈豆数',
-                  qr_code: '二维码'
-                };
-                if (name = '所有用户') index.data_head = {
-                  id: '#',
-                  name: '姓名',
-                  phone: '手机号',
-                  address: '地址',
-                  hospital: '医院',
-                  invited: '邀请糖友数',
-                  beans: '迈豆数',
-                  qr_code: '二维码'
-                };
                 index.searched = '';
-                index.searching.user_type = '所有用户';
                 index.page_all = data.data.customers.last_page;
                 index.page_active = data.data.customers.current_page;
                 index.page_data = data.data.customers.data;
@@ -194,9 +218,10 @@ var index = new Vue({
             page_num = e.target.innerHTML;
             break;
         }
-        $.get('/customer/list',
+        $.get(index.get_url,
           {
-            page: page_num
+            page: page_num,
+            key: index.searching.detail
           },
           function (data) {
             if (data.success) {
