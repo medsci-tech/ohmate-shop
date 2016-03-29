@@ -163,6 +163,19 @@ var index = new Vue({
             };
             index.searching.user_type = '医生';
           }
+          if (name == '护士') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '护士';
+          }
           if (name == '志愿者') {
             index.data_head = {
               id: '#',
