@@ -121,7 +121,7 @@ class Wechat
                 new MenuItem('每日活动', 'view', url('/activity/daily')),
                 neW MenuItem('注册', 'view', url('/register/create'))
             ]),
-            (new MenuItem("易康商城"))->buttons([
+            (new MenuItem("礼品商城"))->buttons([
                 new MenuItem('我的地址', 'view', url('/shop/address')),
                 new MenuItem('我的订单', 'view', url('/shop/order')),
                 new MenuItem('商城首页', 'view', url('/shop/index')),
