@@ -10,7 +10,7 @@
                 <ul class="nav nav-sidebar">
                     <li :class="(searching.user_type == '医生')?'active':''" @click="choose_data" id="doctor"><a href="#doctor">医生</a></li>
                     <li :class="(searching.user_type == '志愿者')?'active':''" @click="choose_data" id="volunteer"><a href="#volunteer">志愿者</a></li>
-                    <li :class="(searching.user_type == '护士')?'active':''" @click="choose_data" id="nurse"><a href="#nurse">志愿者</a></li>
+                    <li :class="(searching.user_type == '护士')?'active':''" @click="choose_data" id="nurse"><a href="#nurse">护士</a></li>
                     <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="common"><a href="#common">普通用户</a></li>
                     <li :class="(searching.user_type == '企业用户')?'active':''" @click="choose_data" id="enterprise"><a href="#enterprise">企业用户</a></li>
                     <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="all"><a href="#all">所有用户</a></li>
