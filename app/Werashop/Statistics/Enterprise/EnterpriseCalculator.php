@@ -37,7 +37,7 @@ class EnterpriseCalculator
         ];
     }
 
-    protected function getCommoditySoldSum($commodity)
+    protected static function getCommoditySoldSum($commodity)
     {
         return \Cache::remember('commodity_sold_count_'. $commodity->id, 60, function() use ($commodity) {
             return \DB::table('commodity_order')
@@ -48,42 +48,42 @@ class EnterpriseCalculator
         });
     }
 
-    protected function getFocusCount()
+    protected static function getFocusCount()
     {
         return \Cache::remember('enterprise_focus_count', 60, function() {
             return Customer::count();
         });
     }
 
-    protected function getRegisterCount()
+    protected static function getRegisterCount()
     {
         return \Cache::remember('enterprise_register_count', 60, function() {
             return Customer::where('is_registered')->count();
         });
     }
 
-    protected function getDoctorCount()
+    protected static function getDoctorCount()
     {
         return \Cache::remember('enterprise_doctor_count', 60, function() {
             return Customer::where('type_id', 4)->count();
         });
     }
 
-    protected function getBeanPaymentSum()
+    protected static function getBeanPaymentSum()
     {
         return \Cache::remember('enterprise_bean_payment_sum', 60, function() {
             return \App\Models\Order::sum('beans_payment');
         });
     }
 
-    protected function getCashPaymentSum()
+    protected static function getCashPaymentSum()
     {
         return \Cache::remember('enterprise_cash_payment_sum', 60, function() {
             return \App\Models\Order::sum('cash_payment');
         });
     }
 
-    protected function getOrderCount()
+    protected static function getOrderCount()
     {
         return \Cache::remember('enterprise_order_count', 60, function() {
             return \App\Models\Order::where('order_status_id', '>', '1')->count();
