@@ -488,11 +488,13 @@ var index = new Vue({
   }
 });
 
-if (location.hash != '' && location.hash != '#') {
-  $(location.hash).trigger('click');
-} else {
-  $('#all').trigger('click');
-}
+$(document).ready(function (){
+  if (location.hash != '' && location.hash != '#') {
+    $(location.hash).trigger('click');
+  } else {
+    $('#all').trigger('click');
+  }
+});
 
 
 
