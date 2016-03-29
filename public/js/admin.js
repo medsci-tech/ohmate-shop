@@ -483,9 +483,9 @@ var index = new Vue({
       },
       click_trigger: function (e) {
         if (location.hash != 'home' && location.hash != 'home#') {
-          e = location.hash.substring(4);
+          e = location.hash.substring(3);
         }
-        $(e).trigger('click');
+        index.$nextTick($(e).trigger('click'));
       }
     }
   });
