@@ -489,9 +489,9 @@ var index = new Vue({
 });
 
 if (location.hash != '' && location.hash != '#') {
-  $(location.hash).children().trigger('click');
+  $(location.hash).trigger('click');
 } else {
-  $('#all').children().trigger('click');
+  $('#all').trigger('click');
 }
 
 
