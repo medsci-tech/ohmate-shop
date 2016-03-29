@@ -266,11 +266,13 @@ var index = new Vue({
           email = e.email;
           nickname = e.nickname;
           if (e.hospital) {
-            hospital.name = e.hospital.name;
-            hospital.province = e.hospital.province;
-            hospital.city = e.hospital.city;
-            hospital.area = e.hospital.area;
-            hospital.location = e.hospital.location;
+            with (index.this_person) {
+              hospital.name = e.hospital.name;
+              hospital.province = e.hospital.province;
+              hospital.city = e.hospital.city;
+              hospital.area = e.hospital.area;
+              hospital.location = e.hospital.location;
+            }
             $('#province').val(index.this_person.hospital.province);
             $('#province').trigger('change');
             $('#city').val(index.this_person.hospital.city);
@@ -279,10 +281,10 @@ var index = new Vue({
             $('#area').trigger('change');
           }
           if (e.statistics) {
-            statistics.friend_count = e.statistics.friend_count;
+            index.this_person.statistics.friend_count = e.statistics.friend_count;
           }
           if (e.type) {
-            type.type_ch = e.type.type_ch;
+            index.this_person.type.type_ch = e.type.type_ch;
           }
           beans_total = e.beans_total;
           qr_code = e.qr_code;
