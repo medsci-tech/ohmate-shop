@@ -77,7 +77,6 @@ var index = new Vue({
         district: '',
         department: '',
         type_id: '',
-        beans_total: 0,
         remark: '',
       },
       other_info: {
@@ -85,6 +84,7 @@ var index = new Vue({
         type: {type_ch: ''},
         phone: '',
         nickname: '',
+        beans_total: 0,
         qr_code: '',
         invited: {
           page_all: 3,
