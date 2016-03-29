@@ -324,7 +324,7 @@ var index = new Vue({
   })
   ;
 
-$('#customer').trigger('click');
+$('#all').trigger('click');
 
 
 
