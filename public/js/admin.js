@@ -140,7 +140,7 @@ var index = new Vue({
       if (index.searching.user_type == '志愿者') return '/customer/search?type_id=2';
       if (index.searching.user_type == '普通用户') return '/customer/search?type_id=1';
       if (index.searching.user_type == '企业用户') return '/customer/search?type_id=5';
-      if (index.searching.user_type == '所有用户') return '/customer/list';
+      if (index.searching.user_type == '所有用户') return '/customer/search';
     },
   }
   ,
@@ -488,13 +488,32 @@ var index = new Vue({
   }
 });
 
-$(document).ready(function (){
-  if (location.hash != '' && location.hash != '#') {
-    $(location.hash).trigger('click');
-  } else {
-    $('#all').trigger('click');
-  }
-});
+
+var click_btn = location.hash;
+switch (click_btn) {
+  case '#doctor':
+    index.searching.user_type = '医生';
+    break;
+  case '#volunteer':
+    index.searching.user_type = '志愿者';
+    break;
+  case '#nurse':
+    index.searching.user_type = '护士';
+    break;
+  case '#common':
+    index.searching.user_type = '普通用户';
+    break;
+  case '#enterprise':
+    index.searching.user_type = '企业用户';
+    break;
+  default :
+    index.searching.user_type = '所有用户';
+    click_btn = '#all';
+    break;
+}
+
+$(click_btn).trigger('click');
+
 
 
 
