@@ -16,7 +16,7 @@
         <ul class="nav navbar-nav navbar-right">
           <?php $user = Auth::user();?>
           @can('user_administration')
-          <li class="active"><a href="{{ url('/customer/index') }}">用户管理</a></li>
+          <li><a href="{{ url('/customer/index') }}">用户管理</a></li>
           <li><a href="#">商城管理</a></li>
           <li><a href="#">文章管理</a></li>
           <li><a href="#">系统管理</a></li>
