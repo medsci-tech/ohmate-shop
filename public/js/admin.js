@@ -80,6 +80,26 @@ var index = new Vue({
         type: {type_ch: ''},
         beans_total: 0,
         qr_code: '',
+        invited: {
+          page_all: 3,
+          page_active: 2,
+          page_num: 20,
+          page_data: [{
+            id: 1,
+            phone: '',
+            time: ''
+          }],
+        },
+        beans: {
+          page_all: 3,
+          page_active: 2,
+          page_num: 20,
+          page_data: [{
+            time: '',
+            action: '',
+            result: ''
+          }],
+        }
       },
 
       this_person_cache: ''
@@ -112,6 +132,7 @@ var index = new Vue({
         if (index.searching.user_type == '医生') return '/customer/search?user_type=医生';
         if (index.searching.user_type == '志愿者') return '/customer/search?user_type=志愿者';
         if (index.searching.user_type == '普通用户') return '/customer/search?user_type=普通用户';
+        if (index.searching.user_type == '企业用户') return '/customer/search?user_type=企业用户';
         if (index.searching.user_type == '所有用户') return '/customer/list';
       }
     }
@@ -161,6 +182,19 @@ var index = new Vue({
               qr_code: '二维码'
             };
             index.searching.user_type = '普通用户';
+          }
+          if (name == '企业用户') {
+            index.data_head = {
+              id: '#',
+              name: '姓名',
+              phone: '手机号',
+              address: '地址',
+              hospital: '医院',
+              invited: '邀请糖友数',
+              beans: '迈豆数',
+              qr_code: '二维码'
+            };
+            index.searching.user_type = '企业用户';
           }
           if (name == '所有用户') {
             index.data_head = {
@@ -235,9 +269,83 @@ var index = new Vue({
       }
       ,
       choose_page_invited: function (e) {
+        var page_num = e.target.getAttribute('name');
+        switch (page_num) {
+          case 'pre':
+            page_num = this.page_active - 1;
+            break;
+          case 'pre5':
+            if (this.page_active - 5 > 0) {
+              page_num = this.page_active - 5;
+            } else {
+              page_num = 1;
+            }
+            break;
+          case 'next':
+            page_num = this.page_active + 1;
+            break;
+          case 'next5':
+            if (this.page_active + 4 < this.page_all) {
+              page_num = this.page_active + 5;
+            } else {
+              page_num = this.page_all;
+            }
+            break;
+          default:
+            page_num = e.target.innerHTML;
+            break;
+        }
+        $.get('/customer/invited',
+          {
+            id: this.this_person.id,
+            page: this.this_person.invited.page_num
+          },
+          function (data) {
+            if (data.success) {
+              this.this_person.invited.page_data = data.data
+            }
+          }
+        );
       }
       ,
       choose_page_beans: function (e) {
+        var page_num = e.target.getAttribute('name');
+        switch (page_num) {
+          case 'pre':
+            page_num = this.page_active - 1;
+            break;
+          case 'pre5':
+            if (this.page_active - 5 > 0) {
+              page_num = this.page_active - 5;
+            } else {
+              page_num = 1;
+            }
+            break;
+          case 'next':
+            page_num = this.page_active + 1;
+            break;
+          case 'next5':
+            if (this.page_active + 4 < this.page_all) {
+              page_num = this.page_active + 5;
+            } else {
+              page_num = this.page_all;
+            }
+            break;
+          default:
+            page_num = e.target.innerHTML;
+            break;
+        }
+        $.get('/customer/beans',
+          {
+            id: this.this_person.id,
+            page: this.this_person.beans.page_num
+          },
+          function (data) {
+            if (data.success) {
+              this.this_person.beans.page_data = data.data
+            }
+          }
+        );
       }
       ,
       search: function () {
@@ -288,6 +396,28 @@ var index = new Vue({
           qr_code = e.qr_code;
         }
         this.this_person_cache = e;
+        $.get('/customer/invited',
+          {
+            id: this.this_person.id,
+            page: this.this_person.invited.page_num
+          },
+          function (data) {
+            if (data.success) {
+              this.this_person.invited.page_data = data.data
+            }
+          }
+        );
+        $.get('/customer/beans',
+          {
+            id: this.this_person.id,
+            page: this.this_person.beans.page_num
+          },
+          function (data) {
+            if (data.success) {
+              this.this_person.beans.page_data = data.data
+            }
+          }
+        );
       }
       ,
       cancel_edit: function () {
@@ -324,7 +454,7 @@ var index = new Vue({
   })
   ;
 
-$('#all').trigger('click');
+$('#doctor').trigger('click');
 
 
 
