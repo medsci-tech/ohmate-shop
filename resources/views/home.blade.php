@@ -185,9 +185,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="department" class="col-sm-3 control-label">备注</label>
+                                    <label for="department" class="col-sm-3 control-label">科室</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control sr-only" id="department" placeholder="街道地址"
+                                        <input type="text" class="form-control sr-only" id="department" placeholder="请输入科室"
                                                v-model="this_person.department">
 
                                         <p class="form-control-static">@{{ this_person.department }}</p>
