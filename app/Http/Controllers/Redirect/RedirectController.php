@@ -23,4 +23,9 @@ class RedirectController extends Controller
             ]);
         }
     }
+
+    public function webShopIndex(Request $request)
+    {
+
+    }
 }
