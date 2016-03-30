@@ -45,7 +45,7 @@ class RedirectController extends Controller
             return redirect('/shop/index');
         }
         else {
-            \Wechat::authorizeUser('http://web.ohmate.cn/redirect/web-shop-index');
+            return redirect('http://www.ohmate.cn/redirect/web-shop-index');
         }
 
 //        $user = \Helper::getUser();
