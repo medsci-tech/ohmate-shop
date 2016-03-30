@@ -38,7 +38,7 @@ class RedirectController extends Controller
         if (\Helper::hasSessionCachedUser()) {
             return redirect('/shop/index');
         } elseif ($request->has('customer_id')) {
-            $customer = Customer::find('customer_id');
+            $customer = Customer::find($request->input('customer_id'));
             \Session::put(AppConstant::SESSION_USER_KEY, [
                 'openId' => $customer->openid
             ]);
