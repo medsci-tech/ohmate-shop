@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Redirect;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,12 @@ use App\Http\Controllers\Controller;
 
 class RedirectController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth.wechat');
+//        $this->middleware('auth.access');
+    }
+
     public function articleIndex(Request $request)
     {
         $customer = \Helper::getCustomerOrNull();
@@ -26,6 +33,8 @@ class RedirectController extends Controller
 
     public function webShopIndex(Request $request)
     {
-
+        $customer = \Helper::getCustomerOrNull();
+        if (!$customer) {
+        }
     }
 }
