@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Redirect;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,12 @@ use App\Http\Controllers\Controller;
 
 class RedirectController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth.wechat');
+    }
+
     public function articleIndex(Request $request)
     {
         $customer = \Helper::getCustomerOrNull();
@@ -22,5 +29,22 @@ class RedirectController extends Controller
                 'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect"
             ]);
         }
+    }
+
+
+    public function shopIndex(Request $request)
+    {
+        $user = \Helper::getUser();
+        $customer = \Helper::getCustomerOrNull();
+
+        if (!$customer) {
+            $customer = Customer::create([
+                'openid' => $user['openid'],
+                'referrer_id' => 0,
+                'type_id' => 1,
+            ]);
+        }
+
+        return redirect('/shop/index');
     }
 }
