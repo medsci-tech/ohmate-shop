@@ -33,8 +33,17 @@ class RedirectController extends Controller
 
     public function webShopIndex(Request $request)
     {
+        $user = \Helper::getSessionCachedUser();
         $customer = \Helper::getCustomerOrNull();
+
         if (!$customer) {
+            $customer = Customer::create([
+                'openid' => $user['openid'],
+                'referrer_id' => 0,
+                'type_id' => 1,
+            ]);
         }
+
+        return redirect('http://web.ohmate.cn/redirect/shop-index?customer_id='.$customer->id);
     }
 }
