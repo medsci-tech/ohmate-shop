@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Redirect;
 
+use App\Constants\AppConstant;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class RedirectController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth.wechat');
+//        $this->middleware('auth.wechat');
     }
 
     public function articleIndex(Request $request)
@@ -34,17 +35,28 @@ class RedirectController extends Controller
 
     public function shopIndex(Request $request)
     {
-        $user = \Helper::getUser();
-        $customer = \Helper::getCustomerOrNull();
-
-        if (!$customer) {
-            $customer = Customer::create([
-                'openid' => $user['openid'],
-                'referrer_id' => 0,
-                'type_id' => 1,
+        if (\Helper::hasSessionCachedUser()) {
+            return redirect('/shop/index');
+        } elseif ($request->has('customer_id')) {
+            $customer = Customer::find('customer_id');
+            \Session::put(AppConstant::SESSION_USER_KEY, [
+                'openId' => $customer->openid
             ]);
+            return redirect('/shop/index');
+        }
+        else {
+            \Wechat::authorizeUser('http://web.ohmate.cn/redirect/web-shop-index');
         }
 
-        return redirect('/shop/index');
+//        $user = \Helper::getUser();
+//        $customer = \Helper::getCustomerOrNull();
+//
+//        if (!$customer) {
+//            $customer = Customer::create([
+//                'openid' => $user['openid'],
+//                'referrer_id' => 0,
+//                'type_id' => 1,
+//            ]);
+//        }
     }
 }
