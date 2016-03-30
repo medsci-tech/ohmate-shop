@@ -40,7 +40,7 @@ class RedirectController extends Controller
         } elseif ($request->has('customer_id')) {
             $customer = Customer::find($request->input('customer_id'));
             \Session::put(AppConstant::SESSION_USER_KEY, [
-                'openId' => $customer->openid
+                'openid' => $customer->openid
             ]);
             return redirect('/shop/index');
         }
