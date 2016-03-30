@@ -24,7 +24,7 @@ class OrderController extends Controller
     public function __construct()
     {
         $this->middleware('auth.wechat');
-        $this->middleware('auth.access');
+//        $this->middleware('auth.access');
     }
 
     public function index()
