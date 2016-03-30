@@ -111,6 +111,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
     Route::resource('article', 'ArticleController');
 
     Route::group(['prefix' => 'customer'], function () {
+        Route::get('index', 'CustomerController@index');
         Route::get('list', 'CustomerController@customerList');
         Route::get('search', 'CustomerController@search');
         Route::get('/{id}/beans', 'CustomerController@beans');

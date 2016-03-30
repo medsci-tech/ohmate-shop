@@ -14,36 +14,28 @@
     <div @click="hack" class="panel-heading"  v-cloak>数据统计</div>
     <ul class="list-group" v-cloak>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].focus_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics.focus_count }}</span>
         关注用户数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].register_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics.register_count }}</span>
         注册用户数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].doctor_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics.doctor_count }}</span>
         注册医生数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].bean_count | currency '' }}</span>
-        支出迈豆总数
+        <span class="badge">@{{ enterprise_basic_statistics.bean_payment_sum | currency '' }}</span>
+        已使用迈豆总数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].income_count | currency '￥' }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics.cash_payment_sum | currency '￥' }}</span>
         收入金额
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].article_count }}</span>
-        文章阅读量
-      </li>
-      <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].order_count }}</span>
+        <span class="badge">@{{ enterprise_basic_statistics.order_count }}</span>
         订单总数
-      </li>
-      <li class="list-group-item">
-        <span class="badge">@{{ enterprise_basic_statistics[0].commodity_count }}</span>
-        交易商品数量
       </li>
     </ul>
   </div>
@@ -75,7 +67,7 @@
       <div>
         <ul class="list-unstyled data2">
           <li v-for=" item in enterprise_commodity_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            @{{ item.commodity.name }}：@{{ item.count }}件
+            @{{ item.name }}：@{{ item.count }}件
           </li>
         </ul>
       </div>
@@ -123,7 +115,7 @@
       value: count.enterprise_commodity_statistics[i].count,
       color: color_list[i%12],
       highlight: highlight_list[i%12],
-      label: count.enterprise_commodity_statistics[i].commodity.name
+      label: count.enterprise_commodity_statistics[i].name
     });
     $('.data2').children().eq(i).children('span').css("background-color",color_list[i%12]);
   }

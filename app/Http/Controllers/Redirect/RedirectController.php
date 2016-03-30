@@ -11,9 +11,16 @@ class RedirectController extends Controller
 {
     public function articleIndex(Request $request)
     {
-//        $customer = \Helper::getCustomer();
-//        \BeanRecharger::executeEducation($customer);
+        $customer = \Helper::getCustomerOrNull();
+        if (!$customer or \Cache::has('article_bean_feed_'. $customer->id)) {
+            return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
+        } else {
+            \Cache::put('article_bean_feed_'. $customer->id, 1, 1440);
+            \BeanRecharger::executeEducation($customer);
 
-        return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
+            return view('education.hongbao')->with([
+                'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect"
+            ]);
+        }
     }
 }
