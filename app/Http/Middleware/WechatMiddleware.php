@@ -27,7 +27,7 @@ class WechatMiddleware
             return $next($request);
         }
 
-        $user = \Wechat::authorizeUser($request->url());
+        $user = \Wechat::authorizeUser('http://www.ohmate.cn/redirect/shop-index');
         /*
          * if auth failed, this user maybe not a subscribed account,
          * but we allow this man go on to education page.
