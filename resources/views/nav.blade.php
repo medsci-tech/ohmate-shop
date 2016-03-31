@@ -17,8 +17,8 @@
           <?php $user = Auth::user();?>
           @can('user_administration')
           <li><a href="{{ url('/customer/index') }}">用户管理</a></li>
-          <li><a href="#">商城管理</a></li>
-          <li><a href="#">文章管理</a></li>
+          <li><a href="#">订单管理</a></li>
+          <li><a href="#">商品管理</a></li>
           <li><a href="#">系统管理</a></li>
           @endcan
           <li>
