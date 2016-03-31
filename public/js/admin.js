@@ -461,7 +461,7 @@ var index = new Vue({
     }
     ,
     submit_edit: function () {
-      $.post('customer/' + this.this_person.id + '/update', this.this_person,
+      $.post('/customer/' + this.this_person.id + '/update', this.this_person,
         function (data) {
           if (data.success) {
             $.get(index.get_url,
