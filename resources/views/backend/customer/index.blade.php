@@ -36,10 +36,10 @@
             <tbody>
             <tr v-cloak v-for="person in page_data">
               <td v-if="data_head.id">@{{person.id}}</td>
-              <td v-if="data_head.name">@{{person.name}}</td>
+              <td v-if="data_head.name">@{{person.information.name}}</td>
               <td v-if="data_head.phone">@{{person.phone}}</td>
-              <td v-if="data_head.hospital">@{{person.hospital.name}}</td>
-              <td v-if="data_head.address">@{{person.hospital.province}}-@{{person.hospital.city}}-@{{person.hospital.area}}-@{{person.hospital.location}}</td>
+              <td v-if="data_head.hospital">@{{person.information.hospital}}</td>
+              <td v-if="data_head.address">@{{person.information.province}}-@{{person.information.city}}-@{{person.information.area}}-@{{person.information.location}}</td>
               <td v-if="data_head.invited">
                 @{{person.statistics.friend_count}}
               </td>
@@ -240,7 +240,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 hide">
         <div class="modal-content col-xs-12 ">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ other_info.statistics.friend_count }}</h4>

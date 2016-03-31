@@ -40,16 +40,17 @@ var index = new Vue({
     page_num: 0,
     page_data: [{
       id: 1,
-      name: '',
       phone: '',
       email: '',
       nickname: '',
-      hospital: {
+      information: {
         name: '',
+        hospital: '',
         province: '',
         city: '',
-        area: '',
-        location: ''
+        district: '',
+        remark: '',
+        department: '',
       },
       statistics: {friend_count: 0},
       type: {type_ch: ''},
@@ -387,20 +388,18 @@ var index = new Vue({
     ,
     person_detail: function (e) {
       $('#myModal').modal('show');
-      with (this.this_person) {
-        id = e.id;
-        name = e.name;
-        type_id = e.type_id;
-        hospital = e.hospital;
-        province = e.province;
-        city = e.city;
-        district = e.district;
-        remark = e.remark;
-      }
-      if (e.department) {
-        this.this_person.department = e.department;
-      } else {
-        this.this_person.department = '';
+      if (e.information) {
+        with (this.this_person) {
+          id = e.id;
+          name = e.information.name;
+          type_id = e.type_id;
+          hospital = e.information.hospital;
+          province = e.information.province;
+          city = e.information.city;
+          district = e.information.district;
+          remark = e.information.remark;
+          department = e.information.department;
+        }
       }
       with (this.other_info) {
         phone = e.phone;
@@ -423,28 +422,28 @@ var index = new Vue({
         index.other_info.type.type_ch = e.type.type_ch;
       }
       this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
-      $.get('/customer/invited',
-        {
-          id: this.this_person.id,
-          page: this.other_info.invited.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.other_info.invited.page_data = data.data
-          }
-        }
-      );
-      $.get('/customer/beans',
-        {
-          id: this.this_person.id,
-          page: this.other_info.beans.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.other_info.beans.page_data = data.data
-          }
-        }
-      );
+      //$.get('/customer/invited',
+      //  {
+      //    id: this.this_person.id,
+      //    page: this.other_info.invited.page_num
+      //  },
+      //  function (data) {
+      //    if (data.success) {
+      //      this.other_info.invited.page_data = data.data
+      //    }
+      //  }
+      //);
+      //$.get('/customer/beans',
+      //  {
+      //    id: this.this_person.id,
+      //    page: this.other_info.beans.page_num
+      //  },
+      //  function (data) {
+      //    if (data.success) {
+      //      this.other_info.beans.page_data = data.data
+      //    }
+      //  }
+      //);
     }
     ,
     cancel_edit: function () {
