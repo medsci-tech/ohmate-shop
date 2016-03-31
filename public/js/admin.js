@@ -40,16 +40,17 @@ var index = new Vue({
     page_num: 0,
     page_data: [{
       id: 1,
-      name: '',
       phone: '',
       email: '',
       nickname: '',
-      hospital: {
+      information: {
         name: '',
+        hospital: '',
         province: '',
         city: '',
-        area: '',
-        location: ''
+        district: '',
+        remark: '',
+        department: '',
       },
       statistics: {friend_count: 0},
       type: {type_ch: ''},
@@ -387,20 +388,18 @@ var index = new Vue({
     ,
     person_detail: function (e) {
       $('#myModal').modal('show');
-      with (this.this_person) {
-        id = e.id;
-        name = e.name;
-        type_id = e.type_id;
-        hospital = e.hospital;
-        province = e.province;
-        city = e.city;
-        district = e.district;
-        remark = e.remark;
-      }
-      if (e.department) {
-        this.this_person.department = e.department;
-      } else {
-        this.this_person.department = '';
+      if (e.information) {
+        with (this.this_person) {
+          id = e.id;
+          name = e.information.name;
+          type_id = e.type_id;
+          hospital = e.information.hospital;
+          province = e.information.province;
+          city = e.information.city;
+          district = e.information.district;
+          remark = e.information.remark;
+          department = e.information.department;
+        }
       }
       with (this.other_info) {
         phone = e.phone;
