@@ -513,7 +513,7 @@ switch (click_btn) {
 }
 $(click_btn).trigger('click');
 
-$('.nav').firstChild().children().addClass('active');
+$('.nav').children().eq(0).children().addClass('active');
 
 
 
