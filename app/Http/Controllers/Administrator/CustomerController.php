@@ -110,10 +110,17 @@ class CustomerController extends Controller
             'remark' => $request->input('remark'),
         ]);
 
-        $customer->update([
-            'beans_total' => $request->input('beans_total'),
-            'type_id' => $request->input('type_id'),
-        ]);
+        if ($request->has('beans_total')) {
+            $customer->update([
+                'beans_total' => $request->input('beans_total'),
+            ]);
+        }
+
+        if ($request->has('type_id')) {
+            $customer->update([
+                'type_id' => $request->input('type_id')
+            ]);
+        }
 
         return response()->json([
             'success' => true,
