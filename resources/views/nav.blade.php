@@ -15,11 +15,11 @@
       @else
         <ul class="nav navbar-nav navbar-right">
           <?php $user = Auth::user();?>
-          @can('user_administration')
-          <li><a href="{{ url('/customer/index') }}">用户管理</a></li>
-          <li><a href="#">订单管理</a></li>
-          <li><a href="#">商品管理</a></li>
-          <li><a href="#">系统管理</a></li>
+          @can('customer_administration')
+            <li><a href="{{ url('/customer/index') }}">用户管理</a></li>
+          @endcan
+          @can('order_administration')
+            <li><a href="#">订单管理</a></li>
           @endcan
           <li>
             <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true"
