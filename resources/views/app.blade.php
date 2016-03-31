@@ -20,7 +20,7 @@
 <script src="{{asset('/js/vendor/bootstrap.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-  $('.nav li a').onclick(function(){
+  $('.nav li a').click(function(){
       $(this).addClass('active');
   });
   $.ajaxSetup({
