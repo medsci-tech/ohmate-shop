@@ -86,7 +86,8 @@ var order = new Vue({
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
-    }
+    },
+    
   }
 });
 

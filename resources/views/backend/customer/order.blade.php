@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-        <h2 class="sub-header">{{searching.user_type}}<span v-if="search" class="small">({{searched}})</span></h2>
+        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="search" class="small">(@{{ searched }})</span></h2>
         <div class="table-responsive">
           <table class="table table-striped table-hover">
             <thead>
@@ -24,8 +24,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-cloak v-for="person in page_data">
-              <td>{{person.id}}</td>
+            <tr v-cloak v-for="order in page_data">
+              <td>@{{ order.id }}</td>
               <td>
                 <a href="#" @click="person_detail(person)">
                 详情
@@ -79,7 +79,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                 aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel1">订单: {{}}</h4>
+            <h4 class="modal-title" id="myModalLabel1">订单: {{  }}</h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal">

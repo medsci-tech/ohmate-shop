@@ -423,28 +423,28 @@ var index = new Vue({
         index.other_info.type.type_ch = e.type.type_ch;
       }
       this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
-      $.get('/customer/invited',
-        {
-          id: this.this_person.id,
-          page: this.other_info.invited.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.other_info.invited.page_data = data.data
-          }
-        }
-      );
-      $.get('/customer/beans',
-        {
-          id: this.this_person.id,
-          page: this.other_info.beans.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.other_info.beans.page_data = data.data
-          }
-        }
-      );
+      //$.get('/customer/invited',
+      //  {
+      //    id: this.this_person.id,
+      //    page: this.other_info.invited.page_num
+      //  },
+      //  function (data) {
+      //    if (data.success) {
+      //      this.other_info.invited.page_data = data.data
+      //    }
+      //  }
+      //);
+      //$.get('/customer/beans',
+      //  {
+      //    id: this.this_person.id,
+      //    page: this.other_info.beans.page_num
+      //  },
+      //  function (data) {
+      //    if (data.success) {
+      //      this.other_info.beans.page_data = data.data
+      //    }
+      //  }
+      //);
     }
     ,
     cancel_edit: function () {
