@@ -388,11 +388,11 @@ var index = new Vue({
     ,
     person_detail: function (e) {
       $('#myModal').modal('show');
+      this.this_person.id = e.id;
+      this.this_person.type_id = e.type_id;
       if (e.information) {
         with (this.this_person) {
-          id = e.id;
           name = e.information.name;
-          type_id = e.type_id;
           hospital = e.information.hospital;
           province = e.information.province;
           city = e.information.city;
