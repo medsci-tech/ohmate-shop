@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>易康伴侣-后台</title>
-  <link rel="apple-touch-icon-precomposed" href="{{ url('images/logo.png') }}">
+  <link rel="shortcut icon" href="/favicon.ico">
 
     <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
     @yield('css')
