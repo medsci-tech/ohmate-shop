@@ -13,6 +13,10 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    Route::get('/test', function () {
+        view('/test/test');
+    });
+
     Route::get('/', function () {
         return redirect('/home');
     });
@@ -121,6 +125,4 @@ Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Red
     Route::get('/article-index', 'RedirectController@articleIndex');
 });
 
-Route::group(['prefix' => 'test'], function () {
-    Route::get('/test/test');
-});
+
