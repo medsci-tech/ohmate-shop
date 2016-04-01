@@ -57,7 +57,7 @@
                 </a>
               </td>
               <td>
-                <a @click="person_detail(person)">详情</a>
+                <a tabindex="0" role="button" @click="person_detail(person)">详情</a>
               </td>
             </tr>
             </tbody>
