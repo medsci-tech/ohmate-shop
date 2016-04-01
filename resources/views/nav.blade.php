@@ -1,6 +1,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
+      <span><img class="img-responsive" src="{{ url('/images/logo.png') }}" style="margin: 5px;width: 45px; float: left;"></span>
+      @if (Auth::guest())
+      @else
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
               aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -8,6 +11,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      @endif
       <a class="navbar-brand active" href="#">易康伴侣</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
