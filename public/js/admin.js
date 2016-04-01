@@ -400,6 +400,16 @@ var index = new Vue({
           remark = e.information.remark;
           department = e.information.department;
         }
+      } else {
+        with (this.this_person) {
+          name ='';
+          hospital ='';
+          province = '';
+          city = '';
+          district = '';
+          remark = '';
+          department = '';
+        }
       }
       with (this.other_info) {
         phone = e.phone;
@@ -417,9 +427,13 @@ var index = new Vue({
       }
       if (e.statistics) {
         index.other_info.statistics.friend_count = e.statistics.friend_count;
+      } else {
+        index.other_info.statistics.friend_count = '';
       }
       if (e.type) {
         index.other_info.type.type_ch = e.type.type_ch;
+      } else {
+        index.other_info.type.type_ch = '';
       }
       this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
       //$.get('/customer/invited',
