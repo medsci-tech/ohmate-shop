@@ -39,7 +39,7 @@
               <td v-if="data_head.name">@{{person.information.name}}</td>
               <td v-if="data_head.phone">@{{person.phone}}</td>
               <td v-if="data_head.hospital">@{{person.information.hospital}}</td>
-              <td v-if="data_head.address">@{{person.information.province}}-@{{person.information.city}}-@{{person.information.area}}-@{{person.information.location}}</td>
+              <td v-if="data_head.address">@{{person.information.province}}-@{{person.information.city}}-@{{person.information.district}}</td>
               <td v-if="data_head.invited">
                 @{{person.statistics.friend_count}}
               </td>
