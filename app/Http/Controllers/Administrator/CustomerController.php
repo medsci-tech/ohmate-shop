@@ -129,4 +129,12 @@ class CustomerController extends Controller
             ]
         ]);
     }
+
+    public function minusBeans(Request $request)
+    {
+        $customer = Customer::find($request->input('customer_id'));
+        $amount = $request->input('amount');
+
+        return $customer->minusBeansByHand($amount);
+    }
 }
