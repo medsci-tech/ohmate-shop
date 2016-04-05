@@ -15,7 +15,7 @@ class OrderController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'orders' => Order::getPaidOrdersWithRelated()->get()
+                'orders' => Order::getPaidOrdersWithRelated()->paginate(10)
             ]
         ]);
     }
