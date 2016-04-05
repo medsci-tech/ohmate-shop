@@ -40,7 +40,42 @@ var order = new Vue({
     page_active: 2,
     page_num: 50,
     page_data: [
-      {}
+      {
+        address: {
+          address: "保利蓝海郡",
+          city: "武汉",
+          created_at: "2016-03-09 11:26:38",
+          customer_id: 10,
+          deleted_at: null,
+          district: "洪山区",
+          id: 7,
+          is_default: false,
+          name: "许守明",
+          phone: "15623093771",
+          postcode: "",
+          priority: 0,
+          province: "湖北",
+          updated_at: "2016-03-16 13:40:52"
+        },
+        address_id: 10,
+        beans_payment: "0.02",
+        beans_payment_calculated: "0.02",
+        cash_payment: "8.00",
+        cash_payment_calculated: "8.00",
+        commodities: [],
+        created_at: "2016-03-09 13:50:54",
+        customer: {id: 17, old_id: null, type_id: 5, referrer_id: 0, phone: "13237177277", is_registered: 1},
+        customer_id: 17,
+        id: 69,
+        order_status_id: 2,
+        post_fee: "8.00",
+        post_no: "9728189263200",
+        post_type: "",
+        total_price: "8.02",
+        updated_at: "2016-03-09 13:51:13",
+        wx_out_trade_no: "84c1884e8cb1fa5f20d05e7e9699035b",
+        wx_transaction_id: "1006150911201603093848809841"
+      }
     ],
 
     this_order: {
@@ -74,7 +109,7 @@ var order = new Vue({
             order.searched = '';
             order.page_all = data.data.order.last_page;
             order.page_active = data.data.order.current_page;
-            order.page_data = data.data.order.data;
+            order.page_data = data.data.orders;
             order.$nextTick(initialize_popover);
           }
         },
@@ -142,7 +177,7 @@ switch (click_btn) {
     click_btn = '#all';
     break;
 }
-$(click_btn).children().trigger('click');
+$(click_btn).trigger('click');
 
 $('.nav').children().eq(1).children().addClass('active');
 
