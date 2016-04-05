@@ -36,10 +36,22 @@
             <tbody>
             <tr v-cloak v-for="person in page_data">
               <td v-if="data_head.id">@{{person.id}}</td>
-              <td v-if="data_head.name">@{{person.information.name}}</td>
+              <td v-if="data_head.name">
+                <div v-if="person.information">
+                  @{{person.information.name}}
+                </div>
+              </td>
               <td v-if="data_head.phone">@{{person.phone}}</td>
-              <td v-if="data_head.hospital">@{{person.information.hospital}}</td>
-              <td v-if="data_head.address">@{{person.information.province}}-@{{person.information.city}}-@{{person.information.district}}</td>
+              <td v-if="data_head.hospital">
+                <div v-if="person.information">
+                  @{{person.information.hospital}}
+                </div>
+              </td>
+              <td v-if="data_head.address">
+                <div v-if="person.information">
+                  @{{person.information.province}}-@{{person.information.city}}-@{{person.information.district}}
+                </div>
+              </td>
               <td v-if="data_head.invited">
                 <div v-if="person.statistics">
                   @{{person.statistics.friend_count}}
@@ -55,6 +67,7 @@
                    data-toggle="popover"
                    data-placement="bottom"
                    data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
+                   v-if="person.qrcode"
                 >显示
                 </a>
               </td>
