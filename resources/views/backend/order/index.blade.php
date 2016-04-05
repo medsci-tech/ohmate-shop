@@ -19,7 +19,12 @@
           <table class="table table-striped table-hover">
             <thead>
             <tr>
-              <th>订单编号</th>
+              <th>订单ID</th>
+              <th>订单商品</th>
+              <th>收货人姓名</th>
+              <th>收货人地址</th>
+              <th>下单时间</th>
+              <th>发货时间</th>
               <th></th>
             </tr>
             </thead>
@@ -27,9 +32,26 @@
             <tr v-cloak v-for="order in page_data">
               <td>@{{ order.id }}</td>
               <td>
-                <a href="#" @click="person_detail(person)">
-                详情
-                </a>
+                <ul>
+                  <li v-for="item in order.commodities">@{{ item.name }}&emsp;x&emsp;@{{ item.pivot.amount }} </li>
+                </ul>
+              </td>
+              <td>
+                @{{ order.address.name }}
+              </td>
+              <td>
+                @{{ order.address.province }}-@{{ order.address.city }}-@{{ order.address.district }}
+              </td>
+              <td>
+                @{{ 2016-03-09 13:50:54 }}
+              </td>
+              <td>
+                @{{  }}
+              </td>
+              <td>
+                <button href="#" @click="fill_order">
+                标记为已发货
+                </button>
               </td>
             </tr>
             </tbody>
@@ -72,7 +94,7 @@
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div v-if="false" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="col-sm-12">
         <div class="modal-content" id="user_card">
