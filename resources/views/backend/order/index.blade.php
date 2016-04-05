@@ -43,7 +43,7 @@
                 @{{ order.address.province }}-@{{ order.address.city }}-@{{ order.address.district }}-@{{ order.address.address }}
               </td>
               <td>
-                @{{ 2016-03-09 13:50:54 }}
+                @{{ order.created_at }}
               </td>
               <td>
                 @{{  }}
