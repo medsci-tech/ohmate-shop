@@ -19,4 +19,9 @@ class OrderController extends Controller
             ]
         ]);
     }
+
+    public function index()
+    {
+        return view('backend.order.index');
+    }
 }
