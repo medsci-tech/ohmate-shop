@@ -28,7 +28,7 @@ $(function () {
 });
 
 var order = new Vue({
-  el: '#order',
+  el: '#index',
   data: {
     searching: {
       user_type:'未发货订单',
