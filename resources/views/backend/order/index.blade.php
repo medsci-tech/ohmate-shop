@@ -46,7 +46,7 @@
                 @{{ order.created_at }}
               </td>
               <td>
-                @{{  }}
+                @{{  }} <span v-if="true">未发货</span>
               </td>
               <td>
                 <button href="#" @click="fill_order">
