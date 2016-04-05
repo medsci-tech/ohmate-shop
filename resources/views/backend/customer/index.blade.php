@@ -218,10 +218,19 @@
                 <div class="form-group">
                   <label for="beans" class="col-sm-3 control-label">迈豆数</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数"
+                    <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数" disabled
                            v-model="other_info.beans_total">
 
                     <p class="form-control-static">@{{ other_info.beans_total }}</p>
+                  </div>
+                </div>
+                <div class="form-group hide" id="beans_edit">
+                  <label for="beans_edit" class="col-sm-3 control-label">迈豆修改</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control sr-only" id="beans_edit" placeholder="请输入迈豆数"
+                           v-model="this_person.beans.count">
+
+                    <p class="form-control-static">@{{ beans_edit }}</p>
                   </div>
                 </div>
                 <div class="form-group">

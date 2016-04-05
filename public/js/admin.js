@@ -110,7 +110,7 @@ var index = new Vue({
     },
 
     this_person_cache: '',
-    beans_cache: 0,
+    beans_edit: 0,
   },
   computed: {
     page_show: function () {
@@ -465,18 +465,20 @@ var index = new Vue({
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
+      $('#beans_edit').toggleClass('hide');
     }
     ,
     edit_btn: function () {
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
+      $('#beans_edit').toggleClass('hide');
     }
     ,
     submit_edit: function () {
       var beans_edit = {
         action: '管理员操作',
-        result: this.other_info.beans_total - this.beans_cache
+        result: this.beans_edit
       };
       console.log(beans_edit.action);
       console.log(beans_edit.result);
@@ -506,7 +508,7 @@ var index = new Vue({
             $('#user_card p').toggleClass('hide');
             $('#user_card button').toggleClass('hide');
             $('#user_card .form-control').toggleClass('sr-only');
-            $('#myModal').modal('hide');
+            $('#beans_edit').toggleClass('hide');
           }
         }, 'json'
       );
