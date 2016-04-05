@@ -28,7 +28,7 @@ $(function () {
 });
 
 var order = new Vue({
-  el: '#index',
+  el: '#order',
   data: {
     searching: {
       user_type:'未发货订单',
@@ -56,9 +56,9 @@ var order = new Vue({
       }
     },
     get_url: function () {
-      if (index.searching.user_type == '未发货订单') return '/order/search?type_id=0';
-      if (index.searching.user_type == '已发货订单') return '/order/search?type_id=1';
-      if (index.searching.user_type == '所有订单') return '/order/list';
+      if (order.searching.user_type == '未发货订单') return '/order/search?type_id=0';
+      if (order.searching.user_type == '已发货订单') return '/order/search?type_id=1';
+      if (order.searching.user_type == '所有订单') return '/order/list';
     }
   },
 
@@ -66,17 +66,17 @@ var order = new Vue({
     choose_data: function (e) {
       var dom = e.currentTarget;
       var name = e.target.innerHTML;
-      index.searching.user_type = name;
+      order.searching.user_type = name;
       if (dom.className != 'active') {
-        $.get(index.get_url,
+        $.get(order.get_url,
           {},
           function (data) {
             if (data.success) {
-              index.searched = '';
-              index.page_all = data.data.order.last_page;
-              index.page_active = data.data.order.current_page;
-              index.page_data = data.data.order.data;
-              index.$nextTick(initialize_popover);
+              order.searched = '';
+              order.page_all = data.data.order.last_page;
+              order.page_active = data.data.order.current_page;
+              order.page_data = data.data.order.data;
+              order.$nextTick(initialize_popover);
             }
           },
           'json'
@@ -131,16 +131,16 @@ var order = new Vue({
 var click_btn = location.hash;
 switch (click_btn) {
   case '#unfilled':
-    index.searching.user_type = '未完成订单';
+    order.searching.user_type = '未完成订单';
     break;
   case '#filled':
-    index.searching.user_type = '已完成订单';
+    order.searching.user_type = '已完成订单';
     break;
   case '#all':
-    index.searching.user_type = '所有订单';
+    order.searching.user_type = '所有订单';
     break;
   default :
-    index.searching.user_type = '所有订单';
+    order.searching.user_type = '所有订单';
     click_btn = '#all';
     break;
 }
