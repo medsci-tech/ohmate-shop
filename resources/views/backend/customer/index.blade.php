@@ -41,7 +41,7 @@
               <td v-if="data_head.hospital">@{{person.information.hospital}}</td>
               <td v-if="data_head.address">@{{person.information.province}}-@{{person.information.city}}-@{{person.information.district}}</td>
               <td v-if="data_head.invited">
-                <div v-if="person.statistics.friend_count">
+                <div v-if="person.statistics">
                   @{{person.statistics.friend_count}}
                 </div>
               </td>
