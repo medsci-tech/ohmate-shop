@@ -47,15 +47,15 @@
               &hellip;
             </a>
           </li>
-          <li :class="(page_active == page_show)?'active':''"><a href="#">{{page_show}}</a></li>
+          <li :class="(page_active == page_show)?'active':''"><a href="#">@{{page_show}}</a></li>
           <li :class="(page_active == page_show+1)?'active':''" v-if="(page_show+1)<=page_all"><a
-              href="#">{{ page_show+1 }}</a></li>
+              href="#">@{{ page_show+1 }}</a></li>
           <li :class="(page_active == page_show+2)?'active':''" v-if="(page_show+2)<=page_all"><a
-              href="#">{{ page_show+2 }}</a></li>
+              href="#">@{{ page_show+2 }}</a></li>
           <li :class="(page_active == page_show+3)?'active':''" v-if="(page_show+3)<=page_all"><a
-              href="#">{{ page_show+3 }}</a></li>
+              href="#">@{{ page_show+3 }}</a></li>
           <li :class="(page_active == page_show+4)?'active':''" v-if="(page_show+4)<=page_all"><a
-              href="#">{{ page_show+4 }}</a></li>
+              href="#">@{{ page_show+4 }}</a></li>
           <li v-if="(page_show+5)<=page_all">
             <a href="#" name="next5" aria-label="Next5">
               &hellip;
@@ -79,7 +79,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                 aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel1">订单: {{  }}</h4>
+            <h4 class="modal-title" id="myModalLabel1">订单: @{{  }}</h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
@@ -91,7 +91,7 @@
                     <input type="text" class="form-control sr-only" id="inputEmail3" placeholder="请输入姓名"
                            v-model="this_person.name">
 
-                    <p class="form-control-static">{{ this_person.name }}</p>
+                    <p class="form-control-static">@{{ this_person.name }}</p>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@
                     <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
                            v-model="this_person.invited.count">
 
-                    <p class="form-control-static">{{ this_person.invited.count }}</p>
+                    <p class="form-control-static">@{{ this_person.invited.count }}</p>
                   </div>
                 </div>
 
