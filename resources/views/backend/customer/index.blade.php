@@ -207,7 +207,7 @@
                 <div class="form-group">
                   <label for="invited" class="col-sm-3 control-label">糖友数</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
+                    <input type="number" class="form-control sr-only" id="invited" placeholder="邀请糖友数" disabled
                            v-model="other_info.statistics.friend_count">
 
                     <p class="form-control-static">@{{ other_info.statistics.friend_count }}</p>
