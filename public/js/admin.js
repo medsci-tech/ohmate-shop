@@ -488,6 +488,7 @@ var index = new Vue({
       //if (beans_edit.result != 0) {
       //  $.post('/',beans_edit,function (data) {
       //    if (data.success) {
+      //       this.other_info.beans_total += this.beans_edit;
       //    }
       //  });
       //}

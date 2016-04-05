@@ -1,3 +1,22 @@
+var initialize_popover = function () {
+  $('[data-toggle="popover"]').popover({html: true});
+
+  $('[data-toggle="popover"]').mouseover(function () {
+    $(this).popover('show');
+    $('[data-toggle="popover"]').mouseout(function () {
+      var set = setTimeout(function () {
+        $('[data-toggle="popover"]').popover('hide')
+      }, 300);
+      $('.popover-content').mouseover(function () {
+        clearTimeout(set);
+      });
+    });
+    $('.popover-content').mouseout(function () {
+      $('[data-toggle="popover"]').popover('hide');
+    });
+  });
+};
+
 $(function () {
   $('.dropdown-toggle').dropdown();
   $('#myModal').modal({
@@ -12,7 +31,7 @@ var order = new Vue({
   el: '#index',
   data: {
     searching: {
-      user_type:'未完成订单',
+      user_type:'未发货订单',
       detail:'',
       page_num:''
     },
@@ -35,6 +54,11 @@ var order = new Vue({
       } else {
         return (this.page_all - 4) < (this.page_active - 2) ? (this.page_all - 4) : (this.page_active - 2);
       }
+    },
+    get_url: function () {
+      if (index.searching.user_type == '未发货订单') return '/order/search?type_id=0';
+      if (index.searching.user_type == '已发货订单') return '/order/search?type_id=1';
+      if (index.searching.user_type == '所有订单') return '/order/list';
     }
   },
 
@@ -43,7 +67,19 @@ var order = new Vue({
       var dom = e.currentTarget;
       var name = e.target.innerHTML;
       if (dom.className != 'active') {
-
+        $.get(index.get_url,
+          {},
+          function (data) {
+            if (data.success) {
+              index.searched = '';
+              index.page_all = data.data.order.last_page;
+              index.page_active = data.data.order.current_page;
+              index.page_data = data.data.order.data;
+              index.$nextTick(initialize_popover);
+            }
+          },
+          'json'
+        );
       }
     },
     choose_page: function (e) {
@@ -103,8 +139,8 @@ switch (click_btn) {
     index.searching.user_type = '所有订单';
     break;
   default :
-    index.searching.user_type = '未完成订单';
-    click_btn = '#unfilled';
+    index.searching.user_type = '所有订单';
+    click_btn = '#all';
     break;
 }
 $(click_btn).trigger('click');
