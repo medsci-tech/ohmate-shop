@@ -151,6 +151,7 @@ var index = new Vue({
     choose_data: function (e) {
       var dom = e.currentTarget;
       var name = e.target.innerHTML;
+      console.log(name);
       if (dom.className != 'active') {
         if (name == '医生') {
           index.data_head = {
