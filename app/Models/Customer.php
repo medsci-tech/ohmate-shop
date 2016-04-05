@@ -242,4 +242,12 @@ class Customer extends Model
         return 'article_bean_feed_' . $this->id;
     }
 
+    /**
+     * @param $amount
+     */
+    public function minusBeansByHand($amount)
+    {
+        \BeanRecharger::executeTransferCash($this, $amount);
+    }
+
 }

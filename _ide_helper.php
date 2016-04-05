@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-03-29.
+ * Generated for Laravel 5.2.22 on 2016-04-05.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11139,6 +11139,15 @@ namespace {
          */
         public static function executeEducation($customer){
             return \App\Werashop\Bean\BeanRecharger::executeEducation($customer);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function executeTransferCash($customer, $value){
+            return \App\Werashop\Bean\BeanRecharger::executeTransferCash($customer, $value);
         }
         
     }

@@ -39,6 +39,7 @@ class AppConstant {
     const BEAN_ACTION_CONSUME       = 'consume';
     const BEAN_ACTION_INVITE        = 'invite';
     const BEAN_ACTION_CONSUME_FEEDBACK  = 'consume_feedback';
+    const BEAN_ACTION_TRANSFER_CASH = 'transfer_cash';
 
     const BEAN_ACTION_EDUCATION_VOLUNTEER_FEEDBACK  = 'education_volunteer_feedback';
     const BEAN_ACTION_CONSUME_VOLUNTEER_FEEDBACK    = 'consume_volunteer_feedback';
