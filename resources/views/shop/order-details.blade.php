@@ -72,7 +72,7 @@
         <tr>
           <td>合计</td>
           <td></td>
-          <th>@{{ total_price | currency '￥' }}</th>
+          <th>@{{ cash_payment | currency '￥' }}</th>
         </tr>
         </tfoot>
 
