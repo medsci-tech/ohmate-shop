@@ -418,12 +418,14 @@ var index = new Vue({
         beans_total = e.beans_total;
         qr_code = e.qr_code;
       }
-      $('#province').val(index.this_person.province);
-      $('#province').trigger('change');
-      $('#city').val(index.this_person.city);
-      $('#city').trigger('change');
-      $('#area').val(index.this_person.district);
-      $('#area').trigger('change');
+      if (index.this_person.province != '') {
+        $('#province').val(index.this_person.province);
+        $('#province').trigger('change');
+        $('#city').val(index.this_person.city);
+        $('#city').trigger('change');
+        $('#area').val(index.this_person.district);
+        $('#area').trigger('change');
+      }
       if (e.statistics) {
         index.other_info.statistics.friend_count = e.statistics.friend_count;
       } else {
