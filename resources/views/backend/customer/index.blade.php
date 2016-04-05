@@ -240,7 +240,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4 hide">
+      <div class="col-sm-4" v-if="false">
         <div class="modal-content col-xs-12 ">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ other_info.statistics.friend_count }}</h4>
