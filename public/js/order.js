@@ -144,7 +144,7 @@ switch (click_btn) {
     click_btn = '#all';
     break;
 }
-$(click_btn).trigger('click');
+$(click_btn).children().trigger('click');
 
 $('.nav').children().eq(1).children().addClass('active');
 
