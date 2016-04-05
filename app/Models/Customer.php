@@ -195,7 +195,7 @@ class Customer extends Model
      */
     public function articleIndexNeedFeedBack()
     {
-        if (!\Cache::has($this-$this->getCacheArticleBeanFeedKey())) {
+        if (!\Cache::has($this->getCacheArticleBeanFeedKey())) {
             return true;
         }
 
