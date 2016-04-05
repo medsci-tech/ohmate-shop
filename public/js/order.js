@@ -129,8 +129,15 @@ var order = new Vue({
   methods: {
     choose_data: function (e) {
       var type = e.target.innerHTML;
-      console.log(type);
-      order.searching.user_type = type;
+      if (type == '未完成订单') {
+        order.searching.user_type = '未完成订单';
+      }
+      if (type == '已完成订单') {
+        order.searching.user_type = '已完成订单';
+      }
+      if (type == '所有订单') {
+        order.searching.user_type = '所有订单';
+      }
       $.get(order.get_url,
         {},
         function (data) {
