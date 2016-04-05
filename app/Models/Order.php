@@ -82,6 +82,9 @@ class Order extends Model
         return false;
     }
 
+    /**
+     *
+     */
     protected function updateStatistics()
     {
         foreach ($this->commodities()->get(['id'])->pluck('id') as $commodity_id) {
@@ -246,10 +249,23 @@ class Order extends Model
         }])->first()->toJson();
     }
 
+    /**
+     * @return $this
+     */
     public function setPostNo() {
         $post = new EmsPost();
 
         $this->update(['post_no' => $post->getMailNo()]);
         return $this;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     */
+    public static function getPaidOrdersWithRelated()
+    {
+        return Order::where('order_status_id', '>', 1)->with(['commodities' => function ($query) {
+            $query->take(4);
+        }]);
     }
 }

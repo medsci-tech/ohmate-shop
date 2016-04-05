@@ -118,6 +118,15 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::get('/{id}/friends', 'CustomerController@friends');
         Route::post('/{id}/update', 'CustomerController@update');
     });
+
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('index', 'OrderController@index');
+        Route::get('list', 'OrderController@orderList');
+        Route::get('search', 'OrderController@search');
+        Route::get('/{id}/beans', 'OrderController@beans');
+        Route::get('/{id}/friends', 'OrderController@friends');
+        Route::post('/{id}/update', 'OrderController@update');
+    });
 });
 
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
