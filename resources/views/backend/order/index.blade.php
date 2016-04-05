@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="search" class="small">(@{{ searched }})</span></h2>
+        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="searched" class="small">(@{{ searched }})</span></h2>
         <div class="table-responsive">
           <table class="table table-striped table-hover">
             <thead>
@@ -32,7 +32,7 @@
             <tr v-cloak v-for="order in page_data">
               <td>@{{ order.id }}</td>
               <td>
-                <ul>
+                <ul class="list-unstyled">
                   <li v-for="item in order.commodities">@{{ item.name }}&emsp;x&emsp;@{{ item.pivot.amount }} </li>
                 </ul>
               </td>
@@ -40,7 +40,7 @@
                 @{{ order.address.name }}
               </td>
               <td>
-                @{{ order.address.province }}-@{{ order.address.city }}-@{{ order.address.district }}
+                @{{ order.address.province }}-@{{ order.address.city }}-@{{ order.address.district }}-@{{ order.address.address }}
               </td>
               <td>
                 @{{ 2016-03-09 13:50:54 }}
