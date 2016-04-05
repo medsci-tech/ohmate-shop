@@ -31,9 +31,9 @@ var order = new Vue({
   el: '#index',
   data: {
     searching: {
-      user_type:'未发货订单',
-      detail:'',
-      page_num:''
+      user_type: '未发货订单',
+      detail: '',
+      page_num: ''
     },
     searched: '张三',
     page_all: 10,
@@ -64,25 +64,22 @@ var order = new Vue({
 
   methods: {
     choose_data: function (e) {
-      var dom = e.currentTarget;
       var type = e.target.innerHTML;
       console.log(type);
       order.searching.user_type = type;
-      if (dom.className != 'active') {
-        $.get(order.get_url,
-          {},
-          function (data) {
-            if (data.success) {
-              order.searched = '';
-              order.page_all = data.data.order.last_page;
-              order.page_active = data.data.order.current_page;
-              order.page_data = data.data.order.data;
-              order.$nextTick(initialize_popover);
-            }
-          },
-          'json'
-        );
-      }
+      $.get(order.get_url,
+        {},
+        function (data) {
+          if (data.success) {
+            order.searched = '';
+            order.page_all = data.data.order.last_page;
+            order.page_active = data.data.order.current_page;
+            order.page_data = data.data.order.data;
+            order.$nextTick(initialize_popover);
+          }
+        },
+        'json'
+      );
     },
     choose_page: function (e) {
       var page_num = e.target.getAttribute('name');
@@ -125,7 +122,7 @@ var order = new Vue({
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
     },
-    
+
   }
 });
 

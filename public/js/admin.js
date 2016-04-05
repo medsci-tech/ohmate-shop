@@ -149,101 +149,98 @@ var index = new Vue({
 
   methods: {
     choose_data: function (e) {
-      var dom = e.currentTarget;
       var name = e.target.innerHTML;
-      if (dom.className != 'active') {
-        if (name == '医生') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '医生';
-        }
-        if (name == '护士') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '护士';
-        }
-        if (name == '志愿者') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '志愿者';
-        }
-        if (name == '普通用户') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '普通用户';
-        }
-        if (name == '企业用户') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '企业用户';
-        }
-        if (name == '所有用户') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '所有用户';
-        }
-        $.get(index.get_url,
-          {},
-          function (data) {
-            if (data.success) {
-              index.searched = '';
-              index.page_all = data.data.customers.last_page;
-              index.page_active = data.data.customers.current_page;
-              index.page_data = data.data.customers.data;
-              index.$nextTick(initialize_popover);
-            }
-          },
-          'json'
-        );
+      if (name == '医生') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '医生';
       }
+      if (name == '护士') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '护士';
+      }
+      if (name == '志愿者') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '志愿者';
+      }
+      if (name == '普通用户') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '普通用户';
+      }
+      if (name == '企业用户') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '企业用户';
+      }
+      if (name == '所有用户') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '所有用户';
+      }
+      $.get(index.get_url,
+        {},
+        function (data) {
+          if (data.success) {
+            index.searched = '';
+            index.page_all = data.data.customers.last_page;
+            index.page_active = data.data.customers.current_page;
+            index.page_data = data.data.customers.data;
+            index.$nextTick(initialize_popover);
+          }
+        },
+        'json'
+      );
     }
     ,
     choose_page: function (e) {
