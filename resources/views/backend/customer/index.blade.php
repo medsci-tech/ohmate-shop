@@ -228,7 +228,7 @@
                   <label for="beans_edit" class="col-sm-3 control-label">迈豆修改</label>
                   <div class="col-sm-8">
                     <input type="number" class="form-control sr-only" id="beans_edit" placeholder="请输入迈豆数"
-                           v-model="this_person.beans.count">
+                           v-model="beans_edit">
 
                     <p class="form-control-static">@{{ beans_edit }}</p>
                   </div>
