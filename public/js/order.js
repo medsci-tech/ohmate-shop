@@ -65,7 +65,7 @@ var order = new Vue({
   methods: {
     choose_data: function (e) {
       var dom = e.currentTarget;
-      var type = $(e).html();
+      var type = e.target.innerHTML;
       console.log(type);
       order.searching.user_type = type;
       if (dom.className != 'active') {
@@ -145,7 +145,7 @@ switch (click_btn) {
     click_btn = '#all';
     break;
 }
-$(click_btn).trigger('click');
+$(click_btn).children().trigger('click');
 
 $('.nav').children().eq(1).children().addClass('active');
 
