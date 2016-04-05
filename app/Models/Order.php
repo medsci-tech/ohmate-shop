@@ -264,8 +264,6 @@ class Order extends Model
      */
     public static function getPaidOrdersWithRelated()
     {
-        return Order::where('order_status_id', '>', 1)->with(['commodities' => function ($query) {
-            $query->take(4);
-        }]);
+        return Order::where('order_status_id', '>', 1)->with(['customer', 'commodities', 'address']);
     }
 }
