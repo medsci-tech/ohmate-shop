@@ -109,7 +109,8 @@ var index = new Vue({
       }
     },
 
-    this_person_cache: ''
+    this_person_cache: '',
+    beans_cache: 0,
   },
   computed: {
     page_show: function () {
@@ -434,6 +435,7 @@ var index = new Vue({
         index.other_info.type.type_ch = '';
       }
       this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
+      this.beans_cache = this.other_info.beans_total;
       //$.get('/customer/invited',
       //  {
       //    id: this.this_person.id,
@@ -472,6 +474,19 @@ var index = new Vue({
     }
     ,
     submit_edit: function () {
+      var beans_edit = {
+        action: '管理员操作',
+        result: this.beans_cache - this.other_info.beans_total
+      };
+      console.log(beans_edit.action);
+      console.log(beans_edit.result);
+
+      //if (beans_edit.result != 0) {
+      //  $.post('/',beans_edit,function (data) {
+      //    if (data.success) {
+      //    }
+      //  });
+      //}
       $.post('/customer/' + this.this_person.id + '/update', this.this_person,
         function (data) {
           if (data.success) {
