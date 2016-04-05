@@ -20,17 +20,19 @@
             <thead>
             <tr>
               <th>订单ID</th>
+              <th>EMS单号</th>
               <th>订单商品</th>
               <th>收货人姓名</th>
               <th>收货人地址</th>
               <th>下单时间</th>
-              <th>发货时间</th>
+              <th>发货状态</th>
               <th></th>
             </tr>
             </thead>
             <tbody>
             <tr v-cloak v-for="order in page_data">
               <td>@{{ order.id }}</td>
+              <td>EMS@{{ order.post_no }}</td>
               <td>
                 <ul class="list-unstyled">
                   <li v-for="item in order.commodities">@{{ item.name }}&emsp;x&emsp;@{{ item.pivot.amount }} </li>
@@ -46,11 +48,16 @@
                 @{{ order.created_at }}
               </td>
               <td>
-                @{{  }} <span v-if="true">未发货</span>
+                <button v-if="order.order_status_id == 2" class="button button-tiny button-rounded button-border button-primary" href="#" @click="fill_order(order)">
+                标记为已发货
+                </button>
+                <button v-if="order.order_status_id == 3" class="button button-tiny button-rounded" disabled>
+                  已发货
+                </button>
               </td>
               <td>
-                <button href="#" @click="fill_order">
-                标记为已发货
+                <button class="button button-tiny button-rounded button-action" href="#" @click="print">
+                打印
                 </button>
               </td>
             </tr>
