@@ -189,4 +189,57 @@ class Customer extends Model
     {
         return self::find($this->referrer_id);
     }
+
+    /**
+     * @return bool
+     */
+    public function articleIndexNeedFeedBack()
+    {
+        if (!\Cache::has($this-$this->getCacheArticleBeanFeedKey())) {
+            return true;
+        }
+
+        if (\Cache::get($this->getCacheArticleBeanFeedKey()) >= 5) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @return int|mixed
+     */
+    public function getArticleIndexFeedbackCount()
+    {
+        if (!\Cache::has($this->getCacheArticleBeanFeedKey())) {
+            return 0;
+        }
+
+        return \Cache::get($this->getCacheArticleBeanFeedKey());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function readArticleIndex()
+    {
+        if (!\Cache::has($this->getCacheArticleBeanFeedKey())) {
+            \Cache::put($this->getCacheArticleBeanFeedKey(), 1, 1440);
+        }
+
+        if (\Cache::get($this->getCacheArticleBeanFeedKey()) < 5) {
+            \Cache::increment($this->getCacheArticleBeanFeedKey());
+        }
+
+        return \Cache::get($this->getCacheArticleBeanFeedKey());
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCacheArticleBeanFeedKey()
+    {
+        return 'article_bean_feed_' . $this->id;
+    }
+
 }

@@ -19,14 +19,15 @@ class RedirectController extends Controller
     public function articleIndex(Request $request)
     {
         $customer = \Helper::getCustomerOrNull();
-        if (!$customer or \Cache::has('article_bean_feed_'. $customer->id)) {
+        if (!$customer or !$customer->articleIndexNeedFeedBack()) {
             return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
         } else {
-            \Cache::put('article_bean_feed_'. $customer->id, 1, 1440);
+            $count = $customer->readArticleIndex();
             \BeanRecharger::executeEducation($customer);
 
             return view('education.hongbao')->with([
-                'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect"
+                'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect",
+                'count' => $count
             ]);
         }
     }
