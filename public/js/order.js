@@ -66,8 +66,9 @@ var order = new Vue({
     choose_data: function (e) {
       var dom = e.currentTarget;
       var name = e.target.innerHTML;
+      index.searching.user_type = name;
       if (dom.className != 'active') {
-        $.get('/order/list',
+        $.get(index.get_url,
           {},
           function (data) {
             if (data.success) {
