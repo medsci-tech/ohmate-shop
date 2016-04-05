@@ -65,7 +65,7 @@ var order = new Vue({
   methods: {
     choose_data: function (e) {
       var dom = e.currentTarget;
-      var type = $(e).text();
+      var type = $(e).html();
       console.log(type);
       order.searching.user_type = type;
       if (dom.className != 'active') {
