@@ -42,7 +42,7 @@
         </ul>
         <form class="navbar-form navbar-right" @submit.prevent="search">
           <div class="has-feedback">
-            <input v-on:keyup.enter="submit" type="text" class="form-control" placeholder="Search..."
+            <input v-on:keyup.enter="search" type="text" class="form-control" placeholder="Search..."
                    v-model="searching.detail">
             <button type="submit" class="btn btn-link form-control-feedback fa fa-search"></button>
           </div>
