@@ -478,7 +478,7 @@ var index = new Vue({
     submit_edit: function () {
       var beans_edit = {
         action: '管理员操作',
-        result: this.beans_edit
+        result: (this.beans_edit + this.other_info.beans_total) > 0 ? this.beans_edit : this.other_info.beans_total * (-1)
       };
       console.log(beans_edit.action);
       console.log(beans_edit.result);
