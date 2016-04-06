@@ -50,7 +50,7 @@ class RedirectController extends Controller
         $addr_sign = implode('&', $addr_sign);
 
         return view('education.close')->with([
-            'original_url' => 'http://www.baidu.com',
+            'original_url' => \Session::get('original_url', null),
             'appId' => env('WX_APPID'),
             'timestamp' => $timestamp,
             'addrSign' => sha1($addr_sign),
