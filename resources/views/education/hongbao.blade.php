@@ -6,6 +6,16 @@
   <title>迈豆红包</title>
   <link rel="stylesheet" href="{{asset('/css/weui.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/hongbao.css')}}">
+  <script>
+    alert(history.length);
+    if(history.length == 2) {
+      WeixinJSBridge.invoke('closeWindow',{},function(res){
+
+        //alert(res.err_msg);
+
+      });
+    }
+  </script>
 </head>
 <body>
 <div class="actionsheet" style="overflow: hidden">
@@ -85,14 +95,6 @@
     $('#chance').text(chances[i]);
     $('#motto').text(mottos[j]);
   });
-  alert(history.length);
-  if(history.length == 2) {
-    WeixinJSBridge.invoke('closeWindow',{},function(res){
-
-      //alert(res.err_msg);
-
-    });
-  }
 </script>
 </body>
 </html>
