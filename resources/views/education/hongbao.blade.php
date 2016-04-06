@@ -84,7 +84,8 @@
 
     $('#chance').text(chances[i]);
     $('#motto').text(mottos[j]);
-  })
+  });
+  alert(history.length);
 </script>
 </body>
 </html>
