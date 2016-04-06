@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
   <script>
-    alert(history.length);
+    alert('close页面'+history.length);
     if ( history.length > 2 ){
       history.go(-1);
     } else {
