@@ -340,7 +340,7 @@ class Wechat
     public function getJssdkConfig($array)
     {
         $js = new Js($this->_appId, $this->_secret);
-        return $js->config($array, true);
+        return $js->config($array);
     }
 
     /**

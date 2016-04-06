@@ -13,6 +13,10 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    Route::get('/test', function () {
+        return view('/test/test');
+    });
+
     Route::get('/', function () {
         return redirect('/home');
     });
@@ -134,9 +138,11 @@ Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Red
     Route::get('/article-index', 'RedirectController@articleIndex');
     Route::post('/article-index', 'RedirectController@postArticleIndex');
     Route::get('/web-shop-index', 'RedirectController@webShopIndex');
+    Route::get('/close', 'RedirectController@close');
 });
 
 
 Route::group(['prefix' => 'hack', 'middleware' => 'web', 'namespace' => 'Hack'], function () {
     Route::post('/clear-user', 'HackController@clearUser');
 });
+
