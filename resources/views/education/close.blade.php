@@ -8,7 +8,6 @@
     wx.config({!! $js !!});
 
     wx.ready(function(){
-      alert('ready');
       wx.checkJsApi({
         jsApiList: [
           'checkJsApi',
@@ -19,9 +18,7 @@
           'getLocation'
         ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
         success: function(res) {
-          alert('close页面' + history.length);
           a = '{{$original_url}}';
-          alert(a);
           if (a) {
             window.location.href = a;
           } else {
@@ -29,8 +26,6 @@
           }
         },
         fail: function(res) {
-          alert('fail');
-          alert(res);
         }
       });
 
