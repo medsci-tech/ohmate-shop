@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{asset('/css/weui.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/hongbao.css')}}">
   <script>
-    history.replaceState('','教育频道','/close')
+    history.replaceState('','教育频道','/redirect/close')
   </script>
 </head>
 <body>
