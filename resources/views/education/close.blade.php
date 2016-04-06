@@ -11,9 +11,7 @@
     if (a) {
       window.location.href = a;
     } else {
-      WeixinJSBridge.invoke('closeWindow', {}, function (res) {
-        //alert(res.err_msg);
-      });
+      wx.closeWindow();
     }
   </script>
 </head>
