@@ -41,8 +41,6 @@ class RegisterController extends Controller
 
     public function create()
     {
-        return '该公众号是测试号, 注册功能暂不开放.';
-
         $customer = \Helper::getCustomer();
 
         if ($customer->is_registered) {
@@ -53,7 +51,6 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        return '该公众号是测试号, 注册功能暂不开放.';
         $user       = \Helper::getUser();
         $customer   = \Helper::getCustomer();
 
