@@ -132,6 +132,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
 
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
     Route::get('/article-index', 'RedirectController@articleIndex');
+    Route::post('/article-index', 'RedirectController@postArticleIndex');
     Route::get('/web-shop-index', 'RedirectController@webShopIndex');
 });
 

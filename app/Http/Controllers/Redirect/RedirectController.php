@@ -16,18 +16,30 @@ class RedirectController extends Controller
 //        $this->middleware('auth.access');
     }
 
-    public function articleIndex(Request $request)
+    public function articleIndex()
+    {
+        return view('education.hongbao')->with([
+            'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect"
+        ]);
+    }
+
+
+    public function postArticleIndex(Request $request)
     {
         $customer = \Helper::getCustomerOrNull();
         if (!$customer or !$customer->articleIndexNeedFeedBack()) {
-            return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
+            return response()->json([
+                ''
+            ]);
         } else {
             $count = $customer->readArticleIndex();
             \BeanRecharger::executeEducation($customer);
 
-            return view('education.hongbao')->with([
-                'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect",
-                'count' => $count
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'count' => $count
+                ]
             ]);
         }
     }
