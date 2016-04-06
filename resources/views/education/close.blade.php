@@ -5,8 +5,8 @@
   <title></title>
   <script>
     alert('close页面'+history.length);
-    if ( history.length > 2 ){
-      history.go(-1);
+    if ({{$original_url}}){
+      window.location.href="{{$original_url}}";
     } else {
       WeixinJSBridge.invoke('closeWindow',{},function(res){
         //alert(res.err_msg);
