@@ -46,7 +46,9 @@
                 'getLocation'
             ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
             success: function(res) {
+                alert('check success')
                 $("#a").click(function () {
+                  alert('click success')
                     wx.openAddress({
                         success: function () {
                           alert('success')
