@@ -49,8 +49,10 @@
                 $("#a").click(function () {
                     wx.openAddress({
                         success: function () {
+                          alert('success')
                         },
                         cancel: function () {
+                          alert('cancel')
                         }
                     })
                 });
@@ -64,38 +66,29 @@
     });
 
     function editAddressCallback() {
-        wx.openAddress({
-            success: function () {
-                alert('success');
-                // 用户成功拉出地址
-            },
-            cancel: function () {
-                alert('cancel');
-                    // 用户取消拉出地址
-            }});
-        {{--alert('callback called');--}}
-        {{--WeixinJSBridge.call('editAddress', {--}}
-            {{--appId: "{{$appId}}",--}}
-            {{--scope: "jsapi_address",--}}
-            {{--signType: "sha1",--}}
-            {{--addrSign: "{{$addrSign}}",--}}
-            {{--timeStamp: "{{$timestamp}}",--}}
-            {{--nonceStr: "123456"--}}
-        {{--}, function (res) {--}}
-{{--//若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。--}}
-{{--//否则若返回空，则表示用户取消了这一次编辑收货地址。--}}
-            {{--alert('res'+ res);--}}
-            {{--document.form1.address1.value = res.proviceFirstStageName;--}}
-            {{--document.form1.address2.value = res.addressCitySecondStageName;--}}
-            {{--document.form1.address3.value = res.addressCountiesThirdStageName;--}}
-            {{--document.form1.detail.value = res.addressDetailInfo;--}}
-            {{--document.form1.phone.value = res.telNumber;--}}
-        {{--}, function (res) {--}}
-            {{--alert('err'.res);--}}
-        {{--});--}}
-        {{--alert(JSON.stringify(WeixinJSBridge, null, 4));--}}
-        {{--printObject(WeixinJSBridge);--}}
-        {{--alert('callback end');--}}
+        alert('callback called');
+        WeixinJSBridge.call('editAddress', {
+            appId: "{{$appId}}",
+            scope: "jsapi_address",
+            signType: "sha1",
+            addrSign: "{{$addrSign}}",
+            timeStamp: "{{$timestamp}}",
+            nonceStr: "123456"
+        }, function (res) {
+//若res 中所带的返回值不为空，则表示用户选择该返回值作为收货地址。
+//否则若返回空，则表示用户取消了这一次编辑收货地址。
+            alert('res'+ res);
+            document.form1.address1.value = res.proviceFirstStageName;
+            document.form1.address2.value = res.addressCitySecondStageName;
+            document.form1.address3.value = res.addressCountiesThirdStageName;
+            document.form1.detail.value = res.addressDetailInfo;
+            document.form1.phone.value = res.telNumber;
+        }, function (res) {
+            alert('err'.res);
+        });
+        alert(JSON.stringify(WeixinJSBridge, null, 4));
+        printObject(WeixinJSBridge);
+        alert('callback end');
     }
 
     function printObject(o) {
