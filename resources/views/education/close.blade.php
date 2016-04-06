@@ -5,8 +5,10 @@
   <title></title>
   <script>
     alert('close页面'+history.length);
-    if ({{$original_url}}){
-      window.location.href="{{$original_url}}";
+    a = '{{$original_url}}';
+    alert(a);
+    if (a){
+      window.location.href=a;
     } else {
       WeixinJSBridge.invoke('closeWindow',{},function(res){
         //alert(res.err_msg);
