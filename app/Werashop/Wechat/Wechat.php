@@ -123,7 +123,7 @@ class Wechat
             ]),
             (new MenuItem("学习换礼"))->buttons([
 //                new MenuItem('我的地址', 'view', url('/shop/address')),
-//                new MenuItem('地址测试', 'view', url('/shop/address/test')),
+                new MenuItem('地址测试', 'view', url('/shop/address/test')),
                 new MenuItem('我的订单', 'view', url('/shop/order')),
                 new MenuItem('换礼规则', 'view', url('/personal/bean-rules')),
                 new MenuItem('积分商城', 'view', url('/shop/index')),
