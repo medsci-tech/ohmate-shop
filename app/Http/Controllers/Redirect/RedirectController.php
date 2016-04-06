@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Redirect;
 
 use App\Models\Customer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,10 +33,37 @@ class RedirectController extends Controller
 //        }
     }
 
-    public function close()
+    public function close(Request $request)
     {
+        $access_token = \Wechat::getWebAuthAccessToken();
+
+        $timestamp = Carbon::now()->getTimestamp();
+        $addr_sign = [
+            'accesstoken='. $access_token,
+            'appid='.\Wechat::getAppId(),
+            'noncestr=123456',
+            'timestamp='. $timestamp,
+            'url='.$request->fullUrl()
+        ];
+        sort($addr_sign);
+
+        $addr_sign = implode('&', $addr_sign);
+
         return view('education.close')->with([
-            'original_url' => \Session::get('original_url', null)
+            'original_url' => \Session::get('original_url', null),
+            'appId' => env('WX_APPID'),
+            'timestamp' => $timestamp,
+            'addrSign' => sha1($addr_sign),
+            'url' => $request->fullUrl(),
+            'js' => \Wechat::getJssdkConfig([
+                'closeWindow',
+                'checkJsApi',
+                'editAddress',
+                'chooseWXPay',
+                'getLatestAddress',
+                'openCard',
+                'getLocation'
+            ])
         ]);
     }
 
