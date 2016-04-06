@@ -34,7 +34,9 @@ class RedirectController extends Controller
 
     public function close()
     {
-        return view('education.close');
+        return view('education.close')->with([
+            'original_url' => \Session::get('original_url', null)
+        ]);
     }
 
     public function webShopIndex(Request $request)
