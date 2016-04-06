@@ -32,6 +32,11 @@ class RedirectController extends Controller
 //        }
     }
 
+    public function close()
+    {
+        return view('education.close');
+    }
+
     public function webShopIndex(Request $request)
     {
         $user = \Helper::getSessionCachedUser();
