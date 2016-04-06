@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
   <script>
-    if ( history.length >= 2 ){
+    if ( history.length > 2 ){
       history.go(-1);
     } else {
       WeixinJSBridge.invoke('closeWindow',{},function(res){
