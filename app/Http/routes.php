@@ -13,10 +13,6 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::get('/test', function () {
-        return view('/test/test');
-    });
-
     Route::get('/', function () {
         return redirect('/home');
     });
