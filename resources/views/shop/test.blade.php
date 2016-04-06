@@ -47,7 +47,12 @@
             ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
             success: function(res) {
                 $("#a").click(function () {
-                    editAddressCallback();
+                    wx.openAddress({
+                        success: function () {
+                        },
+                        cancel: function () {
+                        }
+                    })
                 });
             },
             fail: function(res) {
