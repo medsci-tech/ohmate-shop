@@ -85,13 +85,14 @@
     $('#chance').text(chances[i]);
     $('#motto').text(mottos[j]);
   });
+  alert(history.length);
   if(history.length == 2) {
     WeixinJSBridge.invoke('closeWindow',{},function(res){
 
       //alert(res.err_msg);
 
     });
-  };
+  }
 </script>
 </body>
 </html>
