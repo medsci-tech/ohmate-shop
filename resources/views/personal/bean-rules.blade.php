@@ -36,7 +36,7 @@
 
         <div class="weui_media_box weui_media_text">
             <h4 class="weui_media_title">Q：我的迈豆可以送给别人用吗?</h4>
-            <p class="desc">A：现在迈豆还不能送给别人哦，但是可以直接用迈豆换取商品，填写朋友或者家人的地址就行了。是不是更方面呢？</p>
+            <p class="desc">A：现在迈豆还不能送给别人哦，但是可以直接用迈豆换取商品，填写朋友或者家人的地址就行了。是不是更方便呢？</p>
         </div>
 
         <div class="weui_media_box weui_media_text">

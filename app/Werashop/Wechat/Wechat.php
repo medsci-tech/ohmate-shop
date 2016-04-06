@@ -121,11 +121,12 @@ class Wechat
                 new MenuItem('每日活动', 'view', url('/activity/daily')),
                 neW MenuItem('注册', 'view', url('/register/create'))
             ]),
-            (new MenuItem("易康商城"))->buttons([
-                new MenuItem('我的地址', 'view', url('/shop/address')),
-                new MenuItem('我的订单', 'view', url('/shop/order')),
-                new MenuItem('商城首页', 'view', url('/shop/index')),
+            (new MenuItem("学习换礼"))->buttons([
+//                new MenuItem('我的地址', 'view', url('/shop/address')),
 //                new MenuItem('地址测试', 'view', url('/shop/address/test')),
+                new MenuItem('我的订单', 'view', url('/shop/order')),
+                new MenuItem('换礼规则', 'view', url('/personal/bean-rules')),
+                new MenuItem('积分商城', 'view', url('/shop/index')),
             ]),
             (new MenuItem("个人中心"))->buttons([
 //                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),

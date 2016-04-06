@@ -1,0 +1,62 @@
+body {
+  font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
+
+.weui_actionsheet_menu, .weui_actionsheet_action, .weui_actionsheet {
+  background-color: transparent; }
+
+.weui_actionsheet_menu {
+  text-align: center; }
+  .weui_actionsheet_menu img {
+    width: 70%;
+    margin-bottom: 100px; }
+  .weui_actionsheet_menu p {
+    position: absolute;
+    top: -40px;
+    margin-top: 55%;
+    width: 70%;
+    left: 15%;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffe034; }
+  .weui_actionsheet_menu #chance {
+    top: -40px;
+    margin-top: 130%;
+    font-size: 10px;
+    color: #ffe034ffe034; }
+  .weui_actionsheet_menu #motto {
+    width: 50%;
+    left: 25%;
+    top: -40px;
+    margin-top: 85%;
+    font-size: 10px; }
+
+.weui_actionsheet_action p {
+  position: absolute;
+  margin-top: -210px;
+  width: 70%;
+  left: 15%;
+  text-align: center;
+  color: #ffe034; }
+.weui_actionsheet_action #getedu {
+  position: absolute;
+  margin-top: -180px;
+  width: 29%;
+  left: 19%;
+  background-color: #ffe034;
+  color: #df3121;
+  font-weight: bold;
+  font-size: 16px; }
+.weui_actionsheet_action #getshop {
+  position: absolute;
+  margin-top: -180px;
+  width: 29%;
+  left: 51%;
+  background-color: #ffe034;
+  color: #df3121;
+  font-weight: bold;
+  font-size: 16px; }
+
+.bd {
+  height: 500px; }
+
+/*# sourceMappingURL=hongbao.css.map */

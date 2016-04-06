@@ -72,7 +72,6 @@ class RegisterController extends Controller
         if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
             return redirect()->back()->with('error_message', '验证码过期!')->withInput();
         }
-
         $customer->update([
             'phone'             => $request->input('phone'),
             'is_registered'     => true,

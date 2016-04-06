@@ -65,9 +65,12 @@ body {
     #index .main .pagination span {
       pointer-events: none; }
   #index .popover-content {
+    width: 270px;
     padding: 0; }
     #index .popover-content .table {
       margin: 0; }
+  #index #myModal {
+    padding: 0; }
   #index .modal-dialog {
     width: 95%; }
   #index .modal-content {
@@ -76,6 +79,8 @@ body {
     padding: 0; }
     #index .modal-body .form-group #province, #index .modal-body .form-group #city, #index .modal-body .form-group #area {
       margin-bottom: 5px; }
+    #index .modal-body .table {
+      margin-bottom: 0; }
   @media (max-width: 767px) {
     #index .sidebar {
       position: inherit;
