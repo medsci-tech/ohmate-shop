@@ -19,9 +19,14 @@
           'getLocation'
         ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
         success: function(res) {
-          $("#a").click(function () {
-            editAddressCallback();
-          });
+          alert('close页面' + history.length);
+          a = '{{$original_url}}';
+          alert(a);
+          if (a) {
+            window.location.href = a;
+          } else {
+            wx.closeWindow();
+          }
         },
         fail: function(res) {
           alert('fail');
@@ -30,14 +35,7 @@
       });
 
     });
-    alert('close页面' + history.length);
-    a = '{{$original_url}}';
-    alert(a);
-    if (a) {
-      window.location.href = a;
-    } else {
-      wx.closeWindow();
-    }
+
   </script>
 </head>
 <body>
