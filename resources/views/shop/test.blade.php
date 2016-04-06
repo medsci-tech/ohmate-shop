@@ -30,7 +30,7 @@
 
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 <script>
     wx.config({!! $js !!});
 
