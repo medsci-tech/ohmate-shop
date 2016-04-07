@@ -206,7 +206,7 @@ var order = new Vue({
     },
     fill_order: function (e) {
       this.this_order.order_id = e.id;
-      post('/order/order-posted',
+      $.post('/order/order-posted',
         this.this_order,
         function (data) {
           if (data.success) {
