@@ -59,7 +59,7 @@
                 @{{ order.created_at }}
               </td>
               <td>
-                <div class="dropdown" v-if="order.order_status_id == 2">
+                <div v-if="order.order_status_id == 2">
                   <button class="button button-tiny button-rounded button-border button-primary"
                           type="button"
                           data-container="body"
