@@ -62,7 +62,7 @@
                   <form class="dropdown-menu" role="form" aria-labelledby="@{{ order.id }}">
                     <div class="form-group">
                       <label for="post_no">请填写EMS单号</label>
-                      <input type="text" id="number" class="form-control" placeholder="请输入单号" v-model="@{{ this_order.post_no }}" name="post_no" required autofocus>
+                      <input type="text" id="number" class="form-control" placeholder="请输入单号" v-model="this_order.post_no" name="post_no" required autofocus>
                     </div>
                     <button class="button button-rounded button-primary button-small" type="button" @click="fill_order(order)">确认</button>
                   </form>
