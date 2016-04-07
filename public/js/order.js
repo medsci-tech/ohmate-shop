@@ -143,9 +143,9 @@ var order = new Vue({
         function (data) {
           if (data.success) {
             order.searched = '';
-            order.page_all = data.data.order.last_page;
-            order.page_active = data.data.order.current_page;
-            order.page_data = data.data.orders;
+            order.page_all = data.data.orders.last_page;
+            order.page_active = data.data.orders.current_page;
+            order.page_data = data.data.orders.data;
             order.$nextTick(initialize_popover);
           }
         },
