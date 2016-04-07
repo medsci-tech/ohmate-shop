@@ -60,9 +60,8 @@
                     填写单号
                   </button>
                   <form class="dropdown-menu" role="form" aria-labelledby="@{{ order.id }}">
-                    <h4 class="form-signin-heading text-center">请填写EMS单号</h4>
                     <div class="form-group">
-                      <label for="post_no">EMS</label>
+                      <label for="post_no">请填写EMS单号</label>
                       <input type="text" id="number" class="form-control" placeholder="请输入单号" value="@{{ this_order.post_no }}" name="post_no" required autofocus>
                     </div>
                     <button class="button button-rounded button-primary button-small" type="button" @click="fill_order(order)">确认</button>
