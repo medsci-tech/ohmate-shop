@@ -56,14 +56,14 @@
               </td>
               <td>
                 <div class="dropdown" v-if="order.order_status_id == 2">
-                  <button class="button button-tiny button-rounded button-border button-primary" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="button button-tiny button-rounded button-border button-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     填写单号
                   </button>
-                  <form class="dropdown-menu form-signin center-block" role="form" aria-labelledby="dLabel">
-                    <h3 class="form-signin-heading text-center">请填写EMS单号</h3>
+                  <form class="dropdown-menu form-signin center-block" role="form">
+                    <h4 class="form-signin-heading text-center">请填写EMS单号</h4>
                     <div class="form-group">
                       <label for="post_no" class="sr-only">EMS</label>
-                      <input type="text" id="number" class="form-control" placeholder="请输入姓名" value="@{{ this_order.post_no }}" name="post_no" required autofocus>
+                      <input type="text" id="number" class="form-control" placeholder="请输入单号" value="@{{ this_order.post_no }}" name="post_no" required autofocus>
                     </div>
                     <button class="button button-block button-rounded button-primary button-glow" type="button" @click="fill_order(order)">确认</button>
                   </form>
