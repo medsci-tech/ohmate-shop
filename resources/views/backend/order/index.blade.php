@@ -65,7 +65,7 @@
                       <label for="post_no" class="sr-only">EMS</label>
                       <input type="text" id="number" class="form-control" placeholder="请输入单号" value="@{{ this_order.post_no }}" name="post_no" required autofocus>
                     </div>
-                    <button class="button button-block button-rounded button-primary button-glow" type="button" @click="fill_order(order)">确认</button>
+                    <button class="button button-rounded button-primary button-small" type="button" @click="fill_order(order)">确认</button>
                   </form>
                 </div>
                 <button v-if="order.order_status_id == 3" class="button button-tiny button-rounded" disabled>
