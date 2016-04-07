@@ -31,79 +31,79 @@ var order = new Vue({
   el: '#index',
   data: {
     searching: {
-      user_type: '未发货订单',
+      user_type: '',
       detail: '',
       page_num: ''
     },
-    searched: '张三',
-    page_all: 10,
-    page_active: 2,
-    page_num: 50,
+    searched: '',
+    page_all: 0,
+    page_active: 0,
+    page_num: 0,
     page_data: [
       {
         address: {
-          address: "保利蓝海郡",
-          city: "武汉",
-          created_at: "2016-03-09 11:26:38",
-          customer_id: 10,
+          address: "",
+          city: "",
+          created_at: "",
+          customer_id: 0,
           deleted_at: null,
-          district: "洪山区",
-          id: 7,
+          district: "",
+          id: 0,
           is_default: false,
-          name: "许守明",
-          phone: "15623093771",
+          name: "",
+          phone: "",
           postcode: "",
           priority: 0,
-          province: "湖北",
-          updated_at: "2016-03-16 13:40:52"
+          province: "",
+          updated_at: ""
         },
-        address_id: 10,
-        beans_payment: "0.02",
-        beans_payment_calculated: "0.02",
-        cash_payment: "8.00",
-        cash_payment_calculated: "8.00",
+        address_id: 0,
+        beans_payment: "",
+        beans_payment_calculated: "",
+        cash_payment: "",
+        cash_payment_calculated: "",
         commodities: [{
           created_at: null,
           deleted_at: null,
-          id: 8,
-          introduction: "邮费补差",
-          name: "邮费补差",
-          pivot: {order_id: 71, commodity_id: 8, amount: 1},
-          portrait: "http://www.ohmate.cn/image/shop_goods/8.png",
-          price: "0.01",
+          id: 0,
+          introduction: "",
+          name: "",
+          pivot: {order_id: 0, commodity_id: 0, amount: 0},
+          portrait: "",
+          price: "",
           priority: 0,
-          remark: "邮费补差",
-          storage: 1,
+          remark: "",
+          storage: 0,
           updated_at: null
         }],
-        created_at: "2016-03-09 13:50:54",
+        created_at: "",
         customer: {
-          auth_code: "095997",
-          auth_code_expired: "2016-03-09 11:09:23",
-          beans_total: 6187.02,
-          created_at: "2016-03-09 10:38:55",
-          head_image_url: "http://wx.qlogo.cn/mmopen/iafEWmTo46w1MYtxA9AFS1riaEXggfNk0JIYvicgHULraZhpUqN2S7jjgmvicVpzdzOibXicqpcpEiayGACeh3hxc4YRnzjEypiaIHLL/0",
-          id: 10,
-          is_registered: 1,
-          nickname: "node",
+          auth_code: "",
+          auth_code_expired: "",
+          beans_total: 0,
+          created_at: "",
+          head_image_url: "",
+          id: 0,
+          is_registered: 0,
+          nickname: "",
           old_id: null,
-          openid: "oDVXNwz_dmjWtGaDqLM6lRTnyRz0",
-          phone: "15623093771",
-          qr_code: "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQGY8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL0dUaDNCV0xsNTBxZThlNGpDUlRKAAIEA43fVgMEAAAAAA%3D%3D",
+          openid: "",
+          phone: "",
+          qr_code: "",
           referrer_id: 0,
-          type_id: 5,
-          updated_at: "2016-03-22 14:33:16"
+          type_id: 0,
+          updated_at: ""
         },
-        customer_id: 17,
-        id: 69,
-        order_status_id: 2,
-        post_fee: "8.00",
-        post_no: "9728189263200",
+        customer_id: 0,
+        id: 0,
+        order_status_id: 0,
+        post_fee: "",
+        post_no: "",
         post_type: "",
-        total_price: "8.02",
-        updated_at: "2016-03-09 13:51:13",
-        wx_out_trade_no: "84c1884e8cb1fa5f20d05e7e9699035b",
-        wx_transaction_id: "1006150911201603093848809841"
+        total_price: "",
+        updated_at: "",
+        wx_out_trade_no: "",
+        wx_transaction_id: ""
       }
     ],
 
@@ -139,7 +139,9 @@ var order = new Vue({
         order.searching.user_type = '所有订单';
       }
       $.get(order.get_url,
-        {},
+        {
+
+        },
         function (data) {
           if (data.success) {
             order.searched = '';
@@ -179,6 +181,20 @@ var order = new Vue({
           page_num = e.target.innerHTML;
           break;
       }
+      $.get(order.get_url,
+        {
+          page: page_num,
+          key: order.searched
+        },
+        function (data) {
+          if (data.success) {
+            order.page_active = data.data.orders.current_page;
+            order.page_data = data.data.orders.data;
+            order.$nextTick(initialize_popover);
+          }
+        },
+        'json'
+      )
 
     },
     search: function () {
