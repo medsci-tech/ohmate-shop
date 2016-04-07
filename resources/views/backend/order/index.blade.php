@@ -59,7 +59,7 @@
                   <button class="button button-tiny button-rounded button-border button-primary" id="@{{ order.id }}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     填写单号
                   </button>
-                  <form class="dropdown-menu form-signin center-block" role="form" aria-labelledby="@{{ order.id }}">
+                  <form class="dropdown-menu" role="form" aria-labelledby="@{{ order.id }}">
                     <h4 class="form-signin-heading text-center">请填写EMS单号</h4>
                     <div class="form-group">
                       <label for="post_no" class="sr-only">EMS</label>
