@@ -108,7 +108,8 @@ var order = new Vue({
     ],
 
     this_order: {
-      id: 1
+      order_id: 1,
+      post_no: ""
     }
   },
   computed: {
@@ -204,7 +205,19 @@ var order = new Vue({
       alert('hahah!');
     },
     fill_order: function (e) {
-      post();
+      this.this_order.order_id = e.id;
+      post('/order/order-posted',
+        this.this_order,
+        function (data) {
+          if (data.success) {
+            e.post_no = this.this_order.post_no;
+            e.order_status_id = 3;
+            $('.dropdown').dropdown('hide');
+            this.this_order.order_id = 0;
+            this.this_order.post_no = '';
+          }
+        }
+      );
     }
   }
 });

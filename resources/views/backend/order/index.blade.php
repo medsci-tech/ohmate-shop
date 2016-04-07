@@ -33,7 +33,10 @@
             <tbody>
             <tr v-cloak v-for="order in page_data">
               <td>@{{ order.id }}</td>
-              <td>EMS@{{ order.post_no }}</td>
+              <td>
+                <span v-if="order.order_status_id == 3">EMS@{{ order.post_no }}</span>
+                <span v-if="order.order_status_id == 2">未发货</span>
+              </td>
               <td>
                 <ul class="list-unstyled">
                   <li v-for="item in order.commodities">@{{ item.name }}&emsp;x&emsp;@{{ item.pivot.amount }} </li>
@@ -52,14 +55,24 @@
                 @{{ order.created_at }}
               </td>
               <td>
-                <button v-if="order.order_status_id == 2" class="button button-tiny button-rounded button-border button-primary" href="#" @click="fill_order(order)">
-                标记为已发货
-                </button>
+                <div class="dropdown" v-if="order.order_status_id == 2">
+                  <button class="button button-tiny button-rounded button-border button-primary" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    填写单号
+                  </button>
+                  <form class="dropdown-menu form-signin center-block" role="form" aria-labelledby="dLabel">
+                    <h3 class="form-signin-heading text-center">请填写EMS单号</h3>
+                    <div class="form-group">
+                      <label for="post_no" class="sr-only">EMS</label>
+                      <input type="text" id="number" class="form-control" placeholder="请输入姓名" value="{{ this_order.post_no }}" name="post_no" required autofocus>
+                    </div>
+                    <button class="button button-block button-rounded button-primary button-glow" type="button" @click="fill_order(order)">确认</button>
+                  </form>
+                </div>
                 <button v-if="order.order_status_id == 3" class="button button-tiny button-rounded" disabled>
                   已发货
                 </button>
               </td>
-              <td>
+              <td v-if="false">
                 <button class="button button-tiny button-rounded button-action" href="#" @click="print">
                 打印
                 </button>
@@ -124,7 +137,7 @@
                     <input type="text" class="form-control sr-only" id="inputEmail3" placeholder="请输入姓名"
                            v-model="this_person.name">
 
-                    <p class="form-control-static">@{{ this_person.name }}</p>
+                    <p class="form-control-static">@{{  }}</p>
                   </div>
                 </div>
               </div>
@@ -135,7 +148,7 @@
                     <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
                            v-model="this_person.invited.count">
 
-                    <p class="form-control-static">@{{ this_person.invited.count }}</p>
+                    <p class="form-control-static">@{{  }}</p>
                   </div>
                 </div>
 
@@ -159,5 +172,5 @@
 
 @section('js')
   <script src="{{asset('/js/vendor/city.js')}}"></script>
-  <script src="{{asset('/js/order.js')}}"></script>
+  <script src="{{asset('/js/backend/order.js')}}"></script>
 @endsection
