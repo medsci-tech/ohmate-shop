@@ -1,6 +1,6 @@
-$(function () {
+var initialize_popover = $(function () {
   $('[data-toggle="popover"]').popover()
-})
+});
 
 $(function () {
   $('.dropdown-toggle').dropdown();
