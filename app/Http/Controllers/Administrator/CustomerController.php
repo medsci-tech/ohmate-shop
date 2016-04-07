@@ -28,6 +28,7 @@ class CustomerController extends Controller
             'success' => true,
             'data' => [
                 'customers' => Customer::where('phone', '!=', 'NULL')
+                    ->where('is_registered', 1)
                     ->with(['statistics', 'information', 'type'])
                     ->orderBy('id', 'desc')
                     ->paginate(20, ['*'])
@@ -54,7 +55,9 @@ class CustomerController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'customers' => $customers->with(['statistics', 'information', 'type'])
+                'customers' => $customers
+                    ->where('is_registered', 1)
+                    ->with(['statistics', 'information', 'type'])
                     ->orderBy('id', 'desc')
                     ->paginate(20, ['*'])
             ]
