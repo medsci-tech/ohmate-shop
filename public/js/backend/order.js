@@ -210,11 +210,11 @@ var order = new Vue({
         this.this_order,
         function (data) {
           if (data.success) {
-            e.post_no = this.this_order.post_no;
+            e.post_no = order.this_order.post_no;
             e.order_status_id = 3;
             $('.dropdown').dropdown('hide');
-            this.this_order.order_id = 0;
-            this.this_order.post_no = '';
+            order.this_order.order_id = 0;
+            order.this_order.post_no = '';
           }
         }
       );
