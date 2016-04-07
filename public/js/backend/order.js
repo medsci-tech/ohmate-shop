@@ -1,21 +1,6 @@
-var initialize_popover = function () {
-  $('[data-toggle="popover"]').popover({html: true});
-
-  $('[data-toggle="popover"]').mouseover(function () {
-    $(this).popover('show');
-    $('[data-toggle="popover"]').mouseout(function () {
-      var set = setTimeout(function () {
-        $('[data-toggle="popover"]').popover('hide')
-      }, 300);
-      $('.popover-content').mouseover(function () {
-        clearTimeout(set);
-      });
-    });
-    $('.popover-content').mouseout(function () {
-      $('[data-toggle="popover"]').popover('hide');
-    });
-  });
-};
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
 
 $(function () {
   $('.dropdown-toggle').dropdown();
@@ -212,7 +197,6 @@ var order = new Vue({
           if (data.success) {
             e.post_no = this.this_order.post_no;
             e.order_status_id = 3;
-            $('.dropdown').dropdown('hide');
             this.this_order.order_id = 0;
             this.this_order.post_no = '';
           }
