@@ -24,4 +24,26 @@ class OrderController extends Controller
     {
         return view('backend.order.index');
     }
+
+    public function orderPosted(Request $request)
+    {
+        $order_id = $request->input('order_id');
+        $post_no = $request->input('post_no');
+
+        $order = Order::findOrFail($order_id);
+
+        if ($order->order_status_id != 2) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+        $order->update([
+            'post_no' => $post_no,
+            'order_status_id' => 3
+        ]);
+
+        return response()->json([
+            'success' => true
+        ]);
+    }
 }

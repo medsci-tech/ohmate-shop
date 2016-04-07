@@ -127,6 +127,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::get('/{id}/beans', 'OrderController@beans');
         Route::get('/{id}/friends', 'OrderController@friends');
         Route::post('/{id}/update', 'OrderController@update');
+        Route::post('/order-posted', 'OrderController@orderPosted');
     });
 });
 
