@@ -65,14 +65,14 @@
                           data-container="body"
                           data-toggle="popover"
                           data-placement="bottom"
-                          data-content='<form class="form-signin center-block" role="form">
-                                          <h4 class="form-signin-heading text-center">请填写EMS单号</h4>
-                                            <div class="form-group">
-                                              <label for="post_no">EMS</label>
-                                              <input type="text" id="number" class="form-control" placeholder="请输入单号" value="@{{ this_order.post_no }}" name="post_no" required autofocus>
+                          data-content="<form class='form-signin center-block' role='form'>
+                                          <h4 class='form-signin-heading text-center'>请填写EMS单号</h4>
+                                            <div class='form-group'>
+                                              <label for='post_no'>EMS</label>
+                                              <input type='text' id='number' class='form-control' placeholder='请输入单号' value='@{{ this_order.post_no }}' name='post_no' required autofocus>
                                             </div>
-                                          <button class="button button-block button-rounded button-primary button-glow" type="button" @click="fill_order(order)">确认</button>
-                                        </form>'
+                                          <button class='button button-block button-rounded button-primary button-glow' type='button' @click='@{{ fill_order(order) }}'>确认</button>
+                                        </form>"
                   >
                     填写单号
                   </button>
