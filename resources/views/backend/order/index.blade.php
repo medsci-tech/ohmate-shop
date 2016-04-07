@@ -23,6 +23,7 @@
               <th>EMS单号</th>
               <th>订单商品</th>
               <th>收货人姓名</th>
+              <th>收货人电话</th>
               <th>收货人地址</th>
               <th>下单时间</th>
               <th>发货状态</th>
@@ -40,6 +41,9 @@
               </td>
               <td>
                 @{{ order.address.name }}
+              </td>
+              <td>
+                @{{ order.address.phone }}
               </td>
               <td>
                 @{{ order.address.province }}-@{{ order.address.city }}-@{{ order.address.district }}-@{{ order.address.address }}
