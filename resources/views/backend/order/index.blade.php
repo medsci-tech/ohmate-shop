@@ -26,7 +26,7 @@
               <th>收货人电话</th>
               <th>收货人地址</th>
               <th>下单时间</th>
-              <th width="57px">发货状态</th>
+              <th width="120px">发货状态</th>
               <th v-if="false"></th>
             </tr>
             </thead>
