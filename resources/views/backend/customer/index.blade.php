@@ -67,7 +67,7 @@
                    data-toggle="popover"
                    data-placement="bottom"
                    data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
-                   v-if="person.qrcode"
+                   v-if="person.qr_code"
                 >显示
                 </a>
               </td>
