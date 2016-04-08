@@ -458,10 +458,6 @@ var index = new Vue({
     }
     ,
     cancel_edit: function () {
-      $('#myModal').modal({
-        backdrop: true,
-        keyboard: true
-      });
       this.this_person = this.this_person_cache;
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
@@ -470,10 +466,6 @@ var index = new Vue({
     }
     ,
     edit_btn: function () {
-      $('#myModal').modal({
-        backdrop: false,
-        keyboard: false
-      });
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
@@ -507,10 +499,6 @@ var index = new Vue({
                 if (data.success) {
                   index.page_data = data.data.customers.data;
                   index.$nextTick(initialize_popover);
-                  $('#myModal').modal({
-                    backdrop: true,
-                    keyboard: true
-                  });
                 }
               },
               'json'
