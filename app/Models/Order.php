@@ -268,6 +268,6 @@ class Order extends Model
             $query->withTrashed();
         }, 'address' => function ($query) {
             $query->withTrashed();
-        }]);
+        }])->orderBy('created_at', 'desc');
     }
 }
