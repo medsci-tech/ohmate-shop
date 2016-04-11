@@ -22,12 +22,12 @@
               <th>订单ID</th>
               <th>EMS单号</th>
               <th>订单商品</th>
-              <th>收货人姓名</th>
+              <th>收货人</th>
               <th>收货人电话</th>
               <th>收货人地址</th>
               <th>下单时间</th>
-              <th>发货状态</th>
-              <th></th>
+              <th width="120px">发货状态</th>
+              <th v-if="false"></th>
             </tr>
             </thead>
             <tbody>

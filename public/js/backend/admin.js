@@ -21,8 +21,6 @@ $(function () {
   $('.dropdown-toggle').dropdown();
   $('#myModal').modal({
     show: false,
-    backdrop: false,
-    keyboard: false
   });
   city_selector();
 });
@@ -504,7 +502,7 @@ var index = new Vue({
                 }
               },
               'json'
-            )
+            );
             $('#user_card p').toggleClass('hide');
             $('#user_card button').toggleClass('hide');
             $('#user_card .form-control').toggleClass('sr-only');
