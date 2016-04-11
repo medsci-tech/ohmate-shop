@@ -15,7 +15,7 @@ class RedirectController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth.wechat');
+//        $this->middleware('auth.wechat');
     }
 
     public function articleIndex(Request $request)
