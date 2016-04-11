@@ -375,7 +375,7 @@ class Wechat
     public function sendMessage($message, $openId)
     {
         $staff = new Staff($this->_appId, $this->_secret);
-        $staff->send(Message::make($message))->to($openId);
+        $staff->send(Message::make('text')->content($message))->to($openId);
         return true;
     }
 }
