@@ -270,4 +270,9 @@ class Order extends Model
             $query->withTrashed();
         }])->orderBy('created_at', 'desc');
     }
+
+    public function toOrderMessageString()
+    {
+        return '订单ID: '. $this->id . '; 支付金额: ' . $this->cash_payment. ' 已下单, 请尽快处理';
+    }
 }

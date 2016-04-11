@@ -29,6 +29,11 @@ class PaymentController extends Controller
 
             $order->paid();
 
+
+            if ($phone = env('ORDER_ADMIN_PHONE')) {
+                \MessageSender::sendMessage($phone, $order->toOrderMessageString());
+            }
+
             $result = \Wechat::paymentNotify();
             return $result;
         }

@@ -10715,6 +10715,18 @@ namespace {
             return \App\Werashop\Message\LuosimaoMessageSender::sendMessageVerify($phone, $verify);
         }
         
+        /**
+         * 
+         *
+         * @param $phone
+         * @param $message
+         * @return int 
+         * @static 
+         */
+        public static function sendMessage($phone, $message){
+            return \App\Werashop\Message\LuosimaoMessageSender::sendMessage($phone, $message);
+        }
+        
     }
 
 
