@@ -141,5 +141,6 @@ Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Red
 
 Route::group(['prefix' => 'hack', 'middleware' => 'web', 'namespace' => 'Hack'], function () {
     Route::post('/clear-user', 'HackController@clearUser');
+    Route::get('/message', 'HackController@sendMessage');
 });
 

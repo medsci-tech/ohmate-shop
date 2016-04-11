@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-04-05.
+ * Generated for Laravel 5.2.22 on 2016-04-11.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10984,6 +10984,15 @@ namespace {
          */
         public static function urlRemoveAuthParameters($url){
             return \App\Werashop\Wechat\Wechat::urlRemoveAuthParameters($url);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function sendMessage($message, $openId){
+            return \App\Werashop\Wechat\Wechat::sendMessage($message, $openId);
         }
         
     }

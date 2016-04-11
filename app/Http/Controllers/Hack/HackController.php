@@ -31,4 +31,9 @@ class HackController extends Controller
             ]);
         }
     }
+
+    public function sendMessage()
+    {
+        \Wechat::sendMessage('您好', 'oUS_vt5i0R1ODvljFbFfKfPr8BuY');
+    }
 }

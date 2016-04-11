@@ -24,6 +24,7 @@ use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Payment\Order as WechatOrder;
 
 use App\Constants\AnalyzerConstant;
+use Overtrue\Wechat\Staff;
 
 /**
  * Class Wechat
@@ -369,5 +370,12 @@ class Wechat
     public function urlRemoveAuthParameters($url)
     {
         return preg_replace('/code=.*(&|\s)/U', '', $url);
+    }
+
+    public function sendMessage($message, $openId)
+    {
+        $staff = new Staff($this->_appId, $this->_secret);
+        $staff->send(Message::make($message))->to($openId);
+        return true;
     }
 }
