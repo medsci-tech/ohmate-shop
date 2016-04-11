@@ -11,8 +11,8 @@ class HackController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth.wechat');
-        $this->middleware('auth.access');
+//        $this->middleware('auth.wechat');
+//        $this->middleware('auth.access');
     }
 
     public function clearUser() {
@@ -30,5 +30,10 @@ class HackController extends Controller
                 'success' => false
             ]);
         }
+    }
+
+    public function sendMessage()
+    {
+        \Wechat::sendMessage('您好', 'oUS_vt5i0R1ODvljFbFfKfPr8BuY');
     }
 }

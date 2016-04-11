@@ -117,15 +117,26 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::get('/{id}/beans', 'CustomerController@beans');
         Route::get('/{id}/friends', 'CustomerController@friends');
         Route::post('/{id}/update', 'CustomerController@update');
+        Route::any('/minus-beans', 'CustomerController@minusBeans');
+    });
+
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('index', 'OrderController@index');
+        Route::get('list', 'OrderController@orderList');
+        Route::get('search', 'OrderController@search');
+        Route::get('/{id}/beans', 'OrderController@beans');
+        Route::get('/{id}/friends', 'OrderController@friends');
+        Route::post('/{id}/update', 'OrderController@update');
+        Route::post('/order-posted', 'OrderController@orderPosted');
     });
 });
 
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
     Route::get('/article-index', 'RedirectController@articleIndex');
     Route::get('/shop-index', 'RedirectController@shopIndex');
+    Route::post('/article-index', 'RedirectController@postArticleIndex');
+    Route::get('/web-shop-index', 'RedirectController@webShopIndex');
+    Route::get('/close', 'RedirectController@close');
 });
 
 
-Route::group(['prefix' => 'hack', 'middleware' => 'web', 'namespace' => 'Hack'], function () {
-    Route::post('/clear-user', 'HackController@clearUser');
-});

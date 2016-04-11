@@ -30,7 +30,7 @@ class OrderController extends Controller
     public function index()
     {
         $customer = \Helper::getCustomer();
-        $orders = $customer->paidOrders()->get();
+        $orders = $customer->paidOrdersWithCommodities()->get();
 
         return view('shop.order')->with([
             'orders' => $orders
@@ -51,38 +51,39 @@ class OrderController extends Controller
     }
 
     public function test(Request $request) {
-//        $access_token = \Wechat::getWebAuthAccessToken();
-//
-//        $timestamp = Carbon::now()->getTimestamp();
-//        $addr_sign = [
-//            'accesstoken='. $access_token,
-//            'appid='.\Wechat::getAppId(),
-//            'noncestr=123456',
-//            'timestamp='. $timestamp,
-//            'url='.$request->fullUrl()
-//        ];
-//        sort($addr_sign);
-//
-//        $addr_sign = implode('&', $addr_sign);
-//
-//        return view('shop.test')->with([
-//            'appId' => env('WX_APPID'),
-//            'timestamp' => $timestamp,
-//            'addrSign' => sha1($addr_sign),
-//            'url' => $request->fullUrl(),
-//            'js' => \Wechat::getJssdkConfig([
-//                'checkJsApi',
-//                'editAddress',
-//                'chooseWXPay',
-//                'getLatestAddress',
-//                'openCard',
-//                'getLocation'
-//            ])
-//        ]);
+        $access_token = \Wechat::getWebAuthAccessToken();
 
-        return view('backend.article.customer_index')->with([
-            'items' => Article::paginate(10)
+        $timestamp = Carbon::now()->getTimestamp();
+        $addr_sign = [
+            'accesstoken='. $access_token,
+            'appid='.\Wechat::getAppId(),
+            'noncestr=123456',
+            'timestamp='. $timestamp,
+            'url='.$request->fullUrl()
+        ];
+        sort($addr_sign);
+
+        $addr_sign = implode('&', $addr_sign);
+
+        return view('shop.test')->with([
+            'appId' => env('WX_APPID'),
+            'timestamp' => $timestamp,
+            'addrSign' => sha1($addr_sign),
+            'url' => $request->fullUrl(),
+            'js' => \Wechat::getJssdkConfig([
+                'checkJsApi',
+                'editAddress',
+                'openAddress',
+                'chooseWXPay',
+                'getLatestAddress',
+                'openCard',
+                'getLocation'
+            ])
         ]);
+
+//        return view('backend.article.customer_index')->with([
+//            'items' => Article::paginate(10)
+//        ]);
     }
 
 

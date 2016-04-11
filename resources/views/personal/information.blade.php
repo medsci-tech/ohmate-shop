@@ -28,6 +28,15 @@
         </div>
 
         <div class="weui_cells weui_cells_access">
+            <a href="/shop/order" class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>我的订单</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>
+        </div>
+
+        <div class="weui_cells weui_cells_access">
             <a href="/personal/beans" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>迈豆余额</p>

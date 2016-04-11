@@ -21,8 +21,6 @@ $(function () {
   $('.dropdown-toggle').dropdown();
   $('#myModal').modal({
     show: false,
-    backdrop: false,
-    keyboard: false
   });
   city_selector();
 });
@@ -40,16 +38,17 @@ var index = new Vue({
     page_num: 0,
     page_data: [{
       id: 1,
-      name: '',
       phone: '',
       email: '',
       nickname: '',
-      hospital: {
+      information: {
         name: '',
+        hospital: '',
         province: '',
         city: '',
-        area: '',
-        location: ''
+        district: '',
+        remark: '',
+        department: '',
       },
       statistics: {friend_count: 0},
       type: {type_ch: ''},
@@ -108,7 +107,8 @@ var index = new Vue({
       }
     },
 
-    this_person_cache: ''
+    this_person_cache: '',
+    beans_edit: 0,
   },
   computed: {
     page_show: function () {
@@ -147,101 +147,98 @@ var index = new Vue({
 
   methods: {
     choose_data: function (e) {
-      var dom = e.currentTarget;
       var name = e.target.innerHTML;
-      if (dom.className != 'active') {
-        if (name == '医生') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '医生';
-        }
-        if (name == '护士') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '护士';
-        }
-        if (name == '志愿者') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '志愿者';
-        }
-        if (name == '普通用户') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '普通用户';
-        }
-        if (name == '企业用户') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '企业用户';
-        }
-        if (name == '所有用户') {
-          index.data_head = {
-            id: '#',
-            name: '姓名',
-            phone: '手机号',
-            address: '地址',
-            hospital: '医院',
-            invited: '邀请糖友数',
-            beans: '迈豆数',
-            qr_code: '二维码'
-          };
-          index.searching.user_type = '所有用户';
-        }
-        $.get(index.get_url,
-          {},
-          function (data) {
-            if (data.success) {
-              index.searched = '';
-              index.page_all = data.data.customers.last_page;
-              index.page_active = data.data.customers.current_page;
-              index.page_data = data.data.customers.data;
-              index.$nextTick(initialize_popover);
-            }
-          },
-          'json'
-        );
+      if (name == '医生') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '医生';
       }
+      if (name == '护士') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '护士';
+      }
+      if (name == '志愿者') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '志愿者';
+      }
+      if (name == '普通用户') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '普通用户';
+      }
+      if (name == '企业用户') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '企业用户';
+      }
+      if (name == '所有用户') {
+        index.data_head = {
+          id: '#',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          qr_code: '二维码'
+        };
+        index.searching.user_type = '所有用户';
+      }
+      $.get(index.get_url,
+        {},
+        function (data) {
+          if (data.success) {
+            index.searched = '';
+            index.page_all = data.data.customers.last_page;
+            index.page_active = data.data.customers.current_page;
+            index.page_data = data.data.customers.data;
+            index.$nextTick(initialize_popover);
+          }
+        },
+        'json'
+      );
     }
     ,
     choose_page: function (e) {
@@ -387,20 +384,28 @@ var index = new Vue({
     ,
     person_detail: function (e) {
       $('#myModal').modal('show');
-      with (this.this_person) {
-        id = e.id;
-        name = e.name;
-        type_id = e.type_id;
-        hospital = e.hospital;
-        province = e.province;
-        city = e.city;
-        district = e.district;
-        remark = e.remark;
-      }
-      if (e.department) {
-        this.this_person.department = e.department;
+      this.this_person.id = e.id;
+      this.this_person.type_id = e.type_id;
+      if (e.information) {
+        with (this.this_person) {
+          name = e.information.name;
+          hospital = e.information.hospital;
+          province = e.information.province;
+          city = e.information.city;
+          district = e.information.district;
+          remark = e.information.remark;
+          department = e.information.department;
+        }
       } else {
-        this.this_person.department = '';
+        with (this.this_person) {
+          name = '';
+          hospital = '';
+          province = '';
+          city = '';
+          district = '';
+          remark = '';
+          department = '';
+        }
       }
       with (this.other_info) {
         phone = e.phone;
@@ -408,43 +413,48 @@ var index = new Vue({
         beans_total = e.beans_total;
         qr_code = e.qr_code;
       }
-      if (e.hospital) {
-        $('#province').val(index.this_person.hospital.province);
+      if (index.this_person.province != '') {
+        $('#province').val(index.this_person.province);
         $('#province').trigger('change');
-        $('#city').val(index.this_person.hospital.city);
+        $('#city').val(index.this_person.city);
         $('#city').trigger('change');
-        $('#area').val(index.this_person.hospital.district);
+        $('#area').val(index.this_person.district);
         $('#area').trigger('change');
       }
       if (e.statistics) {
         index.other_info.statistics.friend_count = e.statistics.friend_count;
+      } else {
+        index.other_info.statistics.friend_count = '';
       }
       if (e.type) {
         index.other_info.type.type_ch = e.type.type_ch;
+      } else {
+        index.other_info.type.type_ch = '';
       }
       this.this_person_cache = JSON.parse(JSON.stringify(this.this_person));
-      $.get('/customer/invited',
-        {
-          id: this.this_person.id,
-          page: this.other_info.invited.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.other_info.invited.page_data = data.data
-          }
-        }
-      );
-      $.get('/customer/beans',
-        {
-          id: this.this_person.id,
-          page: this.other_info.beans.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.other_info.beans.page_data = data.data
-          }
-        }
-      );
+      this.beans_cache = this.other_info.beans_total;
+      //$.get('/customer/invited',
+      //  {
+      //    id: this.this_person.id,
+      //    page: this.other_info.invited.page_num
+      //  },
+      //  function (data) {
+      //    if (data.success) {
+      //      this.other_info.invited.page_data = data.data
+      //    }
+      //  }
+      //);
+      //$.get('/customer/beans',
+      //  {
+      //    id: this.this_person.id,
+      //    page: this.other_info.beans.page_num
+      //  },
+      //  function (data) {
+      //    if (data.success) {
+      //      this.other_info.beans.page_data = data.data
+      //    }
+      //  }
+      //);
     }
     ,
     cancel_edit: function () {
@@ -452,16 +462,32 @@ var index = new Vue({
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
+      $('#beans_edit').toggleClass('hide');
     }
     ,
     edit_btn: function () {
       $('#user_card p').toggleClass('hide');
       $('#user_card button').toggleClass('hide');
       $('#user_card .form-control').toggleClass('sr-only');
+      $('#beans_edit').toggleClass('hide');
     }
     ,
     submit_edit: function () {
-      $.post('customer/' + this.this_person.id + '/update', this.this_person,
+      var beans_edit = {
+        action: '管理员操作',
+        result: (this.beans_edit + this.other_info.beans_total) > 0 ? this.beans_edit : this.other_info.beans_total * (-1)
+      };
+      console.log(beans_edit.action);
+      console.log(beans_edit.result);
+
+      //if (beans_edit.result != 0) {
+      //  $.post('/',beans_edit,function (data) {
+      //    if (data.success) {
+      //       this.other_info.beans_total += this.beans_edit;
+      //    }
+      //  });
+      //}
+      $.post('/customer/' + this.this_person.id + '/update', this.this_person,
         function (data) {
           if (data.success) {
             $.get(index.get_url,
@@ -476,11 +502,11 @@ var index = new Vue({
                 }
               },
               'json'
-            )
+            );
             $('#user_card p').toggleClass('hide');
             $('#user_card button').toggleClass('hide');
             $('#user_card .form-control').toggleClass('sr-only');
-            $('#myModal').modal('hide');
+            $('#beans_edit').toggleClass('hide');
           }
         }, 'json'
       );
@@ -513,7 +539,7 @@ switch (click_btn) {
 }
 $(click_btn).trigger('click');
 
-$('.nav').firstChild().children().addClass('active');
+$('.nav').children().eq(0).children().addClass('active');
 
 
 

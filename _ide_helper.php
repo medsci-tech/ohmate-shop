@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-03-29.
+ * Generated for Laravel 5.2.22 on 2016-04-11.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10715,6 +10715,18 @@ namespace {
             return \App\Werashop\Message\LuosimaoMessageSender::sendMessageVerify($phone, $verify);
         }
         
+        /**
+         * 
+         *
+         * @param $phone
+         * @param $message
+         * @return int 
+         * @static 
+         */
+        public static function sendMessage($phone, $message){
+            return \App\Werashop\Message\LuosimaoMessageSender::sendMessage($phone, $message);
+        }
+        
     }
 
 
@@ -10986,6 +10998,15 @@ namespace {
             return \App\Werashop\Wechat\Wechat::urlRemoveAuthParameters($url);
         }
         
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function sendMessage($message, $openId){
+            return \App\Werashop\Wechat\Wechat::sendMessage($message, $openId);
+        }
+        
     }
 
 
@@ -11139,6 +11160,15 @@ namespace {
          */
         public static function executeEducation($customer){
             return \App\Werashop\Bean\BeanRecharger::executeEducation($customer);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function executeTransferCash($customer, $value){
+            return \App\Werashop\Bean\BeanRecharger::executeTransferCash($customer, $value);
         }
         
     }

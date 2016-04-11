@@ -36,12 +36,26 @@
             <tbody>
             <tr v-cloak v-for="person in page_data">
               <td v-if="data_head.id">@{{person.id}}</td>
-              <td v-if="data_head.name">@{{person.name}}</td>
+              <td v-if="data_head.name">
+                <div v-if="person.information">
+                  @{{person.information.name}}
+                </div>
+              </td>
               <td v-if="data_head.phone">@{{person.phone}}</td>
-              <td v-if="data_head.hospital">@{{person.hospital.name}}</td>
-              <td v-if="data_head.address">@{{person.hospital.province}}-@{{person.hospital.city}}-@{{person.hospital.area}}-@{{person.hospital.location}}</td>
+              <td v-if="data_head.hospital">
+                <div v-if="person.information">
+                  @{{person.information.hospital}}
+                </div>
+              </td>
+              <td v-if="data_head.address">
+                <div v-if="person.information">
+                  @{{person.information.province}}-@{{person.information.city}}-@{{person.information.district}}
+                </div>
+              </td>
               <td v-if="data_head.invited">
-                @{{person.statistics.friend_count}}
+                <div v-if="person.statistics">
+                  @{{person.statistics.friend_count}}
+                </div>
               </td>
               <td v-if="data_head.beans">
                 @{{person.beans_total}}
@@ -53,11 +67,12 @@
                    data-toggle="popover"
                    data-placement="bottom"
                    data-content="<img class='img-responsive' src='@{{person.qr_code}}'>"
+                   v-if="person.qr_code"
                 >显示
                 </a>
               </td>
               <td>
-                <a @click="person_detail(person)">详情</a>
+                <a tabindex="0" role="button" @click="person_detail(person)">详情</a>
               </td>
             </tr>
             </tbody>
@@ -112,7 +127,6 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <br>
               <div class="col-sm-6">
                 <div class="form-group">
@@ -208,7 +222,7 @@
                 <div class="form-group">
                   <label for="invited" class="col-sm-3 control-label">糖友数</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
+                    <input type="number" class="form-control sr-only" id="invited" placeholder="邀请糖友数" disabled
                            v-model="other_info.statistics.friend_count">
 
                     <p class="form-control-static">@{{ other_info.statistics.friend_count }}</p>
@@ -217,10 +231,19 @@
                 <div class="form-group">
                   <label for="beans" class="col-sm-3 control-label">迈豆数</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数"
+                    <input type="number" class="form-control sr-only" id="beans" placeholder="请输入迈豆数" disabled
                            v-model="other_info.beans_total">
 
                     <p class="form-control-static">@{{ other_info.beans_total }}</p>
+                  </div>
+                </div>
+                <div class="form-group hide" id="beans_edit">
+                  <label for="beans_edit" class="col-sm-3 control-label">迈豆修改</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control sr-only" id="beans_edit" placeholder="请输入迈豆数"
+                           v-model="beans_edit">
+
+                    <p class="form-control-static">@{{ beans_edit }}</p>
                   </div>
                 </div>
                 <div class="form-group">
@@ -241,7 +264,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" v-if="false">
         <div class="modal-content col-xs-12 ">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel2">邀请总数&emsp;@{{ other_info.statistics.friend_count }}</h4>
@@ -350,5 +373,5 @@
 
 @section('js')
   <script src="{{asset('/js/vendor/city.js')}}"></script>
-  <script src="{{asset('/js/admin.js')}}"></script>
+  <script src="{{asset('/js/backend/admin.js')}}"></script>
 @endsection

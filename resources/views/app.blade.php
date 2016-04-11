@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>易康伴侣-后台</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <title>易康伴侣-后台</title>
+  <link rel="shortcut icon" href="/favicon.ico">
 
     <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
     @yield('css')
@@ -18,9 +21,14 @@
 <script src="{{asset('/js/vendor/bootstrap.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-  $('.nav li a').onclick(function(){
+  $('.nav li a').click(function(){
       $(this).addClass('active');
-  })
+  });
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 </script>
 @yield('js')
 </body>

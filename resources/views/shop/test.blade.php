@@ -30,7 +30,7 @@
 
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 <script>
     wx.config({!! $js !!});
 
@@ -46,8 +46,17 @@
                 'getLocation'
             ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
             success: function(res) {
+                alert('check success')
                 $("#a").click(function () {
-                    editAddressCallback();
+                  alert('click success')
+                    wx.openAddress({
+                        success: function () {
+                          alert('success')
+                        },
+                        cancel: function () {
+                          alert('cancel')
+                        }
+                    })
                 });
             },
             fail: function(res) {

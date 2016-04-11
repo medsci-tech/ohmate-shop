@@ -54,7 +54,7 @@ class BeanRecharger
      */
     protected function update(Customer $customer, $action, $beans_changed)
     {
-        if ($action == AppConstant::BEAN_ACTION_CONSUME) {
+        if ($action == AppConstant::BEAN_ACTION_CONSUME or  $action == AppConstant::BEAN_ACTION_TRANSFER_CASH) {
             if ($beans_changed >= $customer->beans_total) {
                 \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($customer->beans_total));
                 $customer->beans_total = 0;
@@ -237,5 +237,10 @@ class BeanRecharger
             $this->study($customer) ||
             $this->educationVolunteerFeedback($customer)
         );
+    }
+
+    public function executeTransferCash(Customer $customer, $value)
+    {
+        $this->recharge($customer, AppConstant::BEAN_ACTION_TRANSFER_CASH, $value);
     }
 }

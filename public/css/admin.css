@@ -81,6 +81,14 @@ body {
       margin-bottom: 5px; }
     #index .modal-body .table {
       margin-bottom: 0; }
+  #index .dropdown {
+    position: inherit;}
+    #index .dropdown .dropdown-menu {
+      top: inherit;
+      left: inherit;
+      right: 38px;
+      text-align: center;
+      padding: 5px 10px; }
   @media (max-width: 767px) {
     #index .sidebar {
       position: inherit;

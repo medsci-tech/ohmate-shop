@@ -40,7 +40,7 @@
         </tr>
         <tr>
           <th>收货地址</th>
-          <td colspan="2">@{{ address.address }}</td>
+          <td colspan="2">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
         </tr>
       </table>
     </div>
@@ -72,7 +72,7 @@
         <tr>
           <td>合计</td>
           <td></td>
-          <th>@{{ total_price | currency '￥' }}</th>
+          <th>@{{ cash_payment | currency '￥' }}</th>
         </tr>
         </tfoot>
 

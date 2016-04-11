@@ -24,6 +24,7 @@ use Overtrue\Wechat\Server;
 use Overtrue\Wechat\Payment\Order as WechatOrder;
 
 use App\Constants\AnalyzerConstant;
+use Overtrue\Wechat\Staff;
 
 /**
  * Class Wechat
@@ -121,11 +122,12 @@ class Wechat
                 new MenuItem('每日活动', 'view', url('/activity/daily')),
                 neW MenuItem('注册', 'view', url('/register/create'))
             ]),
-            (new MenuItem("礼品商城"))->buttons([
-                new MenuItem('我的地址', 'view', url('/shop/address')),
+            (new MenuItem("学习换礼"))->buttons([
+//                new MenuItem('我的地址', 'view', url('/shop/address')),
+                new MenuItem('地址测试', 'view', url('/shop/address/test')),
                 new MenuItem('我的订单', 'view', url('/shop/order')),
-                new MenuItem('商城首页', 'view', url('/shop/index')),
-//                new MenuItem('地址测试', 'view', url('/shop/address/test')),
+                new MenuItem('换礼规则', 'view', url('/personal/bean-rules')),
+                new MenuItem('积分商城', 'view', url('/shop/index')),
             ]),
             (new MenuItem("个人中心"))->buttons([
 //                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
@@ -339,7 +341,7 @@ class Wechat
     public function getJssdkConfig($array)
     {
         $js = new Js($this->_appId, $this->_secret);
-        return $js->config($array, true);
+        return $js->config($array);
     }
 
     /**
@@ -368,5 +370,12 @@ class Wechat
     public function urlRemoveAuthParameters($url)
     {
         return preg_replace('/code=.*(&|\s)/U', '', $url);
+    }
+
+    public function sendMessage($message, $openId)
+    {
+        $staff = new Staff($this->_appId, $this->_secret);
+        $staff->send(Message::make('text')->content($message))->to($openId);
+        return true;
     }
 }

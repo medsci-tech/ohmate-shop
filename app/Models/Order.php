@@ -74,7 +74,7 @@ class Order extends Model
         if ($this->status->name == 'paying' && $next = $this->status->next()) {
             \BeanRecharger::executeConsume($this->customer, $this->total_price - $this->post_fee);
             $this->beans_payment = $this->beans_payment_calculated;
-            $this->setPostNo();
+//            $this->setPostNo(); //先拿掉了
             $this->updateStatistics();
             $this->status()->associate($next);
             return $this->save();
@@ -82,6 +82,9 @@ class Order extends Model
         return false;
     }
 
+    /**
+     *
+     */
     protected function updateStatistics()
     {
         foreach ($this->commodities()->get(['id'])->pluck('id') as $commodity_id) {
@@ -246,10 +249,30 @@ class Order extends Model
         }])->first()->toJson();
     }
 
+    /**
+     * @return $this
+     */
     public function setPostNo() {
         $post = new EmsPost();
 
         $this->update(['post_no' => $post->getMailNo()]);
         return $this;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     */
+    public static function getPaidOrdersWithRelated()
+    {
+        return Order::where('order_status_id', '>', 1)->with(['customer', 'commodities' => function ($query) {
+            $query->withTrashed();
+        }, 'address' => function ($query) {
+            $query->withTrashed();
+        }])->orderBy('created_at', 'desc');
+    }
+
+    public function toOrderMessageString()
+    {
+        return '订单ID: '. $this->id . '; 支付金额: ' . $this->cash_payment. ' 已下单, 请尽快处理';
     }
 }

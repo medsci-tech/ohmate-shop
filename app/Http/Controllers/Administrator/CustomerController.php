@@ -13,6 +13,11 @@ use App\Http\Controllers\Controller;
 class CustomerController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('backend.customer.index');
@@ -23,6 +28,7 @@ class CustomerController extends Controller
             'success' => true,
             'data' => [
                 'customers' => Customer::where('phone', '!=', 'NULL')
+                    ->where('is_registered', 1)
                     ->with(['statistics', 'information', 'type'])
                     ->orderBy('id', 'desc')
                     ->paginate(20, ['*'])
@@ -49,7 +55,9 @@ class CustomerController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'customers' => $customers->with(['statistics', 'information', 'type'])
+                'customers' => $customers
+                    ->where('is_registered', 1)
+                    ->with(['statistics', 'information', 'type'])
                     ->orderBy('id', 'desc')
                     ->paginate(20, ['*'])
             ]
@@ -105,10 +113,17 @@ class CustomerController extends Controller
             'remark' => $request->input('remark'),
         ]);
 
-        $customer->update([
-            'beans_total' => $request->input('beans_total'),
-            'type_id' => $request->input('type_id'),
-        ]);
+        if ($request->has('beans_total')) {
+            $customer->update([
+                'beans_total' => $request->input('beans_total'),
+            ]);
+        }
+
+        if ($request->has('type_id')) {
+            $customer->update([
+                'type_id' => $request->input('type_id')
+            ]);
+        }
 
         return response()->json([
             'success' => true,
@@ -116,5 +131,13 @@ class CustomerController extends Controller
                 'customer' => $customer->with('information')
             ]
         ]);
+    }
+
+    public function minusBeans(Request $request)
+    {
+        $customer = Customer::find($request->input('customer_id'));
+        $amount = $request->input('amount');
+
+        return $customer->minusBeansByHand($amount);
     }
 }
