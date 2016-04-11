@@ -40,7 +40,7 @@
         </tr>
         <tr>
           <th>收货地址</th>
-          <td colspan="2">@{{ address.address }}</td>
+          <td colspan="2">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
         </tr>
       </table>
     </div>

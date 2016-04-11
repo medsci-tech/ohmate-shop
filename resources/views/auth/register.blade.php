@@ -20,6 +20,7 @@
 
     <form class="form-signin center-block" role="form" method="POST" action="{{ url('/register') }}">
       <h2 class="form-signin-heading text-center">请填写信息</h2>
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class="form-group">
         <label for="name" class="sr-only">请输入真实姓名</label>

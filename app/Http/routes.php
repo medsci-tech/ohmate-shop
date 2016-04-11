@@ -13,10 +13,6 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::get('/test', function () {
-        return view('/test/test');
-    });
-
     Route::get('/', function () {
         return redirect('/home');
     });
@@ -131,11 +127,13 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::get('/{id}/beans', 'OrderController@beans');
         Route::get('/{id}/friends', 'OrderController@friends');
         Route::post('/{id}/update', 'OrderController@update');
+        Route::post('/order-posted', 'OrderController@orderPosted');
     });
 });
 
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
     Route::get('/article-index', 'RedirectController@articleIndex');
+    Route::post('/article-index', 'RedirectController@postArticleIndex');
     Route::get('/web-shop-index', 'RedirectController@webShopIndex');
     Route::get('/close', 'RedirectController@close');
 });

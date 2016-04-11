@@ -23,6 +23,7 @@
               <th>EMS单号</th>
               <th>订单商品</th>
               <th>收货人姓名</th>
+              <th>收货人电话</th>
               <th>收货人地址</th>
               <th>下单时间</th>
               <th>发货状态</th>
@@ -32,14 +33,20 @@
             <tbody>
             <tr v-cloak v-for="order in page_data">
               <td>@{{ order.id }}</td>
-              <td>EMS@{{ order.post_no }}</td>
               <td>
-                <ul class="list-unstyled">
+                <span v-if="order.order_status_id == 3">EMS@{{ order.post_no }}</span>
+                <span v-if="order.order_status_id == 2">未发货</span>
+              </td>
+              <td>
+                <ul class="list-unstyled" style="margin-bottom: 0px;">
                   <li v-for="item in order.commodities">@{{ item.name }}&emsp;x&emsp;@{{ item.pivot.amount }} </li>
                 </ul>
               </td>
               <td>
                 @{{ order.address.name }}
+              </td>
+              <td>
+                @{{ order.address.phone }}
               </td>
               <td>
                 @{{ order.address.province }}-@{{ order.address.city }}-@{{ order.address.district }}-@{{ order.address.address }}
@@ -48,14 +55,23 @@
                 @{{ order.created_at }}
               </td>
               <td>
-                <button v-if="order.order_status_id == 2" class="button button-tiny button-rounded button-border button-primary" href="#" @click="fill_order(order)">
-                标记为已发货
-                </button>
+                <div class="dropdown" v-if="order.order_status_id == 2">
+                  <button class="button button-tiny button-rounded button-border button-primary" id="@{{ order.id }}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    填写单号
+                  </button>
+                  <form class="dropdown-menu" role="form" aria-labelledby="@{{ order.id }}">
+                    <div class="form-group">
+                      <label for="post_no">请填写EMS单号</label>
+                      <input type="text" id="number" class="form-control" placeholder="请输入单号" v-model="this_order.post_no" name="post_no" required autofocus>
+                    </div>
+                    <button class="button button-rounded button-primary button-small" type="button" @click="fill_order(order)">确认</button>
+                  </form>
+                </div>
                 <button v-if="order.order_status_id == 3" class="button button-tiny button-rounded" disabled>
                   已发货
                 </button>
               </td>
-              <td>
+              <td v-if="false">
                 <button class="button button-tiny button-rounded button-action" href="#" @click="print">
                 打印
                 </button>
@@ -120,7 +136,7 @@
                     <input type="text" class="form-control sr-only" id="inputEmail3" placeholder="请输入姓名"
                            v-model="this_person.name">
 
-                    <p class="form-control-static">@{{ this_person.name }}</p>
+                    <p class="form-control-static">@{{  }}</p>
                   </div>
                 </div>
               </div>
@@ -131,7 +147,7 @@
                     <input type="number" class="form-control sr-only disabled" id="invited" placeholder="邀请糖友数" disabled
                            v-model="this_person.invited.count">
 
-                    <p class="form-control-static">@{{ this_person.invited.count }}</p>
+                    <p class="form-control-static">@{{  }}</p>
                   </div>
                 </div>
 
@@ -155,5 +171,5 @@
 
 @section('js')
   <script src="{{asset('/js/vendor/city.js')}}"></script>
-  <script src="{{asset('/js/order.js')}}"></script>
+  <script src="{{asset('/js/backend/order.js')}}"></script>
 @endsection
