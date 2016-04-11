@@ -225,9 +225,7 @@ class Customer extends Model
     {
         if (!\Cache::has($this->getCacheArticleBeanFeedKey())) {
             \Cache::put($this->getCacheArticleBeanFeedKey(), 1, 1440);
-        }
-
-        if (\Cache::get($this->getCacheArticleBeanFeedKey()) < 5) {
+        } else if (\Cache::get($this->getCacheArticleBeanFeedKey()) < 5) {
             \Cache::increment($this->getCacheArticleBeanFeedKey());
         }
 
