@@ -24,6 +24,7 @@
           @endcan
           @can('order_administration')
             <li><a href="{{ url('/order/index') }}">订单管理</a></li>
+            <li><a href="{{ url('/order/gift-card') }}">卡券管理</a></li>
           @endcan
           <li>
             <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true"
