@@ -95,8 +95,10 @@ class RedirectController extends Controller
                 'openid' => $customer->openid
             ]);
             return redirect('/shop/index');
-        }
-        else {
+        } else {
+            if ($request->has('cooperator_id')) {
+                return redirect('http://www.ohmate.cn/redirect/web-shop-index?cooperator_id=' . $request->input('cooperator_id'));
+            }
             return redirect('http://www.ohmate.cn/redirect/web-shop-index');
         }
 
