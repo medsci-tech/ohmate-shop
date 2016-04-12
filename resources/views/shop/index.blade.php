@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>易康商城</title>
     <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/yk-web.css')}}">
 
 </head>
 <body>
@@ -45,7 +45,7 @@
                     <div class="caption">
                         <p>{{$item->name}}</p>
                         <p class="small">{{$item->remark}}</p>
-                        <strong>￥{{$item->price}}</strong><span>/<small>{{intval($item->price * 100)}}迈豆</small></span>
+                        <span>￥{{$item->price}}&numsp;</span>
                     </div>
                 </div>
             </a>
@@ -53,6 +53,15 @@
         @endforeach
 
     </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom" id="index_nav_button">
+        <div>
+            <a href="#" class="button button-action col-xs-6" role="link">订单</a>
+            <a href="#" class="button button-highlight col-xs-6" role="link">购物车</a>
+        </div>
+    </nav>
+
+    <br><br><br>
 
 </div>
 
@@ -69,27 +78,27 @@
         speed: 500,
     });
 </script>
-<script>
-    var cart_num = '';
-    if (typeof localStorage.cart != 'undefined') {
-        var j = JSON.parse(localStorage.cart);
-        for (i=0; i < j.length; i++) ;
-        if (i != 0){
-            cart_num = i;
-        }
-    }
-    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a id="touch_btn1" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
-    var touch1 = document.getElementById('touch1');
-    var touch_btn1 = document.getElementById('touch_btn1');
-    touch_btn1.addEventListener('touchmove', function (event) {
-        event.preventDefault();
-        if (event.targetTouches.length == 1) {
-            var position = event.targetTouches[0];
-            touch1.style.left = position.clientX - 30 + 'px';
-            touch1.style.top = position.clientY - 30 + 'px';
-            touch1.style.background = "";
-        }
-    }, false);
-</script>
+{{--<script>--}}
+    {{--var cart_num = '';--}}
+    {{--if (typeof localStorage.cart != 'undefined') {--}}
+        {{--var j = JSON.parse(localStorage.cart);--}}
+        {{--for (i=0; i < j.length; i++) ;--}}
+        {{--if (i != 0){--}}
+            {{--cart_num = i;--}}
+        {{--}--}}
+    {{--}--}}
+    {{--$('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a id="touch_btn1" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')--}}
+    {{--var touch1 = document.getElementById('touch1');--}}
+    {{--var touch_btn1 = document.getElementById('touch_btn1');--}}
+    {{--touch_btn1.addEventListener('touchmove', function (event) {--}}
+        {{--event.preventDefault();--}}
+        {{--if (event.targetTouches.length == 1) {--}}
+            {{--var position = event.targetTouches[0];--}}
+            {{--touch1.style.left = position.clientX - 30 + 'px';--}}
+            {{--touch1.style.top = position.clientY - 30 + 'px';--}}
+            {{--touch1.style.background = "";--}}
+        {{--}--}}
+    {{--}, false);--}}
+{{--</script>--}}
 </body>
 </html>
