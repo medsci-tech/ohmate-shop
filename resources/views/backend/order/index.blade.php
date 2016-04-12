@@ -82,12 +82,12 @@
         </div>
         <nav class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
           <ul class="pagination" @click="choose_page">
-          <li v-if="page_active > 1">
+          <li :class="page_active > 1?'':'disabled'">
             <a href="#" aria-label="Previous" name="pre">
               &laquo;
             </a>
           </li>
-          <li v-if="page_show > 1">
+          <li :class="page_show > 1?'':'disabled'">
             <a href="#" aria-label="Previous5" name="pre5">
               &hellip;
             </a>
@@ -101,12 +101,12 @@
               href="#">@{{ page_show+3 }}</a></li>
           <li :class="(page_active == page_show+4)?'active':''" v-if="(page_show+4)<=page_all"><a
               href="#">@{{ page_show+4 }}</a></li>
-          <li v-if="(page_show+5)<=page_all">
+          <li :class="(page_show+5)<=page_all?'':'disabled'">
             <a href="#" name="next5" aria-label="Next5">
               &hellip;
             </a>
           </li>
-          <li v-if="page_active < page_all">
+          <li :class="page_active < page_all?'':'disabled'">
             <a href="#" aria-label="Next" name="next">
               &raquo;
             </a>
