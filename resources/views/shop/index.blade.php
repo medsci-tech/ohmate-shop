@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>易康商城</title>
     <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/yk-web.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
 
 </head>
 <body>
