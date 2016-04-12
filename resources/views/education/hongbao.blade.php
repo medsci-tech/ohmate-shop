@@ -11,7 +11,7 @@
   </script>
 </head>
 <body>
-<div class="actionsheet" style="overflow: hidden">
+<div class="actionsheet" style="overflow: hidden" id="hongbao">
   <!--BEGIN actionSheet-->
   <div id="actionSheet_wrap">
     <div class="weui_mask_transition" id="mask" style="display: none;"></div>
@@ -91,6 +91,10 @@
 
     $('#motto').text(mottos[j]);
   });
+  var vm = new Vue({
+    el:'#hongbao',
+    data:''
+  })
 </script>
 </body>
 </html>
