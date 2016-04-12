@@ -31,9 +31,10 @@ a, a:focus, a:hover {
 .shop-index .row .thumbnail .caption span {
   color: #fff;
   background-color: #008CBA; }
+.shop-index #index_nav_button {
+  bottom: -9px; }
 .shop-index #index_nav_button a {
-  color: #fff;
-  height: 50px; }
+  color: #fff; }
 .shop-index #index_nav_button a:nth-child(1) {
   background-color: #008CBA;
   border-right: 1px solid #fff; }
