@@ -31,6 +31,8 @@ a, a:focus, a:hover {
       font-weight: 700; }
     .shop-index .row .thumbnail .caption strong {
       color: #f71212; }
+.shop-index #index_nav_button button {
+  height: 50px; }
 
 #cart_form .row, #order_details .row {
   margin: 5px -10px 0 -10px; }
@@ -96,6 +98,69 @@ a, a:focus, a:hover {
     width: 100%;
     padding: 0; }
   #cart_form .navbar-fixed-bottom .col-xs-5, #order_details .navbar-fixed-bottom .col-xs-5 {
+    border-left: 1px solid #eee; }
+
+#gift_card .row {
+  margin: 5px -10px 0 -10px; }
+#gift_card .panel .panel-heading {
+  padding-bottom: 5px; }
+  #gift_card .panel .panel-heading span {
+    float: right; }
+#gift_card .media {
+  position: relative; }
+  #gift_card .media .media-object {
+    width: 80px; }
+  #gift_card .media .media-body p {
+    width: 100%;
+    margin-top: 3em; }
+    #gift_card .media .media-body p strong {
+      float: left;
+      color: #f71212; }
+    #gift_card .media .media-body p > span {
+      float: right; }
+      #gift_card .media .media-body p > span span {
+        width: 2em;
+        text-align: center; }
+  #gift_card .media .media-body > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 18px;
+    color: #a3a3a3; }
+#gift_card .table1 tr td:nth-child(1), #gift_card .table1 tr th:nth-child(1) {
+  padding-left: 15px; }
+#gift_card .table1 tr td:nth-child(2), #gift_card .table1 tr th:nth-child(2) {
+  text-align: right; }
+#gift_card .table1 tr td:nth-child(3), #gift_card .table1 tr th:nth-child(3) {
+  text-align: right;
+  padding-right: 15px; }
+#gift_card .table1 tfoot tr:first-child, #gift_card .table1 tfoot tr:last-child {
+  border-top: 1px solid #ddd; }
+#gift_card .table1 tfoot td {
+  border: none; }
+#gift_card .table2 tr :first-child {
+  width: 92px; }
+#gift_card .table2 tr th, #gift_card .table2 tr td {
+  border: none; }
+#gift_card .table2 tr td:nth-child(1), #gift_card .table2 tr th:nth-child(1) {
+  padding-left: 15px; }
+#gift_card .table2 tr td:last-child {
+  padding-right: 15px; }
+#gift_card .navbar-fixed-bottom {
+  background-color: #fff;
+  border-top: 1px solid #eee; }
+  #gift_card .navbar-fixed-bottom p {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    font-size: 20px; }
+    #gift_card .navbar-fixed-bottom p span {
+      color: #f71212; }
+  #gift_card .navbar-fixed-bottom button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 0; }
+  #gift_card .navbar-fixed-bottom .col-xs-5 {
     border-left: 1px solid #eee; }
 
 #addresses .row {
