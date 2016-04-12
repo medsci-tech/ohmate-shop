@@ -25,6 +25,8 @@
       <div class="weui_actionsheet_action">
         <a href="{{url('/shop/index')}}" class="weui_btn weui_btn_default" id="getedu">立刻使用</a>
         <a href="{{$redirect_url}}" class="weui_btn weui_btn_default" id="getshop">继续学习</a>
+        <p class="hongbao-word-1">欢迎进入糖尿病教育学堂，每次开始学习即可获得20迈豆</p>
+        <p class="hongbao-word-2">20迈豆可抵0.2元现金</p>
       </div>
     </div>
   </div>
