@@ -198,11 +198,11 @@ class BeanRecharger
     public function calculateConsume(Customer $customer, $money)
     {
         if ($money <= 0) {
-            return -1;
+            return 0;
         }
 
         if ($customer->beans_total <= 0) {
-            return -1;
+            return 0;
     }
 
         $totalMoney = $customer->beans_total / AppConstant::MONEY_BEAN_RATE;
