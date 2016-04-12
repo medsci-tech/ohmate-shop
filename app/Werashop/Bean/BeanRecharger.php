@@ -202,7 +202,7 @@ class BeanRecharger
         }
 
         if ($customer->beans_total <= 0) {
-            return 0;
+            return $money;
         }
 
         $beans_money = $customer->beans_total / AppConstant::MONEY_BEAN_RATE;
