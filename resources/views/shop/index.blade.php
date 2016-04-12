@@ -56,8 +56,8 @@
 
     <nav class="navbar navbar-default navbar-fixed-bottom" id="index_nav_button">
         <div>
-            <a href="#" class="button button-action col-xs-6" role="link">订单</a>
-            <a href="#" class="button button-highlight col-xs-6" role="link">购物车</a>
+            <a href="/shop/order" class="button button-action col-xs-6" role="link">订单</a>
+            <a href="/shop/cart" class="button button-highlight col-xs-6" role="link">购物车</a>
         </div>
     </nav>
 
