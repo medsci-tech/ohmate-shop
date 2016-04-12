@@ -79,6 +79,12 @@ class RedirectController extends Controller
                 'referrer_id' => 0,
                 'type_id' => 1,
             ]);
+
+            if ($request->has('cooperator_id')) {
+                $customer->update([
+                    'cooperator_id' => $request->input('cooperator_id')
+                ]);
+            }
         }
 
         return redirect('http://web.ohmate.cn/redirect/shop-index?customer_id='.$customer->id);
