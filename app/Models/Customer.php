@@ -88,6 +88,13 @@ class Customer extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cooperator() {
+        return $this->belongsTo(Cooperator::class);
+    }
+
+    /**
      * @return mixed
      */
     public function paidOrders()
