@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Redirect;
 
+use App\Constants\AppConstant;
 use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,10 +12,10 @@ use App\Http\Controllers\Controller;
 
 class RedirectController extends Controller
 {
+
     function __construct()
     {
-        $this->middleware('auth.wechat');
-//        $this->middleware('auth.access');
+//        $this->middleware('auth.wechat');
     }
 
     public function articleIndex(Request $request)
@@ -81,5 +82,33 @@ class RedirectController extends Controller
         }
 
         return redirect('http://web.ohmate.cn/redirect/shop-index?customer_id='.$customer->id);
+    }
+
+
+    public function shopIndex(Request $request)
+    {
+        if (\Helper::hasSessionCachedUser()) {
+            return redirect('/shop/index');
+        } elseif ($request->has('customer_id')) {
+            $customer = Customer::find($request->input('customer_id'));
+            \Session::put(AppConstant::SESSION_USER_KEY, [
+                'openid' => $customer->openid
+            ]);
+            return redirect('/shop/index');
+        }
+        else {
+            return redirect('http://www.ohmate.cn/redirect/web-shop-index');
+        }
+
+//        $user = \Helper::getUser();
+//        $customer = \Helper::getCustomerOrNull();
+//
+//        if (!$customer) {
+//            $customer = Customer::create([
+//                'openid' => $user['openid'],
+//                'referrer_id' => 0,
+//                'type_id' => 1,
+//            ]);
+//        }
     }
 }

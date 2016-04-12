@@ -133,14 +133,10 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
 
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {
     Route::get('/article-index', 'RedirectController@articleIndex');
+    Route::get('/shop-index', 'RedirectController@shopIndex');
     Route::post('/article-index', 'RedirectController@postArticleIndex');
     Route::get('/web-shop-index', 'RedirectController@webShopIndex');
     Route::get('/close', 'RedirectController@close');
 });
 
-
-Route::group(['prefix' => 'hack', 'middleware' => 'web', 'namespace' => 'Hack'], function () {
-    Route::post('/clear-user', 'HackController@clearUser');
-    Route::get('/message', 'HackController@sendMessage');
-});
 
