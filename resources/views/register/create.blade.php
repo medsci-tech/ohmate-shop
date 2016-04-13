@@ -30,6 +30,22 @@
     </div>
     {{csrf_field()}}
   </form>
+  <div id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-center" id="myModalLabel2">&emsp;成为会员有什么好处？</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 注册即可获得2180迈豆，相当于21.8元现金。</p>
+          <p>2. 每天阅读学习图文及视频均可获得大量迈豆。</p>
+          <p>3. 迈豆可在积分商城直接兑换礼品。</p>
+          <p>4. 注册后即可参与有奖活动，轻松抱回礼品。</p>
+          <p>5. 学习贵在坚持，糖尿病学堂内容每周都会更新。</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
