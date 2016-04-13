@@ -44,7 +44,7 @@ class RegisterController extends Controller
         $customer = \Helper::getCustomer();
 
         if ($customer->is_registered) {
-            return '您已经注册, 无需重复注册!';
+            return view('register.registered');
         }
         return view('register.create');
     }
