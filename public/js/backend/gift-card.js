@@ -40,77 +40,10 @@ var order = new Vue({
     page_active: 0,
     page_num: 0,
     page_data: [
-      {
-        address: {
-          address: "",
-          city: "",
-          created_at: "",
-          customer_id: 0,
-          deleted_at: null,
-          district: "",
-          id: 0,
-          is_default: false,
-          name: "",
-          phone: "",
-          postcode: "",
-          priority: 0,
-          province: "",
-          updated_at: ""
-        },
-        address_id: 0,
-        beans_payment: "",
-        beans_payment_calculated: "",
-        cash_payment: "",
-        cash_payment_calculated: "",
-        commodities: [{
-          created_at: null,
-          deleted_at: null,
-          id: 0,
-          introduction: "",
-          name: "",
-          pivot: {order_id: 0, commodity_id: 0, amount: 0},
-          portrait: "",
-          price: "",
-          priority: 0,
-          remark: "",
-          storage: 0,
-          updated_at: null
-        }],
-        created_at: "",
-        customer: {
-          auth_code: "",
-          auth_code_expired: "",
-          beans_total: 0,
-          created_at: "",
-          head_image_url: "",
-          id: 0,
-          is_registered: 0,
-          nickname: "",
-          old_id: null,
-          openid: "",
-          phone: "",
-          qr_code: "",
-          referrer_id: 0,
-          type_id: 0,
-          updated_at: ""
-        },
-        customer_id: 0,
-        id: 0,
-        order_status_id: 0,
-        post_fee: "",
-        post_no: "",
-        post_type: "",
-        total_price: "",
-        updated_at: "",
-        wx_out_trade_no: "",
-        wx_transaction_id: ""
-      }
-    ],
 
-    this_order: {
-      order_id: 1,
-      post_no: ""
-    }
+    ],
+    input: '',
+
   },
   computed: {
     page_show: function () {
@@ -121,23 +54,42 @@ var order = new Vue({
       }
     },
     get_url: function () {
-      if (order.searching.user_type == '未发货订单') return '/order/search?type_id=0';
-      if (order.searching.user_type == '已发货订单') return '/order/search?type_id=1';
-      if (order.searching.user_type == '所有订单') return '/order/list';
+      if (order.searching.user_type == '未兑换卡券') return '/order/search?type_id=0';
+      if (order.searching.user_type == '已兑换卡券') return '/order/search?type_id=1';
+      if (order.searching.user_type == '所有卡券') return '/card/list';
+    },
+    cards: function () {
+      var split = this.input.replace(/[\s：:]/g,'').split('卡号');
+      var i = split.length;
+      if ( i == 1) {
+        return '';
+      } else {
+        var cards = [];
+        for ( j=1 ; j<i ; j++ ){
+          card = split[j].split('密码');
+          if ( card.length != 1) {
+            cards.push({
+              no: card[0],
+              password: card[1]
+            })
+          }
+        }
+      }
+      return cards;
     }
   },
 
   methods: {
     choose_data: function (e) {
       var type = e.target.innerHTML;
-      if (type == '未完成订单') {
-        order.searching.user_type = '未完成订单';
+      if (type == '未兑换卡券') {
+        order.searching.user_type = '未兑换卡券';
       }
-      if (type == '已完成订单') {
-        order.searching.user_type = '已完成订单';
+      if (type == '已兑换卡券') {
+        order.searching.user_type = '已兑换卡券';
       }
-      if (type == '所有订单') {
-        order.searching.user_type = '所有订单';
+      if (type == '所有卡券') {
+        order.searching.user_type = '所有卡券';
       }
       $.get(order.get_url,
         {
@@ -225,22 +177,22 @@ var order = new Vue({
 var click_btn = location.hash;
 switch (click_btn) {
   case '#unfilled':
-    order.searching.user_type = '未完成订单';
+    order.searching.user_type = '未兑换卡券';
     break;
   case '#filled':
-    order.searching.user_type = '已完成订单';
+    order.searching.user_type = '已兑换卡券';
     break;
   case '#all':
-    order.searching.user_type = '所有订单';
+    order.searching.user_type = '所有卡券';
     break;
   default :
-    order.searching.user_type = '所有订单';
+    order.searching.user_type = '所有卡券';
     click_btn = '#all';
     break;
 }
 $(click_btn).trigger('click');
 
-$('.nav').children().eq(1).children().addClass('active');
+$('.nav').children().eq(2).children().addClass('active');
 
 
 
