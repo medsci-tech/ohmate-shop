@@ -64,15 +64,14 @@ class Helper
      */
     public function getCustomer()
     {
-        try {
+//        try {
             $user = self::getSessionCachedUser();
-            dd($user);
             $customer = Customer::where('openid', $user['openid'])->firstOrFail();
 
             return $customer;
-        } catch (\Exception $e) {
-            abort('404');
-        }
+//        } catch (\Exception $e) {
+//            abort('404');
+//        }
     }
 
     /**
