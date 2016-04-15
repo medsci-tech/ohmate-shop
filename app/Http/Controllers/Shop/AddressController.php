@@ -156,7 +156,7 @@ class AddressController extends Controller
 
 
         $address->update([
-            'is_default' => $request->input('is_default')
+            'is_default' => true
         ]);
         dd($request->all());
         dd(Address::find($request->input('id')));
