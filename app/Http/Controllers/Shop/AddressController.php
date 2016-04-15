@@ -156,6 +156,7 @@ class AddressController extends Controller
 
 
         $address->update($request->all());
+        dd($request->all());
         dd(Address::find($request->input('id')));
 
         return response()->json([
