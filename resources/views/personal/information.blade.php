@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <title>会员信息</title>
+    <title>个人信息</title>
     <link rel="stylesheet" href="/css/weui.min.css">
     <link rel="stylesheet" href="/css/member.css">
 <body>
@@ -19,18 +19,21 @@
                 </div>
                 <div class="weui_cell_ft">{{$data['nickname']}}</div>
             </div>
-            <div class="weui_cell">
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>用户类型</p>
-                </div>
-                <div class="weui_cell_ft">{{$data['type']}}</div>
-            </div>
         </div>
 
         <div class="weui_cells weui_cells_access">
             <a href="/shop/order" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>我的订单</p>
+                </div>
+                <div class="weui_cell_ft"></div>
+            </a>
+        </div>
+
+        <div class="weui_cells weui_cells_access">
+            <a href="/shop/address" class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>我的地址</p>
                 </div>
                 <div class="weui_cell_ft"></div>
             </a>
