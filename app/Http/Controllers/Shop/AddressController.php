@@ -147,14 +147,14 @@ class AddressController extends Controller
         }
 
         //先重置所有default
-//        if ($request->has('is_default') and $request->input('is_default') == true) {
+        if ($request->has('is_default') and $request->input('is_default') == true) {
             Address::where('customer_id', $customer->id)->update([
                 'is_default' => false
             ]);
-//        }
+        }
 
         Address::find($request->input('id'))->update([
-            'is_default' => 1
+            $request->all()
         ]);
 
         return response()->json([
