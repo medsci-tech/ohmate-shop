@@ -212,9 +212,14 @@ a, a:focus, a:hover {
   margin: 20px 10px 0 10px;
   border-radius: 0; }
 #addresses form button:nth-child(1) {
-  width: 80%; }
+  width: 80%;
+  background-color: #008CBA; }
+#addresses form button:nth-child(1):focus, #addresses form button:nth-child(1):active {
+  background-color: #007095;
+  color: #fff; }
 #addresses form button:nth-child(2) {
-  border-color: #008CBA; }
+  border-color: #008CBA;
+  color: #008CBA; }
 #addresses form button:nth-child(2):focus, #addresses form button:nth-child(2):active {
   background-color: #007095;
   color: #fff; }
