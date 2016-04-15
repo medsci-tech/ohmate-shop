@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="/css/member.css">
 <body>
 <div class="page slideIn cell">
-    <div class="hd img_t">
-        <img src="{{$data['head_image_url']}}" class="img_tx">
-    </div>
+    {{--<div class="hd img_t">--}}
+        {{--<img src="{{$data['head_image_url']}}" class="img_tx">--}}
+    {{--</div>--}}
     <div class="bd bd_1">
-        <div class="weui_cells">
-            <div class="weui_cell">
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>账户名</p>
-                </div>
-                <div class="weui_cell_ft">{{$data['nickname']}}</div>
-            </div>
-        </div>
+        {{--<div class="weui_cells">--}}
+            {{--<div class="weui_cell">--}}
+                {{--<div class="weui_cell_bd weui_cell_primary">--}}
+                    {{--<p>账户名</p>--}}
+                {{--</div>--}}
+                {{--<div class="weui_cell_ft">{{$data['nickname']}}</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="weui_cells weui_cells_access">
             <a href="/shop/order" class="weui_cell">
