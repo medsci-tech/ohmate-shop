@@ -44,7 +44,11 @@ class RegisterController extends Controller
         $customer = \Helper::getCustomer();
 
         if ($customer->is_registered) {
-            return '您已成功注册,请勿重复注册.';
+            return view('register.registered')->with([
+                'js' => \Wechat::getJssdkConfig([
+                    'closeWindow'
+                ])
+            ]);
         }
         return view('register.create');
     }
