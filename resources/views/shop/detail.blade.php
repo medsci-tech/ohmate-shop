@@ -43,10 +43,10 @@
       <span @click="numAdd()" class="fa fa-plus"></span>
     </div>
     <div class="col-xs-4">
-      <button id="add" class="button" :class="goods.storage?'':'disabled'" @click="addGoods()">加入购物车</button>
+      <button id="add" class="button button-primary" :class="goods.storage?'':'disabled'" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a id="buy" href="{{url('/shop/cart')}}" class="button" :class="goods.storage?'':'disabled'" @click="addGoods()">立即购买</a>
+      <a id="buy" href="{{url('/shop/cart')}}" class="button button-primary" :class="goods.storage?'':'disabled'" @click="addGoods()">立即购买</a>
     </div>
   </div>
 
@@ -170,7 +170,7 @@
     cart_num = i;
   }
 
-  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a id="touch_btn" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">' + cart_num + '</span> </a> </nav>')
+  $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 50px;"><a id="touch_btn" href="{{url('/shop/cart')}}" class="button button-large  button-primary button-circle"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">' + cart_num + '</span> </a> </nav>')
   var touch = document.getElementById('touch');
   var touch_btn = document.getElementById('touch_btn');
   touch_btn.addEventListener('touchmove', function (event) {
