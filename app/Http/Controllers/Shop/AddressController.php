@@ -147,13 +147,13 @@ class AddressController extends Controller
         }
 
         //先重置所有default
-        if ($request->has('is_default') and $request->input('is_default') == true) {
-            $customer->addresses()->update([
-                'is_default' => false
-            ]);
-        }
+//        if ($request->has('is_default') and $request->input('is_default') == true) {
+//            $customer->addresses()->update([
+//                'is_default' => false
+//            ]);
+//        }
 
-        dd($request->all());
+//        dd($request->all());
 
         $address->update($request->all());
 
