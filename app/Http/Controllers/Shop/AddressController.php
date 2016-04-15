@@ -147,7 +147,7 @@ class AddressController extends Controller
         }
 
         //先重置所有default
-        if ($request->has('is_default')) {
+        if ($request->has('is_default') and $request->input('is_default') == true) {
             $customer->addresses()->update([
                 'is_default' => false
             ]);
