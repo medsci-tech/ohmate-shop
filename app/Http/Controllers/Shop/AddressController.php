@@ -153,6 +153,8 @@ class AddressController extends Controller
             ]);
         }
 
+        dd($request->all());
+
         $address->update($request->all());
 
         return response()->json([
