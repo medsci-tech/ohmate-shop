@@ -153,7 +153,7 @@ class AddressController extends Controller
             ]);
 //        }
 
-        $address->update([
+        Address::find($request->input('id'))->update([
             'is_default' => 1
         ]);
 
