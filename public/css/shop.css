@@ -391,10 +391,10 @@ a, a:focus, a:hover {
   border-right: 1px solid #fff; }
 #goods .navbar-fixed-bottom .col-xs-4 #add:focus {
   background-color: #007095; }
-#goods .navbar-fixed-bottom .col-xs-4 #bug {
+#goods .navbar-fixed-bottom .col-xs-4 #buy {
   background-color: #43AC6A;
   border-left: 1px solid #fff; }
-#goods .navbar-fixed-bottom .col-xs-4 #bug:focus {
+#goods .navbar-fixed-bottom .col-xs-4 #buy:focus {
   background-color: #368a55; }
 #goods .navbar-fixed-bottom span {
   padding: 8px 5px;
