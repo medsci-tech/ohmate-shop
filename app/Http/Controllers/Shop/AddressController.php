@@ -154,8 +154,7 @@ class AddressController extends Controller
             ]);
         }
 
-        $address->fresh();
-        dd($address);
+        dd(Address::find($request->input('id')));
 
         $address->update($request->all());
 
