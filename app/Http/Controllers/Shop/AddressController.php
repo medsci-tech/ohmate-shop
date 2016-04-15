@@ -154,9 +154,9 @@ class AddressController extends Controller
             ]);
         }
 
-        dd(Address::find($request->input('id')));
 
         $address->update($request->all());
+        dd(Address::find($request->input('id')));
 
         return response()->json([
             'success' => true,
