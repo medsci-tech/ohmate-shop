@@ -10,9 +10,9 @@
 <br>
 <br>
 <div class="page slideIn cell">
-    {{--<div class="hd img_t">--}}
-        {{--<img src="{{$data['head_image_url']}}" class="img_tx">--}}
-    {{--</div>--}}
+    <div class="hd img_t">
+        <img src="{{$data['head_image_url']}}" class="img_tx">
+    </div>
 
     <div class="bd bd_1">
         <div class="weui_cells">
