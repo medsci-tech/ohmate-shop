@@ -45,7 +45,7 @@
                         <div class="caption">
                             <p>{{$item->name}}</p>
                             <p class="small">{{$item->remark}}</p>
-                            <span>￥{{$item->price}}&numsp;</span>
+                            <span>￥{{$item->price}}&numsp;</span><small>{{intval($item->price * 100)}}迈豆</small>
                         </div>
                     </div>
                 </a>
