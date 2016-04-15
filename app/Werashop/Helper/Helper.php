@@ -66,6 +66,7 @@ class Helper
     {
         try {
             $user = self::getSessionCachedUser();
+            dd($user);
             $customer = Customer::where('openid', $user['openid'])->firstOrFail();
 
             return $customer;
