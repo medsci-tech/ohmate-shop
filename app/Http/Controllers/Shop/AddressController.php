@@ -156,10 +156,8 @@ class AddressController extends Controller
 
 
         $address->update([
-            'is_default' => true
+            'is_default' => 1
         ]);
-        dd($request->all());
-        dd(Address::find($request->input('id')));
 
         return response()->json([
             'success' => true,
