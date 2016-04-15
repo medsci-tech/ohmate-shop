@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="/css/weui.min.css">
     <link rel="stylesheet" href="/css/member.css">
 <body>
+<br>
+<br>
 <div class="page slideIn cell">
     {{--<div class="hd img_t">--}}
         {{--<img src="{{$data['head_image_url']}}" class="img_tx">--}}
     {{--</div>--}}
+
     <div class="bd bd_1">
-        <br>
-        <br>
         <div class="weui_cells">
             <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
