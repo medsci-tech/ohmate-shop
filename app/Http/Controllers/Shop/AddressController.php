@@ -153,7 +153,7 @@ class AddressController extends Controller
             ]);
         }
 
-        dd($address->all());
+        dd($address);
 
         $address->update($request->all());
 
