@@ -153,7 +153,7 @@ class AddressController extends Controller
             ]);
         }
 
-        $address->update($request->all());
+        Address::find($request->input('id'))->update($request->all());
 
         return response()->json([
             'success' => true,
