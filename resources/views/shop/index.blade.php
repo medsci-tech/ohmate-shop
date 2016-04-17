@@ -122,14 +122,14 @@
     }, false);
 </script>
 <script>
-    @if(isset($first_in) and $first_in)
-        first_in = true;
+    @if(isset($first_in) and $first_in == 1)
+        first_in = 1;
     @else
-        first_in = false;
+        first_in = 0;
     @endif
 
     function settimer(i){
-        if ( !first_in ) {
+        if ( first_in == 1) {
             i +=1;
             timer();
             function timer() {

@@ -89,7 +89,7 @@ class RedirectController extends Controller
     {
         if (\Helper::hasSessionCachedUser()) {
             return redirect('/shop/index')->with([
-                'first_in' => true
+                'first_in' => 1
             ]);
         } elseif ($request->has('customer_id')) {
             $customer = Customer::find($request->input('customer_id'));
@@ -100,7 +100,7 @@ class RedirectController extends Controller
             if ($request->input('first_in', 0) == 1) {
                 \BeanRecharger::register($customer);
                 return redirect('/shop/index')->with([
-                    'first_in' => true
+                    'first_in' => 1
                 ]);
             }
             return redirect('/shop/index');
