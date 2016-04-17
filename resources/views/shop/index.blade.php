@@ -129,7 +129,7 @@
     @endif
 
     function settimer(i){
-        if ( first_in ) {
+        if ( !first_in ) {
             i +=1;
             timer();
             function timer() {
