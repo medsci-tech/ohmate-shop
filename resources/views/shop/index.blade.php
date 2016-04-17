@@ -122,7 +122,11 @@
     }, false);
 </script>
 <script>
-    first_in = {{$first_in or 0}}
+    @if (\Session::has('first_in') and \Session::get('first_in') == 1)
+        first_in = 1;
+    @else
+        first_in = 0;
+    @endif
 
     function settimer(i){
         if ( first_in == 1) {
