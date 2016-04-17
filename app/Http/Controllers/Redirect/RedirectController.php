@@ -15,7 +15,7 @@ class RedirectController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth.wechat');
+        $this->middleware('auth.wechat')->except(['webShopIndex']);
     }
 
     public function articleIndex(Request $request)
@@ -70,6 +70,19 @@ class RedirectController extends Controller
 
     public function webShopIndex(Request $request)
     {
+        if ($request->has('cooperator_id')) {
+            \Session::put('cooperator_id', $request->input('cooperator_id'));
+        }
+
+        if (!\Helper::hasSessionCachedUser()) {
+            $user = \Wechat::authorizeUser($request->url());
+            if ($user) {
+                \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
+            } else {
+                \Session::put(AppConstant::SESSION_USER_KEY, null);
+            }
+        }
+
         $user = \Helper::getSessionCachedUser();
         $customer = \Helper::getCustomerOrNull();
 
@@ -78,7 +91,7 @@ class RedirectController extends Controller
                 'openid' => $user['openid'],
                 'referrer_id' => 0,
                 'type_id' => 1,
-                'cooperator_id' => $request->input('cooperator_id', null)
+                'cooperator_id' => \Session::get('cooperator_id', null)
             ]);
         }
 
