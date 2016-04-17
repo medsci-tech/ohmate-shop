@@ -6,6 +6,8 @@
     <title>易康商城</title>
     <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/yk-web.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/weui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/hongbao.css')}}">
 
 </head>
 <body>
@@ -56,13 +58,32 @@
 
     <nav class="navbar navbar-default navbar-fixed-bottom" id="index_nav_button">
         <div>
-            <a href="{{url('/redirect/article-index')}}" class="button button-action col-xs-6" role="link">教育学堂</a>
+            <a href="{{url('/redirect/article-index')}}" class="button button-action col-xs-6" role="link">获取迈豆</a>
             <a href="{{url('/personal/information')}}" class="button button-highlight col-xs-6" role="link">个人中心</a>
         </div>
     </nav>
 
     <br><br><br>
-
+    <div class="actionsheet" style="overflow: hidden">
+        <!--BEGIN actionSheet-->
+        <div id="actionSheet_wrap">
+            <div class="weui_mask_transition" id="mask" style="display: none;"></div>
+            <div class="weui_actionsheet" id="weui_actionsheet">
+                <div class="weui_actionsheet_menu">
+                    <img src="{{url('/image/education/hongbao.png')}}" alt="">
+                    <p>20迈豆</p>
+                    <p class="hongbao-word-1">新用户专享</p>
+                    <p class="hongbao-word-2" style="color: #ffe034;">2180迈豆（可抵21.8元）</p>
+                    <p class="hongbao-word-3">即可免费领一盒针头</p>
+                    <p class="hongbao-word-4">每天坚持学习终身免费用针头</p>
+                </div>
+                <div class="weui_actionsheet_action">
+                    <a class="weui_btn weui_btn_default" id="close_hongbao">确认</a>
+                </div>
+            </div>
+        </div>
+        <!--END actionSheet-->
+    </div>
 </div>
 
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
@@ -99,6 +120,34 @@
             touch1.style.background = "";
         }
     }, false);
+</script>
+<script>
+    function settimer(i){
+        if ( true ) {
+            i +=1;
+            timer();
+            function timer() {
+                i--;
+                if (i == 0) {
+                    clearTimeout(timer);
+                    $('#mask').addClass('weui_fade_toggle');
+                    $('#mask').css('display','block')
+                    $('#weui_actionsheet').addClass('weui_actionsheet_toggle');
+                } else {
+                    setTimeout(timer, 1000);
+                }
+            }
+        }
+    }
+
+    function colse_hongbao(){
+        $('#mask').removeClass('weui_fade_toggle');
+        $('#mask').css('display','none')
+        $('#weui_actionsheet').removeClass('weui_actionsheet_toggle');
+    }
+
+    settimer(1);
+    $('colse_hongbao').onclick(colse_hongbao())
 </script>
 </body>
 </html>
