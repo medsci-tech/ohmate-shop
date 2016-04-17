@@ -88,9 +88,7 @@ class RedirectController extends Controller
     public function shopIndex(Request $request)
     {
         if (\Helper::hasSessionCachedUser()) {
-            return redirect('/shop/index')->with([
-                'first_in' => 1
-            ]);
+            return redirect('/shop/index');
         } elseif ($request->has('customer_id')) {
             $customer = Customer::find($request->input('customer_id'));
             \Session::put(AppConstant::SESSION_USER_KEY, [
