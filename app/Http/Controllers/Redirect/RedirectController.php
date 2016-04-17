@@ -93,6 +93,7 @@ class RedirectController extends Controller
                 'type_id' => 1,
                 'cooperator_id' => \Session::get('cooperator_id', null)
             ]);
+            return redirect('http://web.ohmate.cn/redirect/shop-index?customer_id='.$customer->id.'first_in=1');
         }
 
         return redirect('http://web.ohmate.cn/redirect/shop-index?customer_id='.$customer->id);
