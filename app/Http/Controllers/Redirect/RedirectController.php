@@ -88,7 +88,9 @@ class RedirectController extends Controller
     public function shopIndex(Request $request)
     {
         if (\Helper::hasSessionCachedUser()) {
-            return redirect('/shop/index');
+            return redirect('/shop/index')->with([
+                'first_in' => true
+            ]);
         } elseif ($request->has('customer_id')) {
             $customer = Customer::find($request->input('customer_id'));
             \Session::put(AppConstant::SESSION_USER_KEY, [
@@ -101,9 +103,7 @@ class RedirectController extends Controller
                     'first_in' => true
                 ]);
             }
-            return redirect('/shop/index')->with([
-                'first_in' => true
-            ]);
+            return redirect('/shop/index');
         } else {
             if ($request->has('cooperator_id')) {
                 return redirect('http://www.ohmate.cn/redirect/web-shop-index?cooperator_id=' . $request->input('cooperator_id'));
