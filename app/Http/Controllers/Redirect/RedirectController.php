@@ -75,7 +75,7 @@ class RedirectController extends Controller
         }
 
         if (!\Helper::hasSessionCachedUser()) {
-            $user = \Wechat::authorizeUser($request->url());
+            $user = \Wechat::authorizeUser($request->fullUrl());
             if ($user) {
                 \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
             } else {
@@ -92,6 +92,10 @@ class RedirectController extends Controller
                 'referrer_id' => 0,
                 'type_id' => 1,
                 'cooperator_id' => \Session::get('cooperator_id', null)
+            ]);
+
+            $customer->update([
+                'cooperator_id' => $request->input('cooperator_id', null)
             ]);
             return redirect('http://web.ohmate.cn/redirect/shop-index?customer_id='.$customer->id.'&first_in=1');
         }
