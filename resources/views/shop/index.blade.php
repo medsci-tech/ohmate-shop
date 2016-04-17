@@ -122,11 +122,7 @@
     }, false);
 </script>
 <script>
-    @if(isset($first_in) and $first_in == 1)
-        first_in = 1;
-    @else
-        first_in = 0;
-    @endif
+    first_in = {{$first_in}}
 
     function settimer(i){
         if ( first_in == 1) {
