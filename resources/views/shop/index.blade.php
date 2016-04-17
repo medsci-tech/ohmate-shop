@@ -153,7 +153,7 @@
     }
 
     settimer(1);
-    $('#close_hongbao').onclick(colse_hongbao())
+    $('#close_hongbao').click(colse_hongbao())
 </script>
 </body>
 </html>
