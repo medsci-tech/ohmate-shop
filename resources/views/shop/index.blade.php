@@ -108,7 +108,7 @@
             cart_num = i;
         }
     }
-    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 50px;"><a id="touch_btn1" href="{{url('/shop/cart')}}" class="button button-primary button-large button-circle" style="background-color: #008CBA;"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #008CBA;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
+    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a id="touch_btn1" href="{{url('/shop/cart')}}" class="button button-primary button-large button-circle" style="background-color: #008CBA;"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #008CBA;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
     var touch1 = document.getElementById('touch1');
     var touch_btn1 = document.getElementById('touch_btn1');
     touch_btn1.addEventListener('touchmove', function (event) {
