@@ -94,6 +94,13 @@ class RedirectController extends Controller
             \Session::put(AppConstant::SESSION_USER_KEY, [
                 'openid' => $customer->openid
             ]);
+
+            if ($request->has('first_in') and $request->input('first_in')) {
+                \BeanRecharger::register($customer);
+                return redirect('/shop/index')->with([
+                    'first_in' => true
+                ]);
+            }
             return redirect('/shop/index');
         } else {
             if ($request->has('cooperator_id')) {
