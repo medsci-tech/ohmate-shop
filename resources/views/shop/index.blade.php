@@ -122,7 +122,7 @@
     }, false);
 </script>
 <script>
-    first_in = {{$first_in}}
+    first_in = {{$first_in or 0}}
 
     function settimer(i){
         if ( first_in == 1) {
