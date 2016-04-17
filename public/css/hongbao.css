@@ -36,12 +36,6 @@ body {
   font-size: 17px;
   margin-top: 90%;
   color: #6cff00; }
-.weui_actionsheet_menu .hongbao-word-3 {
-  font-size: 17px;
-  margin-top: 97%; }
-.weui_actionsheet_menu .hongbao-word-4 {
-  font-size: 17px;
-  margin-top: 109%; }
 
 .weui_actionsheet_action p {
   position: absolute;
@@ -64,15 +58,6 @@ body {
   margin-top: -150px;
   width: 29%;
   left: 51%;
-  background-color: #ffe034;
-  color: #df3121;
-  font-weight: bold;
-  font-size: 16px; }
-.weui_actionsheet_action #close_hongbao {
-  position: absolute;
-  margin-top: -120px;
-  width: 70%;
-  left: 15%;
   background-color: #ffe034;
   color: #df3121;
   font-weight: bold;
