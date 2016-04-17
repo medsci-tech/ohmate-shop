@@ -95,7 +95,7 @@ class RedirectController extends Controller
                 'openid' => $customer->openid
             ]);
 
-            if ($request->has('first_in') and $request->input('first_in')) {
+            if ($request->input('first_in', 0) == 1) {
                 \BeanRecharger::register($customer);
                 return redirect('/shop/index')->with([
                     'first_in' => true
