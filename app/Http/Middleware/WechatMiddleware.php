@@ -27,18 +27,23 @@ class WechatMiddleware
             return $next($request);
         }
 
-        $user = \Wechat::authorizeUser($request->url());
-        /*
-         * if auth failed, this user maybe not a subscribed account,
-         * but we allow this man go on to education page.
-         * */
-        if ($user) {
-            \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
-        } else {
-            \Session::put(AppConstant::SESSION_USER_KEY, null);
+        if ($request->has('cooperator_id')) {
+            return redirect('http://www.ohmate.cn/redirect/web-shop-index?cooperator_id=' . $request->input('cooperator_id'));
         }
+        return redirect('http://www.ohmate.cn/redirect/web-shop-index');
 
-        return $next($request);
+//        $user = \Wechat::authorizeUser($request->url());
+//        /*
+//         * if auth failed, this user maybe not a subscribed account,
+//         * but we allow this man go on to education page.
+//         * */
+//        if ($user) {
+//            \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
+//        } else {
+//            \Session::put(AppConstant::SESSION_USER_KEY, null);
+//        }
+//
+//        return $next($request);
     }
 
 } /*class*/
