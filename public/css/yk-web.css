@@ -34,7 +34,9 @@ a, a:focus, a:hover {
 .shop-index #index_nav_button {
   bottom: -9px; }
 .shop-index #index_nav_button a {
-  color: #fff; }
+  color: #fff;
+  height: 60px;
+  padding-top: 5px; }
 .shop-index #index_nav_button a:nth-child(1) {
   background-color: #008CBA;
   border-right: 1px solid #fff; }

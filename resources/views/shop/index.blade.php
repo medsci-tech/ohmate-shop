@@ -122,8 +122,14 @@
     }, false);
 </script>
 <script>
+    @if(isset($first_in) and $first_in)
+        first_in = true;
+    @else
+        first_in = false;
+    @endif
+
     function settimer(i){
-        if ( true ) {
+        if ( first_in ) {
             i +=1;
             timer();
             function timer() {
@@ -147,7 +153,7 @@
     }
 
     settimer(1);
-    $('colse_hongbao').onclick(colse_hongbao())
+    $('#close_hongbao').onclick(colse_hongbao())
 </script>
 </body>
 </html>
