@@ -101,7 +101,9 @@ class RedirectController extends Controller
                     'first_in' => true
                 ]);
             }
-            return redirect('/shop/index');
+            return redirect('/shop/index')->with([
+                'first_in' => true
+            ]);
         } else {
             if ($request->has('cooperator_id')) {
                 return redirect('http://www.ohmate.cn/redirect/web-shop-index?cooperator_id=' . $request->input('cooperator_id'));
