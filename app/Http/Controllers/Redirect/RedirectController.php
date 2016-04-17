@@ -91,7 +91,7 @@ class RedirectController extends Controller
                 'openid' => $user['openid'],
                 'referrer_id' => 0,
                 'type_id' => 1,
-                'cooperator_id' => \Session::get('cooperator_id', null)
+//                'cooperator_id' => \Session::get('cooperator_id', null)
             ]);
 
             $customer->update([
