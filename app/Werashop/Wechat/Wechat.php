@@ -290,7 +290,7 @@ class Wechat
         $wechat_order = new WechatOrder();
         $wechat_order->body = $this->generatePaymentBody($order);
         $wechat_order->out_trade_no = $order->wx_out_trade_no;
-        $wechat_order->total_fee = ''. floor($order->cash_payment_calculated * 100);
+        $wechat_order->total_fee = ''. floor(strval($order->cash_payment_calculated * 100));
         $wechat_order->openid = $customer->openid;
         $wechat_order->notify_url = url('/wechat/payment/notify');
 
