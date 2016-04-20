@@ -252,7 +252,15 @@ class Customer extends Model
      */
     public function minusBeansByHand($amount)
     {
-        return \BeanRecharger::executeTransferCash($this, $amount);
+        \BeanRecharger::executeTransferCash($this, $amount);
+    }
+
+    /**
+     * @param $amount
+     */
+    public function buyCards($amount)
+    {
+        \BeanRecharger::executeTransferCash($this, $amount * 10000);
     }
 
 }

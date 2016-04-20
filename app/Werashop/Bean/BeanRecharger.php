@@ -54,7 +54,7 @@ class BeanRecharger
      */
     protected function update(Customer $customer, $action, $beans_changed)
     {
-        if ($action == AppConstant::BEAN_ACTION_CONSUME or  $action == AppConstant::BEAN_ACTION_TRANSFER_CASH) {
+        if ($action == AppConstant::BEAN_ACTION_CONSUME or $action == AppConstant::BEAN_ACTION_TRANSFER_CASH) {
             if ($beans_changed >= $customer->beans_total) {
                 \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_BEAN, -($customer->beans_total));
                 $customer->beans_total = 0;

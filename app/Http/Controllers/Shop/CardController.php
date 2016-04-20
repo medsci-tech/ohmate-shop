@@ -51,11 +51,21 @@ class CardController extends Controller
             \DB::transaction(function () use ($amount, $customer) {
                 $cards = \DB::table('shop_cards')->where('customer_id', '=', null)->limit($amount);
                 $cards->lockForUpdate();
+                if ($cards->count() < $amount) {
+                    throw new \Exception();
+                }
+                $customer->lockForUpdate();
 
-                $cards->update([
-                    'customer_id' => $customer->id,
-                    'bought_at' => Carbon::now()
-                ]);
+                if ($customer->beans_total >= $amount * 10000) {
+                    $customer->minusBeansByHand($amount * 10000);
+
+                    $cards->update([
+                        'customer_id' => $customer->id,
+                        'bought_at' => Carbon::now()
+                    ]);
+                } else {
+                    throw new \Exception();
+                }
             });
         } catch (\Exception $e) {
             return response()->json([
