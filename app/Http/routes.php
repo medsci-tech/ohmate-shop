@@ -138,5 +138,3 @@ Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Red
     Route::get('/web-shop-index', 'RedirectController@webShopIndex');
     Route::get('/close', 'RedirectController@close');
 });
-
-
