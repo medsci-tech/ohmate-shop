@@ -37,7 +37,8 @@ a, a:focus, a:hover {
 #cart_form .row, #order_details .row {
   margin: 5px -10px 0 -10px; }
 #cart_form .row .button, #order_details .row .button {
-  background-color: #008CBA; }
+  background-color: #008CBA;
+  color: #fff; }
 #cart_form .row .button:focus, #order_details .row .button:focus {
   background-color: #007095;
   color: #fff; }
