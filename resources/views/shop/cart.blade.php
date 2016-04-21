@@ -80,7 +80,7 @@
       <template v-if=" address == null ">
         <div class="col-xs-12">
           <br>
-          <a class="button button-block button-rounded button-caution" href="{{url('/shop/address')}}">添加收货地址</a>
+          <a class="button button-block button-caution" href="{{url('/shop/address')}}">添加收货地址</a>
         </div>
       </template>
       <template v-else>
