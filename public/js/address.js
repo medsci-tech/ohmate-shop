@@ -56,7 +56,7 @@ var list = new Vue({
         },
         function (data) {
           if (data.success) {
-            sessionStorage.address = JSON.stringify(this.newAdd);
+            sessionStorage.address = JSON.stringify(list.newAdd);
             history.back(-1);
           } else {
             alert('请输入正确的手机号!');
@@ -100,7 +100,7 @@ var list = new Vue({
         },
         function (data) {
           if (data.success) {
-            sessionStorage.address = JSON.stringify(this.newAdd);
+            sessionStorage.address = JSON.stringify(list.newAdd);
             history.back(-1);
           } else {
             alert('服务器异常5!');
