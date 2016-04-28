@@ -56,17 +56,8 @@ var list = new Vue({
         },
         function (data) {
           if (data.success) {
-            list.addReload();
-            list.newAdd = {
-              id: -1,
-              name: '',
-              phone: '',
-              province: '',
-              city: '',
-              district: '',
-              address: '',
-              is_default: false
-            }
+            sessionStorage.address = JSON.stringify(this.newAdd);
+            history.back(-1);
           } else {
             alert('请输入正确的手机号!');
           }
@@ -109,8 +100,8 @@ var list = new Vue({
         },
         function (data) {
           if (data.success) {
-            list.addReload();
-            list.editCancel();
+            sessionStorage.address = JSON.stringify(this.newAdd);
+            history.back(-1);
           } else {
             alert('服务器异常5!');
           }
