@@ -11,7 +11,7 @@
   <div class="row">
     <template v-if=" addresses != null ">
       <div class="panel panel-default">
-        <div class="panel-heading">选择地址</div>
+        <div class="panel-heading">地址列表(点击选择)</div>
         <ul class="list-group">
           <div class="clearfix"></div>
           <li class="list-group-item"
@@ -21,7 +21,7 @@
                 <th @click="chooseAdd(address)">收货人</th>
                 <td @click="chooseAdd(address)">@{{ address.name }}</td>
                 <td @click="chooseAdd(address)">@{{ address.phone }}</td>
-                <td class="edit-icon"><i class="fa fa-trash-o" @click="removeAdd(address)"></i></td>
+                <td class="edit-icon text-right"><i class="fa fa-trash-o" style="margin-right: 3px" @click="removeAdd(address)"></i></td>
               </tr>
               <tr>
                 <th @click="chooseAdd(address)">收货地址
@@ -29,7 +29,7 @@
                 </th>
                 <td
                   colspan="2" @click="chooseAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
-                <td class="edit-icon"><a href="#edit_panel"><i class="fa fa-edit" @click="editAdd(address)"></i></a>
+                <td class="edit-icon text-right"><a href="#edit_panel"><i class="fa fa-edit" @click="editAdd(address)"></i></a>
                 </td>
               </tr>
             </table>
