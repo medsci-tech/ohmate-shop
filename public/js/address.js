@@ -57,17 +57,7 @@ var list = new Vue({
         function (data) {
           if (data.success) {
             list.addReload();
-            list.newAdd = {
-              id: -1,
-              name: '',
-              phone: '',
-              province: '',
-              city: '',
-              district: '',
-              address: '',
-              is_default: false
-            }
-
+            $('#address-'+data.id).click();
           } else {
             alert('请输入正确的手机号!');
           }
@@ -94,6 +84,7 @@ var list = new Vue({
       $('#city').trigger('change');
       $('#area').val(e.district);
       $('#area').trigger('change');
+      $('#name').focus();
     },
 
     editFun: function () {
@@ -106,12 +97,12 @@ var list = new Vue({
           city: this.newAdd.city,
           district: this.newAdd.district,
           address: this.newAdd.address,
-          is_default: this.newAdd.is_default,
+          is_default: this.newAdd.is_default
         },
         function (data) {
           if (data.success) {
-            sessionStorage.address = JSON.stringify(list.newAdd);
-            history.back(-1);
+            list.addReload();
+            $('#address-'+list.newAdd.id).click();
           } else {
             alert('服务器异常5!');
           }
