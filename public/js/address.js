@@ -111,7 +111,7 @@ var list = new Vue({
         function (data) {
           if (data.success) {
             sessionStorage.address = JSON.stringify(list.newAdd);
-            history.back(-2);
+            history.back(-1);
           } else {
             alert('服务器异常5!');
           }

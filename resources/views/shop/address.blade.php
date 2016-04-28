@@ -29,7 +29,7 @@
                 </th>
                 <td
                   colspan="2" @click="chooseAdd(address)">@{{ address.province }}-@{{ address.city }}-@{{ address.district }}-@{{ address.address }}</td>
-                <td class="edit-icon text-right"><a href="#edit_panel"><i class="fa fa-edit" @click="editAdd(address)"></i></a>
+                <td class="edit-icon text-right"><a><i class="fa fa-edit" @click="editAdd(address)"></i></a>
                 </td>
               </tr>
             </table>
