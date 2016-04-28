@@ -56,11 +56,8 @@ var list = new Vue({
         },
         function (data) {
           if (data.success) {
-            
-            list.newAdd.id = data.id;
-            sessionStorage.address = JSON.stringify(list.newAdd);
-            history.back(-1);
-
+            list.addReload();
+            $('#address-'+data.id).click();
           } else {
             alert('请输入正确的手机号!');
           }
@@ -100,12 +97,12 @@ var list = new Vue({
           city: this.newAdd.city,
           district: this.newAdd.district,
           address: this.newAdd.address,
-          is_default: this.newAdd.is_default,
+          is_default: this.newAdd.is_default
         },
         function (data) {
           if (data.success) {
-            sessionStorage.address = JSON.stringify(list.newAdd);
-            history.back(-1);
+            list.addReload();
+            $('#address-'+list.newAdd.id).click();
           } else {
             alert('服务器异常5!');
           }

@@ -24,7 +24,7 @@
                 <td class="edit-icon text-right"><i class="fa fa-trash-o" style="margin-right: 3px" @click="removeAdd(address)"></i></td>
               </tr>
               <tr>
-                <th @click="chooseAdd(address)">收货地址
+                <th id="address-@{{ address.id }}" @click="chooseAdd(address)">收货地址
                 <small v-bind:class=" address.is_default?'':'hide' " style="color: #f71212"><br>(默认)</small>
                 </th>
                 <td
