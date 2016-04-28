@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>我的地址</title>
   <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
-</head>
 
 <body>
 <div class="container" id="addresses">
