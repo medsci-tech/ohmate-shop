@@ -52,7 +52,7 @@
       <table v-cloak class="table table-condensed table1">
         <tbody>
         <tr v-for=" item in commodities">
-          <td>@{{ item.name }}</td>
+          <td>@{{{ item.name }}}</td>
           <td>x@{{ item.pivot.amount }}</td>
           <td>@{{ item.price*item.pivot.amount | currency '￥' }}</td>
         </tr>

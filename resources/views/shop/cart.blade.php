@@ -24,7 +24,7 @@
                 <img class="media-object" :src="'/image/shop_goods/' + goods.id + '.png'" alt="...">
               </div>
               <div class="media-body">
-                <strong class="media-heading">@{{ goods.name }}</strong>
+                <strong class="media-heading">@{{{ goods.name }}}</strong>
 
                 <p>
                   <strong>@{{ goods.price | currency '￥' }}</strong>

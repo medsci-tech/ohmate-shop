@@ -22,7 +22,7 @@
 
 <div class="container" id="goods" v-cloak>
   <div class="row">
-    <h4>@{{ goods.name }}</h4>
+    <h4>@{{{ goods.name }}}</h4>
     <div>
       <span>@{{ goods.price | currency '￥' }}</span>
     </div>
@@ -172,7 +172,7 @@
 
   $('body').append('<nav id="touch" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 60px;"><a id="touch_btn" href="{{url('/shop/cart')}}" class="button button-large  button-primary button-circle" style="background-color: #008CBA;"> <i class="fa fa-shopping-cart"></i> <span class="badge" style="position: absolute;background-color: #008CBA;border: 2px solid #EEEEEE;">' + cart_num + '</span> </a> </nav>')
   var touch = document.getElementById('touch');
-  var touch_btn = document.getElementById('touch_btn');g
+  var touch_btn = document.getElementById('touch_btn');
   touch_btn.addEventListener('touchmove', function (event) {
     event.preventDefault();
     if (event.targetTouches.length == 1) {
