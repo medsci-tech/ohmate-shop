@@ -25,7 +25,7 @@
     <div>
       <span>@{{ goods.price | currency '￥' }}</span>
     </div>
-    <h4>@{{ goods.name }}</h4>
+    <h4>@{{{ goods.name }}}</h4>
 
     <p>@{{ goods.tag }}</p>
   </div>

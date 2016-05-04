@@ -24,7 +24,7 @@
                 <img class="media-object" :src="'/image/shop_goods/' + goods.id + '.png'" alt="...">
               </div>
               <div class="media-body">
-                <strong class="media-heading">@{{ goods.name }}</strong>
+                <strong class="media-heading">@{{{ goods.name }}}</strong>
 
                 <p>
                   <strong>@{{ goods.price | currency '￥' }}</strong>
@@ -48,7 +48,7 @@
         <table class="table table-condensed table1">
           <tbody>
           <tr v-for="goods in cart">
-            <td>@{{ goods.name }}</td>
+            <td>@{{{ goods.name }}}</td>
             <td>x@{{ goods.num }}</td>
             <td>@{{ priceGoods(goods) | currency '￥' }}</td>
           </tr>

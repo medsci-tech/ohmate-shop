@@ -35,7 +35,7 @@
       <table v-cloak class="table table-condensed table2">
         <tr>
           <th>收货人</th>
-          <td>@{{ address.name }}</td>
+          <td>@{{{ address.name }}}</td>
           <td>@{{ address.phone }}</td>
         </tr>
         <tr>
