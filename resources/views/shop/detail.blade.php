@@ -141,16 +141,10 @@
         if (this.goods.num <= 98) {
           this.goods.num++;
         }
-      },
-      noStorage: function () {
-        if (!list.goods.storage) {
-          $('.navbar-fixed-bottom .button').attr('disabled','disabled');
-        }
       }
     }
   });
 
-  list.noStorage();
 
 </script>
 <script>
