@@ -92,6 +92,11 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource('/commodity', 'CommodityController');
     });
 
+    Route::group(['prefix' => 'activities'], function () {
+        Route::group(['prefix' => 'mothersday'], function () {
+            return view('/activities/mothersday');
+        });
+    });
 });
 
 Route::any('github', 'Github\GithubController@onEvent');
