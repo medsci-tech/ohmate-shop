@@ -178,7 +178,7 @@ class Customer extends Model
      */
     public function register()
     {
-        \BeanRecharger::register($this);
+//        \BeanRecharger::register($this);
         return $this;
     }
 
