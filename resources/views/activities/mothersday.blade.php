@@ -14,10 +14,6 @@
       background-repeat: no-repeat;
     }
 
-    .img-responsive {
-      height: 100%;
-    }
-
     .modal-backdrop.in {
       filter: alpha(opacity=80);
       opacity: .8;
