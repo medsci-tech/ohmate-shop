@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
@@ -48,7 +48,7 @@
     </div>
     <div class="col-xs-4">
       <a v-if="goods.storage" href="{{url('/shop/cart')}}" class="button button-caution button-rounded" @click="addGoods()">立即购买</a>
-      <button v-if="!goods.storage" class="button button-caution button-rounded disabled" @click="addGoods()">立即购买</a>
+      <button v-if="!goods.storage" class="button button-caution button-rounded disabled" @click="addGoods()">立即购买</button>
     </div>
   </div>
 
@@ -95,7 +95,7 @@
           }
         }
         return -1;
-      },
+      }
     },
     methods: {
       addGoods: function () {
@@ -125,7 +125,7 @@
             this.goods.num = 1;
           }, 900);
         } else {
-          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
+          $('.jumbotron div').html('<p>商品暂时缺货!</p>');
           $('.jumbotron').show();
           $('.jumbotron').delay(1000).hide(0);
           $('.jumbotron .alert').show();
