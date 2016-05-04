@@ -8,10 +8,15 @@
   <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
   <style>
     .swiper-container {
+      position: absolute;
       width: 100%;
       height: 100%;
       background-image: url('{{url('/image/activities/mothersday/background.png')}}');
       background-repeat: no-repeat;
+    }
+
+    .img-responsive {
+      height: 100%;
     }
 
     .modal-backdrop.in {
