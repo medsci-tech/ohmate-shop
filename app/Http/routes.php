@@ -93,7 +93,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::group(['prefix' => 'activities'], function () {
-        Route::group(['prefix' => 'mothersday'], function () {
+        Route::get('/mothersday', function () {
             return view('/activities/mothersday');
         });
     });
