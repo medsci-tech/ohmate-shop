@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
@@ -42,12 +42,16 @@
       <p v-cloak>@{{ goods.num }}</p>
       <span @click="numAdd()" class="fa fa-plus"></span>
     </div>
+
     <div class="col-xs-4">
-      <button id="add" class="button button-primary" :class="goods.storage?'':'disabled'" @click="addGoods()">加入购物车</button>
+      <button v-if="goods.storage" id="add" class="button button-primary" @click="addGoods()">加入购物车</button>
+      <button v-if="!goods.storage" id="add" class="button button-defualt disabled" @click="addGoods()">加入购物车</button>
     </div>
     <div class="col-xs-4">
-      <a id="buy" href="{{url('/shop/cart')}}" class="button button-primary" :class="goods.storage?'':'disabled'" @click="addGoods()">立即购买</a>
+      <a id="buy" v-if="goods.storage" href="{{url('/shop/cart')}}" class="button button-primary" @click="addGoods()">立即购买</a>
+      <button id="buy" v-if="!goods.storage" class="button button-caution button-rounded disabled" @click="addGoods()">立即购买</button>
     </div>
+
   </div>
 
   <div class="jumbotron">
@@ -93,42 +97,42 @@
           }
         }
         return -1;
-      },
+      }
     },
     methods: {
       addGoods: function () {
-//        if (this.goods.storage) {
-        if (cart_num == '') {
-          cart_num = 0;
-        }
-        if (this.alreadyHave != -1) {
-          this.cart[this.alreadyHave].num += this.goods.num;
+        if (this.goods.storage) {
+          if (cart_num == '') {
+            cart_num = 0;
+          }
+          if (this.alreadyHave != -1) {
+            this.cart[this.alreadyHave].num += this.goods.num;
+          } else {
+            this.cart.push({
+              id: this.goods.id,
+              name: this.goods.name,
+              tag: this.goods.tag,
+              price: this.goods.price,
+              num: this.goods.num
+            });
+            cart_num++;
+          }
+          $('#touch span').text(cart_num);
+          $('.jumbotron').show();
+          $('.jumbotron').delay(1000).hide(0);
+          $('.jumbotron .alert').show();
+          $('.jumbotron .alert').delay(300).fadeOut(700);
+          localStorage.cart = JSON.stringify(this.cart);
+          setTimeout(function () {
+            this.goods.num = 1;
+          }, 900);
         } else {
-          this.cart.push({
-            id: this.goods.id,
-            name: this.goods.name,
-            tag: this.goods.tag,
-            price: this.goods.price,
-            num: this.goods.num
-          });
-          cart_num++;
+          $('.jumbotron div').html('<p>商品暂时缺货!</p>');
+          $('.jumbotron').show();
+          $('.jumbotron').delay(1000).hide(0);
+          $('.jumbotron .alert').show();
+          $('.jumbotron .alert').delay(300).fadeOut(700);
         }
-        $('#touch span').text(cart_num);
-        $('.jumbotron').show();
-        $('.jumbotron').delay(1000).hide(0);
-        $('.jumbotron .alert').show();
-        $('.jumbotron .alert').delay(300).fadeOut(700);
-        localStorage.cart = JSON.stringify(this.cart);
-        setTimeout(function () {
-          this.goods.num = 1;
-        }, 900);
-//        } else {
-//          $('.jumbotron div').html('<p>商品暂时缺货!</p>')
-//          $('.jumbotron').show();
-//          $('.jumbotron').delay(1000).hide(0);
-//          $('.jumbotron .alert').show();
-//          $('.jumbotron .alert').delay(300).fadeOut(700);
-//        }
       },
       numMinus: function () {
         if (this.goods.num >= 2) {
@@ -139,16 +143,10 @@
         if (this.goods.num <= 98) {
           this.goods.num++;
         }
-      },
-      noStorage: function () {
-        if (!list.goods.storage) {
-          $('.navbar-fixed-bottom .button').attr('disabled','disabled');
-        }
       }
     }
   });
 
-  list.noStorage();
 
 </script>
 <script>

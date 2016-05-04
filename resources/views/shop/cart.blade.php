@@ -48,7 +48,7 @@
         <table class="table table-condensed table1">
           <tbody>
           <tr v-for="goods in cart">
-            <td>@{{ goods.name }}</td>
+            <td>@{{{ goods.name }}}</td>
             <td>x@{{ goods.num }}</td>
             <td>@{{ priceGoods(goods) | currency '￥' }}</td>
           </tr>
