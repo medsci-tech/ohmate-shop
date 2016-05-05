@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-  <title>在那刻之后我们开始享受着母爱给我们带来的幸福</title>
+  <title>今天，你必须要为母亲做7件事</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
   <style>
@@ -116,7 +116,7 @@
       ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
       success: function(res) {
         wx.onMenuShareTimeline({
-          title: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享标题
+          title: '今天，你必须要为母亲做7件事', // 分享标题
           link: '{{url('/activities/mothersday')}}', // 分享链接
           imgUrl: '{{url('/image/activities/mothersday/favicon.jpg')}}', // 分享图标
           success: function () {
@@ -127,8 +127,8 @@
           }
         });
         wx.onMenuShareAppMessage({
-          title: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享标题
-          desc: '早起，给妈妈一个拥抱', // 分享描述
+          title: '今天，你必须要为母亲做7件事', // 分享标题
+          desc: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享描述
           link: '{{url('/activities/mothersday')}}', // 分享链接
           imgUrl: '{{url('/image/activities/mothersday/favicon.jpg')}}', // 分享图标
           type: '', // 分享类型,music、video或link，不填默认为link
@@ -141,8 +141,8 @@
           }
         });
         wx.onMenuShareQQ({
-          title: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享标题
-          desc: '早起，给妈妈一个拥抱', // 分享描述
+          title: '今天，你必须要为母亲做7件事', // 分享标题
+          desc: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享描述
           link: '{{url('/activities/mothersday')}}', // 分享链接
           imgUrl: '{{url('/image/activities/mothersday/favicon.jpg')}}', // 分享图标
           success: function () {
@@ -153,8 +153,8 @@
           }
         });
         wx.onMenuShareWeibo({
-          title: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享标题
-          desc: '早起，给妈妈一个拥抱', // 分享描述
+          title: '今天，你必须要为母亲做7件事', // 分享标题
+          desc: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享描述
           link: '{{url('/activities/mothersday')}}', // 分享链接
           imgUrl: '{{url('/image/activities/mothersday/favicon.jpg')}}', // 分享图标
           success: function () {
@@ -165,8 +165,8 @@
           }
         });
         wx.onMenuShareQZone({
-          title: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享标题
-          desc: '早起，给妈妈一个拥抱', // 分享描述
+          title: '今天，你必须要为母亲做7件事', // 分享标题
+          desc: '在那刻之后我们开始享受着母爱给我们带来的幸福', // 分享描述
           link: '{{url('/activities/mothersday')}}', // 分享链接
           imgUrl: '{{url('/image/activities/mothersday/favicon.jpg')}}', // 分享图标
           success: function () {
