@@ -17,11 +17,15 @@ class ActivitiesController extends Controller
 
     public function mothersDay(Request $request)
     {
-        $appId  = env('WX_APPID');
-        $secret = env('WX_SECRET');
-        $js = new Js($appId, $secret);
-        
-        return view('activities.mothersday',['js' => $js]);
+        return view('activities.mothersday')->with([
+          'js' => \Wechat::getJssdkConfig([
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'
+          ])
+        ]);
     }
     
 
