@@ -93,9 +93,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::group(['prefix' => 'activities'], function () {
-        Route::get('/mothersday', function(){
-            return view('/activities/mothersday');
-        });
+        Route::get('/mothersday', 'ActivitiesController@mothersDay');
     });
 });
 
