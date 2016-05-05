@@ -92,7 +92,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::resource('/commodity', 'CommodityController');
     });
 
-    Route::group(['prefix' => 'activities'], function () {
+    Route::group(['prefix' => 'activities', 'namespace' => 'Activities'], function () {
         Route::get('/mothersday', 'ActivitiesController@mothersDay');
 //          Route::get('/mothersday', function(){
 //              return view('/activities/mothersday');
