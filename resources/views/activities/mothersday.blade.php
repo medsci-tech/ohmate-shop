@@ -65,6 +65,8 @@
     <div class="swiper-slide">
       <img class="img-responsive" src="{{url('/image/activities/mothersday/8.png')}}">
     </div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
   </div>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
