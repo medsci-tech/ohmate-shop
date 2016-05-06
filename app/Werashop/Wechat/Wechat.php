@@ -246,7 +246,7 @@ class Wechat
      */
     public function messageEventCallback() {
         return function ($message) {
-            return Message::make('text')->content('您好!');
+            return "success";
         };
 
     }

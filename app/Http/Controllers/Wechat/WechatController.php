@@ -21,7 +21,7 @@ class WechatController extends Controller
     {
         $server = Wechat::getServer();
 
-        $server->on('message', Wechat::messageEventCallback());
+//        $server->on('message', Wechat::messageEventCallback());
 
         $server->on('event', 'location', Wechat::locationEventCallback());
 
