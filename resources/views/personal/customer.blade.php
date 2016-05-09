@@ -36,25 +36,25 @@
       </li>
     </ul>
   </div>
-  <div class="panel panel-info" v-show=" customer_article_statistics.length != 0">
-    <div class="panel-heading">学习统计</div>
-    <div class="panel-body" v-cloak>
-      <div>
-        <canvas id="study"></canvas>
-      </div>
-      <br>
+  {{--<div class="panel panel-info" v-show=" customer_article_statistics.length != 0">--}}
+    {{--<div class="panel-heading">学习统计</div>--}}
+    {{--<div class="panel-body" v-cloak>--}}
+      {{--<div>--}}
+        {{--<canvas id="study"></canvas>--}}
+      {{--</div>--}}
+      {{--<br>--}}
 
-      <div>
-        <ul class="list-unstyled data1">
-          <li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>
-            @{{ article.article_type.type_ch }}：阅读@{{ article.count }}次
-          </li>
-        </ul>
-      </div>
+      {{--<div>--}}
+        {{--<ul class="list-unstyled data1">--}}
+          {{--<li v-for=" article in customer_article_statistics"><span>&emsp;&emsp;&emsp;&emsp;</span>--}}
+            {{--@{{ article.article_type.type_ch }}：阅读@{{ article.count }}次--}}
+          {{--</li>--}}
+        {{--</ul>--}}
+      {{--</div>--}}
 
-    </div>
+    {{--</div>--}}
 
-  </div>
+  {{--</div>--}}
   <div class="panel panel-warning" v-show=" customer_commodity_statistics.length != 0">
     <div class="panel-heading">消费统计</div>
     <div class="panel-body" v-cloak>
@@ -125,8 +125,8 @@
 
 
   Chart.defaults.global.responsive = true;
-  var ctx = document.getElementById("study").getContext("2d");
-  var myStudy = new Chart(ctx).Pie(data1);
+//  var ctx = document.getElementById("study").getContext("2d");
+//  var myStudy = new Chart(ctx).Pie(data1);
   var ct2 = document.getElementById("consume").getContext("2d");
   var myConsume = new Chart(ct2).Pie(data2);
 
