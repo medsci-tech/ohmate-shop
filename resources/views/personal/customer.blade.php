@@ -18,10 +18,10 @@
         <span class="badge">@{{ customer_statistics[0].friend_count }}</span>
         好友数
       </li>
-      <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics[0].article_count }}</span>
-        阅读文章数
-      </li>
+      {{--<li class="list-group-item">--}}
+        {{--<span class="badge">@{{ customer_statistics[0].article_count }}</span>--}}
+        {{--阅读文章数--}}
+      {{--</li>--}}
       <li class="list-group-item">
         <span class="badge">@{{ customer_statistics[0].order_count }}</span>
         交易订单数
