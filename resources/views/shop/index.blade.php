@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <title>易康商城</title>
+    <title>糖尿病商城</title>
     <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/yk-web.css')}}">
     <link rel="stylesheet" href="{{asset('/css/weui.min.css')}}">
@@ -17,6 +17,11 @@
     <div class="row">
         <div class="swiper-container">
             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a>
+                        <img class="img-responsive" src="{{url('/image/shop_goods/top5.jpg')}}">
+                    </a>
+                </div>
                 <div class="swiper-slide">
                     <a href="http://mp.weixin.qq.com/s?__biz=MzI4NTAxMzc3Mw==&mid=404091722&idx=1&sn=94e3b8e85821a6fc4e937f91dc4035de&scene=0&previewkey=XOaKnnGt5xgBr1pSVCYmkswqSljwj2bfCUaCyDofEow%3D#wechat_redirect">
                         <img class="img-responsive" src="{{url('/image/shop_goods/top1.png')}}">
