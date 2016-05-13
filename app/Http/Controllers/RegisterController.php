@@ -72,7 +72,7 @@ class RegisterController extends Controller
         $customer->update([
             'phone'             => $request->input('phone'),
             'is_registered'     => true,
-            'beans_total'       => 0,
+//            'beans_total'       => 0,
             'nickname'          => $user['nickname'],
             'head_image_url'    => $user['headimgurl'],
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
