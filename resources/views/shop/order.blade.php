@@ -11,7 +11,7 @@
   @foreach($orders as $order)
     <div class="row order-form">
       <a href="{{url('/shop/order/') .'/'. $order->id}}">
-        <p>&emsp;下单时间：{{$order->created_at->toDateString()}}<span class="order-finished">待收货&emsp;</span></p>
+        <p>&emsp;下单时间：{{$order->created_at->toDateString()}}<span class="order-finished">{{$order->status->label}}&emsp;</span></p>
         <div class="img-group">
           @foreach($order['commodities'] as $commodity)
             <div><img class="" src="{{$commodity->portrait}}" alt=""></div>
