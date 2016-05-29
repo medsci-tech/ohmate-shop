@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CommodityImage extends Model
 {
+    protected $guarded = [];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

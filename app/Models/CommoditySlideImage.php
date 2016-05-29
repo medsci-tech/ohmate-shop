@@ -24,4 +24,5 @@ use Illuminate\Database\Eloquent\Model;
 class CommoditySlideImage extends Model
 {
     //
+    protected $guarded = [];
 }

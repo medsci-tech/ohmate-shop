@@ -36,4 +36,8 @@ class HackController extends Controller
     {
         \Wechat::sendMessage('您好', 'oUS_vt5i0R1ODvljFbFfKfPr8BuY');
     }
+
+    public function a()
+    {
+    }
 }
