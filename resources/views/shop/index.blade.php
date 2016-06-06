@@ -16,11 +16,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a>
-                        <img class="img-responsive" src="{{url('/image/shop_goods/top5.jpg')}}">
-                    </a>
-                </div> <div class="swiper-slide">
-                    <a href="{{url('/activities/mothersday')}}">
+                    <a href="">
                         <img class="img-responsive" src="{{url('/image/shop_goods/top4.jpg')}}">
                     </a>
                 </div>
