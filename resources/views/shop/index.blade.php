@@ -42,7 +42,7 @@
 
     <div class="row">
 
-        @foreach($items as $item)
+        @foreach($items as $item) 
             <div class="col-xs-6">
                 <a href="{{url('/shop/commodity/') .'/'. $item->id}}">
                     <div class="thumbnail">
