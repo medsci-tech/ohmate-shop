@@ -1,5 +1,5 @@
-if (localStorage.cart != 'undefined') {
-  var cart = JSON.parse(localStorage.cart);
+if (localStorage.cart1 != 'undefined') {
+  var cart = JSON.parse(localStorage.cart1);
 } else {
   var cart = [];
 }
@@ -43,7 +43,7 @@ var list = new Vue({
             num: this.goods.num
           });
         }
-        localStorage.cart = JSON.stringify(this.cart);
+        localStorage.cart1 = JSON.stringify(this.cart);
         this.goods.num = 1;
         $('.jumbotron').show();
         $('.jumbotron').delay(1000).hide(0);

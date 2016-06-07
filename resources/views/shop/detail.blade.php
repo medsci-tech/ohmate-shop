@@ -71,11 +71,12 @@
     tag: '{{$item["remark"]}}',
     price: {{$item["price"]}},
     storage: {{$item["storage"]}},
+    min_cash_price: {{$item["min_cash_price"]}},
     num: 1
   };
 
-  if (typeof localStorage.cart != 'undefined') {
-    var cart = JSON.parse(localStorage.cart);
+  if (typeof localStorage.cart1 != 'undefined') {
+    var cart = JSON.parse(localStorage.cart1);
   } else {
     var cart = [];
   }
@@ -111,7 +112,8 @@
               name: this.goods.name,
               tag: this.goods.tag,
               price: this.goods.price,
-              num: this.goods.num
+              num: this.goods.num,
+              min_cash_price: this.goods.min_cash_price
             });
             cart_num++;
           }
@@ -120,7 +122,7 @@
           $('.jumbotron').delay(1000).hide(0);
           $('.jumbotron .alert').show();
           $('.jumbotron .alert').delay(300).fadeOut(700);
-          localStorage.cart = JSON.stringify(this.cart);
+          localStorage.cart1 = JSON.stringify(this.cart);
           setTimeout(function () {
             this.goods.num = 1;
           }, 900);
