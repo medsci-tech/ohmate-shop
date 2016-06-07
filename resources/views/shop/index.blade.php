@@ -50,7 +50,11 @@
                         <div class="caption">
                             <p>{{$item->name}}</p>
                             <p class="small">{{$item->remark}}</p>
-                            <strong>￥{{$item->price}}</strong><span>/<small v-if="{{$item->price - $item->min_cash_price}} > 0.001">{{intval($item->price * 100)}}迈豆</small></span>
+                            <strong>￥{{$item->price}}</strong><span>
+                                @if($item->min_cash_price != 0)
+                                    /<small>{{intval($item->price * 100)}}迈豆</small>
+                                @endif
+                            </span>
                         </div>
                     </div>
                 </a>

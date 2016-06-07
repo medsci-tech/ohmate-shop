@@ -52,7 +52,7 @@ var shop_cart = new Vue({
     priceDiscount: function () {
       var maxDis = this.priceAll-this.minCashPrice;
       var consume =
-        this.beans < this.maxDis * 100 ? this.beans : this.maxDis * 100;
+        this.beans < maxDis * 100 ? this.beans : maxDis * 100;
       return consume/100;
     },
     priceCount: function () {
