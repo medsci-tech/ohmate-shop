@@ -106,10 +106,10 @@ class Order extends Model
      */
     public function calculate()
     {
-        $cash_payment_calculated_without_post_fee = \BeanRecharger::calculateConsume($this->customer, $this->total_price - $this->post_fee);
+        $cash_payment_calculated_without_post_fee = \BeanRecharger::calculateConsume($this->customer, $this->total_price - $this->post_fee - $this->min_cash_price_without_post_fee);
 
-        $this->cash_payment_calculated = $cash_payment_calculated_without_post_fee + $this->post_fee;
-        $this->beans_payment_calculated = $this->total_price - $cash_payment_calculated_without_post_fee - $this->post_fee;
+        $this->cash_payment_calculated = $cash_payment_calculated_without_post_fee + $this->post_fee + $this->min_cash_price_without_post_fee;
+        $this->beans_payment_calculated = $this->total_price - $cash_payment_calculated_without_post_fee - $this->post_fee - $this->min_cash_price_without_post_fee;
 
         return $this;
     }
@@ -146,6 +146,7 @@ class Order extends Model
     {
         $this->commodities()->save($commodity, ['amount' => $amount]);
         $this->increasePrice(floatval($commodity->price * $amount));
+        $this->increaseMinCashPrice(floatval($commodity->min_cash_price * $amount));
         return $this;
     }
 
@@ -274,5 +275,11 @@ class Order extends Model
     public function toOrderMessageString()
     {
         return '订单ID: '. $this->id . '; 支付金额: ' . $this->cash_payment. ' 已下单, 请尽快处理';
+    }
+
+    private function increaseMinCashPrice($floatval)
+    {
+        $this->min_cash_price_without_post_fee += $floatval;
+        return $this;
     }
 }
