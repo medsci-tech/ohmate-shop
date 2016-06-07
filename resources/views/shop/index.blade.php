@@ -16,7 +16,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <a href="">
+                    <a href="http://mp.weixin.qq.com/s?__biz=MzI4NTAxMzc3Mw==&mid=504846326&idx=1&sn=0027ec90be16454456b6d79724421a92&scene=0&previewkey=XOaKnnGt5xgBr1pSVCYmkswqSljwj2bfCUaCyDofEow%3D#wechat_redirect">
                         <img class="img-responsive" src="{{url('/image/shop_goods/top4.jpg')}}">
                     </a>
                 </div>
@@ -42,7 +42,7 @@
 
     <div class="row">
 
-        @foreach($items as $item) 
+        @foreach($items as $item)
             <div class="col-xs-6">
                 <a href="{{url('/shop/commodity/') .'/'. $item->id}}">
                     <div class="thumbnail">
