@@ -4,8 +4,8 @@ $.ajaxSetup({
   }
 });
 
-if (typeof localStorage.cart != 'undefined') {
-  var cart = JSON.parse(localStorage.cart);
+if (typeof localStorage.cart1 != 'undefined') {
+  var cart = JSON.parse(localStorage.cart1);
 } else {
   var cart = [];
 }
@@ -42,9 +42,17 @@ var shop_cart = new Vue({
       }
       return all;
     },
+    minCashPrice: function () {
+      var all = 0;
+      for (i = 0; i < this.cart.length; i++) {
+        all += this.cart[i].min_cash_price * this.cart[i].num;
+      }
+      return all;
+    },
     priceDiscount: function () {
+      var maxDis = this.priceAll-this.minCashPrice;
       var consume =
-        this.beans < this.priceAll * 100 ? this.beans : this.priceAll * 100;
+        this.beans < maxDis * 100 ? this.beans : maxDis * 100;
       return consume/100;
     },
     priceCount: function () {
@@ -66,7 +74,7 @@ var shop_cart = new Vue({
   methods: {
     removeGoods: function (e) {
       this.cart.$remove(e);
-      localStorage.cart = JSON.stringify(this.cart);
+      localStorage.cart1 = JSON.stringify(this.cart);
     },
     priceGoods: function (e) {
       return e.price * e.num;
@@ -74,13 +82,13 @@ var shop_cart = new Vue({
     numMinus: function (e) {
       if (e.num >= 2) {
         e.num--;
-        localStorage.cart = JSON.stringify(this.cart);
+        localStorage.cart1 = JSON.stringify(this.cart);
       }
     },
     numAdd: function (e) {
       if (e.num <= 98) {
         e.num++;
-        localStorage.cart = JSON.stringify(this.cart);
+        localStorage.cart1 = JSON.stringify(this.cart);
       }
     },
     getPersonal: function () {

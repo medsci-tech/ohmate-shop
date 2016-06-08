@@ -50,7 +50,8 @@
                         <div class="caption">
                             <p>{{$item->name}}</p>
                             <p class="small">{{$item->remark}}</p>
-                            <strong>￥{{$item->price}}</strong><span>/<small>{{intval($item->price * 100)}}迈豆</small></span>
+                            <strong>￥{{$item->price}}</strong><span>@if($item->min_cash_price == 0)/<small>{{intval($item->price * 100)}}迈豆</small>@endif
+                            </span>
                         </div>
                     </div>
                 </a>
@@ -75,9 +76,10 @@
     });
 </script>
 <script>
+    localStorage.cart = null;
     var cart_num = '';
-    if (typeof localStorage.cart != 'undefined') {
-        var j = JSON.parse(localStorage.cart);
+    if (typeof localStorage.cart1 != 'undefined') {
+        var j = JSON.parse(localStorage.cart1);
         for (i=0; i < j.length; i++) ;
         if (i != 0){
             cart_num = i;
