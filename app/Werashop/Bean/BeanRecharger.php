@@ -220,11 +220,14 @@ class BeanRecharger
      */
     public function executeConsume(Customer $customer, $value)
     {
-        return (
-            $this->consume($customer, $value) ||
-            $this->consumeFeedback($customer, $value) ||
-            $this->consumeVolunteerFeedback($customer, $value)
-        );
+        if ($value > 0) {
+            return (
+                $this->consume($customer, $value) ||
+                $this->consumeFeedback($customer, $value) ||
+                $this->consumeVolunteerFeedback($customer, $value)
+            );
+        }
+        return false;
     }
 
     /**
