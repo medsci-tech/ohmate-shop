@@ -48,6 +48,14 @@ class Customer extends Model
     public $timestamps = ['created_at', 'updated_at', 'auth_code_expired'];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo | DoctorLevel
+     */
+    public function level()
+    {
+        return $this->belongsTo(DoctorLevel::class, 'level_id');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function type()

@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerBean extends Model
 {
     protected $table = 'customer_beans';
+    protected $guarded = [];
 
     public function rate()
     {
