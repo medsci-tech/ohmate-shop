@@ -59,21 +59,21 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide swiper-no-swiping">
-          <h3>1.糖尿病治疗方式</h3>
+          <h3 class="text-primary">1、糖尿病治疗方式</h3>
 
           <div class="mainImg">
-            <img class="img-responsive" src="{{asset('/')}}image/test.jpg" alt="testImg">
+            <img class="img-responsive" src="{{url('/')}}image/questionnaire/q1.jpg" alt="testImg">
           </div>
           <div class="radio">
             <input required name="q1" id="q1_c1" value="A" type="radio">
             <label for="q1_c1">
-              A 注射胰岛素
+              <span class="text-warning">A</span>、注射胰岛素
             </label>
           </div>
           <div class="radio">
             <input required name="q1" id="q1_c2" value="B" type="radio">
             <label for="q1_c2">
-              B 单纯使用口服药
+              <span class="text-warning">B</span>、单纯使用口服药
             </label>
           </div>
           <p class="hidden required small">请选择一个选项!</p>
@@ -83,21 +83,21 @@
 
         </div>
         <div class="swiper-slide swiper-no-swiping">
-          <h3>2.注射起始时间</h3>
+          <h3 class="text-primary">2、注射起始时间</h3>
 
           <div class="mainImg">
-            <img class="img-responsive" src="{{asset('/')}}image/test.jpg" alt="testImg">
+            <img class="img-responsive" src="{{url('/')}}image/questionnaire/q2.jpg" alt="testImg">
           </div>
           <div class="radio">
             <input name="q2" id="q2_c1" value="A" type="radio">
             <label for="q2_c1">
-              A 本月开始
+              <span class="text-warning">A</span>、本月开始
             </label>
           </div>
           <div class="radio">
             <input name="q2" id="q2_c2" value="B" type="radio">
             <label for="q2_c2">
-              B 以前
+              <span class="text-warning">B</span>、以前
             </label>
           </div>
           <p class="hidden required small">请选择一个选项!</p>
@@ -106,45 +106,45 @@
           </button>
         </div>
         <div class="swiper-slide swiper-no-swiping">
-          <h3>3.使用的注射药物</h3>
+          <h3 class="text-primary">3、使用的注射药物</h3>
 
           <div class="mainImg">
-            <img class="img-responsive" src="{{asset('/')}}image/test.jpg" alt="testImg">
+            <img class="img-responsive" src="{{url('/')}}image/questionnaire/q3.jpg" alt="testImg">
           </div>
           <div class="checkbox">
             <input name="q3[]" id="q3_c1" value="A" type="checkbox">
             <label for="q3_c1">
-              A 诺和灵
+              <span class="text-warning">A</span>、诺和灵
             </label>
           </div>
           <div class="checkbox">
             <input name="q3[]" id="q3_c2" value="B" type="checkbox">
             <label for="q3_c2">
-              B 诺和锐&诺和平
+              <span class="text-warning">B</span>、诺和锐&诺和平
             </label>
           </div>
           <div class="checkbox">
             <input name="q3[]" id="q3_c3" value="C" type="checkbox">
             <label for="q3_c3">
-              C 诺和力
+              <span class="text-warning">C</span>、诺和力
             </label>
           </div>
           <div class="checkbox">
             <input name="q3[]" id="q3_c4" value="D" type="checkbox">
             <label for="q3_c4">
-              D 来得时
+              <span class="text-warning">D</span>、来得时
             </label>
           </div>
           <div class="checkbox">
             <input name="q3[]" id="q3_c5" value="E" type="checkbox">
             <label for="q3_c5">
-              E 优泌林￥&优泌乐
+              <span class="text-warning">E</span>、优泌林￥&优泌乐
             </label>
           </div>
           <div class="checkbox">
             <input name="q3[]" id="q3_c6" value="F" type="checkbox">
             <label for="q3_c6">
-              F 其他
+              <span class="text-warning">F</span>、其他
             </label>
           </div>
           <p class="hidden required small">请选择一个选项!</p>
