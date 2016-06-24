@@ -10,17 +10,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class InviteCustomer extends BeansFeed
 {
-    use InteractsWithQueue, SerializesModels;
-
     public $beans = 1000;
 
     public $name = 'invite';
 
-    /**
-     * Create a new job instance.
-     *
-     * @param Customer $customer
-     */
     public function __construct(Customer $customer)
     {
         parent::__construct($customer);
@@ -39,16 +32,5 @@ class InviteCustomer extends BeansFeed
             default:
                 $this->name = 'invite';break;
         }
-    }
-
-    protected function transaction()
-    {
-        return function () {
-            $this->customer->update([
-                'beans_total' => $this->customer->beans_total + $this->beans
-            ]);
-            $this->after = $this->customer->beans_total;
-            $this->persist();
-        };
     }
 }

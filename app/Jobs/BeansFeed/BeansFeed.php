@@ -4,6 +4,7 @@
 namespace app\Jobs\BeansFeed;
 
 
+use app\Exceptions\NotEnoughBeansException;
 use App\Jobs\Job;
 use App\Models\BeanRate;
 use App\Models\Customer;
@@ -32,7 +33,20 @@ abstract class BeansFeed extends Job
         \DB::transaction($this->transaction());
     }
 
-    protected abstract function transaction();
+    protected function transaction()
+    {
+        return function () {
+            if ($this->beans < 0 && $this->customer->beans_total + $this->beans < 0) {
+                throw new NotEnoughBeansException;
+            }
+
+            $this->customer->update([
+                'beans_total' => $this->customer->beans_total + $this->beans
+            ]);
+            $this->after = $this->customer->beans_total;
+            $this->persist();
+        };
+    }
 
     protected function persist()
     {
