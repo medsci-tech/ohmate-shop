@@ -43,7 +43,7 @@
                     <div class="thumbnail">
                         <img src="{{$item->portrait}}" alt="">
                         <div class="caption">
-                            <p>{{$item->name}}</p>
+                            <p style="overflow: hidden; text-overflow:ellipsis;white-space:nowrap;">{{$item->name}}</p>
                             <p class="small" style="overflow: hidden; text-overflow:ellipsis;white-space:nowrap;">{{$item->remark}}</p>
                             <strong>￥{{$item->price}}</strong><span>@if($item->min_cash_price == 0)/<small>{{intval($item->price * 100)}}迈豆</small>@endif
                             </span>
