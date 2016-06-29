@@ -30,7 +30,10 @@ abstract class BeansFeed extends Job
      */
     public function handle()
     {
-        \DB::transaction($this->transaction());
+        if ($this->beforeTransaction()) {
+            \DB::transaction($this->transaction());
+            $this->afterTransaction();
+        }
     }
 
     protected function transaction()
@@ -58,5 +61,15 @@ abstract class BeansFeed extends Job
             'before' => $this->before,
             'after' => $this->after,
         ]);
+    }
+
+    protected function beforeTransaction()
+    {
+        return true;
+    }
+
+    protected function afterTransaction()
+    {
+        return true;
     }
 }
