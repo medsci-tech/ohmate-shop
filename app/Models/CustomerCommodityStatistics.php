@@ -39,7 +39,7 @@ class CustomerCommodityStatistics extends Model
             $details = [];
         }
         foreach($details as &$detail) {
-            $detail['commodity'] = Commodity::find($detail['commodity_id'])->toArray();
+            $detail['commodity'] = Commodity::withTrashed()->find($detail['commodity_id'])->toArray();
         }
         return $details;
     }
