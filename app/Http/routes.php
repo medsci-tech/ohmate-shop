@@ -12,19 +12,21 @@
 */
 
 //Route::get('commodity-image', function () {
-//    for ($i = 12; $i <= 19; $i++) {
-//        for ($j = 0; $j <=7; $j++) {
+//    for ($i = 21; $i <= 21; $i++) {
+//        for ($j = 0; $j <= 8; $j++) {
 //            \App\Models\CommodityImage::create([
 //                'commodity_id' => $i,
 //                'image_url' => 'http://www.ohmate.cn/image/shop_goods/'.$i.'/body/'.$j.'.png',
 //                'priority' => 0
 //            ]);
 //        }
-//        \App\Models\CommoditySlideImage::create([
-//            'commodity_id' => $i,
-//            'image_url' => 'http://www.ohmate.cn/image/shop_goods/'.$i.'/head/'.$j.'.png',
-//            'priority' => 0
-//        ]);
+//        for ($j = 0; $j <= 2; $j++) {
+//            \App\Models\CommoditySlideImage::create([
+//                'commodity_id' => $i,
+//                'image_url'    => 'http://www.ohmate.cn/image/shop_goods/' . $i . '/head/' . $j . '.png',
+//                'priority'     => 0
+//            ]);
+//        }
 //    }
 //});
 
