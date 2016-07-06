@@ -1,15 +1,13 @@
 <?php
 
 
-namespace app\Jobs\BeansFeed;
+namespace App\Jobs\BeansTransaction;
 
-
-use app\Exceptions\NotEnoughBeansException;
-use App\Jobs\Job;
+use App\Exceptions\NotEnoughBeansException;
 use App\Models\BeanRate;
 use App\Models\Customer;
-
-abstract class BeansFeed extends Job
+use App\Jobs\Job;
+abstract class BeansTransaction extends Job
 {
     public $beans = 0;
     public $name = 'undefined';

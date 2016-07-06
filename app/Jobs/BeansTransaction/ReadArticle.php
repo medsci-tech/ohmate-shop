@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Jobs\BeansFeed;
+namespace App\Jobs\BeansTransaction;
 
 
 use App\Models\Customer;
 
-class ReadArticle extends BeansFeed
+class ReadArticle extends BeansTransaction
 {
     public $beans = 20;
 

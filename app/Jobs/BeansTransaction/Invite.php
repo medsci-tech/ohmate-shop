@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\BeansFeed;
+namespace App\Jobs\BeansTransaction;
 
 use App\Jobs\Job;
 use App\Models\Customer;
@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class InviteCustomer extends BeansFeed
+class Invite extends BeansTransaction
 {
     public $beans = 1000;
 
