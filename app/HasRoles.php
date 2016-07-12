@@ -60,7 +60,7 @@ trait HasRoles
     }
 
     /**
-     * @param $role
+     * @param Role|string $role
      * @return bool
      */
     public function hasRole($role)
