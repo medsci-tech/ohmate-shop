@@ -164,4 +164,8 @@ Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Red
     Route::get('/close', 'RedirectController@close');
 });
 
+Route::group(['prefix' => 'questionnaire', 'middleware' => 'web', 'namespace' => 'Questionnaire'], function () {
+    Route::get('/', 'SubscribeQuestionnaireController@index');
+});
+
 
