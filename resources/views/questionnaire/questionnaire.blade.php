@@ -1,4 +1,4 @@
-@extends('main')
+@extends('questionnaire.main')
 
 @section('css')
   <link rel="stylesheet" href="{{asset('/')}}vendor/iCheck/all.css">
@@ -60,6 +60,7 @@
 @section('content')
   <div class="container">
     <form action="localhost">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide swiper-no-swiping">
@@ -437,52 +438,60 @@
             <br>
           </div>
           <!--5-->
-          <div class="swiper-slide swiper-no-swiping">
-            <img class="img-responsive" src="{{url('/')}}image/questionnaire/finish.png" alt="">
+          <div class="swiper-slide swiper-no-swiping text-center">
             <br>
-            <button type="submit" id="button5" style="margin: auto; font-size: 80%;"
-                    class="button button-block button-large button-rounded button-primary center-block">
-              点击领取奖卡
+            <br>
+            <i class="biaozhi text-success glyphicon glyphicon-info-sign"></i>
+            <br>
+            <br>
+
+            <p>糖尿病治疗规范资讯</p>
+            <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
+            <br>
+            <button type="button" style="margin: auto; font-size: 80%;"
+                    class=" button button-block button-large button-rounded button-primary">
+              点击获取领奖卡
             </button>
+            <br>
             <br>
           </div>
           <!--6-->
-          <!--<div class="swiper-slide swiper-no-swiping text-center">-->
-          <!--<br>-->
-          <!--<br>-->
-          <!--<i class="biaozhi text-success glyphicon glyphicon-heart-empty"></i>-->
-          <!--<br>-->
-          <!--<br>-->
+          <div class="swiper-slide swiper-no-swiping text-center">
+            <br>
+            <br>
+            <i class="biaozhi text-warning glyphicon glyphicon-info-sign"></i>
+            <br>
+            <br>
 
-          <!--<p>感谢您填写调查问卷！</p>-->
+            <p>低血糖资讯</p>
+            <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
+            <br>
+            <button type="button" style="margin: auto; font-size: 80%;"
+                    class=" button button-block button-large button-rounded button-primary">
+              点击获取领奖卡
+            </button>
+            <br>
+            <br>
+          </div>
+          <!--7-->
+          <div class="swiper-slide swiper-no-swiping text-center">
+            <br>
+            <br>
+            <i class="biaozhi text-warning glyphicon glyphicon-info-sign"></i>
+            <br>
+            <br>
 
-          <!--<p>您可以去积分商城逛逛</p>-->
-          <!--<br>-->
-          <!--<button type="button" style="margin: auto" id="button_good"-->
-          <!--class="button button-block button-large button-rounded button-action">-->
-          <!--去易康商城逛逛-->
-          <!--</button>-->
-          <!--<br>-->
-          <!--<br>-->
-          <!--</div>-->
-          <!--<div class="swiper-slide swiper-no-swiping text-center">-->
-          <!--<br>-->
-          <!--<br>-->
-          <!--<i class="biaozhi text-warning glyphicon glyphicon-info-sign"></i>-->
-          <!--<br>-->
-          <!--<br>-->
-
-          <!--<p>感谢您填写调查问卷！</p>-->
-
-          <!--<p>根据您的注射习惯，<br>建议您学习安全注射的知识</p>-->
-          <!--<br>-->
-          <!--<button type="button" style="margin: auto" id="button_bad"-->
-          <!--class="button button-block button-large button-rounded button-caution">-->
-          <!--去学习安全注射知识-->
-          <!--</button>-->
-          <!--<br>-->
-          <!--<br>-->
-          <!--</div>-->
+            <p>安全注射资讯</p>
+            <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
+            <br>
+            <button type="button" style="margin: auto; font-size: 80%;"
+                    class=" button button-block button-large button-rounded button-primary">
+              点击获取领奖卡
+            </button>
+            <br>
+            <br>
+          </div>
+          <!--8-->
         </div>
       </div>
     </form>
@@ -504,7 +513,11 @@
       });
 
       var swiper = new Swiper('.swiper-container', {
-        autoHeight: true
+        autoHeight: true,
+        effect: 'fade',
+        fade: {
+          crossFade: true,
+        }
       });
 
       $('button[class*="show-picture"]').click(function () {
@@ -514,8 +527,8 @@
       });
 
       $('#button1').click(function () {
-        check1 = $('#q1_c1').parent().attr('aria-checked');
-        check2 = $('#q1_c2').parent().attr('aria-checked');
+        var check1 = $('#q1_c1').parent().attr('aria-checked');
+        var check2 = $('#q1_c2').parent().attr('aria-checked');
         if (check1 === 'true') {
           $(this).siblings('p').addClass('hidden');
           swiper.slideNext()
@@ -529,9 +542,9 @@
       });
 
       $('#button2').click(function () {
-        check1 = $('#q2_c1').parent().attr('aria-checked');
-        check2 = $('#q2_c2').parent().attr('aria-checked');
-        check3 = $('#q2_c3').parent().attr('aria-checked');
+        var check1 = $('#q2_c1').parent().attr('aria-checked');
+        var check2 = $('#q2_c2').parent().attr('aria-checked');
+        var check3 = $('#q2_c3').parent().attr('aria-checked');
         if (check1 === 'true' || check2 === 'true') {
           $(this).siblings('p').addClass('hidden');
           swiper.slideNext()
@@ -562,6 +575,8 @@
 
       $('#button4').click(function () {
         var checked = false;
+        var check1 = $('#q4_c1').parent().attr('aria-checked');
+        var check2 = $('#q4_c2').parent().attr('aria-checked');
         $(this).siblings('.radio').children('div').each(function () {
           if ($(this).attr('aria-checked') === 'true') {
             checked = true;
@@ -569,7 +584,12 @@
         });
         if (checked) {
           $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(6);
+          if (check1 === 'true' || check2 === 'true') {
+            $(this).siblings('p').addClass('hidden');
+            $('form').submit();
+          } else {
+            swiper.slideTo(8)
+          }
         } else {
           $(this).siblings('p').removeClass('hidden');
           swiper.update();
@@ -578,14 +598,14 @@
 
       $('#button3b').click(function () {
         var checked = false;
-        $(this).siblings('.radio').children('div').each(function () {
-          if ($(this).attr('aria-checked') === 'true') {
-            checked = true;
-          }
-        });
-        if (checked) {
+        check1 = $('#q3b_c1').parent().attr('aria-checked');
+        check2 = $('#q3b_c2').parent().attr('aria-checked');
+        if (check1 === 'true') {
           $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(6);
+          swiper.slideTo(6)
+        } else if (check2 === 'true') {
+          $(this).siblings('p').addClass('hidden');
+          swiper.slideTo(7)
         } else {
           $(this).siblings('p').removeClass('hidden');
           swiper.update();
@@ -601,7 +621,7 @@
         });
         if (checked) {
           $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(6);
+          swiper.slideTo(7);
         } else {
           $(this).siblings('p').removeClass('hidden');
           swiper.update();
