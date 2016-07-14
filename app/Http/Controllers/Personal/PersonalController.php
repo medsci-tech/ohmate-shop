@@ -43,9 +43,9 @@ class PersonalController extends Controller
 
         $type = $customerBean->rate->action_en;
         if ($type == AppConstant::BEAN_ACTION_CONSUME) {
-            $result = '-' . (string)$customerBean->result;
+            $result = '-' . floor($customerBean->result);
         } else {
-            $result = '+' . (string)$customerBean->result;
+            $result = '+' . floor($customerBean->result);
         } /*else>*/
 
         $item = array(

@@ -271,4 +271,11 @@ class Customer extends Model
         \BeanRecharger::executeTransferCash($this, $amount * 10000);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne | \Eloquent
+     */
+    public function subscribeQuestionnaire()
+    {
+        return $this->hasOne(SubscribeQuestionnaire::class);
+    }
 }
