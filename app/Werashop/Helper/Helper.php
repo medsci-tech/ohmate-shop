@@ -75,7 +75,7 @@ class Helper
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Model|static
+     * @return Customer
      * @throws UserNotCachedException
      * @throws UserNotSubscribedException
      * @throws ModelNotFoundException

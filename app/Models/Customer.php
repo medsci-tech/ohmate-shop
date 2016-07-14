@@ -263,4 +263,8 @@ class Customer extends Model
         \BeanRecharger::executeTransferCash($this, $amount * 10000);
     }
 
+    public function subscribeQuestionnaire()
+    {
+        return $this->hasOne(SubscribeQuestionnaire::class);
+    }
 }

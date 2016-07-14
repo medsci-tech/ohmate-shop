@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Questionnaire;
 
+use App\Models\Customer;
+use App\Models\SubscribeQuestionnaire;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,11 +13,16 @@ class SubscribeQuestionnaireController extends Controller
 {
     public function index()
     {
+        $customer = \Helper::getCustomerOrFail();
+        if ($customer->subscribeQuestionnaire()->count() > 0) {
+            return view('questionnaire.finish');
+        }
         return view('questionnaire.questionnaire');
     }
 
-    public function result(Request $request)
+    public function result(Requests\SubscribeQuestionnaireRequest $request)
     {
-        dump($request->all());
+        $request->persist();
+        return view('questionnaire.finish');
     }
 }
