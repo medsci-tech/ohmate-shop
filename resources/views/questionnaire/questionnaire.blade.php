@@ -134,153 +134,102 @@
               <label for="q3_c1">
                 <span class="text-warning">A</span>、诺和锐30&50
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c2" value="B" type="radio">
               <label for="q3_c2">
                 <span class="text-warning">B</span>、优泌乐25&50
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c3" value="C" type="radio">
               <label for="q3_c3">
                 <span class="text-warning">C</span>、诺和平
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c4" value="D" type="radio">
               <label for="q3_c4">
                 <span class="text-warning">D</span>、来得时
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c5" value="E" type="radio">
               <label for="q3_c5">
                 <span class="text-warning">E</span>、长秀霖
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c6" value="F" type="radio">
               <label for="q3_c6">
                 <span class="text-warning">F</span>、诺和锐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c7" value="G" type="radio">
               <label for="q3_c7">
                 <span class="text-warning">G</span>、优泌乐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c8" value="H" type="radio">
               <label for="q3_c8">
                 <span class="text-warning">H</span>、诺和平+诺和锐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c9" value="I" type="radio">
               <label for="q3_c9">
                 <span class="text-warning">I</span>、诺和平+优泌乐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c10" value="J" type="radio">
               <label for="q3_c10">
                 <span class="text-warning">J</span>、来得时+诺和锐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c11" value="K" type="radio">
               <label for="q3_c11">
                 <span class="text-warning">K</span>、来得时+优泌乐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c12" value="L" type="radio">
               <label for="q3_c12">
                 <span class="text-warning">L</span>、长秀霖+诺和锐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c13" value="M" type="radio">
               <label for="q3_c13">
                 <span class="text-warning">M</span>、长秀霖+优泌乐
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c14" value="N" type="radio">
               <label for="q3_c14">
                 <span class="text-warning">N</span>、诺和力
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c15" value="O" type="radio">
               <label for="q3_c15">
                 <span class="text-warning">O</span>、百泌达
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c16" value="P" type="radio">
               <label for="q3_c16">
                 <span class="text-warning">P</span>、诺和灵系列
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <div class="radio">
               <input name="q3" id="q3_c17" value="Q" type="radio">
               <label for="q3_c17">
                 <span class="text-warning">Q</span>、其他品牌人胰岛素系列
               </label>
-              <!--<button type="button" class="small btn-link show-picture"><i class="glyphicon glyphicon-picture"></i>-->
-              </button>
-              <br>
             </div>
             <p class="hidden required small">请选择一个选项!</p>
             <button type="button" id="button3" style="margin: auto; font-size: 80%;"
@@ -588,7 +537,8 @@
             $(this).siblings('p').addClass('hidden');
             $('form').submit();
           } else {
-            swiper.slideTo(8)
+//            swiper.slideTo(8);
+            $('form').submit();
           }
         } else {
           $(this).siblings('p').removeClass('hidden');
@@ -602,10 +552,12 @@
         check2 = $('#q3b_c2').parent().attr('aria-checked');
         if (check1 === 'true') {
           $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(6)
+//          swiper.slideTo(6);
+          $('form').submit();
         } else if (check2 === 'true') {
           $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(7)
+//          swiper.slideTo(7);
+          $('form').submit();
         } else {
           $(this).siblings('p').removeClass('hidden');
           swiper.update();
@@ -621,7 +573,8 @@
         });
         if (checked) {
           $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(7);
+//          swiper.slideTo(7);
+          $('form').submit();
         } else {
           $(this).siblings('p').removeClass('hidden');
           swiper.update();
