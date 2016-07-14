@@ -59,7 +59,7 @@
 
 @section('content')
   <div class="container">
-    <form action="localhost">
+    <form action="" method="POST">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -367,13 +367,13 @@
             <h3 class="text-primary">2、您在服药期间出现过以下哪些症状？（可多选）</h3>
 
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c1" value="A" type="checkbox">
+              <input name="q2b[]" id="q2b_c1" value="A" type="checkbox">
               <label for="q2b_c1">
                 <span class="text-warning">A</span>、颤抖
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c2" value="B" type="checkbox">
+              <input name="q2b[]" id="q2b_c2" value="B" type="checkbox">
               <label for="q2b_c2">
                 <span class="text-warning">B</span>、心悸
               </label>
@@ -382,49 +382,49 @@
             <!--<img class="img-responsive" src="image/q3.jpg" alt="testImg">-->
             <!--</div>-->
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c3" value="C" type="checkbox">
+              <input name="q2b[]" id="q2b_c3" value="C" type="checkbox">
               <label for="q2b_c3">
                 <span class="text-warning">C</span>、大汗淋漓
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c4" value="D" type="checkbox">
+              <input name="q2b[]" id="q2b_c4" value="D" type="checkbox">
               <label for="q2b_c4">
                 <span class="text-warning">D</span>、焦虑
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c5" value="E" type="checkbox">
+              <input name="q2b[]" id="q2b_c5" value="E" type="checkbox">
               <label for="q2b_c5">
                 <span class="text-warning">E</span>、头晕
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c6" value="F" type="checkbox">
+              <input name="q2b[]" id="q2b_c6" value="F" type="checkbox">
               <label for="q2b_c6">
                 <span class="text-warning">F</span>、饥饿难耐
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c7" value="G" type="checkbox">
+              <input name="q2b[]" id="q2b_c7" value="G" type="checkbox">
               <label for="q2b_c7">
                 <span class="text-warning">G</span>、视力模糊
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c8" value="H" type="checkbox">
+              <input name="q2b[]" id="q2b_c8" value="H" type="checkbox">
               <label for="q2b_c8">
                 <span class="text-warning">H</span>、疲惫不堪
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c9" value="I" type="checkbox">
+              <input name="q2b[]" id="q2b_c9" value="I" type="checkbox">
               <label for="q2b_c9">
                 <span class="text-warning">I</span>、头痛
               </label>
             </div>
             <div class="checkbox">
-              <input name="q2[]" id="q2b_c10" value="J" type="checkbox">
+              <input name="q2b[]" id="q2b_c10" value="J" type="checkbox">
               <label for="q2b_c10">
                 <span class="text-warning">J</span>、烦躁
               </label>
@@ -448,7 +448,7 @@
             <p>糖尿病治疗规范资讯</p>
             <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
             <br>
-            <button type="button" style="margin: auto; font-size: 80%;"
+            <button type="submit" style="margin: auto; font-size: 80%;"
                     class=" button button-block button-large button-rounded button-primary">
               点击获取领奖卡
             </button>
@@ -466,7 +466,7 @@
             <p>低血糖资讯</p>
             <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
             <br>
-            <button type="button" style="margin: auto; font-size: 80%;"
+            <button type="submit" style="margin: auto; font-size: 80%;"
                     class=" button button-block button-large button-rounded button-primary">
               点击获取领奖卡
             </button>
@@ -484,7 +484,7 @@
             <p>安全注射资讯</p>
             <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
             <br>
-            <button type="button" style="margin: auto; font-size: 80%;"
+            <button type="submit" style="margin: auto; font-size: 80%;"
                     class=" button button-block button-large button-rounded button-primary">
               点击获取领奖卡
             </button>

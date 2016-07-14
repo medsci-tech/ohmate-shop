@@ -29,7 +29,7 @@ trait HasRoles
     {
         if (is_string($role)) {
             return $this->roles()->save(
-                Role::whereName($role)->firstOrfail()
+                Role::whereName($role)->firstOrFail()
             );
         }
 
@@ -48,7 +48,7 @@ trait HasRoles
     {
         if (is_string($role)) {
             return $this->roles()->detach(
-                Role::whereName($role)->firstOrfail()
+                Role::whereName($role)->firstOrFail()
             );
         }
 
@@ -60,7 +60,7 @@ trait HasRoles
     }
 
     /**
-     * @param $role
+     * @param Role|string $role
      * @return bool
      */
     public function hasRole($role)

@@ -13,4 +13,9 @@ class SubscribeQuestionnaireController extends Controller
     {
         return view('questionnaire.questionnaire');
     }
+
+    public function result(Request $request)
+    {
+        dump($request->all());
+    }
 }
