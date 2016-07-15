@@ -359,12 +359,12 @@
                 <span class="text-warning">Q</span>、其他品牌人胰岛素系列
               </label>
             </div>
+            <br>
             <p class="hidden required small">请选择一个选项!</p>
             <button type="button" id="button3" style="margin: auto; font-size: 80%;"
                     class=" button button-block button-large button-rounded button-primary">
               看我，奖励在招手
             </button>
-            <br>
             <br>
           </div>
           <!--2-->
