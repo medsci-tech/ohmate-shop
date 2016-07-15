@@ -237,7 +237,6 @@
               看我，奖励在招手
             </button>
             <br>
-            <br>
           </div>
           <!--2-->
           <div class="swiper-slide swiper-no-swiping">
