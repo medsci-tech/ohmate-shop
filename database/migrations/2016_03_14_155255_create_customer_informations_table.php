@@ -14,7 +14,7 @@ class CreateCustomerInformationsTable extends Migration
     {
         Schema::create('customer_informations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('customer_id');
+            $table->unsignedInteger('customer_id')->nullable();
             $table->string('name');
             $table->string('province')->nullable()->comment('省份,直辖市');
             $table->string('city')->nullable()->comment('城市,市级行政区');

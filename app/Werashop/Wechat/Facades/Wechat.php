@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\Werashop\Wechat\Facades;
+namespace App\Werashop\Wechat\Facades;
 
 
 use Illuminate\Support\Facades\Facade;

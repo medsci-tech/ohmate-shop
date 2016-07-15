@@ -154,6 +154,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::post('/{id}/update', 'OrderController@update');
         Route::post('/order-posted', 'OrderController@orderPosted');
     });
+
+    Route::group(['prefix' => 'information'], function () {
+        Route::get('upload', 'DoctorExcelController@index');
+        Route::post('upload', 'DoctorExcelController@post');
+    });
 });
 
 Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Redirect'], function () {

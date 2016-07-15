@@ -168,6 +168,8 @@ return [
          * IDE Helper
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -222,6 +224,8 @@ return [
         'DailyAnalyzer' => App\Werashop\Statistics\Daily\Facades\DailyAnalyzer::class,
         'EnterpriseAnalyzer' => App\Werashop\Statistics\Enterprise\Facades\EnterpriseAnalyzer::class,
 //        'Post'          => App\Providers\PostServiceProvider::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
