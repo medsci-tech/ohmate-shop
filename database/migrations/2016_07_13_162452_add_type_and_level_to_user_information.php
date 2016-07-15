@@ -25,8 +25,11 @@ class AddTypeAndLevelToUserInformation extends Migration
      */
     public function down()
     {
+
         Schema::table('customer_informations', function (Blueprint $table) {
             $table->dropColumn(['type', 'level']);
         });
+
     }
 }
+     
