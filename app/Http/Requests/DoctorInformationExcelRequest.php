@@ -40,11 +40,22 @@ class DoctorInformationExcelRequest extends Request
             $result = $reader->get();
 
             foreach ($result as $row) {
-                CustomerInformation::create([
-                    'name' => $row['姓名'],
-                    'type' => substr(trim($row['等级']), 0, 1),
-//                    'province' => 
-                ]);
+                $param = [
+                    'name'           => $row['姓名'],
+                    'type'           => substr(trim($row['等级']), 0, 1),
+                    'level'          => 5,
+                    'hospital'       => $row['所属医院'],
+                    'hospital_level' => $row['医院级别'],
+                    'department'     => $row['科室'],
+                    'phone'          => strval(intval($row['注册电话'])),
+                    'referred_name'  => $row['推荐代表'],
+                    'referred_phone' => strval(intval($row['代表电话'])),
+                    'region'         => $row['区域9大区'],
+                    'region_level'   => $row['销售大区级别'],
+                    'responsible'    => $row['销售地区级别'],
+                ];
+
+                CustomerInformation::create($param);
             }
         });
     }
