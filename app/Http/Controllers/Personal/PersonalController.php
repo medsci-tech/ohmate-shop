@@ -9,6 +9,7 @@ use App\Models\CustomerStatistics;
 use App\Models\EnterpriseArticleStatistics;
 use App\Models\EnterpriseBasicStatistics;
 use App\Models\EnterpriseCommodityStatistics;
+use App\Werashop\InvitationCounter\CustomerInvitationCounter;
 use App\Werashop\Statistics\Enterprise\EnterpriseCalculator;
 use Illuminate\Http\Request;
 
@@ -145,6 +146,8 @@ class PersonalController extends Controller
                     'customer_commodity_statistics' => $customerCommodityStatistics,
                     'customer_article_statistics'   => $customerArticleStatistics,
                     'customer_statistics'            => $customerStatistics,
+                    'doctor_type' => $customer->doctorType(),
+                    'monthly_invite_count' => (new CustomerInvitationCounter($customer))->getMonthlyCount()
                 ]
             ]);
         }
