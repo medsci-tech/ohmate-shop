@@ -15,6 +15,14 @@
     <div class="panel-heading">基本统计</div>
     <ul class="list-group" v-cloak>
       <li class="list-group-item">
+        <span class="badge">@{{ doctor_type }}</span>
+        用户类型
+      </li>
+      <li class="list-group-item">
+        <span class="badge">@{{ monthly_invite_count }}</span>
+        当月邀请数
+      </li>
+      <li class="list-group-item">
         <span class="badge">@{{ customer_statistics[0].friend_count }}</span>
         好友数
       </li>
