@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\CustomerInformation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,11 @@ class RegisterController extends Controller
             'head_image_url'    => $user['headimgurl'],
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
         ]);
+
+        if ($ci = CustomerInformation::where('phone', '=', $request->input('phone'))->first()) {
+            $ci->customer_id = $customer->id;
+            $ci->save();
+        }
 
         $ret = $customer->register();
         if ($ret && $customer->referrer_id) {
