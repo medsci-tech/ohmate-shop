@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Redirect;
 
+use App\Constants\AnalyzerConstant;
 use App\Constants\AppConstant;
 use App\Models\Customer;
 use Carbon\Carbon;
