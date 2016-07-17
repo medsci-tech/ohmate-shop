@@ -33,7 +33,11 @@ class CustomerInvitationCounter
     public function getMonthlyCount()
     {
         $key = $this->getKey();
-        return \Redis::command('GET', [$key]) ?? 0;
+        $value = \Redis::command('GET', [$key]);
+        if ($value) {
+            return $value;
+        }
+        return 0;
     }
 
     /**
