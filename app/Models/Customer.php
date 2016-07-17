@@ -278,4 +278,14 @@ class Customer extends Model
     {
         return $this->hasOne(SubscribeQuestionnaire::class);
     }
+
+    public function doctorType()
+    {
+        $info = $this->information()->first();
+        if ($info) {
+            return $info->type;
+        }
+        
+        return 'C';
+    }
 }

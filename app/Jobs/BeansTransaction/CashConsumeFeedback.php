@@ -16,6 +16,6 @@ class CashConsumeFeedback extends BeansTransaction
     {
         parent::__construct($customer);
 
-        $this->beans = $original_cash * 0.02;
+        $this->beans = $original_cash * 100 * 0.02;
     }
 }

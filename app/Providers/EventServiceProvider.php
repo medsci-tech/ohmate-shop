@@ -13,8 +13,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'App\Events\Register' => [
+            'App\Listeners\GiveFirstRegisterBeanOrNot',
+            'App\Listeners\AddYourUpperInviteCount',
+        ],
+        'App\Events\Purchase' => [
+            'App\Listeners\GiveFirstPurchaseBeanOrNot',
+            'App\Listeners\GiveYourUpperFirstPurchaseBeanOrNot',
+            'App\Listeners\GiveYourUpperPurchaseFeedbackOrNot',
         ],
     ];
 

@@ -28,6 +28,15 @@ class CustomerInvitationCounter
     }
 
     /**
+     * @return int
+     */
+    public function getMonthlyCount()
+    {
+        $key = $this->getKey();
+        return \Redis::command('GET', [$key]) ?? 0;
+    }
+
+    /**
      * @return string
      */
     protected function getKey()
@@ -37,7 +46,7 @@ class CustomerInvitationCounter
         $month_prefix = $today->format('Ym');
         $customer_prefix = $this->customer->id;
 
-        return $customer_prefix . '-' . $month_prefix;
+        return 'ohmate-invitation-count-' . $customer_prefix . '-' . $month_prefix;
     }
 
     /**
