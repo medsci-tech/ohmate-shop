@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Register;
 use App\Models\Customer;
 use App\Models\CustomerInformation;
 use Carbon\Carbon;
@@ -90,11 +91,12 @@ class RegisterController extends Controller
 
         $ret = $customer->register();
         if ($ret && $customer->referrer_id) {
-            \BeanRecharger::invite($customer->getReferrer());
+//            \BeanRecharger::invite($customer->getReferrer());
             \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
         }
 
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
+        event(new Register($customer));
         return redirect('register/success');
     }
 

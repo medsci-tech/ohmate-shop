@@ -222,9 +222,9 @@ class BeanRecharger
     {
         if ($value > 0) {
             return (
-                $this->consume($customer, $value) ||
-                $this->consumeFeedback($customer, $value) ||
-                $this->consumeVolunteerFeedback($customer, $value)
+                $this->consume($customer, $value)
+//                $this->consumeFeedback($customer, $value) ||
+//                $this->consumeVolunteerFeedback($customer, $value)
             );
         }
         return false;

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Constants\AnalyzerConstant;
 use App\Constants\AppConstant;
+use App\Events\Purchase;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Werashop\Post\EmsPost;
@@ -72,12 +73,17 @@ class Order extends Model
     public function paid()
     {
         if ($this->status->name == 'paying' && $next = $this->status->next()) {
+
+            //这里之所以还需要调用老版的函数是因为这里的事件响应来不及做了, 会在下一版将这一部分提取出去
             \BeanRecharger::executeConsume($this->customer, $this->total_price - $this->post_fee - $this->min_cash_price_without_post_fee);
             $this->beans_payment = $this->beans_payment_calculated;
 //            $this->setPostNo(); //先拿掉了
             $this->updateStatistics();
             $this->status()->associate($next);
-            return $this->save();
+            $ret =  $this->save();
+
+            event(new Purchase($this->customer, $this));
+            return $ret;
         }
         return false;
     }
