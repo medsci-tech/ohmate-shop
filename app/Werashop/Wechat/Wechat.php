@@ -290,7 +290,7 @@ class Wechat
                             ->title('问卷有礼')
                             ->description('问卷有礼')
                             ->url(url('/questionnaire'))
-                            ->picUrl('http://7xrlyr.com1.z0.glb.clouddn.com/填调查问卷.jpg')
+                            ->picUrl(url('/images/1.jpg'))
                     ];
                 });
             }
