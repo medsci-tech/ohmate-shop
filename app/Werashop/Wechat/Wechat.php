@@ -294,7 +294,8 @@ class Wechat
                     ];
                 });
             }
-            return "success";
+            return '';
+//            return "success";
         };
 
     }
