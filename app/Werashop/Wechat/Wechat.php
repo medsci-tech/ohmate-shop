@@ -240,7 +240,7 @@ class Wechat
                             ->title('问卷有礼')
                             ->description('问卷有礼')
                             ->url(url('/questionnaire'))
-                            ->picUrl('')
+                            ->picUrl('http://7xrlyr.com1.z0.glb.clouddn.com/填调查问卷.jpg')
                     ];
                 });
             }
@@ -270,9 +270,30 @@ class Wechat
 //                ];
 //            });
 //        };
-
+//        if ($upper && $upper->doctorType() == 'A') {
+//            return Message::make('news')->items(function () {
+//                return [
+//                    Message::make('news_item')
+//                        ->title('问卷有礼')
+//                        ->description('问卷有礼')
+//                        ->url(url('/questionnaire'))
+//                        ->picUrl('http://7xrlyr.com1.z0.glb.clouddn.com/填调查问卷.jpg')
+//                ];
+//            });
+//        }
 
         return function ($message) {
+            if ($message == '问卷') {
+                return Message::make('news')->items(function () {
+                    return [
+                        Message::make('news_item')
+                            ->title('问卷有礼')
+                            ->description('问卷有礼')
+                            ->url(url('/questionnaire'))
+                            ->picUrl('http://7xrlyr.com1.z0.glb.clouddn.com/填调查问卷.jpg')
+                    ];
+                });
+            }
             return "success";
         };
 
