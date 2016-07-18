@@ -258,15 +258,19 @@ class Wechat
      * @return \Closure
      */
     public function messageEventCallback() {
-        return Message::make('news')->items(function () {
-            return [
-                Message::make('news_item')
-                    ->title('问卷有礼')
-                    ->description('问卷有礼')
-                    ->url(url('/questionnaire'))
+
+        return function ($message) {
+            return Message::make('news')->items(function () {
+                return [
+                    Message::make('news_item')
+                        ->title('问卷有礼')
+                        ->description('问卷有礼')
+                        ->url(url('/questionnaire'))
 //                    ->picUrl('')
-            ];
-        });
+                ];
+            });
+        };
+
 
 //        return function ($message) {
 //            return "success";
