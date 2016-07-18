@@ -22,6 +22,9 @@
           @can('customer_administration')
             <li><a href="{{ url('/customer/index') }}">用户管理</a></li>
           @endcan
+          @can('customer_administration')
+            <li><a href="{{ url('/information/upload') }}">上传医生Excel</a></li>
+          @endcan
           @can('order_administration')
             <li><a href="{{ url('/order/index') }}">订单管理</a></li>
           @endcan
