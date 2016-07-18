@@ -30,6 +30,11 @@
                         <img class="img-responsive" src="{{url('/image/shop_goods/top3.png')}}">
                     </a>
                 </div>
+                <div class="swiper-slide">
+                    <a href="#">
+                        <img class="img-responsive" src="{{url('/image/shop_goods/top5.jpg')}}">
+                    </a>
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
