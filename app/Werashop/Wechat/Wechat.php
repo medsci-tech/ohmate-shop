@@ -232,6 +232,19 @@ class Wechat
             $customer->save();
             \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_FOCUS);
 
+            $upper = $customer->getReferrer();
+            if ($upper && $upper->doctorType() == 'A') {
+                return Message::make('news')->items(function () {
+                    return [
+                        Message::make('news_item')
+                            ->title('问卷有礼')
+                            ->description('问卷有礼')
+                            ->url(url('/questionnaire'))
+                            ->picUrl('')
+                    ];
+                });
+            }
+
             $content = '嗨！欢迎关注易康伴侣！'.
                         '在此您能任性享用新鲜实用的糖尿病资讯。'.
                         '您学习，我送礼；'.
@@ -245,9 +258,19 @@ class Wechat
      * @return \Closure
      */
     public function messageEventCallback() {
-        return function ($message) {
-            return "success";
-        };
+        return Message::make('news')->items(function () {
+            return [
+                Message::make('news_item')
+                    ->title('问卷有礼')
+                    ->description('问卷有礼')
+                    ->url(url('/questionnaire'))
+//                    ->picUrl('')
+            ];
+        });
+
+//        return function ($message) {
+//            return "success";
+//        };
 
     }
 
