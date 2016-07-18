@@ -16,7 +16,7 @@
 
         <div class="weui_media_box weui_media_text">
             <h4 class="weui_media_title">Q：那么我怎样才能得到迈豆呢?</h4>
-            <p class="desc">A：当您成功注册时，系统将会免费发放2180迈豆在您个人账户之中，相当于21.8元。可以直接换取等值的礼品哦！小易自己注册的时候就直接换了一盒针头，嘿嘿。</p>
+            <p class="desc">A：当您成功注册时，系统将会免费发放1000迈豆在您个人账户之中，相当于10元。可以直接换取等值的礼品哦！</p>
         </div>
 
         <div class="weui_media_box weui_media_text">
