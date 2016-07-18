@@ -283,7 +283,7 @@ class Wechat
 //        }
 
         return function ($message) {
-            if ($message == '问卷') {
+            if ($message->content == '问卷') {
                 return Message::make('news')->items(function () {
                     return [
                         Message::make('news_item')
