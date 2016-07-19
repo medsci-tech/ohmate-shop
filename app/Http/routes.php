@@ -30,6 +30,9 @@
 //    }
 //});
 
+use App\Models\Customer;
+use App\Models\CustomerInformation;
+
 Route::group(['middleware' => 'web'], function () {
 
     Route::get('/', function () {
@@ -172,6 +175,21 @@ Route::group(['prefix' => 'redirect', 'middleware' => 'web', 'namespace' => 'Red
 Route::group(['prefix' => 'questionnaire', 'middleware' => 'web', 'namespace' => 'Questionnaire'], function () {
     Route::get('/', 'SubscribeQuestionnaireController@index');
     Route::post('/', 'SubscribeQuestionnaireController@result');
+});
+
+Route::get('clearrrr', function () {
+
+    $p = 0;
+    for ($i = 87; $i < 296; $i++ ) {
+        $info = CustomerInformation::find($i);
+        if ($customer = Customer::where('phone', $info->phone)->first()) {
+            $info->customer_id = $customer->id;
+            $info->save();
+            $p ++;
+        }
+    }
+
+    return $p;
 });
 
 

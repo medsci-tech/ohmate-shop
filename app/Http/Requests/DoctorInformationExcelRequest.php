@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Models\Customer;
 use App\Models\CustomerInformation;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Excel;
@@ -54,6 +55,10 @@ class DoctorInformationExcelRequest extends Request
                     'region_level'   => $row['销售大区级别'],
                     'responsible'    => $row['销售地区级别'],
                 ];
+
+                if ($customer = Customer::where('phone', strval(intval($row['注册电话'])))->first()) {
+                    $param['customer_id'] = $customer->id;
+                }
 
                 CustomerInformation::create($param);
             }
