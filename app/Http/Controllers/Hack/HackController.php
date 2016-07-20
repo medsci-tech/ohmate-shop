@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Hack;
 
+use App\Constants\AnalyzerConstant;
+use App\Jobs\BeansTransaction\Register;
 use App\Models\Customer;
 use App\Models\CustomerInformation;
 use App\Werashop\InvitationCounter\CustomerInvitationCounter;
@@ -53,6 +55,21 @@ class HackController extends Controller
                 print $counter->getMonthlyCount();
                 print '<br>';
             }
+        }
+    }
+
+    public function b()
+    {
+        for ($i = 22308; $i <= 22828; $i++) {
+            $customer = Customer::find($i);
+
+            if ($customer->referrer_id) {
+//            \BeanRecharger::invite($customer->getReferrer());
+                \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
+            }
+
+            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
+            event(new Register($customer));
         }
     }
 }

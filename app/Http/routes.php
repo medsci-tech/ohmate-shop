@@ -178,5 +178,6 @@ Route::group(['prefix' => 'questionnaire', 'middleware' => 'web', 'namespace' =>
 });
 
 Route::get('daily-report', 'Hack\HackController@a');
+Route::get('b', 'Hack\HackController@b');
 
 
