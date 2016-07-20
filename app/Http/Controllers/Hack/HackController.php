@@ -49,8 +49,9 @@ class HackController extends Controller
                 $counter = new CustomerInvitationCounter($customer);
 
                 print $info->name;
-                print '\t';
+                print '     ';
                 print $counter->getMonthlyCount();
+                print '<br>';
             }
         }
     }
