@@ -63,13 +63,16 @@ class HackController extends Controller
         for ($i = 22308; $i <= 22308; $i++) {
             $customer = Customer::find($i);
 
-//            if ($customer->referrer_id) {
+            if ($customer->is_registered) {
+                //            if ($customer->referrer_id) {
 ////            \BeanRecharger::invite($customer->getReferrer());
 //                \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
 //            }
 
 //            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
-            event(new Register($customer));
+                event(new Register($customer));
+            }
         }
+        return '123';
     }
 }
