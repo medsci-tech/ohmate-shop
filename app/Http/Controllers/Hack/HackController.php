@@ -60,7 +60,7 @@ class HackController extends Controller
 
     public function b()
     {
-        for ($i = 22308; $i <= 22308; $i++) {
+        for ($i = 22309; $i <= 22828; $i++) {
             $customer = Customer::find($i);
 
             if ($customer->is_registered) {
