@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Hack;
 
 use App\Constants\AnalyzerConstant;
-use App\Jobs\BeansTransaction\Register;
+use App\Events\Register;
 use App\Models\Customer;
 use App\Models\CustomerInformation;
 use App\Werashop\InvitationCounter\CustomerInvitationCounter;
