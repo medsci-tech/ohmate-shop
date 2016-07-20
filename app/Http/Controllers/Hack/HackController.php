@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Hack;
 
+use App\Models\Customer;
+use App\Models\CustomerInformation;
+use App\Werashop\InvitationCounter\CustomerInvitationCounter;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,5 +42,16 @@ class HackController extends Controller
 
     public function a()
     {
+        for ($i = 87; $i < 296; $i++ ) {
+            $info = CustomerInformation::find($i);
+            if ($customer_id = $info->customer_id) {
+                $customer = Customer::find($customer_id);
+                $counter = new CustomerInvitationCounter($customer);
+
+                print $info->name;
+                print '\t';
+                print $counter->getMonthlyCount();
+            }
+        }
     }
 }

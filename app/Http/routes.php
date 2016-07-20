@@ -177,19 +177,6 @@ Route::group(['prefix' => 'questionnaire', 'middleware' => 'web', 'namespace' =>
     Route::post('/', 'SubscribeQuestionnaireController@result');
 });
 
-//Route::get('clearrrr', function () {
-//
-//    $p = 0;
-//    for ($i = 87; $i < 296; $i++ ) {
-//        $info = CustomerInformation::find($i);
-//        if ($customer = Customer::where('phone', $info->phone)->first()) {
-//            $info->customer_id = $customer->id;
-//            $info->save();
-//            $p ++;
-//        }
-//    }
-//
-//    return $p;
-//});
+Route::get('daily-report', 'Hack\HackController@a');
 
 
