@@ -49,7 +49,7 @@ class HackController extends Controller
             if (!$info) {
                 break;
             }
-            if ($customer_id = $info->customer_id) {
+            if ($info->type == 'A' && $customer_id = $info->customer_id) {
                 $customer = Customer::find($customer_id);
                 $counter = new CustomerInvitationCounter($customer);
 
