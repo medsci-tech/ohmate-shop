@@ -58,21 +58,21 @@ class HackController extends Controller
         }
     }
 
-    public function b()
-    {
-        for ($i = 22309; $i <= 22828; $i++) {
-            $customer = Customer::find($i);
-
-            if ($customer->is_registered) {
-                //            if ($customer->referrer_id) {
-////            \BeanRecharger::invite($customer->getReferrer());
-//                \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
+//    public function b()
+//    {
+//        for ($i = 22309; $i <= 22828; $i++) {
+//            $customer = Customer::find($i);
+//
+//            if ($customer->is_registered) {
+//                //            if ($customer->referrer_id) {
+//////            \BeanRecharger::invite($customer->getReferrer());
+////                \Analyzer::updateBasicStatistics($customer->referrer_id, AnalyzerConstant::CUSTOMER_FRIEND);
+////            }
+//
+////            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
+//                event(new Register($customer));
 //            }
-
-//            \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
-                event(new Register($customer));
-            }
-        }
-        return '123';
-    }
+//        }
+//        return '123';
+//    }
 }
