@@ -44,14 +44,17 @@ class HackController extends Controller
 
     public function a()
     {
-        for ($i = 87; $i < 296; $i++ ) {
+        for ($i = 87; ; $i++ ) {
             $info = CustomerInformation::find($i);
+            if (!$info) {
+                break;
+            }
             if ($customer_id = $info->customer_id) {
                 $customer = Customer::find($customer_id);
                 $counter = new CustomerInvitationCounter($customer);
 
                 print $info->name;
-                print '     ';
+                print '&nbsp;';
                 print $counter->getMonthlyCount();
                 print '<br>';
             }
