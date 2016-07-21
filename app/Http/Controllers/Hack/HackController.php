@@ -44,6 +44,7 @@ class HackController extends Controller
 
     public function a()
     {
+        $p = 0;
         for ($i = 87; ; $i++ ) {
             $info = CustomerInformation::find($i);
             if (!$info) {
@@ -57,8 +58,10 @@ class HackController extends Controller
                 print '&nbsp;';
                 print $counter->getMonthlyCount();
                 print '<br>';
+                $p++;
             }
         }
+        print '共'.$p.'人';
     }
 
 //    public function b()
