@@ -29,7 +29,7 @@ class PuanInterfaceController extends Controller
 
         return response()->json([
             'success' => false,
-            'error' => 'No customer found.'
+            'error' => 'No such customer.'
         ]);
     }
 
