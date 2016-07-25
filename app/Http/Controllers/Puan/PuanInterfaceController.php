@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Puan;
 use App\Events\PuanConsume;
 use App\Exceptions\NotEnoughBeansException;
 use App\Models\Customer;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -36,10 +37,15 @@ class PuanInterfaceController extends Controller
     {
         $unionid = $request->get('unionid');
         $beans = $request->get('beans');
-        $customer = Customer::where('unionid', $unionid)->first();
 
         try {
+            $customer = Customer::where('unionid', $unionid)->firstOrFail();
             event(new PuanConsume($customer, $beans));
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'error' => 'No such customer.'
+            ]);
         } catch (NotEnoughBeansException $e) {
             return response()->json([
                 'success' => false,
