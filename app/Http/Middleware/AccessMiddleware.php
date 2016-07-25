@@ -53,6 +53,9 @@ class AccessMiddleware
     {
         $customer->head_image_url   = $user['headimgurl'];
         $customer->nickname         = $user['nickname'];
+        if ($user['unionid']) {
+            $customer->unionid = $user['unionid'];
+        }
         $customer->save();
     }
 

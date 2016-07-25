@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\GiveYourUpperFirstPurchaseBeanOrNot',
             'App\Listeners\GiveYourUpperPurchaseFeedbackOrNot',
         ],
+        'App\Events\PuanConsume' => [
+            'App\Listeners\PuanConsumeBean',
+        ]
     ];
 
     /**
