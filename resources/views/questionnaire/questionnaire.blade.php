@@ -138,7 +138,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
+        <div class="swiper-slide swiper-no-swiping">
           <br>
 
           <div class="text-center">
@@ -159,7 +159,7 @@
             </button>
           </div>
         </div>
-        <div class="swiper-slide" v-for="question in radio" id="@{{question.id}}">
+        <div class="swiper-slide swiper-no-swiping" v-for="question in radio" id="@{{question.id}}">
           <br>
 
           <div class="text-center question-number">
@@ -212,7 +212,7 @@
             </button>
           </div>
         </div>
-        <div class="swiper-slide" v-for="question in checkbox" id="@{{question.id}}">
+        <div class="swiper-slide swiper-no-swiping" v-for="question in checkbox" id="@{{question.id}}">
           <br>
 
           <div class=" text-center question-number">
