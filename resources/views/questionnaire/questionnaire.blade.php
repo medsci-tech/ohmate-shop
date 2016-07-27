@@ -417,8 +417,6 @@
           var i = 0;
           var j = 0;
 
-          console.log(next);
-
           while (i < radio_length) {
             if (this.radio[i].id === next) {
               this.radio[i].preview = e.id;
@@ -453,7 +451,6 @@
       $('#q3d .col-xs-6').eq(1).addClass('hide');
       $('#q3d2 .col-xs-6').eq(0).children().text('返 回');
       $('#q3d2 label span').text(function(){
-        console.log('呵呵呵');
         return '与'+$(this).text()+'同时使用'
       });
       $('#q3d_c1,#q3d_c2').siblings().click(function(){
