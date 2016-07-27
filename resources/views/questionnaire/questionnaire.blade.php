@@ -134,7 +134,8 @@
     <img class="img-responsive" src="/image/questionnaire/背景-1.png" alt="">
   </div>
 
-  <form action="localhost" id="questionnaire" v-cloak>
+  <form action="" id="questionnaire" v-cloak>
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
