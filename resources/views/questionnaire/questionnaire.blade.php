@@ -458,7 +458,10 @@
       });
       $('#q3d_c1,#q3d_c2').siblings().click(function(){
         swiper.slideNext(false,500);
-      })
+      });
+      $('#q3d_c3,#q3d_c4').siblings().click(function(){
+        $('#q3d .col-xs-6').eq(1).removeClass('hide');
+      });
     });
   </script>
 @endsection
