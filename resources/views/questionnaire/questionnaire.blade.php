@@ -390,6 +390,9 @@
         ]
       },
       methods: {
+        start: function (){
+          swiper.slideNext();
+        },
         preview: function (e) {
           if (e.value) {
             e.value = null;
