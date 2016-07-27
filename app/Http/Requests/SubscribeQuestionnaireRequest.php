@@ -44,7 +44,7 @@ class SubscribeQuestionnaireRequest extends Request
         $result = $this->processArrayValue();
 
         return $customer->subscribeQuestionnaire()->save(
-            new SubscribeQuestionnaire(array_only($result, ['q1', 'q2', 'q3', 'q2b', 'q3b']))
+            new SubscribeQuestionnaire(array_only($result, ['q1', 'q2', 'q3', 'q3a', 'q3b', 'q3c' , 'q3d', 'q3d2', 'q3e', 'q4', 'q1b']))
         );
     }
 
@@ -56,7 +56,7 @@ class SubscribeQuestionnaireRequest extends Request
         $result = $this->processArrayValue();
 
         return $this->customer->subscribeQuestionnaire()->save(
-            new SubscribeQuestionnaire(array_only($result, ['q1', 'q2', 'q3', 'q2b', 'q3b']))
+            new SubscribeQuestionnaire(array_only($result, ['q1', 'q2', 'q3', 'q3a', 'q3b', 'q3c' , 'q3d', 'q3d2', 'q3e', 'q4', 'q1b']))
         );
     }
 

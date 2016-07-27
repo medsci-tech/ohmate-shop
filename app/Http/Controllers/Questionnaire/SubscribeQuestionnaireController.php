@@ -19,6 +19,7 @@ class SubscribeQuestionnaireController extends Controller
 
     public function index()
     {
+        /** @var Customer $customer */
         $customer = \Helper::getCustomerOrFail();
         if ($customer->subscribeQuestionnaire()->count() > 0) {
             return view('questionnaire.finish');
