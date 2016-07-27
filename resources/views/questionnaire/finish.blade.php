@@ -14,10 +14,10 @@
 @endsection
 
 @section('content')
-  <div style="z-index: -1">
+  <div>
     <img class="background-img" src="/image/questionnaire/背景-2.png" alt="">
   </div>
-  <a style="z-index: 9999" href="#">
+  <a style="position: absolute" href="#">
     <img class="img-responsive" src="/image/questionnaire/finish.png" alt="完成调查问卷">
   </a>
 @endsection
