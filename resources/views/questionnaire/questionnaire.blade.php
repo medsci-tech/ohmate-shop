@@ -1,715 +1,447 @@
 @extends('questionnaire.main')
 
 @section('css')
-  <link rel="stylesheet" href="{{asset('/')}}vendor/iCheck/all.css">
-  <link rel="stylesheet" href="{{asset('/')}}vendor/buttons/buttons.css">
   <link rel="stylesheet" href="{{asset('/')}}vendor/swiper/swiper-3.3.0.min.css">
   <style>
     body {
       font-family: "Microsoft YaHei UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      position: relative;
-      height: 100%;
+      color: #fff;
     }
 
-    .container {
-      max-width: 750px;
-    }
-
-    .mainImg {
-      max-width: 400px;
-    }
-
-    form {
-      font-size: 20px;
-    }
-
-    form .iradio_flat-blue, .iradio_flat-blue {
-      height: 24px;
-    }
-
-    .swiper-container {
+    .background-img {
       width: 100%;
       height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgb(140, 207, 239);
     }
 
-    .required {
-      color: red;
-    }
-
-    .button {
-      font-family: "Microsoft YaHei UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    .radio-adjust {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .biaozhi {
-      font-size: 40px;
+    a:focus, a:hover {
+      text-decoration: none;
     }
 
     label {
+      font-weight: normal;
+      width: 100%;
+    }
+
+    .question-number {
+      margin-bottom: -5px;
+    }
+
+    .question-number div {
+      width: 40px;
+      height: 40px;
+      padding-top: 6px;
+      margin: auto;
+      margin-bottom: -10px;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #30a7df;
+      border-radius: 100%;
+    }
+
+    .question-name {
+      padding: 20px 20px 30px 20px;
+      background: url(/image/questionnaire/蓝色彩带.png) no-repeat center;
+      background-size: cover;
+      font-size: 16px;
+    }
+
+    .question-remark {
+      text-align: center;
+      margin-top: -30px;
+    }
+
+    .question-line {
+      width: 100%;
+      margin: -40px 0 -30px 0;
+    }
+
+    .option-heading {
+      padding-left: 0;
+      padding-right: 10px;
+    }
+
+    .option-heading div {
+      width: 32px;
+      height: 32px;
+      padding-top: 5px;
+      margin: auto;
+      border: 1px solid #fff;
+      background-color: #337ab7;
+      border-radius: 100%;
+      text-align: center;
+    }
+
+    .container {
+      padding: 15px;
+      margin: 15px;
+      background-color: rgba(47, 168, 255, 0.5);
+      border-radius: 10px;
+    }
+
+    .option-content {
+      min-height: 32px;
+      padding-top: 5px;
+      display: inline-block;
+      border: 1px solid #fff;
+      background-color: #337ab7;
+      border-radius: 5px;
+    }
+
+    .option-content img {
+      width: 40%;
+      float: right;
+    }
+
+    .checkbox-heading {
+      padding-top: 6px;
+      padding-right: 0;
+    }
+
+    .checkbox-content {
+      padding-left: 0;
+    }
+
+    .checkbox-content label {
       display: inline;
     }
 
+    .checkbox-content label div {
+      width: 31%;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
+      border-color: #fff;
+    }
+
+    .choosen {
+      background-color: #5cb85c !important;
+      border: 1px solid #fff;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
 
   </style>
 @endsection
 
 @section('content')
-  <div class="container">
-    <form action="" method="POST">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide swiper-no-swiping">
-            <h3 class="text-primary">1、糖尿病治疗方式</h3>
-
-            <div class="radio radio-adjust">
-              <input required name="q1" id="q1_c1" value="A" type="radio">
-              <label for="q1_c1">
-                <span class="text-warning">A</span>、注射胰岛素
-              </label>
-            </div>
-            <div class="radio radio-adjust">
-              <input required name="q1" id="q1_c2" value="B" type="radio">
-              <label for="q1_c2">
-                <span class="text-warning">B</span>、单纯使用口服药
-              </label>
-            </div>
-            <!--<div class="mainImg">-->
-            <!--<img class="img-responsive" src="image/q1.jpg" alt="q1">-->
-            <!--</div>-->
-            <p class="hidden required small">请选择一个选项!</p>
-            <button type="button" id="button1" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点这里点这里
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--0-->
-          <div class="swiper-slide swiper-no-swiping">
-            <h3 class="text-primary">2、注射起始时间</h3>
-
-            <div class="radio radio-adjust">
-              <input name="q2" id="q2_c1" value="A" type="radio">
-              <label for="q2_c1">
-                <span class="text-warning">A</span>、首次使用
-              </label>
-            </div>
-            <div class="radio radio-adjust">
-              <input name="q2" id="q2_c2" value="B" type="radio">
-              <label for="q2_c2">
-                <span class="text-warning">B</span>、既往停用后，重新开始使用
-              </label>
-            </div>
-            <!--<div class="mainImg">-->
-            <!--<img class="img-responsive" src="image/q2.jpg" alt="q2">-->
-            <!--</div>-->
-            <div class="radio radio-adjust">
-              <input name="q2" id="q2_c3" value="C" type="radio">
-              <label for="q2_c3">
-                <span class="text-warning">C</span>、已停用
-              </label>
-            </div>
-            <p class="hidden required small">请选择一个选项!</p>
-            <button type="button" id="button2" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              选好了吗，选好了快点点我
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--1-->
-          <div class="swiper-slide swiper-no-swiping">
-            <h3 class="text-primary">3、使用的注射药物</h3>
-
-            <!--<div class="mainImg">-->
-            <!--<img class="img-responsive" src="image/q3.jpg" alt="q3">-->
-            <!--</div>-->
-            <div class="radio">
-              <input name="q3" id="q3_c1" value="A" type="radio">
-              <label for="q3_c1">
-                <span class="text-warning">A</span>、诺和锐30&50
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和锐30.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/诺和锐50.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c2" value="B" type="radio">
-              <label for="q3_c2">
-                <span class="text-warning">B</span>、优泌乐25&50
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/优泌乐25.png" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/优泌乐50.png" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c3" value="C" type="radio">
-              <label for="q3_c3">
-                <span class="text-warning">C</span>、诺和平
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和平.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c4" value="D" type="radio">
-              <label for="q3_c4">
-                <span class="text-warning">D</span>、来得时
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/来得时.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c5" value="E" type="radio">
-              <label for="q3_c5">
-                <span class="text-warning">E</span>、长秀霖
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/长秀霖.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c6" value="F" type="radio">
-              <label for="q3_c6">
-                <span class="text-warning">F</span>、诺和锐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和锐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c7" value="G" type="radio">
-              <label for="q3_c7">
-                <span class="text-warning">G</span>、优泌乐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/优泌乐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c8" value="H" type="radio">
-              <label for="q3_c8">
-                <span class="text-warning">H</span>、诺和平+诺和锐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和平.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/诺和锐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c9" value="I" type="radio">
-              <label for="q3_c9">
-                <span class="text-warning">I</span>、诺和平+优泌乐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和平.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/优泌乐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c10" value="J" type="radio">
-              <label for="q3_c10">
-                <span class="text-warning">J</span>、来得时+诺和锐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/来得时.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/诺和锐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c11" value="K" type="radio">
-              <label for="q3_c11">
-                <span class="text-warning">K</span>、来得时+优泌乐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/来得时.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/优泌乐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c12" value="L" type="radio">
-              <label for="q3_c12">
-                <span class="text-warning">L</span>、长秀霖+诺和锐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/长秀霖.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/诺和锐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c13" value="M" type="radio">
-              <label for="q3_c13">
-                <span class="text-warning">M</span>、长秀霖+优泌乐
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/长秀霖.jpg" alt="">
-                <span class="text-center btn-block">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </span>
-                <img class="img-responsive" src="/image/questionnaire/优泌乐.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c14" value="N" type="radio">
-              <label for="q3_c14">
-                <span class="text-warning">N</span>、诺和力
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和力.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c15" value="O" type="radio">
-              <label for="q3_c15">
-                <span class="text-warning">O</span>、百泌达
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/百泌达.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c16" value="P" type="radio">
-              <label for="q3_c16">
-                <span class="text-warning">P</span>、诺和灵系列
-              </label>
-              <button type="button" class="small btn-link show-picture"><i
-                  class="glyphicon glyphicon-picture"></i>
-              </button>
-              <div class="hidden">
-                <img class="img-responsive" src="/image/questionnaire/诺和灵.jpg" alt="">
-              </div>
-            </div>
-            <div class="radio">
-              <input name="q3" id="q3_c17" value="Q" type="radio">
-              <label for="q3_c17">
-                <span class="text-warning">Q</span>、其他品牌人胰岛素系列
-              </label>
-            </div>
-            <br>
-            <p class="hidden required small">请选择一个选项!</p>
-            <button type="button" id="button3" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              看我，奖励在招手
-            </button>
-            <br>
-          </div>
-          <!--2-->
-          <div class="swiper-slide swiper-no-swiping">
-            <h3 class="text-primary">4、您多久更换一次胰岛素针头</h3>
-
-            <div class="radio">
-              <input name="q4" id="q4_c1" value="A" type="radio">
-              <label for="q4_c1">
-                <span class="text-warning">A</span>、每次更换
-              </label>
-            </div>
-            <div class="radio">
-              <input name="q4" id="q4_c2" value="B" type="radio">
-              <label for="q4_c2">
-                <span class="text-warning">B</span>、每天更换
-              </label>
-            </div>
-            <!--<div class="mainImg">-->
-            <!--<img class="img-responsive" src="image/q3.jpg" alt="testImg">-->
-            <!--</div>-->
-            <div class="radio">
-              <input name="q4" id="q4_c3" value="C" type="radio">
-              <label for="q4_c3">
-                <span class="text-warning">C</span>、1-3天更换
-              </label>
-            </div>
-            <div class="radio">
-              <input name="q4" id="q4_c4" value="D" type="radio">
-              <label for="q4_c4">
-                <span class="text-warning">D</span>、超过3天
-              </label>
-            </div>
-            <div class="radio">
-              <input name="q4" id="q4_c5" value="E" type="radio">
-              <label for="q4_c5">
-                <span class="text-warning">E</span>、更换胰岛素笔芯时更换
-              </label>
-            </div>
-            <p class="hidden required small">请选择一个选项!</p>
-            <button type="button" id="button4" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点我点我，奖励就在眼前
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--3-->
-          <div class="swiper-slide swiper-no-swiping">
-            <h3 class="text-primary">3、停用胰岛素的原因是？</h3>
-
-            <div class="radio">
-              <input name="q3b" id="q3b_c1" value="A" type="radio">
-              <label for="q3b_c1">
-                <span class="text-warning">A</span>、自行停用
-              </label>
-            </div>
-            <div class="radio">
-              <input name="q3b" id="q3b_c2" value="B" type="radio">
-              <label for="q3b_c2">
-                <span class="text-warning">B</span>、医嘱要求停用
-              </label>
-            </div>
-            <!--<div class="mainImg">-->
-            <!--<img class="img-responsive" src="image/q3.jpg" alt="testImg">-->
-            <!--</div>-->
-            <p class="hidden required small">请选择一个选项!</p>
-            <button type="button" id="button3b" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点我点我，奖励就在眼前
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--4-->
-          <div class="swiper-slide swiper-no-swiping">
-            <h3 class="text-primary">2、您在服药期间出现过以下哪些症状？（可多选）</h3>
-
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c1" value="A" type="checkbox">
-              <label for="q2b_c1">
-                <span class="text-warning">A</span>、颤抖
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c2" value="B" type="checkbox">
-              <label for="q2b_c2">
-                <span class="text-warning">B</span>、心悸
-              </label>
-            </div>
-            <!--<div class="mainImg">-->
-            <!--<img class="img-responsive" src="image/q3.jpg" alt="testImg">-->
-            <!--</div>-->
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c3" value="C" type="checkbox">
-              <label for="q2b_c3">
-                <span class="text-warning">C</span>、大汗淋漓
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c4" value="D" type="checkbox">
-              <label for="q2b_c4">
-                <span class="text-warning">D</span>、焦虑
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c5" value="E" type="checkbox">
-              <label for="q2b_c5">
-                <span class="text-warning">E</span>、头晕
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c6" value="F" type="checkbox">
-              <label for="q2b_c6">
-                <span class="text-warning">F</span>、饥饿难耐
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c7" value="G" type="checkbox">
-              <label for="q2b_c7">
-                <span class="text-warning">G</span>、视力模糊
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c8" value="H" type="checkbox">
-              <label for="q2b_c8">
-                <span class="text-warning">H</span>、疲惫不堪
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c9" value="I" type="checkbox">
-              <label for="q2b_c9">
-                <span class="text-warning">I</span>、头痛
-              </label>
-            </div>
-            <div class="checkbox">
-              <input name="q2b[]" id="q2b_c10" value="J" type="checkbox">
-              <label for="q2b_c10">
-                <span class="text-warning">J</span>、烦躁
-              </label>
-            </div>
-            <p class="hidden required small">请选择一个选项!</p>
-            <button type="button" id="button2b" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点我点我，奖励就在眼前
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--5-->
-          <div class="swiper-slide swiper-no-swiping text-center">
-            <br>
-            <br>
-            <i class="biaozhi text-success glyphicon glyphicon-info-sign"></i>
-            <br>
-            <br>
-
-            <p>糖尿病治疗规范资讯</p>
-            <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
-            <br>
-            <button type="submit" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点击获取领奖卡
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--6-->
-          <div class="swiper-slide swiper-no-swiping text-center">
-            <br>
-            <br>
-            <i class="biaozhi text-warning glyphicon glyphicon-info-sign"></i>
-            <br>
-            <br>
-
-            <p>低血糖资讯</p>
-            <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
-            <br>
-            <button type="submit" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点击获取领奖卡
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--7-->
-          <div class="swiper-slide swiper-no-swiping text-center">
-            <br>
-            <br>
-            <i class="biaozhi text-warning glyphicon glyphicon-info-sign"></i>
-            <br>
-            <br>
-
-            <p>安全注射资讯</p>
-            <img class="img-responsive" src="/image/questionnaire/test.jpg" alt="">
-            <br>
-            <button type="submit" style="margin: auto; font-size: 80%;"
-                    class=" button button-block button-large button-rounded button-primary">
-              点击获取领奖卡
-            </button>
-            <br>
-            <br>
-          </div>
-          <!--8-->
-        </div>
-      </div>
-    </form>
-
-
+  <div class="background-img">
+    <img class="img-responsive" src="/image/questionnaire/背景-1.png" alt="">
   </div>
 
+  <form action="localhost" id="questionnaire" v-cloak>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <br>
+
+          <div class="text-center">
+            <div style="margin-top: -60px;margin-bottom: -50px;"><img style="width: 200px" src="/image/questionnaire/logo.png" alt=""></div>
+          </div>
+
+
+          <img class="question-line" src="/image/questionnaire/线.png" alt="">
+
+          <div class="container" style="background-color: rgba(47, 168, 255, 0.8);">
+            <img style="width: 100%; margin-top: -30px;" src="/image/questionnaire/WDFlogo.png" alt="">
+            <p style="flood-color: #aaa">欢迎您参与世界糖尿病基金会在中国发起的城镇化糖尿病移动教育项目(项目编号:WDF14-922)并关注"易康伴侣"健康平台.您可以在平台浏览糖尿病相关知识,并可以通过学习获取积分奖励,兑换包括胰岛素针头在内的各种健康产品.
+              <br>现在,我们邀请您花一分钟时间填写一份问卷,只需要4步,就可以领取一份健康小礼品哟~</p>
+          </div>
+          <div class="col-xs-12">
+            <button @click="start" type="button" class="btn btn-primary btn-block">
+            答题领好礼
+            </button>
+          </div>
+        </div>
+        <div class="swiper-slide" v-for="question in radio" id="@{{question.id}}">
+          <br>
+
+          <div class="text-center question-number">
+            <div><span>@{{ question.number_zhCN }}</span></div>
+          </div>
+
+          <p class="text-center question-name">
+            <span>@{{ question.name_zhCN }}</span>
+
+          <div v-if="question.name_remark" class="question-remark">
+            <small class="text-primary">@{{ question.name_remark }}</small>
+          </div>
+          </p>
+          <img class="question-line" src="/image/questionnaire/线.png" alt="">
+
+          <div class="container">
+            <div class="form-group"></div>
+            <div class="form-group" v-for="option in question.option">
+              <label for="@{{question.id}}_c@{{$index+1}}">
+                <div class="option-heading col-xs-2">
+                  <div :class=" question.value==option ? 'choosen' : '' ">@{{{'&#'+(65+ $index)+';'}}}</div>
+                </div>
+                <div class="option-content col-xs-10" :class=" question.value==option ? 'choosen' : '' ">@{{option}}
+                  <img v-if="question.option_img&&question.option_img[$index]" class="" :src="'/image/questionnaire/'+question.option_img[$index]" alt="">
+                </div>
+              </label>
+              <input class="hidden" type="radio" name="@{{question.id}}" id="@{{question.id}}_c@{{$index+1}}"
+                     v-model="question.value"
+                     value="@{{option}}">
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <button @click="preview(question)" v-if="question.preview" type="button" class="btn btn-primary btn-block">
+            上一题
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button @click="next(question)" v-if="question.next[question.option.indexOf(question.value)]&&question.value"
+            type="button" class="btn btn-primary btn-block">
+            下一题
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button v-if="!question.next[question.option.indexOf(question.value)]&&question.value" type="submit"
+                    class="btn btn-primary btn-block">提交
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button v-if="!question.preview&&!question.value" type="button" class="btn btn-primary btn-block fade">占位
+            </button>
+          </div>
+        </div>
+        <div class="swiper-slide" v-for="question in checkbox" id="@{{question.id}}">
+          <br>
+
+          <div class=" text-center question-number">
+            <div><span>@{{ question.number_zhCN }}</span></div>
+          </div>
+
+          <p class="text-center question-name">
+            <span>@{{ question.name_zhCN }}</span>
+          </p>
+          <img class="question-line" src="image/questionnaire/线.png" alt="">
+
+          <div class="container">
+            <div class="form-group"></div>
+            <div class="form-group" v-for="(index,options) in question.option">
+              <div class="row">
+                <div class="col-xs-4 checkbox-heading">
+                  <div>@{{ index }}:</div>
+                </div>
+                <div class="col-xs-8 checkbox-content">
+                  <label v-for="option in options">
+                    <div class="btn btn-primary" :class="(question.checked_items.indexOf(option)>-1) ? 'choosen' : ''">@{{
+                    option }}
+                    </div>
+                    <input class="hidden" type="checkbox" name="@{{question.id}}[]" v-model="question.checked_items" value="@{{ option }}">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <button @click="preview(question)" v-if="question.preview" type="button" class="btn btn-primary btn-block">上一题</button>
+          </div>
+          <div class="col-xs-6">
+            <button @click="next(question)" v-if="question.next&&(question.checked_items.length!=0)" type="button"
+            class="btn btn-primary btn-block">
+            下一题
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button v-if="!question.next&&(question.checked_items.length!=0)" type="submit"
+                    class="btn btn-primary btn-block">提交
+            </button>
+          </div>
+          <div class="col-xs-6">
+            <button v-if="!question.preview&&(question.checked_items.length==0)" type="button"
+                    class="btn btn-primary btn-block fade">占位
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </form>
+
   <script src="{{asset('/')}}vendor/jQuery/jQuery-2.1.4.min.js"></script>
-  <script src="{{asset('/')}}vendor/iCheck/icheck.js"></script>
+  <script src="{{asset('/')}}js/vendor/vue.js"></script>
   <script src="{{asset('/')}}vendor/swiper/swiper-3.3.0.min.js"></script>
 
   <script>
-    $(document).ready(function () {
-
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-blue',
-        radioClass: 'iradio_flat-blue',
-        increaseArea: '20%' // optional
-      });
-
-      var swiper = new Swiper('.swiper-container', {
-        autoHeight: true,
-        effect: 'fade',
-        fade: {
-          crossFade: true,
-        }
-      });
-
-      $('button[class*="show-picture"]').click(function () {
-        $('button[class*="show-picture"]').next().addClass('hidden');
-        $(this).next().removeClass('hidden');
-        swiper.update();
-      });
-
-      $('#button1').click(function () {
-        var check1 = $('#q1_c1').parent().attr('aria-checked');
-        var check2 = $('#q1_c2').parent().attr('aria-checked');
-        if (check1 === 'true') {
-          $(this).siblings('p').addClass('hidden');
-          swiper.slideNext()
-        } else if (check2 === 'true') {
-          $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(5)
-        } else {
-          $(this).siblings('p').removeClass('hidden');
-          swiper.update();
-        }
-      });
-
-      $('#button2').click(function () {
-        var check1 = $('#q2_c1').parent().attr('aria-checked');
-        var check2 = $('#q2_c2').parent().attr('aria-checked');
-        var check3 = $('#q2_c3').parent().attr('aria-checked');
-        if (check1 === 'true' || check2 === 'true') {
-          $(this).siblings('p').addClass('hidden');
-          swiper.slideNext()
-        } else if (check3 === 'true') {
-          $(this).siblings('p').addClass('hidden');
-          swiper.slideTo(4)
-        } else {
-          $(this).siblings('p').removeClass('hidden');
-          swiper.update();
-        }
-      });
-
-      $('#button3').click(function () {
-        var checked = false;
-        $(this).siblings('.radio').children('div').each(function () {
-          if ($(this).attr('aria-checked') === 'true') {
-            checked = true;
+    var vm = new Vue({
+      el: "#questionnaire",
+      data: {
+        radio: [
+          {
+            id: 'q1',
+            number_zhCN: '一',
+            name_zhCN: '请选择您的糖尿病治疗方式',
+            option: ['注射胰岛素', '口服药等其他治疗方式'],
+            option_img: ['诺和笔.png', '糖果.png'],
+            preview: null,
+            next: ['q2', 'q1b'],
+            value: null
+          }, {
+            id: 'q2',
+            number_zhCN: '二',
+            name_zhCN: '请选择胰岛素注射起始时间',
+            option: ['我是一周内开始首次使用', '既往停用后重新开始使用', '已停用'],
+            option_img: null,
+            preview: null,
+            next: ['q3', 'q3', null],
+            value: null
+          }, {
+            id: 'q3',
+            number_zhCN: '三',
+            name_zhCN: '请选择您正在使用的胰岛素治疗方案',
+            option: ['一天1针', '一天2针', '一天3针', '一天4针', '胰岛素泵'],
+            option_img: null,
+            preview: null,
+            next: ['q3a', 'q3b', 'q3c', 'q3d', 'q3e'],
+            value: null
+          }, {
+            id: 'q3a',
+            number_zhCN: 'A',
+            name_zhCN: '一天1针',
+            option: ['诺和锐30', '诺和平', '诺和力', '来得时', '长秀霖', '诺和灵系列', '其他'],
+            option_img: ['诺和锐30.png', '诺和平.png', '诺和力.png', '来得时.png', '长秀霖.png', '诺和灵系列.png', null],
+            preview: null,
+            next: ['q4', 'q4', 'q4', 'q4', 'q4', 'q4', 'q4'],
+            value: null
+          }, {
+            id: 'q3b',
+            number_zhCN: 'B',
+            name_zhCN: '一天2针',
+            option: ['诺和锐30&50', '优泌乐25&50', '百泌达', '诺和灵系列', '其他'],
+            option_img: ['诺和锐30&50.png', '优泌乐25&50.png', '百泌达.png', '诺和灵系列.png', null],
+            preview: null,
+            next: ['q4', 'q4', 'q4', 'q4', 'q4'],
+            value: null
+          }, {
+            id: 'q3c',
+            number_zhCN: 'C',
+            name_zhCN: '一天3针',
+            option: ['诺和锐30&50', '诺和锐', '优泌乐25&50', '诺和灵系列', '其他'],
+            option_img: ['诺和锐30&50.png', '诺和锐.png', '优泌乐25&50.png', '诺和灵系列.png', null],
+            preview: null,
+            next: ['q4', 'q4', 'q4', 'q4', 'q4'],
+            value: null
+          }, {
+            id: 'q3d',
+            number_zhCN: 'D',
+            name_zhCN: '一天4针',
+            option: ['诺和锐', '优泌乐', '诺和灵系列', '其他'],
+            option_img: ['诺和锐.png', '优泌乐.png', '诺和灵系列.png', null],
+            preview: null,
+            next: ['q3d2', 'q3d2', 'q4', 'q4'],
+            value: null
+          }, {
+            id: 'q3d2',
+            number_zhCN: 'D',
+            name_zhCN: '一天4针',
+            option: ['来得时', '长秀霖', '诺和平'],
+            option_img: ['来得时.png', '长秀霖.png', '诺和平.png'],
+            preview: null,
+            next: ['q4', 'q4', 'q4'],
+            value: null
+          }, {
+            id: 'q3e',
+            number_zhCN: 'E',
+            name_zhCN: '胰岛素泵',
+            option: ['诺和锐', '优泌乐', '其他'],
+            option_img: ['诺和锐.png', '优泌乐.png', null],
+            preview: null,
+            next: ['q4', 'q4', 'q4'],
+            value: null
+          }, {
+            id: 'q4',
+            number_zhCN: '四',
+            name_zhCN: '您认为应该多长时间更换一次针头',
+            name_remark: '(新胰岛素用户安全注射教育)',
+            option: ['每次注射都需要更换', '每天更换一次', '3-5天更换一次', '更换胰岛素笔芯时更换'],
+            option_img: null,
+            preview: null,
+            next: [null, null, null, null],
+            value: null
           }
-        });
-        if (checked) {
-          $(this).siblings('p').addClass('hidden');
-          swiper.slideNext();
-        } else {
-          $(this).siblings('p').removeClass('hidden');
-          swiper.update();
-        }
-      });
-
-      $('#button4').click(function () {
-        var checked = false;
-        var check1 = $('#q4_c1').parent().attr('aria-checked');
-        var check2 = $('#q4_c2').parent().attr('aria-checked');
-        $(this).siblings('.radio').children('div').each(function () {
-          if ($(this).attr('aria-checked') === 'true') {
-            checked = true;
+        ],
+        checkbox: [
+          {
+            id: 'q1b',
+            number_zhCN: '二',
+            name_zhCN: '口服药物等其它治疗方式(多选)',
+            option: {
+              '阿卡波糖': ['拜糖平', '卡博平', '贝 希'],
+              '二甲双胍': ['格华止', '利 龄', '信 谊'],
+              '瑞格列奈': ['诺和龙', '孚来迪'],
+              '格列美脲': ['亚莫利', '万苏平', '林美欣'],
+              '伏格列波糖': ['倍 欣', '家 能', '安立泰'],
+              '其他': ['其他']
+            },
+            option_img: null,
+            checked_items: [],
+            preview: 'q1',
+            next: null
           }
-        });
-        if (checked) {
-          $(this).siblings('p').addClass('hidden');
-          if (check1 === 'true' || check2 === 'true') {
-            $(this).siblings('p').addClass('hidden');
-            $('form').submit();
-          } else {
-//            swiper.slideTo(8);
-            $('form').submit();
+        ]
+      },
+      methods: {
+        preview: function (e) {
+          if (e.value) {
+            e.value = null;
           }
-        } else {
-          $(this).siblings('p').removeClass('hidden');
-          swiper.update();
-        }
-      });
-
-      $('#button3b').click(function () {
-        var checked = false;
-        check1 = $('#q3b_c1').parent().attr('aria-checked');
-        check2 = $('#q3b_c2').parent().attr('aria-checked');
-        if (check1 === 'true') {
-          $(this).siblings('p').addClass('hidden');
-//          swiper.slideTo(6);
-          $('form').submit();
-        } else if (check2 === 'true') {
-          $(this).siblings('p').addClass('hidden');
-//          swiper.slideTo(7);
-          $('form').submit();
-        } else {
-          $(this).siblings('p').removeClass('hidden');
-          swiper.update();
-        }
-      });
-
-      $('#button2b').click(function () {
-        var checked = false;
-        $(this).siblings('.checkbox').children('div').each(function () {
-          if ($(this).attr('aria-checked') === 'true') {
-            checked = true;
+          if (e.checked_items) {
+            e.checked_items = [];
           }
-        });
-        if (checked) {
-          $(this).siblings('p').addClass('hidden');
-//          swiper.slideTo(7);
-          $('form').submit();
-        } else {
-          $(this).siblings('p').removeClass('hidden');
-          swiper.update();
+          swiper.slideTo($('.swiper-slide').index($('#' + e.preview)));
+        },
+        next: function (e) {
+          var next;
+          if (Array.isArray(e.next)) {
+            next = e.next[e.option.indexOf(e.value)];
+          }
+          if (!Array.isArray(e.next)) {
+            next = e.next;
+          }
+
+          var radio_length = this.radio.length;
+          var checkbox_length = this.checkbox.length;
+          var i = 0;
+          var j = 0;
+
+          console.log(next);
+
+          while (i < radio_length) {
+            if (this.radio[i].id === next) {
+              this.radio[i].preview = e.id;
+              i = radio_length;
+              j = checkbox_length;
+            }
+            i++;
+          }
+
+          while (j < checkbox_length) {
+            if (this.radio[j].id === next) {
+              this.radio[j].preview = e.id;
+              j = checkbox_length;
+            }
+            j++;
+          }
+
+          swiper.slideTo($('.swiper-slide').index($('#' + next)));
         }
-      });
+      }
     });
 
-
+    var swiper = new Swiper('.swiper-container', {
+      autoHeight: true,
+      effect: 'fade',
+      fade: {
+        crossFade: true
+      }
+    });
   </script>
 @endsection
