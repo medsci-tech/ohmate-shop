@@ -150,8 +150,8 @@
 
           <div class="container" style="background-color: rgba(47, 168, 255, 0.8);">
             <img style="width: 100%; margin-top: -30px;" src="/image/questionnaire/WDFlogo.png" alt="">
-            <p style="flood-color: #aaa">欢迎您参与世界糖尿病基金会在中国发起的城镇化糖尿病移动教育项目(项目编号:WDF14-922)并关注"易康伴侣"健康平台.您可以在平台浏览糖尿病相关知识,并可以通过学习获取积分奖励,兑换包括胰岛素针头在内的各种健康产品.
-              <br>现在,我们邀请您花一分钟时间填写一份问卷,只需要4步,就可以领取一份健康小礼品哟~</p>
+            <p style="flood-color: #aaa">欢迎您参与世界糖尿病基金会在中国发起的城镇化糖尿病移动教育项目(项目编号:WDF14-922)并关注"易康伴侣"健康平台。您可以在平台浏览糖尿病相关知识，并可以通过学习获取积分奖励，兑换包括胰岛素针头在内的各种健康产品。
+              <br>现在，我们邀请您花一分钟时间填写一份问卷，只需要4步，就可以领取一份健康小礼品哟~</p>
           </div>
           <div class="col-xs-12">
             <button @click="start" type="button" class="btn btn-primary btn-block">
@@ -362,7 +362,6 @@
             id: 'q4',
             number_zhCN: '四',
             name_zhCN: '您认为应该多长时间更换一次针头',
-            name_remark: '(新胰岛素用户安全注射教育)',
             option: ['每次注射都需要更换', '每天更换一次', '3-5天更换一次', '更换胰岛素笔芯时更换'],
             option_img: null,
             preview: null,
