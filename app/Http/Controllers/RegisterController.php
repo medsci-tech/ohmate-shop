@@ -68,8 +68,6 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        dd('调试中请稍后');
-
         if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
         }
@@ -85,6 +83,9 @@ class RegisterController extends Controller
             'head_image_url'    => $user['headimgurl'],
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
         ]);
+
+        dd('调试中请稍后2');
+
 
         if ($ci = CustomerInformation::where('phone', '=', $request->input('phone'))->first()) {
             $ci->customer_id = $customer->id;
