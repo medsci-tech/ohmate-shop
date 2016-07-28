@@ -68,6 +68,8 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        dd('调试中请稍后');
+
         if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
             return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
         }
