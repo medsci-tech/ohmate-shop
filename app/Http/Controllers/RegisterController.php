@@ -88,8 +88,6 @@ class RegisterController extends Controller
             $ci->customer_id = $customer->id;
             $ci->save();
         }
-        dd('调试中请稍后3');
-
 //        $ret = $customer->register();
         if ($customer->referrer_id) {
 //            \BeanRecharger::invite($customer->getReferrer());
