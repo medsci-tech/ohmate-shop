@@ -134,11 +134,11 @@
     <img class="img-responsive" src="/image/questionnaire/背景-1.png" alt="">
   </div>
 
-  <form action="" id="questionnaire" v-cloak>
+  <form action="" method="post" id="questionnaire" v-cloak>
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
+        <div class="swiper-slide swiper-no-swiping">
           <br>
 
           <div class="text-center">
@@ -159,7 +159,7 @@
             </button>
           </div>
         </div>
-        <div class="swiper-slide" v-for="question in radio" id="@{{question.id}}">
+        <div class="swiper-slide swiper-no-swiping" v-for="question in radio" id="@{{question.id}}">
           <br>
 
           <div class="text-center question-number">
@@ -182,7 +182,8 @@
                 <div class="option-heading col-xs-2">
                   <div :class=" question.value==option ? 'choosen' : '' ">@{{{'&#'+(65+ $index)+';'}}}</div>
                 </div>
-                <div class="option-content col-xs-10" :class=" question.value==option ? 'choosen' : '' ">@{{option}}
+                <div class="option-content col-xs-10" :class=" question.value==option ? 'choosen' : '' ">
+                  <span>@{{option}}</span>
                   <img v-if="question.option_img&&question.option_img[$index]" class="" :src="'/image/questionnaire/'+question.option_img[$index]" alt="">
                 </div>
               </label>
@@ -212,7 +213,7 @@
             </button>
           </div>
         </div>
-        <div class="swiper-slide" v-for="question in checkbox" id="@{{question.id}}">
+        <div class="swiper-slide swiper-no-swiping" v-for="question in checkbox" id="@{{question.id}}">
           <br>
 
           <div class=" text-center question-number">
@@ -289,10 +290,10 @@
             id: 'q2',
             number_zhCN: '二',
             name_zhCN: '请选择胰岛素注射起始时间',
-            option: ['我是一周内开始首次使用', '既往停用后重新开始使用', '已停用'],
+            option: ['我是一周内开始首次使用', '既往停用后重新开始使用', '使用超过一周', '已停用'],
             option_img: null,
             preview: null,
-            next: ['q3', 'q3', null],
+            next: ['q3', 'q3', 'q3', null],
             value: null
           }, {
             id: 'q3',
@@ -345,7 +346,7 @@
             name_zhCN: '一天4针',
             option: ['来得时', '长秀霖', '诺和平'],
             option_img: ['来得时.png', '长秀霖.png', '诺和平.png'],
-            preview: null,
+            preview: 'q3d',
             next: ['q4', 'q4', 'q4'],
             value: null
           }, {
@@ -375,11 +376,11 @@
             number_zhCN: '二',
             name_zhCN: '口服药物等其它治疗方式(多选)',
             option: {
-              '阿卡波糖': ['拜糖平', '卡博平', '贝 希'],
-              '二甲双胍': ['格华止', '利 龄', '信 谊'],
+              '阿卡波糖': ['拜糖平', '卡博平', '贝希'],
+              '二甲双胍': ['格华止', '利龄', '信谊'],
               '瑞格列奈': ['诺和龙', '孚来迪'],
               '格列美脲': ['亚莫利', '万苏平', '林美欣'],
-              '伏格列波糖': ['倍 欣', '家 能', '安立泰'],
+              '伏格列波糖': ['倍欣', '家能', '安立泰'],
               '其他': ['其他']
             },
             option_img: null,
@@ -390,6 +391,9 @@
         ]
       },
       methods: {
+        start: function () {
+          swiper.slideNext();
+        },
         preview: function (e) {
           if (e.value) {
             e.value = null;
@@ -412,8 +416,6 @@
           var checkbox_length = this.checkbox.length;
           var i = 0;
           var j = 0;
-
-          console.log(next);
 
           while (i < radio_length) {
             if (this.radio[i].id === next) {
@@ -443,6 +445,20 @@
       fade: {
         crossFade: true
       }
+    });
+
+    $(function () {
+      $('#q3d .col-xs-6').eq(1).addClass('hide');
+      $('#q3d2 .col-xs-6').eq(0).children().text('返 回');
+      $('#q3d2 label span').text(function(){
+        return '与'+$(this).text()+'同时使用'
+      });
+      $('#q3d_c1,#q3d_c2').siblings().click(function(){
+        swiper.slideNext(false,500);
+      });
+      $('#q3d_c3,#q3d_c4').siblings().click(function(){
+        $('#q3d .col-xs-6').eq(1).removeClass('hide');
+      });
     });
   </script>
 @endsection
