@@ -84,13 +84,11 @@ class RegisterController extends Controller
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
         ]);
 
-        dd('调试中请稍后2');
-
-
         if ($ci = CustomerInformation::where('phone', '=', $request->input('phone'))->first()) {
             $ci->customer_id = $customer->id;
             $ci->save();
         }
+        dd('调试中请稍后2');
 
 //        $ret = $customer->register();
         if ($customer->referrer_id) {
