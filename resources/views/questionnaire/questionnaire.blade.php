@@ -6,6 +6,14 @@
     body {
       font-family: "Microsoft YaHei UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #fff;
+      font-size: 16px;
+    }
+
+    .btn {
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
     }
 
     .background-img {
@@ -44,7 +52,7 @@
 
     .question-name {
       padding: 20px 20px 30px 20px;
-      background: url(/image/questionnaire/蓝色彩带.png) no-repeat center;
+      background: url(image/questionnaire/蓝色彩带.png) no-repeat center;
       background-size: cover;
       font-size: 16px;
     }
@@ -67,7 +75,7 @@
     .option-heading div {
       width: 32px;
       height: 32px;
-      padding-top: 5px;
+      padding-top: 4px;
       margin: auto;
       border: 1px solid #fff;
       background-color: #337ab7;
@@ -83,7 +91,7 @@
     }
 
     .option-content {
-      min-height: 32px;
+      min-height: 34px;
       padding-top: 5px;
       display: inline-block;
       border: 1px solid #fff;
@@ -92,8 +100,10 @@
     }
 
     .option-content img {
-      width: 40%;
+      width: 70%;
       float: right;
+      margin-bottom: 10px;
+      margin-top: 20px;
     }
 
     .checkbox-heading {
