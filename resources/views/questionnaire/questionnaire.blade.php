@@ -468,6 +468,7 @@
       $('#q3d_c3,#q3d_c4').siblings().click(function(){
         $('#q3d .col-xs-6').eq(1).removeClass('hide');
       });
+      $("[src$='诺和锐30&50.png'],[src$='优泌乐25&50.png']").css('width','100%');
     });
   </script>
 @endsection
