@@ -107,9 +107,9 @@
 
     </div>
     <div class="col-xs-12">
-      <button @click="start" type="button" class="btn btn-primary btn-block">
+      <a href="/shop/yiyuan-index" type="button" class="btn btn-primary btn-block">
       点击一元换购
-      </button>
+      </a>
     </div>
     <br><br><br>
   </div>
