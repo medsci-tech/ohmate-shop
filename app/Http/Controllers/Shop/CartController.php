@@ -14,6 +14,11 @@ class CartController extends Controller
         return view('shop.cart');
     }
 
+    public function yiyuanIndex()
+    {
+        return view('shop.yiyuan-cart');
+    }
+
     public function customerInformation()
     {
         $customer = \Helper::getCustomer();
