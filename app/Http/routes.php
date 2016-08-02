@@ -115,7 +115,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('/customer-information', 'CartController@customerInformation');
         });
         Route::group(['prefix' => 'yiyuan-cart'], function () {
-            Route::get('/', 'CartController@yiyuan-index');
+            Route::get('/', 'CartController@yiyuanIndex');
             Route::post('/customer-information', 'CartController@customerInformation');
         });
         Route::get('/yiyuan-commodity/{id}', 'CommodityController@yiyuanShow');
