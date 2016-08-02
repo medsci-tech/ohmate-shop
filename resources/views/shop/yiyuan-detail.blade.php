@@ -88,7 +88,6 @@
               num: this.goods.num,
               min_cash_price: this.goods.min_cash_price
           });
-          $('#touch span').text(cart_num);
           $('.jumbotron').show();
           $('.jumbotron').delay(1000).hide(0);
           $('.jumbotron .alert').show();
