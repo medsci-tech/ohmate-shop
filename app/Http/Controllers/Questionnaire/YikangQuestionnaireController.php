@@ -21,14 +21,14 @@ class YikangQuestionnaireController extends Controller
         /** @var Customer $customer */
         $customer = \Helper::getCustomerOrFail();
         if ($customer->yikangQuestionnaire()->count() > 0) {
-            return view('questionnaire.finish');
+            return view('questionnaire.finish2');
         }
-        return view('questionnaire.questionnaire');
+        return view('questionnaire.questionnaire2');
     }
 
     public function result(Requests\YikangQustionnaireRequest $request)
     {
         $request->persist();
-        return view('questionnaire.finish');
+        return view('questionnaire.finish2');
     }
 }

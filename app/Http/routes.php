@@ -177,6 +177,11 @@ Route::group(['prefix' => 'questionnaire', 'middleware' => 'web', 'namespace' =>
     Route::post('/', 'SubscribeQuestionnaireController@result');
 });
 
+Route::group(['prefix' => 'questionnaire2', 'middleware' => 'web', 'namespace' => 'Questionnaire'], function () {
+    Route::get('/', 'YikangQuestionnaireController@index');
+    Route::post('/', 'YikangQuestionnaireController@result');
+});
+
 Route::get('daily-report', 'Hack\HackController@a');
 
 
