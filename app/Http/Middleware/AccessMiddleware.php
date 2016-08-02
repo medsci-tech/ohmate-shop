@@ -27,6 +27,7 @@ class AccessMiddleware
             $customer   = Customer::where('openid', $user['openid'])->firstOrFail();
 
             if (!$customer->is_registered) {
+                \Session::put('register_next_url', $request->fullUrl());
                 return redirect('/register/create');
             } /*if>*/
 

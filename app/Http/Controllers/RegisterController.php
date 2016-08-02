@@ -96,6 +96,10 @@ class RegisterController extends Controller
 
         \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
         event(new Register($customer));
+
+        if (\Session::has('register_next_url')) {
+            return redirect(\Session::get('register_next_url'));
+        }
         return redirect('register/success');
     }
 
