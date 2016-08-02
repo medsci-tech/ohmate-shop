@@ -44,7 +44,7 @@
 
         @foreach($items as $item)
             <div class="col-xs-6">
-                <a href="{{url('/shop/commodity/') .'/'. $item->id}}">
+                <a href="{{url('/shop/yiyuan-commodity/') .'/'. $item->id}}">
                     <div class="thumbnail">
                         <img src="{{$item->portrait}}" alt="">
                         <div class="caption">
@@ -71,7 +71,7 @@
         loop: true,
         visiblilityFullfit: true,
         autoplay: 4000,
-        speed: 500,
+        speed: 500
     });
 </script>
 </body>
