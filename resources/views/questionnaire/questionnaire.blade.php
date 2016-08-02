@@ -130,6 +130,7 @@
     .choosen {
       background-color: #5cb85c !important;
       border: 1px solid #fff;
+      box-sizing: border-box;
     }
 
     [v-cloak] {
