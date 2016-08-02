@@ -40,7 +40,7 @@ var list = new Vue({
     },
     chooseAdd: function (e) {
       sessionStorage.address = JSON.stringify(e);
-      history.back(-1);
+      history.go(-1);
     },
 
     addFun: function () {
