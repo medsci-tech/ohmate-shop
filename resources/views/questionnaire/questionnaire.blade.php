@@ -52,7 +52,7 @@
 
     .question-name {
       padding: 20px 20px 30px 20px;
-      background: url(image/questionnaire/蓝色彩带.png) no-repeat center;
+      background: url(/image/questionnaire/蓝色彩带.png) no-repeat center;
       background-size: cover;
       font-size: 16px;
     }
