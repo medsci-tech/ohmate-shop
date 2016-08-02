@@ -92,7 +92,7 @@ class CommodityController extends Controller
     public function yiyuanShow($id)
     {
         $item = Commodity::with(['images', 'slideImages'])->find($id);
-        return view('shop.detail')->with([
+        return view('shop.yiyuan-detail')->with([
             'item' => $item->toArray()
         ]);
     }
