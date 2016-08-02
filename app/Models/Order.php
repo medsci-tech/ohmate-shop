@@ -297,10 +297,7 @@ class Order extends Model
     protected function getPostFee($address)
     {
         $customer = $this->customer;
-        if ($customer && $customer->orders()->where('id', '!=', $this->id)->count() == 0) {
-            return 0.01;
-        }
-        return floatval(\Helper::getPostFee($address));
+        return floatval(\Helper::getCustomerPostFee($customer, $address));
     }
 
     protected function bindSale($sale)

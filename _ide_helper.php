@@ -11736,6 +11736,18 @@ namespace {
         /**
          * 
          *
+         * @param \App\Werashop\Helper\Customer $customer
+         * @param string $province
+         * @return float|int 
+         * @static 
+         */
+        public static function getCustomerPostFee($customer, $province){
+            return \App\Werashop\Helper\Helper::getCustomerPostFee($customer, $province);
+        }
+        
+        /**
+         * 
+         *
          * @param string|\App\Werashop\Helper\Address $province
          * @return int 
          * @static 

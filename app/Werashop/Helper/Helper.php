@@ -104,6 +104,20 @@ class Helper
     }
 
     /**
+     * @param Customer $customer
+     * @param string $province
+     * @return float|int
+     */
+    public function getCustomerPostFee($customer, $province)
+    {
+        if ($customer->orders()->where('order_status_id', '>', 1)->first() == null) {
+            return 0.01;
+        }
+
+        return $this->getPostFee($province);
+    }
+
+    /**
      * @param string|Address $province
      * @return int
      */
