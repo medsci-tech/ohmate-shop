@@ -28,11 +28,6 @@
 
                 <p>
                   <strong>@{{ goods.price | currency '￥' }}</strong>
-            <span>数量
-              <span @click="numMinus(goods)" class="fa fa-minus"></span>
-                  <span>@{{ goods.num }}</span>
-                  <span @click="numAdd(goods)" class="fa fa-plus"></span>
-                  </span>
                 </p>
                 <span class="fa fa-close" @click="removeGoods(goods)"></span>
               </div>
@@ -94,7 +89,8 @@
             </tr>
             <tr>
               <th>收货地址</th>
-              <td colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
+              <td
+                colspan="2">@{{ address.province }}@{{ address.city }}@{{ address.district }}@{{ address.address }}</td>
             </tr>
           </table>
         </div>
