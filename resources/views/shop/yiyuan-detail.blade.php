@@ -38,7 +38,7 @@
 
   <div class="navbar-fixed-bottom center-block">
     <div class="col-xs-8">
-     <a class="button" disabled="disabled">(商品限购一件)</a>
+     <a class="button disabled" disabled="disabled" style="width: 100%;padding: 5px;background-color: transparent;">(商品限购一件)</a>
     </div>
     <div class="col-xs-4">
       <a v-if="goods.storage" href="{{url('/shop/yiyuan-cart')}}" class="button button-caution button-rounded" @click="addGoods()">立即购买</a>
