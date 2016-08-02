@@ -108,11 +108,20 @@ class OrderController extends Controller
 
         $items = $request->input('cart');
 
+        $sale = $request->input('sale', null);
+
+        if ($sale != null && !$this->checkSaleCredential($customer, $sale)) {
+            return response()->json([
+                'success' => false,
+                'error_message' => '你不具有参加特卖资格！'
+            ]);
+        }
+
         $order = new Order();
 
         $address = Address::findOrFail($request->input('address_id'));
 
-        $order->initWithCustomerAndAddress($customer, $address);
+        $order->initWithCustomerAndAddress($customer, $address, $sale);
         $order->save();
         $order->addCommodities($items);
         $order->calculate();
@@ -127,5 +136,14 @@ class OrderController extends Controller
                 'order_id' => $order->id
             ]
         ]);
+    }
+
+    private function checkSaleCredential(Customer $customer, $sale)
+    {
+        if ($sale = 'one') {
+            return !$customer->hasPurchesedOneSale();
+        }
+
+        return true;
     }
 }

@@ -279,6 +279,14 @@ class Customer extends Model
         return $this->hasOne(SubscribeQuestionnaire::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne|\Eloquent
+     */
+    public function yikangQuestionnaire()
+    {
+        return $this->hasOne(YikangQuestionnaire::class);
+    }
+
     public function doctorType()
     {
         $info = $this->information()->first();
@@ -287,5 +295,13 @@ class Customer extends Model
         }
         
         return 'C';
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPurchesedOneSale()
+    {
+        return !! Order::where('customer_id', $this->id)->where('special_sale', '=', 'one')->where('order_status_id', '>', 1)->count();
     }
 }

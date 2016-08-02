@@ -23,4 +23,11 @@ class ShopController extends Controller
             'items' => Commodity::with('images')->orderBy('priority', 'desc')->get()
         ]);
     }
+
+    public function sale_one_index()
+    {
+        return view('shop.index')->with([
+            'items' => Commodity::where('special_sale', '=', '1元专区')->with('images')->orderBy('priority', 'desc')->get()
+        ]);
+    }
 }

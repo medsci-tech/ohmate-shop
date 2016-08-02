@@ -130,12 +130,12 @@ class Order extends Model
     }
 
     /**
-     * @return bool
+     * @return Order
      */
     public function addPostFee()
     {
         $address = $this->address;
-        $post_fee = floatval(\Helper::getPostFee($address));
+        $post_fee = $this->getPostFee($address);
         $this->post_fee = $post_fee;
 
         $this->increasePrice($post_fee);
@@ -237,11 +237,12 @@ class Order extends Model
 
     /**
      * @param Customer $customer
-     * @param Address $address
+     * @param Address  $address
+     * @param string|null     $sale
      * @return $this
      */
-    public function initWithCustomerAndAddress(Customer $customer, Address $address){
-        $this->bindCustomer($customer)->bindAddress($address)->addWechatOuttradeno();
+    public function initWithCustomerAndAddress(Customer $customer, Address $address, $sale = null){
+        $this->bindSale($sale)->bindCustomer($customer)->bindAddress($address)->addWechatOuttradeno();
 
         return $this;
     }
@@ -286,6 +287,26 @@ class Order extends Model
     private function increaseMinCashPrice($floatval)
     {
         $this->min_cash_price_without_post_fee += $floatval;
+        return $this;
+    }
+
+    /**
+     * @param      $address
+     * @return float
+     */
+    protected function getPostFee($address)
+    {
+        if ($this->sale && $this->sale == 'one') {
+            return 0.01;
+        }
+        return floatval(\Helper::getPostFee($address));
+    }
+
+    protected function bindSale($sale)
+    {
+        if ($sale) {
+            $this->special_sale = $sale;
+        }
         return $this;
     }
 }
