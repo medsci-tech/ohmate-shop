@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <title>易康商城</title>
+    <title>一元专区</title>
     <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
 
@@ -57,18 +57,6 @@
                 </a>
             </div>
         @endforeach
-            {{--<div class="col-xs-6">--}}
-                {{--<a href="#">--}}
-                    {{--<div class="thumbnail">--}}
-                        {{--<img src="{{url('/image/shop_goods/100.jpg')}}">--}}
-                        {{--<div class="caption">--}}
-                            {{--<p>100元京东礼品券</p>--}}
-                            {{--<p class="small">京东电子礼品券</p>--}}
-                            {{--<strong>10000迈豆</strong>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</a>--}}
-            {{--</div>--}}
     </div>
 
 </div>
@@ -85,29 +73,6 @@
         autoplay: 4000,
         speed: 500,
     });
-</script>
-<script>
-    localStorage.cart = null;
-    var cart_num = '';
-    if (typeof localStorage.cart1 != 'undefined') {
-        var j = JSON.parse(localStorage.cart1);
-        for (i=0; i < j.length; i++) ;
-        if (i != 0){
-            cart_num = i;
-        }
-    }
-    $('body').append('<nav id="touch1" style="position: fixed;opacity: 0.8;z-index: 100;right: 20px;bottom: 20px;"><a id="touch_btn1" href="{{url('/shop/cart')}}" class="button button-large button-glow button-caution button-circle"> <i class="fa fa-shopping-cart"></i>  <span class="badge" style="position: absolute;background-color: #f71212;border: 2px solid #EEEEEE;">'+cart_num+'</span> </a> </nav>')
-    var touch1 = document.getElementById('touch1');
-    var touch_btn1 = document.getElementById('touch_btn1');
-    touch_btn1.addEventListener('touchmove', function (event) {
-        event.preventDefault();
-        if (event.targetTouches.length == 1) {
-            var position = event.targetTouches[0];
-            touch1.style.left = position.clientX - 30 + 'px';
-            touch1.style.top = position.clientY - 30 + 'px';
-            touch1.style.background = "";
-        }
-    }, false);
 </script>
 </body>
 </html>
