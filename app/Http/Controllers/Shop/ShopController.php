@@ -20,7 +20,7 @@ class ShopController extends Controller
     public function index()
     {
         return view('shop.index')->with([
-            'items' => Commodity::with('images')->orderBy('priority', 'desc')->get()
+            'items' => Commodity::whereNull('special_sale')->with('images')->orderBy('priority', 'desc')->get()
         ]);
     }
 

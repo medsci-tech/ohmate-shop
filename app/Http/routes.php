@@ -90,6 +90,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/category', 'CategoryController@index');
 
+        Route::get('/yiyuan-index', 'ShopController@yiyuanIndex');
+
+
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', 'OrderController@index');
             Route::post('generate-config', 'OrderController@generateConfig');
@@ -112,6 +115,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('/customer-information', 'CartController@customerInformation');
         });
         Route::resource('/commodity', 'CommodityController');
+
     });
 
     Route::group(['prefix' => 'activities', 'namespace' => 'Activities'], function () {
