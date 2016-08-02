@@ -24,7 +24,7 @@ class ShopController extends Controller
         ]);
     }
 
-    public function sale_one_index()
+    public function yiyuanIndex()
     {
         return view('shop.yiyuan-index')->with([
             'items' => Commodity::where('special_sale', '=', '1元专区')->with('images')->orderBy('priority', 'desc')->get()
