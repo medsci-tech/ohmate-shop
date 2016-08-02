@@ -103,7 +103,7 @@
         请保持!
       </p>
 
-      <img style="width: 100%; margin-top: -30px;" src="/image/questionnaire/WDFlogo.png" alt="">
+      <img style="width: 60%; margin: 10px 20%;" src="/image/questionnaire/礼品.png" alt="">
 
     </div>
     <div class="col-xs-12">
