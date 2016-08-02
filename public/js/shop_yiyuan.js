@@ -111,7 +111,7 @@ var shop_cart = new Vue({
           {
             cart: this.cartList,
             address_id: this.address.id,
-            sale:'one'
+            sale:'1元专区'
           },
           function (data) {
             if (data.success) {
