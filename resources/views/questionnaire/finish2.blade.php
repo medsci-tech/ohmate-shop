@@ -95,7 +95,7 @@
     <div class="container" style="background-color: rgba(47, 168, 255, 0.8);">
 
       <p style="font-color: #aaa; font-size: 14px; text-align: center">
-@if(true)
+@if($result == 2)
         <span style="text-align: left">一次性使用针头才能有效保证胰岛素治疗效果，重复使用针头存在诸多安全隐患，并可能严重影响治疗效果！<br><br></span>
 @endif
         感谢您参与问卷，<br>
