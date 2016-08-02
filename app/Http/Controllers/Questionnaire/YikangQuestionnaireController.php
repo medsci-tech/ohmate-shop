@@ -33,6 +33,16 @@ class YikangQuestionnaireController extends Controller
     public function result(Requests\YikangQustionnaireRequest $request)
     {
         $request->persist();
-        return view('questionnaire.finish2');
+        /** @var Customer $customer */
+        $customer = \Helper::getCustomerOrFail();
+        $q = $customer->yikangQuestionnaire()->first();
+
+        if ($q->q1 == '口服药等其他治疗方式' || $q->q2 == '已停用') {
+            $result = 1;
+        } else {
+            $result = 2;
+        }
+
+        return view('questionnaire.finish2')->with(['result' => $result]);
     }
 }
