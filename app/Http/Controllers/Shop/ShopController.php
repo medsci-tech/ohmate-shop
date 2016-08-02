@@ -26,6 +26,15 @@ class ShopController extends Controller
 
     public function yiyuanIndex()
     {
+        $customer = \Helper::getCustomer();
+
+        if ($customer->yikangQuestionnaire()->first() == null) {
+            return redirect('/questionnaire2');
+        }
+        if ($customer->orders()->where('special_sale', '=', '1元专区')->first() != null) {
+            return '每人仅能参加一次活动！';
+        }
+
         return view('shop.yiyuan-index')->with([
             'items' => Commodity::where('special_sale', '=', '1元专区')->with('images')->orderBy('priority', 'desc')->get()
         ]);
