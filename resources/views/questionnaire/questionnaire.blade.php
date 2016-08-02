@@ -273,6 +273,7 @@
                     class="btn btn-primary btn-block fade">占位
             </button>
           </div>
+          <div class="clear-fix">
         </div>
       </div>
     </div>
