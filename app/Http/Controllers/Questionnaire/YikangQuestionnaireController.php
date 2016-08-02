@@ -21,11 +21,11 @@ class YikangQuestionnaireController extends Controller
         /** @var Customer $customer */
         $customer = \Helper::getCustomerOrFail();
         $q = $customer->yikangQuestionnaire()->first();
-        dd($q);
         if ($q) {
-//            if ($q->) {
-//            }
-            return view('questionnaire.finish2');
+            if ($q->q1 == '口服药等其他治疗方式' || $q->q2 == '已停用') {
+                return view('questionnaire.finish2')->with(['result' => 1]);
+            }
+            return view('questionnaire.finish2')->with(['result' => 2]);
         }
         return view('questionnaire.questionnaire2');
     }

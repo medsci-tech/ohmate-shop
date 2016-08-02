@@ -80,9 +80,9 @@
     <br>
 
     <div class="text-center question-number">
-@if(true)
+@if($result == '2')
       <div><img style="width: 100%" src="/image/questionnaire/诺和笔.png" alt=""></div>
-@elseif(false)
+@else
       <div><img style="width: 100%" src="/image/questionnaire/糖果.png" alt=""></div>
 @endif
     </div>
