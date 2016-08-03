@@ -36,7 +36,8 @@ class CreateIfNotExist
                 'openid' => $user['openid'],
                 'nickname' => $user['nickname'],
                 'unionid' => isset($user['unionid'])?$user['unionid']:null,
-                'head_image_url' => $user['headimgurl']
+                'head_image_url' => $user['headimgurl'],
+                'type' => 1
             ]);
             return $next($request);
         }
