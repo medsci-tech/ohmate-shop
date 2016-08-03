@@ -60,7 +60,7 @@ class DoctorInformationExcelRequest extends Request
                     $param['customer_id'] = $customer->id;
                 }
 
-                if ($customer_info = CustomerInformation::where('phone', $row['注册电话'])->first()) {
+                if ($customer_info = CustomerInformation::where('phone', strval(intval($row['注册电话'])))->first()) {
                     $customer_info->update($param);
                     return;
                 }
