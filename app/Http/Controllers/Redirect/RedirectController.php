@@ -88,7 +88,7 @@ class RedirectController extends Controller
     public function shopIndex(Request $request)
     {
         if (\Helper::hasSessionCachedUser()) {
-            return redirect('/shop/index');
+            return redirect('/redirect/article-index');
         } elseif ($request->has('customer_id')) {
             $customer = Customer::find($request->input('customer_id'));
             \Session::put(AppConstant::SESSION_USER_KEY, [
@@ -97,11 +97,11 @@ class RedirectController extends Controller
 
             if ($request->input('first_in', 0) == 1 and $customer->beans_total == 0) {
                 \BeanRecharger::register($customer);
-                return redirect('/shop/index')->with([
+                return redirect('/redirect/article-index')->with([
                     'first_in' => 1
                 ]);
             }
-            return redirect('/shop/index');
+            return redirect('/redirect/article-index');
         } else {
             if ($request->has('cooperator_id')) {
                 return redirect('http://www.ohmate.cn/redirect/web-shop-index?cooperator_id=' . $request->input('cooperator_id'));
