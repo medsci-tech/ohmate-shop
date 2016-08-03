@@ -16,6 +16,7 @@ class RedirectController extends Controller
 
     function __construct()
     {
+        $this->middleware('createIfNotExist')->only(['articleIndex']);
         $this->middleware('auth.wechat')->except(['webShopIndex']);
     }
 
