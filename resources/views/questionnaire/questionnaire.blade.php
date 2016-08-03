@@ -130,6 +130,7 @@
     .choosen {
       background-color: #5cb85c !important;
       border: 1px solid #fff;
+      box-sizing: border-box;
     }
 
     [v-cloak] {
@@ -272,7 +273,7 @@
                     class="btn btn-primary btn-block fade">占位
             </button>
           </div>
-          <p></p>
+          <div class="clear-fix">
         </div>
       </div>
     </div>
