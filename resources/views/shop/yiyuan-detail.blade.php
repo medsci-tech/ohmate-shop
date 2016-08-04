@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-  <title>一元专区</title>
+  <title>换购专区</title>
   <link rel="stylesheet" href="{{asset('/css/swiper-3.3.0.min.css')}}">
   <link rel="stylesheet" href="{{asset('/css/shop.css')}}">
 </head>

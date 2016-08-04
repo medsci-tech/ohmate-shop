@@ -162,7 +162,7 @@
           <div class="container" style="background-color: rgba(47, 168, 255, 0.8);">
             <img style="width: 60%; margin: 10px 20%;" src="/image/questionnaire/诺和针.png" alt="">
             <p style="flood-color: #aaa">欢迎您访问“易康伴侣”健康平台。您可以在平台浏览糖尿病相关知识，并可以通过学习获取积分奖励，兑换包括胰岛素针头在内的各种健康产品。
-              <br>现在，我们邀请您花一分钟时间填写一份问卷，只需要4步，就可以花一元钱换购1盒胰岛素针头。新注册用户第一份订单还包邮哦~</p>
+              <br>现在，我们邀请您花一分钟时间填写一份问卷，只需要4步，就可以换购1盒胰岛素针头。新注册用户第一份订单还包邮哦~</p>
           </div>
           <div class="col-xs-12">
             <button @click="start" type="button" class="btn btn-primary btn-block">
