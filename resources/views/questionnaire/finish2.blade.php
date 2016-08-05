@@ -88,7 +88,7 @@
     </div>
 
     <p class="text-center question-name">
-      <span>立即参与换购，乐享一元好礼！</span>
+      <span>立即参与换购，乐享好礼！</span>
     </p>
     <img class="question-line" src="/image/questionnaire/线.png" alt="">
 
@@ -108,7 +108,7 @@
     </div>
     <div class="col-xs-12">
       <a href="/shop/yiyuan-index" type="button" class="btn btn-primary btn-block">
-      点击一元换购
+      点击换购
       </a>
     </div>
     <br><br><br>
