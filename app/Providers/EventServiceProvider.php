@@ -18,7 +18,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\AddYourUpperInviteCount',
         ],
         'App\Events\Purchase' => [
-            'App\Listeners\GiveFirstPurchaseBeanOrNot',
+//            'App\Listeners\GiveFirstPurchaseBeanOrNot',
             'App\Listeners\GiveYourUpperFirstPurchaseBeanOrNot',
             'App\Listeners\GiveYourUpperPurchaseFeedbackOrNot',
         ],
