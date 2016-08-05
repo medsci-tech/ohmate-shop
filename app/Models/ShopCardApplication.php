@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ShopCard
+ * Class ShopCardApplication
  * @package App\Models
  * @mixin \Eloquent
  */
-class ShopCard extends Model
+class ShopCardApplication extends Model
 {
-    /**
-     * @var array
-     */
-    protected $guarded = [];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
