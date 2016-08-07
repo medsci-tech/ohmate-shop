@@ -97,7 +97,7 @@
     data: {
       id: '',
       num: 1,
-      beans_total: 300000
+      beans_total: {{$customer->beans_total}}
     },
     computed: {
       can_buy: function () {
