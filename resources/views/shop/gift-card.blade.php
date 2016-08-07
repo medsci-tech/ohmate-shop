@@ -97,7 +97,7 @@
     data: {
       id: '',
       num: 1,
-      beans_total: {{$customer->beans_total}}
+      beans_total: 300000
     },
     computed: {
       can_buy: function () {
@@ -120,15 +120,14 @@
         }
       },
       buyCard: function () {
-        console.log(123)
-//        $.post('shop/gift-card',{amount:gift_card.num},function (data) {
-//          if(data.success) {
-//            $('.jumbotron').show();
-//            $('.jumbotron').delay(1000).hide(0);
-//            $('.jumbotron .alert').show();
-//            $('.jumbotron .alert').delay(300).fadeOut(700);
-//          }
-//        });
+        $.post('shop/gift-card',{amount:gift_card.num},function (data) {
+          if(data.success) {
+            $('.jumbotron').show();
+            $('.jumbotron').delay(1000).hide(0);
+            $('.jumbotron .alert').show();
+            $('.jumbotron .alert').delay(300).fadeOut(700);
+          }
+        });
       }
 
     }
