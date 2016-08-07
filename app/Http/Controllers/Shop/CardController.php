@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Exceptions\CardNotEnoughException;
+use App\Models\CardType;
+use App\Models\Customer;
 use App\Models\ShopCard;
+use App\Models\ShopCardApplication;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -22,14 +26,18 @@ class CardController extends Controller
 
         try {
             \DB::transaction(function () use ($cards) {
+                $result = [];
                 foreach ($cards as $card) {
-                    \DB::table('shop_cards')->insert([
+                    $result []= [
                         'number' => $card['number'],
                         'secret' => $card['secret'],
+                        'card_type_id' => 1,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()
-                    ]);
+                    ];
                 }
+
+                \DB::table('shop_cards')->insert($result);
             });
         } catch (\Exception $e) {
             return response()->json([
@@ -40,6 +48,61 @@ class CardController extends Controller
         return response()->json([
             'success' => true
         ]);
+    }
+
+    public function askForCard(Request $request)
+    {
+        $customer = \Helper::getCustomerOrFail();
+        $amount = $request->input('amount');
+        $card_type_id = $request->input('card_type_id', 1);
+        $card_type = CardType::find($card_type_id);
+
+        if ($customer->beans_total <= $card_type->beans_value * $amount) {
+            return '迈豆不足，不能申请兑换。';
+        }
+
+        ShopCardApplication::create([
+            'customer_id' => $customer->id,
+            'amount' => $amount,
+            'authorized' => 0,
+            'card_type_id' => $card_type_id
+        ]);
+
+        return '申请成功，待管理员审核！';
+    }
+
+    public function approveApplication(Request $request)
+    {
+        $shop_card_application_id = $request->input('shop_card_application_id');
+        $application = ShopCardApplication::find($shop_card_application_id);
+        $customer = Customer::find($application->customer_id);
+        $card_type = $application->cardType();
+
+        try {
+            \DB::transaction(function () use ($application, $customer, $card_type) {
+                $customer_row = \DB::table('customers')->where('id', $customer->id)->first();
+                $customer_row->lockForUpdate();
+
+                if ($customer_row->beans_total <= $card_type->beans_value * $application->amount) {
+                    return '迈豆不足，不能兑换。';
+                }
+                $cards = \DB::table('shop_cards')->where('card_type_id', '=', $card_type->id)->whereNull('customer_id')->limit($application->amount);
+                $cards->lockForUpdate();
+
+                if ($cards->count() < $application->amount) {
+                    throw new CardNotEnoughException();
+                }
+
+                $customer->minusBeansByHand($application->amount * $card_type->beans_value);
+
+                $cards->update(['customer_id' => $customer->id, 'bought_at' => Carbon::now()]);
+                return true;
+            });
+
+            return '成功';
+        } catch (CardNotEnoughException $e) {
+            return '相应卡片不足，无法继续。';
+        }
     }
 
     public function buy(Request $request)
