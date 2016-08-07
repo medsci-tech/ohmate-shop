@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div class="container" id="gift_card">
+<div class="container" id="gift_card" v-cloak>
   <br>
 
   <div class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
@@ -40,12 +40,14 @@
   var gift_card = new Vue({
     el: '#gift_card',
     data: {
-      cards:[{
-        name: '1000元京东购物卡'
-        no: '1236666',
-        password: '98498651651',
-        marked: 0
-      },]
+      cards:[
+//        {
+//        name: '1000元京东购物卡'
+//        no: '1236666',
+//        password: '98498651651',
+//        marked: 0
+//      },
+      ]
     },
     methods: ''
   })
