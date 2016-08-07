@@ -7,6 +7,7 @@ use App\Models\CardType;
 use App\Models\Customer;
 use App\Models\ShopCard;
 use App\Models\ShopCardApplication;
+use App\Werashop\Helper\Facades\Helper;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,12 +18,16 @@ class CardController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth.wechat');
+//        $this->middleware('wechat');
     }
 
     public function index()
     {
-        return view('shop.gift-card');
+        $customer = \Helper::getCustomerOrFail();
+        return view('shop.gift-card')->with([
+            'customer' => $customer
+        ]);
     }
 
     public function askForCard(Request $request)
@@ -32,7 +37,7 @@ class CardController extends Controller
         $card_type_id = $request->input('card_type_id', 1);
         $card_type = CardType::find($card_type_id);
 
-        if ($customer->beans_total <= $card_type->beans_value * $amount) {
+        if ($customer->beans_total < $card_type->beans_value * $amount) {
             return '迈豆不足，不能申请兑换。';
         }
 
