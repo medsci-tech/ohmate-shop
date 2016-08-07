@@ -82,7 +82,7 @@
 
   <div class="jumbotron">
     <div class="alert text-center" role="alert">
-      <p>@{{ goods.num }}件商品</p>
+      <p>@{{ num }}件商品</p>
       <p>添加成功</p>
     </div>
   </div>
@@ -97,11 +97,11 @@
     data: {
       id: '',
       num: 1,
-      beans_total: 30000
+      beans_total: 300000
     },
     computed: {
       can_buy: function () {
-        if ((this.beans_total - this.num * 10000) >= 0) {
+        if ((this.beans_total - this.num * 100000) >= 0) {
           return true;
         } else {
           return false;
@@ -120,7 +120,14 @@
         }
       },
       buyCard: function () {
-
+        $.post('shop/gift-card',{amount:gift_card.num},function (data) {
+          if(data.success) {
+            $('.jumbotron').show();
+            $('.jumbotron').delay(1000).hide(0);
+            $('.jumbotron .alert').show();
+            $('.jumbotron .alert').delay(300).fadeOut(700);
+          }
+        });
       }
 
     }
