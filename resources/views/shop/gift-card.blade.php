@@ -120,7 +120,7 @@
         }
       },
       buyCard: function () {
-        $.post('shop/gift-card',{amount:gift_card.num},function (data) {
+        $.post('/shop/gift-card',{amount:gift_card.num},function (data) {
           if(data.success) {
             $('.jumbotron').show();
             $('.jumbotron').delay(1000).hide(0);
