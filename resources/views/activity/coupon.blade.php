@@ -13,7 +13,7 @@
 
   <div class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
     <div class="panel-heading text-center">
-      100元京东礼品卡
+      @{{ card.name }}
       <span class="checkbox" style="display: inline-block; margin: 0; float: right;">
         <label>
           <input type="checkbox" v-model="card.marked">
@@ -41,22 +41,11 @@
     el: '#gift_card',
     data: {
       cards:[{
+        name: '1000元京东购物卡'
         no: '1236666',
         password: '98498651651',
         marked: 0
-      },{
-        no: '2342326',
-        password: '98498651651',
-        marked: 0
-      },{
-        no: '45345345',
-        password: '98498651651',
-        marked: 0
-      },{
-        no: '666666',
-        password: '98498651651',
-        marked: 0
-      }]
+      },]
     },
     methods: ''
   })

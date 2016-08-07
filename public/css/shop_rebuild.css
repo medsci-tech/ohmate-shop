@@ -199,4 +199,25 @@ a, a:focus, a:hover {
     #addresses form button:nth-child(1) {
       width: 80%; }
 
+#gift_card .jumbotron {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition-duration: 1500ms; }
+#gift_card .jumbotron .alert {
+  position: fixed;
+  top: 200px;
+  left: 25%;
+  width: 50%;
+  opacity: 0.9;
+  background-color: #404040;
+  color: #FFFFFF; }
+
 /*# sourceMappingURL=shop_rebuild.css.map */
