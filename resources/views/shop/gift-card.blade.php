@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>京东礼品券</title>
   <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 <body>
 
-<div class="container" id="gift_card">
+<div class="container" id="gift_card" v-cloak>
   <br>
   <div class="row">
     <div class="panel panel-primary">
@@ -83,7 +85,6 @@
   <div class="jumbotron">
     <div class="alert text-center" role="alert">
       <p>申请成功</p>
-      <p>待审核后即可发放</p>
     </div>
   </div>
 
@@ -92,6 +93,12 @@
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
   var gift_card = new Vue({
     el: '#gift_card',
     data: {
@@ -121,7 +128,8 @@
       },
       buyCard: function () {
         $.post('/shop/gift-card',{amount:gift_card.num},function (data) {
-          if(data.success) {
+          if(data) {
+            $('.jumbotron p').text(data);
             $('.jumbotron').show();
             $('.jumbotron').delay(1000).hide(0);
             $('.jumbotron .alert').show();
