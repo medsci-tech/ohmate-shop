@@ -131,9 +131,9 @@
           if(data) {
             $('.jumbotron p').text(data);
             $('.jumbotron').show();
-            $('.jumbotron').delay(1000).hide(0);
+            $('.jumbotron').delay(3000).hide(0);
             $('.jumbotron .alert').show();
-            $('.jumbotron .alert').delay(300).fadeOut(700);
+            $('.jumbotron .alert').delay(900).fadeOut(2100);
           }
         });
       }
