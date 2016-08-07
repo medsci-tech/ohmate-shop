@@ -37,7 +37,7 @@ class CardController extends Controller
         $card_type_id = $request->input('card_type_id', 1);
         $card_type = CardType::find($card_type_id);
 
-        if ($customer->beans_total <= $card_type->beans_value * $amount) {
+        if ($customer->beans_total < $card_type->beans_value * $amount) {
             return '迈豆不足，不能申请兑换。';
         }
 
