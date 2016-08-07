@@ -11,6 +11,7 @@
 <div class="container" id="gift_card" v-cloak>
   <br>
 
+  <div class="text-center"><h3>暂无礼品卡！</h3></div>
   <div class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
     <div class="panel-heading text-center">
       @{{ card.name }}
