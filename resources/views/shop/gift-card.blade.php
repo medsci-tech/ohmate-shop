@@ -17,16 +17,16 @@
         <li class="list-group-item">
           <div class="media">
             <div class="media-left media-middle">
-              <img class="media-object" src="../../image/shop_goods/2.png" alt="...">
+              <img class="media-object" src="/image/shop_goods/2.png" alt="...">
             </div>
             <div class="media-body">
-              <strong class="media-heading">100元京东礼品券</strong>
+              <strong class="media-heading">1000元京东礼品券</strong>
 
               <p>
-                <strong>10000迈豆</strong>
+                <strong>100000迈豆</strong>
             <span>数量
               <span @click="numMinus()" class="fa fa-minus"></span>
-              <span>{{ num }}</span>
+              <span>@{{ num }}</span>
               <span @click="numAdd()" class="fa fa-plus"></span>
             </span>
               </p>
@@ -43,21 +43,21 @@
       <table class="table table-condensed table1">
         <tbody>
         <tr>
-          <td>100元京东礼品券</td>
-          <td>x{{ num }}</td>
-          <td>{{ num*10000 }}迈豆</td>
+          <td>1000元京东礼品券</td>
+          <td>x@{{ num }}</td>
+          <td>@{{ num*100000 }}迈豆</td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
           <td>迈豆消费</td>
           <td></td>
-          <td>{{ num*10000 }}迈豆</td>
+          <td>@{{ num*100000 }}迈豆</td>
         </tr>
         <tr>
           <td>迈豆余额</td>
           <td></td>
-          <td>{{ beans_total - num*10000 }}迈豆</td>
+          <td>@{{ beans_total - num*100000 }}迈豆</td>
         </tr>
         </tfoot>
 
@@ -70,15 +70,22 @@
 
   <div class="navbar-fixed-bottom">
     <div class="col-xs-7">
-      <p>合计 <span>{{ num*10000 }}迈豆</span></p>
+      <p>合计 <span>@{{ num*100000 }}迈豆</span></p>
     </div>
     <div class="col-xs-5">
-      <button v-if="can_buy" class="button button-caution button-rounded" @click="buyCard() | debounce 1000">确认兑换</button>
+      <button v-if="can_buy" class="button button-caution button-rounded" @click="buyCard() | debounce 1000">申请兑换</button>
       <button v-if="!can_buy" class="button button-caution button-rounded" disabled>迈豆不足</button>
     </div>
   </div>
 
   </template>
+
+  <div class="jumbotron">
+    <div class="alert text-center" role="alert">
+      <p>@{{ goods.num }}件商品</p>
+      <p>添加成功</p>
+    </div>
+  </div>
 
 </div>
 
@@ -113,6 +120,7 @@
         }
       },
       buyCard: function () {
+
       }
 
     }

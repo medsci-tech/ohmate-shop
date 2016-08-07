@@ -116,9 +116,9 @@
                   </thead>
                   <tbody>
                   <tr v-cloak v-for="card in cards">
-                    <td>{{ $index +   1 }}</td>
-                    <td>{{ card.no }}</td>
-                    <td>{{ card.password }}</td>
+                    <td>@{{ $index +   1 }}</td>
+                    <td>@{{ card.no }}</td>
+                    <td>@{{ card.password }}</td>
                   </tr>
                   </tbody>
                 </table>
