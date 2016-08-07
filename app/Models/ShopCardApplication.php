@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ShopCardApplication extends Model
 {
+
+    protected $guarded = [];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

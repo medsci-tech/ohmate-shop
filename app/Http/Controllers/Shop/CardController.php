@@ -37,6 +37,10 @@ class CardController extends Controller
         $card_type_id = $request->input('card_type_id', 1);
         $card_type = CardType::find($card_type_id);
 
+        if (ShopCardApplication::where('customer_id', '=', $customer->id)->where('authorized', '=', 0)->first()) {
+            return '您已有申请正在处理中，不能重复申请。';
+        }
+
         if ($customer->beans_total < $card_type->beans_value * $amount) {
             return '迈豆不足，不能申请兑换。';
         }
