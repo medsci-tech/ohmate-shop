@@ -8,11 +8,11 @@
 </head>
 
 <body>
-<div class="container" id="gift_card" v-cloak>
+<div class="container" id="gift_card">
   <br>
 
   <div v-if="cards == []" class="text-center"><h3>暂无礼品卡！</h3></div>
-  <div class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
+  <div v-if="cards != []" v-cloak class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
     <div class="panel-heading text-center">
       @{{ card.name }}
       <span class="checkbox" style="display: inline-block; margin: 0; float: right;">
