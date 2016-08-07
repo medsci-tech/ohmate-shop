@@ -37,7 +37,7 @@ class CardController extends Controller
         $card_type_id = $request->input('card_type_id', 1);
         $card_type = CardType::find($card_type_id);
 
-        if (ShopCardApplication::where('customer_id', '=', $customer->id)->where('authorized', '!=', 0)->first()) {
+        if (ShopCardApplication::where('customer_id', '=', $customer->id)->where('authorized', '=', 0)->first()) {
             return '您已有申请正在处理中，不能重复申请。';
         }
 
