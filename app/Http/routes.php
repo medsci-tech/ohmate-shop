@@ -90,6 +90,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/index', 'ShopController@index');
         Route::get('/category', 'CategoryController@index');
 
+        Route::get('gift-card', 'CardController@index');
+        Route::post('gift-card', 'CardController@askForCard');
+
+
         Route::get('/yiyuan-index', 'ShopController@yiyuanIndex');
 
 
@@ -170,6 +174,16 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
     Route::group(['prefix' => 'information'], function () {
         Route::get('upload', 'DoctorExcelController@index');
         Route::post('upload', 'DoctorExcelController@post');
+    });
+
+    Route::group(['prefix' => 'gift-card'], function () {
+        Route::get('/import', 'CardController@index');
+        Route::post('/import', 'CardController@import');
+    });
+
+    Route::group(['prefix' => 'gift-card-application'], function () {
+        Route::get('/approve', 'CardApplicationController@index');
+        Route::post('/approve', 'CardApplicationController@approveApplication');
     });
 });
 

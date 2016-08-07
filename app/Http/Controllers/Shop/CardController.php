@@ -20,34 +20,9 @@ class CardController extends Controller
 //        $this->middleware('auth');
     }
 
-    public function import(Request $request)
+    public function index()
     {
-        $cards = $request->input('cards');
-
-        try {
-            \DB::transaction(function () use ($cards) {
-                $result = [];
-                foreach ($cards as $card) {
-                    $result []= [
-                        'number' => $card['number'],
-                        'secret' => $card['secret'],
-                        'card_type_id' => 1,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now()
-                    ];
-                }
-
-                \DB::table('shop_cards')->insert($result);
-            });
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false
-            ]);
-        }
-
-        return response()->json([
-            'success' => true
-        ]);
+        return view('shop.gift-card');
     }
 
     public function askForCard(Request $request)
@@ -69,40 +44,6 @@ class CardController extends Controller
         ]);
 
         return '申请成功，待管理员审核！';
-    }
-
-    public function approveApplication(Request $request)
-    {
-        $shop_card_application_id = $request->input('shop_card_application_id');
-        $application = ShopCardApplication::find($shop_card_application_id);
-        $customer = Customer::find($application->customer_id);
-        $card_type = $application->cardType();
-
-        try {
-            \DB::transaction(function () use ($application, $customer, $card_type) {
-                $customer_row = \DB::table('customers')->where('id', $customer->id)->first();
-                $customer_row->lockForUpdate();
-
-                if ($customer_row->beans_total <= $card_type->beans_value * $application->amount) {
-                    return '迈豆不足，不能兑换。';
-                }
-                $cards = \DB::table('shop_cards')->where('card_type_id', '=', $card_type->id)->whereNull('customer_id')->limit($application->amount);
-                $cards->lockForUpdate();
-
-                if ($cards->count() < $application->amount) {
-                    throw new CardNotEnoughException();
-                }
-
-                $customer->minusBeansByHand($application->amount * $card_type->beans_value);
-
-                $cards->update(['customer_id' => $customer->id, 'bought_at' => Carbon::now()]);
-                return true;
-            });
-
-            return '成功';
-        } catch (CardNotEnoughException $e) {
-            return '相应卡片不足，无法继续。';
-        }
     }
 
     public function buy(Request $request)
