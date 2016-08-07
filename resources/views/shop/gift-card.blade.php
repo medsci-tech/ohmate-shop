@@ -82,8 +82,8 @@
 
   <div class="jumbotron">
     <div class="alert text-center" role="alert">
-      <p>@{{ num }}件商品</p>
-      <p>添加成功</p>
+      <p>申请成功</p>
+      <p>待审核后即可发放</p>
     </div>
   </div>
 
