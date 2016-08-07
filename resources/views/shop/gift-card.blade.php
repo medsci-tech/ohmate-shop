@@ -73,7 +73,7 @@
       <p>合计 <span>@{{ num*100000 }}迈豆</span></p>
     </div>
     <div class="col-xs-5">
-      <button v-if="can_buy" class="button button-caution button-rounded" @click="buyCard() | debounce 1000">申请兑换</button>
+      <button v-if="can_buy" class="button button-caution button-rounded" @click="buyCard | debounce 1000">申请兑换</button>
       <button v-if="!can_buy" class="button button-caution button-rounded" disabled>迈豆不足</button>
     </div>
   </div>
@@ -120,14 +120,15 @@
         }
       },
       buyCard: function () {
-        $.post('shop/gift-card',{amount:gift_card.num},function (data) {
-          if(data.success) {
-            $('.jumbotron').show();
-            $('.jumbotron').delay(1000).hide(0);
-            $('.jumbotron .alert').show();
-            $('.jumbotron .alert').delay(300).fadeOut(700);
-          }
-        });
+        console.log(123)
+//        $.post('shop/gift-card',{amount:gift_card.num},function (data) {
+//          if(data.success) {
+//            $('.jumbotron').show();
+//            $('.jumbotron').delay(1000).hide(0);
+//            $('.jumbotron .alert').show();
+//            $('.jumbotron .alert').delay(300).fadeOut(700);
+//          }
+//        });
       }
 
     }
