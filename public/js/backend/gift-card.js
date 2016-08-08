@@ -83,14 +83,14 @@ var order = new Vue({
           }
         }
       } else {
-        split = this.input.replace(/[\s：:]/g,'').split('/n');
+        split = this.input.replace(/[\s：:]/g,'').split('\n');
         i = split.length;
         if ( i == 1) {
           return '';
         } else {
           cards = [];
           for ( j=1 ; j<i ; j++ ){
-            card = split[j].split('/t');
+            card = split[j].split('\t');
             if ( card.length != 1) {
               cards.push({
                 no: card[0],
