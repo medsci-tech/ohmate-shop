@@ -31,6 +31,7 @@
               <th>申请数量</th>
               <th>迈豆余额</th>
               <th>审核</th>
+              <th></th>
             </tr>
             </thead>
             <tbody>

@@ -64,6 +64,7 @@ var order = new Vue({
     },
     cards: function () {
       var split,i,cards;
+      console.log(this.input);
       if(this.input.indexOf('卡号')>-1 && this.input.indexOf('密码')>-1){
         split = this.input.replace(/[\s：:]/g,'').split('卡号');
         i = split.length;
