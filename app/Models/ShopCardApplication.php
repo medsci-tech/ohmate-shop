@@ -20,4 +20,12 @@ class ShopCardApplication extends Model
     {
         return $this->belongsTo(CardType::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

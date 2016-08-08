@@ -14,7 +14,9 @@ class CardApplicationController extends Controller
 {
     public function index()
     {
-        return view('');
+        return view('backend.order.gift-card')->with([
+            'applications' => ShopCardApplication::where('authorized', 1)->with('customers')->toJson()
+        ]);
     }
 
     public function approveApplication(Request $request)
