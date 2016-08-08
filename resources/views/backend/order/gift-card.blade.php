@@ -218,7 +218,7 @@
         ],
         input: '',
 
-        require_list: {{$applications}}
+        require_list: JSON.parse({{$applications}})
 
       },
       computed: {
