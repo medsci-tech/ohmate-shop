@@ -50,7 +50,6 @@
                   <button class="button button-highlight button-tiny button-rounded" @click='reject'>审核不通过</button>
                 </td>
               </tr>
-              <p class=text-danger>审核失败！</p>
             </template>
             </tbody>
           </table>
