@@ -27,7 +27,7 @@
             <tr>
               <th>#</th>
               <th>申请人id</th>
-              <th>申请人姓名</th>
+              <th>申请人昵称</th>
               <th>申请人手机号</th>
               <th>申请数量</th>
               <th>迈豆余额</th>
@@ -235,7 +235,6 @@
         },
         cards: function () {
           var split, i, cards;
-          console.log(this.input);
           if (this.input.indexOf('卡号') > -1 && this.input.indexOf('密码') > -1) {
             split = this.input.replace(/[^\w\-\s卡号密码]/g, '').split('卡号');
             i = split.length;
