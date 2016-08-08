@@ -37,6 +37,7 @@
             <tbody>
             <template v-cloak v-for="require in require_list">
               <tr>
+                <td>@{{ require.require_id }}</td>
                 <td>@{{ require.id }}</td>
                 <td>@{{ require.name }}</td>
                 <td>@{{ require.phone }}</td>
@@ -219,6 +220,7 @@
 
         require_list:[
           {
+            require_id: 123,
             id: 123,
             name: 123,
             phone: 123,
