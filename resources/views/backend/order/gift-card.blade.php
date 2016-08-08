@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" v-cloak>
         <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
         </h2>
 
@@ -42,8 +42,10 @@
                 <td>123</td>
                 <td>123</td>
                 <td>
-                  <button class="button button-tiny button-rounded">审核通过</button>
-                  <button class="button button-tiny button-rounded">审核不通过</button>
+                  <button class="button button-primary button-tiny button-rounded">审核通过</button>
+                </td>
+                <td>
+                  <button class="button button-highlight button-tiny button-rounded">审核不通过</button>
                 </td>
               </tr>
               <p class=text-danger>审核失败！</p>
