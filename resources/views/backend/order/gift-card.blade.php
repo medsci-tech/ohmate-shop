@@ -194,6 +194,7 @@
       city_selector();
     });
 
+    var requireList = JSON.parse({!! $applications !!});
     var order = new Vue({
       el: '#index',
       data: {
@@ -218,7 +219,7 @@
         ],
         input: '',
 
-        require_list: JSON.parse({{$applications}})
+        require_list: requireList
 
       },
       computed: {
