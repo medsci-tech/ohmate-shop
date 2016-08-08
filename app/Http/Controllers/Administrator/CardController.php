@@ -17,7 +17,7 @@ class CardController extends Controller
     public function index()
     {
         $result = [];
-        $applications = ShopCardApplication::where('authorized', 0)->with('customers')->get();
+        $applications = ShopCardApplication::where('authorized', 0)->with('customer')->get();
 
         foreach ($applications as $application) {
             $result []= [
