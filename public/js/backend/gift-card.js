@@ -1,24 +1,4 @@
-var initialize_popover = function () {
-  $('[data-toggle="popover"]').popover({html: true});
-
-  $('[data-toggle="popover"]').mouseover(function () {
-    $(this).popover('show');
-    $('[data-toggle="popover"]').mouseout(function () {
-      var set = setTimeout(function () {
-        $('[data-toggle="popover"]').popover('hide')
-      }, 300);
-      $('.popover-content').mouseover(function () {
-        clearTimeout(set);
-      });
-    });
-    $('.popover-content').mouseout(function () {
-      $('[data-toggle="popover"]').popover('hide');
-    });
-  });
-};
-
 $(function () {
-  $('.dropdown-toggle').dropdown();
   $('#myModal').modal({
     show: false,
     backdrop: false,
