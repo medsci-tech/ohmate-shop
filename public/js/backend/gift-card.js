@@ -85,11 +85,11 @@ var order = new Vue({
       } else {
         split = this.input.replace(/[^\w\-\s]/g,'').split('\n');
         i = split.length;
-        if ( i == 1) {
+        if ( i == 0) {
           return '';
         } else {
           cards = [];
-          for ( j=1 ; j<i ; j++ ){
+          for ( j=0 ; j<i ; j++ ){
             card = split[j].split('\t');
             if ( card.length != 1) {
               cards.push({
