@@ -218,16 +218,7 @@
         ],
         input: '',
 
-        require_list:[
-          {
-            require_id: 123,
-            id: 123,
-            name: 123,
-            phone: 123,
-            num: 123,
-            beans_total: 123,
-          }
-        ]
+        require_list: JSON.parse({{$applications}})
 
       },
       computed: {
@@ -282,7 +273,7 @@
             }
           }
 
-          $('#inputCards').css('min-hight', $('#inputTable').height());
+          $('#inputCards').css('min-height', $('#inputTable').height());
           return cards;
         }
       },

@@ -14,8 +14,21 @@ class CardApplicationController extends Controller
 {
     public function index()
     {
+        $result = [];
+        $applications = ShopCardApplication::where('authorized', 1)->with('customers')->get();
+
+        foreach ($applications as $application) {
+            $result []= [
+                'require_id' => $application->id,
+                'id' => $application->customer_id,
+                'name' => $application->customer->nickname,
+                'phone' => $application->customer->phone,
+                'num' => $application->amount,
+                'beans_total' => $application->customer->beans_total
+            ];
+        }
         return view('backend.order.gift-card')->with([
-            'applications' => ShopCardApplication::where('authorized', 1)->with('customers')->toJson()
+            'applications' => json_encode($result)
         ]);
     }
 
