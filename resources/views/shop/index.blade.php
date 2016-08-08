@@ -57,18 +57,18 @@
                 </a>
             </div>
         @endforeach
-            {{--<div class="col-xs-6">--}}
-                {{--<a href="#">--}}
-                    {{--<div class="thumbnail">--}}
-                        {{--<img src="{{url('/image/shop_goods/100.jpg')}}">--}}
-                        {{--<div class="caption">--}}
-                            {{--<p>100元京东礼品券</p>--}}
-                            {{--<p class="small">京东电子礼品券</p>--}}
-                            {{--<strong>10000迈豆</strong>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</a>--}}
-            {{--</div>--}}
+            <div class="col-xs-6">
+                <a href="/shop/gift-card">
+                    <div class="thumbnail">
+                        <img src="{{url('/image/shop_goods/gift1000.png')}}">
+                        <div class="caption">
+                            <p>1000元京东礼品券</p>
+                            <p class="small">京东电子礼品券</p>
+                            <strong>100000迈豆</strong>
+                        </div>
+                    </div>
+                </a>
+            </div>
     </div>
 
 </div>

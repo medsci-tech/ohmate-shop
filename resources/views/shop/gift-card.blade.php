@@ -104,8 +104,9 @@
     data: {
       id: '',
       num: 1,
-      beans_total: 300000
-    },
+      beans_total: {{$customer->beans_total}}
+
+  },
     computed: {
       can_buy: function () {
         if ((this.beans_total - this.num * 100000) >= 0) {
@@ -131,9 +132,9 @@
           if(data) {
             $('.jumbotron p').text(data);
             $('.jumbotron').show();
-            $('.jumbotron').delay(1000).hide(0);
+            $('.jumbotron').delay(3000).hide(0);
             $('.jumbotron .alert').show();
-            $('.jumbotron .alert').delay(300).fadeOut(700);
+            $('.jumbotron .alert').delay(900).fadeOut(2100);
           }
         });
       }

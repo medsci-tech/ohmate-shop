@@ -43,12 +43,12 @@
                 </div>
                 <div class="weui_cell_ft text_color">{{$data['beans_total']}}&nbsp;迈豆</div>
             </a>
-            {{--<a href="/activity/coupon" class="weui_cell">--}}
-                {{--<div class="weui_cell_bd weui_cell_primary">--}}
-                    {{--<p>礼品卡</p>--}}
-                {{--</div>--}}
-                {{--<div class="weui_cell_ft text_color">0&nbsp;张</div>--}}
-            {{--</a>--}}
+            <a href="/activity/coupon" class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>礼品卡</p>
+                </div>
+                <div class="weui_cell_ft text_color">0&nbsp;张</div>
+            </a>
         </div>
 
         <div class="weui_cells weui_cells_access">

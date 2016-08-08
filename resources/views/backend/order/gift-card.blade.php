@@ -8,37 +8,82 @@
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-          <li :class="(searching.user_type == '未兑换卡券')?'active':''" @click="choose_data" id="unfilled"><a
-            href="#unfilled">未兑换卡券</a></li>
-          <li :class="(searching.user_type == '已兑换卡券')?'active':''" @click="choose_data" id="filled"><a href="#filled">已兑换卡券</a>
-          </li>
+          {{--<li :class="(searching.user_type == '未兑换卡券')?'active':''" @click="choose_data" id="unfilled"><a--}}
+          {{--href="#unfilled">未兑换卡券</a></li>--}}
+          {{--<li :class="(searching.user_type == '已兑换卡券')?'active':''" @click="choose_data" id="filled"><a--}}
+          {{--href="#filled">已兑换卡券</a>--}}
+          {{--</li>--}}
           <li :class="(searching.user_type == '所有卡券')?'active':''" @click="choose_data" id="all"><a href="#all">所有卡券</a>
           </li>
         </ul>
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="searched" class="small">(@{{ searched }})</span></h2>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" v-cloak>
+        <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
+        </h2>
 
         <div class="table-responsive">
           <table class="table table-striped table-hover">
             <thead>
             <tr>
+              <th>#</th>
+              <th>申请人id</th>
+              <th>申请人姓名</th>
+              <th>申请人手机号</th>
+              <th>申请数量</th>
+              <th>迈豆余额</th>
+              <th colspan="2">审核</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template v-cloak v-for="require in require_list">
+              <tr>
+                <td>@{{ require.id }}</td>
+                <td>@{{ require.name }}</td>
+                <td>@{{ require.phone }}</td>
+                <td>@{{ require.num }}</td>
+                <td>@{{ require.beans_total }}</td>
+                <td>
+                  <button class="button button-primary button-tiny button-rounded" @click='pass'>审核通过</button>
+                </td>
+                <td>
+                  <button class="button button-highlight button-tiny button-rounded" @click='reject'>审核不通过</button>
+                </td>
+              </tr>
+              <p class=text-danger>审核失败！</p>
+            </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
+        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="searched" class="small">(@{{ searched }})</span>
+        </h2>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
               <th>卡号</th>
-              <th>密码</th>
-              <th>使用状态</th>
               <th>兑换状态</th>
               <th>兑换人</th>
               <th>兑换人电话</th>
-              <th>购买时间</th>
+              <th>兑换时间</th>
               <th>
-                <button class="button button-tiny button-action" data-toggle="modal" data-target="#myModal">添加卡券</button>
+                <button class="button button-tiny button-action" data-toggle="modal" data-target="#myModal">添加卡券
+                </button>
               </th>
             </tr>
             </thead>
             <tbody>
             <tr v-cloak v-for="card in page_data">
-              <td>@{{ order.id }}</td>
-
+              <td>@{{ card.id }}</td>
+              <td>@{{ card.num }}</td>
+              <td>@{{ card.usable }}</td>
+              <td>@{{ card.name }}</td>
+              <td>@{{ card.phone }}</td>
+              <td>@{{ card.date }}</td>
+              <td></td>
             </tr>
             </tbody>
           </table>
@@ -106,7 +151,7 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="inputTable">
                   <thead>
                   <tr>
                     <th>#</th>
@@ -138,5 +183,214 @@
 @endsection
 
 @section('js')
-  <script src="{{asset('/js/backend/gift-card.js')}}"></script>
+  <script>
+    $(function () {
+      $('#myModal').modal({
+        show: false,
+        backdrop: false,
+        keyboard: false
+      });
+      city_selector();
+    });
+
+    var order = new Vue({
+      el: '#index',
+      data: {
+        searching: {
+          user_type: '',
+          detail: '',
+          page_num: ''
+        },
+        searched: '',
+        page_all: 0,
+        page_active: 0,
+        page_num: 0,
+        page_data: [
+          {
+            id: 123,
+            card_num: 123,
+            usable: 123,
+            name: 123,
+            phone: 123,
+            date: 123,
+          }
+        ],
+        input: '',
+
+        require_list:[
+          {
+            id: 123,
+            name: 123,
+            phone: 123,
+            num: 123,
+            beans_total: 123,
+          }
+        ]
+
+      },
+      computed: {
+        page_show: function () {
+          if (this.page_all <= 5 || this.page_active <= 3) {
+            return 1;
+          } else {
+            return (this.page_all - 4) < (this.page_active - 2) ? (this.page_all - 4) : (this.page_active - 2);
+          }
+        },
+        get_url: function () {
+          if (order.searching.user_type == '未兑换卡券') return '/order/search?type_id=0';
+          if (order.searching.user_type == '已兑换卡券') return '/order/search?type_id=1';
+          if (order.searching.user_type == '所有卡券') return '/card/list';
+        },
+        cards: function () {
+          var split, i, cards;
+          console.log(this.input);
+          if (this.input.indexOf('卡号') > -1 && this.input.indexOf('密码') > -1) {
+            split = this.input.replace(/[^\w\-\s卡号密码]/g, '').split('卡号');
+            i = split.length;
+            if (i == 1) {
+              return '';
+            } else {
+              cards = [];
+              for (j = 1; j < i; j++) {
+                card = split[j].split('密码');
+                if (card.length != 1) {
+                  cards.push({
+                    no: card[0],
+                    password: card[1]
+                  })
+                }
+              }
+            }
+          } else {
+            split = this.input.replace(/[^\w\-\s]/g, '').split('\n');
+            i = split.length;
+            if (i == 0) {
+              return '';
+            } else {
+              cards = [];
+              for (j = 0; j < i; j++) {
+                card = split[j].split('\t');
+                if (card.length != 1) {
+                  cards.push({
+                    no: card[0],
+                    password: card[1]
+                  })
+                }
+              }
+            }
+          }
+
+          $('#inputCards').css('min-hight', $('#inputTable').height());
+          return cards;
+        }
+      },
+
+      methods: {
+        choose_data: function (e) {
+          var type = e.target.innerHTML;
+          if (type == '未兑换卡券') {
+            order.searching.user_type = '未兑换卡券';
+          }
+          if (type == '已兑换卡券') {
+            order.searching.user_type = '已兑换卡券';
+          }
+          if (type == '所有卡券') {
+            order.searching.user_type = '所有卡券';
+          }
+          $.get(order.get_url,
+            {},
+            function (data) {
+              if (data.success) {
+                order.searched = '';
+                order.page_all = data.data.orders.last_page;
+                order.page_active = data.data.orders.current_page;
+                order.page_data = data.data.orders.data;
+                order.$nextTick(initialize_popover);
+              }
+            },
+            'json'
+          );
+        },
+        choose_page: function (e) {
+          var page_num = e.target.getAttribute('name');
+          switch (page_num) {
+            case 'pre':
+              page_num = this.page_active - 1;
+              break;
+            case 'pre5':
+              if (this.page_active - 5 > 0) {
+                page_num = this.page_active - 5;
+              } else {
+                page_num = 1;
+              }
+              break;
+            case 'next':
+              page_num = this.page_active + 1;
+              break;
+            case 'next5':
+              if (this.page_active + 4 < this.page_all) {
+                page_num = this.page_active + 5;
+              } else {
+                page_num = this.page_all;
+              }
+              break;
+            default:
+              page_num = e.target.innerHTML;
+              break;
+          }
+          $.get(order.get_url,
+            {
+              page: page_num,
+              key: order.searched
+            },
+            function (data) {
+              if (data.success) {
+                order.page_active = data.data.orders.current_page;
+                order.page_data = data.data.orders.data;
+                order.$nextTick(initialize_popover);
+              }
+            },
+            'json'
+          )
+
+        },
+        search: function () {
+
+        },
+        print: function () {
+          alert('hahah!');
+        },
+        pass: function () {
+          alert(123);
+        },
+        reject: function () {
+          alert(789);
+        },
+        addCards: function () {
+          alert(123);
+        }
+      }
+    });
+
+    var click_btn = location.hash;
+    switch (click_btn) {
+      case '#unfilled':
+        order.searching.user_type = '未兑换卡券';
+        break;
+      case '#filled':
+        order.searching.user_type = '已兑换卡券';
+        break;
+      case '#all':
+        order.searching.user_type = '所有卡券';
+        break;
+      default :
+        order.searching.user_type = '所有卡券';
+        click_btn = '#all';
+        break;
+    }
+    $(click_btn).trigger('click');
+
+    $('.nav').children().eq(3).children().addClass('active');
+
+  </script>
 @endsection

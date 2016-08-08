@@ -1,24 +1,4 @@
-var initialize_popover = function () {
-  $('[data-toggle="popover"]').popover({html: true});
-
-  $('[data-toggle="popover"]').mouseover(function () {
-    $(this).popover('show');
-    $('[data-toggle="popover"]').mouseout(function () {
-      var set = setTimeout(function () {
-        $('[data-toggle="popover"]').popover('hide')
-      }, 300);
-      $('.popover-content').mouseover(function () {
-        clearTimeout(set);
-      });
-    });
-    $('.popover-content').mouseout(function () {
-      $('[data-toggle="popover"]').popover('hide');
-    });
-  });
-};
-
 $(function () {
-  $('.dropdown-toggle').dropdown();
   $('#myModal').modal({
     show: false,
     backdrop: false,
@@ -40,7 +20,11 @@ var order = new Vue({
     page_active: 0,
     page_num: 0,
     page_data: [
-
+      {
+        id:123,
+        secret:123,
+        useable: '未使用',
+      }
     ],
     input: '',
 
@@ -59,22 +43,45 @@ var order = new Vue({
       if (order.searching.user_type == '所有卡券') return '/card/list';
     },
     cards: function () {
-      var split = this.input.replace(/[\s：:]/g,'').split('卡号');
-      var i = split.length;
-      if ( i == 1) {
-        return '';
+      var split,i,cards;
+      console.log(this.input);
+      if(this.input.indexOf('卡号')>-1 && this.input.indexOf('密码')>-1){
+        split = this.input.replace(/[^\w\-\s卡号密码]/g,'').split('卡号');
+        i = split.length;
+        if ( i == 1) {
+          return '';
+        } else {
+          cards = [];
+          for ( j=1 ; j<i ; j++ ){
+            card = split[j].split('密码');
+            if ( card.length != 1) {
+              cards.push({
+                no: card[0],
+                password: card[1]
+              })
+            }
+          }
+        }
       } else {
-        var cards = [];
-        for ( j=1 ; j<i ; j++ ){
-          card = split[j].split('密码');
-          if ( card.length != 1) {
-            cards.push({
-              no: card[0],
-              password: card[1]
-            })
+        split = this.input.replace(/[^\w\-\s]/g,'').split('\n');
+        i = split.length;
+        if ( i == 0) {
+          return '';
+        } else {
+          cards = [];
+          for ( j=0 ; j<i ; j++ ){
+            card = split[j].split('\t');
+            if ( card.length != 1) {
+              cards.push({
+                no: card[0],
+                password: card[1]
+              })
+            }
           }
         }
       }
+
+      $('#inputCards').css('min-hight',$('#inputTable').height());
       return cards;
     }
   },
@@ -192,7 +199,7 @@ switch (click_btn) {
 }
 $(click_btn).trigger('click');
 
-$('.nav').children().eq(2).children().addClass('active');
+$('.nav').children().eq(3).children().addClass('active');
 
 
 

@@ -11,7 +11,8 @@
 <div class="container" id="gift_card">
   <br>
 
-  <div class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
+  <div v-if="cards == ''" class="text-center"><h3>暂无礼品卡！</h3></div>
+  <div v-if="cards != ''" v-cloak class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
     <div class="panel-heading text-center">
       @{{ card.name }}
       <span class="checkbox" style="display: inline-block; margin: 0; float: right;">
@@ -40,12 +41,14 @@
   var gift_card = new Vue({
     el: '#gift_card',
     data: {
-      cards:[{
-        name: '1000元京东购物卡'
-        no: '1236666',
-        password: '98498651651',
-        marked: 0
-      },]
+      cards:[
+//        {
+//        name: '1000元京东购物卡'
+//        no: '1236666',
+//        password: '98498651651',
+//        marked: 0
+//      },
+      ]
     },
     methods: ''
   })
