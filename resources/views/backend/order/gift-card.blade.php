@@ -10,14 +10,84 @@
         <ul class="nav nav-sidebar">
           <li :class="(searching.user_type == '未兑换卡券')?'active':''" @click="choose_data" id="unfilled"><a
             href="#unfilled">未兑换卡券</a></li>
-          <li :class="(searching.user_type == '已兑换卡券')?'active':''" @click="choose_data" id="filled"><a href="#filled">已兑换卡券</a>
+          <li :class="(searching.user_type == '已兑换卡券')?'active':''" @click="choose_data" id="filled"><a
+            href="#filled">已兑换卡券</a>
           </li>
           <li :class="(searching.user_type == '所有卡券')?'active':''" @click="choose_data" id="all"><a href="#all">所有卡券</a>
           </li>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="searched" class="small">(@{{ searched }})</span></h2>
+        <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
+        </h2>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>申请人id</th>
+              <th>申请人姓名</th>
+              <th>申请人手机号</th>
+              <th>申请数量</th>
+              <th>迈豆余额</th>
+              <th>审核</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template v-cloak v-for="card in page_data">
+              <tr>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>
+                  <button class="button button-tiny button-rounded">审核通过</button>
+                  <button class="button button-tiny button-rounded">审核不通过</button>
+                </td>
+              </tr>
+              <p class=text-danger>审核失败！</p>
+            </template>
+            </tbody>
+          </table>
+        </div>
+        <nav class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
+          <ul class="pagination" @click="choose_page">
+          <li v-if="page_active > 1">
+            <a href="#" aria-label="Previous" name="pre">
+              &laquo;
+            </a>
+          </li>
+          <li v-if="page_show > 1">
+            <a href="#" aria-label="Previous5" name="pre5">
+              &hellip;
+            </a>
+          </li>
+          <li :class="(page_active == page_show)?'active':''"><a href="#">@{{page_show}}</a></li>
+          <li :class="(page_active == page_show+1)?'active':''" v-if="(page_show+1)<=page_all"><a
+              href="#">@{{ page_show+1 }}</a></li>
+          <li :class="(page_active == page_show+2)?'active':''" v-if="(page_show+2)<=page_all"><a
+              href="#">@{{ page_show+2 }}</a></li>
+          <li :class="(page_active == page_show+3)?'active':''" v-if="(page_show+3)<=page_all"><a
+              href="#">@{{ page_show+3 }}</a></li>
+          <li :class="(page_active == page_show+4)?'active':''" v-if="(page_show+4)<=page_all"><a
+              href="#">@{{ page_show+4 }}</a></li>
+          <li v-if="(page_show+5)<=page_all">
+            <a href="#" name="next5" aria-label="Next5">
+              &hellip;
+            </a>
+          </li>
+          <li v-if="page_active < page_all">
+            <a href="#" aria-label="Next" name="next">
+              &raquo;
+            </a>
+          </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
+        <h2 class="sub-header">@{{ searching.user_type }}<span v-if="searched" class="small">(@{{ searched }})</span>
+        </h2>
 
         <div class="table-responsive">
           <table class="table table-striped table-hover">
@@ -31,14 +101,19 @@
               <th>兑换人电话</th>
               <th>购买时间</th>
               <th>
-                <button class="button button-tiny button-action" data-toggle="modal" data-target="#myModal">添加卡券</button>
+                <button class="button button-tiny button-action" data-toggle="modal" data-target="#myModal">添加卡券
+                </button>
               </th>
             </tr>
             </thead>
             <tbody>
             <tr v-cloak v-for="card in page_data">
-              <td>@{{ order.id }}</td>
-
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
             </tr>
             </tbody>
           </table>
@@ -106,7 +181,7 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="inputTable">
                   <thead>
                   <tr>
                     <th>#</th>

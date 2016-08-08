@@ -240,7 +240,7 @@ switch (click_btn) {
 }
 $(click_btn).trigger('click');
 
-$('.nav').children().eq(1).children().addClass('active');
+$('.nav').children().eq(2).children().addClass('active');
 
 
 
