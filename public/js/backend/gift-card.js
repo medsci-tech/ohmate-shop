@@ -66,7 +66,7 @@ var order = new Vue({
       var split,i,cards;
       console.log(this.input);
       if(this.input.indexOf('卡号')>-1 && this.input.indexOf('密码')>-1){
-        split = this.input.replace(/[\s：:]/g,'').split('卡号');
+        split = this.input.replace(/[^\w\-\s卡号密码]/g,'').split('卡号');
         i = split.length;
         if ( i == 1) {
           return '';
@@ -83,7 +83,7 @@ var order = new Vue({
           }
         }
       } else {
-        split = this.input.replace(/[\s：:]/g,'').split('\n');
+        split = this.input.replace(/[^\w\-\s]/g,'').split('\n');
         i = split.length;
         if ( i == 1) {
           return '';
