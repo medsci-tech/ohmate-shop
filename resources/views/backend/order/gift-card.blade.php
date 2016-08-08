@@ -194,7 +194,7 @@
       city_selector();
     });
 
-    var requireList = JSON.parse({!! $applications !!});
+    var requireList = {!! $applications !!};
     var order = new Vue({
       el: '#index',
       data: {
