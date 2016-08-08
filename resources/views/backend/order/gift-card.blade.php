@@ -191,7 +191,6 @@
         backdrop: false,
         keyboard: false
       });
-      city_selector();
     });
 
     var requireList = {!! $applications !!};
