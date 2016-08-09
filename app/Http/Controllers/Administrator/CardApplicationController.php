@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Exceptions\CardNotEnoughException;
+use App\Exceptions\NotEnoughBeansException;
 use App\Models\Customer;
 use App\Models\ShopCardApplication;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class CardApplicationController extends Controller
         $shop_card_application_id = $request->input('require_id');
         $application = ShopCardApplication::find($shop_card_application_id);
         $customer = Customer::find($application->customer_id);
-        $card_type = $application->cardType();
+        $card_type = $application->cardType;
 
         try {
             \DB::transaction(function () use ($application, $customer, $card_type) {
@@ -45,8 +46,10 @@ class CardApplicationController extends Controller
                 $customer_rows->lockForUpdate();
                 $customer_row = $customer_rows->first();
 
-                if ($customer_row->beans_total <= $card_type->beans_value * $application->amount) {
-                    return '迈豆不足，不能兑换。';
+                dump('123');
+
+                if ($customer_row->beans_total < $card_type->beans_value * $application->amount) {
+                    throw new NotEnoughBeansException();
                 }
                 $cards = \DB::table('shop_cards')->where('card_type_id', '=', $card_type->id)->whereNull('customer_id')->limit($application->amount);
                 $cards->lockForUpdate();
@@ -61,10 +64,11 @@ class CardApplicationController extends Controller
                 $application->update(['authorized' => true]);
                 return true;
             });
-
-            return '成功';
         } catch (CardNotEnoughException $e) {
             return '相应卡片不足，无法继续。';
+        } catch (NotEnoughBeansException $e) {
+            return '用户迈豆不足！';
         }
+        return "操作成功!";
     }
 }
