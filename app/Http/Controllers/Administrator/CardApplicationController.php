@@ -41,8 +41,9 @@ class CardApplicationController extends Controller
 
         try {
             \DB::transaction(function () use ($application, $customer, $card_type) {
-                $customer_row = \DB::table('customers')->where('id', $customer->id)->first();
+                $customer_rows = \DB::table('customers')->where('id', $customer->id);
                 $customer_row->lockForUpdate();
+                $customer_row = $customer_rows->first();
 
                 if ($customer_row->beans_total <= $card_type->beans_value * $application->amount) {
                     return '迈豆不足，不能兑换。';
