@@ -51,6 +51,9 @@ class CardApplicationController extends Controller
                 $cards = \DB::table('shop_cards')->where('card_type_id', '=', $card_type->id)->whereNull('customer_id')->limit($application->amount);
                 $cards->lockForUpdate();
 
+                dump($cards->count());
+                dump($application->amount);
+
                 if ($cards->count() < $application->amount) {
                     throw new CardNotEnoughException();
                 }
