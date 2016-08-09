@@ -37,7 +37,7 @@ class CardApplicationController extends Controller
         $shop_card_application_id = $request->input('require_id');
         $application = ShopCardApplication::find($shop_card_application_id);
         $customer = Customer::find($application->customer_id);
-        $card_type = $application->cardType();
+        $card_type = $application->cardType;
 
         try {
             \DB::transaction(function () use ($application, $customer, $card_type) {
