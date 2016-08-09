@@ -38,8 +38,6 @@ class CardController extends Controller
     {
         $cards = $request->input('cards');
 
-        dd($cards);
-
         try {
             \DB::transaction(function () use ($cards) {
                 $result = [];
