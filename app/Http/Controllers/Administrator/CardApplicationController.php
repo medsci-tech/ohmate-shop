@@ -6,6 +6,7 @@ use App\Exceptions\CardNotEnoughException;
 use App\Exceptions\NotEnoughBeansException;
 use App\Models\Customer;
 use App\Models\ShopCardApplication;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -45,9 +46,6 @@ class CardApplicationController extends Controller
                 $customer_rows = \DB::table('customers')->where('id', $customer->id);
                 $customer_rows->lockForUpdate();
                 $customer_row = $customer_rows->first();
-
-                dump('123');
-
                 if ($customer_row->beans_total < $card_type->beans_value * $application->amount) {
                     throw new NotEnoughBeansException();
                 }
