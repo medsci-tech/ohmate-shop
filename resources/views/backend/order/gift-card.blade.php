@@ -18,7 +18,8 @@
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-        <div id="response" class="alert alert-warning" role="alert"></div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div style="margin-bottom: 0px;margin-top: 20px;" id="response" class="alert alert-warning hide" role="alert"></div>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" v-cloak>
         <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
@@ -234,7 +235,7 @@
         get_url: function () {
           if (order.searching.user_type == '未兑换卡券') return '/order/search?type_id=0';
           if (order.searching.user_type == '已兑换卡券') return '/order/search?type_id=1';
-          if (order.searching.user_type == '所有卡券') return '/card/list';
+          if (order.searching.user_type == '所有卡券') return '/gift-card/import';
         },
         cards: function () {
           var split, i, cards;
@@ -358,6 +359,7 @@
           $.post('/gift-card-application/approve',e,function(data){
             if(data){
               $('#response').text(data);
+              $('#response').removeClass('hide');
             }
           })
         },
@@ -365,6 +367,7 @@
           $.post('',e,function(data){
             if(data){
               $('#response').text(data);
+              $('#response').removeClass('hide');
             }
           })
         },
@@ -372,6 +375,7 @@
           $.post('/gift-card/import',e,function(data){
             if(data){
               $('#response').text(data);
+              $('#response').removeClass('hide');
             }
           })
         }
