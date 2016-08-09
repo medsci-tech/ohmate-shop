@@ -271,7 +271,6 @@
                 } else {
                   card = split[j].split(' ');
                 }
-                card = split[j].split('\t');
                 if (card.length != 1) {
                   cards.push({
                     no: card[0],
