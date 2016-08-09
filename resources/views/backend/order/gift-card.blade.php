@@ -18,8 +18,10 @@
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 hide">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div style="margin-bottom: 0px;margin-top: 20px;" id="response" class="alert alert-warning" role="alert"></div>
+        <div style="margin-bottom: 0px;margin-top: 20px;" class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" @click='hideAlert'><span>&times;</span></button>
+          <strong id="response"></strong>
+        </div>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" v-cloak>
         <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
@@ -92,7 +94,7 @@
             </tbody>
           </table>
         </div>
-        <nav class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
+        <nav v-if="false" class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
           <ul class="pagination" @click="choose_page">
           <li v-if="page_active > 1">
             <a href="#" aria-label="Previous" name="pre">
@@ -362,28 +364,32 @@
         pass: function (e) {
           $.post('/gift-card-application/approve',e,function(data){
             if(data == '操作成功！') {
-              order.cards.$remove(e);
+              order.requireList.$remove(e);
             };
               $('#response').text(data);
-              $('#response').parent().removeClass('hide');
+              $('#response').parent().parent().removeClass('hide');
           })
         },
         reject: function () {
           $.post('',e,function(data){
             if(data){
               $('#response').text(data);
-              $('#response').parent().removeClass('hide');
+              $('#response').parent().parent().removeClass('hide');
             }
           })
         },
         addCards: function () {
-          console.log(order.cards);
           $.post('/gift-card/import',{cards:order.cards},function(data){
-            if(data){
-              $('#response').text(data);
-              $('#response').parent().removeClass('hide');
+            if(data.success){
+              order.input = '';
+              $('#myModal').modal('hide');
+              $('#response').text('上传成功');
+              $('#response').parent().parent().removeClass('hide');
             }
           })
+        },
+        hideAlert: function () {
+          $('#response').parent().parent().addClass('hide');
         }
       }
     });
