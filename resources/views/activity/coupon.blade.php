@@ -41,14 +41,7 @@
   var gift_card = new Vue({
     el: '#gift_card',
     data: {
-      cards:[
-//        {
-//        name: '1000元京东购物卡'
-//        no: '1236666',
-//        password: '98498651651',
-//        marked: 0
-//      },
-      ]
+      cards: {!! $result !!}
     },
     methods: ''
   })
