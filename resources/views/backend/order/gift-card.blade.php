@@ -257,7 +257,11 @@
               }
             }
           } else {
-            split = this.input.replace(/[^\w\-\s]/g, '').split('\n');
+            if( this.input.indexOf('\n') > -1 ){
+              split = this.input.replace(/[^\w\-\s]/g, '').split('\n');
+            } else {
+              split = this.input.replace(/[^\w\-\s]/g, '').split(' ');
+            }
             i = split.length;
             if (i == 0) {
               return '';
