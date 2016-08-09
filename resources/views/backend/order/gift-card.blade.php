@@ -259,17 +259,18 @@
               }
             }
           } else {
-            if( this.input.indexOf('\n') > -1 ){
-              split = this.input.replace(/[^\w\-\s]/g, '').split('\n');
-            } else {
-              split = this.input.replace(/[^\w\-\s]/g, '').split(' ');
-            }
+            split = this.input.replace(/[^\w\-\s]/g, '').split('\n');
             i = split.length;
             if (i == 0) {
               return '';
             } else {
               cards = [];
               for (j = 0; j < i; j++) {
+                if( split[j].indexOf('\t') > -1 ){
+                  card = split[j].split('\t');
+                } else {
+                  card = split[j].split(' ');
+                }
                 card = split[j].split('\t');
                 if (card.length != 1) {
                   cards.push({
