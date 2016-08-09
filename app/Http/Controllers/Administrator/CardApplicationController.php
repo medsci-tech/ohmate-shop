@@ -61,10 +61,9 @@ class CardApplicationController extends Controller
                 $application->update(['authorized' => true]);
                 return true;
             });
-
-            return '成功';
         } catch (CardNotEnoughException $e) {
             return '相应卡片不足，无法继续。';
         }
+        return "操作成功!";
     }
 }
