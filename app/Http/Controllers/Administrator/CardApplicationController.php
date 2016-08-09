@@ -47,9 +47,7 @@ class CardApplicationController extends Controller
 
                 dump('123');
 
-                if ($customer_row->beans_total <= $card_type->beans_value * $application->amount) {
-                    dump('234');
-
+                if ($customer_row->beans_total < $card_type->beans_value * $application->amount) {
                     return '迈豆不足，不能兑换。';
                 }
                 $cards = \DB::table('shop_cards')->where('card_type_id', '=', $card_type->id)->whereNull('customer_id')->limit($application->amount);
