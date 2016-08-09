@@ -34,15 +34,16 @@ class CardApplicationController extends Controller
 
     public function approveApplication(Request $request)
     {
-        $shop_card_application_id = $request->input('shop_card_application_id');
+        $shop_card_application_id = $request->input('require_id');
         $application = ShopCardApplication::find($shop_card_application_id);
         $customer = Customer::find($application->customer_id);
         $card_type = $application->cardType();
 
         try {
             \DB::transaction(function () use ($application, $customer, $card_type) {
-                $customer_row = \DB::table('customers')->where('id', $customer->id)->first();
-                $customer_row->lockForUpdate();
+                $customer_rows = \DB::table('customers')->where('id', $customer->id);
+                $customer_rows->lockForUpdate();
+                $customer_row = $customer_rows->first();
 
                 if ($customer_row->beans_total <= $card_type->beans_value * $application->amount) {
                     return '迈豆不足，不能兑换。';
@@ -57,6 +58,7 @@ class CardApplicationController extends Controller
                 $customer->minusBeansByHand($application->amount * $card_type->beans_value);
 
                 $cards->update(['customer_id' => $customer->id, 'bought_at' => Carbon::now()]);
+                $application->update(['authorized' => true]);
                 return true;
             });
 
