@@ -34,7 +34,7 @@ class CardApplicationController extends Controller
 
     public function approveApplication(Request $request)
     {
-        $shop_card_application_id = $request->input('shop_card_application_id');
+        $shop_card_application_id = $request->input('require_id');
         $application = ShopCardApplication::find($shop_card_application_id);
         $customer = Customer::find($application->customer_id);
         $card_type = $application->cardType();
@@ -57,6 +57,7 @@ class CardApplicationController extends Controller
                 $customer->minusBeansByHand($application->amount * $card_type->beans_value);
 
                 $cards->update(['customer_id' => $customer->id, 'bought_at' => Carbon::now()]);
+                $application->update(['authorized' => true]);
                 return true;
             });
 
