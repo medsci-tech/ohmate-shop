@@ -357,10 +357,11 @@
         },
         pass: function (e) {
           $.post('/gift-card-application/approve',e,function(data){
-            if(data){
+            if(data == '操作成功！') {
+              order.cards.$remove(e);
+            };
               $('#response').text(data);
               $('#response').parent().removeClass('hide');
-            }
           })
         },
         reject: function () {
@@ -372,7 +373,7 @@
           })
         },
         addCards: function () {
-          $.post('/gift-card/import',e,function(data){
+          $.post('/gift-card/import',order.cards,function(data){
             if(data){
               $('#response').text(data);
               $('#response').parent().removeClass('hide');
