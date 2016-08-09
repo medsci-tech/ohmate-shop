@@ -149,7 +149,7 @@
                   <label for="inputCards" class="control-label sr-only">姓名</label>
 
                   <div class="col-sm-12">
-                  <textarea type="text" class="form-control" rows="20" id="inputCards"
+                  <textarea type="text" class="form-control" style="min-height: 400px" id="inputCards"
                             placeholder="请输入卡号密码 ,例：卡号：JDV8000000000001 密码：000-0000-0000-0000"
                             v-model="input">
                   </textarea>
@@ -281,7 +281,7 @@
             }
           }
 
-          $('#inputCards').css('min-height', $('#inputTable').height());
+          $('#inputCards').css('height', $('#inputTable').height());
           return cards;
         }
       },
