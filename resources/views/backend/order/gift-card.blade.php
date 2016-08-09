@@ -17,9 +17,9 @@
           </li>
         </ul>
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 hide">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div style="margin-bottom: 0px;margin-top: 20px;" id="response" class="alert alert-warning hide" role="alert"></div>
+        <div style="margin-bottom: 0px;margin-top: 20px;" id="response" class="alert alert-warning" role="alert"></div>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" v-cloak>
         <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
@@ -359,7 +359,7 @@
           $.post('/gift-card-application/approve',e,function(data){
             if(data){
               $('#response').text(data);
-              $('#response').removeClass('hide');
+              $('#response').parent().removeClass('hide');
             }
           })
         },
@@ -367,7 +367,7 @@
           $.post('',e,function(data){
             if(data){
               $('#response').text(data);
-              $('#response').removeClass('hide');
+              $('#response').parent().removeClass('hide');
             }
           })
         },
@@ -375,7 +375,7 @@
           $.post('/gift-card/import',e,function(data){
             if(data){
               $('#response').text(data);
-              $('#response').removeClass('hide');
+              $('#response').parent().removeClass('hide');
             }
           })
         }
