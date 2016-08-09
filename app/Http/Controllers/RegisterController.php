@@ -75,10 +75,17 @@ class RegisterController extends Controller
         if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
             return redirect()->back()->with('error_message', '验证码过期!')->withInput();
         }
+
+        $beans_total_update = 0;
+
+        if ($customer->beans_total > 0) {
+            $beans_total_update = $customer->beans_total;
+        }
+
         $customer->update([
             'phone'             => $request->input('phone'),
             'is_registered'     => true,
-            'beans_total'       => 0,
+            'beans_total'       => $beans_total_update,
             'nickname'          => $user['nickname'],
             'head_image_url'    => $user['headimgurl'],
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
