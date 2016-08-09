@@ -374,7 +374,7 @@
         },
         addCards: function () {
           console.log(order.cards);
-          $.post('/gift-card/import',order.cards,function(data){
+          $.post('/gift-card/import',{cards:order.cards},function(data){
             if(data){
               $('#response').text(data);
               $('#response').parent().removeClass('hide');
