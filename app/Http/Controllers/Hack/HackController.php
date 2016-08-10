@@ -45,11 +45,13 @@ class HackController extends Controller
     public function a()
     {
         $p = 0;
-        for ($i = 87; ; $i++ ) {
+        for ($i = 87; $i <= CustomerInformation::orderBy('id', 'desc')->first()->id; $i++ ) {
             $info = CustomerInformation::find($i);
+
             if (!$info) {
-                break;
+                continue;
             }
+
             if ($info->type == 'A' && $customer_id = $info->customer_id) {
                 $customer = Customer::find($customer_id);
                 $counter = new CustomerInvitationCounter($customer);
