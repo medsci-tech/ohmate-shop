@@ -96,7 +96,7 @@ class RedirectController extends Controller
             ]);
 
             if ($request->input('first_in', 0) == 1 and $customer->beans_total == 0) {
-                \BeanRecharger::register($customer);
+//                \BeanRecharger::register($customer);
                 return redirect('/redirect/article-index')->with([
                     'first_in' => 1
                 ]);
