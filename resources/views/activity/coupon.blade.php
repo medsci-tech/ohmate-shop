@@ -8,6 +8,9 @@
 </head>
 
 <body>
+<div style="height: 40px;width: 90%;margin: 12px auto 0 auto;background-color: #f00;border-radius: 5px;">
+	<a href="http://www.ohmate.cn/shop/index" style="font-size: 18px;color: #fff;line-height: 40px;margin: 0 auto;display: block;width: 50%;text-align: center;" >前往兑换礼品卡</a>
+</div>
 <div class="container" id="gift_card">
   <br>
 
