@@ -45,19 +45,19 @@ class ActivityController extends Controller
 	 public function coupon1(Request $request)
     {
         $result = [];
-         // $customer = \Helper::getCustomer();
+         $customer = \Helper::getCustomer();
 
-        // $list = ShopCard::where('customer_id', $customer->id)->get();
-        // foreach ($list as $item) {
-            // $result []= [
-                // 'name' => $item->cardType->name,
-                // 'no' => $item->number,
-                // 'password' => $item->secret,
-                // 'marked' => $item->marked
-            // ];
-        // }
+        $list = ShopCard::where('customer_id', $customer->id)->get();
+        foreach ($list as $item) {
+            $result []= [
+                'name' => $item->cardType->name,
+                'no' => $item->number,
+                'password' => $item->secret,
+                'marked' => $item->marked
+            ];
+        }
 
-        return view('activity.coupon1')->with([
+        return view('activity.coupon')->with([
             'result' => json_encode($result)
         ]);
     }
