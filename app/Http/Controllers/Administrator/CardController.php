@@ -14,6 +14,11 @@ use App\Http\Controllers\Controller;
 class CardController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $result = [];
@@ -43,8 +48,8 @@ class CardController extends Controller
                 $result = [];
                 foreach ($cards as $card) {
                     $result []= [
-                        'number' => $card['number'],
-                        'secret' => $card['secret'],
+                        'number' => $card['no'],
+                        'secret' => $card['password'],
                         'card_type_id' => 1,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()

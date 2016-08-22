@@ -73,6 +73,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'activity', 'namespace' => 'Activity'], function () {
         Route::get('/daily', 'ActivityController@daily');
         Route::get('/coupon', 'ActivityController@coupon');
+		Route::get('/coupon1', 'ActivityController@coupon1');
+
     });
 
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {

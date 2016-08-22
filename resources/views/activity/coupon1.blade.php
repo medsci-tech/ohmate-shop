@@ -8,13 +8,14 @@
 </head>
 
 <body>
-<div style="height: 60px;width: 90%;margin: 22px auto 0 auto;background-color: #f00;border-radius: 20px;">
-	<a href="http://www.ohmate.cn/shop/index" style="font-size: 18px;color: #fff;line-height: 60px;margin: 0 auto;display: block;width: 50%;text-align: center;font-weight: bold;" >前往兑换礼品卡</a>
-</div>
+
+ 
 <div class="container" id="gift_card">
   <br>
-
-  <div v-if="cards == ''" class="text-center"><h3>暂无礼品卡！</h3></div>
+ <div style="height: 40px;width: 100%;margin: 0 0 0 0;background-color: #5938D2;">
+	<a href="http://www.ohmate.cn/shop/index" style="font-size: 18px;color: #fff;line-height: 40px;margin: 0 auto;display: block;width: 50%;text-align: center;" >前往兑换礼品卡</a>
+  </div>
+  <!--<div v-if="cards == ''" class="text-center"><h3>暂无礼品卡！</h3></div>
   <div v-if="cards != ''" v-cloak class="panel" :class=" card.marked ? 'panel-default' : 'panel-primary'" v-for="card in cards | orderBy 'marked'">
     <div class="panel-heading text-center">
       @{{ card.name }}
@@ -34,7 +35,7 @@
         <td>@{{ card.password }}</td>
       </tr>
     </table>
-  </div>
+  </div>-->
 </div>
 </body>
 

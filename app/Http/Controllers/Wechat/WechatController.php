@@ -26,6 +26,8 @@ class WechatController extends Controller
         $server->on('event', 'location', Wechat::locationEventCallback());
 
         $server->on('event', 'subscribe', Wechat::subscribeEventCallback());
+		
+		$server->on('event', 'SCAN', Wechat::scanEventCallback());
 
         return $server->serve();
     }

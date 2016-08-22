@@ -19,7 +19,7 @@
         <li class="list-group-item">
           <div class="media">
             <div class="media-left media-middle">
-              <img class="media-object" src="/image/shop_goods/2.png" alt="...">
+              <img class="media-object" src="/image/shop_goods/gift1000.png" alt="...">
             </div>
             <div class="media-body">
               <strong class="media-heading">1000元京东礼品券</strong>

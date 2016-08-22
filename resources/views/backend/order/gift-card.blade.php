@@ -17,6 +17,12 @@
           </li>
         </ul>
       </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 hide">
+        <div style="margin-bottom: 0px;margin-top: 20px;" class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" @click='hideAlert'><span>&times;</span></button>
+          <strong id="response"></strong>
+        </div>
+      </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" v-cloak>
         <h2 class="sub-header">待审核申请<span v-if="searched" class="small">(@{{ searched }})</span>
         </h2>
@@ -44,10 +50,10 @@
                 <td>@{{ require.num }}</td>
                 <td>@{{ require.beans_total }}</td>
                 <td>
-                  <button class="button button-primary button-tiny button-rounded" @click='pass'>审核通过</button>
+                  <button class="button button-primary button-tiny button-rounded" @click='pass(require)'>审核通过</button>
                 </td>
                 <td>
-                  <button class="button button-highlight button-tiny button-rounded" @click='reject'>审核不通过</button>
+                  <button class="button button-highlight button-tiny button-rounded" @click='reject(require)'>审核不通过</button>
                 </td>
               </tr>
             </template>
@@ -88,7 +94,7 @@
             </tbody>
           </table>
         </div>
-        <nav class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
+        <nav v-if="false" class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
           <ul class="pagination" @click="choose_page">
           <li v-if="page_active > 1">
             <a href="#" aria-label="Previous" name="pre">
@@ -143,7 +149,7 @@
                   <label for="inputCards" class="control-label sr-only">姓名</label>
 
                   <div class="col-sm-12">
-                  <textarea type="text" class="form-control" rows="20" id="inputCards"
+                  <textarea type="text" class="form-control" style="min-height: 400px" id="inputCards"
                             placeholder="请输入卡号密码 ,例：卡号：JDV8000000000001 密码：000-0000-0000-0000"
                             v-model="input">
                   </textarea>
@@ -231,7 +237,7 @@
         get_url: function () {
           if (order.searching.user_type == '未兑换卡券') return '/order/search?type_id=0';
           if (order.searching.user_type == '已兑换卡券') return '/order/search?type_id=1';
-          if (order.searching.user_type == '所有卡券') return '/card/list';
+          if (order.searching.user_type == '所有卡券') return '/gift-card/import';
         },
         cards: function () {
           var split, i, cards;
@@ -260,7 +266,11 @@
             } else {
               cards = [];
               for (j = 0; j < i; j++) {
-                card = split[j].split('\t');
+                if( split[j].indexOf('\t') > -1 ){
+                  card = split[j].split('\t');
+                } else {
+                  card = split[j].split(' ');
+                }
                 if (card.length != 1) {
                   cards.push({
                     no: card[0],
@@ -271,7 +281,7 @@
             }
           }
 
-          $('#inputCards').css('min-height', $('#inputTable').height());
+          $('#inputCards').css('height', $('#inputTable').height());
           return cards;
         }
       },
@@ -351,14 +361,35 @@
         print: function () {
           alert('hahah!');
         },
-        pass: function () {
-          alert(123);
+        pass: function (e) {
+          $.post('/gift-card-application/approve',e,function(data){
+            if(data == '操作成功！') {
+              order.requireList.$remove(e);
+            };
+              $('#response').text(data);
+              $('#response').parent().parent().removeClass('hide');
+          })
         },
         reject: function () {
-          alert(789);
+          $.post('',e,function(data){
+            if(data){
+              $('#response').text(data);
+              $('#response').parent().parent().removeClass('hide');
+            }
+          })
         },
         addCards: function () {
-          alert(123);
+          $.post('/gift-card/import',{cards:order.cards},function(data){
+            if(data.success){
+              order.input = '';
+              $('#myModal').modal('hide');
+              $('#response').text('上传成功');
+              $('#response').parent().parent().removeClass('hide');
+            }
+          })
+        },
+        hideAlert: function () {
+          $('#response').parent().parent().addClass('hide');
         }
       }
     });
