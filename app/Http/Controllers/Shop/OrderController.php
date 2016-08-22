@@ -140,7 +140,7 @@ class OrderController extends Controller
 
     private function checkSaleCredential(Customer $customer, $sale)
     {
-        if ($sale = 'one') {
+        if ($sale = '1元专区') {
             return !$customer->hasPurchesedOneSale();
         }
 

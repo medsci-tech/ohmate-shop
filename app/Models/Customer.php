@@ -302,6 +302,6 @@ class Customer extends Model
      */
     public function hasPurchesedOneSale()
     {
-        return !! Order::where('customer_id', $this->id)->where('special_sale', '=', 'one')->where('order_status_id', '>', 1)->count();
+        return !! Order::where('customer_id', $this->id)->where('special_sale', '=', '1元专区')->where('order_status_id', '>', 1)->count();
     }
 }

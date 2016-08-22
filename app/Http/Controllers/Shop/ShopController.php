@@ -31,7 +31,7 @@ class ShopController extends Controller
         if ($customer->yikangQuestionnaire()->first() == null) {
             return redirect('/questionnaire2');
         }
-        if ($customer->orders()->where('special_sale', '=', '1元专区')->first() != null) {
+        if ($customer->hasPurchesedOneSale()) {
             return '每人仅能参加一次活动！';
         }
 
