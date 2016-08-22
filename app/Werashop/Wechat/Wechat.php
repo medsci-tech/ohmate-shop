@@ -114,7 +114,7 @@ class Wechat
      * @return array
      */
     private function generateMenuItems()
-    {
+    {   
         return [
             (new MenuItem("教育学习"))->buttons([
                 new MenuItem('糖尿病知识', 'view', url('/redirect/article-index')),
@@ -122,18 +122,15 @@ class Wechat
                 new MenuItem('每日活动', 'view', url('/activity/daily')),
                 neW MenuItem('注册', 'view', url('/register/create'))
             ]),
-            (new MenuItem("学习换礼"))->buttons([
-//                new MenuItem('我的地址', 'view', url('/shop/address')),
-                new MenuItem('地址测试', 'view', url('/shop/address/test')),
-                new MenuItem('我的订单', 'view', url('/shop/order')),
-                new MenuItem('换礼规则', 'view', url('/personal/bean-rules')),
-                new MenuItem('积分商城', 'view', url('/shop/index')),
-            ]),
+            (new MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan'))),
             (new MenuItem("个人中心"))->buttons([
 //                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
                 new MenuItem('个人统计', 'view', url('/personal/statistics')),
-                new MenuItem('糖友推广', 'view', url('/personal/friend')),
-                new MenuItem('会员信息', 'view', url('/personal/information')),
+                new MenuItem('积分规则', 'view', url('http://mp.weixin.qq.com/s?__biz=MzI4NTAxMzc3Mw==&mid=404093809&idx=1&sn=7420813be88695f121e375dcb8238359&scene=0&previewkey=XOaKnnGt5xgBr1pSVCYmkswqSljwj2bfCUaCyDofEow%3D')),
+				new MenuItem('会员信息', 'view', url('/personal/information')),
+				new MenuItem('我的积分', 'view', url('/personal/beans')),  
+				new MenuItem('糖友推广', 'view', url('/personal/friend')),
+                
             ]),
         ];
     }
@@ -198,7 +195,16 @@ class Wechat
         return function ($event) {
             \Log::info('subscribe' . $event);
             $openId = $event['FromUserName'];
-
+	    // \Log::info('Test out :'. $event['EventKey']);
+			 $eventKey = $event['EventKey'];
+			 if($eventKey == 'qrscene_25011'){
+                \Log::info('Test out :'. $event['EventKey']);
+				// $this->moveUserToGroup($openId, 103);//移动用户分组
+				\Log::info('Test in :'. $event['EventKey']);
+                return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
+                
+            }
+			 
             $customer = Customer::where('openid', $openId)->first();
             if ($customer) {
                 return Message::make('text')->content('欢迎您回来!');
@@ -209,7 +215,7 @@ class Wechat
             $typeId = CustomerType::where('type_en', AppConstant::CUSTOMER_COMMON)->first()->id;
             $customer->type_id = $typeId;
 
-            $eventKey = $event['EventKey'];
+           
             if (is_array($eventKey) && (0 == count($eventKey))) {
                 $customer->referrer_id = 0;
             } else {
@@ -427,4 +433,25 @@ class Wechat
         $staff->send(Message::make('text')->content($message))->to($openId);
         return true;
     }
+	
+	// public function moveUserToGroup($userid, $to_groupid ){
+		// \Log::info('testttt:');
+		  // $staff = new Staff($this->_appId, $this->_secret);
+		// $_accesstoken = $this->GetAccessToken('wxe7695a9de442a5a0', '7f983ac350b8e9a6af50ba599025ea39');
+		// $this->luiji_log1(__FILE__, __LINE__, 'accesstoken' . $_accesstoken, 'luiji_qrcode.log');
+		// $url = "https://api.weixin.qq.com/cgi-bin/groups/members/update?access_token=".$staff;
+		
+		// $data = "{\"openid\":\"".$userid."\",\"to_groupid\":".$to_groupid."}";
+		// $ch = curl_init($url) ;
+		// curl_setopt($ch, CURLOPT_POST, 1);
+		// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		// curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+		// $err      = curl_error($ch);
+		// \Log::info($err);
+		// $result = curl_exec($ch) ;
+		// curl_close($ch) ; 
+		// return $result;
+	// }
 }
