@@ -195,12 +195,9 @@ class Wechat
 		return function ($event) {
             \Log::info('SCAN' . $event);
             $openId = $event['FromUserName'];
-	     \Log::info('Test out :'. $event);
 			 $eventKey = $event['EventKey'];
 			 if($eventKey == '25011'){
-//                \Log::info('Test out :'. $event['EventKey']);
 				// $this->moveUserToGroup($openId, 103);//移动用户分组
-//				\Log::info('Test in :'. $event['EventKey']);
                 return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
                 
             }
@@ -218,21 +215,9 @@ class Wechat
 			\Log::info('yijian:::---' . $event);
             \Log::info('subscribe' . $event);
             $openId = $event['FromUserName'];
-<<<<<<< HEAD
-	    // \Log::info('Test out :'. $event['EventKey']);
+
 			 $eventKey = $event['EventKey'];
 			 if($eventKey == 'qrscene_25011'){
-                \Log::info('Test out :'. $event['EventKey']);
-				// $this->moveUserToGroup($openId, 103);//移动用户分组
-				\Log::info('Test in :'. $event['EventKey']);
-=======
-	 //   \Log::info('Test out :'. $event['EventKey']);
-			 $eventKey = $event['EventKey'];
-			 if($eventKey == 'qrscene_25011'){
-              // \Log::info('Test out :'. $event['EventKey']);
-				//$this->moveUserToGroup($openId, 103);//移动用户分组
-				//\Log::info('Test in :'. $event['EventKey']);
->>>>>>> 6842b3d53eee09ecc5e543c3c151b288fd423907
                 return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
                 
             }
