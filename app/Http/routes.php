@@ -213,4 +213,5 @@ Route::get('daily-report', 'Hack\HackController@a');
 Route::group(['prefix' => 'puan', 'namespace' => 'Puan'], function () {
     Route::any('/beans-for-union-id', 'PuanInterfaceController@beansForUnionId');
     Route::any('/update-beans-when-purchase-for-union-id', 'PuanInterfaceController@UpdateBeansWhenPurchaseForUnionId');
+    Route::any('/beans-log-for-union-id', 'PuanInterfaceController@beansLogForUnionId');
 });

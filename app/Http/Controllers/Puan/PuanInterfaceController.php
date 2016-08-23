@@ -57,4 +57,26 @@ class PuanInterfaceController extends Controller
             'success' => true
         ]);
     }
+
+    public function beansLogForUnionId(Request $request)
+    {
+        $unionid = $request->input('unionid');
+
+        try {
+            $customer = Customer::where('unionid', $unionid)->firstOrFail();
+            $beans_log = $customer->beans()->with('rate')->get();
+
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'beans_log' => $beans_log->toArray()
+                ]
+            ]);
+;        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'error' => 'No such customer.'
+            ]);
+        }
+    }
 }
