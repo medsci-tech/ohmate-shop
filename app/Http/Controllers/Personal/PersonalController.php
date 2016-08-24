@@ -28,7 +28,7 @@ class PersonalController extends Controller
     public function information()
     {
         $customer = \Helper::getCustomer();
-        //$shopCardApplication = \Helper::getShopCardApplication();
+        $shopCardApplication = \Helper::getShopCardApplication();
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
         $data['type']               = $customer->type->type_ch;
