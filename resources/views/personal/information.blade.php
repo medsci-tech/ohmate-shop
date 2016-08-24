@@ -47,7 +47,7 @@
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>礼品卡</p>
                 </div>
-                <div class="weui_cell_ft text_color"><!--{{$data['card_total']}}-->0&nbsp;张</div>
+                <div class="weui_cell_ft text_color">0&nbsp;张</div>
             </a>
         </div>
 
