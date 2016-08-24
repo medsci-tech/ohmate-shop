@@ -13,6 +13,10 @@ class ShopCardApplication extends Model
 {
 
     protected $guarded = [];
+	
+	protected $table = 'shop_card_applications';
+	 
+	public $timestamps = ['created_at', 'updated_at'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
