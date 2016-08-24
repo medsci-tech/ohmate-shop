@@ -11710,6 +11710,16 @@ namespace {
             return \App\Werashop\Helper\Helper::getCustomer();
         }
         
+                /**
+         * 
+         *
+         * @return \App\Models\Customer; 
+         * @static 
+         */
+        public static function getCustomer(){
+            return \App\Werashop\Helper\Helper::getShopCardApplication();
+        }
+        
         /**
          * 
          *
