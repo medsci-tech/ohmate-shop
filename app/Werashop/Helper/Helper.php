@@ -7,7 +7,6 @@ namespace App\Werashop\Helper;
 use App\Constants\AppConstant;
 use App\Models\Address;
 use App\Models\Customer;
-use App\Models\ShopCardApplication;
 use App\Werashop\Exceptions\UserNotCachedException;
 use App\Werashop\Exceptions\UserNotSubscribedException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -70,22 +69,6 @@ class Helper
             $customer = Customer::where('openid', $user['openid'])->firstOrFail();
 
             return $customer;
-        } catch (\Exception $e) {
-            abort('404');
-        }
-    }
-    
-      /**
-     * @return \App\Models\ShopCardApplication;
-     */
-    public function getShopCardApplication()
-    {
-        try {
-            $user = self::getSessionCachedUser();
-            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
-            $shopCardApplication = ShopCardApplication::where('customer_id', $customer['id'])->firstOrFail();
-
-            return $shopCardApplication;
         } catch (\Exception $e) {
             abort('404');
         }

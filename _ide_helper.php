@@ -11710,6 +11710,7 @@ namespace {
             return \App\Werashop\Helper\Helper::getCustomer();
         }
         
+<<<<<<< HEAD
                 /**
          * 
          *
@@ -11720,6 +11721,8 @@ namespace {
             return \App\Werashop\Helper\Helper::getShopCardApplication();
         }
         
+=======
+>>>>>>> ad8973c21eb5ada53ea7da7db0c40ebbdd1bb36e
         /**
          * 
          *

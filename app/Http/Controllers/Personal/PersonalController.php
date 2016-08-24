@@ -28,12 +28,14 @@ class PersonalController extends Controller
     public function information()
     {
         $customer = \Helper::getCustomer();
+<<<<<<< HEAD
         $shopCardApplication = \Helper::getShopCardApplication();
+=======
+>>>>>>> ad8973c21eb5ada53ea7da7db0c40ebbdd1bb36e
         $data['nickname']           = $customer->nickname;
         $data['head_image_url']     = $customer->head_image_url;
         $data['type']               = $customer->type->type_ch;
         $data['beans_total']        = $customer->beans_total;
-      //  $data['card_total']         = $shopCardApplication->amount;
         return view('personal.information', ['data' => $data]);
     }
 
