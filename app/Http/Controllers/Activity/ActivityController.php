@@ -28,7 +28,7 @@ class ActivityController extends Controller
         $result = [];
         $customer = \Helper::getCustomer();
 
-        $list = ShopCard::where('customer_id', '25238')->get();
+        $list = ShopCard::where('customer_id',$customer['id'] )->get();
         foreach ($list as $item) {
             $result []= [
                 'name' => $item->cardType->name,
