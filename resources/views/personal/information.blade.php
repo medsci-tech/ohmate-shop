@@ -46,7 +46,7 @@
             <a href="/activity/coupon" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>礼品卡</p>
-                </div>
+                </div> 
                 <div class="weui_cell_ft text_color">0&nbsp;张</div>
             </a>
         </div>
