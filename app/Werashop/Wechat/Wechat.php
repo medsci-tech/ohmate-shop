@@ -212,7 +212,6 @@ class Wechat
     public function subscribeEventCallback()
     {
         return function ($event) {
-			\Log::info('yijian:::---' . $event);
             \Log::info('subscribe' . $event);
             $openId = $event['FromUserName'];
 

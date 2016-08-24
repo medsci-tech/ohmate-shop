@@ -11716,9 +11716,9 @@ namespace {
          * @return \App\Models\Customer; 
          * @static 
          */
-        public static function getCustomer(){
-            return \App\Werashop\Helper\Helper::getShopCardApplication();
-        }
+       // public static function getShopCardApplication(){
+        //    return \App\Werashop\Helper\Helper::getShopCardApplication();
+        //}
         
         /**
          * 
