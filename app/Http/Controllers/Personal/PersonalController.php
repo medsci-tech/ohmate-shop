@@ -33,7 +33,7 @@ class PersonalController extends Controller
         $data['head_image_url']     = $customer->head_image_url;
         $data['type']               = $customer->type->type_ch;
         $data['beans_total']        = $customer->beans_total;
-        $data['card_total']         = $shopCardApplication->amount;
+      //  $data['card_total']         = $shopCardApplication->amount;
         return view('personal.information', ['data' => $data]);
     }
 
