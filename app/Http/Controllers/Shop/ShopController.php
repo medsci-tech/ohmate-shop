@@ -32,7 +32,7 @@ class ShopController extends Controller
             return redirect('/questionnaire2');
         }
         if ($customer->hasPurchesedOneSale()) {
-            return '<a style="font-size:20px;display:block;width:80%;margin:40px auto ">每人仅能参加一次活动！</a>';
+            return '<a style="font-size: 50px;display:block;width: 100%;margin: 20% auto;text-align: center;">每人仅能参加一次活动！</a>';
         }
 
         return view('shop.yiyuan-index')->with([
