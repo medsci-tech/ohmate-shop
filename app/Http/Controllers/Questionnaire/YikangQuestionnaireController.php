@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Questionnaire;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-
+use App\Models\jssdk;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -22,6 +22,9 @@ class YikangQuestionnaireController extends Controller
         $customer = \Helper::getCustomerOrFail();
         $q = $customer->yikangQuestionnaire()->first();
         if ($q) {
+			
+			// $jssdk = new JSSDK(env('WX_APPID'), env('WX_SECRET'));
+			// $signPackage = $jssdk->getSignPackage();
             if ($q->q1 == '口服药等其他治疗方式' || $q->q2 == '已停用') {
                 return view('questionnaire.finish2')->with(['result' => 1]);
             }
