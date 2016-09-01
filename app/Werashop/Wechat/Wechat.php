@@ -196,6 +196,8 @@ class Wechat
             \Log::info('SCAN' . $event);
             $openId = $event['FromUserName'];
 			 $eventKey = $event['EventKey'];
+			 // $customer = Customer::where('openid', $openId)->first();
+			 
 			 if($eventKey == '25011'){
 				// $this->moveUserToGroup($openId, 103);//移动用户分组
                 return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
@@ -212,20 +214,24 @@ class Wechat
     public function subscribeEventCallback()
     {
         return function ($event) {
-			\Log::info('yijian:::---' . $event);
+			\Log::info('yijian:0831::---' . $event);
             \Log::info('subscribe' . $event);
             $openId = $event['FromUserName'];
 
 			 $eventKey = $event['EventKey'];
-			 if($eventKey == 'qrscene_25011'){
-                return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
-                
-            }
+			
 			 
             $customer = Customer::where('openid', $openId)->first();
             if ($customer) {
-                return Message::make('text')->content('欢迎您回来!');
-            }
+				if($eventKey == 'qrscene_25011'){
+					\Log::info('test 1:::---' . $event);
+					return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
+                
+				}else{
+					\Log::info('test 2:::---' . $event);
+					return Message::make('text')->content('欢迎您回来!');
+				}
+			}
 
             $customer = new Customer();
             $customer->openid = $openId;
@@ -234,9 +240,10 @@ class Wechat
 
            
             if (is_array($eventKey) && (0 == count($eventKey))) {
+				\Log::info('test 3:::---' . $event);
                 $customer->referrer_id = 0;
             } else {
-
+				\Log::info('test 4:::---' . $event);
                 $referrer_str = substr($eventKey, 8);
 
                 if (strlen($referrer_str) > 10) {
@@ -255,8 +262,14 @@ class Wechat
             $customer->save();
             \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_FOCUS);
 
+			 if($eventKey == 'qrscene_25011'){
+				 \Log::info('test 5:::---' . $event);
+                return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
+                
+            }
+			
             $upper = $customer->getReferrer();
-            if ($upper && $upper->doctorType() == 'A') {
+            if ($upper && $upper->doctorType() == 'A') {  
                 return Message::make('news')->items(function () {
                     return [
                         Message::make('news_item')
