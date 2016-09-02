@@ -62,7 +62,7 @@ var index = new Vue({
       phone: '手机号',
       address: '地址',
       hospital: '医院',
-      invited: '邀请糖友数',
+      // invited: '邀请糖友数',
       beans: '迈豆数',
       qr_code: '二维码'
     },
@@ -155,7 +155,7 @@ var index = new Vue({
           phone: '手机号',
           address: '地址',
           hospital: '医院',
-          invited: '邀请糖友数',
+          // invited: '邀请糖友数',
           beans: '迈豆数',
           qr_code: '二维码'
         };
@@ -168,7 +168,7 @@ var index = new Vue({
           phone: '手机号',
           address: '地址',
           hospital: '医院',
-          invited: '邀请糖友数',
+          // invited: '邀请糖友数',
           beans: '迈豆数',
           qr_code: '二维码'
         };
@@ -181,7 +181,7 @@ var index = new Vue({
           phone: '手机号',
           address: '地址',
           hospital: '医院',
-          invited: '邀请糖友数',
+          // invited: '邀请糖友数',
           beans: '迈豆数',
           qr_code: '二维码'
         };
@@ -194,7 +194,7 @@ var index = new Vue({
           phone: '手机号',
           address: '地址',
           hospital: '医院',
-          invited: '邀请糖友数',
+          // invited: '邀请糖友数',
           beans: '迈豆数',
           qr_code: '二维码'
         };
@@ -207,7 +207,7 @@ var index = new Vue({
           phone: '手机号',
           address: '地址',
           hospital: '医院',
-          invited: '邀请糖友数',
+          // invited: '邀请糖友数',
           beans: '迈豆数',
           qr_code: '二维码'
         };
@@ -220,7 +220,7 @@ var index = new Vue({
           phone: '手机号',
           address: '地址',
           hospital: '医院',
-          invited: '邀请糖友数',
+          // invited: '邀请糖友数',
           beans: '迈豆数',
           qr_code: '二维码'
         };

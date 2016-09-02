@@ -219,15 +219,15 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="invited" class="col-sm-3 control-label">糖友数</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control sr-only" id="invited" placeholder="邀请糖友数" disabled
-                           v-model="other_info.statistics.friend_count">
+                {{--<div class="form-group">--}}
+                  {{--<label for="invited" class="col-sm-3 control-label">糖友数</label>--}}
+                  {{--<div class="col-sm-8">--}}
+                    {{--<input type="number" class="form-control sr-only" id="invited" placeholder="邀请糖友数" disabled--}}
+                           {{--v-model="other_info.statistics.friend_count">--}}
 
-                    <p class="form-control-static">@{{ other_info.statistics.friend_count }}</p>
-                  </div>
-                </div>
+                    {{--<p class="form-control-static">@{{ other_info.statistics.friend_count }}</p>--}}
+                  {{--</div>--}}
+                {{--</div>--}}
                 <div class="form-group">
                   <label for="beans" class="col-sm-3 control-label">迈豆数</label>
                   <div class="col-sm-8">
