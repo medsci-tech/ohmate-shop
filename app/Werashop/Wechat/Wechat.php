@@ -125,9 +125,8 @@ class Wechat
             (new MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan'))),
             (new MenuItem("个人中心"))->buttons([
 //                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
-//                new MenuItem('个人统计', 'view', url('/personal/statistics')),
-                new MenuItem('积分规则', 'view', url('http://mp.weixin.qqg
-.com/s?__biz=MzI4NTAxMzc3Mw==&mid=404093809&idx=1&sn=7420813be88695f121e375dcb8238359&scene=0&previewkey=XOaKnnGt5xgBr1pSVCYmkswqSljwj2bfCUaCyDofEow%3D')),
+       //         new MenuItem('个人统计', 'view', url('/personal/statistics')),
+                new MenuItem('积分规则', 'view', url('http://mp.weixin.qq.com/s?__biz=MzI4NTAxMzc3Mw==&mid=404093809&idx=1&sn=7420813be88695f121e375dcb8238359&scene=0&previewkey=XOaKnnGt5xgBr1pSVCYmkswqSljwj2bfCUaCyDofEow%3D')),
 				new MenuItem('会员信息', 'view', url('/personal/information')),
 				new MenuItem('我的积分', 'view', url('/personal/beans')),  
 				new MenuItem('糖友推广', 'view', url('/personal/friend')),
