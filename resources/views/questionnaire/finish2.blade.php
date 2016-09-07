@@ -1,4 +1,4 @@
-@extends('questionnaire.main')
+@extends('questionnaire.main2')
 
 @section('css')
   <style>

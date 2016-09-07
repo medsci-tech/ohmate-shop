@@ -1,4 +1,4 @@
-@extends('questionnaire.main')
+@extends('questionnaire.main2')
 
 @section('css')
   <link rel="stylesheet" href="{{asset('/')}}vendor/swiper/swiper-3.3.0.min.css">
