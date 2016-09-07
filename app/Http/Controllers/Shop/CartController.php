@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
-
+use App\Models\Wx\Jssdk;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,11 @@ class CartController extends Controller
 
     public function yiyuanIndex()
     {
-        return view('shop.yiyuan-cart');
+		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
+		 $signPackage = $jssdk->getSignPackage();
+        return view('shop.yiyuan-cart')->with([
+			'signPackage' => $signPackage
+        ]);
     }
 
     public function customerInformation()

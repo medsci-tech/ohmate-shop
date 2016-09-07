@@ -1,0 +1,16 @@
+Revert "个人中心礼品券展示数字"
+
+This reverts commit 1a545ab3f7507a08c16900f72dfd45cac8400dc6.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   app/Http/Controllers/Personal/PersonalController.php
+#
+# Untracked files:
+
+#	app/Werashop/Wechat/.Wechat.php.swp
+#

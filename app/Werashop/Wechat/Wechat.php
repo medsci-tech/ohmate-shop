@@ -196,10 +196,22 @@ class Wechat
             \Log::info('SCAN' . $event);
             $openId = $event['FromUserName'];
 			 $eventKey = $event['EventKey'];
-			 // $customer = Customer::where('openid', $openId)->first();
 			 
+			  $customers = Customer::where('openid','=', $openId)->where('referrer_id','=',$eventKey)->get();
+			  $customers_id = Customer::where('openid','=', $openId)->first();
+			   if ($customers->isEmpty()) {
+				   \Log::info('SCAN111' .$customers);
+				    $customer = new Customer();
+					$customer->openid = $openId;
+                    $customer->type_id = $customers_id->type_id;
+					$customer->referrer_id = $eventKey;
+					$customer->save();
+					 // Customer::where('openid', $openId)->update(['referrer_id' =>$eventKey ]);
+			   }
+			   \Log::info('SCAN222' .$customers);
+			
 			 if($eventKey == '25011'){
-				// $this->moveUserToGroup($openId, 103);//移动用户分组
+				$this->moveUserToGroup($openId, 103);//移动用户分组
                 return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
                 
             }
@@ -214,7 +226,7 @@ class Wechat
     public function subscribeEventCallback()
     {
         return function ($event) {
-			\Log::info('yijian:0831::---' . $event);
+			// \Log::info('yijian:0831::---' . $event);
             \Log::info('subscribe' . $event);
             $openId = $event['FromUserName'];
 
@@ -225,6 +237,7 @@ class Wechat
             if ($customer) {
 				if($eventKey == 'qrscene_25011'){
 					\Log::info('test 1:::---' . $event);
+					$this->moveUserToGroup($openId, 103);//移动用户分组
 					return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
                 
 				}else{
@@ -263,6 +276,7 @@ class Wechat
             \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_FOCUS);
 
 			 if($eventKey == 'qrscene_25011'){
+				 $this->moveUserToGroup($openId, 103);//移动用户分组
 				 \Log::info('test 5:::---' . $event);
                 return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
                 
@@ -464,24 +478,62 @@ class Wechat
         return true;
     }
 	
-	// public function moveUserToGroup($userid, $to_groupid ){
-		// \Log::info('testttt:');
-		  // $staff = new Staff($this->_appId, $this->_secret);
-		// $_accesstoken = $this->GetAccessToken('wxe7695a9de442a5a0', '7f983ac350b8e9a6af50ba599025ea39');
-		// $this->luiji_log1(__FILE__, __LINE__, 'accesstoken' . $_accesstoken, 'luiji_qrcode.log');
-		// $url = "https://api.weixin.qq.com/cgi-bin/groups/members/update?access_token=".$staff;
+	public function moveUserToGroup($userid, $to_groupid ){
+		\Log::info('testttt' . 'okokok');
+		 $staff = new Staff($this->_appId, $this->_secret);
+		$_accesstoken = $this->GetAccessToken();
+		\Log::info('testttt' .$_accesstoken );
+		$url = "https://api.weixin.qq.com/cgi-bin/groups/members/update?access_token=".$_accesstoken;
 		
-		// $data = "{\"openid\":\"".$userid."\",\"to_groupid\":".$to_groupid."}";
-		// $ch = curl_init($url) ;
-		// curl_setopt($ch, CURLOPT_POST, 1);
-		// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		// curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
-		// $err      = curl_error($ch);
-		// \Log::info($err);
-		// $result = curl_exec($ch) ;
-		// curl_close($ch) ; 
-		// return $result;
-	// }
+		$data = "{\"openid\":\"".$userid."\",\"to_groupid\":".$to_groupid."}";
+		$ch = curl_init($url) ;
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+		$err      = curl_error($ch);
+		\Log::info($err);
+		$result = curl_exec($ch) ;
+		curl_close($ch) ; 
+		return $result;
+	}
+	
+	  private function GetAccessToken() {
+    // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
+    $data = json_decode(file_get_contents("/home/wwwroot/www.ohmate.cn/ohmate-shop/access_token.json"));
+    if ($data->expire_time < time()) {
+      // 如果是企业号用以下URL获取access_token
+      //$url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
+      $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->_appId."&secret=".$this->_secret;
+      $res = json_decode($this->httpGet($url));
+	  // print_r($res);
+      $access_token = $res->access_token;
+      if ($access_token) {
+        $data->expire_time = time() + 7000;
+        $data->access_token = $access_token;
+        $fp = fopen("/home/wwwroot/www.ohmate.cn/ohmate-shop/access_token.json", "w");
+        fwrite($fp, json_encode($data));
+        fclose($fp);
+      }
+    } else {
+      $access_token = $data->access_token;
+    }
+    return $access_token;
+  }
+  
+    private function httpGet($url) {
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 500);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_URL, $url);
+
+    $res = curl_exec($curl);
+    curl_close($curl);
+
+    return $res;
+  }
+  
 }

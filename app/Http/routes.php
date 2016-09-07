@@ -204,6 +204,7 @@ Route::group(['prefix' => 'questionnaire', 'middleware' => 'web', 'namespace' =>
 
 Route::group(['prefix' => 'questionnaire2', 'middleware' => 'web', 'namespace' => 'Questionnaire'], function () {
     Route::get('/', 'YikangQuestionnaireController@index');
+	Route::get('/countNum', 'YikangQuestionnaireController@countNum');
     Route::post('/', 'YikangQuestionnaireController@result');
 });
 

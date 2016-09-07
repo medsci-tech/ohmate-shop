@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Models\Commodity;
 use Illuminate\Http\Request;
-
+use App\Models\Wx\Jssdk;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -91,9 +91,12 @@ class CommodityController extends Controller
 
     public function yiyuanShow($id)
     {
+		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
+		 $signPackage = $jssdk->getSignPackage();
         $item = Commodity::with(['images', 'slideImages'])->find($id);
         return view('shop.yiyuan-detail')->with([
-            'item' => $item->toArray()
+            'item' => $item->toArray(),
+			'signPackage' => $signPackage
         ]);
     }
 }
