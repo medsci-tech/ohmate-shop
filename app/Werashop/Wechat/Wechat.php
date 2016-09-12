@@ -362,7 +362,7 @@ class Wechat
         $result = $auth->authorize(url($jump_url), 'snsapi_base,snsapi_userinfo');
 
         \Session::put('web_token', $result->get('access_token'));
-        return $auth->getUser($result->get('openid'), $result->get('access_token'));
+        return $auth->getUser($result->get('openid'), $auth->access_token);
     }
 
     /**
