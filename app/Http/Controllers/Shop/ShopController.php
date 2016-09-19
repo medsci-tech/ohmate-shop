@@ -14,7 +14,7 @@ class ShopController extends Controller
     function __construct()
     {
         $this->middleware('auth.wechat');
-        $this->middleware('auth.access');
+        // $this->middleware('auth.access');
     }
 
     public function index()
@@ -26,16 +26,19 @@ class ShopController extends Controller
 
     public function yiyuanIndex()
     {
+		
         $customer = \Helper::getCustomer();
-
+			// \Log::info('Location-yiyuan---'.$customer  ); 
         if ($customer->yikangQuestionnaire()->first() == null) {
+			// \Log::info('yiyuan---不存在用户' ); 
             return redirect('/questionnaire2');
         }
         if ($customer->hasPurchesedOneSale()) {
+			// \Log::info('yiyuan---已购买过' ); 
             return '<a style="font-size: 50px;display:block;width: 100%;margin: 20% auto;text-align: center;">每人仅能参加一次活动！</a>';
         }
 
-		
+		// \Log::info('yiyuan---进入一元专区' ); 
 		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
 		 $signPackage = $jssdk->getSignPackage();
         return view('shop.yiyuan-index')->with([
