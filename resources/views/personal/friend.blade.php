@@ -12,8 +12,8 @@
 
 <div class="hd">
     <div class="bd spacing">
-        <div class="button_sp_area" style="width: 60%;margin: 0 auto">
-            <p style="text-align: left;color: #888">推荐好友扫描二维码，对方注册成为会员后，且进行了首单兑换，您将获得1000迈豆奖励，相当于10元现金。</p>
+        <div class="button_sp_area" style="width: 80%;margin: 0 auto">
+            <p style="text-align: left;color: #888">推荐好友扫描二维码，对方注册成为会员后，且同时完成首单兑换。可获得1000迈豆奖励，相当于10元现金券哟！</p>
         </div>
 
 
