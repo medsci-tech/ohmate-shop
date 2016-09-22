@@ -210,7 +210,9 @@ class Customer extends Model
      */
     public function articleIndexNeedFeedBack()
     {
+		\Log::info('hongbao---reason'.\Cache::has($this->getCacheArticleBeanFeedKey()) );
         if (!\Cache::has($this->getCacheArticleBeanFeedKey())) {
+			
             return true;
         }
 
