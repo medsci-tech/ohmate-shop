@@ -206,7 +206,8 @@ Route::group(['prefix' => 'questionnaire2', 'middleware' => 'web', 'namespace' =
     Route::get('/', 'YikangQuestionnaireController@index');
 	Route::get('/countNum', 'YikangQuestionnaireController@countNum');
 	Route::any('/scripts', 'JiaobenController@scripts');
-    Route::post('/', 'YikangQuestionnaireController@result');
+	Route::any('/moveuser', 'JiaobenController@moveUser');
+    Route::post('/', 'YikangQuestionnaireController@result'); 
 });
 
 Route::get('daily-report', 'Hack\HackController@a');

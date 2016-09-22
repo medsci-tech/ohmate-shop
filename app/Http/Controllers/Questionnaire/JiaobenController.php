@@ -8,6 +8,7 @@ use App\Models\Wx\Jssdk;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use App\Werashop\Wechat\Wechat;
 
 class JiaobenController extends Controller
 {
@@ -17,6 +18,8 @@ class JiaobenController extends Controller
 //        $this->middleware('auth.access');
     }
 
+	
+	//正则匹配数据
     public function scripts()
     {
 		
@@ -46,7 +49,26 @@ class JiaobenController extends Controller
 				}
 				fclose($handle);
 			}
-			
+			 
+        
+    }
+	
+	//移动用户分组
+	    public function moveUser()
+    {
+			$wechat = new Wechat();
+			$arr =  Customer::where('referrer_id', 25011)->skip(4000)->take(500)->get();
+			foreach($arr as $k=>$v){
+				$result = $wechat->moveUserToGroup($v->openid, 103);
+				$a = json_decode($result);
+				// print_r($v->nickname);echo '<br/>';
+				if($a->errcode == 0){
+					echo $v->nickname.'--移动分组成功'.$a->errcode.'<br.>';
+				}else{
+					echo $v->nickname.'--移动分组失败'.$a->errcode.'<br.>';
+				}
+				
+			}
         
     }
 	
