@@ -37,6 +37,8 @@ abstract class BeansTransaction extends Job
     protected function transaction()
     {
         return function () {
+//            \DB::table('customer')->where('id', $this->customer->id)->lockForUpdate();
+
             if ($this->beans < 0 && $this->customer->beans_total + $this->beans < 0) {
                 throw new NotEnoughBeansException;
             }
