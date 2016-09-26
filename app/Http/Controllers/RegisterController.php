@@ -60,6 +60,10 @@ class RegisterController extends Controller
         $user       = \Helper::getUser();
         $customer   = \Helper::getCustomer();
 
+        if ($customer->is_registered) {
+            return ('请勿重复注册');
+        }
+
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone,'.$customer->id,
             'code'  => 'required|digits:6'
