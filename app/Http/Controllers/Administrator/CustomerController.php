@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index()
@@ -60,6 +60,32 @@ class CustomerController extends Controller
                     ->with(['statistics', 'information', 'type'])
                     ->orderBy('id', 'desc')
                     ->paginate(20, ['*'])
+            ]
+        ]);
+    }
+
+    public function searchForTypeA(Request $request)
+    {
+        $key = $request->input('key', null);
+
+        $customers = Customer::whereHas('information', function($query) {
+            $query->where('type', 'A');
+        });
+
+        if ($key) {
+            $key_phrase = '%'.$key.'%';
+            $customers = $customers->where('phone', 'like', $key_phrase);
+        }
+
+        $customers = $customers->with('information');
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'customers' => $customers
+                // ->makeVisible('focus_count')
+                ->orderBy('id', 'desc')
+                ->simplePaginate(20)
             ]
         ]);
     }
@@ -140,4 +166,6 @@ class CustomerController extends Controller
 
         return $customer->minusBeansByHand($amount);
     }
+
+
 }

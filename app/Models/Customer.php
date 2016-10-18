@@ -42,6 +42,9 @@ class Customer extends Model
      */
     protected $guarded = [];
 
+    // protected $hidden = ['focus_count', 'register_count', 'questionnaire_count'];
+    protected $appends = ['focus_count', 'register_count', 'questionnaire_count'];
+
     /**
      * @var array
      */
@@ -305,5 +308,47 @@ class Customer extends Model
     public function hasPurchesedOneSale()
     {
         return !! Order::where('customer_id', $this->id)->where('special_sale', '=', '1元专区')->where('order_status_id', '>', 1)->count();
+    }
+
+    public function getFocusCountAttribute()
+    {
+        $key = 'focus_count_' . $this->id;
+        if (!request()->has('force_search')) {
+            return 0;
+        }   
+        $result = \Cache::remember($key, 60, function() {
+            return Customer::where('referrer_id', $this->id)->count();
+        });
+
+        return $result;
+    }
+
+    public function getRegisterCountAttribute()
+    {
+        $key = 'register_count_' . $this->id;
+
+        if (!request()->has('force_search')) {
+            return 0;
+        }   
+        $result = \Cache::remember($key, 60, function() {
+            return Customer::where('referrer_id', $this->id)->where('is_registered', 1)->count();
+        });
+
+        return $result;
+    }
+
+    public function getQuestionnaireCountAttribute()
+    {
+        $key = 'questionnaire_count_' . $this->id;
+
+        if (!request()->has('force_search')) {
+            return 0;
+        }
+        
+        $result = \Cache::remember($key, 60, function() {
+            return Customer::has('yikangQuestionnaire')->count();
+        });
+
+        return $result;
     }
 }

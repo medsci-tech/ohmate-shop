@@ -157,6 +157,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::get('index', 'CustomerController@index');
         Route::get('list', 'CustomerController@customerList');
         Route::get('search', 'CustomerController@search');
+        Route::get('search-for-type-a', 'CustomerController@searchForTypeA');
         Route::get('/{id}/beans', 'CustomerController@beans');
         Route::get('/{id}/friends', 'CustomerController@friends');
         Route::post('/{id}/update', 'CustomerController@update');
