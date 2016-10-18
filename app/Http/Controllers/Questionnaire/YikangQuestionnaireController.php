@@ -19,27 +19,27 @@ class YikangQuestionnaireController extends Controller
 
     public function index()
     {
-
+		return '<a style="font-size: 50px;display:block;width: 100%;margin: 20% auto;text-align: center;">本次活动已结束，感谢您的关注。</a>';
 		
-		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
-		 $signPackage = $jssdk->getSignPackage();
-		 // print_r ($signPackage);die;
-        /** @var Customer $customer */
-        $customer = \Helper::getCustomerOrFail();
-		$regResult =  Customer::where('openid', $customer->openid)->get();
-		 if($regResult->isEmpty()){
-			return redirect('http://mp.weixin.qq.com/s?__biz=MjM5MDYyNTAyMA==&mid=2652103444&idx=1&sn=9e32a8e35ae288349cc1c6c9f7532735&scene=1&srcid=0830CHn5J4eT4jjetDgLMbLT#wechat_redirect');
-		 }
-        $q = $customer->yikangQuestionnaire()->first();
-        if ($q) {
+		 // $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
+		 // $signPackage = $jssdk->getSignPackage();
+		 //// print_r ($signPackage);die;
+        // /** @var Customer $customer */
+        // $customer = \Helper::getCustomerOrFail();
+		// $regResult =  Customer::where('openid', $customer->openid)->get();
+		 // if($regResult->isEmpty()){
+			// return redirect('http://mp.weixin.qq.com/s?__biz=MjM5MDYyNTAyMA==&mid=2652103444&idx=1&sn=9e32a8e35ae288349cc1c6c9f7532735&scene=1&srcid=0830CHn5J4eT4jjetDgLMbLT#wechat_redirect');
+		 // }
+        // $q = $customer->yikangQuestionnaire()->first();
+        // if ($q) {
 			
 			
-            if ($q->q1 == '口服药等其他治疗方式' || $q->q2 == '已停用') {
-                return view('questionnaire.finish2')->with(['result' => 1,'signPackage' => $signPackage,]);
-            }
-            return view('questionnaire.finish2')->with(['result' => 2,'signPackage' => $signPackage,]);
-        }
-        return view('questionnaire.questionnaire2')->with(['signPackage' => $signPackage,]);;
+            // if ($q->q1 == '口服药等其他治疗方式' || $q->q2 == '已停用') {
+                // return view('questionnaire.finish2')->with(['result' => 1,'signPackage' => $signPackage,]);
+            // }
+            // return view('questionnaire.finish2')->with(['result' => 2,'signPackage' => $signPackage,]);
+        // }
+        // return view('questionnaire.questionnaire2')->with(['signPackage' => $signPackage,]);;
     }
 
 	 public function countNum()
