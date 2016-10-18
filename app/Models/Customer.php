@@ -344,9 +344,9 @@ class Customer extends Model
         if (!request()->has('force_search')) {
             return 0;
         }
-        
+
         $result = \Cache::remember($key, 60, function() {
-            return Customer::has('yikangQuestionnaire')->count();
+            return Customer::where('referrer_id', $this->id)->has('yikangQuestionnaire')->count();
         });
 
         return $result;
