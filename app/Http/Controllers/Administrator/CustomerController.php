@@ -305,7 +305,7 @@ class CustomerController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'lower_list' => $lower_list->get()
+                'lower_list' => $lower_list
             ]
         ]); 
     }
