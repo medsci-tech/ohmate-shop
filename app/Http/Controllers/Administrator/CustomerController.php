@@ -131,8 +131,9 @@ class CustomerController extends Controller
         }
 
         $phone = $customerInformation->phone;
+        $inputPhone = $request->input('phone')
 
-        if($inputPhone = $request->input('phone') && $inputPhone != $phone) {
+        if($inputPhone && $inputPhone != $phone) {
             $customer = Customer::where('phone', $inputPhone)->first();
             if ($customer) {
                 $customerInformation->update([
@@ -211,8 +212,9 @@ class CustomerController extends Controller
             'hospital_level' => $request->input('hospital_level'),
             'phone' => $request->input('phone'),
         ]);
+        $inputPhone = $request->input('phone')
 
-        if($inputPhone = $request->input('phone')) {
+        if($inputPhone) {
             $customer = Customer::where('phone', $inputPhone)->first();
             if ($customer) {
                 $customerInformation->update([
