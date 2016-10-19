@@ -85,7 +85,7 @@ class CustomerController extends Controller
                 'customers' => $customers
                 // ->makeVisible('focus_count')
                 ->orderBy('id', 'desc')
-                ->simplePaginate(20)
+                ->paginate(20)
             ]
         ]);
     }
