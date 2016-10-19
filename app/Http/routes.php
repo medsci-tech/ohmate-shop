@@ -161,7 +161,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::get('/{id}/beans', 'CustomerController@beans');
         Route::get('/{id}/friends', 'CustomerController@friends');
         Route::post('/{id}/update', 'CustomerController@update');
-        Route::post('/create', 'CustomerController@store');
+        Route::post('/create-information', 'CustomerController@store');
         Route::any('/minus-beans', 'CustomerController@minusBeans');
         Route::get('/lower_list', 'CustomerController@lowerList');
     });
