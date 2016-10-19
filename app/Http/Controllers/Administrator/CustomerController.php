@@ -300,8 +300,6 @@ class CustomerController extends Controller
         tmp1.id = tmp2.customer_id
         '));
 
-        dd($lower_list);
-
         return response()->json([
             'success' => true,
             'data' => [
