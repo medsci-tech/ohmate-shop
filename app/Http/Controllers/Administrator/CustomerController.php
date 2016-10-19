@@ -129,6 +129,22 @@ class CustomerController extends Controller
                 'customer_id' => $customer->id
             ]);
         }
+
+        $phone = $customerInformation->phone;
+
+        if($inputPhone = $request->input('phone') && $inputPhone != $phone) {
+            $customer = Customer::where('phone', $inputPhone)->first();
+            if ($customer) {
+                $customerInformation->update([
+                    'customer_id' => $customer->id,
+                ]);
+            } else {
+                $customerInformation->update([
+                    'customer_id' => null,
+                ]);
+            }
+        }
+
         $customerInformation->update([
             'name' => $request->input('name'),
             'hospital' => $request->input('hospital'),
@@ -137,26 +153,105 @@ class CustomerController extends Controller
             'district' => $request->input('district'),
             'department' => $request->input('department'),
             'remark' => $request->input('remark'),
+            'type' => $request->input('type'),
+            'referred_name' => $request->input('referred_name'),
+            'referred_phone' => $request->input('referred_phone'),
+            'region' => $request->input('region'),
+            'region_level' => $request->input('region_level'),
+            'responsible' => $request->input('responsible'),
+            'hospital_level' => $request->input('hospital_level'),
+            'phone' => $request->input('phone'),
         ]);
 
-        if ($request->has('beans_total')) {
+        if ($request->has('beans_total') && $customer) {
             $customer->update([
                 'beans_total' => $request->input('beans_total'),
             ]);
         }
 
-        if ($request->has('type_id')) {
+        if ($request->has('type_id') && $customer) {
             $customer->update([
                 'type_id' => $request->input('type_id')
             ]);
         }
 
-        return response()->json([
-            'success' => true,
-            'data' => [
-                'customer' => $customer->with('information')
-            ]
+        if ($customer) {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'customer' => $customer->with('information')
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'customer' => null
+                ]
+            ]);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        $customerInformation = CustomerInformation::create([
+            'name' => $request->input('name'),
+            'hospital' => $request->input('hospital'),
+            'province' => $request->input('province'),
+            'city' => $request->input('city'),
+            'district' => $request->input('district'),
+            'department' => $request->input('department'),
+            'remark' => $request->input('remark'),
+            'type' => $request->input('type'),
+            'referred_name' => $request->input('referred_name'),
+            'referred_phone' => $request->input('referred_phone'),
+            'region' => $request->input('region'),
+            'region_level' => $request->input('region_level'),
+            'responsible' => $request->input('responsible'),
+            'hospital_level' => $request->input('hospital_level'),
+            'phone' => $request->input('phone'),
         ]);
+
+        if($inputPhone = $request->input('phone')) {
+            $customer = Customer::where('phone', $inputPhone)->first();
+            if ($customer) {
+                $customerInformation->update([
+                    'customer_id' => $customer->id,
+                ]);
+            } else {
+                $customerInformation->update([
+                    'customer_id' => null,
+                ]);
+            }
+        }
+
+        if ($request->has('beans_total') && $customer) {
+            $customer->update([
+                'beans_total' => $request->input('beans_total'),
+            ]);
+        }
+
+        if ($request->has('type_id') && $customer) {
+            $customer->update([
+                'type_id' => $request->input('type_id')
+            ]);
+        }
+
+        if ($customer) {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'customer' => $customer->with('information')
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'customer' => null
+                ]
+            ]);
+        }
     }
 
     public function minusBeans(Request $request)
@@ -167,5 +262,52 @@ class CustomerController extends Controller
         return $customer->minusBeansByHand($amount);
     }
 
+    public function lowerList(Request $request)
+    {
+        $customer_id = $request->input('customer_id');
+        $customer = Customer::findOrFail($customer_id);
+
+        // $lower_list = Customer::with(['yikangQuestionnaire', 'orders'])->where('referrer_id', $customer->id);
+        // $lower_list = \DB::table('customers')
+        //     ->leftJoin('yikang_questionnaires', 'customers.id', '=', 'yikang_questionnaires.customer_id')
+        //     ->leftJoin('orders', 'customers.id', '=', 'orders.customer_id')
+        //     ->where('customers.referrer_id', $customer->id)
+        //     ->select('customers.*', 'orders.*');
+
+        $lower_list = \DB::select(\DB::raw('
+    SELECT tmp1.*, tmp2.* FROM
+    (
+        SELECT 
+            lowers.*, yikang_questionnaires.id as questionnaire_id, yikang_questionnaires.q1, yikang_questionnaires.q1b, yikang_questionnaires.q2, yikang_questionnaires.q2b, yikang_questionnaires.q3, yikang_questionnaires.q3a, yikang_questionnaires.q3b, yikang_questionnaires.q3c, yikang_questionnaires.q3d, yikang_questionnaires.q3d2, yikang_questionnaires.q3e, yikang_questionnaires.q4
+        FROM 
+            (SELECT * FROM customers WHERE referrer_id = '.$customer->id.') lowers 
+        LEFT JOIN
+            yikang_questionnaires
+        ON lowers.id = yikang_questionnaires.customer_id
+    ) tmp1
+    LEFT JOIN 
+    (   
+        SELECT 
+            customer_id, sum(cash_payment) as lower_cash_payment_sum, sum(beans_payment) as lower_beans_payment_sum
+        FROM
+            orders
+        WHERE
+            customer_id IN (SELECT id FROM customers WHERE referrer_id = '.$customer->id.')
+        GROUP BY
+            customer_id
+    ) tmp2
+    ON 
+        tmp1.id = tmp2.customer_id
+        '));
+
+        dd($lower_list);
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'lower_list' => $lower_list->get()
+            ]
+        ]); 
+    }
 
 }
