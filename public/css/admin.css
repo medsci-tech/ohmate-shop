@@ -1,4 +1,5 @@
 @import url(bootstrap.min.css);
+@import url(/vendor/bootstrap-theme/bootstrap-theme-paper.min.css);
 @import url(buttons.css);
 @import url(font-awesome.min.css);
 [v-cloak] {
@@ -46,13 +47,18 @@ body {
     position: fixed;
     top: 0;
     bottom: 0;
-    padding: 60px 0 0 0;
-    background-color: #eee; }
+    padding: 66px 0 0 0;
+    background-color: #fafafa; 
+    border-right: 1.5px solid #eee;
+    }
+    #index .sidebar a {
+      border-radius: 2px;
+    }
     #index .sidebar .active a, #index .sidebar .active a:hover {
-      background-color: #337ab7;
+      background-color: #0c84e4;
       color: #fff; }
     #index .sidebar a:hover {
-      background-color: #5bc0de;
+      background-color: #5cd4ff;
       color: #fff; }
   #index .main {
     margin-bottom: 60px;
@@ -75,12 +81,18 @@ body {
     width: 95%; }
   #index .modal-content {
     margin-bottom: 20px; }
+  #index .modal-header {
+    border-bottom: 1px solid #eee;
+  }
   #index .modal-body {
     padding: 0; }
     #index .modal-body .form-group #province, #index .modal-body .form-group #city, #index .modal-body .form-group #area {
       margin-bottom: 5px; }
     #index .modal-body .table {
       margin-bottom: 0; }
+  #index .modal-body label{
+     font-weight: bold;
+  }
   #index .dropdown {
     position: inherit;}
     #index .dropdown .dropdown-menu {

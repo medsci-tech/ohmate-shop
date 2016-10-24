@@ -7,6 +7,7 @@
   <title>易康伴侣-上传医生表单</title>
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="{{asset('/')}}css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{asset('/')}}vendor/bootstrap-theme/bootstrap-theme-paper.min.css">
 
 
 </head>

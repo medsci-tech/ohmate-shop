@@ -77,6 +77,14 @@ var index = new Vue({
       department: '',
       type_id: '',
       remark: '',
+      type: '',
+      referred_name: '',
+      referred_phone: '',
+      region: '',
+      region_level: '',
+      responsible: '',
+      hospital_level: '',
+      phone: '',
     },
     other_info: {
       statistics: {friend_count: 0},
@@ -85,30 +93,51 @@ var index = new Vue({
       nickname: '',
       beans_total: 0,
       qr_code: '',
-      invited: {
+      patient: {
         page_all: 3,
         page_active: 2,
         page_num: 20,
         page_data: [{
-          id: 1,
+          poen_id: 1,
           phone: '',
           time: ''
         }]
       },
-      beans: {
-        page_all: 3,
-        page_active: 2,
-        page_num: 20,
-        page_data: [{
-          time: '',
-          action: '',
-          result: ''
-        }]
-      }
+      // beans: {
+      //   page_all: 3,
+      //   page_active: 2,
+      //   page_num: 20,
+      //   page_data: [{
+      //     time: '',
+      //     action: '',
+      //     result: ''
+      //   }]
+      // },
+      focus_count:'',
+      register_count:'',
+      questionnaire_count:''
     },
 
     this_person_cache: '',
     beans_edit: 0,
+    add_doctor: {
+      name: '',
+      hospital: '',
+      province: '',
+      city: '',
+      district: '',
+      department: '',
+      type_id: '',
+      remark: '',
+      type: '',
+      referred_name: '',
+      referred_phone: '',
+      region: '',
+      region_level: '',
+      responsible: '',
+      hospital_level: '',
+      phone: '',
+    },
   },
   computed: {
     page_show: function () {
@@ -141,6 +170,7 @@ var index = new Vue({
       if (index.searching.user_type == '普通用户') return '/customer/search?type_id=1';
       if (index.searching.user_type == '企业用户') return '/customer/search?type_id=5';
       if (index.searching.user_type == '所有用户') return '/customer/search';
+      if (index.searching.user_type == 'A类医生') return '/customer/search-for-type-a?force_search=1';
     },
   }
   ,
@@ -148,7 +178,7 @@ var index = new Vue({
   methods: {
     choose_data: function (e) {
       var name = e.target.innerHTML;
-      if (name == '医生') {
+      if (name == '医生' || name == '<a href="#doctor">医生</a>' ) {
         index.data_head = {
           id: '#',
           name: '姓名',
@@ -161,7 +191,7 @@ var index = new Vue({
         };
         index.searching.user_type = '医生';
       }
-      if (name == '护士') {
+      if (name == '护士' || name == '<a href="#nurse">护士</a>' ) {
         index.data_head = {
           id: '#',
           name: '姓名',
@@ -174,7 +204,7 @@ var index = new Vue({
         };
         index.searching.user_type = '护士';
       }
-      if (name == '志愿者') {
+      if (name == '志愿者' || name == '<a href="#volunteer">志愿者</a>' ) {
         index.data_head = {
           id: '#',
           name: '姓名',
@@ -187,7 +217,7 @@ var index = new Vue({
         };
         index.searching.user_type = '志愿者';
       }
-      if (name == '普通用户') {
+      if (name == '普通用户' || name == '<a href="#common">普通用户</a>' ) {
         index.data_head = {
           id: '#',
           name: '姓名',
@@ -200,7 +230,7 @@ var index = new Vue({
         };
         index.searching.user_type = '普通用户';
       }
-      if (name == '企业用户') {
+      if (name == '企业用户' || name == '<a href="#enterprise">企业用户</a>' ) {
         index.data_head = {
           id: '#',
           name: '姓名',
@@ -213,7 +243,7 @@ var index = new Vue({
         };
         index.searching.user_type = '企业用户';
       }
-      if (name == '所有用户') {
+      if (name == '所有用户' || name == '<a href="#all">所有用户</a>' ) {
         index.data_head = {
           id: '#',
           name: '姓名',
@@ -225,6 +255,25 @@ var index = new Vue({
           qr_code: '二维码'
         };
         index.searching.user_type = '所有用户';
+      }
+      if (name == 'A类医生' || name == '<a href="#doctor_a">A类医生</a>' ) {
+        index.data_head = {
+          id: '#',
+          type: '类别',
+          name: '姓名',
+          phone: '手机号',
+          address: '地址',
+          hospital: '医院',
+          region: '所在大区',
+          referred_name: '推荐代表',
+          invited: '邀请糖友数',
+          beans: '迈豆数',
+          focus_count: '关注数',
+          register_count: '注册数',
+          questionnaire_count: '问卷数',
+          qr_code: '二维码',
+        };
+        index.searching.user_type = 'A类医生';
       }
       $.get(index.get_url,
         {},
@@ -238,49 +287,49 @@ var index = new Vue({
           }
         },
         'json'
-      );
+        );
     }
     ,
     choose_page: function (e) {
       var page_num = e.target.getAttribute('name');
       switch (page_num) {
         case 'pre':
-          page_num = this.page_active - 1;
-          break;
+        page_num = this.page_active - 1;
+        break;
         case 'pre5':
-          if (this.page_active - 5 > 0) {
-            page_num = this.page_active - 5;
-          } else {
-            page_num = 1;
-          }
-          break;
+        if (this.page_active - 5 > 0) {
+          page_num = this.page_active - 5;
+        } else {
+          page_num = 1;
+        }
+        break;
         case 'next':
-          page_num = this.page_active + 1;
-          break;
+        page_num = this.page_active + 1;
+        break;
         case 'next5':
-          if (this.page_active + 4 < this.page_all) {
-            page_num = this.page_active + 5;
-          } else {
-            page_num = this.page_all;
-          }
-          break;
+        if (this.page_active + 4 < this.page_all) {
+          page_num = this.page_active + 5;
+        } else {
+          page_num = this.page_all;
+        }
+        break;
         default:
-          page_num = e.target.innerHTML;
-          break;
+        page_num = e.target.innerHTML;
+        break;
       }
       $.get(index.get_url,
-        {
-          page: page_num,
-          key: index.searched
-        },
-        function (data) {
-          if (data.success) {
-            index.page_active = data.data.customers.current_page;
-            index.page_data = data.data.customers.data;
-            index.$nextTick(initialize_popover);
-          }
-        },
-        'json'
+      {
+        page: page_num,
+        key: index.searched
+      },
+      function (data) {
+        if (data.success) {
+          index.page_active = data.data.customers.current_page;
+          index.page_data = data.data.customers.data;
+          index.$nextTick(initialize_popover);
+        }
+      },
+      'json'
       )
     }
     ,
@@ -288,39 +337,39 @@ var index = new Vue({
       var page_num = e.target.getAttribute('name');
       switch (page_num) {
         case 'pre':
-          page_num = this.page_active - 1;
-          break;
+        page_num = this.page_active - 1;
+        break;
         case 'pre5':
-          if (this.page_active - 5 > 0) {
-            page_num = this.page_active - 5;
-          } else {
-            page_num = 1;
-          }
-          break;
+        if (this.page_active - 5 > 0) {
+          page_num = this.page_active - 5;
+        } else {
+          page_num = 1;
+        }
+        break;
         case 'next':
-          page_num = this.page_active + 1;
-          break;
+        page_num = this.page_active + 1;
+        break;
         case 'next5':
-          if (this.page_active + 4 < this.page_all) {
-            page_num = this.page_active + 5;
-          } else {
-            page_num = this.page_all;
-          }
-          break;
+        if (this.page_active + 4 < this.page_all) {
+          page_num = this.page_active + 5;
+        } else {
+          page_num = this.page_all;
+        }
+        break;
         default:
-          page_num = e.target.innerHTML;
-          break;
+        page_num = e.target.innerHTML;
+        break;
       }
       $.get('/customer/invited',
-        {
-          id: this.this_person.id,
-          page: this.this_person.invited.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.this_person.invited.page_data = data.data
-          }
+      {
+        id: this.this_person.id,
+        page: this.this_person.invited.page_num
+      },
+      function (data) {
+        if (data.success) {
+          this.this_person.invited.page_data = data.data
         }
+      }
       );
     }
     ,
@@ -328,57 +377,57 @@ var index = new Vue({
       var page_num = e.target.getAttribute('name');
       switch (page_num) {
         case 'pre':
-          page_num = this.page_active - 1;
-          break;
+        page_num = this.page_active - 1;
+        break;
         case 'pre5':
-          if (this.page_active - 5 > 0) {
-            page_num = this.page_active - 5;
-          } else {
-            page_num = 1;
-          }
-          break;
+        if (this.page_active - 5 > 0) {
+          page_num = this.page_active - 5;
+        } else {
+          page_num = 1;
+        }
+        break;
         case 'next':
-          page_num = this.page_active + 1;
-          break;
+        page_num = this.page_active + 1;
+        break;
         case 'next5':
-          if (this.page_active + 4 < this.page_all) {
-            page_num = this.page_active + 5;
-          } else {
-            page_num = this.page_all;
-          }
-          break;
+        if (this.page_active + 4 < this.page_all) {
+          page_num = this.page_active + 5;
+        } else {
+          page_num = this.page_all;
+        }
+        break;
         default:
-          page_num = e.target.innerHTML;
-          break;
+        page_num = e.target.innerHTML;
+        break;
       }
       $.get('/customer/beans',
-        {
-          id: this.this_person.id,
-          page: this.this_person.beans.page_num
-        },
-        function (data) {
-          if (data.success) {
-            this.this_person.beans.page_data = data.data
-          }
+      {
+        id: this.this_person.id,
+        page: this.this_person.beans.page_num
+      },
+      function (data) {
+        if (data.success) {
+          this.this_person.beans.page_data = data.data
         }
+      }
       );
     }
     ,
     search: function () {
       $.get(index.get_url,
-        {
-          key: this.searching.detail
-        },
-        function (data) {
-          if (data.success) {
-            index.searched = index.searching.detail;
-            index.page_all = data.data.customers.last_page;
-            index.page_active = data.data.customers.current_page;
-            index.page_data = data.data.customers.data;
-            index.$nextTick(initialize_popover);
-          }
-        },
-        'json'
+      {
+        key: this.searching.detail
+      },
+      function (data) {
+        if (data.success) {
+          index.searched = index.searching.detail;
+          index.page_all = data.data.customers.last_page;
+          index.page_active = data.data.customers.current_page;
+          index.page_data = data.data.customers.data;
+          index.$nextTick(initialize_popover);
+        }
+      },
+      'json'
       )
     }
     ,
@@ -389,12 +438,20 @@ var index = new Vue({
       if (e.information) {
         with (this.this_person) {
           name = e.information.name;
+          phone = e.information.phone;
           hospital = e.information.hospital;
           province = e.information.province;
           city = e.information.city;
           district = e.information.district;
           remark = e.information.remark;
           department = e.information.department;
+          type= e.information.type;
+          referred_name= e.information.referred_name;
+          referred_phone= e.information.referred_phone;
+          region= e.information.region;
+          region_level= e.information.region_level;
+          responsible= e.information.responsible;
+          hospital_level= e.information.hospital_level;
         }
       } else {
         with (this.this_person) {
@@ -405,6 +462,14 @@ var index = new Vue({
           district = '';
           remark = '';
           department = '';
+          type= '';
+          referred_name= '';
+          referred_phone= '';
+          region= '';
+          region_level= '';
+          responsible= '';
+          hospital_level= '';
+          phone= '';
         }
       }
       with (this.other_info) {
@@ -412,6 +477,9 @@ var index = new Vue({
         nickname = e.nickname;
         beans_total = e.beans_total;
         qr_code = e.qr_code;
+        focus_count= e.focus_count;
+        register_count= e.register_count;
+        questionnaire_count= e.questionnaire_count;
       }
       if (index.this_person.province != '') {
         $('#province').val(index.this_person.province);
@@ -491,17 +559,17 @@ var index = new Vue({
         function (data) {
           if (data.success) {
             $.get(index.get_url,
-              {
-                page: index.page_active,
-                key: index.searching.detail
-              },
-              function (data) {
-                if (data.success) {
-                  index.page_data = data.data.customers.data;
-                  index.$nextTick(initialize_popover);
-                }
-              },
-              'json'
+            {
+              page: index.page_active,
+              key: index.searching.detail
+            },
+            function (data) {
+              if (data.success) {
+                index.page_data = data.data.customers.data;
+                index.$nextTick(initialize_popover);
+              }
+            },
+            'json'
             );
             $('#user_card p').toggleClass('hide');
             $('#user_card button').toggleClass('hide');
@@ -509,8 +577,87 @@ var index = new Vue({
             $('#beans_edit').toggleClass('hide');
           }
         }, 'json'
-      );
-    }
+        );
+    },
+    addDoctorA: function(){
+      // $('.modal').modal('hide');
+      $('#addDoctorAModal').modal('show');
+    },
+    cancelAdd: function(){
+      $('#addDoctorAModal').modal('hide');
+      index.add_doctor = '';
+    },
+    submitAdd: function(){
+      $.post('/customer/create-information', this.add_doctor,
+        function (data) {
+          if (data.success) {
+            $.get(index.get_url,
+            {
+              page: index.page_active,
+              key: index.searching.detail
+            },
+            function (data) {
+              if (data.success) {
+                index.page_data = data.data.customers.data;
+                index.$nextTick(initialize_popover);
+                index.add_doctor = '';
+                $('#addDoctorAModal').modal('hide');
+              }
+            },
+            'json'
+            );
+          }
+        }, 'json'
+        );
+    },
+    showPatient: function(e){
+      // $('.modal').modal('hied');
+      index.this_person.name = e.information.name;
+      $.get('/customer/lower_list?customer_id='+e.id,{},
+      function (data) {
+        index.other_info.patient.page_data = data.data.lower_list;
+        index.$nextTick(initialize_popover);
+        $('#patientModal').modal('show');
+      });
+    },
+    // choose_page_patient: function (e) {
+    //   var page_num = e.target.getAttribute('name');
+    //   switch (page_num) {
+    //     case 'pre':
+    //     page_num = this.other_info.patient.page_active - 1;
+    //     break;
+    //     case 'pre5':
+    //     if (this.other_info.patient.page_active - 5 > 0) {
+    //       page_num = this.other_info.patient.page_active - 5;
+    //     } else {
+    //       page_num = 1;
+    //     }
+    //     break;
+    //     case 'next':
+    //     page_num = this.other_info.patient.page_active + 1;
+    //     break;
+    //     case 'next5':
+    //     if (this.other_info.patient.page_active + 4 < this.other_info.patient.page_all) {
+    //       page_num = this.other_info.patient.page_active + 5;
+    //     } else {
+    //       page_num = this.other_info.patient.page_all;
+    //     }
+    //     break;
+    //     default:
+    //     page_num = e.target.innerHTML;
+    //     break;
+    //   }
+    //   $.get('/customer/beans',
+    //   {
+    //     page: this.other_info.patient.page_num
+    //   },
+    //   function (data) {
+    //     if (data.success) {
+    //       this.other_info.patient.page_data = data.data
+    //     }
+    //   }
+    //   );
+    // }
   }
 });
 
@@ -518,30 +665,35 @@ var index = new Vue({
 var click_btn = location.hash;
 switch (click_btn) {
   case '#doctor':
-    index.searching.user_type = '医生';
-    break;
+  index.searching.user_type = '医生';
+  break;
   case '#volunteer':
-    index.searching.user_type = '志愿者';
-    break;
+  index.searching.user_type = '志愿者';
+  break;
   case '#nurse':
-    index.searching.user_type = '护士';
-    break;
+  index.searching.user_type = '护士';
+  break;
   case '#common':
-    index.searching.user_type = '普通用户';
-    break;
+  index.searching.user_type = '普通用户';
+  break;
   case '#enterprise':
-    index.searching.user_type = '企业用户';
-    break;
+  index.searching.user_type = '企业用户';
+  break;
+  case '#all':
+  index.searching.user_type = '所有用户';
+  break;
+  case '#doctor_a':
+  index.searching.user_type = 'A类医生';
+  break;
   default :
-    index.searching.user_type = '医生';
-    click_btn = '#doctor';
-    break;
+  index.searching.user_type = '医生';
+  click_btn = '#doctor';
+  break;
 }
-$(click_btn).trigger('click');
 
 $('.nav').children().eq(0).children().addClass('active');
 
-
+$(click_btn).trigger('click');
 
 
 

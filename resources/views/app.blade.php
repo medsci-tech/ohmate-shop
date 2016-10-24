@@ -10,7 +10,7 @@
   <title>易康伴侣-后台</title>
   <link rel="shortcut icon" href="/favicon.ico">
 
-    <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
     @yield('css')
 </head>
 <body id="index">
