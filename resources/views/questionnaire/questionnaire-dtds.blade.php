@@ -226,57 +226,6 @@
           </div>
         </div>
 
-        <div class="swiper-slide swiper-no-swiping" v-for="question in checkbox" id="@{{question.id}}">
-          <br>
-
-          <div class=" text-center question-number">
-            <div><span>@{{ question.number_zhCN }}</span></div>
-          </div>
-
-          <p class="text-center question-name">
-            <span>@{{ question.name_zhCN }}</span>
-          </p>
-          <img class="question-line" src="image/questionnaire/线.png" alt="">
-
-          <div class="container">
-            <div class="form-group"></div>
-            <div class="form-group" v-for="(index,options) in question.option">
-              <div class="row">
-                <div class="col-xs-4 checkbox-heading">
-                  <div>@{{ index }}:</div>
-                </div>
-                <div class="col-xs-8 checkbox-content">
-                  <label v-for="option in options">
-                    <div class="btn btn-primary" :class="(question.checked_items.indexOf(option)>-1) ? 'choosen' : ''">@{{
-                    option }}
-                    </div>
-                    <input class="hidden" type="checkbox" name="@{{question.id}}[]" v-model="question.checked_items" value="@{{ option }}">
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <button @click="preview(question)" v-if="question.preview" type="button" class="btn btn-primary btn-block">上一题</button>
-          </div>
-          <div class="col-xs-6">
-            <button @click="next(question)" v-if="question.next&&(question.checked_items.length!=0)" type="button"
-            class="btn btn-primary btn-block">
-            下一题
-            </button>
-          </div>
-          <div class="col-xs-6">
-            <button v-if="!question.next&&(question.checked_items.length!=0)" @click.prevent="submit" type="submit" 
-                    class="btn btn-primary btn-block">提交
-            </button>
-          </div>
-          <div class="col-xs-6">
-            <button v-if="!question.preview&&(question.checked_items.length==0)" type="button"
-                    class="btn btn-primary btn-block fade">占位
-            </button>
-          </div>
-          <div class="clear-fix">
-        </div>
       </div>
     </div>
     <br>
@@ -428,7 +377,7 @@
             alert('恭喜您,答题成功!');
             window.location.href="/shop/yiyuan-index"; 
           } else {
-            alert('正确数少于3个,请重新答题!');
+            alert('答题正确数少于3个,请重新答题!');
             history.go(0);
           }
         }
