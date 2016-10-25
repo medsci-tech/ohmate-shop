@@ -161,13 +161,16 @@
           <img class="question-line" src="/image/questionnaire/线.png" alt="">
 
           <div class="container" style="background-color: rgba(47, 168, 255, 0.8);">
-            <img style="width: 100%; margin-top: -30px;" src="/image/questionnaire/WDFlogo.png" alt="">
-            <p style="flood-color: #aaa">欢迎您参与世界糖尿病基金会在中国发起的城镇化糖尿病移动教育项目(项目编号:WDF14-922)并关注"易康伴侣"健康平台。您可以在平台浏览糖尿病相关知识，并可以通过学习获取积分奖励，兑换包括胰岛素针头在内的各种健康产品。
-              <br>现在，我们邀请您花一分钟时间填写一份问卷，只需要不超过5步，就可以领取一份健康小礼品哟~</p>
+            <h4 style="text-align: center; font-weight: bold;">一言不合，斗你玩！</h4>
+            <p style="flood-color: #aaa;">
+            <br>为普及糖尿病知识，提高大众对糖尿病认知水平，易康伴侣现发起全民“斗糖大赛”活动，邀您参与。
+            <br><br>每次5道题，答对3题及以上即可开启换购，支付1到3元不等即可换购对应商品，易折棉棒、低糖卫士、胰岛素针头等你领取。
+            <br><br>新用户首次参加答题换购，免邮费。老用户参与需支付8元邮费，所有人第二次参与均需支付邮费，参与次数上不封顶哦。
+            </p>
           </div>
           <div class="col-xs-12">
             <button @click="start" type="button" class="btn btn-primary btn-block">
-            答题领好礼
+            开始斗糖
             </button>
           </div>
         </div>
@@ -374,10 +377,10 @@
             } 
           }
           if (right>=3){
-            alert('恭喜您,答题成功!');
+            alert('恭喜您,斗糖成功!');
             window.location.href="/shop/yiyuan-index"; 
           } else {
-            alert('答题正确数少于3个,请重新答题!');
+            alert('您错的太多了,请再试试吧');
             history.go(0);
           }
         }
