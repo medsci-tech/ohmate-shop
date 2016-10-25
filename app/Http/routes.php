@@ -213,6 +213,12 @@ Route::group(['prefix' => 'questionnaire2', 'middleware' => 'web', 'namespace' =
     Route::post('/', 'YikangQuestionnaireController@result'); 
 });
 
+Route::group(['prefix' => 'questionnaire3', 'middleware' => 'web', 'namespace' => 'Questionnaire'], function () {
+    Route::get('/', 'DtQuestionnaireController@index');
+    Route::get('/questions', 'DtQuestionnaireController@questions');
+    Route::post('/', 'DtQuestionnaireController@result'); 
+});
+
 Route::get('daily-report', 'Hack\HackController@a');
 
 
