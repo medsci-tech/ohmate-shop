@@ -240,7 +240,9 @@ class Wechat
 					$this->moveUserToGroup($openId, 103);//移动用户分组
 					return Message::make('text')->content("嗨！欢迎关注小易，我们有全面及时的糖尿病教育资讯和便捷丰富的在线商城。首次注册即赠送价值10元的迈豆，持续学习迈豆享不停，快来尽情换购吧\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire2/\">点击此处，快来1元换购胰岛素针头！</a>");
                 
-				}else{
+				}elseif($eventKey == 'qrscene_25005'){
+          return Message::make('text')->content("亲爱的用户：欢迎您关注易康伴侣，为普及糖尿病知识，提高大众对糖尿病认知水平，易康伴侣现发起全民“斗糖大赛”活动，邀您参与。每次5道题，答对3题及以上即可开启换购，支付1到3元不等即可换购对应商品，易折棉棒、低糖卫士、胰岛素针头等您领取。<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire3/\">点击此处</a>，立即斗起来！");
+        }else{
 					\Log::info('test 2:::---' . $event);
 					return Message::make('text')->content('欢迎您回来!');
 				}
