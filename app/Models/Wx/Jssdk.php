@@ -53,7 +53,7 @@ class Jssdk {
       $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
       $res = json_decode($this->httpGet($url));
 	  // print_r($res);die; 
-      $ticket = $res->ticket;
+      $ticket = $res['ticket'];
       if ($ticket) {
         $data->expire_time = time() + 7000;
         $data->jsapi_ticket = $ticket;
