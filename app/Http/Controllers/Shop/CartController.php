@@ -16,10 +16,10 @@ class CartController extends Controller
 
     public function yiyuanIndex()
     {
-		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
-		 $signPackage = $jssdk->getSignPackage();
+//		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
+//		 $signPackage = $jssdk->getSignPackage();
         return view('shop.yiyuan-cart')->with([
-			'signPackage' => $signPackage
+//			'signPackage' => $signPackage
         ]);
     }
 
