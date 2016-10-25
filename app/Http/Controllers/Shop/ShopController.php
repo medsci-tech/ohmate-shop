@@ -39,11 +39,11 @@ class ShopController extends Controller
    //      }
 
 		// \Log::info('yiyuan---进入一元专区' ); 
-		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
-		 $signPackage = $jssdk->getSignPackage();
+//		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
+//		 $signPackage = $jssdk->getSignPackage();
         return view('shop.yiyuan-index')->with([
             'items' => Commodity::where('special_sale', '=', '1元专区')->with('images')->orderBy('priority', 'desc')->get(),
-			'signPackage' => $signPackage
+//			'signPackage' => $signPackage
         ]);
     }
 }
