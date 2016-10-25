@@ -93,6 +93,7 @@
     .option-content {
       min-height: 34px;
       padding-top: 5px;
+      padding-bottom: 5px;
       display: inline-block;
       border: 1px solid #fff;
       background-color: #337ab7;
@@ -188,19 +189,19 @@
 
           <div class="container">
             <div class="form-group"></div>
-            <div class="form-group" v-for="option in question.option">
+            <div class="form-group" v-for="(letter,option) in question.option">
               <label for="@{{question.id}}_c@{{$index+1}}">
                 <div class="option-heading col-xs-2">
-                  <div :class=" question.value==option ? 'choosen' : '' ">@{{{'&#'+(65+ $index)+';'}}}</div>
+                  <div :class=" question.value==letter ? 'choosen' : '' ">@{{{'&#'+(65+ $index)+';'}}}</div>
                 </div>
-                <div class="option-content col-xs-10" :class=" question.value==option ? 'choosen' : '' ">
+                <div class="option-content col-xs-10" :class=" question.value==letter ? 'choosen' : '' ">
                   <span>@{{option}}</span>
                   <img v-if="question.option_img&&question.option_img[$index]" class="" :src="'/image/questionnaire/'+question.option_img[$index]" alt="">
                 </div>
               </label>
               <input class="hidden" type="radio" name="@{{question.id}}" id="@{{question.id}}_c@{{$index+1}}"
                      v-model="question.value"
-                     value="@{{option}}">
+                     value="@{{letter}}">
             </div>
           </div>
           <div class="col-xs-6">
@@ -209,13 +210,13 @@
             </button>
           </div>
           <div class="col-xs-6">
-            <button @click="next(question)" v-if="question.next[question.option.indexOf(question.value)]&&question.value"
+            <button @click="next(question)" v-if="question.next&&question.value"
             type="button" class="btn btn-primary btn-block">
             下一题
             </button>
           </div>
           <div class="col-xs-6">
-            <button v-if="!question.next[question.option.indexOf(question.value)]&&question.value" type="submit"
+            <button v-if="!question.next&&question.value" @click.prevent="submit" type="submit"
                     class="btn btn-primary btn-block">提交
             </button>
           </div>
@@ -224,6 +225,7 @@
             </button>
           </div>
         </div>
+
         <div class="swiper-slide swiper-no-swiping" v-for="question in checkbox" id="@{{question.id}}">
           <br>
 
@@ -264,7 +266,7 @@
             </button>
           </div>
           <div class="col-xs-6">
-            <button v-if="!question.next&&(question.checked_items.length!=0)" type="submit"
+            <button v-if="!question.next&&(question.checked_items.length!=0)" @click.prevent="submit" type="submit" 
                     class="btn btn-primary btn-block">提交
             </button>
           </div>
@@ -285,6 +287,29 @@
   <script src="{{asset('/')}}vendor/swiper/swiper-3.3.0.min.js"></script>
 
   <script>
+    var question_data = [];
+
+    $.ajaxSetup({
+        async : false
+    }); 
+
+    $.get('/questionnaire3/questions',{},function(data){
+      if(data){
+        for ( item in data ){
+          question_data.push(data[item]);
+        }
+      }
+    });
+
+    var question_length = question_data.length;
+
+    for(i=0; i<question_length; i++){
+      question_data[i].length = 0;
+      for( item in question_data[i].answer){
+        question_data[i].length ++;
+      }
+    }
+
     var vm = new Vue({
       el: "#questionnaire",
       data: {
@@ -292,113 +317,72 @@
           {
             id: 'q1',
             number_zhCN: '一',
-            name_zhCN: '请选择您的糖尿病治疗方式',
-            option: ['注射胰岛素', '口服药等其他治疗方式'],
-            option_img: ['诺和笔.png', '糖果.png'],
+            name_zhCN: question_data[0].question,
+            option: question_data[0].answer,
+            option_img: null,
             preview: null,
-            next: ['q2', 'q1b'],
+            next: 'q2',
             value: null
-          }, {
+          },
+          {
             id: 'q2',
             number_zhCN: '二',
-            name_zhCN: '请选择胰岛素注射起始时间',
-            option: ['我是一周内开始首次使用', '既往停用后重新开始使用', '使用超过一周', '已停用'],
+            name_zhCN: question_data[1].question,
+            option: question_data[1].answer,
             option_img: null,
             preview: null,
-            next: ['q3', 'q3', 'q3', null],
+            next: 'q3',
             value: null
-          }, {
+          },
+          {
             id: 'q3',
             number_zhCN: '三',
-            name_zhCN: '请选择您正在使用的胰岛素治疗方案',
-            option: ['一天1针', '一天2针', '一天3针', '一天4针', '胰岛素泵'],
+            name_zhCN: question_data[2].question,
+            option: question_data[2].answer,
             option_img: null,
             preview: null,
-            next: ['q3a', 'q3b', 'q3c', 'q3d', 'q3e'],
+            next: 'q4',
             value: null
-          }, {
-            id: 'q3a',
-            number_zhCN: 'A',
-            name_zhCN: '一天1针',
-            option: ['诺和锐30', '诺和平', '诺和力', '来得时', '长秀霖', '诺和灵系列', '其他'],
-            option_img: ['诺和锐30.png', '诺和平.png', '诺和力.png', '来得时.png', '长秀霖.png', '诺和灵系列.png', null],
-            preview: null,
-            next: ['q4', 'q4', 'q4', 'q4', 'q4', 'q4', 'q4'],
-            value: null
-          }, {
-            id: 'q3b',
-            number_zhCN: 'B',
-            name_zhCN: '一天2针',
-            option: ['诺和锐30&50', '优泌乐25&50', '百泌达', '诺和灵系列', '其他'],
-            option_img: ['诺和锐30&50.png', '优泌乐25&50.png', '百泌达.png', '诺和灵系列.png', null],
-            preview: null,
-            next: ['q4', 'q4', 'q4', 'q4', 'q4'],
-            value: null
-          }, {
-            id: 'q3c',
-            number_zhCN: 'C',
-            name_zhCN: '一天3针',
-            option: ['诺和锐30&50', '诺和锐', '优泌乐25&50', '诺和灵系列', '其他'],
-            option_img: ['诺和锐30&50.png', '诺和锐.png', '优泌乐25&50.png', '诺和灵系列.png', null],
-            preview: null,
-            next: ['q4', 'q4', 'q4', 'q4', 'q4'],
-            value: null
-          }, {
-            id: 'q3d',
-            number_zhCN: 'D',
-            name_zhCN: '一天4针',
-            option: ['诺和锐', '优泌乐', '诺和灵系列', '其他'],
-            option_img: ['诺和锐.png', '优泌乐.png', '诺和灵系列.png', null],
-            preview: null,
-            next: ['q3d2', 'q3d2', 'q4', 'q4'],
-            value: null
-          }, {
-            id: 'q3d2',
-            number_zhCN: 'D',
-            name_zhCN: '一天4针',
-            option: ['来得时', '长秀霖', '诺和平'],
-            option_img: ['来得时.png', '长秀霖.png', '诺和平.png'],
-            preview: 'q3d',
-            next: ['q4', 'q4', 'q4'],
-            value: null
-          }, {
-            id: 'q3e',
-            number_zhCN: 'E',
-            name_zhCN: '胰岛素泵',
-            option: ['诺和锐', '优泌乐', '其他'],
-            option_img: ['诺和锐.png', '优泌乐.png', null],
-            preview: null,
-            next: ['q4', 'q4', 'q4'],
-            value: null
-          }, {
+          },
+          {
             id: 'q4',
             number_zhCN: '四',
-            name_zhCN: '您认为应该多长时间更换一次针头',
-            option: ['每次注射都需要更换', '每天更换一次', '3-5天更换一次', '更换胰岛素笔芯时更换'],
+            name_zhCN: question_data[3].question,
+            option: question_data[3].answer,
             option_img: null,
             preview: null,
-            next: [null, null, null, null],
+            next: 'q5',
             value: null
-          }
+          },
+          {
+            id: 'q5',
+            number_zhCN: '五',
+            name_zhCN: question_data[4].question,
+            option: question_data[4].answer,
+            option_img: null,
+            preview: null,
+            next: null,
+            value: null
+          },
         ],
         checkbox: [
-          {
-            id: 'q1b',
-            number_zhCN: '二',
-            name_zhCN: '口服药物等其它治疗方式(多选)',
-            option: {
-              '阿卡波糖': ['拜糖平', '卡博平', '贝希'],
-              '二甲双胍': ['格华止', '利龄', '信谊'],
-              '瑞格列奈': ['诺和龙', '孚来迪'],
-              '格列美脲': ['亚莫利', '万苏平', '林美欣'],
-              '伏格列波糖': ['倍欣', '家能', '安立泰'],
-              '其他': ['其他']
-            },
-            option_img: null,
-            checked_items: [],
-            preview: 'q1',
-            next: null
-          }
+          // {
+          //   id: 'q1b',
+          //   number_zhCN: '二',
+          //   name_zhCN: '口服药物等其它治疗方式(多选)',
+          //   option: {
+          //     '阿卡波糖': ['拜糖平', '卡博平', '贝希'],
+          //     '二甲双胍': ['格华止', '利龄', '信谊'],
+          //     '瑞格列奈': ['诺和龙', '孚来迪'],
+          //     '格列美脲': ['亚莫利', '万苏平', '林美欣'],
+          //     '伏格列波糖': ['倍欣', '家能', '安立泰'],
+          //     '其他': ['其他']
+          //   },
+          //   option_img: null,
+          //   checked_items: [],
+          //   preview: 'q1',
+          //   next: null
+          // }
         ]
       },
       methods: {
@@ -415,37 +399,38 @@
           swiper.slideTo($('.swiper-slide').index($('#' + e.preview)));
         },
         next: function (e) {
-          var next;
-          if (Array.isArray(e.next)) {
-            next = e.next[e.option.indexOf(e.value)];
-          }
-          if (!Array.isArray(e.next)) {
-            next = e.next;
-          }
+          var next = e.next;
 
           var radio_length = this.radio.length;
-          var checkbox_length = this.checkbox.length;
+         
           var i = 0;
-          var j = 0;
+          
 
           while (i < radio_length) {
             if (this.radio[i].id === next) {
               this.radio[i].preview = e.id;
               i = radio_length;
-              j = checkbox_length;
             }
             i++;
           }
 
-          while (j < checkbox_length) {
-            if (this.radio[j].id === next) {
-              this.radio[j].preview = e.id;
-              j = checkbox_length;
-            }
-            j++;
-          }
-
+          
           swiper.slideTo($('.swiper-slide').index($('#' + next)));
+        },
+        submit: function (){
+          var right = 0;
+          for(var i=0; i<question_length; i++){
+            if ( this.radio[i].value == question_data[i].right){
+              right++;
+            } 
+          }
+          if (right>=3){
+            alert('恭喜您,答题成功!');
+            window.location.href="/shop/yiyuan-index"; 
+          } else {
+            alert('正确数少于3个,请重新答题!');
+            history.go(0);
+          }
         }
       }
     });
@@ -458,20 +443,6 @@
       }
     });
 
-    $(function () {
-      $('#q3d .col-xs-6').eq(1).addClass('hide');
-      $('#q3d2 .col-xs-6').eq(0).children().text('返 回');
-      $('#q3d2 label span').text(function(){
-        return '与'+$(this).text()+'同时使用'
-      });
-      $('#q3d_c1,#q3d_c2').siblings().click(function(){
-        swiper.slideNext(false,500);
-      });
-      $('#q3d_c3,#q3d_c4').siblings().click(function(){
-        $('#q3d .col-xs-6').eq(1).removeClass('hide');
-      });
-      $("[src$='诺和锐30&50.png'],[src$='优泌乐25&50.png']").css('width','100%');
-      $("[src$='诺和笔.png'],[src$='糖果.png']").css({'width':'50%','margin-top':'0'});
-    });
+
   </script>
 @endsection
