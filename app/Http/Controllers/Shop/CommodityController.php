@@ -91,12 +91,12 @@ class CommodityController extends Controller
 
     public function yiyuanShow($id)
     {
-		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
-		 $signPackage = $jssdk->getSignPackage();
+//		 $jssdk = new Jssdk(env('WX_APPID'), env('WX_SECRET'));
+//		 $signPackage = $jssdk->getSignPackage();
         $item = Commodity::with(['images', 'slideImages'])->find($id);
         return view('shop.yiyuan-detail')->with([
             'item' => $item->toArray(),
-			'signPackage' => $signPackage
+//			'signPackage' => $signPackage
         ]);
     }
 }
