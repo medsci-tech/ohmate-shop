@@ -23,9 +23,21 @@
         当月邀请数
       </li>
       <li class="list-group-item">
-        <span class="badge">@{{ customer_statistics[0].friend_count }}</span>
-        好友数
+        <span class="badge">@{{ focus_count }}</span>
+        邀请关注数
       </li>
+      <li class="list-group-item">
+        <span class="badge">@{{ register_count }}</span>
+        邀请注册数
+      </li>
+      <li class="list-group-item">
+        <span class="badge">@{{ questionnaire_count }}</span>
+        邀请填写问卷数
+      </li>
+      {{--<li class="list-group-item">--}}
+        {{--<span class="badge">@{{ customer_statistics[0].friend_count }}</span>--}}
+        {{--好友数--}}
+      {{--</li>--}}
       {{--<li class="list-group-item">--}}
         {{--<span class="badge">@{{ customer_statistics[0].article_count }}</span>--}}
         {{--阅读文章数--}}

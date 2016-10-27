@@ -159,7 +159,10 @@ class PersonalController extends Controller
                     'customer_article_statistics'   => $customerArticleStatistics,
                     'customer_statistics'            => $customerStatistics,
                     'doctor_type' => $customer->doctorType(),
-                    'monthly_invite_count' => (new CustomerInvitationCounter($customer))->getMonthlyCount()
+                    'monthly_invite_count' => (new CustomerInvitationCounter($customer))->getMonthlyCount(),
+                    'focus_count' => $customer->focus_count,
+                    'register_count' => $customer->register_count,
+                    'questionnaire_count' => $customer->questionnaire_count
                 ]
             ]);
         }
