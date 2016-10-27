@@ -44,7 +44,7 @@
           </li>
 
         </ul>
-        <form class="navbar-form navbar-right" @submit.prevent="search">
+        <form v-if="searching.user_type != 'A类医生'" class="navbar-form navbar-right" @submit.prevent="search">
           <div class="has-feedback">
             <input v-on:keyup.enter="search" type="text" class="form-control" placeholder="Search..."
                    v-model="searching.detail">

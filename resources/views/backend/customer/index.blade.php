@@ -21,7 +21,23 @@
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-      <h2 class="sub-header">@{{searching.user_type}}<span v-if="searched" class="small">(@{{searched}})</span><button @click="addDoctorA" v-if="searching.user_type == 'A类医生'" class="btn btn-primary">添加</button></h2>
+      <h2 class="sub-header">@{{searching.user_type}}
+        <span v-if="searched" class="small">(@{{searched}})</span>
+        <button @click="addDoctorA" v-if="searching.user_type == 'A类医生'" class="btn btn-primary">添加</button>   
+        <div v-if="searching.user_type == 'A类医生'" style="font-size: initial; display: inline-block; float: right;">
+          <select v-model='a_searching.type' class="form-control" style="display: inline-block; width: auto; padding-top: 7px">
+            <option value="" disabled>请选择搜索项</option>
+            <option value="name">姓名</option>
+            <option value="phone">电话</option>
+            <option value="referred_name">推荐代表姓名</option>
+          </select>
+          <div class="has-feedback" style="display: inline-block; width: auto;">
+            <input @keyup.enter='a_search' v-model='a_searching.value' type="text" class="form-control" placeholder="A类医生查询">
+            <button @click='a_search' style="pointer-events: all;" type="button" class="btn btn-link form-control-feedback fa fa-search"></button>
+          </div>
+        </div>       
+      </h2>
+
       <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
           <thead>

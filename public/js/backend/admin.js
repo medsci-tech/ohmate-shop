@@ -28,6 +28,14 @@ $(function () {
 var index = new Vue({
   el: '#index',
   data: {
+    a_searching: {
+      type: '',
+      value: '',
+    },
+    a_searched: {
+      type: '',
+      value: '',
+    },
     searching: {
       user_type: '',
       detail: ''
@@ -317,8 +325,25 @@ var index = new Vue({
         page_num = e.target.innerHTML;
         break;
       }
-      $.get(index.get_url,
-      {
+      if(this.searching.user_type == 'A类医生'){
+        $.get(index.get_url,
+        {
+          page: page_num,
+          key: index.a_searched.type,
+          value: index.a_searched.value
+        },
+        function (data) {
+          if (data.success) {
+            index.page_active = data.data.customers.current_page;
+            index.page_data = data.data.customers.data;
+            index.$nextTick(initialize_popover);
+          }
+        },
+        'json'
+        )
+      } else {
+       $.get(index.get_url,
+       {
         page: page_num,
         key: index.searched
       },
@@ -331,6 +356,7 @@ var index = new Vue({
       },
       'json'
       )
+      }
     }
     ,
     choose_page_invited: function (e) {
@@ -421,6 +447,27 @@ var index = new Vue({
       function (data) {
         if (data.success) {
           index.searched = index.searching.detail;
+          index.page_all = data.data.customers.last_page;
+          index.page_active = data.data.customers.current_page;
+          index.page_data = data.data.customers.data;
+          index.$nextTick(initialize_popover);
+        }
+      },
+      'json'
+      )
+    }
+    , 
+    a_search: function () {
+      $.get(index.get_url,
+      {
+        key: this.a_searching.type,
+        value: this.a_searching.value,
+      },
+      function (data) {
+        if (data.success) {
+          index.searched = index.a_searching.value;
+          index.a_searched.type = index.a_searching.type,
+          index.a_searched.value = index.a_searching.value,
           index.page_all = data.data.customers.last_page;
           index.page_active = data.data.customers.current_page;
           index.page_data = data.data.customers.data;
