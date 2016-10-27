@@ -70,12 +70,15 @@ class CustomerController extends Controller
         $key = $request->input('key', null);
         $value = $request->input('value', null);
 
-        $customers = Customer::whereHas('information', function ($query) {
-            $query->where('type', 'A');
-        });
 
         if ($key && $value != null) {
-            $customers = $customers->where($key, 'like', '%'. $value .'%');
+            $customers = Customer::whereHas('information', function($query) use($key, $value) {
+                $query->where('type', 'A')->where($key, 'like', '%' . $value . '%');
+            });
+        } else {
+            $customers = Customer::whereHas('information', function ($query) {
+                $query->where('type', 'A');
+            });
         }
 
         $customers = $customers->with('information');
