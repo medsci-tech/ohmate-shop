@@ -27,9 +27,9 @@
         <div v-if="searching.user_type == 'A类医生'" style="font-size: initial; display: inline-block; float: right;">
           <select v-model='a_searching.type' class="form-control" style="display: inline-block; width: auto; padding-top: 7px">
             <option value="" disabled>请选择搜索项</option>
-            <option value="姓名">姓名</option>
-            <option value="电话">电话</option>
-            <option value="推荐代表">推荐代表姓名</option>
+            <option value="name">姓名</option>
+            <option value="phone">电话</option>
+            <option value="referred_name">推荐代表姓名</option>
           </select>
           <div class="has-feedback" style="display: inline-block; width: auto;">
             <input @keyup.enter='a_search' v-model='a_searching.value' type="text" class="form-control" placeholder="A类医生查询">

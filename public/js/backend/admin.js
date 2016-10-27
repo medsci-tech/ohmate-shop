@@ -465,7 +465,7 @@ var index = new Vue({
       },
       function (data) {
         if (data.success) {
-          index.searched = index.a_searching.type + ' : ' + index.a_searching.value;
+          index.searched = index.a_searching.value;
           index.a_searched.type = index.a_searching.type,
           index.a_searched.value = index.a_searching.value,
           index.page_all = data.data.customers.last_page;
