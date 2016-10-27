@@ -22,11 +22,12 @@ class CustomerController extends Controller
     {
         return view('backend.customer.index');
     }
+
     public function customerList()
     {
         return response()->json([
             'success' => true,
-            'data' => [
+            'data'    => [
                 'customers' => Customer::where('phone', '!=', 'NULL')
                     ->where('is_registered', 1)
                     ->with(['statistics', 'information', 'type'])
@@ -48,13 +49,13 @@ class CustomerController extends Controller
         }
 
         if ($key) {
-            $key_phrase = '%'.$key.'%';
+            $key_phrase = '%' . $key . '%';
             $customers = $customers->where('phone', 'like', $key_phrase);
         }
 
         return response()->json([
             'success' => true,
-            'data' => [
+            'data'    => [
                 'customers' => $customers
                     ->where('is_registered', 1)
                     ->with(['statistics', 'information', 'type'])
@@ -67,25 +68,25 @@ class CustomerController extends Controller
     public function searchForTypeA(Request $request)
     {
         $key = $request->input('key', null);
+        $value = $request->input('value', null);
 
-        $customers = Customer::whereHas('information', function($query) {
+        $customers = Customer::whereHas('information', function ($query) {
             $query->where('type', 'A');
         });
 
-        if ($key) {
-            $key_phrase = '%'.$key.'%';
-            $customers = $customers->where('phone', 'like', $key_phrase);
+        if ($key && $value != null) {
+            $customers = $customers->where($key, 'like', '%'. $value .'%');
         }
 
         $customers = $customers->with('information');
 
         return response()->json([
             'success' => true,
-            'data' => [
+            'data'    => [
                 'customers' => $customers
-                // ->makeVisible('focus_count')
-                ->orderBy('id', 'desc')
-                ->paginate(20)
+                    // ->makeVisible('focus_count')
+                    ->orderBy('id', 'desc')
+                    ->paginate(20)
             ]
         ]);
     }
@@ -96,7 +97,7 @@ class CustomerController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => [
+            'data'    => [
                 'beans' => CustomerBean::where('customer_id', $customer->id)
                     ->with('rate')
                     ->orderBy('id', 'desc')->paginate(5)
@@ -110,7 +111,7 @@ class CustomerController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => [
+            'data'    => [
                 'friends' => Customer::where('referred_id', $customer->id)
                     ->where('is_registered', 1)
                     ->select(['id', 'phone', 'created_at'])
@@ -133,7 +134,7 @@ class CustomerController extends Controller
         $phone = $customerInformation->phone;
         $inputPhone = $request->input('phone');
 
-        if($inputPhone && $inputPhone != $phone) {
+        if ($inputPhone && $inputPhone != $phone) {
             $customer = Customer::where('phone', $inputPhone)->first();
             if ($customer) {
                 $customerInformation->update([
@@ -147,21 +148,21 @@ class CustomerController extends Controller
         }
 
         $customerInformation->update([
-            'name' => $request->input('name'),
-            'hospital' => $request->input('hospital'),
-            'province' => $request->input('province'),
-            'city' => $request->input('city'),
-            'district' => $request->input('district'),
-            'department' => $request->input('department'),
-            'remark' => $request->input('remark'),
-            'type' => $request->input('type'),
-            'referred_name' => $request->input('referred_name'),
+            'name'           => $request->input('name'),
+            'hospital'       => $request->input('hospital'),
+            'province'       => $request->input('province'),
+            'city'           => $request->input('city'),
+            'district'       => $request->input('district'),
+            'department'     => $request->input('department'),
+            'remark'         => $request->input('remark'),
+            'type'           => $request->input('type'),
+            'referred_name'  => $request->input('referred_name'),
             'referred_phone' => $request->input('referred_phone'),
-            'region' => $request->input('region'),
-            'region_level' => $request->input('region_level'),
-            'responsible' => $request->input('responsible'),
+            'region'         => $request->input('region'),
+            'region_level'   => $request->input('region_level'),
+            'responsible'    => $request->input('responsible'),
             'hospital_level' => $request->input('hospital_level'),
-            'phone' => $request->input('phone'),
+            'phone'          => $request->input('phone'),
         ]);
 
         if ($request->has('beans_total') && $customer) {
@@ -179,14 +180,14 @@ class CustomerController extends Controller
         if ($customer) {
             return response()->json([
                 'success' => true,
-                'data' => [
+                'data'    => [
                     'customer' => $customer->with('information')
                 ]
             ]);
         } else {
             return response()->json([
                 'success' => true,
-                'data' => [
+                'data'    => [
                     'customer' => null
                 ]
             ]);
@@ -196,25 +197,25 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customerInformation = CustomerInformation::create([
-            'name' => $request->input('name'),
-            'hospital' => $request->input('hospital'),
-            'province' => $request->input('province'),
-            'city' => $request->input('city'),
-            'district' => $request->input('district'),
-            'department' => $request->input('department'),
-            'remark' => $request->input('remark'),
-            'type' => $request->input('type'),
-            'referred_name' => $request->input('referred_name'),
+            'name'           => $request->input('name'),
+            'hospital'       => $request->input('hospital'),
+            'province'       => $request->input('province'),
+            'city'           => $request->input('city'),
+            'district'       => $request->input('district'),
+            'department'     => $request->input('department'),
+            'remark'         => $request->input('remark'),
+            'type'           => $request->input('type'),
+            'referred_name'  => $request->input('referred_name'),
             'referred_phone' => $request->input('referred_phone'),
-            'region' => $request->input('region'),
-            'region_level' => $request->input('region_level'),
-            'responsible' => $request->input('responsible'),
+            'region'         => $request->input('region'),
+            'region_level'   => $request->input('region_level'),
+            'responsible'    => $request->input('responsible'),
             'hospital_level' => $request->input('hospital_level'),
-            'phone' => $request->input('phone'),
+            'phone'          => $request->input('phone'),
         ]);
         $inputPhone = $request->input('phone');
 
-        if($inputPhone) {
+        if ($inputPhone) {
             $customer = Customer::where('phone', $inputPhone)->first();
             if ($customer) {
                 $customerInformation->update([
@@ -242,14 +243,14 @@ class CustomerController extends Controller
         if ($customer) {
             return response()->json([
                 'success' => true,
-                'data' => [
+                'data'    => [
                     'customer' => $customer->with('information')
                 ]
             ]);
         } else {
             return response()->json([
                 'success' => true,
-                'data' => [
+                'data'    => [
                     'customer' => null
                 ]
             ]);
@@ -282,7 +283,7 @@ class CustomerController extends Controller
         SELECT 
             lowers.*, yikang_questionnaires.id as questionnaire_id, yikang_questionnaires.q1, yikang_questionnaires.q1b, yikang_questionnaires.q2, yikang_questionnaires.q2b, yikang_questionnaires.q3, yikang_questionnaires.q3a, yikang_questionnaires.q3b, yikang_questionnaires.q3c, yikang_questionnaires.q3d, yikang_questionnaires.q3d2, yikang_questionnaires.q3e, yikang_questionnaires.q4
         FROM 
-            (SELECT * FROM customers WHERE referrer_id = '.$customer->id.') lowers 
+            (SELECT * FROM customers WHERE referrer_id = ' . $customer->id . ') lowers 
         LEFT JOIN
             yikang_questionnaires
         ON lowers.id = yikang_questionnaires.customer_id
@@ -294,7 +295,7 @@ class CustomerController extends Controller
         FROM
             orders
         WHERE
-            customer_id IN (SELECT id FROM customers WHERE referrer_id = '.$customer->id.')
+            customer_id IN (SELECT id FROM customers WHERE referrer_id = ' . $customer->id . ')
         GROUP BY
             customer_id
     ) tmp2
@@ -304,10 +305,10 @@ class CustomerController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => [
+            'data'    => [
                 'lower_list' => $lower_list
             ]
-        ]); 
+        ]);
     }
 
 }
