@@ -28,24 +28,12 @@
         <li><a href="#">系统管理</a></li>
       </ul>
       <form class="navbar-form navbar-right" @submit.prevent="search">
-         <select v-model='a_searching.type' class="form-control" style="display: inline-block; width: auto; padding-top: 7px">
-            <option value="" disabled>请选择搜索项</option>
-            <option value="姓名">姓名</option>
-            <option value="电话">电话</option>
-            <option value="推荐代表">推荐代表姓名</option>
-          </select>
-          <div class="has-feedback" style="display: inline-block; width: auto;">
-            <input @keyup.enter='a_search' v-model='a_searching.value' type="text" class="form-control" placeholder="A类医生查询">
-            <button @click='a_search' type="button" class="btn btn-link form-control-feedback fa fa-search"></button>
-          </div>
-      </form>
-     {{--  <form class="navbar-form navbar-right" @submit.prevent="search">
         <div class="has-feedback">
           <input v-on:keyup.enter="submit" type="text" class="form-control" placeholder="Search..."
                  v-model="searching.detail">
           <button type="submit" class="btn btn-link form-control-feedback fa fa-search"></button>
         </div>
-      </form> --}}
+      </form>
     </div>
   </div>
 </nav>
