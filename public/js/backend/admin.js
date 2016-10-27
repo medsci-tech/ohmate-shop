@@ -28,6 +28,10 @@ $(function () {
 var index = new Vue({
   el: '#index',
   data: {
+    a_searching: {
+      type: '',
+      value: '',
+    },
     searching: {
       user_type: '',
       detail: ''
@@ -417,6 +421,24 @@ var index = new Vue({
       $.get(index.get_url,
       {
         key: this.searching.detail
+      },
+      function (data) {
+        if (data.success) {
+          index.searched = index.searching.detail;
+          index.page_all = data.data.customers.last_page;
+          index.page_active = data.data.customers.current_page;
+          index.page_data = data.data.customers.data;
+          index.$nextTick(initialize_popover);
+        }
+      },
+      'json'
+      )
+    }
+    ,    a_search: function () {
+      $.get(index.get_url,
+      {
+        key: this.a_searching.type,
+        value: this.a_searching.value
       },
       function (data) {
         if (data.success) {
