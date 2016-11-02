@@ -58,12 +58,12 @@
                 </div>
                 <div class="weui_cell_ft"></div>
             </a>
-            <a href="/personal/statistics?force_search=1" class="weui_cell">
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>个人统计</p>
-                </div>
-                <div class="weui_cell_ft"></div>
-            </a>
+            {{--<a href="/personal/statistics?force_search=1" class="weui_cell">--}}
+                {{--<div class="weui_cell_bd weui_cell_primary">--}}
+                    {{--<p>个人统计</p>--}}
+                {{--</div>--}}
+                {{--<div class="weui_cell_ft"></div>--}}
+            {{--</a>--}}
             <a href="/personal/about-us" class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
                     <p>关于我们</p>
