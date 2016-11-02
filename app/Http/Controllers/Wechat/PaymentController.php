@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wechat;
 
 use App\Models\Order;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,8 +31,7 @@ class PaymentController extends Controller
 
             $order->paid();
             /*  发送消息提醒 */
-            $customer = \Helper::getCustomer();
-            $default_address = $customer->addresses()->where('id', $address_id)->first();
+            $default_address = Address::where(['id'=>$address_id])->first();
             $phone  =  $default_address->phone;
             $msg  = '尊敬的顾客您好！您的订单已经收到，易康商城将尽快为您安排发货，如有任何问题可以拨打客服电话400-1199-802进行咨询，感谢您的惠顾！';
             \MessageSender::sendMessage($phone, $msg);
