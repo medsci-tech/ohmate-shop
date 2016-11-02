@@ -36,10 +36,10 @@ class PaymentController extends Controller
             $msg  = '尊敬的顾客您好！您的订单已经收到，易康商城将尽快为您安排发货，如有任何问题可以拨打客服电话400-1199-802进行咨询，感谢您的惠顾！';
             \MessageSender::sendMessage($phone, $msg);
 
-            if ($phone = env('ORDER_ADMIN_PHONE')) {
-                \Log::error($phone);
-                \MessageSender::sendMessage($phone, $order->toOrderMessageString());
-            }
+//            if ($phone = env('ORDER_ADMIN_PHONE')) {
+//                \Log::error($phone);
+//                \MessageSender::sendMessage($phone, $order->toOrderMessageString());
+//            }
 
             $result = \Wechat::paymentNotify();
             return $result;
