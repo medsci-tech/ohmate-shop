@@ -19,6 +19,7 @@ class PaymentController extends Controller
 
         if ($input['return_code'] == 'SUCCESS') {
             $order = Order::where('wx_out_trade_no', $input['out_trade_no'])->firstOrFail();
+            $address_id = $order->address_id; # 当前订单收货地址id
             if ($order->isPaid()) {
                 return 'FAIL';
             }
@@ -30,7 +31,7 @@ class PaymentController extends Controller
             $order->paid();
             /*  发送消息提醒 */
             $customer = \Helper::getCustomer();
-            $default_address = $customer->addresses()->where('is_default', true)->first();
+            $default_address = $customer->addresses()->where('id', $address_id)->first();
             $phone  =  $default_address->phone;
             $msg  = '尊敬的顾客您好！您的订单已经收到，易康商城将尽快为您安排发货，如有任何问题可以拨打客服电话400-1199-802进行咨询，感谢您的惠顾！';
             \MessageSender::sendMessage($phone, $msg);
