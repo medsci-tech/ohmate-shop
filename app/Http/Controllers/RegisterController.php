@@ -270,6 +270,11 @@ class RegisterController extends Controller
                 'phone' => $phone,
             ]);
         }
+        $customer->update([
+//            'phone'     => $phone,
+            'auth_code' => $code,
+            'auth_code_expired' => Carbon::now()->addMinute(AppConstant::AUTH_CODE_EXPIRE_INTERVAL)
+        ]);
 
         return response()->json(['success' => true]);
     }
