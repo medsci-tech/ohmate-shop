@@ -13,20 +13,24 @@
   <div class="logo"></div>
   <div class="text-center active-title">联合国糖尿病日线上公益活动</div>
   <div class="text-center company">
-    <h3>主办单位：</h3>
+    <h3>主办单位</h3>
     <ul>
       <li>中美健康峰会</li>
     </ul>
-    <h3>支持单位：</h3>
+    <h3>支持单位</h3>
     <ul>
       <li>世界糖尿病基金会</li>
       <li>北京糖尿病防治协会</li>
       <li>北京协和医学院公共卫生学院</li>
     </ul>
-    <h3>承办单位：</h3>
+    <h3>承办单位</h3>
     <ul>
       <li>中美健康峰会新闻传媒中心</li>
       <li>易康伴侣（武汉）科技有限责任公司</li>
+    </ul>
+    <h3 class="red-color">活动时间</h3>
+    <ul>
+      <li class="red-color">2016年11月14日－2016年11月21日</li>
     </ul>
   </div>
   <div class="product">
