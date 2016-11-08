@@ -63,8 +63,8 @@
         <div class="form-group">
           <label class="col-xs-3 control-label" for="address">选择类型</label>
           <div class="col-xs-9">
-            <label style="font-weight: normal"><input type="radio" value="1" name="gift_type" v-model="newAdd.gift_type">糖尿病I型</label>&emsp;
-            <label style="font-weight: normal"><input type="radio" value="2" name="gift_type" v-model="newAdd.gift_type">糖尿病II型</label>
+            <label style="font-weight: normal"><input type="radio" value="1" name="gift_type" v-model="newAdd.gift_type">糖尿病1型</label>&emsp;
+            <label style="font-weight: normal"><input type="radio" value="2" name="gift_type" v-model="newAdd.gift_type">糖尿病2型</label>
           </div>
         </div>
 
