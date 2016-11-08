@@ -85,31 +85,23 @@ class RegisterController extends Controller
                 'error_messages' => '无效的手机号码!'
             ]);
         }
+        $phone = $request->input('phone');
         /* 验证用户是否已经登记过 */
-        $address = Address::where(['activity_id'=>$request->input('activity_id'),'phone'=>$request->input('phone')])->first();
+        $address = Address::where(['activity_id'=>$request->input('activity_id'),'phone'=>$phone])->first();
         if ($address) {
             return response()->json([
                 'success' => false,
                 'error_messages' => '您已经参与过了本次活动!'
             ]);
         }
-        /* 处理注册并保存地址 */
-        $customer = \Helper::getCustomer();
+        if ($request->input('code') != \Session::get($phone)) {
+//            return response()->json([
+//                'success' => false,
+//                'error_messages' =>'验证码不匹配!'
+//            ]);
+        }
         $user       = \Helper::getUser();
-        if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
-            return response()->json([
-                'success' => false,
-                'error_messages' => '验证码不匹配!'
-            ]);
-        }
-
-        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
-            return response()->json([
-                'success' => false,
-                'error_messages' => '验证码过期!'
-            ]);
-        }
-        
+        $customer   = \Helper::getCustomer();
         if (!$customer->is_registered) { // 如果是新用户
             $beans_total_update = 0;
             if ($customer->beans_total > 0) {
@@ -134,6 +126,7 @@ class RegisterController extends Controller
             \EnterpriseAnalyzer::updateBasic(AnalyzerConstant::ENTERPRISE_REGISTER);
             event(new Register($customer));
         }
+
         unset($request['code']); //剔除验证码
         $address = new Address($request->all());
         $customer->addresses()->save($address);
@@ -260,7 +253,8 @@ class RegisterController extends Controller
         $phone  = $request->input(['phone']);
         $code   = \MessageSender::generateMessageVerify();
         \MessageSender::sendMessageVerify($phone, $code);
-
+        //$request->session()->put($phone, $code);
+        \Session::put($phone, $code);
         $user = \Helper::getUser();
         try {
             $customer   = \Helper::getCustomerOrFail();
