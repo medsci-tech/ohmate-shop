@@ -62,8 +62,11 @@ class RegisterController extends Controller
      */
     public function reg($id)
     {
-        $this->middleware('auth.wechat');
-        $this->middleware('auth.access');
+        //$this->middleware('auth.access');
+        $customer = \Helper::getCustomer();
+        if (!$customer->is_registered) {
+            return redirect('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFV8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdUaTY4dmpsT0VwQmFCckd4QlRKAAIEJfQfWAMEAAAAAA%3D%3D');//跳转到二维码
+        }
         return view('register.reg')->with(['id'=>$id]);
     }
     /**
