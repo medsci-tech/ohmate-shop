@@ -13,7 +13,9 @@ class ActivityController extends Controller
 
     function __construct()
     {
-         $this->middleware('auth.wechat');
+         $this->middleware('auth.wechat', [
+             'except' => ['detail']
+         ]);
          $this->middleware('auth.access', [
              'except' => ['detail']
          ]);
@@ -52,6 +54,14 @@ class ActivityController extends Controller
      */
     public function detail($id)
     {
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
+            echo("<script>alert('请在微信客户端打开链接!');</script>");
+            exit;
+        }
+        $customer = \Helper::hasSessionCachedUser();
+        if (!$customer) {
+            return redirect('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFV8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdUaTY4dmpsT0VwQmFCckd4QlRKAAIEJfQfWAMEAAAAAA%3D%3D');//跳转到二维码
+        }
         return view('activity.detail_'.$id)->with(['id'=>$id]);
     }
 
