@@ -30,7 +30,7 @@
           <label class="col-xs-3 control-label" for="code" id="label_code">验证码</label>
           <div class="col-xs-9">
             <input required type="text" class="form-control col-xs-5" style="width: 60%" id="code" placeholder="请输入验证码" v-model="newAdd.code">
-            <button type="button" class="btn btn-info" style="width: 36%; margin: 0 0 0 4%;" onclick='turnTo();'>获取验证码</button>
+            <button type="button" class="btn btn-info" style="width: 36%; margin: 0 0 0 4%;" onclick='turnTo();' id="sendCode">获取验证码</button>
           </div>
         </div>
 
@@ -143,7 +143,7 @@
 
   function turnTo() {
     if (validateMobile()) {
-      $('.form-group button').attr("disabled", "disabled");
+      $('#sendCode').attr("disabled", "disabled");
       $('#phone').attr("readonly", "readonly");
       var mobile = document.getElementById('phone').value;
       $.get(
@@ -161,11 +161,11 @@
       timer();
       function timer() {
         i--;
-        $('.form-group button').text(i + '秒后重发');
+        $('#sendCode').text(i + '秒后重发');
         if (i == 0) {
           clearTimeout(timer);
-          $('.form-group button').removeAttr("disabled");
-          $('.form-group button').text('重新发送');
+          $('#sendCode').removeAttr("disabled");
+          $('#sendCode').text('重新发送');
         } else {
           setTimeout(timer, 1000);
         }
