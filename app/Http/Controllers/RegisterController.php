@@ -63,7 +63,8 @@ class RegisterController extends Controller
     public function reg($id)
     {
         if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
-            return redirect('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFV8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdUaTY4dmpsT0VwQmFCckd4QlRKAAIEJfQfWAMEAAAAAA%3D%3D');//跳转到二维码
+            echo("<script>alert('请用微信浏览器打开!');</script>");
+            exit;
         }
         $user = \Helper::getSessionCachedUser();
         $customer = Customer::where('openid', $user['openid'])->firstOrFail();
