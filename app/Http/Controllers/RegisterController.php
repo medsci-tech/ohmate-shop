@@ -62,6 +62,7 @@ class RegisterController extends Controller
      */
     public function reg($id)
     {
+        $customer = \Helper::getCustomer();
         $user = \Helper::getSessionCachedUser();
         $customer = Customer::where('openid', $user['openid'])->firstOrFail();
         if (!$customer) {
