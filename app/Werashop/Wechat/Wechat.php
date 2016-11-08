@@ -293,7 +293,9 @@ class Wechat
             } elseif ($eventKey == 'qrscene_25005') {
                 return Message::make('text')->content("亲爱的用户：欢迎您关注易康伴侣，为普及糖尿病知识，提高大众对糖尿病认知水平，易康伴侣现发起全民“斗糖大赛”活动，邀您参与。每次5道题，答对3题及以上即可开启换购，支付1到3元不等即可换购对应商品，易折棉棒、低糖卫士、胰岛素针头等您领取。<a target=\"_blank\" href=\"http://www.ohmate.cn/questionnaire3/\">点击此处</a>，立即斗起来！");
             }
-
+            elseif ($eventKey == 'qrscene_47711') {
+                return Message::make('text')->content("感谢您关注易康伴侣微信公众号。由中美健康峰会举办的2016年联合国糖尿病日 线上主题公益活动正在火热进行中，点击链接并进行简单注册，即可免费获得糖友礼品包，每人限领取一次，礼品数量有限，发完为止，快去注册吧！\n\n<a target=\"_blank\" href=\"http://www.ohmate.cn/activity/detail/47711\">前往领取礼品</a>");
+            }
             $upper = $customer->getReferrer();
             if ($upper && $upper->doctorType() == 'A') {
                 return Message::make('news')->items(function () {
