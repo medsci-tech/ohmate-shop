@@ -63,11 +63,8 @@ class RegisterController extends Controller
     public function reg($id)
     {
         if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
-            echo("<script>alert('请在微信客户端打开链接!');</script>");
+            echo("<script>alert('请扫描二维码后在微信客户端打开链接!');window.location.href='https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFV8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdUaTY4dmpsT0VwQmFCckd4QlRKAAIEJfQfWAMEAAAAAA%3D%3D'</script>");
             exit;
-        }
-        if (!$_SESSION['openid']) {
-            return redirect('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFV8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdUaTY4dmpsT0VwQmFCckd4QlRKAAIEJfQfWAMEAAAAAA%3D%3D');//跳转到二维码
         }
         return view('register.reg')->with(['id'=>$id]);
     }
