@@ -86,7 +86,7 @@ class RegisterController extends Controller
             ]);
         }
         /* 验证用户是否已经登记过 */
-        $address = Address::where('activity_id',$request->input('activity_id'))->first();
+        $address = Address::where(['activity_id'=>$request->input('activity_id'),'phone'=>$request->input('phone')])->first();
         if ($address) {
             return response()->json([
                 'success' => false,
@@ -109,8 +109,7 @@ class RegisterController extends Controller
                 'error_messages' => '验证码过期!'
             ]);
         }
-
-
+        
         if (!$customer->is_registered) { // 如果是新用户
             $beans_total_update = 0;
             if ($customer->beans_total > 0) {
