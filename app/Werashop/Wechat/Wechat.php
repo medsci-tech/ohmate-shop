@@ -308,7 +308,7 @@ class Wechat
                     ];
                 });
             }
-
+            $_SESSION['openid'] = $openId;
             $content = '嗨！欢迎关注易康伴侣！' .
                 '在此您能任性享用新鲜实用的糖尿病资讯。' .
                 '您学习，我送礼；' .
