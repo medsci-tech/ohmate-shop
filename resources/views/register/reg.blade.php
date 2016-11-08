@@ -92,4 +92,85 @@
     city_selector();
   });
 </script>
+<script type="text/javascript">
+  function validateMobile() {
+    var mobile = document.getElementById('phone').value;
+    var code = document.getElementById('code').value;
+    if (mobile.length == 0) {
+      alert("请输入手机号码！'");
+      return false;
+    }
+    if (mobile.length != 11) {
+      alert("请输入有效的手机号码！");
+      return false;
+    }
+
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if (!myreg.test(mobile)) {
+      alert("请输入有效的手机号码！");
+      return false;
+    }
+
+    return true;
+
+  }
+
+  function validateAll() {
+    if (!validateMobile()) {
+      return false;
+    }
+
+    if (code.length == 0) {
+      document.getElementById('label_code').innerText = '请输入验证码！';
+      document.getElementById('code').focus();
+      return false;
+    }
+
+    if (code.length != 6) {
+      document.getElementById('label_code').innerText = '请输入有效的验证码！';
+      document.getElementById('code').focus();
+      return false;
+    }
+
+    if (isNaN(code)) {
+      document.getElementById('label_code').innerText = '请输入有效的验证码！';
+      document.getElementById('code').focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  function turnTo() {
+    if (validateMobile()) {
+      $('.form-group button').attr("disabled", "disabled");
+      $('#phone').attr("readonly", "readonly");
+      var mobile = document.getElementById('phone').value;
+      $.get(
+              '/register/commonSms?phone=' + mobile,
+              function (data) {
+                if (data.success) {
+                } else {
+                  alert(data.error_message.phone);
+                }
+              },
+              "json"
+      );
+
+      var i = 61;
+      timer();
+      function timer() {
+        i--;
+        $('.form-group button').text(i + '秒后重发');
+        if (i == 0) {
+          clearTimeout(timer);
+          $('.form-group button').removeAttr("disabled");
+          $('.form-group button').text('重新发送');
+        } else {
+          setTimeout(timer, 1000);
+        }
+      }
+    }
+  }
+</script>
 </html>

@@ -94,6 +94,21 @@ class RegisterController extends Controller
         /* 处理注册并保存地址 */
         $customer = \Helper::getCustomer();
         $user       = \Helper::getUser();
+        if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
+            return response()->json([
+                'success' => false,
+                'error_messages' => '验证码不匹配!'
+            ]);
+        }
+
+        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
+            return response()->json([
+                'success' => false,
+                'error_messages' => '验证码过期!'
+            ]);
+        }
+
+
         if (!$customer->is_registered) { // 如果是新用户
             $beans_total_update = 0;
             if ($customer->beans_total > 0) {
@@ -217,6 +232,40 @@ class RegisterController extends Controller
             'auth_code' => $code,
             'auth_code_expired' => Carbon::now()->addMinute(AppConstant::AUTH_CODE_EXPIRE_INTERVAL)
         ]);
+
+        return response()->json(['success' => true]);
+    }
+    /**
+     * 通用短信发送
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function commonSms(Request $request) {
+        $validator = \Validator::make($request->all(), [
+            'phone' => 'required|digits:11',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'error_message' => $validator->errors()->getMessages()
+            ]);
+        }
+
+        $phone  = $request->input(['phone']);
+        $code   = \MessageSender::generateMessageVerify();
+        \MessageSender::sendMessageVerify($phone, $code);
+
+        $user = \Helper::getUser();
+        try {
+            $customer   = \Helper::getCustomerOrFail();
+        } catch (\Exception $e) {
+            $customer = Customer::create([
+                'openid' => $user['openid'],
+                'type_id' => 1,
+                'phone' => $phone,
+            ]);
+        }
 
         return response()->json(['success' => true]);
     }
