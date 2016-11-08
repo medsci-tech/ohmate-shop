@@ -136,6 +136,10 @@ class RegisterController extends Controller
         unset($request['code']); //剔除验证码
         $address = new Address($request->all());
         $customer->addresses()->save($address);
+        /*  发送消息提醒 */
+        $msg  = '感谢您参与2016年联合国糖尿病日公益活动，本次活动由中美健康峰会主办，活动礼品由易康伴侣为您提供！我们将尽快为您安排礼品发送，关注糖尿病，健康的路上有我陪伴！';
+        \MessageSender::sendMessage($request->input('phone'), $msg);
+
         return response()->json([
             'success' => true,
             'id' => $address->id
