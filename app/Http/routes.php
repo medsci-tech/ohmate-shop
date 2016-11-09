@@ -54,6 +54,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/sms', 'RegisterController@sms');
         Route::get('/error', 'RegisterController@error');
         Route::get('/success', 'RegisterController@success');
+        Route::get('/reg/{id}', 'RegisterController@reg');# 活动注册
+        Route::post('/createAdd', 'RegisterController@createAdd');# 新增注册地址
+        Route::get('/commonSms', 'RegisterController@commonSms');# 通用手机短信发送
     });
 
     Route::group(['prefix' => 'education', 'namespace' => 'Education'], function () {
@@ -74,7 +77,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/daily', 'ActivityController@daily');
         Route::get('/coupon', 'ActivityController@coupon');
 		Route::get('/coupon1', 'ActivityController@coupon1');
-
+        Route::get('/detail/{id}', 'ActivityController@detail');# 活动宣传页
     });
 
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
@@ -112,7 +115,6 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('delete', 'AddressController@delete');
             Route::post('update', 'AddressController@update');
             Route::post('list', 'AddressController@addressList');
-
             Route::get('test', 'OrderController@test');
         });
 

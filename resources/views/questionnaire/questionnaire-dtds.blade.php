@@ -377,10 +377,10 @@
             } 
           }
           if (right>=3){
-            alert('恭喜您,斗糖成功!');
+            alert('斗糖成功，恭喜您已获得换购机会!');
             window.location.href="/shop/yiyuan-index"; 
           } else {
-            alert('您错的太多了,请再试试吧');
+            alert('太可惜了，答对三道题才能进行换购，请再试试吧!');
             history.go(0);
           }
         }
