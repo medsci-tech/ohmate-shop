@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   <title>我的地址</title>
   <link rel="stylesheet" href="{{asset('/css/shop_rebuild.css')}}">
-
+  <style>
+    label.control-label{
+       height: 34px;
+      line-height: 34px;
+    }
+  </style>
 <body>
 <div class="container" id="addresses">
   <div class="row">
@@ -62,7 +67,7 @@
 
         <div class="form-group">
           <label class="col-xs-3 control-label" for="address">选择类型</label>
-          <div class="col-xs-9">
+          <div class="col-xs-9" style="padding-top: 4px">
             <label style="font-weight: normal"><input type="radio" value="1" name="gift_type" v-model="newAdd.gift_type">糖尿病1型</label>&emsp;
             <label style="font-weight: normal"><input type="radio" value="2" name="gift_type" v-model="newAdd.gift_type">糖尿病2型</label>
           </div>
