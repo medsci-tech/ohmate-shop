@@ -37,7 +37,7 @@
     <img src="{{asset('/images/activity/product_3.jpg')}}" width="100%"/>
   </div>
   <div class="remarke">
-    注： 所有参与的<font class="red-color">糖友</font>，系统会随机配送四种<font class="red-color">礼品中的两种</font>不能自主选择。
+    注： 所有参与的<font class="red-color">糖友</font>，系统会随机配送四种<font class="red-color">礼品中的两种</font>哦~。
   </div>
   <div class="product">
     <img src="{{asset('/images/activity/product_2.png')}}" width="100%"/>
