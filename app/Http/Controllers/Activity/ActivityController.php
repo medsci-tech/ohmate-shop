@@ -14,10 +14,10 @@ class ActivityController extends Controller
     function __construct()
     {
          $this->middleware('auth.wechat', [
-            // 'except' => ['detail']
+             'except' => ['reg']
          ]);
          $this->middleware('auth.access', [
-            // 'except' => ['detail']
+             'except' => ['reg']
          ]);
     }
 
@@ -45,7 +45,16 @@ class ActivityController extends Controller
             'result' => json_encode($result)
         ]);
     }
-
+    /**
+     * 活动注册
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function reg(Request $request,$id)
+    {
+        return view('activity.reg')->with(['id'=>$id]);
+    }
     /**
      * 活动宣传
      * @author      lxhui<772932587@qq.com>

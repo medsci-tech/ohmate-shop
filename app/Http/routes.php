@@ -77,6 +77,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/daily', 'ActivityController@daily');
         Route::get('/coupon', 'ActivityController@coupon');
 		Route::get('/coupon1', 'ActivityController@coupon1');
+        Route::get('/reg/{id}', 'ActivityController@reg');# 活动注册
         Route::get('/detail/{id}', 'ActivityController@detail');# 活动宣传页
     });
 

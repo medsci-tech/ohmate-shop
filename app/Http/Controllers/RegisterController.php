@@ -21,6 +21,7 @@ class RegisterController extends Controller
         $this->middleware('auth.wechat', [
             //'except' => ['focus']
         ]);
+       // $this->middleware('auth.access', ['reg']);
     }
 
     public function error()
@@ -62,11 +63,8 @@ class RegisterController extends Controller
      */
     public function reg($id)
     {
-        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') == false ) {
-            echo("<script>alert('请扫描二维码后在微信客户端打开链接!');window.location.href='https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFV8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdUaTY4dmpsT0VwQmFCckd4QlRKAAIEJfQfWAMEAAAAAA%3D%3D'</script>");
-            exit;
-        }
-        return view('register.reg')->with(['id'=>$id]);
+        return redirect('/activity/reg/'.$id);
+        //return view('register.reg')->with(['id'=>$id]);
     }
     /**
      * 完成活动保存注册收货地址
