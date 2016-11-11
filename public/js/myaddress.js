@@ -35,7 +35,7 @@ var list = new Vue({
         function (data) {
           if (data.success) {
             alert('您的信息已经成功提交!');
-            window.close();
+            top.window.close();
           } else {
             alert(data.error_messages);
           }
