@@ -19,7 +19,7 @@ class RegisterController extends Controller
     function __constructs()
     {
         $this->middleware('auth.wechat', [
-            'except' => ['focus']
+            //'except' => ['focus']
         ]);
     }
 
@@ -86,6 +86,8 @@ class RegisterController extends Controller
             ]);
         }
         $phone = $request->input('phone');
+        $user       = \Helper::getUser();
+        $customer   = \Helper::getCustomer();
         /* 验证用户是否已经登记过 */
         $address = Address::where(['activity_id'=>$request->input('activity_id'),'phone'=>$phone])->first();
         if ($address) {
@@ -94,14 +96,20 @@ class RegisterController extends Controller
                 'error_messages' => '您已经参与过了本次活动!'
             ]);
         }
-        if ($request->input('code') != \Session::get($phone)) {
-//            return response()->json([
-//                'success' => false,
-//                'error_messages' =>'验证码不匹配!'
-//            ]);
+        if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
+            return response()->json([
+                'success' => false,
+                'error_messages' => '验证码不匹配!'
+            ]);
         }
-        $user       = \Helper::getUser();
-        $customer   = \Helper::getCustomer();
+
+        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
+            return response()->json([
+                'success' => false,
+                'error_messages' => '验证码过期!'
+            ]);
+        }
+
         if (!$customer->is_registered) { // 如果是新用户
             $beans_total_update = 0;
             if ($customer->beans_total > 0) {
@@ -252,9 +260,11 @@ class RegisterController extends Controller
 
         $phone  = $request->input(['phone']);
         $code   = \MessageSender::generateMessageVerify();
-        \MessageSender::sendMessageVerify($phone, $code);
+        #\MessageSender::sendMessageVerify($phone, $code);
         //$request->session()->put($phone, $code);
-        \Session::put($phone, $code);
+        #\Session::put($phone, $code);
+
+        echo(\Session::get($phone, $code));exit;
         $user = \Helper::getUser();
         try {
             $customer   = \Helper::getCustomerOrFail();
