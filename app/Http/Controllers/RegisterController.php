@@ -145,7 +145,20 @@ class RegisterController extends Controller
             'id' => $address->id
         ]);
     }
+    /**
+     * 完成活动提交成功显示
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function subok()
+    {
+        $appId  = env('WX_APPID');
+        $secret = env('WX_SECRET');
+        $js = new Js($appId, $secret);
 
+        return view('register.subok', ['js' => $js]);
+    }
 
     public function store(Request $request)
     {
