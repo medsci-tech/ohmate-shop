@@ -198,7 +198,6 @@ class Wechat
             \Session::put(AppConstant::SESSION_USER_KEY, [
                 'openid' => $openId
             ]);
-            $op = \Session::get(AppConstant::SESSION_USER_KEY);
             $eventKey = $event['EventKey'];
 
             $customers = Customer::where('openid', '=', $openId)->where('referrer_id', '=', $eventKey)->get();

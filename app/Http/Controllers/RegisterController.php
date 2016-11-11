@@ -260,11 +260,10 @@ class RegisterController extends Controller
 
         $phone  = $request->input(['phone']);
         $code   = \MessageSender::generateMessageVerify();
-        #\MessageSender::sendMessageVerify($phone, $code);
+        \MessageSender::sendMessageVerify($phone, $code);
         //$request->session()->put($phone, $code);
         #\Session::put($phone, $code);
-
-        echo(\Session::get($phone, $code));exit;
+        
         $user = \Helper::getUser();
         try {
             $customer   = \Helper::getCustomerOrFail();
