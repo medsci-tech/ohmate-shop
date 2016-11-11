@@ -34,8 +34,9 @@ var list = new Vue({
         },
         function (data) {
           if (data.success) {
-            alert('您的信息已经成功提交!');
-            top.window.close();
+            //alert('您的信息已经成功提交!');
+            //top.window.close();
+            window.location.href='/register/subok';
           } else {
             alert(data.error_messages);
           }
