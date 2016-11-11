@@ -14,11 +14,12 @@ class ActivityController extends Controller
     function __construct()
     {
          $this->middleware('auth.wechat', [
-             //'except' => ['reg']
+            // 'except' => ['reg','detail']
          ]);
          $this->middleware('auth.access', [
-            // 'except' => ['reg']
+             'except' => ['reg','detail']
          ]);
+        $this->middleware('auth.guess',['reg','detail']);
     }
 
     public function daily(Request $request)

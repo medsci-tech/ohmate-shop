@@ -51,6 +51,7 @@ class Kernel extends HttpKernel
 
         'auth.wechat' => \App\Http\Middleware\WechatMiddleware::class,
         'auth.access' => \App\Http\Middleware\AccessMiddleware::class,
+        'auth.guess' => \App\Http\Middleware\GuessMiddleware::class,
         'createIfNotExist' => \App\Http\Middleware\CreateIfNotExist::class,
     ];
 }
