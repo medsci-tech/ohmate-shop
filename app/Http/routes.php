@@ -57,6 +57,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/reg/{id}', 'RegisterController@reg');# 活动注册
         Route::post('/createAdd', 'RegisterController@createAdd');# 新增注册地址
         Route::get('/commonSms', 'RegisterController@commonSms');# 通用手机短信发送
+        Route::get('/subok', 'RegisterController@subok');# 游客注册提交成功
     });
 
     Route::group(['prefix' => 'education', 'namespace' => 'Education'], function () {
