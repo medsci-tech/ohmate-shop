@@ -117,10 +117,10 @@ class Wechat
     {
         return [
             (new MenuItem("教育学习"))->buttons([
-                new MenuItem('糖尿病知识', 'view', url('/redirect/article-index')),
-                new MenuItem('安全注射', 'view', url('/education/injection')),
                 //new MenuItem('每日活动', 'view', url('/activity/daily')),
-                new MenuItem('糖尿病日', 'view', url('/activity/detail/47711')),
+                new MenuItem('24小时关爱', 'view', url('/activity/detail/47711')),
+                new MenuItem('每日学习', 'view', url('/redirect/article-index')),
+                new MenuItem('安全注射', 'view', url('/education/injection')),
                 neW MenuItem('注册', 'view', url('/register/create'))
             ]),
             (new MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan'))),
