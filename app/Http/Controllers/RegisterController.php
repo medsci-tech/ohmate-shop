@@ -44,6 +44,14 @@ class RegisterController extends Controller
 
     public function create()
     {
+        /* 处理404错误开始 */
+        $user = \Wechat::authorizeUser('http://www.ohmate.cn/register/create');
+        if ($user) {
+            \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
+        } else {
+            \Session::put(AppConstant::SESSION_USER_KEY, null);
+        }
+        /* 处理404错误结束 */
         $customer = \Helper::getCustomer();
 
         if ($customer->is_registered) {
