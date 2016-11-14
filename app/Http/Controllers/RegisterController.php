@@ -19,7 +19,7 @@ class RegisterController extends Controller
     function __constructs()
     {
         $this->middleware('auth.wechat', [
-            //'except' => ['focus']
+            'except' => ['focus']
         ]);
        // $this->middleware('auth.access', ['reg']);
     }
