@@ -11709,7 +11709,9 @@ namespace {
         public static function getCustomer(){
             return \App\Werashop\Helper\Helper::getCustomer();
         }
-        
+        public static function getCustomerInfo(){
+            return \App\Werashop\Helper\Helper::getCustomerInfo();
+        }
         /**
          * 
          *

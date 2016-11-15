@@ -74,7 +74,19 @@ class Helper
             abort('404');
         }
     }
-	
+
+
+    public function getCustomerInfo()
+    {
+        try {
+            $user = self::getSessionCachedUser();
+            $customer = Customer::where('openid', $user['openid'])->firstOrFail();
+
+            return $customer;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 	    /**
      * @return \App\Models\ShopCardApplication;
 	 * 返回shopcardapplication的卡券总数
