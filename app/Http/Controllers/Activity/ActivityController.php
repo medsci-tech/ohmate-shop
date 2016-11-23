@@ -54,7 +54,7 @@ class ActivityController extends Controller
      */
     public function reg(Request $request,$id)
     {
-        echo"<script>alert('该活动已结束!感谢您的参与!');history.back(-1);</script>";
+        echo"<script>alert('该活动于2016年11月21日23:59结束!感谢您的参与!');history.back(-1);</script>";
         exit;
         return view('activity.reg')->with(['id'=>$id]);
     }
