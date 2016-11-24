@@ -345,9 +345,10 @@ class Customer extends Model
             return 0;
         }
 
-        $result = \Cache::remember($key, 60, function() {
-            return Customer::where('referrer_id', $this->id)->has('yikangQuestionnaire')->count();
-        });
+//        $result = \Cache::remember($key, 60, function() {
+//            return Customer::where('referrer_id', $this->id)->has('yikangQuestionnaire')->count();
+//        });
+        $result = Customer::where('referrer_id', $this->id)->has('SubscribeQuestionnaire')->count();
 
         return $result;
     }
