@@ -13,7 +13,7 @@
     <div class="weui_cells weui_cells_access">
         <video controls="controls"
                poster="/image/education/pen.png"
-               src="http://7xrlyr.com1.z0.glb.clouddn.com/anquanzhushe%E8%AF%BA%E5%92%8C%E7%AC%945.mp4"
+               src="http://oh6sofl9x.bkt.clouddn.com/%E8%AF%BA%E5%92%8C%E7%AC%945%E6%93%8D%E4%BD%9C%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4"
                width="100%" height="100%"
         >
         </video>
