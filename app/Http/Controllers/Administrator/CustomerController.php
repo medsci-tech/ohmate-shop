@@ -284,12 +284,12 @@ class CustomerController extends Controller
     SELECT tmp1.*, tmp2.* FROM
     (
         SELECT 
-            lowers.*, yikang_questionnaires.id as questionnaire_id, yikang_questionnaires.q1, yikang_questionnaires.q1b, yikang_questionnaires.q2, yikang_questionnaires.q2b, yikang_questionnaires.q3, yikang_questionnaires.q3a, yikang_questionnaires.q3b, yikang_questionnaires.q3c, yikang_questionnaires.q3d, yikang_questionnaires.q3d2, yikang_questionnaires.q3e, yikang_questionnaires.q4
+            lowers.*, subscribe_questionnaires.id as questionnaire_id, subscribe_questionnaires.q1, subscribe_questionnaires.q1b, subscribe_questionnaires.q2, subscribe_questionnaires.q2b, subscribe_questionnaires.q3, subscribe_questionnaires.q3a, subscribe_questionnaires.q3b, subscribe_questionnaires.q3c, subscribe_questionnaires.q3d, subscribe_questionnaires.q3d2, subscribe_questionnaires.q3e, subscribe_questionnaires.q4
         FROM 
             (SELECT * FROM customers WHERE referrer_id = ' . $customer->id . ') lowers 
         LEFT JOIN
-            yikang_questionnaires
-        ON lowers.id = yikang_questionnaires.customer_id
+            subscribe_questionnaires
+        ON lowers.id = subscribe_questionnaires.customer_id
     ) tmp1
     LEFT JOIN 
     (   
