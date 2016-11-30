@@ -182,12 +182,15 @@ class RegisterController extends Controller
         if ($customer->is_registered) {
             return ('请勿重复注册');
         }
+        /* 同步注册用户通行证验证 */
+        $post_data = array("name" => $request->input('nickname'), "phone" => $request->input('phone'),'unionid'=> $customer->unionid);
+        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
 
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone,'.$customer->id,
             'code'  => 'required|digits:6'
         ]);
-        if ($validator->fails()) {
+        if ($validator->fails() || isset($res['phone'])) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -198,6 +201,8 @@ class RegisterController extends Controller
         if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
             return redirect()->back()->with('error_message', '验证码过期!')->withInput();
         }
+
+
 
         $beans_total_update = 0;
 

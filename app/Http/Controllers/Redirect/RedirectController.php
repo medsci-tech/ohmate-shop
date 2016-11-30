@@ -38,7 +38,11 @@ class RedirectController extends Controller
             return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
         } else {
 			\Log::info('hongbao---存在' );
-            $count = $customer->readArticleIndex();
+            //$count = $customer->readArticleIndex();
+            /* 同步注册用户通行证验证 */
+            $post_data = array("phone" => $customer->phone);
+            $res = \Helper::tocurl(env('API_URL'). '/learn', $post_data,1);
+            $count = $res['chance_remains_today'];
             \BeanRecharger::executeEducation($customer);
             \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
 

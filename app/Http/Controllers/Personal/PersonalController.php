@@ -37,11 +37,15 @@ class PersonalController extends Controller
 				$num += $v['amount'];
 			}
 		}
-		
-        $data['nickname']           = $customer->nickname;
+        /* 同步注册用户通行证验证 */
+        $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$customer->phone, $post_data=array(),0);
+
+        //$data['nickname']           = $customer->nickname;
+        $data['nickname']           = $res['result']['name'];
         $data['head_image_url']     = $customer->head_image_url;
         $data['type']               = $customer->type->type_ch;
-        $data['beans_total']        = $customer->beans_total;
+        //$data['beans_total']        = $customer->beans_total;
+        $data['beans_total']        = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0;
 		$data['card_totalnum']      = $num;
 		
         return view('personal.information', ['data' => $data]);
