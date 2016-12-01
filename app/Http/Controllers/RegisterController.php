@@ -183,7 +183,9 @@ class RegisterController extends Controller
             return ('请勿重复注册');
         }
         /* 同步注册用户通行证验证 */
-        $post_data = array("name" => $request->input('nickname'), "phone" => $request->input('phone'),'unionid'=> $customer->unionid);
+        $refcustomer = Customer::where('id', $customer->referrer_id)->first(); // 上级用户id
+        $refphone = $refcustomer ? $refcustomer->phone : 0;
+        $post_data = array("name" => $request->input('nickname'), "phone" => $request->input('phone'),'unionid'=> $customer->unionid,'upper_user_phone'=>$refphone);
         $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
 
         $validator = \Validator::make($request->all(), [
