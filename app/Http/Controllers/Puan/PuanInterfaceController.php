@@ -79,4 +79,29 @@ class PuanInterfaceController extends Controller
             ]);
         }
     }
+
+    public function phoneByUnionId(Request $request)
+    {
+        $unionid = $request->input('unionid');
+        if(!$unionid)
+        {
+            return response()->json([
+                'success' => false,
+                'phone' => null
+            ]);
+        }
+        try {
+            $customer = Customer::where('unionid', $unionid)->first();
+            if($customer)
+                return response()->json([
+                    'success' => true,
+                    'phone' => $customer->phone
+                ] );
+            } catch (ModelNotFoundException $e) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'No such customer.'
+                ]);
+        }
+    }
 }
