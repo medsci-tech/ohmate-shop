@@ -182,6 +182,13 @@ class RegisterController extends Controller
         if ($customer->is_registered) {
             return ('请勿重复注册');
         }
+        if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
+            return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
+        }
+        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
+            return redirect()->back()->with('error_message', '验证码过期!')->withInput();
+        }
+
         /* 同步注册用户通行证验证 */
         $refcustomer = Customer::where('id', $customer->referrer_id)->first(); // 上级用户id
         $refphone = $refcustomer ? $refcustomer->phone : 0;
@@ -196,22 +203,10 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if ($request->input('code') != $customer->auth_code || $request->input('code') == '000000') {
-            return redirect()->back()->with('error_message', '验证码不匹配!')->withInput();
-        }
-
-        if (Carbon::now()->diffInMinutes($customer->auth_code_expire) > 0) {
-            return redirect()->back()->with('error_message', '验证码过期!')->withInput();
-        }
-
-
-
         $beans_total_update = 0;
-
         if ($customer->beans_total > 0) {
             $beans_total_update = $customer->beans_total;
         }
-
         $customer->update([
             'phone'             => $request->input('phone'),
             'is_registered'     => true,
