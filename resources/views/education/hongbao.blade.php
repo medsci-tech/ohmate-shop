@@ -26,7 +26,7 @@
         <p class="hongbao-word-2">20迈豆可抵0.2元现金</p>
       </div>
       <div class="weui_actionsheet_action">
-        <a href="http://puanpharm.ohmate.cn/shop/index?utm_source=puan" class="weui_btn weui_btn_default" id="getedu">立刻使用{{ $count }}</a>
+        <a href="http://puanpharm.ohmate.cn/shop/index?utm_source=puan" class="weui_btn weui_btn_default" id="getedu">立刻使用</a>
         <a href="{{$redirect_url}}" class="weui_btn weui_btn_default" id="getshop">继续学习</a>
       </div>
     </div>
