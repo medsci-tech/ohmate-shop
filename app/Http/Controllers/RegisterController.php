@@ -253,7 +253,7 @@ class RegisterController extends Controller
 //                'error_message' => '电话号码已经存在!'
 //            ]);
 //        }
-        if ($validator->fails() || isset($res['phone'])) {
+        if ($validator->fails()) {
             return response()->json([
                 'success' => false,
                 'error_message' => $validator->errors()->getMessages()
