@@ -244,15 +244,15 @@ class RegisterController extends Controller
             'phone' => 'required|digits:11|unique:customers,phone',
         ]);
         /* 同步注册用户通行证验证 */
-        $post_data = array( "phone" => $request->input('phone'));
-        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
-
-        if (isset($res['phone'])) {
-            return response()->json([
-                'success' => false,
-                'error_message' => '电话号码已经存在!'
-            ]);
-        }
+//        $post_data = array( "phone" => $request->input('phone'));
+//        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
+//
+//        if (isset($res['phone'])) {
+//            return response()->json([
+//                'success' => false,
+//                'error_message' => '电话号码已经存在!'
+//            ]);
+//        }
         if ($validator->fails() || isset($res['phone'])) {
             return response()->json([
                 'success' => false,
