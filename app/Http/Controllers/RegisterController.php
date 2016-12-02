@@ -193,14 +193,18 @@ class RegisterController extends Controller
         $refcustomer = Customer::where('id', $customer->referrer_id)->first(); // 上级用户id
         $refphone = $refcustomer ? $refcustomer->phone : 0;
         $post_data = array("name" => $request->input('nickname'), "phone" => $request->input('phone'),'unionid'=> $customer->unionid,'upper_user_phone'=>$refphone);
-        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
 
         $validator = \Validator::make($request->all(), [
             'phone' => 'required|digits:11|unique:customers,phone,'.$customer->id,
             'code'  => 'required|digits:6'
         ]);
-        if ($validator->fails() || isset($res['phone'])) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
+        }
+        /* 同步注册用户通行证验证合法性 */
+        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
+        if (isset($res['phone'])) {
+            return redirect()->back()->with('error_message', '电话号码已经存在!')->withInput();
         }
 
         $beans_total_update = 0;
@@ -243,6 +247,12 @@ class RegisterController extends Controller
         $post_data = array( "phone" => $request->input('phone'));
         $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
 
+        if (isset($res['phone'])) {
+            return response()->json([
+                'success' => false,
+                'error_message' => '电话号码已经存在!'
+            ]);
+        }
         if ($validator->fails() || isset($res['phone'])) {
             return response()->json([
                 'success' => false,
