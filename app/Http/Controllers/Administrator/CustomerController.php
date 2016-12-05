@@ -59,7 +59,7 @@ class CustomerController extends Controller
         $beans = $request->input('beans', null);
         $remark = $request->input('remark', null);
         /* 同步用户通行证验证合法性 */
-        $post_data = array("phone" => $phone,'beans'=>$beans);
+        $post_data = array("phone" => $phone,'bean'=>$beans);
         $res = \Helper::tocurl(env('API_URL'). '/modify-bean', $post_data,1);
         if (isset($res['phone'])) {
             return response()->json([
