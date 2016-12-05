@@ -42,7 +42,7 @@ class CustomerController extends Controller
             'data'    => [
                 'customers' => $customers
                     ->orderBy('id', 'desc')
-                    ->paginate(1, ['*'])
+                    ->paginate(20, ['*'])
             ]
         ]);
 
