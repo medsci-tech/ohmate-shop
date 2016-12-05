@@ -19,10 +19,15 @@ class PuanInterfaceController extends Controller
         $customer = Customer::where('unionid', $unionid)->first();
 
         if ($customer) {
+            /* 同步查询用户通行证验证 */
+            $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$customer->phone, $post_data=array(),0);
+            $beans_total  = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0;
+
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'beans' => $customer->beans_total
+                    //'beans' => $customer->beans_total
+                    'beans' => $beans_total
                 ]
             ]);
         }
