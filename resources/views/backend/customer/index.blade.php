@@ -14,7 +14,7 @@
         <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="common"><a href="#common">普通用户</a></li>
         <li :class="(searching.user_type == '企业用户')?'active':''" @click="choose_data" id="enterprise"><a href="#enterprise">企业用户</a></li>
         <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="all"><a href="#all">所有用户</a></li>
-        <li :class="" @click="choose_data" id="all"><a href="./customer/modbean">修改迈豆</a></li>
+        <li :class="(searching.user_type == '修改迈豆')?'active':''" @click="choose_data" id="modbean"><a href="#modbean">修改迈豆</a></li>
       </ul>
       <hr>
       <ul class="nav nav-sidebar">
@@ -24,6 +24,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
       <h2 class="sub-header">@{{searching.user_type}}
         <span v-if="searched" class="small">(@{{searched}})</span>
+        <button @click="addUserBean" v-if="searching.user_type == '修改迈豆'" class="btn btn-primary">修改用户迈豆</button>
         <button @click="addDoctorA" v-if="searching.user_type == 'A类医生'" class="btn btn-primary">添加</button>   
         <div v-if="searching.user_type == 'A类医生'" style="font-size: initial; display: inline-block; float: right;">
           <select v-model='a_searching.type' class="form-control" style="display: inline-block; width: auto; padding-top: 7px">
@@ -39,6 +40,56 @@
         </div>       
       </h2>
 
+      <span v-if="searching.user_type=='修改迈豆'">
+   <div class="table-responsive">
+     <table class="table table-striped table-hover table-bordered">
+       <thead>
+       <tr>
+         <th >@{{data_head.id}}</th>
+         <th>@{{data_head.phone}}</th>
+         <th>@{{data_head.beans}}</th>
+         <th>@{{data_head.created_at}}</th>
+         <th>@{{data_head.remark}}</th>
+         <th>@{{data_head.opt}}</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr v-cloak v-for="person in page_data">
+         <td v-if="data_head.id">@{{person.id}}</td>
+         <td v-if="data_head.phone">
+           <div>
+             @{{person.phone}}
+           </div>
+         </td>
+         <td>
+           <div>
+             @{{person.beans}}
+           </div>
+         </td>
+         <td >
+           <div>
+             @{{person.created_at}}
+           </div>
+         </td>
+         <td >
+           <div>
+             @{{person.remark}}
+           </div>
+         </td>
+         <td >
+           <div >
+             @{{person.opt}}
+           </div>
+         </td>
+
+       </tr>
+       </tbody>
+     </table>
+   </div>
+
+      </span>
+
+    <span v-if="searching.user_type!='修改迈豆'">
       <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
           <thead>
@@ -181,6 +232,7 @@
         </tbody>
       </table>
     </div>
+    </span>
     <nav class="text-center col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-xs-12" id="pagination">
       <ul class="pagination" @click="choose_page">
         <li v-if="page_active > 1">
@@ -207,6 +259,56 @@
 
 
 <!-- Modal -->
+
+  <div v-if="searching.user_type == '修改迈豆'" class="modal fade" id="addBeanAModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+    <div class="modal-dialog" role="document">
+      <div class="col-sm-12">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                      aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel2">修改用户迈豆</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <br>
+              <div class="col-sm-6">
+
+                <div class="form-group">
+                  <label for="phone2" class="col-sm-3 control-label">电话</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="phone" placeholder="请输入电话">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="hospital22" class="col-sm-3 control-label">操作迈豆数</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="beans" placeholder="请输入要添加或减少的迈豆值"
+                           v-model="add_doctor.hospital">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="remark2" class="col-sm-3 control-label">备注</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="remark" placeholder="请输入备注"
+                           v-model="add_doctor.remark">
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" @click="cancelAdd">取消</button>
+            <button type="button" class="btn btn-warning" @click="submitAddBean">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div v-if="searching.user_type != 'A类医生'" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="col-sm-12">

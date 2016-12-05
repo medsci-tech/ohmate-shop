@@ -178,6 +178,7 @@ var index = new Vue({
       if (index.searching.user_type == '普通用户') return '/customer/search?type_id=1';
       if (index.searching.user_type == '企业用户') return '/customer/search?type_id=5';
       if (index.searching.user_type == '所有用户') return '/customer/search';
+      if (index.searching.user_type == '修改迈豆') return '/customer/search-bean';
       if (index.searching.user_type == 'A类医生') return '/customer/search-for-type-a?force_search=1';
     },
   }
@@ -263,6 +264,17 @@ var index = new Vue({
           qr_code: '二维码'
         };
         index.searching.user_type = '所有用户';
+      }
+      if (name == '修改迈豆' || name == '<a href="#modbean">修改迈豆</a>' ) {
+        index.data_head = {
+          id: '#',
+          phone: '手机号',
+          beans: '操作迈豆数',
+          opt: '操作人',
+          remark: '备注',
+          created_at: '操作时间'
+        };
+        index.searching.user_type = '修改迈豆';
       }
       if (name == 'A类医生' || name == '<a href="#doctor_a">A类医生</a>' ) {
         index.data_head = {
@@ -626,6 +638,9 @@ var index = new Vue({
         }, 'json'
         );
     },
+    addUserBean: function(){
+      $('#addBeanAModal').modal('show');
+    },
     addDoctorA: function(){
       // $('.modal').modal('hide');
       $('#addDoctorAModal').modal('show');
@@ -656,6 +671,35 @@ var index = new Vue({
           }
         }, 'json'
         );
+    },
+
+    submitAddBean: function(){
+      $.post('/customer/save-bean', {phone:$('#phone').val(),beans:$('#beans').val(),remark:$('#remark').val()},
+          function (data) {
+            if(!data.success)
+            {
+              alert(data.data.message);
+              return false;
+            }
+
+            if (data.success) {
+              $.get(index.get_url,
+                  {
+                    page: index.page_active,
+                    key: index.searching.detail
+                  },
+                  function (data) {
+                    if (data.success) {
+                      index.page_data = data.data.customers.data;
+                      index.$nextTick(initialize_popover);
+                      $('#addBeanAModal').modal('hide');
+                    }
+                  },
+                  'json'
+              );
+            }
+          }, 'json'
+      );
     },
     showPatient: function(e){
       // $('.modal').modal('hied');

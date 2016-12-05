@@ -168,6 +168,8 @@ Route::group(['middleware' => 'web', 'namespace' => 'Administrator'], function (
         Route::post('/create-information', 'CustomerController@store');
         Route::any('/minus-beans', 'CustomerController@minusBeans');
         Route::get('/lower_list', 'CustomerController@lowerList');
+        Route::get('search-bean', 'CustomerController@searchBean');
+        Route::post('save-bean', 'CustomerController@saveBean');
     });
 
     Route::group(['prefix' => 'order'], function () {
@@ -231,4 +233,8 @@ Route::group(['prefix' => 'puan', 'namespace' => 'Puan'], function () {
     Route::any('/update-beans-when-purchase-for-union-id', 'PuanInterfaceController@UpdateBeansWhenPurchaseForUnionId');
     Route::any('/beans-log-for-union-id', 'PuanInterfaceController@beansLogForUnionId');
     Route::get('/phone-by-union-id', 'PuanInterfaceController@phoneByUnionId');
+});
+Route::group(['prefix' => 'test'], function () {
+    Route::any('/index', 'TestController@index');
+
 });

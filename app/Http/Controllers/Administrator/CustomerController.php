@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Administrator;
-
+use App\Models\BeanLog;
 use App\Models\Customer;
 use App\Models\CustomerBean;
 use App\Models\CustomerInformation;
@@ -22,6 +22,69 @@ class CustomerController extends Controller
     {
         return view('backend.customer.index');
     }
+    /**
+     * 修改用户迈豆数
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function searchBean(Request $request)
+    {
+        $key = $request->input('key', null);
+        $customers = BeanLog::select();
+
+        if ($key) {
+            $key_phrase = '%' . $key . '%';
+            $customers = $customers->where('phone', 'like', $key_phrase);
+        }
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'customers' => $customers
+                    ->orderBy('id', 'desc')
+                    ->paginate(1, ['*'])
+            ]
+        ]);
+
+    }
+    /**
+     * 修改迈豆数
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function saveBean(Request $request)
+    {
+        $phone = $request->input('phone', null);
+        $beans = $request->input('beans', null);
+        $remark = $request->input('remark', null);
+        /* 同步用户通行证验证合法性 */
+        $post_data = array("phone" => $phone,'beans'=>$beans);
+        $res = \Helper::tocurl(env('API_URL'). '/modify-bean', $post_data,1);
+        if (isset($res['phone'])) {
+            return response()->json([
+                'success' => false,
+                'data'    => [
+                    'customer' => null,
+                    'message' => '电话号码不存在!'
+                ]
+            ]);
+        }
+        $model= new BeanLog();
+        $model->phone = $phone;
+        $model->beans = $beans;
+        $model->remark = $remark;
+        $model->opt = \Auth::user()->name;
+        $model->save();
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'customer' => BeanLog::orderBy('id', 'desc')->get()
+            ]
+        ]);
+
+    }
+
 
     public function customerList()
     {

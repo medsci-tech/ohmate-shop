@@ -14,7 +14,7 @@
         <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="common"><a href="#common">普通用户</a></li>
         <li :class="(searching.user_type == '企业用户')?'active':''" @click="choose_data" id="enterprise"><a href="#enterprise">企业用户</a></li>
         <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="all"><a href="#all">所有用户</a></li>
-        <li :class="" @click="choose_data" id="all"><a href="./customer/modbean">修改迈豆</a></li>
+        <li :class="(searching.user_type == '修改迈豆')?'active':''"  @click="choose_data" id="modbean"><a href="{{ url('customer/modbean') }}">修改迈豆</a></li>
       </ul>
       <hr>
       <ul class="nav nav-sidebar">
@@ -22,21 +22,15 @@
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" v-cloak>
-      <h2 class="sub-header">@{{searching.user_type}}
-        <span v-if="searched" class="small">(@{{searched}})</span>
-        <button @click="addDoctorA" v-if="searching.user_type == 'A类医生'" class="btn btn-primary">添加</button>   
-        <div v-if="searching.user_type == 'A类医生'" style="font-size: initial; display: inline-block; float: right;">
-          <select v-model='a_searching.type' class="form-control" style="display: inline-block; width: auto; padding-top: 7px">
-            <option value="" disabled>请选择搜索项</option>
-            <option value="name">姓名</option>
-            <option value="phone">电话</option>
-            <option value="referred_name">推荐代表姓名</option>
-          </select>
+      <h2 class="sub-header">修改迈豆
+        <span v-if="searched" class="small">(@{{searched}}33333</span>
+        <button @click="addDoctorA"  class="btn btn-primary">添加</button>
+        <div style="font-size: initial; display: inline-block; float: right;">
           <div class="has-feedback" style="display: inline-block; width: auto;">
-            <input @keyup.enter='a_search' v-model='a_searching.value' type="text" class="form-control" placeholder="A类医生查询">
+            <input @keyup.enter='a_search' v-model='a_searching.value' type="text" class="form-control" placeholder="医生电话查询">
             <button @click='a_search' style="pointer-events: all;" type="button" class="btn btn-link form-control-feedback fa fa-search"></button>
           </div>
-        </div>       
+        </div>
       </h2>
 
       <div class="table-responsive">
@@ -51,9 +45,9 @@
               <th v-if="data_head.referred_name">@{{data_head.referred_name}}</th>
               <th v-if="data_head.referred_phone">@{{data_head.referred_phone}}</th>
               <th v-if="data_head.region">@{{data_head.region}}</th>
-              
+
               <th v-if="data_head.region_level">@{{data_head.region_level}}</th>
-              
+
               <th v-if="data_head.responsible">@{{data_head.responsible}}</th>
               <th v-if="data_head.address">@{{data_head.address}}</th>
               <th v-if="data_head.hospital">@{{data_head.hospital}}</th>
@@ -83,37 +77,37 @@
                   @{{person.information.name}}
                 </div>
               </td>
-              <td v-if="data_head.phone"> 
+              <td v-if="data_head.phone">
                 <div v-if="person.information">
                   @{{person.information.phone}}
                 </div>
               </td>
-              <td v-if="data_head.level"> 
+              <td v-if="data_head.level">
                 <div v-if="person.information">
                   @{{person.information.level}}
                 </div>
               </td>
-              <td v-if="data_head.referred_name"> 
+              <td v-if="data_head.referred_name">
                 <div v-if="person.information">
                   @{{person.information.referred_name}}
                 </div>
               </td>
-              <td v-if="data_head.referred_phone"> 
+              <td v-if="data_head.referred_phone">
                 <div v-if="person.information">
                   @{{person.information.referred_phone}}
                 </div>
               </td>
-              <td v-if="data_head.region"> 
+              <td v-if="data_head.region">
                 <div v-if="person.information">
                   @{{person.information.region}}
                 </div>
               </td>
-              <td v-if="data_head.region_level"> 
+              <td v-if="data_head.region_level">
                 <div v-if="person.information">
                   @{{person.information.region_level}}
                 </div>
               </td>
-              <td v-if="data_head.responsible"> 
+              <td v-if="data_head.responsible">
                 <div v-if="person.information">
                   @{{person.information.responsible}}
                 </div>
@@ -723,7 +717,7 @@
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label" for="province2">医院地址</label>
-                <div class="col-sm-8">                    
+                <div class="col-sm-8">
                   <input class="form-control" name="province2" id="province2"  placeholder="请输入省"
                   v-model="add_doctor.province"></input>
                 </div>
