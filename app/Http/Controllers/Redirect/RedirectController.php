@@ -34,7 +34,7 @@ class RedirectController extends Controller
 		}
         if (!$customer || !$customer->articleIndexNeedFeedBack()) {
 			\Log::info('hongbao---不存在');
-            \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
+            //\Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
             return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
         } else {
 			\Log::info('hongbao---存在' );
@@ -43,8 +43,8 @@ class RedirectController extends Controller
             $post_data = array("phone" => $customer->phone);
             $res = \Helper::tocurl(env('API_URL'). '/learn', $post_data,1);
             $count = $res['chance_remains_today'];
-            \BeanRecharger::executeEducation($customer);
-            \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
+            //\BeanRecharger::executeEducation($customer);
+            //\Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
 
             return view('education.hongbao')->with([
                 'redirect_url' => "http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect",
