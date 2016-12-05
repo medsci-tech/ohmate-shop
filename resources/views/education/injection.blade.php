@@ -18,6 +18,15 @@
         >
         </video>
     </div>
+    <h3 style="width: 100%; text-align: center;">特充操作指导视频</h3>
+    <div class="weui_cells weui_cells_access">
+        <video controls="controls"
+               poster="/image/education/v2.png"
+               src="http://oh6sofl9x.bkt.clouddn.com/%E7%89%B9%E5%85%85%E6%93%8D%E4%BD%9C%E6%8C%87%E5%AF%BC%E8%A7%86%E9%A2%91.mp4"
+               width="100%" height="100%"
+        >
+        </video>
+    </div>
 </div>
 <br>
 <div style="padding: 5px;">
