@@ -14,7 +14,9 @@
         <li :class="(searching.user_type == '普通用户')?'active':''" @click="choose_data" id="common"><a href="#common">普通用户</a></li>
         <li :class="(searching.user_type == '企业用户')?'active':''" @click="choose_data" id="enterprise"><a href="#enterprise">企业用户</a></li>
         <li :class="(searching.user_type == '所有用户')?'active':''" @click="choose_data" id="all"><a href="#all">所有用户</a></li>
+        @if (Auth::user()->name=='戴可')
         <li :class="(searching.user_type == '修改迈豆')?'active':''" @click="choose_data" id="modbean"><a href="#modbean">修改迈豆</a></li>
+        @endif
       </ul>
       <hr>
       <ul class="nav nav-sidebar">
