@@ -124,11 +124,11 @@ class CustomerController extends Controller
             if(isset($res['phone'])) 
                 $beans_total = 0;
             else
-                $beans_total = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0; 
+                $beans_total = !empty($res['result']['bean']['number']) ? $res['result']['bean']['number'] : 0; 
             
             $obj->beans_total = $beans_total;
         }
-        //print_r($list);exit;
+
         return response()->json([
             'success' => true,
             'data'    => [
