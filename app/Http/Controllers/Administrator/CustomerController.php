@@ -119,13 +119,14 @@ class CustomerController extends Controller
         $list = $customers->where('is_registered', 1)->with(['statistics', 'information', 'type'])->orderBy('id', 'desc')->paginate(20, ['*']);
         foreach($list as $obj)
         {
-            /* 同步注册用户通行证验证 */
+            /* 同步用户通行证验证 */
             $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$obj->phone, $post_data=array(),0);
             if(isset($res['phone'])) 
                 $beans_total = 0;
             else
-              $beans_total = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0;           
-              $obj->beans_total = $beans_total;
+                $beans_total = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0; 
+            
+            $obj->beans_total = $beans_total;
         }
         //print_r($list);exit;
         return response()->json([

@@ -39,14 +39,20 @@ class CardApplicationController extends Controller
         $shop_card_application_id = $request->input('require_id');
         $application = ShopCardApplication::find($shop_card_application_id);
         $customer = Customer::find($application->customer_id);
+        $phone = $customer->phone;
+        /* 同步用户通行证验证 */
+        $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$phone, $post_data=array(),0);
+        $beans_total  = isset($res['phone']) ? 0 : $res['result']['bean']['number']; //余额迈豆
+        
         $card_type = $application->cardType;
 
         try {
-            \DB::transaction(function () use ($application, $customer, $card_type) {
+            \DB::transaction(function () use ($application, $customer, $card_type, $phone, $beans_total) {
                 $customer_rows = \DB::table('customers')->where('id', $customer->id);
                 $customer_rows->lockForUpdate();
                 $customer_row = $customer_rows->first();
-                if ($customer_row->beans_total < $card_type->beans_value * $application->amount) {
+                //if ($customer_row->beans_total < $card_type->beans_value * $application->amount) {
+                if ($beans_total < $card_type->beans_value * $application->amount) {
                     throw new NotEnoughBeansException();
                 }
                 $cards = \DB::table('shop_cards')->where('card_type_id', '=', $card_type->id)->whereNull('customer_id')->limit($application->amount);
@@ -60,6 +66,11 @@ class CardApplicationController extends Controller
 
                 $cards->update(['customer_id' => $customer->id, 'bought_at' => Carbon::now()]);
                 $application->update(['authorized' => true]);
+                
+                /* 扣除10万迈豆,同步用户通行证验证合法性 */
+                $post_data = array("phone" => $phone,'bean'=> -100000);
+                $res = \Helper::tocurl(env('API_URL'). '/modify-bean', $post_data,1);
+      
                 return true;
             });
         } catch (CardNotEnoughException $e) {

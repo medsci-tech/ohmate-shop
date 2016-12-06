@@ -39,13 +39,14 @@ class PersonalController extends Controller
 		}
         /* 同步注册用户通行证验证 */
         $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$customer->phone, $post_data=array(),0);
+        $beans_total  = isset($res['phone']) ? 0 : $res['result']['bean']['number']; //余额迈豆
 
         //$data['nickname']           = $customer->nickname;
         $data['nickname']           = $res['result']['name'];
         $data['head_image_url']     = $customer->head_image_url;
         $data['type']               = $customer->type->type_ch;
         //$data['beans_total']        = $customer->beans_total;
-        $data['beans_total']        = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0;
+        $data['beans_total']        = $beans_total;
 		$data['card_totalnum']      = $num;
 		
         return view('personal.information', ['data' => $data]);

@@ -25,13 +25,21 @@ class CardController extends Controller
         $applications = ShopCardApplication::where('authorized', 0)->with('customer')->get();
 
         foreach ($applications as $application) {
+            /* 同步用户通行证验证 */
+            $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$application->customer->phone, $post_data=array(),0);
+            if(isset($res['phone'])) 
+                $beans_total = 0;
+            else
+                $beans_total = $res['result']['bean']['number'] ? $res['result']['bean']['number'] : 0;  
+            
             $result []= [
                 'require_id' => $application->id,
                 'id' => $application->customer_id,
                 'name' => $application->customer->nickname,
                 'phone' => $application->customer->phone,
                 'num' => $application->amount,
-                'beans_total' => $application->customer->beans_total
+               // 'beans_total' => $application->customer->beans_total
+                'beans_total' => $beans_total   
             ];
         }
         return view('backend.order.gift-card')->with([
