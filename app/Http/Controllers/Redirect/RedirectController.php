@@ -35,7 +35,7 @@ class RedirectController extends Controller
         if (!$customer || !$customer->articleIndexNeedFeedBack()) {
 			\Log::info('hongbao---不存在');
             //\Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
-            return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
+            //return redirect("http://mp.weixin.qq.com/mp/homepage?__biz=MzI4NTAxMzc3Mw==&hid=1&sn=740141c97f60c8630a87a3f0c344a504#wechat_redirect");
         } else {
 			\Log::info('hongbao---存在' );
             //$count = $customer->readArticleIndex();
