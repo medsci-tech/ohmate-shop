@@ -19,8 +19,8 @@
       <div class="weui_actionsheet_menu">
         <img src="{{url('/image/education/hongbao.png')}}" alt="">
         <p>20迈豆</p>
-        <p v-if="{{ $count }} != 0" id="chance">今日还可获取<span>{{ $count }}</span>次</p>
-        <p v-if="{{ $count }} == 0" id="chance">今日已获取完毕,明天再来哦~</p>
+        <p v-if="{{ 5 - $count }} != 0" id="chance">今日还可获取<span>{{ 5 - $count }}</span>次</p>
+        <p v-if="{{ 5 - $count }} == 0" id="chance">今日已获取完毕,明天再来哦~</p>
         <p id="motto"></p>
         <p class="hongbao-word-1">欢迎进入糖尿病教育学堂<br>每次开始学习即可获得20迈豆</p>
         <p class="hongbao-word-2">20迈豆可抵0.2元现金</p>
