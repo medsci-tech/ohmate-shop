@@ -25,6 +25,15 @@ class CardController extends Controller
     public function index()
     {
         $customer = \Helper::getCustomerOrFail();
+        /* 同步用户通行证验证 */
+        $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$customer->phone, $post_data=array(),0);
+        if(isset($res['phone']))
+            $beans_total = 0;
+        else
+            $beans_total = !empty($res['result']['bean']['number']) ? $res['result']['bean']['number'] : 0;
+
+        $customer->beans_total = $beans_total;
+
         return view('shop.gift-card')->with([
             'customer' => $customer
         ]);
