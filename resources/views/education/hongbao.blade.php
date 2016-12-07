@@ -37,10 +37,7 @@
 <script src="{{asset('/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('/js/vendor/vue.js')}}"></script>
 <script>
-var c = parseInt({{ $count }});
-var l = {{ $redirect_url }};
-if(c==0)
-        top.window.location.href = l;
+
 
   function settimer(i){
     i +=1;
