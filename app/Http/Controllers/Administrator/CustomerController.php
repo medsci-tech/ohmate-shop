@@ -154,14 +154,23 @@ class CustomerController extends Controller
         }
 
         $customers = $customers->with('information');
+        $list =  $customers->orderBy('id', 'desc')->paginate(20);
+        foreach($list as $obj)
+        {
+            /* 同步用户通行证验证 */
+            $res = \Helper::tocurl(env('API_URL'). '/query-user-information?phone='.$obj->phone, $post_data=array(),0);
+            if(isset($res['phone']))
+                $beans_total = 0;
+            else
+                $beans_total = !empty($res['result']['bean']['number']) ? $res['result']['bean']['number'] : 0;
+
+            $obj->beans_total = $beans_total;
+        }
 
         return response()->json([
             'success' => true,
             'data'    => [
-                'customers' => $customers
-                    // ->makeVisible('focus_count')
-                    ->orderBy('id', 'desc')
-                    ->paginate(20)
+                'customers' => $list
             ]
         ]);
     }
