@@ -228,6 +228,17 @@ class Wechat
 
         };
     }
+    /**
+     * @return \Closure
+     */
+    public function clickEventCallback()
+    {
+        return function ($event) {
+            $openId = $event['FromUserName'];
+            $eventKey = $event['EventKey'];
+            return Message::make('text')->content('功能尚未开放哦!');
+        };
+    }
 
     /**
      * @return \Closure
@@ -352,11 +363,6 @@ class Wechat
 //        }
 
         return function ($message) {
-            if ($message->Content == 'V1001_Customer') {
-
-                return Message::make('text')->content("功能尚未开放!");
-
-            }
 
             if ($message->Content == '问卷') {
                 return Message::make('news')->items(function () {

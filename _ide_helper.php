@@ -11546,7 +11546,7 @@ namespace {
         public static function locationEventCallback(){
             return \App\Werashop\Wechat\Wechat::locationEventCallback();
         }
-        
+
         /**
          * 
          *
@@ -11556,7 +11556,16 @@ namespace {
         public static function subscribeEventCallback(){
             return \App\Werashop\Wechat\Wechat::subscribeEventCallback();
         }
-        
+
+        /**
+         *
+         *
+         * @return \Closure
+         * @static
+         */
+        public static function clickEventCallback(){
+            return \App\Werashop\Wechat\Wechat::clickEventCallback();
+        }
         /**
          * 
          *
