@@ -352,6 +352,12 @@ class Wechat
 //        }
 
         return function ($message) {
+            if ($message->Content == 'V1001_Customer') {
+
+                return Message::make('text')->content("功能尚未开放!");
+
+            }
+
             if ($message->Content == '问卷') {
                 return Message::make('news')->items(function () {
                     return [
