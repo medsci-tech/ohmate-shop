@@ -125,7 +125,7 @@ class Wechat
             ]),
             (new MenuItem("积分商城"))->buttons([
                 neW MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan')),
-                neW MenuItem('人工客服', 'click'),
+                neW MenuItem('人工客服', 'click','V1001_Customer'),
             ]),
            // (new MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan'))),
             (new MenuItem("个人中心"))->buttons([
