@@ -123,6 +123,10 @@ class Wechat
                 new MenuItem('安全注射', 'view', url('/education/injection')),
                 neW MenuItem('注册', 'view', url('/register/create'))
             ]),
+            (new MenuItem("积分商城"))->buttons([
+                neW MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan')),
+                neW MenuItem('人工客服', 'view', url('#')),
+            ]),
             (new MenuItem('积分商城', 'view', url('http://puanpharm.ohmate.cn/shop/index?utm_source=puan'))),
             (new MenuItem("个人中心"))->buttons([
 //                new MenuItem('迈豆钱包', 'view', url('/personal/beans')),
