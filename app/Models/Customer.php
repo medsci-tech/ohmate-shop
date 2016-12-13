@@ -243,8 +243,12 @@ class Customer extends Model
      */
     public function readArticleIndex()
     {
+        $currentTime =time();
+        $diffTime = strtotime(date('Y-m-d',strtotime('+1 day'))) - $currentTime;
+        $minutes = round($diffTime/60);
+
         if (!\Cache::has($this->getCacheArticleBeanFeedKey())) {
-            \Cache::put($this->getCacheArticleBeanFeedKey(), 1, 1440);
+            \Cache::put($this->getCacheArticleBeanFeedKey(), 1, $minutes);
         } else if (\Cache::get($this->getCacheArticleBeanFeedKey()) < 5) {
             \Cache::increment($this->getCacheArticleBeanFeedKey());
         }
