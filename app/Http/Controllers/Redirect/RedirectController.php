@@ -32,6 +32,14 @@ class RedirectController extends Controller
 		}else{
 				\Log::info('hongbao---333');
 		}
+        if($customer)
+        {
+            /* 同步注册用户通行证验证 */
+            $post_data = array("phone" => $customer->phone);
+            $res = \Helper::tocurl(env('API_URL'). '/learn', $post_data,1);
+            //$count = $res['chance_remains_today'];
+        }
+
         if (!$customer || !$customer->articleIndexNeedFeedBack()) {
 			\Log::info('hongbao---不存在');
             \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
@@ -39,10 +47,6 @@ class RedirectController extends Controller
         } else {
 			\Log::info('hongbao---存在' );
             $count = $customer->readArticleIndex();
-            /* 同步注册用户通行证验证 */
-            $post_data = array("phone" => $customer->phone);
-            $res = \Helper::tocurl(env('API_URL'). '/learn', $post_data,1);
-            //$count = $res['chance_remains_today'];
             \BeanRecharger::executeEducation($customer);
             \Analyzer::updateBasicStatistics($customer->id, AnalyzerConstant::CUSTOMER_ARTICLE);
 
