@@ -24,6 +24,7 @@ class RedirectController extends Controller
     {
         $customer = \Helper::getCustomerOrNull();
 		if(!$customer ){
+             \Wechat::authorizeUser('http://www.ohmate.cn/redirect/article-index'); // 授权
 			if(!$customer->articleIndexNeedFeedBack()){
 				\Log::info('hongbao---111');
 			}else{
