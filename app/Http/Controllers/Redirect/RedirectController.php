@@ -23,7 +23,7 @@ class RedirectController extends Controller
     public function articleIndex(Request $request)
     {
         $customer = \Helper::getCustomerOrNull();
-        \Log::info('直接进入页面:'.$customer);
+        \Log::info('直接进入页面:'.$customer.date('Y-m-d H:i:s'));
 		if(!$customer ){
              \Wechat::authorizeUser('http://www.ohmate.cn/redirect/article-index'); // 授权
 			if(!$customer->articleIndexNeedFeedBack()){
