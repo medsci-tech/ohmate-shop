@@ -33,13 +33,13 @@ class RedirectController extends Controller
 		}else{
 				\Log::info('当前openid:'.$customer->openid.' date is:'.date('Y-m-d H:i:s').' id is :'.$customer->id);
 		}
-        if($customer)
-        {
+        //if($customer)
+        //{
             /* 同步注册用户通行证验证 */
             $post_data = array("phone" => $customer->phone);
             $res = \Helper::tocurl(env('API_URL'). '/learn', $post_data,1);
             //$count = $res['chance_remains_today'];
-        }
+        //}
 
         if (!$customer || !$customer->articleIndexNeedFeedBack()) {
 			\Log::info('hongbao---不存在');
