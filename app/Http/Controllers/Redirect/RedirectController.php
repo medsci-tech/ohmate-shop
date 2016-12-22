@@ -31,7 +31,7 @@ class RedirectController extends Controller
 				\Log::info('hongbao---222');
 			}
 		}else{
-				\Log::info('当前openid:'.$customer->openid);
+				\Log::info('当前openid:'.$customer->openid.' date is:'.date('Y-m-d H:i:s'));
 		}
         if($customer)
         {
