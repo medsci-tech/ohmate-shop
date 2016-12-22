@@ -26,7 +26,7 @@ class RedirectController extends Controller
         /* 从糖尿病网进入bug排查开始 */
         if(!$customer->phone)
         {
-            $user = \Wechat::authorizeUser($request->fullUrl());
+            $user = \Wechat::authorizeUser('http://www.ohmate.cn/redirect/article-index');
             if ($user) {
                 \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
             } else {
