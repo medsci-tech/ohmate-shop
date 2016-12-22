@@ -24,15 +24,13 @@ class RedirectController extends Controller
     {
         $customer = \Helper::getCustomerOrNull();
         /* 从糖尿病网进入bug排查开始 */
-        if(!$customer->phone)
-        {
+        if (!\Helper::hasSessionCachedUser()) {
             $user = \Wechat::authorizeUser('http://www.ohmate.cn/redirect/article-index');
             if ($user) {
                 \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
             } else {
                 \Session::put(AppConstant::SESSION_USER_KEY, null);
             }
-            $customer = \Helper::getCustomerOrNull();
         }
         /* 从糖尿病网进入bug排查结束 */
 
