@@ -23,16 +23,6 @@ class RedirectController extends Controller
     public function articleIndex(Request $request)
     {
         \Log::info('test:'.date('Y-m-d H:i:s'));
-        /* 从糖尿病网进入bug排查开始 */
-        if (!\Helper::hasSessionCachedUser()) {
-            $user = \Wechat::authorizeUser('http://www.ohmate.cn/redirect/article-index');
-            if ($user) {
-                \Session::put(AppConstant::SESSION_USER_KEY, $user->all());
-            } else {
-                \Session::put(AppConstant::SESSION_USER_KEY, null);
-            }
-        }
-        /* 从糖尿病网进入bug排查结束 */
 
         $customer = \Helper::getCustomerOrNull();
         \Log::info('直接进入页面:'.$customer.date('Y-m-d H:i:s'));
