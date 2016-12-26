@@ -186,7 +186,7 @@ class Customer extends Model
     {
         $date = explode('-', $month);
         $nextMonth = $date[0].'-0'.++$date[1];
-        $nextMonth = $this->GetMonth($month,$sign=0);echo($nextMonth);
+        $nextMonth = $this->GetMonth($month,$sign=0);
         return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->orderBy('created_at', 'desc')->get();
     }
     /**
