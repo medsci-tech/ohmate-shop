@@ -186,7 +186,33 @@ class Customer extends Model
     {
         $date = explode('-', $month);
         $nextMonth = $date[0].'-0'.++$date[1];
+        $nextMonth = $this->GetMonth($month,$sign=0);
         return $this->hasMany(CustomerBean::class, 'customer_id')->where('created_at', '>', $month)->where('created_at', '<', $nextMonth)->orderBy('created_at', 'desc')->get();
+    }
+    /**
+     * @param $month
+     * @return mixed
+     * author 下个月
+     */
+    public function GetMonth($month,$sign="1")
+    {
+        $time =strtotime($month);
+      //  $tmp_date=date('Y-m',$time);
+        //得到系统的年月
+        $tmp_date=date("Ym",$time);
+        //切割出年份
+        $tmp_year=substr($tmp_date,0,4);
+        //切割出月份
+        $tmp_mon =substr($tmp_date,4,2);
+        $tmp_nextmonth=mktime(0,0,0,$tmp_mon+1,1,$tmp_year);
+        $tmp_forwardmonth=mktime(0,0,0,$tmp_mon-1,1,$tmp_year);
+        if($sign==0){
+            //得到当前月的下一个月
+            return $fm_next_month=date("Y-m",$tmp_nextmonth);
+        }else{
+            //得到当前月的上一个月
+            return $fm_forward_month=date("Y-m",$tmp_forwardmonth);
+        }
     }
 
     /**
