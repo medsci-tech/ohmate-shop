@@ -914,7 +914,7 @@
             <td colspan="3" style="border:none">
                 <div class="adv">问卷来源：中国2型糖尿病防治指南2013版。</div>
                 <div class="btn btn-main" onclick="reCal()">重新计算</div>
-                <div class="copyright">Copyright @MedSci-Tech & 糖衣网 All right reserved</div>
+                <div class="copyright">Copyright 易康伴侣 All right reserved</div>
             </td>
         </tr>
     </table>
