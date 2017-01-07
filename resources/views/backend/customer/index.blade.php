@@ -27,7 +27,7 @@
       <h2 class="sub-header">@{{searching.user_type}}
         <span v-if="searched" class="small">(@{{searched}})</span>
         <button @click="addUserBean" v-if="searching.user_type == '修改迈豆'" class="btn btn-primary">修改用户迈豆</button>
-        <button @click="addDoctorA" v-if="searching.user_type == 'A类医生'" class="btn btn-primary">添加</button>   
+        <button @click="addDoctorA" v-if="searching.user_type == 'A类医生'" class="btn btn-primary">添加</button>
         <div v-if="searching.user_type == 'A类医生'" style="font-size: initial; display: inline-block; float: right;">
           <select v-model='a_searching.type' class="form-control" style="display: inline-block; width: auto; padding-top: 7px">
             <option value="" disabled>请选择搜索项</option>
@@ -39,7 +39,7 @@
             <input @keyup.enter='a_search' v-model='a_searching.value' type="text" class="form-control" placeholder="A类医生查询">
             <button @click='a_search' style="pointer-events: all;" type="button" class="btn btn-link form-control-feedback fa fa-search"></button>
           </div>
-        </div>       
+        </div>
       </h2>
 
       <span v-if="searching.user_type=='修改迈豆'">
@@ -827,7 +827,7 @@
               </div>
               <div class="form-group">
                 <label class="col-sm-3 control-label" for="province2">医院地址</label>
-                <div class="col-sm-8">                    
+                <div class="col-sm-8">
                   <input class="form-control" name="province2" id="province2"  placeholder="请输入省"
                   v-model="add_doctor.province"></input>
                 </div>
