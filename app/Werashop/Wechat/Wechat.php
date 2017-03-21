@@ -118,7 +118,7 @@ class Wechat
         return [
             (new MenuItem("教育学习"))->buttons([
                 //new MenuItem('每日活动', 'view', url('/activity/daily')),
-                new MenuItem('24小时关爱', 'view', url('/activity/detail/47711')),
+                new MenuItem('评估工具', 'view', url('/activity/detail/47711')),
                 new MenuItem('每日学习', 'view', url('/redirect/article-index')),
                 new MenuItem('安全注射', 'view', url('/education/injection')),
                 neW MenuItem('注册', 'view', url('/register/create'))
@@ -236,7 +236,18 @@ class Wechat
         return function ($event) {
             $openId = $event['FromUserName'];
             $eventKey = $event['EventKey'];
-            return Message::make('text')->content('功能尚未开放哦!');
+
+            $fromUsername =$event['FromUserName'];
+            $toUsername = $event['ToUserName'];
+            $textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[transfer_customer_service]]></MsgType>
+                        </xml>";
+            $resstr = sprintf($textTpl, $fromUsername, $toUsername, time());
+            echo $resstr;
+
         };
     }
 
@@ -373,6 +384,11 @@ class Wechat
                             ->url(url('/questionnaire'))
                             ->picUrl(url('/images/1.jpg'))
                     ];
+                });
+            }
+            if ($message->Content == '糖友管家') {
+                return Message::make('news')->items(function () {
+                    return Message::make('text')->content("<a target=\"_blank\" href=\"http://docmate3.mime.org.cn:82/Down.html\">下载医师助手</a>");
                 });
             }
             return '';
