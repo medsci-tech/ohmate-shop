@@ -387,9 +387,7 @@ class Wechat
                 });
             }
             if ($message->Content == '糖友管家') {
-                return Message::make('news')->items(function () {
-                    return Message::make('text')->content("<a target=\"_blank\" href=\"http://docmate3.mime.org.cn:82/Down.html\">下载医师助手</a>");
-                });
+                return Message::make('text')->content("<a target=\"_blank\" href=\"http://docmate3.mime.org.cn:82/Down.html\">下载医师助手</a>");
             }
             return '';
 //            return "success";
