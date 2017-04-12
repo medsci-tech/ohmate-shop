@@ -201,10 +201,16 @@ class RegisterController extends Controller
         $refcustomer = Customer::where('id', $customer->referrer_id)->first(); // 上级用户id
         $refphone = $refcustomer ? $refcustomer->phone : 0;
         $post_data = array("name" => $request->input('nickname'), "phone" => $request->input('phone'),'unionid'=> $customer->unionid,'upper_user_phone'=>$refphone);
-        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
-        if (isset($res['phone'])) {
-            return redirect()->back()->with('error_message', '电话号码已经存在!')->withInput();
+        try {
+            $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error_message', '服务器异常!')->withInput();
         }
+
+//        $res = \Helper::tocurl(env('API_URL'). '/register', $post_data,1);
+//        if (isset($res['phone'])) {
+//            return redirect()->back()->with('error_message', '电话号码已经存在!')->withInput();
+//        }
 
         $beans_total_update = 0;
         if ($customer->beans_total > 0) {
