@@ -222,6 +222,7 @@ class RegisterController extends Controller
             'beans_total'       => $beans_total_update,
             'nickname'          => $user['nickname'],
             'head_image_url'    => $user['headimgurl'],
+            'unionid' => isset($user['unionid'])?$user['unionid']:null,
             'qr_code'           => \Wechat::getForeverQrCodeUrl($customer->id),
         ]);
 
