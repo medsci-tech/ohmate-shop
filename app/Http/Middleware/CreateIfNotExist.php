@@ -23,7 +23,11 @@ class CreateIfNotExist
         try {
             $user       = \Helper::getSessionCachedUser();
             $customer   = Customer::where('openid', $user['openid'])->firstOrFail();
-
+            if($customer)
+            {
+                if(!$user['unionid'])
+                    Customer::where('openid', $user['openid'])->update(['unionid' => isset($user['unionid'])?$user['unionid']:null]);
+            }
             return $next($request);
 
         } catch (UserNotSubscribedException $e) {
